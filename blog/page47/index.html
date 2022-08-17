@@ -38,6 +38,44 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">June 17, 2012</span>
+  <h4><a href="/blog/2012/06/blog-stats.html">Blog Stats</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Meta.html">Meta</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>On February 5th 2008, the first post on this blog was published. This is
+the 201st posting, so it is time for a recap. The blog was originally to
+document the creation of a business website. That business idea,
+Queuesaurus, has been and gone, but the blog continues. I think it is
+useful to practice writing - it’s certainly not for the money!</p>
+
+<p>In nearly four and a half years this blog has generated 133,340 page
+views from 70,904 unique visitors. This has resulted in 77 AdSense
+clicks for income of $31 (versus a hosting cost over the same period of
+$104). However, it is gratifying to see that the number of visitors is
+on a steadily upward trend. As the graph below shows, the number of
+monthly visits has grown to around 4500/month at present.</p>
+
+<p><img src="/assets/posts/meta/visitors.png" width="550" alt="" /></p>
+
+<p>Most people visiting this blog will never read this post. 75% of people
+come to it through a search engine (mainly Google) and view a single
+technical article. The top ten posts account for 60% of the page views
+and all of those ten are technical in nature (<a href="http://cordinc.com/blog/2009/04/multiple-attachments-with-vali.html">this is the most popular
+page</a>,
+and <a href="http://cordinc.com/blog/2008/03/installing-sphinx-ultrasphinx.html">this the second most
+popular</a>).</p>
+
+<p>Unfortunately there are only 14 comments on the site. I had to turn
+comments off a couple of years ago because I was receiving about 50 spam
+comments a day after the spam filters cleared out the most obvious ones!</p>
+
+  </div>
+  <hr/>
+
   <span class="date">June 10, 2012</span>
   <h4><a href="/blog/2012/06/budapest.html">Budapest</a></h4> 
   Tags: 
@@ -196,112 +234,10 @@ parameters.</p>
   </div>
   <hr/>
 
-  <span class="date">May  4, 2012</span>
-  <h4><a href="/blog/2012/05/unit-testing-unityscript-in-un.html">Unit Testing UnityScript in Unity3D with SharpUnit</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
-    
-      <a class="post" href="/blog/tag/Unity.html">Unity</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I have been programming mainly in <a href="http://unity3d.com/">Unity3D</a> over
-the last fortnight, and thought it time to write some unit tests for my
-work. I found reference to a <a href="http://unifycommunity.com/wiki/index.php?title=Category:Unit_Test_Framework">few testing frameworks
-online</a>.
-The most promising appeared to be
-<a href="http://www.unifycommunity.com/wiki/index.php?title=SharpUnit">SharpUnit</a>,
-and it is also released under a fairly relaxed license. However, I had
-to make a few changed to get it running, so this post details that work.</p>
-
-<p>SharpUnit works like a standard unit testing framework for C# code in
-Unity3D (although all output goes to the console, but that is fine for
-me). Although my work has largely been in UnityScript (Unity3D’s
-JavaScript like language) and this didn’t work so well due to issues
-with compilation order and SharpUnit’s use of .Net custom attributes.
-After making the changes below, I found SharpUnit works well, and I’ll
-probably be using it for my unit testing.</p>
-
-<p>Unity3D compiles scripts in a set order (<a href="http://unity3d.com/support/documentation/ScriptReference/index.Script_compilation_28Advanced29.html">as described
-here</a>).
-Thus if you have C# code that references a UnityScript class there can
-be a problem - although the reverse is not such an issue. When testing
-UnityScript with SharpUnit this means that the C# <code class="highlighter-rouge">Unity3D_TestRunner</code>
-class can be an issue. It references the <code class="highlighter-rouge">TestCase</code> classes, which I
-want to write in UnityScript. To do this I put the SharpUnit code in a
-folder under the <code class="highlighter-rouge">Plugins</code> top-level folder (the <code class="highlighter-rouge">Standard Assets</code>
-folder would have also worked). This means the SharpUnit code is
-compiled first. Then my tests went in a new folder together with a
-UnityScript rewrite of <code class="highlighter-rouge">Unity3D_TestRunner</code>, as shown below. This
-UnityScript TestRunner script is then attached to the TestRunner
-GameObject (in a special testing scene) rather than the C# version as
-described in the SharpUnit instructions.</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="nx">pragma</span> <span class="nx">strict</span>
-
-<span class="k">import</span> <span class="nx">SharpUnit</span><span class="p">;</span>
-
-<span class="kd">function</span> <span class="nx">Start</span> <span class="p">()</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">suite</span><span class="p">:</span> <span class="nx">TestSuite</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TestSuite</span><span class="p">();</span>
-	<span class="nx">suite</span><span class="p">.</span><span class="nx">AddAll</span><span class="p">(</span><span class="nx">DummyTest</span><span class="p">());</span>
-	<span class="kd">var</span> <span class="nx">res</span><span class="p">:</span> <span class="nx">TestResult</span> <span class="o">=</span> <span class="nx">suite</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
-	<span class="kd">var</span> <span class="nx">reporter</span><span class="p">:</span> <span class="nx">Unity3D_TestReporter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Unity3D_TestReporter</span><span class="p">();</span>
-    <span class="nx">reporter</span><span class="p">.</span><span class="nx">LogResults</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Other possible solutions to this problem would be to just write my code
-in C# or to change SharpUnit to load <code class="highlighter-rouge">TestCase</code> classes dynamically at
-runtime. Rewriting the TestRunner seemed easiest.</p>
-
-<p>The other problem encountered is that SharpUnit uses the C# custom
-attribute <code class="highlighter-rouge">[UnitTest]</code> to identify its test methods. The equivalent in
-UnityScript is a script directive (see <a href="http://answers.unity3d.com/questions/12911/what-are-the-syntax-differences-in-c-and-javascrip.html">the relevant section
-here</a>).
-Thus <code class="highlighter-rouge">@UnitTest</code> needs to be placed at the top of each test function.</p>
-
-<p>After that change I could run UnityScript tests with SharpUnit. An
-example test is below:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="nx">pragma</span> <span class="nx">strict</span>
-
-<span class="k">import</span> <span class="nx">SharpUnit</span><span class="p">;</span>
-
-<span class="kd">class</span> <span class="nx">DummyTest</span> <span class="kd">extends</span> <span class="nx">TestCase</span> <span class="p">{</span>
-
-    <span class="kd">var</span> <span class="nx">dummy</span><span class="p">:</span> <span class="nb">String</span><span class="p">;</span>  
-
-    <span class="cm">/** Setup test resources, called before each test. */</span>
-    <span class="kd">function</span> <span class="nx">SetUp</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">dummy</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">lkjkjh</span><span class="dl">"</span><span class="p">;</span> 
-    <span class="p">}</span>
-
-    <span class="cm">/** Dispose of test resources, called after each test */</span>
-    <span class="kd">function</span> <span class="nx">TearDown</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">dummy</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> 
-    <span class="p">}</span>
-
-    <span class="cm">/** Sample test that passes */</span>
-    <span class="p">@</span><span class="nd">UnitTest</span>
-    <span class="kd">function</span> <span class="nx">TestDummy_Pass</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">Assert</span><span class="p">.</span><span class="nx">NotNull</span><span class="p">(</span><span class="nx">dummy</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="cm">/** Sample test that fails. */</span>
-    <span class="p">@</span><span class="nd">UnitTest</span>
-    <span class="kd">function</span> <span class="nx">TestDummy_Fail</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">Assert</span><span class="p">.</span><span class="nx">Null</span><span class="p">(</span><span class="nx">dummy</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 47 of 86 
+  Page 47 of 87 
   
       
         <a href="/blog/page46">Previous</a>
@@ -324,6 +260,10 @@ example test is below:</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/08/roguelike.html">Roguelike Tutorial 2022</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
@@ -360,16 +300,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2021/10/game-time.html">Game Time</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

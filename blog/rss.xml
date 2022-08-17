@@ -6,9 +6,34 @@
     <atom:link href="http://www.cordinc.com/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Cordinc Blog</description>
     <language>en-us</language>
-    <pubDate>Wed, 17 Aug 2022 15:17:23 +0800</pubDate>
-    <lastBuildDate>Wed, 17 Aug 2022 15:17:23 +0800</lastBuildDate>
+    <pubDate>Wed, 17 Aug 2022 17:30:04 +0800</pubDate>
+    <lastBuildDate>Wed, 17 Aug 2022 17:30:04 +0800</lastBuildDate>
 
+    
+    <item>
+      <title>Roguelike Tutorial 2022</title>
+      <link>http://www.cordinc.com/blog/2022/08/roguelike.html</link>
+      <pubDate>Wed, 17 Aug 2022 00:00:00 +0800</pubDate>
+      <guid>http://www.cordinc.com/blog/2022/08/roguelike</guid>
+      <description>&lt;p&gt;As a distraction from other things I should have been doing over the last 6 weeks, I completed the &lt;a href=&quot;https://www.reddit.com/r/roguelikedev/comments/vhfsda/roguelikedev_does_the_complete_roguelike_tutorial/&quot;&gt;/r/roguelikedev Tutorial 2022&lt;/a&gt;. An event to teach people how to write roguelike games like &lt;a href=&quot;https://en.wikipedia.org/wiki/NetHack&quot;&gt;Nethack&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Angband_%28video_game%29&quot;&gt;Angband&lt;/a&gt;, and my old favourite, &lt;a href=&quot;/blog/2016/07/omega.html&quot;&gt;Omega&lt;/a&gt;. I wanted to learn some &lt;a href=&quot;https://javascript.info/&quot;&gt;Javascript&lt;/a&gt;, and this seemed a good way to go.&lt;/p&gt;
+
+&lt;p&gt;It is done now. There is a &lt;a href=&quot;https://jarrahtech.github.io/RoguelikeTutorial2022/&quot;&gt;playable version here&lt;/a&gt; and the &lt;a href=&quot;https://github.com/jarrahtech/RoguelikeTutorial2022&quot;&gt;source code is here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The controls are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;movement/target: arrow keys or wasd (+qezx)&lt;/li&gt;
+  &lt;li&gt;look: ‘/’&lt;/li&gt;
+  &lt;li&gt;pickup: ‘p’&lt;/li&gt;
+  &lt;li&gt;message history: ‘v’&lt;/li&gt;
+  &lt;li&gt;drop/leave: ‘l’&lt;/li&gt;
+  &lt;li&gt;activate/use/equip: ‘u’&lt;/li&gt;
+  &lt;li&gt;character screen: ‘c’&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/jarrahtech/RoguelikeTutorial2022/blob/main/assets/img/logo.png?raw=true&quot; alt=&quot;/r/roguelikedev Tutorial2022 Logo&quot; width=&quot;640&quot; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Brisbane</title>
@@ -204,35 +229,6 @@
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/792100/7_Billion_Humans/&quot;&gt;7 Billion Humans&lt;/a&gt;&lt;/strong&gt; (1 hour): Humourous programming game where you work for HR giving tasks to humans in computer controlled world. Seemed interesting, but programming games feel like work to me so I didn’t play long.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/395570/We_Are_The_Dwarves/&quot;&gt;We Are The Dwarves&lt;/a&gt;&lt;/strong&gt; (1 hour): Action RPG about sci-fi (or steampunk?) dwarves exploring an underground world. The tutorial was hard to understand and they even gave me an achievement for unintentionally not following it (hmmm). Graphics felt dated. These games are not my thing and this one didn’t come close to changing my view.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Too Many Games</title>
-      <link>http://www.cordinc.com/blog/2021/07/too-many-games.html</link>
-      <pubDate>Fri, 30 Jul 2021 00:00:00 +0800</pubDate>
-      <guid>http://www.cordinc.com/blog/2021/07/too-many-games</guid>
-      <description>&lt;p&gt;I am playing too many games. I need to do more work instead.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.epicgames.com/store/en-US/p/frostpunk&quot;&gt;Frostpunk&lt;/a&gt;&lt;/strong&gt;:  Interesting citybuilder in steampunk apocalyptically cold world. Build in circles around steam generator to keep warm. Some storytelling elements mean that society building is as important as constructing buildings. All the building and story builds towards surviving a huge and extremely cold storm - very nice, I had to keep playing until I got past this. After that no reason to replay unless attempting harder difficulty levels or scenarios. Above average builder with some interesting mechanics.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://draknek.itch.io/sokobond&quot;&gt;Sokobond&lt;/a&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;a href=&quot;https://draknek.itch.io/cosmic-express&quot;&gt;Cosmic Express&lt;/a&gt;&lt;/strong&gt; &amp;amp; &lt;strong&gt;&lt;a href=&quot;https://draknek.itch.io/a-good-snowman&quot;&gt;A Good Snowman Is Hard To Build&lt;/a&gt;&lt;/strong&gt;: Series of 3 very similar puzzle games by the same publisher, listed in order of increasing cuteness. The idea is to move components around a greatly constrained playing area in order to construct something (chemicals, train tracks or a snowman). In total they kept me entertained for a hour - maybe longer for people who like puzzles.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://milkbaggames.itch.io/sidewords&quot;&gt;Sidewords&lt;/a&gt;&lt;/strong&gt;: Casual puzzle game to create words inside a grid using the letters on the outside of the grid. Clever little idea, but I’m not a big fan of puzzle games or word games so this didn’t grab me.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://trampolinetales.itch.io/luck-be-a-landlord&quot;&gt;Luck be a landlord&lt;/a&gt;&lt;/strong&gt;: Surprsingly addictive game mixing deckbuilding and slot machine mechanics. The theme of struggling to pay rent is very loosely applied as you spin a slot machine and receive a payout determined by the wide array of symbols available - many combo off eachother for higher scores. At the end of each spin you choose a new symbol to add. True 8bit graphics. Wish I thought of this. In the end I had to delete it as I know I would play it too much.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://peachykeengames.itch.io/calico&quot;&gt;Calico&lt;/a&gt;&lt;/strong&gt;: Cute cat cafe management game with a stardew’esque feel, but a cell shading look. Told me repeatably I should play with a gamepad, that I don’t have. I quickly ran into issues that may be bugs or more likely control problems. Didn’t have the patience, interest or gamepad to continue.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://hempuli.itch.io/baba&quot;&gt;Baba Is You&lt;/a&gt;&lt;/strong&gt;: Very clever puzzle game where the rules of each puzzle are spelled on on the screen and to solve the puzzle the player needs to rearrange the rules. True 8bit style (just like I remember it). Kept me interested far longer than most puzzles.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/284830/Clockwork_Tales_Of_Glass_and_Ink/&quot;&gt;Clockwork Tales Of Glass and Ink&lt;/a&gt;&lt;/strong&gt;: I was given this Hidden Object game and thought I would give it a try. Simple puzzles solved largely by clicking around. Ok art, but dodgy animations. Not very interesting to me.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/224760/FEZ/&quot;&gt;Fez&lt;/a&gt;&lt;/strong&gt;: Old puzzle platformer where the puzzles are often solved by rotating the 2d view to show the scene from a different angle. Great idea, and it kept me intrigued and playing for several hours until getting stuck on a few levels that required pixel perfect movement. Superior game for this genre.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/326410/Windward/&quot;&gt;Windward&lt;/a&gt;&lt;/strong&gt;: A decent age of sail trading/piracy game with strong &lt;a href=&quot;https://en.wikipedia.org/wiki/Realtime_strategy_game&quot;&gt;RTS&lt;/a&gt; elements. The graphics and gameplay have some rough edges, although nothing unforgivable for a small indie game. Kept going for a while, but just a little too slow and grindy, so I got out before being hooked (as could easily have occurred). I suspect this is supposed to be a multiplayer game.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/231430/Company_of_Heroes_2/&quot;&gt;Company of Heroes 2&lt;/a&gt;&lt;/strong&gt;: I quit playing this well-regarded realtime squad-based tactical wargame after an hour. The tutorial crashed on me. I didn’t know what I was doing in the campaign, other than just keep running forward. Maybe that is a comment on Soviet tactics during Stalingrad (which is the setting), but it’s not particularly interesting for me. Disappointing.&lt;/p&gt;
 </description>
     </item>
     

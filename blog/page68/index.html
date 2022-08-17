@@ -38,6 +38,41 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">March 14, 2010</span>
+  <h4><a href="/blog/2010/03/discrete-java-timer.html">Discrete Java Timer</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Java provides a number of methods to run code at scheduled future time,
+the implementations of
+<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/ScheduledExecutorService.html">ScheduledExecutorService</a>
+generally being the best way at the moment. ScheduledExecutorService
+also defines methods to run the code a periodic intervals
+(scheduleAtFixedRate &amp; scheduleWithFixedDelay). However, what if you
+have classes that need to be notified at regular discrete intervals and
+need to know which interval they are in. A timer is required that with a
+set periodicity fires an event on any listeners and passes the number of
+times the period has elapsed. What this is doing is breaking up
+continuous “realtime” into discrete blocks or quantums of time. For
+example, if the period is 10 seconds, at the start the time quantum is 0
+until 10 seconds have elapsed and an event is fired denoting the start
+of the first time quantum. Ten seconds later another event fires as the
+2nd time quantum starts, and so on.</p>
+
+<p>This is a fairly simple bit of Java code. Any experienced Java developer
+has probably already worked out a good solution, but for me it has come
+up a couple of times in the last few months so I thought I’d write it
+down.</p>
+
+<p class='more'><br/><a href='/blog/2010/03/discrete-java-timer.html'>Read the rest of this entry</a></p>
+  </div>
+  <hr/>
+
   <span class="date">March  6, 2010</span>
   <h4><a href="/blog/2010/03/is-there-free-money-crossing-b.html">Is there free money crossing Betfair and Betdaq?</a></h4> 
   Tags: 
@@ -169,89 +204,10 @@ working.</p>
   </div>
   <hr/>
 
-  <span class="date">February  7, 2010</span>
-  <h4><a href="/blog/2010/02/hannibal-stanford-continuing-s.html">Hannibal (Stanford Continuing Studies Program)</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/History.html">History</a>, 
-    
-      <a class="post" href="/blog/tag/Podcasts.html">Podcasts</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Available on
-<a href="http://deimos3.apple.com/WebObjects/Core.woa/Browse/itunes.stanford.edu.1374259372.01374259374">iTunesU</a>.
-I could not find a course website.</p>
-
-<p>These podcasts detail the life of the
-<a href="http://en.wikipedia.org/wiki/Carthage">Carthaginian</a> general
-<a href="http://en.wikipedia.org/wiki/Hannibal">Hannibal</a>, often considered one
-of the greatest commanders of the ancient world. During the <a href="http://en.wikipedia.org/wiki/Second_Punic_War">Second
-Punic War</a> against the
-<a href="http://en.wikipedia.org/wiki/Roman_Republic">Roman Republic</a> in the 3rd
-century BC, Hannibal led his army over the Alps into Italy. He then used
-superior strategy and tactics to defeat the Roman army at a number of
-engagements, resulting in the battle of
-<a href="http://en.wikipedia.org/wiki/Battle_of_Cannae">Cannae</a> - a devastating
-loss for Rome. After this, the Romans adopted many of Hannibal’s
-techniques. At the <a href="http://en.wikipedia.org/wiki/Battle_of_Zama">Battle of
-Zama</a>, Hannibal was
-defeated and Carthage lost the war.</p>
-
-<p>The lectures were given by <a href="http://en.wikipedia.org/wiki/Patrick_Hunt">Patrick
-Hunt</a> as part of the
-<a href="http://www.continuingstudies.stanford.edu/">Stanford Continuing Studies
-Program</a> sometime during 2007. I couldn’t find a course website, but there are a
-<a href="http://traumwerk.stanford.edu/archaeolog/2006/11/alpine_archaeology_hannibal_ex.html">few</a>
-<a href="http://traumwerk.stanford.edu/archaeolog/2006/04/hannibal_in_the_alps_stanford_1.html">articles</a>
-relating to the course. There are 8 lectures (strangely numbered 1
-through 10), all of which are audio only and nearly two hours long
-(around 30MB in size). The first podcast is an interesting discussion on
-Carthaginian culture, in particular whether they really practiced <a href="http://en.wikipedia.org/wiki/Religion_in_Carthage#Child_sacrifice">child
-sacrifice</a>.
-The second lecture introduces the <a href="http://en.wikipedia.org/wiki/First_Punic_War">First Punic
-War</a> and Hannibal’s
-father, <a href="http://en.wikipedia.org/wiki/Hamilcar_Barca">Hamilcar Barca</a>.
-The Second Punic War is covered over three lectures (along with an
-epilogue). The remaining three podcasts are dedicated to Hannibal’s
-crossing of the Alps.</p>
-
-<p>It seems Patrick Hunt organises regular expeditions to cross the Alps,
-trying to find archeological proof of where Hannibal crossed. Great
-attention is paid to how closely various mountain passes fit the ancient
-descriptions. Dr Hunt personally favours the <a href="http://en.wikipedia.org/wiki/Col_de_Clapier">Col de
-Clapier</a>. If this
-historical event is of interest, then you will be well served. There is
-not one, not two, but three different first-person accounts of modern
-crossings of the Alps in attempts to follow Hannibal’s footsteps:
-Hunt’s; Ed Boenig, a student of Dr Hunt’s; and John Hoyte’s, who crossed
-the Col de Clapier in 1959 with an elephant (called
-<a href="http://www.archaeology.org/image.php?page=0701/abstracts/jpegs/hannibal2.jpg">Jumbo</a>).</p>
-
-<p>Apart from close concentration on a narrow historical time period, the
-series has many intriguing digressions. For instance, there is
-occasional mention of the meaning of Hannibal’s name, “grace of Ba’al”.
-<a href="http://en.wikipedia.org/wiki/Baal">Ba’al</a> was the main Carthaginian
-deity, who supposedly lived on a mountain. Thus Dr Hunt suggests
-Hannibal would have had no fear of mountains. A bit of a stretch, but
-still interesting. If you have a particular interest in finding out
-about Hannibal’s crossing of the Alps, then this is the podcast for you.
-However, there is still much to learn even if that is not your focus
-(and the second two alpine lectures can be safely skipped). On the
-downside, the first lecture (on the origins of Carthage) seems to be
-missing. Also, there is no sign of the lecture slides. Being able to see
-the maps and slides would have been particularly useful during
-discussions of which Alpine pass most closely matched ancient
-descriptions. Nevertheless, don’t be put off by the long podcast length,
-this series is well worth a listen.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 68 of 86 
+  Page 68 of 87 
   
       
         <a href="/blog/page67">Previous</a>
@@ -274,6 +230,10 @@ this series is well worth a listen.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/08/roguelike.html">Roguelike Tutorial 2022</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
@@ -310,16 +270,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2021/10/game-time.html">Game Time</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

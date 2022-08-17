@@ -38,6 +38,85 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">November 21, 2008</span>
+  <h4><a href="/blog/2008/11/rails-text-field-with-auto-com.html">Rails text_field_with_auto_complete and not displaying the selected item</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Rails.html">Rails</a>, 
+    
+      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I am doing some work with the Rails text_field_with_auto_complete
+method to provide a dropdown list of completed options as a user types,
+like <a href="http://www.google.com/webhp?complete=1&amp;hl=en">Google Suggest</a>.
+However, I needed the item displayed in the dropdown to be different to
+the item displayed when it is selected. I couldn’t find any help online.
+So at first I thought I would need to override the AJAX code, but when I
+looked I saw text_field_with_auto_complete already had this feature
+built in.</p>
+
+<!-- more -->
+
+<p>To find out how to use text_field_with_auto_complete, I recommend
+this <a href="http://railscasts.com/episodes/102">Railscast</a> (I have watched
+about a dozen Railscasts and they have all been great). My starting
+setup is as described in the Railscast.</p>
+
+<p>The trick to displaying something different to what was selected is to
+have the field to be displayed hidden in the selection list. To do this
+add a <code class="highlighter-rouge">&lt;div&gt;</code> with a class into the selection item with
+<code class="highlighter-rouge">style='display:none'</code>. Thus the text in the div will not be displayed
+in the dropdown, but the text is there. Put the text to show when an
+item is selected into the hidden div. In the file to create the list of
+selection items I had the following:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="sx">% return </span><span class="k">unless</span> <span class="vi">@queues</span> <span class="o">%&gt;</span>
+<span class="o">&lt;</span><span class="sx">% items </span><span class="o">=</span> <span class="vi">@queues</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">entry</span><span class="o">|</span> <span class="n">content_tag</span><span class="p">(</span><span class="s2">"li"</span><span class="p">,</span><span class="s2">"&lt;div class='wq_display' style='display:none'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">name</span><span class="si">}</span><span class="s2"> &lt;/div&gt;&lt;div class='wq_full'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">name_and_owner</span><span class="si">}</span><span class="s2">&lt;/div&gt;"</span><span class="p">)</span> <span class="p">}</span> <span class="o">%&gt;</span>
+<span class="o">&lt;</span><span class="sx">%= content_tag("ul", items) %&gt;</span></code></pre></figure>
+
+<p>Then in call to the text_field_with_auto_complete method specify
+<code class="highlighter-rouge">:select</code> in the fourth argument. The value of the <code class="highlighter-rouge">:select</code> is the
+class name of the div to use for displaying. So I used the below and
+voila, the <code class="highlighter-rouge">wq_full</code> div is displayed in the dropdown and the
+<code class="highlighter-rouge">wq_display</code> div is displayed in the text box when selected!</p>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb">Queue <span class="cp">&lt;%=</span> <span class="n">text_field_with_auto_complete</span> <span class="ss">:add</span><span class="p">,</span> <span class="ss">:queue</span><span class="p">,</span> 
+       <span class="p">{</span><span class="ss">:size</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span> <span class="ss">:maxlength</span> <span class="o">=&gt;</span> <span class="mi">40</span> <span class="p">},</span> 
+       <span class="p">{</span><span class="ss">:url</span> <span class="o">=&gt;</span> <span class="n">formatted_workqueues_path</span><span class="p">(</span><span class="ss">:js</span><span class="p">),</span> <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:get</span><span class="p">,</span> <span class="ss">:param_name</span> <span class="o">=&gt;</span> <span class="s1">'search'</span><span class="p">,</span> <span class="ss">:select</span> <span class="o">=&gt;</span>  <span class="s1">'wq_display'</span><span class="p">}</span> <span class="cp">%&gt;</span></code></pre></figure>
+
+<p>This concept can be easily extended. I also needed a third field, one
+containing the selection item’s id and have this passed back to the
+server on submit. Thus I just add a new hidden div to the selection
+items containing the id:</p>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="cp">&lt;%</span> <span class="n">items</span> <span class="o">=</span> <span class="vi">@queues</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">entry</span><span class="o">|</span> <span class="n">content_tag</span><span class="p">(</span><span class="s2">"li"</span><span class="p">,</span> 
+	<span class="s2">"&lt;div class='wq_display' style='display:none'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">name</span><span class="si">}</span><span class="s2">&lt;/div&gt;&lt;div class='wq_full'&gt;# {entry.name_and_owner}&lt;/div&gt;&lt;div class='wq_id' style='display:none'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">id</span><span class="si">}</span><span class="s2">&lt;/div&gt;"</span><span class="p">)</span> <span class="p">}</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%=</span> <span class="n">content_tag</span><span class="p">(</span><span class="s2">"ul"</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span> <span class="cp">%&gt;</span></code></pre></figure>
+
+<p>Then I use <code class="highlighter-rouge">:after_update_element</code> to provide a javascript function that
+runs after an item is selected. Here it sets the value of a hidden input
+field to the text inside the new div.</p>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb">Queue <span class="cp">&lt;%=</span> <span class="n">text_field_with_auto_complete</span> <span class="ss">:add</span><span class="p">,</span> <span class="ss">:queue</span><span class="p">,</span> 
+       <span class="p">{</span><span class="ss">:size</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span> <span class="ss">:maxlength</span> <span class="o">=&gt;</span> <span class="mi">40</span> <span class="p">},</span> 
+       <span class="p">{</span><span class="ss">:url</span> <span class="o">=&gt;</span> <span class="n">formatted_workqueues_path</span><span class="p">(</span><span class="ss">:js</span><span class="p">),</span> <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:get</span><span class="p">,</span> <span class="ss">:param_name</span> <span class="o">=&gt;</span> <span class="s1">'search'</span><span class="p">,</span> <span class="ss">:select</span> <span class="o">=&gt;</span>  <span class="s1">'wq_display'</span><span class="p">,</span>
+          <span class="ss">:after_update_element</span> <span class="o">=&gt;</span> <span class="s2">"function(element,val) {
+            var nodes = val.select('.wq_id') || [];
+            if(nodes.length&gt;0) 
+              $('wq_id').value =  Element.collectTextNodes(nodes[0], 'wq_id');
+           } "</span><span class="p">}</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"wq_id"</span> <span class="na">name=</span><span class="s">"add[wq_id]"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">/&gt;</span></code></pre></figure>
+
+<p>You could also go further and update other parts of the page or have
+other fields, but you should get the idea for now.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">November 15, 2008</span>
   <h4><a href="/blog/2008/11/how-to-make-1hour-playing-onli.html">How to make &pound;1/hour playing online poker</a></h4> 
   Tags: 
@@ -198,43 +277,10 @@ was a scam or a bad deal.</p>
   </div>
   <hr/>
 
-  <span class="date">October  6, 2008</span>
-  <h4><a href="/blog/2008/10/todo-lists-are-hard.html">Todo lists are hard</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Entrepreneurship.html">Entrepreneurship</a>, 
-    
-      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
-    
-      <a class="post" href="/blog/tag/Queuesaurus.html">Queuesaurus</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>This <a href="http://blog.ativiti.com/wheres-the-task-management-category-killer/">blog
-article</a>
-argues that current online todo list and project management tools don’t
-meet people’s needs and are too complex. Judging by the comments of some
-people at the <a href="http://www.cordinc.com/blog/2008/10/london-hacker-meetup-6.html">London Hackers
-Meetup</a>,
-this is not an uncommon view. I agree too. This is why I’m trying to
-steer a user-friendly middle-path between Queuesarus’ competitors - a
-group it seems Ativiti intends to join (yeah, bring it on!).</p>
-
-<p>So how is it going? Well the Beta testing suggests that the
-functionality is nearly good enough, but that it is still not
-user-friendly. I’m not sure what to do. While I knew some parts of the
-system were difficult to understand, I had a plan for them. However,
-there are problems with areas I thought were fine. As the blog says, it
-is a hard problem and I haven’t seen it done well. More thought is
-required, and advice is welcome.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 80 of 86 
+  Page 80 of 87 
   
       
         <a href="/blog/page79">Previous</a>
@@ -257,6 +303,10 @@ required, and advice is welcome.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/08/roguelike.html">Roguelike Tutorial 2022</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
@@ -293,16 +343,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2021/10/game-time.html">Game Time</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>
