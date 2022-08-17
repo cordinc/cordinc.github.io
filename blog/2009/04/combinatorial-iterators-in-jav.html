@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Combinatorial Iterators in Java, Scala and Ruby (plus a comparison of the languages)</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>April 19, 2009</b>
+<h4>Combinatorial Iterators in Java, Scala and Ruby (plus a comparison of the languages)</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
+    
+      <a class="post" href="/blog/tag/Scala.html">Scala</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>I recently needed to write a Combinatorial Iterator for a project I’m
+working on. That is a class which when given a size and a collection of
+items (normally a set), returns all the possible unique combinations of
+elements from the collection of the given size. For instance the
+combinations of size 3 of the set [1,2,3,4] are [1,2,3], [1,2,4],
+[1,3,4] and [2,3,4]. There is a nice <a href="http://stackoverflow.com/questions/127704/algorithm-to-return-all-combinations-of-k-elements-from-n">discussion of this problem on
+StackOverflow</a>.
+The number of possible combinations can explode in size quickly, there
+are 2,598,960 combinations of five cards from a standard pack of 52
+cards. Thus I wanted to handle each combination in turn as required,
+rather than calculate all combinations upfront. Having recently started
+learning Scala and Ruby, I decided to implement my solution in those
+languages, plus Java (which I use every day at work).</p>
+
+<!--more-->
+
+<p>My first solution was in Java and shown below. I haven’t ensured
+thread-safety (or for the other language examples) as I don’t presently
+need it in my single threaded application. I have omitted the comments
+to keep the size down (similarly test classes are not shown). It works
+by storing the indices into the element list of the next combination to
+return with a call to <code class="highlighter-rouge">next()</code>. Then after constructing the combination,
+the indices are incremented (<code class="highlighter-rouge">incrementIndices()</code>) by finding the next
+index to increase and then setting the indices after this to be one
+higher than the one before. With a bit of testing, this was the fastest
+version I found (which is why I use <code class="highlighter-rouge">indices != null</code> as the end
+condition - it was a little faster).</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Collection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.NoSuchElementException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CombinatorialIterator</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Collection</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;&gt;,</span> <span class="nc">Iterable</span><span class="o">&lt;</span><span class="nc">Collection</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;&gt;</span> <span class="o">{</span>
+	 
+    <span class="kd">private</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">indices</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">maxIndices</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Object</span><span class="o">[]</span> <span class="n">elements</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">CombinatorialIterator</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">,</span> <span class="nc">Collection</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="no">E</span><span class="o">&gt;</span> <span class="n">items</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">items</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">items</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&lt;</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="s">"|items| &gt;= number &amp;&amp; number &gt; 1"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">elements</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="na">toArray</span><span class="o">();</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">number</span><span class="o">];</span>
+        <span class="n">maxIndices</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">number</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">number</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">indices</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+            <span class="n">maxIndices</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">elements</span><span class="o">.</span><span class="na">length</span><span class="o">+</span><span class="n">i</span><span class="o">-</span><span class="n">indices</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="o">}</span>       
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Collection</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;&gt;</span> <span class="nf">iterator</span><span class="o">()</span> <span class="o">{</span>
+    	<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasNext</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">indices</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"unchecked"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Collection</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="nf">createFromIndices</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;(</span><span class="n">indices</span><span class="o">.</span><span class="na">length</span><span class="o">*</span><span class="mi">2</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">indices</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">((</span><span class="no">E</span><span class="o">)</span><span class="n">elements</span><span class="o">[</span><span class="n">indices</span><span class="o">[</span><span class="n">i</span><span class="o">]]);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">incrementIndices</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">indices</span><span class="o">[</span><span class="mi">0</span><span class="o">]==</span><span class="n">maxIndices</span><span class="o">[</span><span class="mi">0</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">indices</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">indices</span><span class="o">[</span><span class="n">i</span><span class="o">]!=</span><span class="n">maxIndices</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="o">++</span><span class="n">indices</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">indices</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                    <span class="n">indices</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="o">++</span><span class="n">val</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Collection</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="nf">next</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">indices</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">NoSuchElementException</span><span class="o">(</span><span class="s">"End of iterator"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">Collection</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">createFromIndices</span><span class="o">();</span>
+        <span class="n">incrementIndices</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">(</span><span class="s">"remove"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>In an unscientific test, this chose combinations of 5 from 50 elements
+in around half a second, and 5 from 100 in 18 seconds on my old, slow
+laptop. The first thing to notice is that to use the class easily in
+Java I implemented the <code class="highlighter-rouge">Iterator</code> and <code class="highlighter-rouge">Iterable</code> interfaces. This allows
+me to do things like:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">init</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span><span class="n">init</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);}</span>
+<span class="kt">int</span> <span class="n">total</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+<span class="k">for</span> <span class="o">(</span><span class="nc">Collection</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nl">c:</span> <span class="k">new</span> <span class="nc">CombinatorialIterator</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="mi">5</span><span class="o">,</span> <span class="n">init</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">total</span><span class="o">++;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>However, there is quite a bit of code to do not much. Implementing
+<code class="highlighter-rouge">remove()</code> just to throw an exception is a little pointless and
+annoying. So I reimplemented the algorithm in Scala similarly
+implementing the language’s <code class="highlighter-rouge">Iterator</code> trait. Below is my second
+version:</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">class</span> <span class="nc">CombinatorialIterator</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">number</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">items</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span> <span class="k">extends</span> <span class="nc">Iterator</span><span class="o">[</span><span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">]]</span> <span class="o">{</span>
+  <span class="nf">if</span> <span class="o">(</span><span class="n">items</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="nv">items</span><span class="o">.</span><span class="py">length</span> <span class="o">&lt;</span> <span class="n">number</span><span class="o">)</span> <span class="nf">error</span><span class="o">(</span><span class="s">"|items| &gt;= number &amp;&amp; number &gt; 1"</span><span class="o">)</span>
+  
+  <span class="k">var</span> <span class="n">indices</span> <span class="k">=</span> <span class="nf">for</span> <span class="o">(</span><span class="n">i</span> <span class="k">&lt;-</span> <span class="nv">Array</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">number</span><span class="o">))</span> <span class="k">yield</span> <span class="n">i</span>
+  <span class="k">val</span> <span class="nv">maxIndices</span> <span class="k">=</span> <span class="nf">for</span> <span class="o">(</span><span class="n">i</span> <span class="k">&lt;-</span> <span class="nv">Array</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="nv">items</span><span class="o">.</span><span class="py">length</span><span class="o">-</span><span class="n">number</span><span class="o">,</span> <span class="nv">items</span><span class="o">.</span><span class="py">length</span><span class="o">))</span> <span class="k">yield</span> <span class="n">i</span>
+  <span class="k">var</span> <span class="n">elements</span> <span class="k">=</span> <span class="nv">items</span><span class="o">.</span><span class="py">toArray</span>
+
+  <span class="k">def</span> <span class="nf">hasNext</span> <span class="k">=</span> <span class="n">indices</span> <span class="o">!=</span> <span class="kc">null</span>
+  
+  <span class="k">def</span> <span class="nf">incrementIndex</span><span class="k">:</span><span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="nf">if</span> <span class="o">(</span><span class="nf">indices</span><span class="o">(</span><span class="mi">0</span><span class="o">)==</span><span class="nf">maxIndices</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span> <span class="o">{</span>
+      <span class="n">indices</span> <span class="k">=</span> <span class="kc">null</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span> 
+      <span class="k">var</span> <span class="n">break</span> <span class="k">=</span> <span class="kc">false</span>
+      <span class="k">var</span> <span class="n">i</span> <span class="k">=</span> <span class="nv">indices</span><span class="o">.</span><span class="py">length</span><span class="o">-</span><span class="mi">1</span>
+      <span class="nf">while</span> <span class="o">(!</span><span class="n">break</span> <span class="o">&amp;&amp;</span> <span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nf">if</span> <span class="o">(</span><span class="nf">indices</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">!=</span> <span class="nf">maxIndices</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">break</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">break</span> <span class="k">=</span> <span class="kc">true</span>
+          <span class="k">var</span> <span class="n">shift</span> <span class="k">=</span> <span class="nf">indices</span><span class="o">(</span><span class="n">i</span><span class="o">)+</span><span class="mi">1</span>
+          <span class="nf">indices</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="k">=</span> <span class="n">shift</span>
+          <span class="nf">for</span> <span class="o">(</span><span class="n">j</span> <span class="k">&lt;-</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="n">to</span> <span class="nv">indices</span><span class="o">.</span><span class="py">length</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">shift</span> <span class="k">=</span> <span class="n">shift</span><span class="o">+</span><span class="mi">1</span>
+            <span class="nf">indices</span><span class="o">(</span><span class="n">j</span><span class="o">)</span> <span class="k">=</span> <span class="n">shift</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">i</span> <span class="k">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="nf">next</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="nf">if</span> <span class="o">(!</span><span class="n">hasNext</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nc">NoSuchElementException</span><span class="o">(</span><span class="s">"next on empty iterator"</span><span class="o">)</span> 
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+      <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">List</span><span class="o">.</span><span class="py">fromArray</span><span class="o">(</span><span class="nv">indices</span><span class="o">.</span><span class="py">map</span><span class="o">(</span><span class="n">i</span> <span class="k">=&gt;</span> <span class="nf">elements</span><span class="o">(</span><span class="n">i</span><span class="o">)))</span>
+      <span class="n">incrementIndex</span>
+      <span class="n">result</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>This version is not particularly functional. My first version did the
+<code class="highlighter-rouge">incrementIndex</code> in far fewer lines (shown below - there are probably
+even better ways), but the result was an order of magnitude slower.</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nf">if</span> <span class="o">(</span><span class="nf">indices</span><span class="o">(</span><span class="mi">0</span><span class="o">)==</span><span class="nf">maxIndices</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span> <span class="o">{</span>
+  <span class="n">indices</span> <span class="k">=</span> <span class="kc">null</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span> 
+  <span class="k">var</span> <span class="n">shift</span> <span class="k">=</span> <span class="nv">indices</span><span class="o">.</span><span class="py">zip</span><span class="o">(</span><span class="n">maxIndices</span><span class="o">).</span><span class="py">reverse</span><span class="o">.</span><span class="py">find</span><span class="o">(</span><span class="n">x</span> <span class="k">=&gt;</span> <span class="nv">x</span><span class="o">.</span><span class="py">_1</span> <span class="o">!=</span> <span class="nv">x</span><span class="o">.</span><span class="py">_2</span> <span class="o">).</span><span class="py">getOrElse</span><span class="o">((</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">)).</span><span class="py">_1</span>
+  <span class="n">indices</span> <span class="k">=</span> <span class="nv">indices</span><span class="o">.</span><span class="py">map</span><span class="o">(</span><span class="n">x</span> <span class="k">=&gt;</span> <span class="nf">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">shift</span><span class="o">)</span> <span class="o">{</span><span class="n">shift</span> <span class="k">=</span> <span class="n">shift</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">shift</span><span class="o">}</span> <span class="k">else</span> <span class="n">x</span><span class="o">)</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>In order to get roughly Java equivalent performance I had to write it in
+a Java-like manner. Scala does not use lazy evaluation like Haskell. So
+when performing operations on a list, all the elements of a list are
+used. Instead I had to mimic a Java loop break, which doesn’t exist in
+Scala. Also lists are immutable, so I had to use arrays to allow
+in-place updating in order to prevent the creation of many superfluous
+lists. This chose combinations of 5 from 50 elements in around two
+seconds, and 5 from 100 in 83 seconds.</p>
+
+<p>I also wrote two Ruby versions. Ruby doesn’t have an iterator interface,
+so I created a not-so-nice translation of the Java version for
+comparison purposes (a better version is shown later). It took 35
+seconds to choose 5 from 50 so I didn’t even bother trying the larger
+test.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">CombinatorialIterator</span>
+  
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="s2">"|items| &gt;= number &amp;&amp; number &gt; 1"</span> <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="nf">nil?</span> <span class="n">or</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="n">or</span> <span class="n">items</span><span class="p">.</span><span class="nf">size</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">)</span>
+    <span class="vi">@elements</span> <span class="o">=</span> <span class="n">items</span>
+    <span class="vi">@indices</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="o">...</span><span class="n">number</span><span class="p">).</span><span class="nf">to_a</span>
+    <span class="vi">@max_indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="nf">length</span><span class="o">-</span><span class="n">number</span> <span class="o">...</span> <span class="n">items</span><span class="p">.</span><span class="nf">length</span><span class="p">).</span><span class="nf">to_a</span>
+  <span class="k">end</span>
+  
+  <span class="k">def</span> <span class="nf">has_next</span>
+    <span class="o">!</span><span class="vi">@indices</span><span class="p">.</span><span class="nf">nil?</span>
+  <span class="k">end</span>
+  
+  <span class="k">def</span> <span class="nf">next</span>
+    <span class="k">raise</span> <span class="s2">"next on empty iterator"</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">has_next</span><span class="p">)</span> 
+    
+    <span class="n">result</span> <span class="o">=</span> <span class="vi">@indices</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="vi">@elements</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="p">}</span>
+    <span class="n">incrementIndex</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+  
+  <span class="kp">private</span>
+  
+  <span class="k">def</span> <span class="nf">incrementIndex</span>
+    <span class="k">if</span> <span class="p">(</span><span class="vi">@indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="vi">@max_indices</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+      <span class="vi">@indices</span> <span class="o">=</span> <span class="kp">nil</span>
+    <span class="k">else</span>
+      <span class="p">(</span><span class="vi">@indices</span><span class="p">.</span><span class="nf">length</span><span class="o">-</span><span class="mi">1</span><span class="p">).</span><span class="nf">downto</span> <span class="mi">0</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+        <span class="k">if</span> <span class="p">(</span><span class="vi">@indices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="vi">@max_indices</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> 
+          <span class="n">val</span> <span class="o">=</span> <span class="vi">@indices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="vi">@indices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
+          <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">).</span><span class="nf">upto</span><span class="p">(</span><span class="vi">@indices</span><span class="p">.</span><span class="nf">length</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">j</span><span class="o">|</span>
+            <span class="vi">@indices</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="o">+</span><span class="mi">1</span>
+          <span class="k">end</span>
+          <span class="k">break</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></figure>
+
+<p>However, that’s not fair on Ruby because the generally accepted way of
+implementing iterator functionality in the language is to pass a block
+to a function which <code class="highlighter-rouge">yield</code>’s for each element of the iterator. A much
+nicer Ruby version using this paradigm is below.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">CombinatorialIterator</span>
+  
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="s2">"|items| &gt;= number &amp;&amp; number &gt; 1"</span> <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="nf">nil?</span> <span class="n">or</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="n">or</span> <span class="n">items</span><span class="p">.</span><span class="nf">size</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">)</span>
+    <span class="vi">@number</span> <span class="o">=</span> <span class="n">number</span>
+    <span class="vi">@elements</span> <span class="o">=</span> <span class="n">items</span>
+  <span class="k">end</span>
+  
+  <span class="k">def</span> <span class="nf">mapCombinations</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="n">combinations</span><span class="p">(</span><span class="vi">@number</span><span class="p">,</span> <span class="vi">@elements</span><span class="p">,</span> <span class="p">[],</span> <span class="n">block</span><span class="p">.</span><span class="nf">to_proc</span><span class="p">)</span> 
+  <span class="k">end</span>
+  
+  <span class="kp">private</span>
+  
+  <span class="k">def</span> <span class="nf">combinations</span><span class="p">(</span><span class="n">len</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">items</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">block</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="n">prefix</span><span class="p">.</span><span class="nf">dup</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="p">)</span> <span class="p">}</span>
+    <span class="k">else</span>
+      <span class="c1"># use slice because no drop in Ruby 1.8.6</span>
+      <span class="mi">0</span><span class="p">.</span><span class="nf">upto</span><span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="nf">length</span> <span class="o">-</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">combinations</span><span class="p">(</span><span class="n">len</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">items</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">items</span><span class="p">.</span><span class="nf">length</span><span class="o">-</span><span class="n">i</span><span class="p">)</span> <span class="p">,</span> <span class="n">prefix</span><span class="p">.</span><span class="nf">dup</span> <span class="o">&lt;&lt;</span> <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">block</span><span class="p">)</span> <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></figure>
+
+<p>Which is exercised with:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">total</span><span class="o">=</span><span class="mi">0</span>
+<span class="no">CombinatorialIterator</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">49</span><span class="p">).</span><span class="nf">to_a</span><span class="p">).</span><span class="nf">mapCombinations</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">total</span> <span class="o">=</span> <span class="n">total</span><span class="o">+</span><span class="mi">1</span><span class="p">}</span></code></pre></figure>
+
+<p>This more natural Ruby version took a more respectable (but still slow)
+15 seconds to chose 5 from 50. It is not as flexible as the Java-like
+implementation, one couldn’t for instance stop at an arbitrary point in
+the iteration. Although, it does win the beautiful code competition. A
+similarly elegant Scala version should be possible at the expense of
+either: creating a version similar to the Ruby above and giving up the
+<code class="highlighter-rouge">Iterator</code> trait and (and thus the extra functionality it provides - see
+later); or, using list functions and becoming roughly the same speed as
+the Ruby version.</p>
+
+<p>A version like the Ruby one above, while technically possible in Java,
+would be a mess due to the lack of closures and the need to create an
+interface to handle the code blocks to which to yield. Best not to think
+about it. It would be fairly easy to write a similar Scala version, but
+completely unnecessary. The Scala <code class="highlighter-rouge">Iterator</code> trait provides a number of
+methods that allow you to map, fold, filter, and more over the iteration
+elements just by implementing <code class="highlighter-rouge">hasNext</code> and <code class="highlighter-rouge">next</code>. So to get the number
+of items in the iterator you could iterate using these functions:</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="nv">l</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">CombinatorialIterator</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="nv">List</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">52</span><span class="o">))</span>
+<span class="k">var</span> <span class="n">total</span> <span class="k">=</span> <span class="mi">0</span>	
+<span class="nf">while</span> <span class="o">(</span><span class="nv">l</span><span class="o">.</span><span class="py">hasNext</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nv">l</span><span class="o">.</span><span class="py">next</span>
+  <span class="n">total</span> <span class="k">=</span> <span class="n">total</span> <span class="o">+</span><span class="mi">1</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Or, using the built in for loop:</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">var</span> <span class="n">total</span> <span class="k">=</span> <span class="mi">0</span>	
+<span class="nf">for</span> <span class="o">(</span><span class="n">x</span> <span class="k">&lt;-</span> <span class="k">new</span> <span class="nc">CombinatorialIterator</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="nv">List</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">52</span><span class="o">)))</span> <span class="o">{</span>
+  <span class="n">total</span> <span class="k">=</span> <span class="n">total</span><span class="o">+</span><span class="mi">1</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Or, the <code class="highlighter-rouge">Iterator</code>’s fold:</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="nv">total</span> <span class="k">=</span> <span class="nc">CombinatorialIterator</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="nv">List</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">52</span><span class="o">)).</span><span class="py">foldLeft</span><span class="o">(</span><span class="mi">0</span><span class="o">)((</span><span class="n">c</span><span class="o">,</span><span class="k">_</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="o">)</span></code></pre></figure>
+
+<p>Which can be abbreviated as:</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="nv">total</span> <span class="k">=</span> <span class="o">(</span><span class="mi">0</span><span class="o">/:</span><span class="k">new</span> <span class="nc">CombinatorialIterator</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="nv">List</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">52</span><span class="o">)))((</span><span class="n">c</span><span class="o">,</span><span class="k">_</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="o">)</span></code></pre></figure>
+
+<p>Plus many other succinct and powerful operations. Very nice.</p>
+
+<p>In my opinion the results of this exercise are:</p>
+
+<ul>
+  <li>Java: Lots of boilerplate code and other cruft, but still fast</li>
+  <li>Ruby: Easy to translate my Java experience into beautiful code. I
+just wish it was faster - much, much faster.</li>
+  <li>Scala: Very powerful, and with decent speed, but requires a slightly
+different mindset (compared to the Java OO mindset) to use well.</li>
+</ul>
+
+<p>Ruby and Scala are definitely more elegant - Java has become a business
+language. This is not a particular problem, but its age and need to
+satisfy many stakeholders mean that a lot of cruft has been added to the
+language (does anyone know all the API well?). At the same time powerful
+ideas have become common in newer languages, but the same need to
+accommodate existing stakeholders and avoid non-backward compatible
+changes means Java has trouble adding them. Not to say I’m going to stop
+using Java or recommend others do so. It is still the best tool for many
+tasks, and it or the similar C# are rightly the default choices for
+large companies (maybe not small firms, but definitely the large
+firms/projects I tend to work on commercially). Just that Java has
+provided me with good jobs for 12 years now, but it’s showing its age
+and may not be doing the same in another 12 years. I can see myself
+coding for fun increasingly in other languages.</p>
+
+<p>I have no insight or preference as to what could replace Java. I would
+say that at present neither Ruby or Scala are mature enough to use as a
+drop-in replacement. However, in time they could easily be good enough.
+I remember using Java soon after it was introduced in 1997 and all the
+same arguments used against the newer languages versus Java (slow, lack
+of tools/libraries, not enough people know it) were also used against
+Java versus the then dominant C++. Time
+changes many things.</p>
+
+<p><strong>Comments:</strong>
+<em>I have removed the commenting system (for privacy concerns), below are the comments that were left on this post before doing so…</em></p>
+
+<p><em>Joseph @ 2010-06-05</em> - Cool, thank you for sharing. I still wonder why no math library (commons, jdk etc.) hasn’t implemented anything for combinations… If you have an iterator generating combinations where the order matters (“a, b, c” “c, b, a”) please let me now. Your solution is pretty quick, I tried to modify it but it was a dead end… Best Regards, Joseph</p>
+
+<p><em>Joseph @ 2010-06-05</em> - Got it…the incrementIndices algorithm needed more attention :-)</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Bonds: Part 1 - The Theory</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>October 16, 2011</b>
+<h4>Bonds: Part 1 - The Theory</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Finance.html">Finance</a>, 
+    
+      <a class="post" href="/blog/tag/Bonds.html">Bonds</a>
+    
+<br/><br/>
+<ul>
+  <li>Part 2a - <a href="http://www.cordinc.com/blog/2011/10/bonds-part-2a-the-reality.html">The
+Reality</a></li>
+  <li>Part 2b - <a href="http://www.cordinc.com/blog/2011/12/bonds-part-2b-the-reality-cont.html">The Reality
+continued</a></li>
+  <li>Part 3a - <a href="http://www.cordinc.com/blog/2011/12/bonds-part-3a-the-technology.html">The
+Technology</a></li>
+  <li>Part 3b - <a href="http://www.cordinc.com/blog/2012/01/bonds-part-3b-the-technology-c.html">The Technology
+continued</a></li>
+  <li>Part 4 - <a href="http://www.cordinc.com/blog/2012/01/bonds-part-4-the-future.html">The
+Future</a></li>
+  <li><a href="http://www.cordinc.com/blog/2012/01/bonds-addendum.html">Addendum</a></li>
+</ul>
+
+<p>For the last six years I have developed software for the bonds desks of
+Investment Banks (usually the European Government Bonds desk). Now it is
+time to move on into a different business area. So I have decided to
+write some notes on the business and software of bond trading as I have
+witnessed it - starting here with the basics.</p>
+
+<!--more-->
+
+<p>A <a href="http://en.wikipedia.org/wiki/Bond_(finance)">bond</a> is
+basically a loan that can be traded. Imagine company X needs a billion
+dollars to buy another firm. The company issues 1000 bonds each with a
+face value of a million dollars (also known as nominal value), which
+totals to the required billion dollars. These bonds are then sold to
+banks and other large entities. The bonds have a maturity date 10 years
+in the future and an annual coupon rate of 5. On the maturity date the
+issuer will pay the holder of the bond (whoever that is) the face value
+of the bond, a million dollars in this case. In addition every year on
+the anniversary of issuing the bonds, company X will pay the current
+holder of the bond a coupon payment - 5 of the value of the bond, which
+is $50,000. This is essentially the interest rate company X is paying to
+borrow the money. The people who get the coupon payments and the
+maturity payment do not need to be the same people. The bonds can be
+bought or sold at any time for any price. It is similar to a mortgage,
+if the bank could sell the debt to someone else and your repayments went
+to the new owner (this actually happens - see
+<a href="http://en.wikipedia.org/wiki/Mortgage-backed_security">MBS</a>, but that
+is a little out of my area). The first transfer of ownership, from the
+issuer to the purchaser, is called the “primary market”. Any subsequent
+sales occur in the “secondary market”.</p>
+
+<p>The instrument described above is a standard <a href="http://www.investopedia.com/terms/b/bulletbond.asp">bullet
+bond</a>. It is called
+a bullet bond because before bond administration was done
+electronically, the physical bond paper had little tear-away tabs for
+each coupon payment, and these tabs were know as bullets. Military (and
+sports) metaphors are common in banking. However, there are numerous
+different categories and types of bonds. The biggest split is between
+Corporates/Credit and Rates. Company issued bonds are considered
+Corporates or Credit and government issued bonds are Rates. Inside all
+the banks I know about, the two are always separate from a business
+standpoint (different traders sitting as physically distinct desks) and
+sometimes so is the supporting technology, but not necessarily. As I
+have always worked officially with Rates, only incidentally being
+involved with Credit, the rest of this series will lean heavily towards
+the world of government debt.</p>
+
+<p>Rates are often further split by business type into separate desks. Here
+by desks I just mean an organisationally distinct group of traders that
+have supposed responsibility for a type of security. Although that won’t
+stop a trader transacting in other securities, just that their desk
+defines their focus or specialty. The desks themselves can be further
+subdivided, but more on that in the next post.</p>
+
+<p>US government bonds are called Treasuries, and they normally have their
+own desk of traders (usually based in New York). There is the Gilts desk
+for British government bonds, and the European Government Debt desk
+(also known as the EGB or Eurogovvy desk) for dealers of
+<a href="http://en.wikipedia.org/wiki/Eurozone">Eurozone</a> bonds. Depending on
+the size of the bank there may also be desks of traders for emerging
+markets, supras/agencies (debt issued by non-government organisations
+that is guaranteed by governments - like the <a href="http://www.ebrd.com/pages/homepage.shtml">European Development
+Bank</a> or <a href="http://www.fanniemae.com/portal/index.html">Fannie
+Mae</a>) or even sometimes a
+Scandi desk just for the Scandanavian countries. There is also often a
+desk of just a trader or two for linkers - inflation-linked bonds where
+the return is derived from the inflation rate in a country.</p>
+
+<p>Derivatives based on rates bonds also have their own desks - futures,
+swaps, options, and more. I have had little to do with these desks other
+than where they interact with bonds desks. Credit also breaks itself
+into different desks, but I have never interacted with them.</p>
+
+<p>Beyond just different issuers there is also an entire spectrum of
+different types. Bullet bonds (as used above in examples) is the most
+common type of bond I have encountered. However, there are many more.
+Each requires a different calculation to determine their price and have
+different levels of popularity. Below is a list of some I have
+encountered on rates desks. There are many more types than listed here.</p>
+
+<ul>
+  <li>Floating Rate Bonds or floaters - the coupon payments of these bonds
+is not set in advance, but instead floats. The amount paid is
+determined by some algorithm based on the financial environment at
+the time (ie. central bank rate + 1%).</li>
+  <li>Inflation Linked Bonds or linkers - A type of floating rate bond
+where the coupon payment is based on an inflation rate.</li>
+  <li>Zero Coupon Bonds - bonds which make no coupon payments.</li>
+  <li>Perpetual Bonds or perps - bonds that never payback the nominal
+value and just continue paying coupons forever. There are a few of
+these issued by the UK government hundreds of years ago and the
+holders still collect the coupon payments every year.</li>
+</ul>
+
+<p>These are more common on credit desks:</p>
+
+<ul>
+  <li>Callable or Putable Bonds - bonds where the issuer (for callables)
+or the holder (for putables) can call in the debt under certain
+conditions - thus forcing payment of the nominal and ending coupon
+payments.</li>
+  <li>Asset Backed Bonds - bonds where the nominal and coupon payments are
+based on the returns on some asset, for instance pools of mortgages.</li>
+  <li>Convertible Bonds - bonds where the debt can be converted into
+company shares under certain conditions.</li>
+</ul>
+
+<p>A hugely important part of bond trading is knowing what the bonds are
+worth. In this respect bonds have an advantage over other security types
+like equities and currencies - the cash flows to the bond holder are
+known in advance. Thus the <a href="http://en.wikipedia.org/wiki/Discounted_cash_flow">Discounted Cash Flow
+(DCF)</a> technique can
+be used to price the bond. From the bullet bond example above, we know
+that it returns its nominal value ($1M) in 10 years (on the maturity
+date) and that every year (because the coupon frequency is annual) it
+also returns a coupon payment of $50K (as the coupon rate is 5% of the
+nominal). Thus the cash flows of the bond after purchasing it on issue
+are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Year 1</td>
+      <td>$50,000</td>
+    </tr>
+    <tr>
+      <td>Year 2</td>
+      <td>$50,000</td>
+    </tr>
+    <tr>
+      <td>Year 3</td>
+      <td>$50,000</td>
+    </tr>
+    <tr>
+      <td>Year 4</td>
+      <td>$50,000</td>
+    </tr>
+    <tr>
+      <td>Year 5</td>
+      <td>$50,000</td>
+    </tr>
+    <tr>
+      <td>Year 6</td>
+      <td>$50,000</td>
+    </tr>
+    <tr>
+      <td>Year 7</td>
+      <td>$50,000</td>
+    </tr>
+    <tr>
+      <td>Year 8</td>
+      <td>$50,000</td>
+    </tr>
+    <tr>
+      <td>Year 9</td>
+      <td>$50,000</td>
+    </tr>
+    <tr>
+      <td>Year 10 (Maturity Date)</td>
+      <td>$1,050,000</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Using DCF and setting the discount rate to the current US Federal
+Reserve Base Rate of 0.25% gives the present value of the bond as
+$1,468,534. Thus suggesting a buyer of the bond at issue would be
+willing to pay upto that amount for it. The interest rate a bond
+returns, known as its yield, is different to its coupon rate. In the
+example above, purchasing the bond at issue for $1,468,534 means a yield
+of 0.25, despite a coupon rate of 5. If $1,000,000 is paid for the bond
+at issue, then the yield will be 5%, the same as the coupon. So price
+and yield are correlated, but the coupon is unchanging. The only thing
+that matters are the cash flows associated with holding the bond and the
+appropriate yield curve (that is, the expected interest rates). Thus the
+price of a bond drops, its yield increases and vice versa (a common
+entry-level interview question in Fixed Income technology). Astute
+readers will immediately see two problems: the choice of discount rate;
+and the risk of bankruptcy.</p>
+
+<p>The risk that the issuer of the bond may not repay the debt is known as
+the credit risk. The higher the credit risk the more likely the issuer
+won’t pay, thus the lower the price of the bond and the higher the rate
+the issuer has to offer to tempt buyers. Levels of credit risk are
+categorised by the grades produced by ratings agencies. So other things
+being equal, a AAA rated bond is worth more than a C rated bond.
+Countries are generally considered safer than companies, so they pay
+less of a credit risk premium. However, countries themselves can vary in
+perceived risk. In the Eurozone, the spread (or difference) over German
+10-year bonds (also known as bunds) is the standard measure of perceived
+risk - as Germany is seen as very likely to repay its debt (it is rated
+AAA). At the moment <a href="http://www.bloomberg.com/apps/quote?ticker=GDBR10:IND">German 10-year
+bonds</a> yield
+1.95% while <a href="http://www.bloomberg.com/apps/quote?ticker=GGGB10YR:IND">Greek 10-year
+bonds</a> yield
+23.02% (unrated due to likelihood of default) and the <a href="http://www.bloomberg.com/apps/quote?ticker=GFRN10:IND">French 10-year
+rate</a> is 2.66%
+(AAA rated). The Greek spread is 21.07% or 2107 basis points (1%=100
+basis points), while for France it is 71 basis points. As both are in
+the Eurozone, both have their bonds denominated in the same currency and
+thus their post-issue value is driven by the same
+<a href="http://en.wikipedia.org/wiki/European_Central_Bank">ECB</a> interest rate.
+So the price difference is largely a measure of risk. Unsurprisingly,
+Greece is seen as incredibly more likely to default than France. <a href="http://en.wikipedia.org/wiki/Credit_default_swap">Credit
+Default Swaps (CDS)</a>
+are securities to insure against credit risk, but they do not seem to be
+used much by EGB traders.</p>
+
+<p>The issue with the discount rate is that in reality it is unlikely to
+remain static for all but the shortest maturity bonds. Instead a
+changing interest rate needs to be used that accounts for predicted
+changes in rates. Luckily such a projection of future interest rates
+exists - the <a href="http://en.wikipedia.org/wiki/Yield_curve">yield curve</a>.
+The rates to use when discounting a government bond’s cash flows is
+determined by a yield curve for the bond’s currency. Below is an example
+yield curve. As can be seen, the rate changes with time, typically with
+an upward slope.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Yield_curve"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/18/USD_yield_curve_09_02_2005.JPG/320px-USD_yield_curve_09_02_2005.JPG" alt="Yield Curve" title="Yield Curve" /></a></p>
+
+<p>The process of constructing a yield curve is known as bootstrapping.
+First find a set of instruments with maturities that correspond to
+desired
+<a href="http://www.investopedia.com/terms/t/tenor.asp#axzz1ZFzOttdb">tenors</a> on
+the curve (a tenor is just a period of time, eg 1 day or 3 months or 15
+years). These instruments tend to be the most
+<a href="http://www.investopedia.com/terms/l/liquidasset.asp#axzz1ZFzOttdb">liquid</a>
+(effectively the instruments with the most volume available for buying
+or selling) at the desired tenors. This usually means derivatives of
+various flavours are used (why this the case is explained in the next
+post). The interest rate implied by the market price of the chosen
+instruments becomes a point on the curve. The actual curve is then
+interpolated from these points (a process known as bootstrapping).</p>
+
+<p>Over the short term bonds tend to trade at a set spread to their yield
+curve. That is its yield is not exactly on the curve, but at a small
+distance from it, the size of this distance is the spread. This spread
+represents the credit risk and any other issues (eg. liquidity) that
+affect the value of the bond beyond interest rate expectations.</p>
+
+<p>The value of a bond also depends on when the coupon payment is due. A
+bond is worth more the day before a coupon payment (as the next day the
+purchaser will get the payment) than the day after (when the purchaser
+won’t get the payment). The amount the coupon payments change the price
+is known as accrued interest. Traders don’t like to calculate how much
+of an affect the coupon payments have on a price. Thus for the purposes
+of trading the price is stripped of accrued interest. The price with the
+coupon effect included is called the dirty price and with it excluded is
+the clean price. The rough diagram below shows how these concepts are
+related.</p>
+
+<p><img src="/assets/posts/technical/clean_dirty.png" title="Clean Price vs Dirty Price" width="500" alt="Clean Price vs Dirty Price" /></p>
+
+<p>The price calculated may be the actual value of the bond, but it is not
+where banks want to trade. They want to buy low and sell high. The price
+at which they will buy is the bid, and the price at which they will sell
+is the ask (or offer) price. The calculated price is known as the mid
+price as it is normally halfway between the bid and ask. If it isn’t
+halfway then the actual halfway point is known as the skewed mid and the
+difference between that and the calculated mid is known as the skew.
+Skews are not often applied in my experience and only if the trader is
+particularly keen to do a certain trade. The difference between the bid
+and ask is called the spread (not to be confused with the spread off the
+yield curve - also known as the spread). The wider the spread, the worse
+the prices as the further they are from the calculated value of a bond.
+The bid and the ask prices are sent out to a market by the bank as the
+prices at which they are willing to trade - the mid is kept hidden. The
+process of publishing the prices is known as quoting. When quoting, the
+total nominal value of the bonds willing to be bought or sold as part of
+the quote is known as the volume.</p>
+
+<p>For example, if a bond has a calculated price of $100, this is the mid.
+If the trader uses a spread of $1, then the prices quoted are
+99.50/100.50. If the mid then moves to $100.50, then the quote is
+100/101. If a skew of –0.5 is applied then the quote becomes 99.5/100.5
+again (but the mid is still 100.5). If the spread is then widened to 2,
+the the quote is 99/101.</p>
+
+<p>When working out whether or not a bond trade has made money the term PnL
+is used (short for “Profit and Loss”). There are two types: realized and
+unrealized. Realized PnL is the actual cash flow coming from a trade. If
+you have some bonds and sell all of them, then the price difference
+between the buy and sell multiplied by the number of bonds is the
+realized PnL. Thus if you have 1000 bonds bought at $100 and sell 500 at
+$99 then your realized PnL is -$500 (-$1 per bond for 500 bonds), so you
+made a loss. Unrealized PnL is the amount of realized PnL that would be
+made if your holdings are sold at current market rates. Thus if you have
+1000 bonds bought at $100 and now the market price is $101, although
+your realized PnL is 0 (as they haven’t been sold), your unrealized PnL
+is $1000. Calculating the unrealized PnL by comparing the price paid
+against the market price is known as “marking to market”, and is easy in
+the liquid government bond market. A trader’s PnL is considered the sum
+of their realized and unrealized and is usually quoted on the basis of
+the difference day-by-day. So if a trader says their PnL is down $100K,
+it usually means so far they are down $100K that day.</p>
+
+<p>After determining a bond’s price, measuring its risk is the next most
+important concept. The traders need to have some idea of how the value
+of their positions (that is the bonds in which they are long or short)
+will change when the market moves. The most common measure of this is
+<a href="http://en.wikipedia.org/wiki/Bond_duration#Dollar_duration.2C_DV01">DV01</a>,
+which describes the amount a bond’s price will change given a 1 basis
+point change in yield. DV01 is similar to
+<a href="http://en.wikipedia.org/wiki/Bond_duration">duration</a> and gives an
+indication of a bond’s sensivity to changes in the yield curve. DV01 is
+technically only for US dollar bonds. PV01 is the same concept for other
+currencies (or even other security types), but on EGB desks the terms
+are used interchangeably (same with pvbp). To get the risk of a
+position, just multiply the net position by DV01. So if you own
+$10,000,000 of a bond with a DV01 of 0.02578, then you can expect the
+value of your bonds to go down approximation $25,780 for each basis
+point rise in yield (and vice-versa). It should be noted the above is a
+simplification, as the calculation only works for small changes in
+yield. Larger changes need to take into account
+<a href="http://en.wikipedia.org/wiki/Bond_convexity">convexity</a>, but that is
+beyond this discussion (and I’ve rarely needed that information).</p>
+
+<p>There are numerous other theoretical concepts in fixed income. There are
+large books devoted to understanding the myriad of derivatives based on
+bonds. However, the above are the fundamentals as I experienced them.
+Other concepts or maths came and went as required, but from a technology
+standpoint I often needed to understand the different types of bond,
+risk and valuation.</p>
+
+<p>Continue to <a href="http://www.cordinc.com/blog/2011/12/bonds-part-2b-the-reality-cont.html">Part 2a - The
+Reality</a></p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

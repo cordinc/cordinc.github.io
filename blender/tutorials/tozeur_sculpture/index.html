@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Blender Tutorial: Tozeur Market Sculpture - Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<h4>Blender Beginner for Beginner Tutorial: Tozeur Market Sculpture</h4>
+
+<p><b>13th June 2009 - Blender 2.47</b></p>
+
+<p>
+
+I’ve <a href="/blog/2009/02/new-goals.html">previously stated</a> that I
+intend to learn 3D modelling well enough to recreate simple ancient
+historical architectural scenes after being inspired by my trips to
+Pompeii and <a href="/blog/2008/12/dougga-photos.html">Dougga</a>. To
+this aim I downloaded <a href="http://www.blender.org">Blender</a>, an
+opensource 3D modelling program, and bought
+<a href="http://www.blender3d.org/e-shop/product_info.php?products_id=96">The
+Essential Blender</a>. After having read the first 3 chapters of that
+book and a few online tutorials (mainly around materials and textures),
+I was ready to try creating my first model. I decided upon a sculpture
+found in the market square of
+<a href="http://en.wikipedia.org/wiki/Tozeur">Tozeur, Tunisia</a>- it
+seemed simple enough, but it wasn’t immediately clear to me how it
+should be done. Below you can see images of the original and my model.
+
+</p>
+<p>
+<center>
+
+<img src="result.png" alt="" />
+
+</center>
+</p>
+<p>
+
+The first thing I did was get out my ruler and hold it up to the screen,
+trying to measure the dimensions of the sculpture. The figures I use
+below are based on the rough proportions worked out in this manner. It
+should also be said that I didn’t just sit down and do this in one
+session. If you can do that on your first model you are doing much
+better than me! Indeed, it took me about a week and numerous attempts
+before I was happy with it. Onto the tutorial proper.
+
+</p>
+<p>
+<ol>
+<li>
+
+Create a cylinder mesh (SPACE key, choosing Add -\&gt; Mesh -\&gt; Cylinder)
+with 32 vertices, radius 5, depth 2 and capped ends. Ensure the centre
+of the cylinder is at (0,0,0), the center of the 3D View, as this will
+make later calculations easier. I did this by selecting the cylinder
+with the RMB then using the N key to bring up the transform panel and
+setting LocX, LocY &amp; LocZ to 0. This will be used to create a single
+disc of the sculpture.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss1.png" />
+
+</center>
+</li>
+<li>
+
+While the cylinder is selected go into edit mode (TAB key) and edge
+select mode (CTRL-TAB and select the Edges option) and with the SHIFT
+key select all the edges radiating from the centre on the top of the
+cylinder. Then use the W-key and chose subdivide.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss2.png" />
+
+</center>
+</li>
+<li>
+
+Ensure all the edges are unselected (using the A key) and select all the
+side edges of the cylinder, again use the W key to subdivide. Again
+unselect all the edges and then select all the edges in the top half of
+the side of the cylinder and subdivide with W once more. I found using
+side view (1 on the numberpad) and the box select tool (B key) very
+helpful with selecting the edges in this step.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss3.png" />
+
+</center>
+</li>
+<li>
+
+Switch back to vertex select mode (CTRL-TAB and select Vertices) then
+select the cylinder side’s top 2 loop’s vertices (select edge loop may
+help here - select two linked edges then CTRL-E and choose the Edge Loop
+Select option). Scale them both in the x&amp;y axes by 1.05 (after selecting
+them hit S, then X, then enter 1.05 return, then S, Y, 1.05 return).
+This creates a loop of faces which will be the tiled section of the
+disc.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss4.png" />
+
+</center>
+</li>
+<li>
+
+Select the next loop down and move all of the vertices to 0.5 in the z
+axis (I used N to do this and changed Median Z). This should mean this
+ring is at the same height on the z axis as the ring above.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img width="700px" src="ss5.png" />
+
+</center>
+</li>
+<li>
+
+Select the inner ring of vertices on the top face. Scale them in the x&amp;y
+axes by 1.85. Then hit E for extrude and choose Region and type –0.4.
+This produces the cup of each disc.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss6.png" />
+
+</center>
+</li>
+<li>
+
+Select the outer curved sides of the shape (2 rings of faces) and set
+them smooth (the menu option Select-\&gt;Linked Flat Faces may help here).
+The smooth button is on the editing (F9) panel.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss7.png" />
+
+</center>
+</li>
+<li>
+
+Download the
+<a href="http://matrep.parastudios.de/index.php?action=view&amp;material=37-concrete&amp;fc=7">concrete
+texture</a> from the Blender Open Material Repository, load it using
+SHIFT-F1 then finding Concrete under materials in the downloaded blend
+file. Create a new material (press “new” on the Materials subpanel of
+the Editing (F9) panel). Then go to the Shading (F5) panel and in the
+Link To select box (under Links and Pipeline) and choose Concrete.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss8.png" />
+
+</center>
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss8a.png" />
+
+</center>
+</li>
+<li>
+
+Then change the material to be a paler yellow (R=0.995, G=0.917,
+B=0.621) on the Materials part of the Shading panel and turn off all
+textures except the first Musgrave on the Texture section of the same
+panel - this allows the yellow to come through. You might think
+somewhere around this point the bottom ring should be scaled in to
+create the slope of each disc. However, not doing this makes applying
+the UV textures easier.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss9.png" />
+
+</center>
+</li>
+<li>
+
+Select two directly opposite edges on the sides of the disc for both
+smoothed face rings and hit CTRL-E and select Mark Seam. This will mark
+the edges that will break the loop of faces when UV unwrapping.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss10.png" />
+
+</center>
+</li>
+<li>
+
+Press TAB to go back to Object mode and ensure the disc is selected.
+Duplicate with SHIFT-D, moving the new object up the z axis so it
+doesn’t block your view of the original disc. Repeat until there are 7
+discs.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss11.png" />
+
+</center>
+</li>
+<li>
+
+Select each of the discs above the original in turn and shrink them
+(smallest at the top) using the N key to bring up the transform panel
+and then changing DimX &amp; DimY to 8.5, 7, 6, 5, 4 and 3 respectively.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss12.png" />
+
+</center>
+</li>
+<li>
+
+Now it is time to apply the brick and tile textures. This is the bit
+that took some time to work out. Just applying the textures doesn’t look
+right. UV unwrapping needs to be used. Have a 3D View window and a
+UV/Image Editor window open. Go to side view (numpad 3) and select all
+the faces of the main part of the bottom disc. Press U and choose
+unwrap, the windows should look like the below image. If there are not
+exact rectangles then it is probably because the 3D View is not exactly
+side on to the disc or the seams from step 10 are not directly opposite
+each other. Note if the sides of the disc were sloped then so would the
+rectangle in the UV view and applying the texture would be much harder.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss13.png" />
+
+</center>
+</li>
+<li>
+
+Expand the rectangles so that they take up the entire grid. The points
+can be selected in the same way as in the 3d view (use A for select
+all/none and B for box select). This will make it easier to apply the
+image to the faces.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss14.png" />
+
+</center>
+</li>
+<li>
+
+Now choose Image-\&gt;New on the UV/Image Editor window and keep the size
+to 1024x1024, then save the image in your favourite format (there is a
+type selection box at the bottom of the save screen), this tutorial used
+PNG. Then open the image in your favourite editor and copy 32 versions
+of the brick image in <a href="brick_2x16.png">2 rows of 16 over the
+image</a> (this means the brick image needs to be scaled to 64x512
+pixels). The brick image was cropped and photoshopped from the original
+sculpture photo.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img height="128" src="brick.jpg" />
+
+</center>
+</li>
+<li>
+
+Ensuring the same faces unwrapped in step 13 are selected, create a new
+material for the side of the disc (using the same New button as in step
+8 and Assign button next to it). This should create a new concrete
+material and apply it to just the selected faces. Now go to the Texture
+subpanel of the Shading panel (F5), as shown below. Create a new texture
+(called brick in the image) and load the brick image from the previous
+step. Back on the Material’s panel MapTo subpanel select UV mapping. If
+you were to add a camera and lamp then you would now see the brick
+texture applied.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss16a.png" /> <img src="ss16b.png" />
+
+</center>
+</li>
+<li>
+
+Now the same texture needs to be applied to the sides of the rest of the
+discs. Because the circumference of each disc is less than the one
+before, the same 2x16 image can’t be used for all of them as this would
+result in each brick getting progressively smaller. Thus the image
+applied needs to have progressively smaller number of brick tiles.
+Keeping the brick image at 64x512 pixels, redo steps 13-16 for all the
+other discs but make the saved UV image of size 896x1024, 704x1024,
+640x1024, 512x1024, 448x1024, 320x1024 which results in
+<a href="brick_2x14.png">2x14</a>, <a href="brick_2x11.png">2x11</a>,
+<a href="brick_2x10.png">2x10</a>, <a href="brick_2x8.png">2x8</a>,
+<a href="brick_2x7.png">2x7</a>, <a href="brick_2x5.png">2x5</a> grids
+of the brick texture. This is not exact, but close enough to make it
+look like all the bricks are the same size.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss17.png" />
+
+</center>
+</li>
+<li>
+
+Repeat steps 13 -\&gt; 17 for the higher, smaller outside ring of faces on
+each disc with the tile texture. Scale the tile image to 128x256, then
+make the uv images 4096x512, 3584x512, 2560x512, 2048x512, 1792x512,
+1280x512 which contain <a href="tile_2x32.png">2x32</a>,
+<a href="tile_2x28.png">2x28</a>, <a href="tile_2x22.png">2x22</a>,
+<a href="tile_2x20.png">2x20</a>, <a href="tile_2x16.png">2x16</a>,
+<a href="tile_2x14.png">2x14</a>, <a href="tile_2x10.png">2x10</a>
+copies of the tile image.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="tile.jpg" /> <img src="ss18.png" />
+
+</center>
+</li>
+<li>
+
+Select the bottom edge loop of each disc in turn and scale it 0.8 in the
+x &amp; y axes for the bottom two and 0.8 for the rest.
+
+</li>
+<li>
+
+Move each disc so that the point at the base of the one above is on top
+of the center point of the one below (ie they are exactly on top of each
+other), using the transform panel N. Then select all the discs and use
+CTRL-J to join them together.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss20.png" />
+
+</center>
+</li>
+</ol>
+</p>
+<p>
+
+And it is complete! There are a few extra things that can be done.
+Firstly the brick and tile image textures could be better. I didn’t take
+the photo of the sculpture with texturing in mind. Apparently it would
+have been better to take any photos in flat light, that is overcast or
+in shadow. Also a few closer shots to get a better view of the brickwork
+would have been nice. Similarly, no bump maps (or similar) have been
+used because I don’t understand these yet - I still have a bit to learn
+about materials. Lastly, the model as constructed above has a few hidden
+faces where the discs are joined.
+
+</p>
+<p>
+
+The next proper step is to set up some cameras and lights so you can
+take a good picture. That is left as a further exercise - below is a
+render I did earlier. Also, here is the
+<a href="tozeur_sculpture.blend">blend</a> file constructed from the
+above steps for your comparison.
+
+</p>
+<p>
+<center>
+
+<img src="oil_slick.jpg" />
+
+</center>
+</p>
+<p>
+
+<a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/"><img alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png" /></a><br /><span xmlns:dc="http://purl.org/dc/elements/1.1/" property="dc:title">Tozeur
+Scuplture Blender Model</span> by
+<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.cordinc.com" property="cc:attributionName" rel="cc:attributionURL">Charles
+Cordingley</a> is licensed under a
+<a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/">Creative
+Commons Attribution 2.0 UK: England &amp; Wales License</a>.
+
+</p>
+
+</div>
+
+<div class="col-lg-2">
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Blender Tutorial: Roman Lamp - Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<h4>Blender Beginner for Beginner Tutorial: Roman Lamp</h4>
+
+<p><b>4th June 2011 - Blender 2.57b</b></p>
+
+<p>
+
+Recently the Blender 2.5x series was properly released (as opposed to
+the beta versions that have been around for some time). There have been
+significant changes since the old 2.4x releases, so to learn the new
+interface I tried modelling something simple. Here I describe the steps
+to modelling a
+<a href="http://en.wikipedia.org/wiki/Ancient_Roman_pottery#Lamps">Roman
+lamp</a>, with the final result below. The blender file can be
+downloaded from <a href="roman_lamp.blend">here</a>.
+
+</p>
+<p>
+<center>
+
+<a href="result.png"><img width="600px" src="result.png" alt="Roman Lamp" /></a>
+
+</center>
+</p>
+<p>
+
+Although Blender’s layout has changed, most of the old information and
+controls are present, just in a different place. Many of the commands
+now appear in a list down the left (in the default view) called Mesh
+Tools and the transform details appear in another panel on the right of
+the 3D view when N is keyed (rather than floating over the 3D view). As
+before, the default screen layout is modifiable, but I’m keeping it
+unchanged for this tutorial. Some commands have changed. The old knife
+tool is not available anymore, replaced with something not as flexible.
+The SPACE key brings up a help menu rather than adds a mesh to the view.
+CTRL-F3 saves a screenshot instead of using a menu item. There are also
+some new features, most usefully “Limit selection to visible”. It means
+that only visible vertices, edges or faces will be selected - that is
+only those facing the screen are selected, others on the far side are
+omitted. It is quite useful, give it a try. It is controlled with the
+button shown below, visible when in edit mode on a mesh.
+
+</p>
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="visible_only.png" />
+
+</center>
+<p>
+<ol>
+<li>
+
+Start by deleting the starting cube and replacing it with a cylinder
+(centered at the origin, 32 vertices, radius 3, depth 2). This has to be
+done with a menu item from the menu bar (Add -\&gt; Mesh -\&gt; Cylinder), as
+the old SPACE key menu doesn’t work anymore.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss1.png"><img width="500px" src="ss1.png" /></a>
+
+</center>
+</li>
+<li>
+
+Select the cylinder with a RMB click and use TAB to get into edit mode.
+Press NUMPAD1 for a side view and ensure “Limit selection to visible” is
+off. Use the B key to box select just the bottom ring of vertices. Scale
+(S key) them in the X &amp; Y axes by 0.6.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss2.png"><img width="500px" src="ss2.png" /></a>
+
+</center>
+</li>
+<li>
+
+Unselect all (keep hitting the A key until no vertices are highlighted).
+Select the “Loopcut and Slide” tool under Add on the left side “Mesh
+Tools” panel. Loop cut the side of the cylinder twice and slide one of
+them close to the top of the cylinder and the other close to the bottom.
+Later we will be using subsurface subdivision which can do strange
+things to edges (creating bumps or ridges). These extra loops will help
+stop this. The closer they are to the current top and bottom edge loops,
+the sharper that edge will be. I put the bottom loop close’ish to the
+bottom so it will still have a curve and the top one much closer so it
+doesn’t look like more than a bevel (I don’t think the bevel tool is
+available in this version of Blender).
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss3.png"><img width="500px" src="ss3.png" /></a>
+
+</center>
+</li>
+<li>
+
+Turn “Limit selection to visible” on. Go into edge edit mode (when in
+edit mode use CTRL-TAB and select Edge). Use NUMPAD7 to get a topdown
+view. Now box select all the edges visible (which is all the edges
+forming the top of the cylinder) and press the Subdivide tool button on
+the “Mesh Tools” panel. Previously, the number of subdivisions could be
+specified before using the tool, but now it looks like it just does one
+- which is ok for now, because that is all we want. The new inner circle
+on the top of the cylinder will become the “dish” part of the lamp.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss4.png"><img width="500px" src="ss4.png" /></a>
+
+</center>
+</li>
+<li>
+
+Now to build the “spout” of the lamp. Go into vertex select mode (when
+in edit mode use CTRL-TAB and select Vertex). Select the 6 vertices out
+along one axis and then subdivide.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss5a.png"><img width="500px" src="ss5a.png" /></a>
+
+</center>
+
+Deselect the 5 vertices along the inner circle (created in step 4) and
+subdivide again.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss5b.png"><img width="500px" src="ss5b.png" /></a>
+
+</center>
+
+Turn on Connected Proportional Editing (which is the blue ring dropdown
+on the 3D view’s menu bar). This means when a point is moved any
+connected points within range are moved as well, proportional to their
+distance from the moved point. The nature of the proportional falloff
+can be selected using the dropdown next to the Proportional Editing
+dropdown - I used a smooth falloff. Select the central point along the
+axis which was subdivided. Drag it out along the axis. Ensure that the
+proportional effect is just small enough not to deform the inner “dish”
+circle. The size of the connected area for proportional editing is
+denoted by the circle centered on the vertices being moved. PAGEUP and
+PAGEDOWN make this affected area large or smaller respectively.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss5c.png"><img width="500px" src="ss5c.png" /></a>
+
+</center>
+</li>
+<li>
+
+Go into edge select mode. Select the inner circle edge loop (the one
+created in step 4). Pressing ALT when using RMB to select will select
+the entire loop of edges, although in this case you may need to add the
+edges of the loop adjacent to the spout individually. Scale the loop out
+in the X &amp; Y axes so that it is closer to the outer edge. The subdivide,
+select the new inner edge loop and scale it out towards the previous
+loop. These will define the “lip” and and depression of the dish. Grab
+the inner circle and move it down a little in the Z axis. Then subdivide
+again. Select just the new edge loop. This will be the hole for filling
+the lamp with oil. Scale it down and move it to where you like, then
+delete the center point.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss6.png"><img width="500px" src="ss6.png" /></a>
+
+</center>
+</li>
+<li>
+
+Next to make the hole in the spout for the wick. I found this the
+hardest part. Go to face select mode and select the faces in the centre
+of the spout and subdivide.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss7a.png"><img width="500px" src="ss7a.png" /></a>
+
+</center>
+
+Select the vertices at the centre of the new subdivided area and delete
+them forming a hole for the flame. At this stage it will be quite a
+ragged hole. Create some new faces around the edge of the hole such that
+the hole is convex (roughly circular). New faces are created with the F
+key after exactly 3 vertices are selected (which become the points of
+the face triangle).
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss7b.png"><img width="500px" src="ss7b.png" /></a>
+
+</center>
+
+Then select the edges that make up the hole and use “To Sphere” by
+pressing SHIFT-ALT-S and try to get a roughly circular hole. Then add
+the Subsurface modifier by adding a “Subdivision Surface” modifier on
+the Modifiers tab (its icon is the little spanner) on the Properties
+panel (on the far left in the default view). This is what the lamp will
+look like.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss7c.png"><img width="500px" src="ss7c.png" /></a>
+
+</center>
+</li>
+<li>
+
+Add a torus (Add -\&gt; Mesh -\&gt; Torus) and position to make a handle for
+the lamp. You could also try reshaping it a bit, but I left mine plain.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss8.png"><img width="500px" src="ss8.png" /></a>
+
+</center>
+</li>
+<li>
+
+To finish up select all faces and click the Smooth button under “Mesh
+Tools”. Now to add a terracotta material to the whole lamp. Start by
+going to the Material tab on the Properties panel and adding a new
+material (if there is not already one). Set the Diffuse colour to a pale
+orange (eg Red=0.85, Green=0.35, Blue=0.15) with an intensity of 0.55
+and set the Specular intensity to 0. Thus will result in a flat colour.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss9a.png"><img width="500px" src="ss9a.png" /></a>
+
+</center>
+
+On the Textures tab of the Properties panel add two new cloud textures.
+One will discolour the terracotta. Below on the left are the settings
+(it is called Bands). The colour is a slight darker orange which
+strongly affects the base colour (Influence Color is 1). The other
+texture adds little bumps to the mesh by having a smaller cloud texture
+that slightly affects only the mesh’s Normals (so its colour is not
+important). It makes the lamp surface look rough.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<a href="ss9b.png"><img width="250px" src="ss9b.png" /></a>  
+<a href="ss9c.png"><img width="250px" src="ss9c.png" /></a>
+
+</center>
+</li>
+</ol>
+</p>
+<p>
+
+And it is complete! You can download my <a href="roman_lamp.blend">lamp
+blend file here</a>. I was going to try adding a flame, but after much
+effort I could not get flames working in Blender - something for another
+project. It is also quite a simple model (but that was my intention), it
+could be improved with more work on the spout. Depending on usage it
+could be decorated with an image texture that is “stamped” (ie, just
+affecting the normals) on the dish.
+
+</p>
+<p>
+
+<a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/"><img alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png" /></a><br /><span xmlns:dc="http://purl.org/dc/elements/1.1/" property="dc:title">Roman
+Lamp Blender Model</span> by
+<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.cordinc.com" property="cc:attributionName" rel="cc:attributionURL">Charles
+Cordingley</a> is licensed under a
+<a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/">Creative
+Commons Attribution 2.0 UK: England &amp; Wales License</a>.
+
+</p>
+
+</div>
+
+<div class="col-lg-2">
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

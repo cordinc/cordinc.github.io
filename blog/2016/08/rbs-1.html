@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>RBS (First Time) - Part 1</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>August 31, 2016</b>
+<h4>RBS (First Time) - Part 1</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Work.html">Work</a>, 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>
+    
+<br/><br/>
+<p>After Java developers became surplus to requirements at the <a href="/blog/2014/10/prs.html">MCPS-PRS
+Alliance</a> I had to suddenly hunt around for work
+again. The PRS people were very nice to me and had no problems with me
+looking for new jobs while at work. With almost year of working in
+London behind me, it was surprisingly easy to get interviews. Rather
+than the months of waiting previously experienced, a number of positions
+came through agents quite quickly. The best of these was at <a href="http://www.rbs.co.uk">Royal Bank
+of Scotland</a> (RBS), in their corporate and retail
+banking operations (very separate and distinct from their investment
+banking operations).</p>
+
+<p>So I began a 3 month contract as a Team Leader on the Service Charge
+Review System (SCRS) just as it started. The project had a 12 month
+timeline, so if things went well I expected to hang around for further
+contracts. SCRS was driven by the corporate relationship managers. These
+are the people who dealt with businesses, big and small. Unlike retail
+customers (normal people going to bank branches), businesses and
+corporations paid a raft of fees for the services they use (thus service
+charges). While there are a set of “standard” fees that businesses pay
+by default, in reality all the fees are negotiable. The bigger the
+business, the more negotiable the fees they pay. There are a large
+number of possible fees, from receiving a cheque, running a credit card
+or having an overdraft. Perhaps a medium-sized consumer firm has a need
+for large amount of cash-handling (cash passed to a branch has to be
+secured, counted and transported), but rarely makes international
+transfers. It might look for the cash fees to be lowered in return for
+higher international fees. Part of a relationship managers’ job is to
+work out if that is a change the bank is willing to make, and if so
+arrange it. The relationship managers also create speculative fee
+structures to tempt business to shift banks.</p>
+
+<p><img src="/assets/posts/work/royal-bank-of-scotland-logo.png" alt="RBS Logo" title="RBS Logo" /></p>
+
+<!--more-->
+
+<p>At the time I joined RBS in May 2003, this process was performed on a
+spreadsheet in an ad-hoc process. Creating a moderately complex fee
+structure could take over a day and was both error-prone and hard to
+modify later. This was seen as a bottleneck for expansion. The plan was
+to create a simple internal website that could import data on current
+fee structures/usage/profit, allow the quick creation of fee scenarios
+(often from common base templates), and then save them centrally for
+future use as templates or new relationship managers (as at the time,
+people leaving meant all their scenarios were lost). The goal was that a
+half dozen scenarios for a moderately complex business could be created
+in a morning, and then easily adjusted based on customer interaction.
+Based on my consulting experience I didn’t think this was a particularly
+ambitious objective. It was a matter of loading data, performing some
+simple calculations, displaying the results on a screen and allowing
+editing, then saving it again afterwards. There would only be a few
+hundred users, each of would be trained to use the system, and no one
+expected it to look pretty. A reasonably straightforward job.</p>
+
+<p>The first task was to recruit the programming team which I would manage.
+There was the project manager (who hired me), an analyst, a database
+person and a junior Java developer already on board. However there was
+budget for two more Java programmers, but they had to be internal hires.
+At that time RBS was just in the process of shifting from using mainly
+<a href="https://en.wikipedia.org/wiki/COBOL">COBOL</a> to Java for its internal
+development. Hence all the other developers had only a couple of years
+of Java work total amongst them, and I was expected to mentor them
+through the project. Internal hires also worked on the basis that HR
+would send me a single CV for each position, and I could reject it and
+ask for another, but it was frowned upon. The project manager strongly
+suggested that I accept whomever was sent unless there was a serious
+issue. In the end it didn’t matter. Both the suggested developers were
+fine.</p>
+
+<p>Along with the traditionally COBOL environment came a waterfall process.
+Luckily, my manager was an <a href="http://www.cordinc.com/blog/2011/04/up-managers-and-down-managers.html">up
+manager</a>
+and was not greatly concerned about how the project was actually
+developed as long as he knew what was happening and it all progressed
+nicely. So SCRS was developed iteratively inside our small dev team,
+before being handed off (in a waterfall-like manner) to the separate
+deployment and support teams. It also helped that SCRS was a small
+project among giants in the corporate IT section. A couple of large 50+
+developer projects (one on a unified document system, the other I don’t
+remember) had started around the same time as SCRS and were sucking up
+developers and managerial attention. We were largely ignored and left to
+our own devices. We started fortnightly iterations and developed a
+prototype which got a couple of the relationship managers involved on a
+part-time basis giving feedback. They were generally happy we were doing
+as they requested. At the end of each iteration we had a working (but
+incomplete) system that could be checked. Progress was steady, my team
+was capable and learning fast enough. Confidence was high. Everything
+was fine.</p>
+
+<p>RBS was the start of my contracting career in London. From that point
+until now, I have not been a permanent employee. IT contracting may have
+a bad reputation in some countries, but not in London. It is common
+among more experienced developers who do not wish to become managers.
+There is a large community of contractors, many support services, pay
+rates are high and jobs plentiful. It is assumed that in downturns,
+contractors are dismissed first, but in my experience pay rates just
+decrease instead. I started as a contractor by chance; the RBS job was
+specifically a contract, so that is what I did. My agent suggested an
+accountant and off I went. Unfortunately, my inexperience caused
+problems. The accounting firm was borderline incompetent. I sacked them
+after a couple of years when I learnt enough to do their job. They also
+suggested a financial advisor who only promoted schemes that involved
+huge kickbacks to himself. Hmmm, I managed to avoid all of them. Also
+the agent set up the RBS contract in such a way I got caught by IR35,
+and stayed that way for the next 5 years.
+<a href="https://en.wikipedia.org/wiki/IR35">IR35</a> is the UK tax law that
+determines whether a contractor is considered a “disguised” employee.
+Most contracts are written to avoid falling foul of this law, saving the
+contractor 5-10% on their tax bill. Market contract pay rates take this
+into account.</p>
+
+<p>While at RBS, I was still considering becoming a manager. So I let it be
+known I would consider going permanent if the circumstances were right.
+As a result I got pulled into an HR meeting to discuss becoming a
+permanent employee. However, I left determined to stay a contractor - at
+least while at RBS. They explained to me the career progression and
+where I would fit in. Basically, they expected me to take a step down
+from my current team leadership position to become a straight developer,
+although I would still have the same duties temporarily. I would also
+earn about 40% less even after all the little benefits were added in.
+Plus I would become subject to all the normal HR forms and reviews. It
+seemed like a derisory offer. So I stayed a contractor and never looked
+back. The longer I stayed at RBS the clearer the correctness of this
+decision became. Just being able to avoid the bureaucracy of a large
+company turned out to be a surprising benefit and something of which my
+teammates became immensely jealous. Also there was little job security
+at RBS for the permanents. There was a common greeting among RBS IT
+people, “how many purges have you survived?”. Every few years a large
+number of people were made redundant. Morale was not high.</p>
+
+<p>RBS corporate and retail IT was (and probably still is) an incredibly
+bureaucratic organisation. There were so many rules and forms to fill in
+for any occasion. Budget was sacrosanct. Here are a couple of stories to
+illustrate this. When I first arrived I didn’t have a computer setup
+properly and I didn’t have the permissions to do it myself. Luckily
+there was a sysadmin just one row over setting up about 100 PCs just
+like mine for another project that would be turning up a week later.
+Each took a few minutes, so I asked if he could do mine and he replied
+no. It required a form and budget. For a few minutes work? Doing the
+form would mean waiting a week that RBS would be paying me to do
+nothing. But still he refused. So I waited until he went to lunch, and
+added my PC to his pile. The next day I went and collected my PC from
+the pile and got to work.</p>
+
+<p>Another time I was discussing how much database space we required on
+SCRS with a db admin (not the db developer). We estimated just a couple
+of GBs and the admin told us we could have it in a few months, after the
+budget was confirmed. What, why so long? I offered to give him a few
+pounds from my pocket as the cost of that much space at a high-street
+computer store. He laughed and told me how much it would cost at RBS.
+Many hundreds of pounds, per GB, per year. Huh? It turns out the cost
+was for the overstaffed (as he admitted) db admin team to justify their
+existence by forcing captive clients (we couldn’t get the space
+elsewhere) to pay their budget.</p>
+
+<p>About 6 months in, we hit a couple of problems. This point was actually
+near the end of the development process. Creating the system was
+scheduled to take 9 months, with three months deployment, handover,
+training and support from the dev team, before our part was complete.
+The first issue was us Java developers racing ahead of the database
+developer interfacing with the backend systems. We were constantly told
+that it would be done soon. We agreed interfaces and wrote a mock
+database so we could continue work. However, the lack of the actual
+system and associated integration risks were now the top issue on weekly
+status reports. It was always coming “soon”. Then the database coder
+just disappeared for a few days. Then they returned and were clearly
+drunk at their desk every morning. In retrospect, at this point we
+should have cut them and rushed to get someone else. However, there was
+some sympathy for them (there were a number of known personal issues),
+so it was referred to HR and we tried to keep going. Involving HR had no
+noticeable effect. A few weeks later there was still no database
+backend, the dev was still drunk at their desk every day, and the rest
+of the team became blocked waiting on them. Now they had to go. We got
+an emergency replacement. The new database developer said there was
+nearly nothing to show for months work, but got to work and pulled some
+overtime to get everything up and running in just a couple of weeks. To
+our benefit, by this stage we Java programmers knew exactly what we
+wanted from the database and had the time to help the new guy get it all
+running perfectly for us. Although this process lost us about a month
+off the critical path on our schedule. Still we had built up a little
+slack beforehand, plus the 3 month slowdown to finish the project could
+include more development. So it was ok, final handover could still occur
+on time.</p>
+
+<p>Soon after integrating the database the second problem hit. We presented
+the a near complete version of SCRS to our customers. They were happy,
+as they had seen it before on their weekly visits to our office. They
+took it away to try it in a production setting and show some other
+relationship managers. A few days later they came back and stated that
+there was a problem. They need it to be greatly changed. The changes
+were significant, but not difficult, just time consuming. A month of
+work at least, probably two. Considering the time lost with the
+database, there was no way we could make the changes and complete on
+schedule. More importantly from the RBS management process, our budget
+would be bust. We asked “why do you need these changes, you saw it being
+written and were happy with it?” They said we had absolutely delivered
+what they asked for and wanted. However, over the last few days they
+realised it was not what they needed. Urgh. They played hardball and
+threatened to refuse sign off, apparently this was a big deal in the RBS
+IT organisation, and would reflect very badly on the development team.
+Our manager countered that we had no money to continue.</p>
+
+<p>After a couple of days an agreement was reached. The relationship
+managers accepted that the requested changes were new work and not the
+result of any mistake on our end. Thus they agreed to pay the budget
+overrun out of their own money. Although not all of us. The dev team
+would shrink to me and one other Java person for 3 months and one other
+programmer for half that time. Everyone else would move to other
+projects. Our manager also got the two relationship managers acting as
+our customers to sit with us full-time (they would still do their normal
+work, but from our offices and ready to answer our questions as
+required). This last point was immensely useful, and probably the reason
+everything got done to the new schedule. It also meant that news of the
+project began to spread among both the IT department and the corporate
+banking department. The relationship managers were very happy with the
+work being done and the progress on their “extra requirements”. As
+friendly and talkative people they started telling everyone around them
+about it. It was like having a marketing department for an internal
+project.</p>
+
+<p>It didn’t take long before we had early builds going out again to the
+test users, and the responses were extremely positive (much more so than
+the first build). It seemed the extra requests really did make a big
+difference. Thus as the original 12 months expired and we started our
+handover process, something strange occurred. Managers started appearing
+and asking to be involved in the project. It seems the two large
+concurrent IT projects were in trouble and experiencing large delays and
+cost overruns. By comparison SCRS was looking like a massive success.
+Cost overruns were tracking towards 20-30%, but covered by the client
+business unit which was effusively praising the final product. One
+manager offered to write us a piece in the company magazine. Not sure
+why he thought we couldn’t do that ourselves? Still the project manager
+went from being ignored, to fielding daily requests to help out or
+people offering “advice”. One positive is that when it came time for the
+team members to find new projects they all got their preferred choice.</p>
+
+<p>Soon it was time for the end. We trained the support person. I flew up
+to Edinburgh to help deploy and troubleshoot the final installation.
+Unsurprisingly there were issues at this stage as we had not been allows
+to test this process before. I spent my two days in Scotland sitting in
+a office basement getting it all working fine. I can’t have seen more
+than a few minutes of sunshine during the entire visit. Then back via
+the RBS trough, aka the Edinburgh Airport British Airways business
+lounge (full of RBS employees grabbing as much food and alcohol as they
+could manage). When I got back I had a week of just waiting by myself
+(and the project manager) in case there were any problems. Everyone else
+had moved on. In fact the project manager had arranged for me to join
+another project too (more about that in <a href="/blog/2016/09/rbs-2.html">Part
+2</a>), to ensure I was around just in case of
+any problems. In the end it wasn’t required, no one was ever called back
+to work on the SCRS. Instead during those last days we got fan mail.
+Seriously, at least three relationship managers sent us emails saying
+how much easier SCRS had made their jobs. It was amazing.</p>
+
+<p>A year later, just after leaving RBS, I met the SCRS support guy at
+another person’s leaving do. I asked how it was going. He told me SCRS
+was the easiest system he had ever supported. In the more than a year
+since going live there had not been a single bug reported. The SCRS work
+was a few minutes every week setting up new users and running a backup.
+A system being used for a year, meeting all its customer’s requirements,
+without bugs. SCRS is probably the most successful project I have ever
+been involved with (apart from profitability, but that is a story for a
+later post). So that should be the end, right? Unfortunately not, there
+is one sad addendum.</p>
+
+<p>Just after talking to the SCRS support person, I met and spoke to the
+SCRS project manager at the same leaving party. It turned out that on
+his performance review SCRS was classed as a failed project. I was
+aghast. I told him about the support person saying there were no bugs.
+He replied that didn’t matter. The project was overtime and budget. I
+pointed out that the client covered the budget overrun and the extra
+time was due to their extra requests. He said that the customer had no
+input to the project assessment process. Lastly, I pointed out that no
+other project in the building could be considered a success either by
+those measures. He agreed, but then told me that the two big concurrent
+projects were considered successes internally despite being relatively
+further over time and budget. The difference being that they both had
+more political clout behind them. Not all projects could be marked as
+successful, some had to fail according to the internal review system. IT
+projects were assessed on a curve relative to their peers. SCRS, with no
+important friends, was the designated failure. I told my ex-manager that
+his work and support was a core reason for SCRS’s obvious success by all
+reasonable measures - that didn’t make him any happier. Never have I
+been so relieved to have left an employer.</p>
+
+<p>Click here for the story of my second project in RBS corporate &amp; retail
+IT: <a href="/blog/2016/09/rbs-2.html">RBS (First Time) - Part 2</a>.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

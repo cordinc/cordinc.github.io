@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+
+  <span class="date">August 29, 2009</span>
+  <h4><a href="/blog/2009/08/java-threading-is-scary.html">Java Threading is Scary</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Recently I have been thinking hard about threading in a Java project of
+mine, and it definitely requires a great deal of hard thinking. When I
+started working with Java there weren’t any native threads, so it was
+just easier to make everything single threaded as the performance gain
+was minimal. However, as time has passed more and more of my code both
+at work and home has needed to work multi-threaded. As I learn more
+about Java threading, I realise how wrong I was doing it before - a
+cycle repeated a few times in the last 12 years. It was only after
+reading the great book <a href="http://jcip.net/">Java Concurrency In Practice</a>
+a few years ago that I realised that in Java “locking is not just about
+mutual exclusion; it is also about memory visibility.” I can only hope
+that this is the last such cycle, but realise it’s probably not.</p>
+
+<p>Talking to other developers there seems to be a standard progression in
+Java multi-threaded programming skill:</p>
+
+<ol>
+  <li>Just write single threaded programs</li>
+  <li>Write multi-threaded programs by marking everything synchronized</li>
+  <li>Use wait() and notifyAll() to build up “threadsafe” collection
+classes</li>
+  <li>Realise your “thread-safe” collection classes aren’t particularly
+thread-safe and try using <a href="http://en.wikipedia.org/wiki/Immutable_object">immutable domain
+objects</a> with
+stateless controllers to work around the problem</li>
+  <li>Trust in the <a href="http://java.sun.com/j2se/1.5.0/docs/api/index.html?">Java API concurrent
+utilities</a>
+java/util/concurrent/package-summary.html, with its collections,
+locks and executors</li>
+  <li>Realise that these classes don’t solve all the problems and start
+thinking hard about all the issues in your code</li>
+  <li>Become very scared about Java threading</li>
+</ol>
+
+<p>I think the next step may be using another language that doesn’t allow
+shared state. <a href="http://www.scala-lang.org/node/242">Scala uses an Actor
+model</a> to asynchronously pass
+messages between threads. There is no shared memory so no threading
+problems. This sounds like a good way to go, but I still work in Java
+for most of my programming (not many Scala or Erlang jobs around!).</p>
+
+<p>This whole situation reminds me of <a href="http://en.wikipedia.org/wiki/Memory_management">memory
+management</a> in C<span class="underline"></span>. There were simple rules to follow to reduce
+memory leakage, but the problem was hard to completely solve (especially
+to a newbie programmer) and normally your program still leaked. I
+remember leaning heavily on
+<a href="http://en.wikipedia.org/wiki/IBM_Rational_Purify">Purify</a>. Then Java
+came along with its automatic memory management and the problem largely
+disappeared. Developers could focus on the business logic of their code
+rather than housekeeping. Hopefully a similar thing will happen with
+Java threading.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">August 17, 2009</span>
+  <h4><a href="/blog/2009/08/blender-tutorial-amphora.html">Blender Tutorial: Amphora</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Blender.html">Blender</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Having read a few more chapters of my <a href="http://www.blender3d.org/e-shop/product_info.php?products_id=96">blender
+book</a>,
+it is time to try another historical model (my first was <a href="/blender/tutorials/tozeur_sculpture/index.html">a sculpture in
+Tozeur</a>). Most Roman
+archaeological sites include a few
+<a href="http://en.wikipedia.org/wiki/Amphora">amphora</a> displayed behind glass.
+At Pompeii they just stack them up all over the place. This tutorial
+details the steps I used in modelling an amphora based on photos from
+<a href="http://en.wikipedia.org/wiki/Pompeii">Pompeii</a>. Below is one of these
+photos next to the results of my modelling.</p>
+
+<p><a href="/blender/tutorials/amphora/">The continuation of this post is a set by step tutorial detailing my
+methodology</a>.</p>
+
+<p><a href="/blender/tutorials/amphora/"><img src="/blender/tutorials/amphora/result.png" alt="Pompeii amphorae and my model" title="Pompeii amphorae and my model" /></a></p>
+
+  </div>
+  <hr/>
+
+  <span class="date">August  9, 2009</span>
+  <h4><a href="/blog/2009/08/soap-and-rest.html">SOAP and REST</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>For a recent project I had to connect to two different read-only web
+services. Both were from commercial vendors providing very similar
+information (which I aggregated). One API was
+<a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>
+based the other used <a href="http://en.wikipedia.org/wiki/SOAP">SOAP</a>. The REST
+interface took me a few hours to write, the SOAP one took days!</p>
+
+<p>For the REST interface I had to send requests to a URL that somewhat
+indicated what I was attempting to do - eg
+http://example.site/contracts/123 to get the details of contract with id 123. An <a href="http://en.wikipedia.org/wiki/XML">XML</a> was returned and using a
+<a href="http://en.wikipedia.org/wiki/Simple_API_for_XML">SAX</a> parser
+constructed my internal objects. In total it took 340 lines of my code
+to handle the entire web service. Easy!</p>
+
+<p>Using the SOAP interface required me to download their
+<a href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">WSDL</a>
+and then construct a model of their domain objects - I used <a href="http://ws.apache.org/axis2/">Apache
+Axis2</a> (not Apache Axis though, that is an
+old and unmaintained project that does the same thing - a confusion that
+cost me some time). Unfortunately the WSDL was wrong and the model
+didn’t generate properly. I had to dive into the 2000 line WSDL file to
+find and fix the error - and it was near unreadable! Try looking at a
+commercial WSDL file some time. After some trial and error the model was
+right and when surrounded by copious error handling code it could be
+sent and data received from the service. It took 810 lines of my code,
+plus hundreds more in the generated model. Urgh. At this point one might
+suggest it was just a problem caused by a dodgy service provider.
+However, I have since added a third read-only web service to the
+project. It is also SOAP based and just as difficult to get running
+properly - apart from having to modify the WSDL since theirs was correct
+from the start.</p>
+
+<p>I also have experience from the other side, providing a web service.
+Using <a href="http://rubyonrails.org/">Ruby on Rails</a> I added a REST interface
+to my existing website by just providing XML views of the data. While
+working at a bank a SOAP interface to an existing legacy system was
+required, it took a great deal of fiddling and trust in our IBM
+development tools to get it working after a couple of days.</p>
+
+<p>The experience reminds me of an <a href="http://www.theregister.co.uk/2006/04/29/oreilly_amazon/">interview on The
+Register</a> where
+Tim O’Reilly suggests that SOAP is a standards first specification
+created without reference to how it would be used in the real world
+(because at the time the spec was created there weren’t any people using
+it). SOAP definitely feels like an overengineered solution. The kind of
+thing I would have loved earlier in my career when suffering from
+<a href="http://en.wikipedia.org/wiki/Second-system_effect">Second System
+Syndrome</a>. Over time
+I am becoming increasingly appreciative of simplicity in code.</p>
+
+<p>For me, there is now no comparison. SOAP just doesn’t seem to work well
+in any place I’ve seen it tried. My first choice for web service API
+will have to be REST.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">August  2, 2009</span>
+  <h4><a href="/blog/2009/08/gone-but-not-forgotten.html">Gone, but not forgotten</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Software Project Management.html">Software Project Management</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>This week I met up with some old colleagues. While talking about what we
+were all doing now, one person who still worked at the place we worked
+together mentioned that there had been a change in software
+architecture. Thus all my old code would be rewritten. This news got me
+thinking. I’ve been writing software commercially for nearly 12 years
+and most of my code is no longer used. Three years of work is gone due
+to my employers going bust. Another 3 and a half years worth was (or
+will be) rewritten after changes in platform architecture. Two more
+years of work was retired after completing the purpose for which it was
+written. One employer from years ago still uses 2 years of coding work -
+just last month I crossed paths with one of the users who did acceptance
+testing (he remembered me after 5 years, although neither of us could
+remember the other’s name) and he said they were still very happy with
+it. So about 70% of my work, measured by time, is gone and no longer of
+any use. Is that normal?</p>
+
+<p>I’m not sure what is the appropriate comparison. Engineers and
+architects build structures that last for many years. I have known
+people who assisted building houses, power stations, and gas pumping
+stations. All of which still stand and should for decades to come.
+However, these are physical things, so are obviously physically harder
+to construct. Creating software is a thought driven logical process.
+Perhaps a better comparison is with other professionals dealing with
+abstract concepts like accountants, lawyers, analysts, etc. Much of
+their output is transactional in nature: calculating this year’s
+corporate accounts; writing or checking a contract; or, producing a
+report. While such work may exist for some time, its utility drops
+greatly once the reason for its creation has passed. I suppose this is
+analogous to code still existing in sourcecode repositories long after
+it no longer runs. In which case still having 30% of my work useful is
+probably a good record.</p>
+
+<p>However, I don’t find the comparison to other abstract workers wholly
+compelling. Software developers seem to fall in between them and
+engineers. We think abstractly for a living, but produce something, even
+if it is just logic, that has utility beyond the point of its creation.
+Some computer programs have been running for decades - otherwise there
+couldn’t have been such an issue around
+<a href="http://en.wikipedia.org/wiki/Year_2000_problem">Y2K</a>. Even in the
+faster moving consumer software world code can hang around. Just today I
+used a <a href="http://en.wikipedia.org/wiki/DOS">DOS</a> command window - probably
+some very old code hanging around there.</p>
+
+<p>Perhaps the best way to think about my profession is that it is a
+discipline of engineering which works with logic and thus allows the
+perception that its artefacts are easily replaced (even if in reality
+that often is not the case). Also it is a fairly new profession and as
+such it is developing and changing rapidly, which also encourages code
+to be replaced with updated, more modern, versions. As for my record,
+when I mentioned the figures to my old colleagues they didn’t think it
+was strange or exceptional in any way. That is probably just modern
+commercial software development.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">July 26, 2009</span>
+  <h4><a href="/blog/2009/07/stories.html">Stories</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/General.html">General</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I was recently listening to a <a href="http://www.guardian.co.uk/technology/gamesblog/audio/2009/jul/21/tech-weekly-podcast-develop-video-games-eidos-braben">podcast from a game developers
+conference</a>,
+and there was a great deal of conversation around open world games like
+<a href="http://en.wikipedia.org/wiki/Grand_Theft_Auto_(series)">GTA</a>. That
+discussion made me think about the difference between a storyline (be it
+from a book, movie or game) and the world in which it’s set. When a
+story is set somewhere other than the familiar every day world, the
+perceived richness of that world can make a big difference to
+satisfaction in the story. Think of <a href="http://en.wikipedia.org/wiki/The_Lord_of_the_Rings">The Lord of the
+Rings</a>, where there
+is a strong impression that there is history to Middle-earth (read <a href="http://en.wikipedia.org/wiki/The_Silmarillion">The
+Silmarillion</a> to see that
+is exactly the case) and many interesting things are occurring just out
+of reach of the plot.</p>
+
+<p>The first two <a href="http://en.wikipedia.org/wiki/The_Matrix_(series)">Matrix</a>
+movies are another example. The first Matrix movie was quite linear (as
+many prophecy movies tend to be). Neo was led from scene to scene to
+fulfil his destiny. The world around Neo was the same as our own except
+for two organised opposing groups who knew the secret of the matrix.
+There wasn’t much room for manoeuvre. Despite what people thought of the
+second Matrix’s plot, its world was far richer. Neo has some choice in
+his actions, there are portals or otherwise strange locations and rogue
+or independent programs roaming the matrix. It is no longer black versus
+white, there are many other actors on the stage.</p>
+
+<p>When I used to run D&amp;D games some advice I was given was to make the
+world seem as open as possible, even if you were trying to subtly guide
+the players in one direction. The story can be thought of as a train,
+starting at the caboose and ending at the engine. A linear story/game
+would have the protagonists/players just travel through each carriage in
+turn. In a more open environment they may travel by climbing over the
+carriage roof or skipping carriages by walking past them at a station or
+travel backwards for a bit. In a completely open environment they could
+decide not to go to the engine at all, leave the train and do something
+else. A world in which that last option appears possible and realistic
+is much more interesting, even if the actual story is linear.</p>
+
+  </div>
+  <hr/>
+
+
+<!-- Pagination links -->
+<div id="post-pagination" class="pagination">
+  Page 73 of 86 
+  
+      
+        <a href="/blog/page72">Previous</a>
+      
+  
+
+  
+      <a href="/blog/page74">Next</a>
+  
+</div>
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

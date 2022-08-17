@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+
+  <span class="date">March  5, 2008</span>
+  <h4><a href="/blog/2008/03/code.html">Code</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Entrepreneurship.html">Entrepreneurship</a>, 
+    
+      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
+    
+      <a class="post" href="/blog/tag/Rails.html">Rails</a>, 
+    
+      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>After having the simple startup idea (see
+<a href="/blog/2008/02/ideas.html">here</a>) over the New Year holiday, I next
+needed to decide how to implement it. Many people would say I needed to
+write design/spec/use case documents first, but for this project I think
+best to start working and see what happens. It would be easy to draw
+diagrams and think about problems with nifty solutions. However, the
+main goal is to DELIVER. I want to get something up and running quickly,
+get some people to use it and then improve it. I believe the longer it
+takes to get something up in front of people, the more likely I never
+will reach that point or go further. Having people use the system (even
+as testers) is a form of commitment.</p>
+
+<p>As a result I chose to use <a href="http://www.rubyonrails.org/">Ruby on Rails</a>
+for development - something many people who know me may find surprising.
+I have never programmed in Ruby before, so I’m learning it at the same
+time as trying to quickly develop a new system with fuzzy requirements.
+What happened to avoiding development risks and not trying to do too
+much at once? If I did a project risk assessment like most of my
+previous employers this would raise some serious red flags - the project
+would not be allowed to go ahead. Although, no previous employer would
+allow my idea to go ahead anyway, they would see it as too small. So why
+did I make the Ruby decision?</p>
+
+<p>For the last 6 years I have almost entirely developed in Java (and
+before that a mix of Java, C<span class="underline"></span> and other
+languages that will never appear on my resume). I have worked on
+developing a wide range of systems from the large (over 100 people for a
+few years) to the very small (just me for a couple of weeks), although
+mainly for large financial firms. However, I specifically did not want
+to develop in Java. I may be faster in Java, but there are a number of
+reasons I thought it best not use it this time. People say it can be
+heavier to develop, with more boilerplate code, and I can certainly
+understand that. There are also less decent internet hosting options for
+Java, nearly every hosting firm provides PHP or Ruby options, but
+finding a good Java host is harder. However, the main reason for me was
+that with Java I was liable to get bogged down in the intricacies of the
+language and various libraries or third party tools. With a new language
+I wouldn’t have time to think further than the next problem I was facing
+and finding a solution for it - there would be fewer distractions simply
+because there wouldn’t be time to lose focus or investigate interesting
+side issues.</p>
+
+<p>Choosing the language was difficult. There were so many I wanted to try
+as I haven’t properly taught myself new language since C# some years
+ago. I have been reading (with interest) blog posts arguing (flaming?)
+the pros and cons of various web development languages and frameworks.
+Ruby on Rails seems to have a large following and been around for a
+while. The basic idea has been copied so many times by other languages
+(<a href="http://grails.org/">Groovy on Rails</a>, <a href="http://steve-yegge.blogspot.com/2007/12/codes-worst-enemy.html">Rhino on
+Rails</a>,
+…) that I felt there must be something useful in there. I rejected all
+the derivatives because I didn’t think they would be mature enough yet
+and didn’t have a large enough community behind them. After all a
+framework with a
+<a href="http://www.zedshaw.com/rants/rails_is_a_ghetto.html">backlash</a> must
+have reached a certain level of maturity! The <a href="http://www.joelonsoftware.com/items/2006/09/12.html">speed
+issue</a> was my main
+concern. At work code execution speed is extremely important and has a
+direct affect on the bottom line (I work on financial trading systems).
+However, the performance requirements for my system are far less than at
+work. Ruby will probably be fast enough - or at least fast enough at the
+start to see if the idea is worth pursuing. So I decided to just give
+Ruby a try. If it didn’t work out I could quickly move onto something
+else.</p>
+
+<p>Anyway, I’ve been writing Ruby on Rails code for nearly the last two
+months in my spare time - probably only the equivalent of only a handful
+of workdays in total. Yet I am quite impressed by how much functionality
+I have implemented. I am probably only a couple of weeks away from being
+ready for alpha testing on the functionality (the website design is
+still a mess). So far I have to say that Ruby on Rails has been a
+positive experience, although I am yet to properly test its performance.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">February 29, 2008</span>
+  <h4><a href="/blog/2008/02/the-internet-is-cool.html">The Internet is cool</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Meta.html">Meta</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I have been writing this blog for almost a month and have signed up for
+various tools, including <a href="http://www.google.com/analytics/home">Google Web
+Analytics</a>. I originally signed up
+to learn how they work for my startup idea (more about that soon, I
+promise), but now I think they are just cool.</p>
+
+<p>For instance, thanks to analytics I know that 3 people regularly visit
+my blog and two of them are me! I also know that on the 26th of
+February, someone at Ricks College in Rexburg, Idaho, typed “weird in
+sign language” into google and came to my blog post about the sign
+language for being bitten by an alligator. Obviously it wasn’t quite
+what they were expecting so they left after a few seconds. For some
+reason that little bit of knowledge puts a smile on my face.</p>
+
+<p>FYI, the American Sign Language for “weird” is
+<a href="http://www.lifeprint.com/asl101/pages-signs/o/odd.htm">here</a>, and
+that’s cool too.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">February 26, 2008</span>
+  <h4><a href="/blog/2008/02/mobile-broadband-modem.html">Mobile Broadband Modem</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/General.html">General</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I don’t have a home phone line, so until recently I used open wifi
+points to access the internet. Seeing a large number of ads for mobile
+broadband modems (modems that connect to the mobile phone network) I
+thought I could improve my connection’s reliability and expense.</p>
+
+<p>I bought a Pay As You Go Huawei E220 USB modem from 3, advertised as
+very simple to use, and plugged it in. It didn’t work. At this point my
+biggest mistake was calling the 3 support line - what a dismal
+experience! The support people kept me waiting for ages and suggested
+clearly stupid solutions. They refused to listen to my reasons why their
+obviously wrong suggestions wouldn’t work and seemed eager to end the
+call. I made them wait for me to try their solution, and when it didn’t
+work, the cycle repeated (starting with the wait while on hold). After
+about half an hour I gave up on them. The next morning I was angry and
+determined to return the modem for a refund. However, I tried a quick
+google search at work first and found <a href="http://lifeinriyadh.blogspot.com/2007/10/life-in-riyadh.html">the
+answer</a> -
+it seems these modems do not play nicely with others. I disabled my
+laptop’s internal modem and the Huawei modem has worked fine since.</p>
+
+<p>Overall, I’m happy with my purchase, but very unhappy with 3. Internal
+modems are common and to have conflicts with them would, in my mind,
+preclude claiming something as plug and play. I will never call the 3
+support line again - I found them hopeless (why not just have them
+search google?). Since my dealings with 3 I have found <a href="http://aonach.com/chatter/how-i-solved-all-my-3-three-wireless-data-modem-problems/">others with
+similar
+problems</a>.
+YMMV.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">February 21, 2008</span>
+  <h4><a href="/blog/2008/02/rhetoric.html">Rhetoric</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/General.html">General</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Logically bad arguments are annoying. It is almost as annoying when
+people argue that a premise is clear when it is not. Often people make
+assumptions about their argument’s starting points, perhaps to avoid
+examining the implications of their premise. Sometimes this is done for
+rhetorical reasons (they just want to win an argument - politicians seem
+particularly guilty of this). Other times it appears to be due to a lack
+of thought.</p>
+
+<p>That small rant was prompted by a segment on breakfast TV about
+performance-enhancing drugs. The premise was that performance-enhancing
+drugs were unfair and how hard they were to detect. Why it was unfair
+was never examined. The situation may well be unfair, and being a fan of
+cycling I mourn the damage drugs have done to that sport. However, what
+caught my attention was the background of the presenter. He was a UK
+Olympic gold medallist in rowing. Many people would consider such a
+person eminently qualified to talk about fairness in sport. I would not
+be so sure.</p>
+
+<p>One of my earliest memories of the Olympics was watching the cycling
+team time trial, a 100km 4-member team race against the clock. The
+competitive teams were on the latest expensive bicycles costing
+thousands and had been in intensive high-tech training camps to ensure
+their best performance. Then the Ethiopian team was shown. Their bikes
+were clearly of a much older and cheaper design - lacking all the
+aerodynamic finery necessary in modern cycling. They had no chance in
+the race. Is it unfair that the Ethiopians were not as competitive as
+others because they had worse technology? Is it unfair that having more
+money spent on an athlete (in support, training, a high-tech bike or
+better boat) makes them more likely to win?</p>
+
+<p>It may be possible to say that the best athlete at the start of the
+competition has the best chance of winning. However, drugs and money
+give a distinct and often insurmountable advantage before the
+competition begins. Drugs and money distort the playing field from the
+very start and always have. The breakfast TV presenter benefitted
+greatly from this situation. While people suggest a complete ban on
+performance-enhancing drugs for the sake of fairness (at least on this
+breakfast TV show), there is no similar call for fairness in money. It
+could be argued that money fairness is impractical and could not be
+enforced, but that’s not the point (incidentally HGH use can’t be
+detected and thus its ban can’t be enforced at present).</p>
+
+<p>If fairness is defined as all have the same chance of winning at the
+start, then competitive sport is inherently unfair. I’m not sure that is
+a bad thing - I certainly don’t have a problem with it. The best have
+advantages (I haven’t even touched on the concept of genetic unfairness)
+and that should just be accepted, it is the nature of the competition. I
+would prefer to see a different argument against performance-enhancing
+drugs.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">February 15, 2008</span>
+  <h4><a href="/blog/2008/02/apology-for-dale.html">Apology for Dale</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I’m a lapsed fan of sci-fi novels. It has been a while since I last read
+one which caused as much thought as Neuromancer or The Foundation series
+or the early Culture books. The last sci-fi book I read, the Algebraist,
+just didn’t cut it. I’ve also found myself outside circles where
+recommendations are readily available, so reading <a href="http://blog.pmarca.com/2007/06/top_10_science_.html">Marc Andreessen’s
+modern top 10 sci-fi authors blog
+post</a> piqued my
+interest and I think I may be trying a few of them out soon.</p>
+
+<p>The description of some of the books as
+<a href="http://www-rohan.sdsu.edu/faculty/vinge/misc/singularity.html">post-Singularity</a>
+caught my attention. It is a very interesting idea and reminded my of
+the first time I heard of the concept while reading Diaspora by Greg
+Egan (from my home town of Perth). The book was lent to me by a
+workmate, Dale (I can’t remember his surname). At the time it made
+little impression on me at all - I think I told Dale I found it cold.
+However, memories of the story have stayed with me for many years now
+and I often think about the ideas I first encountered reading it.</p>
+
+<p>Sorry Dale, you are right, Diaspora is a good book.</p>
+
+  </div>
+  <hr/>
+
+
+<!-- Pagination links -->
+<div id="post-pagination" class="pagination">
+  Page 85 of 86 
+  
+      
+        <a href="/blog/page84">Previous</a>
+      
+  
+
+  
+      <a href="/blog/page86">Next</a>
+  
+</div>
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

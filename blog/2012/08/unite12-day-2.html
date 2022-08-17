@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Unite12 - Day 2</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>August 29, 2012</b>
+<h4>Unite12 - Day 2</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+    
+<br/><br/>
+<p>On the second day of Unite12 I slept in and missed the first talk in
+order to prepare for a long afternoon. It was a presentation by Brian
+Fargo on the successful <a href="http://www.kickstarter.com/">Kickstarter</a>
+campaign for <a href="http://wasteland.inxile-entertainment.com/">Wasteland</a>. A
+great deal has been said about using Kickstarter for games recently, and
+ConcealedIntent is unlikely to use the service soon (or at all). So I
+thought this could be safely missed.</p>
+
+<p><a href="http://www.flickr.com/photos/33547649@N07/7862730704/in/photostream"><img src="http://farm9.staticflickr.com/8291/7862730704_35d34185f9.jpg" alt="" /></a></p>
+
+<p>Day 2 notes from the sessions I attended are below.</p>
+
+<p><a href="http://www.cordinc.com/blog/2012/08/unite12-day-1.html">Day 1 notes
+here.</a><br />
+<a href="http://www.cordinc.com/blog/2012/09/unite12---day-3.html">Day 3 notes
+here.</a></p>
+
+<!--more-->
+
+<p><strong>Unity, Networking Code and You:</strong></p>
+
+<ul>
+  <li>There are four ways to do networking in Unity3D: the built-in
+system; sockets; WWW/form; and, external Javascript.</li>
+  <li>The built-in networking is a client server system.
+    <ul>
+      <li>Good for when you are not concerned how or what data is being
+sent. This could be a problem considering the previous Photon
+talk about networking cost being dominant - I doubt the default
+Unity networking is optimised for small message sizes.</li>
+      <li>Not mention of load-balancing, just straight client-server.</li>
+      <li>Speaker suggested built-in networking is good for small racing
+and FPS games - seems about right for me.</li>
+    </ul>
+  </li>
+  <li>Sockets
+    <ul>
+      <li>Can use standard .Net networking code to build own system. Thus
+can define bespoke messages.</li>
+      <li>May have some security issues on the Unity webplayer, but can be
+overcome with cross domain security.</li>
+      <li>Most third party networking libraries use sockets. Harder, but
+more control.</li>
+    </ul>
+  </li>
+  <li>WWW/Form
+    <ul>
+      <li>HTTP protocol calls can be used to load images and asset bundles
+or stream audio-visual assets.</li>
+      <li>HTTP POST calls can be made with the WWWForm class.</li>
+    </ul>
+  </li>
+  <li>External Javascript
+    <ul>
+      <li>ExternalCall and ExternalEval can be used to make a call from a
+Unity client into an enclosing web page’s Javascript environment
+(which can then use the Javascript networking).</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>LIDAR &amp; Oblique Imagery for City Scapes:</strong></p>
+
+<ul>
+  <li>Using airborne lasers to scan cityscapes at an accuracy of 12 points
+per metre results in a point cloud containing tens of millions of
+points - too large to visualise in current tools.</li>
+  <li>Presenter described an automatic process of converting those points
+into meshes representing buildings.</li>
+  <li>The buildings are then aggregated/welded together to form Levels Of
+Detail (LOD). Textures are atlassed. Asset bundles load and unload
+resources as required.</li>
+  <li>Result is quite impressive.</li>
+</ul>
+
+<p><strong>GameDraw: Editor Customization Techniques and Challenges:</strong></p>
+
+<ul>
+  <li><a href="http://www.gamedraw3d.com/">GameDraw</a> is a tool that add the
+ability to edit models directly in Unity.</li>
+  <li>Presented some tips for modifying the Unity editor.</li>
+  <li>OnSceneGui() event can draw GUI in scene view.</li>
+  <li>use OnInspectorUpdate() rather than Update(). The former is called
+10 times/second - much less than the latter.</li>
+  <li>Selection of objects can be supported with the OnSelectionChange()
+method.</li>
+  <li>Mesh is not serialisable in Unity (thus can be saved after editing),
+so they created their own serialisable class that contained all the
+Mesh information and converted back and forth between them.</li>
+  <li>The GL class can draw on the Unity view.</li>
+</ul>
+
+<p><strong>How to Benefit from Unity’s Substance Integration:</strong></p>
+
+<ul>
+  <li><a href="http://www.allegorithmic.com/">Allegorithmic</a> produce tools to
+create textures procedurally. For example on brick substance and
+adjust the age, size, number and other parameters of the resulting
+texture.</li>
+  <li>Result can be sent as parameters and texture generated on client
+side (resulting in a much smaller download) or texture generated in
+advance.</li>
+  <li>Very impressive demo.</li>
+</ul>
+
+<p><strong>App Store Science and Roulette:</strong></p>
+
+<ul>
+  <li>Biggest apps are Free-to-play games, their profit is made with
+in-app purchases.</li>
+  <li>Need to increase the value of in-app purchases and decrease the cost
+of acquisition of new players.</li>
+  <li>Paid advertising for new players/downloads currently runs at US$1
+per install - hard to profit as an Indie at this level.</li>
+  <li>Try to makes your apps social so easy for people to discover them.</li>
+  <li>Record data on game and improve game experience from this data.
+Presenter has seen this work very well.</li>
+</ul>
+
+<p><strong>The Butterfly Effect: Bleeding Edge Rendering with Unity:</strong></p>
+
+<ul>
+  <li>This talk was largely about the real-time movie produced to
+demonstrate the new version of Unity. It is an impressive work, but
+not particularly relevant to me.</li>
+  <li>That baked their static lighting and shadows in to the scene, but
+kept some lighting dynamic (can do both).</li>
+  <li>Unity produced a new physics shader for the movie. One shader can
+cover most materials. It sounds similar to the Blender system.</li>
+</ul>
+
+<p><strong>The Unity Rendering Pipeline:</strong></p>
+
+<ul>
+  <li>I missed the start of this presentation.</li>
+  <li>Most of the talk was about shaders and beyond my understanding.
+Shaders seem very important in Unity - I should learn more.</li>
+  <li>There are three ways to render objects: Vertex Lit, simple with no
+shadows; Forward Rendering, more lights and more complex; and
+Deferred Lighting.</li>
+  <li>Shaders can include pragma debug and the generated shader will be
+written to a file.</li>
+  <li>Pragma multi-compile allows one shader file to become multiple
+generated shaders depending on a provided switch parameter.</li>
+</ul>
+
+<p><strong>Unity Awards:</strong></p>
+
+<ul>
+  <li>Most of the nominees didn’t mean much to me. I’d only heard of one
+before - the big winner Total War Battles. There did seem to be a
+disproportionately large number of mobile titles.</li>
+  <li>I particularly liked the nominee in the serious game category on
+building site safety that included a well bearded guy saying
+“S%#*! This looks suss”. Must be from Australia.</li>
+</ul>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

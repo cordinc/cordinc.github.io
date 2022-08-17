@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Is there dumb money on Intrade?</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>October 12, 2008</b>
+<h4>Is there dumb money on Intrade?</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>
+    
+<br/><br/>
+<p>A friend recently mentioned that there is dumb money on
+<a href="http://www.intrade.com">Intrade</a>, a site that creates markets in
+various real-life events such as the US Presidential elections. They
+said that there are still people betting that Hillary Clinton will
+become President in November. I’m a big fan of free money so I thought
+I’d check it out. Sure enough, according to Intrade, there is a 1.6%
+chance Hillary will be elected President, with thousands of dollars
+worth of contracts available. I’ll grant the chance of Hillary being
+elected as non-zero, but it must be orders of magnitude less than 1.6%,
+so what’s going on? It was a quiet day so I thought I’d work out if it
+was a scam or a bad deal.</p>
+
+<!--more-->
+
+<p>Firstly, I checked Google to see if this was a legimate site. It
+certainly seems to be reputable. There are many mentions in major
+mainstream media and various blogs use its numbers instead of polls
+(they have Obama at 77% for the win). Intrade is based in Ireland, so
+presumably they are safely outside the US’s gambling laws.</p>
+
+<p>Next I checked the financial maths. At the time of writing, the <a href="http://www.intrade.com/jsp/intrade/common/c_cd.jsp?conDetailID=376100&amp;z=1223801419953">Hillary
+Clinton to be President
+contract</a>
+has a bid of 1.6 with 633 US$10 contracts and an ask of 1.7 with 450
+US$10 contracts (with good depth after the top). Thus if it is certain
+that Hillary will not win, you would sell at the bid price (ie sell
+Hillary to win contracts at 1.6). You would then immediately earn
+US$0.16 per contract and if Hillary lost that would be the end. If she
+won then you would owe US$9.84 per contract on November 6th (the date
+the contract matures). It would be the reverse if you thought Hillary
+would win, then you buy contracts, paying US$0.17/contract (the ask
+price) and getting paid US$9.84 when she won (or nothing if she didn’t).
+So far so good.</p>
+
+<p>At this point Intrade are making no money themselves, so I went looking
+for the fee structure. <a href="http://www.intrade.com/jsp/intrade/help/general.html#fees">Buying and selling
+fees</a> change
+depending on various circumstances, but in this example they are
+US$0.03/contract. Also there is a US$0.10 fee for holding a contract to
+expiry. It is possible that you could trade out of the contract before
+expiry and thus pay US$0.03 rather than US$0.10, but this requires the
+market to move your way. The worst case is thus US$0.13 of profit will
+disappear in fees. Now selling the Hillary for President contract makes
+US$0.03. Not nearly as good as before, but still probably much greater
+then the chance she will win. I have made a simplification here; it is
+possible for sellers to reinvest their initial gain if it exceeds the
+cost of the contract. However this is unlikely to make much difference
+due to the small size of the profit compared to the investment required.
+After the cost of the initial trade you would be able to sell 1 extra
+contract in a reinvestment for every 75.7 you initially sold.</p>
+
+<p>So how does Intrade ensure people pay up if the contract goes against
+them? There must be some rules about posting margin on your trades in
+case they go bad. This would only apply to the sellers as they get money
+upfront and only have to pay their losses - buyers pay upfront and get
+paid if they win. It was a <a href="http://www.intrade.com/jsp/intrade/help/exchange-rules.html">little hard to
+find</a> but
+Intrade’s margin rule is “cover your worst case future potential
+losses”. That is if you sell Hillary for President contracts at US$0.16
+you get US$0.16/contract, but you also have to post US$9.84/contract as
+margin. This money is held in escrow and as far as I can tell, earns no
+interest. This is equivalent to putting US$9.84 in a bank and getting
+US$0.03 in interest an absolute return on your money of 0.3049%
+(absolute return = 0.03/9.84). However, the money will only be held
+until the end of the contract - at the moment that is 26 days for
+Hillary. This makes for an equivalent annual interest rate of 4.37%
+(annual return = (1+absolute return)^(365/days to expiry) –1 ). A bit
+better and it gets better still closer to expiry. If the same trade is
+made next Saturday then the return is 5.7, the week after that it’s 9.7
+(there is a complete table
+<a href="http://spreadsheets.google.com/pub?key=pK_9JsDu7LaCZ4SdXz9F6VA&amp;gid=1">here</a>).</p>
+
+<p>So over short time periods the relative return is good (assuming the
+prices stay available). So to get a good overall return you would need
+to keep rolling over your winnings into other dumb bets near maturity.
+While there are quite a few other unlikely contracts for the US
+elections (for example, Biden to be dropped as VP candidate), the
+Intrade markets seem to become more sane after November 4th. There are
+still some that are possibilities: hurricane contracts closing at the
+beginning of December; various contracts maturing at the end of the year
+(Europe to host the 2016 Olympics?); and, the Oscars bets in February.
+There are financial markets contracts closing every day, but these could
+be risky (especially given the current volatility). I think trying to
+roll over profits into other contracts would be like picking up pennies
+in front of bulldozers, and like
+<a href="http://en.wikipedia.org/wiki/Long-Term_Capital_Management">LTCM</a> the
+temptation would be to veer into less certain contracts to maintain
+return.</p>
+
+<p>An alternative would be to keep money in a bank account and just quickly
+trasfer it quickly in and out of Intrade - surgical strikes if you will.
+<a href="http://www.intrade.com/jsp/intrade/help/index.jsp?page=general.html">Moving money in and out of
+Intrade</a>)
+does not seem easy enough to justify this. Money can be deposited by
+credit card or bank transfer without fee. However, taking money out is
+harder. You can either have a cheque mailed (!) to you or a bank
+transfer for a US$20 or US$30 fee.</p>
+
+<p>I don’t think there is dumb money on Intrade, just stuck money. Due to
+the lack of interest on accounts and margin together with the
+transactional costs of doing a trade or moving money mean that the
+Intrade market breaks down at the extremes and becomes unrealistic.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

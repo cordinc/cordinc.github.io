@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>JMX JConsole-like Connection Dialog</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>February 14, 2010</b>
+<h4>JMX JConsole-like Connection Dialog</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>This is a quick post about a coding problem that took longer than
+expected to solve. I have put an example solution here as a reference
+for myself or others, hopefully speeding up the task. I needed to create
+a dialog to connect to a local or remote
+<a href="http://java.sun.com/javase/technologies/core/mntr-mgmt/javamanagement/">JMX</a>
+process. Essentially this would be very similar to the
+<a href="http://java.sun.com/developer/technicalArticles/J2SE/jconsole.html">JConsole</a>
+“New Connection” dialog. Initially I thought this would just be a
+standard component, but instead it took some trial and error (as well as
+digging through Sun documentation) to get the required functionality
+working.</p>
+
+<!--more-->
+
+<p>The problematic parts are discovering which Java processes are running
+on the local computer and connecting to a local or remote JMX process.
+The code below will find local JMX processes, by finding any JVMs
+running and trying to attach to them. Note that this code requires
+<a href="http://java.sun.com/javase/6/docs/platform/jvmti/jvmti.html">Sun’s JVM Tool
+Interface</a>
+which is in tools.jar in the JDK lib folder (at least for JDK6 - not
+sure where it is in different versions).</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">VirtualMachine</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">VirtualMachine</span><span class="o">&gt;();</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">VirtualMachineDescriptor</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="nc">VirtualMachine</span><span class="o">.</span><span class="na">list</span><span class="o">();</span>
+<span class="k">for</span> <span class="o">(</span><span class="nc">VirtualMachineDescriptor</span> <span class="nl">vmd:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+   <span class="nc">String</span> <span class="n">desc</span> <span class="o">=</span> <span class="n">vmd</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+   <span class="k">try</span> <span class="o">{</span>
+      <span class="n">result</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">desc</span><span class="o">,</span> <span class="nc">VirtualMachine</span><span class="o">.</span><span class="na">attach</span><span class="o">(</span><span class="n">vmd</span><span class="o">));</span>
+   <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span> 
+   <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">AttachNotSupportedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span> 
+   <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>To connect to a local JMX process after the VirtualMachine class for
+that process has been acquired, do the following:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="nc">JMXConnector</span> <span class="nf">getLocalConnection</span><span class="o">(</span><span class="nc">VirtualMachine</span> <span class="n">vm</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+   <span class="nc">Properties</span> <span class="n">props</span> <span class="o">=</span> <span class="n">vm</span><span class="o">.</span><span class="na">getAgentProperties</span><span class="o">();</span>
+   <span class="nc">String</span> <span class="n">connectorAddress</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="no">CONNECTOR_ADDRESS_PROPERTY</span><span class="o">);</span>
+   <span class="k">if</span> <span class="o">(</span><span class="n">connectorAddress</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">props</span> <span class="o">=</span> <span class="n">vm</span><span class="o">.</span><span class="na">getSystemProperties</span><span class="o">();</span>
+      <span class="nc">String</span> <span class="n">home</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">"java.home"</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">agent</span> <span class="o">=</span> <span class="n">home</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="s">"lib"</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="s">"management-agent.jar"</span><span class="o">;</span>
+      <span class="n">vm</span><span class="o">.</span><span class="na">loadAgent</span><span class="o">(</span><span class="n">agent</span><span class="o">);</span>
+      <span class="n">props</span> <span class="o">=</span> <span class="n">vm</span><span class="o">.</span><span class="na">getAgentProperties</span><span class="o">();</span>
+      <span class="n">connectorAddress</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="no">CONNECTOR_ADDRESS_PROPERTY</span><span class="o">);</span>
+   <span class="o">}</span>
+   <span class="nc">JMXServiceURL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JMXServiceURL</span><span class="o">(</span><span class="n">connectorAddress</span><span class="o">);</span>
+   <span class="k">return</span> <span class="nc">JMXConnectorFactory</span><span class="o">.</span><span class="na">connect</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>The resulting JMXConnector can be used in the normal way to retrieve
+data from JMX calls. For instance, if the JMX process exposed a no-arg
+function <code class="highlighter-rouge">functionName</code> on object <code class="highlighter-rouge">objectName</code>, the call would be:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">MBeanServerConnection</span> <span class="n">mbsc</span> <span class="o">=</span> <span class="n">connector</span><span class="o">.</span><span class="na">getMBeanServerConnection</span><span class="o">();</span>					
+<span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="n">mbsc</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="k">new</span> <span class="nc">ObjectName</span><span class="o">(</span><span class="s">"objectName"</span><span class="o">),</span>
+                                     <span class="s">"functionName"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Object</span><span class="o">[]</span> <span class="o">{},</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[]</span> <span class="o">{});</span></code></pre></figure>
+
+<p>Finding remote JMX processes is something you’ll need to work out
+yourself, but assuming the host, port, user and password are known, the
+code to get a JMXConnector is:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="nc">JMXConnector</span> <span class="nf">getRemoteConnection</span><span class="o">(</span><span class="nc">String</span> <span class="n">host</span><span class="o">,</span> <span class="kt">int</span> <span class="n">port</span><span class="o">,</span> <span class="nc">String</span> <span class="n">user</span><span class="o">,</span> <span class="nc">String</span> <span class="n">password</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+   <span class="nc">JMXServiceURL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JMXServiceURL</span><span class="o">(</span><span class="s">"service:jmx:rmi:///jndi/rmi://"</span><span class="o">+</span><span class="n">host</span><span class="o">+</span><span class="s">":"</span><span class="o">+</span><span class="n">port</span><span class="o">+</span><span class="s">"/jmxrmi"</span><span class="o">);</span>
+   <span class="kd">final</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">[]&gt;</span> <span class="n">environment</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">[]&gt;();</span>
+   <span class="n">environment</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nc">JMXConnector</span><span class="o">.</span><span class="na">CREDENTIALS</span><span class="o">,</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[]</span> <span class="o">{</span><span class="n">user</span><span class="o">,</span> <span class="n">password</span><span class="o">}</span> <span class="o">);</span>
+   <span class="k">return</span> <span class="nc">JMXConnectorFactory</span><span class="o">.</span><span class="na">connect</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">environment</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>The resulting JMXConnector can be used in the same manner as before. So
+with the above code it is just a matter of adding some GUI glue to
+create the required dialog. Excuse the <code class="highlighter-rouge">main</code> method and dodgy exception
+handling (and anything else) - this is just a quick example class.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.awt.BorderLayout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Component</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Container</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Dimension</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.FlowLayout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Frame</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionListener</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.KeyEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.KeyListener</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.WindowAdapter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.WindowEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Properties</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.management.remote.JMXConnector</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.management.remote.JMXConnectorFactory</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.management.remote.JMXServiceURL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.BoxLayout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.ButtonGroup</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JButton</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JComboBox</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JDialog</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JFrame</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JLabel</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JOptionPane</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JPanel</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JPasswordField</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JRadioButton</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JTextField</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.sun.tools.attach.AttachNotSupportedException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.sun.tools.attach.VirtualMachine</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.sun.tools.attach.VirtualMachineDescriptor</span><span class="o">;</span>
+
+<span class="c1">// requires Sun's default-tools.jar</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JmxConnectorDialog</span> <span class="kd">extends</span> <span class="nc">JDialog</span> <span class="kd">implements</span> <span class="nc">ActionListener</span><span class="o">,</span> <span class="nc">KeyListener</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">CONNECTOR_ADDRESS_PROPERTY</span> <span class="o">=</span> <span class="s">"com.sun.management.jmxremote.localConnectorAddress"</span><span class="o">;</span>
+	
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">JRadioButton</span> <span class="n">localButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JRadioButton</span><span class="o">(</span><span class="s">"Local Process"</span><span class="o">);</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">JRadioButton</span> <span class="n">remoteButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JRadioButton</span><span class="o">(</span><span class="s">"Remote Process"</span><span class="o">);</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">VirtualMachine</span><span class="o">&gt;</span> <span class="n">localEngines</span> <span class="o">=</span> <span class="n">findEngines</span><span class="o">();</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">JComboBox</span> <span class="n">typeList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JComboBox</span><span class="o">(</span><span class="n">localEngines</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">toArray</span><span class="o">());</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">JTextField</span> <span class="n">hostField</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">JTextField</span> <span class="n">portField</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">JTextField</span> <span class="n">userField</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextField</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">JPasswordField</span> <span class="n">passField</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPasswordField</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+	
+	<span class="kd">private</span> <span class="nc">JMXConnector</span> <span class="n">connector</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">errorString</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Graph Explorer"</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+        
+
+	    <span class="nc">JmxConnectorDialog</span> <span class="n">jmxDialog</span> <span class="o">=</span> <span class="nc">JmxConnectorDialog</span><span class="o">.</span><span class="na">showDialog</span><span class="o">(</span><span class="n">frame</span><span class="o">);</span>
+	    <span class="nc">JMXConnector</span> <span class="n">connector</span> <span class="o">=</span> <span class="n">jmxDialog</span><span class="o">.</span><span class="na">getConnector</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">connector</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        	<span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="n">frame</span><span class="o">,</span>
+	        	    <span class="s">"Can't connect to JMX server: "</span><span class="o">+</span><span class="n">jmxDialog</span><span class="o">.</span><span class="na">getError</span><span class="o">(),</span>
+	        	    <span class="s">"Connection error"</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">ERROR_MESSAGE</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        	<span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="n">frame</span><span class="o">,</span> <span class="s">"Selected real Java process"</span><span class="o">);</span>
+        <span class="o">}</span>
+   
+        <span class="cm">/*
+        MBeanServerConnection mbsc = connector.getMBeanServerConnection();
+		String result = (String)mbsc.invoke(new ObjectName("objectName"),
+				"functionName", new Object[] {}, new String[] {});			
+        */</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">JmxConnectorDialog</span> <span class="nf">showDialog</span><span class="o">(</span><span class="nc">Component</span> <span class="n">frameComp</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Frame</span> <span class="n">frame</span> <span class="o">=</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">getFrameForComponent</span><span class="o">(</span><span class="n">frameComp</span><span class="o">);</span>
+		<span class="nc">JmxConnectorDialog</span> <span class="n">dialog</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JmxConnectorDialog</span><span class="o">(</span><span class="n">frame</span><span class="o">);</span>
+		<span class="n">dialog</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">dialog</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	
+	<span class="kd">public</span> <span class="nf">JmxConnectorDialog</span><span class="o">(</span><span class="nc">Frame</span> <span class="n">frame</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">frame</span><span class="o">,</span> <span class="s">"JMX Connection"</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+		<span class="n">addWindowListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">WindowAdapter</span><span class="o">()</span> <span class="o">{</span>
+			<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">windowClosing</span><span class="o">(</span><span class="nc">WindowEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">errorString</span><span class="o">=</span><span class="s">"User cancelled"</span><span class="o">;</span>
+				<span class="n">setVisible</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">});</span>
+		
+		<span class="nc">Container</span> <span class="n">contentPane</span> <span class="o">=</span> <span class="n">getContentPane</span><span class="o">();</span>
+		<span class="nc">JPanel</span> <span class="n">content</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">();</span>
+		<span class="n">content</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">BoxLayout</span><span class="o">(</span><span class="n">content</span><span class="o">,</span> <span class="nc">BoxLayout</span><span class="o">.</span><span class="na">Y_AXIS</span><span class="o">));</span>
+		<span class="n">contentPane</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+			
+		<span class="n">content</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createLocalPanel</span><span class="o">());</span>
+		<span class="n">content</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createRemotePanel</span><span class="o">());</span>
+		<span class="n">content</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createButtonPanel</span><span class="o">());</span>
+		
+		<span class="nc">ButtonGroup</span> <span class="n">group</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ButtonGroup</span><span class="o">();</span>
+	    	<span class="n">group</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">localButton</span><span class="o">);</span>
+	    	<span class="n">group</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">remoteButton</span><span class="o">);</span>
+	  
+		<span class="n">pack</span><span class="o">();</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="nc">JPanel</span> <span class="nf">createLocalPanel</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">JPanel</span> <span class="n">localPanel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">(</span><span class="nc">FlowLayout</span><span class="o">.</span><span class="na">LEADING</span><span class="o">));</span>
+		<span class="n">localButton</span><span class="o">.</span><span class="na">setPreferredSize</span><span class="o">(</span><span class="k">new</span> <span class="nc">Dimension</span><span class="o">(</span><span class="mi">150</span><span class="o">,</span> <span class="mi">50</span><span class="o">));</span>
+		<span class="n">localButton</span><span class="o">.</span><span class="na">setSelected</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+		<span class="n">localPanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">localButton</span><span class="o">);</span>
+		<span class="n">typeList</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+			<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">localButton</span><span class="o">.</span><span class="na">setSelected</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+			<span class="o">}</span>			
+		<span class="o">});</span>
+		<span class="nc">JPanel</span> <span class="n">listPanel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
+		<span class="n">listPanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">typeList</span><span class="o">,</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">SOUTH</span><span class="o">);</span>
+		<span class="n">localPanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">listPanel</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">localPanel</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="nc">JPanel</span> <span class="nf">createRemotePanel</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">JPanel</span> <span class="n">remotePanel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">(</span><span class="nc">FlowLayout</span><span class="o">.</span><span class="na">LEADING</span><span class="o">));</span>
+		<span class="n">remoteButton</span><span class="o">.</span><span class="na">setPreferredSize</span><span class="o">(</span><span class="k">new</span> <span class="nc">Dimension</span><span class="o">(</span><span class="mi">150</span><span class="o">,</span> <span class="mi">50</span><span class="o">));</span>
+		<span class="n">remotePanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">remoteButton</span><span class="o">);</span>
+		<span class="nc">JPanel</span> <span class="n">remoteOptionPanel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">();</span>
+		<span class="n">remoteOptionPanel</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">BoxLayout</span><span class="o">(</span><span class="n">remoteOptionPanel</span><span class="o">,</span> <span class="nc">BoxLayout</span><span class="o">.</span><span class="na">Y_AXIS</span><span class="o">));</span>
+		<span class="n">remoteOptionPanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createField</span><span class="o">(</span><span class="s">"Host"</span><span class="o">,</span> <span class="n">hostField</span><span class="o">));</span>
+		<span class="n">remoteOptionPanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createField</span><span class="o">(</span><span class="s">"Port"</span><span class="o">,</span> <span class="n">portField</span><span class="o">));</span>
+		<span class="n">remoteOptionPanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createField</span><span class="o">(</span><span class="s">"User"</span><span class="o">,</span> <span class="n">userField</span><span class="o">));</span>
+		<span class="n">remoteOptionPanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createField</span><span class="o">(</span><span class="s">"Password"</span><span class="o">,</span> <span class="n">passField</span><span class="o">));</span>
+		<span class="n">remotePanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">remoteOptionPanel</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">remotePanel</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="nc">JPanel</span> <span class="nf">createButtonPanel</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">JPanel</span> <span class="n">buttonPanel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
+		<span class="nc">JButton</span> <span class="n">connectButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Connect"</span><span class="o">);</span>
+		<span class="n">getRootPane</span><span class="o">().</span><span class="na">setDefaultButton</span><span class="o">(</span><span class="n">connectButton</span><span class="o">);</span>
+		<span class="n">connectButton</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+		<span class="n">buttonPanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">connectButton</span><span class="o">);</span>
+		<span class="nc">JButton</span> <span class="n">cancelButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Cancel"</span><span class="o">);</span>
+		<span class="n">cancelButton</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+			<span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">errorString</span><span class="o">=</span><span class="s">"User cancelled"</span><span class="o">;</span>
+				<span class="n">setVisible</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">});</span>
+		<span class="n">buttonPanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cancelButton</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">buttonPanel</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="nc">JPanel</span> <span class="nf">createField</span><span class="o">(</span><span class="nc">String</span> <span class="n">label</span><span class="o">,</span> <span class="nc">JTextField</span> <span class="n">field</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">JPanel</span> <span class="n">fieldPanel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">(</span><span class="nc">FlowLayout</span><span class="o">.</span><span class="na">LEADING</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">1</span><span class="o">));</span>
+		<span class="nc">JLabel</span> <span class="n">labelComponent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
+		<span class="n">labelComponent</span><span class="o">.</span><span class="na">setPreferredSize</span><span class="o">(</span><span class="k">new</span> <span class="nc">Dimension</span><span class="o">(</span><span class="mi">60</span><span class="o">,</span> <span class="mi">10</span><span class="o">));</span>
+		<span class="n">fieldPanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">labelComponent</span><span class="o">);</span>
+		<span class="n">fieldPanel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">field</span><span class="o">);</span>
+		<span class="n">field</span><span class="o">.</span><span class="na">addKeyListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">fieldPanel</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">VirtualMachine</span><span class="o">&gt;</span> <span class="nf">findEngines</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">VirtualMachine</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">VirtualMachine</span><span class="o">&gt;();</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">VirtualMachineDescriptor</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="nc">VirtualMachine</span><span class="o">.</span><span class="na">list</span><span class="o">();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">VirtualMachineDescriptor</span> <span class="nl">vmd:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">String</span> <span class="n">desc</span> <span class="o">=</span> <span class="n">vmd</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+			<span class="k">try</span> <span class="o">{</span>
+				<span class="n">result</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">desc</span><span class="o">,</span> <span class="nc">VirtualMachine</span><span class="o">.</span><span class="na">attach</span><span class="o">(</span><span class="n">vmd</span><span class="o">));</span>
+			<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span> 
+			<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">AttachNotSupportedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span> 
+			<span class="o">}</span>
+		<span class="o">}</span>	
+		<span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="nc">JMXConnector</span> <span class="nf">getLocalConnection</span><span class="o">(</span><span class="nc">VirtualMachine</span> <span class="n">vm</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="nc">Properties</span> <span class="n">props</span> <span class="o">=</span> <span class="n">vm</span><span class="o">.</span><span class="na">getAgentProperties</span><span class="o">();</span>
+			<span class="nc">String</span> <span class="n">connectorAddress</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="no">CONNECTOR_ADDRESS_PROPERTY</span><span class="o">);</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">connectorAddress</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			   <span class="n">props</span> <span class="o">=</span> <span class="n">vm</span><span class="o">.</span><span class="na">getSystemProperties</span><span class="o">();</span>
+			   <span class="nc">String</span> <span class="n">home</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">"java.home"</span><span class="o">);</span>
+			   <span class="nc">String</span> <span class="n">agent</span> <span class="o">=</span> <span class="n">home</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="s">"lib"</span> <span class="o">+</span> <span class="nc">File</span><span class="o">.</span><span class="na">separator</span> <span class="o">+</span> <span class="s">"management-agent.jar"</span><span class="o">;</span>
+			   <span class="n">vm</span><span class="o">.</span><span class="na">loadAgent</span><span class="o">(</span><span class="n">agent</span><span class="o">);</span>
+			   <span class="n">props</span> <span class="o">=</span> <span class="n">vm</span><span class="o">.</span><span class="na">getAgentProperties</span><span class="o">();</span>
+			   <span class="n">connectorAddress</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="no">CONNECTOR_ADDRESS_PROPERTY</span><span class="o">);</span>
+			<span class="o">}</span>
+			
+			<span class="nc">JMXServiceURL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JMXServiceURL</span><span class="o">(</span><span class="n">connectorAddress</span><span class="o">);</span>
+			<span class="k">return</span> <span class="nc">JMXConnectorFactory</span><span class="o">.</span><span class="na">connect</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+			<span class="n">errorString</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">();</span>
+			<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="nc">JMXConnector</span> <span class="nf">getRemoteConnection</span><span class="o">(</span><span class="nc">String</span> <span class="n">host</span><span class="o">,</span> <span class="kt">int</span> <span class="n">port</span><span class="o">,</span> <span class="nc">String</span> <span class="n">user</span><span class="o">,</span> <span class="nc">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="nc">JMXServiceURL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JMXServiceURL</span><span class="o">(</span><span class="s">"service:jmx:rmi:///jndi/rmi://"</span><span class="o">+</span><span class="n">host</span><span class="o">+</span><span class="s">":"</span><span class="o">+</span><span class="n">port</span><span class="o">+</span><span class="s">"/jmxrmi"</span><span class="o">);</span>
+			<span class="kd">final</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">[]&gt;</span> <span class="n">environment</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">[]&gt;();</span>
+			<span class="n">environment</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nc">JMXConnector</span><span class="o">.</span><span class="na">CREDENTIALS</span><span class="o">,</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[]</span> <span class="o">{</span><span class="n">user</span><span class="o">,</span> <span class="n">password</span><span class="o">}</span> <span class="o">);</span>
+	        <span class="k">return</span> <span class="nc">JMXConnectorFactory</span><span class="o">.</span><span class="na">connect</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">environment</span><span class="o">);</span>
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+			<span class="n">errorString</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">();</span>
+			<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="nc">JMXConnector</span> <span class="nf">getConnector</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">connector</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getError</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">errorString</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">localButton</span><span class="o">.</span><span class="na">isSelected</span><span class="o">())</span> <span class="o">{</span>
+			<span class="n">connector</span> <span class="o">=</span> <span class="n">getLocalConnection</span><span class="o">(</span><span class="n">localEngines</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">typeList</span><span class="o">.</span><span class="na">getSelectedItem</span><span class="o">()));</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="k">try</span> <span class="o">{</span>
+				<span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">portField</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+				<span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">passField</span><span class="o">.</span><span class="na">getPassword</span><span class="o">());</span>
+				<span class="n">connector</span> <span class="o">=</span> <span class="n">getRemoteConnection</span><span class="o">(</span><span class="n">hostField</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">port</span><span class="o">,</span> <span class="n">userField</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span> <span class="n">password</span><span class="o">);</span>
+			<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">NumberFormatException</span> <span class="n">nfe</span><span class="o">)</span> <span class="o">{</span>
+				<span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="nc">JOptionPane</span><span class="o">.</span><span class="na">getRootFrame</span><span class="o">(),</span> <span class="s">"Invalid port number"</span><span class="o">,</span>
+		        	    <span class="s">"Connection error"</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">ERROR_MESSAGE</span><span class="o">);</span>
+				<span class="k">return</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="n">setVisible</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">keyPressed</span><span class="o">(</span><span class="nc">KeyEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">remoteButton</span><span class="o">.</span><span class="na">setSelected</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">keyReleased</span><span class="o">(</span><span class="nc">KeyEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">remoteButton</span><span class="o">.</span><span class="na">setSelected</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">keyTyped</span><span class="o">(</span><span class="nc">KeyEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">remoteButton</span><span class="o">.</span><span class="na">setSelected</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

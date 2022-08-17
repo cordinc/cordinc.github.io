@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Line / Plane Intersection in Unity3D</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>March 26, 2012</b>
+<h4>Line / Plane Intersection in Unity3D</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+    
+<br/><br/>
+<p>In a recent <a href="http://unity3d.com/">Unity3D</a> game prototype I needed to
+determine the point of intersection between a line and plane. A player
+would click on the screen where they wanted their spaceship to go, and I
+needed to work out where that actually was in the world coordinates. The
+line is defined by the camera point and the point on the screen clicked
+(as given by <code class="highlighter-rouge">camera.ScreenToWorldPoint</code>). The plane was the spaceship
+(assuming no up or down movement).</p>
+
+<p><img src="/assets/posts/technical/line_plane.png" alt="" /></p>
+
+<p>If the line was intersecting an object in the scene then this could be
+easily achieved with Unity3D’s built in functions. In this case by
+casting a ray from the camera and finding the objects it hits (see the
+<a href="http://unity3d.com/support/documentation/ScriptReference/Physics.Raycast.html">Raycast help
+page</a>).
+However, my prototype is set in space, there is no object there to hit
+other than a small spaceship.</p>
+
+<p>First, let’s work out the equation of the line from the camera (point
+‘c’) and the mouse click (point ‘m’). We can get the position of the
+camera with <code class="highlighter-rouge">var c = camera.transform.position</code> and the position of the
+mouse click with:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">ScreenToWorldPoint</span><span class="p">(</span><span class="nx">Vector3</span><span class="p">(</span><span class="nx">Input</span><span class="p">.</span><span class="nx">mousePosition</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">Input</span><span class="p">.</span><span class="nx">mousePosition</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">));</span> </code></pre></figure>
+
+<p>Note that in the above, the third vector parameter (the Z value) in the
+<code class="highlighter-rouge">ScreenToWorldPoint</code> call is the distance from the camera of the
+resulting point. Thus if 0 or <code class="highlighter-rouge">mousePosition.z</code> (which is also 0) is
+used then the resulting point is just the camera location itself. Here I
+have used a distance of 100 to make sure there is a good separation
+between the points describing the line. The <a href="http://mathworld.wolfram.com/Point-LineDistance3-Dimensional.html">general equation of a line
+in 3
+dimensions</a>
+is (for the points c &amp; m):</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">[</span><span class="nx">c</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">x</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">z</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">z</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">z</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">]</span></code></pre></figure>
+
+<p>So to find the point of intersection requires solving that
+simultaneously with the equation of the plane. Here is where my scenario
+gets easy. The plane this line intersects with in my game is the
+horizontal plane the spaceship is current on. That is the plane is
+described by:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">y</span> <span class="o">=</span> <span class="nx">spaceship</span><span class="p">.</span><span class="nx">y</span></code></pre></figure>
+
+<p>At some point on the line the following holds as long as the line
+intersects at some point:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">spaceship</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span></code></pre></figure>
+
+<p>which means:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">==</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// no intersection</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+   <span class="nx">t</span> <span class="o">=</span> <span class="p">(</span><span class="nx">spaceship</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span> 
+<span class="p">}</span></code></pre></figure>
+
+<p>The case <code class="highlighter-rouge">m.y == c.y</code> denotes the case where the line does not intersect
+the plane. What happens here is up to you. With the value of ‘t’ known
+the equation for the line can be solved to give the point of
+intersection. Done.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

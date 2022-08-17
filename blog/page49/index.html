@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+
+  <span class="date">March 17, 2012</span>
+  <h4><a href="/blog/2012/03/la-trobe-university-archaeolog.html">La Trobe University Archaeology</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/History.html">History</a>, 
+    
+      <a class="post" href="/blog/tag/Podcasts.html">Podcasts</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Available from
+<a href="http://itunes.apple.com/gb/itunes-u/archaeology/id394588178">iTunes</a> or
+from the <a href="http://www.latrobe.edu.au/news/podcasts">La Trobe University Podcasts
+page</a> (but they will have to be
+found individually as there does not appear to be a series webpage).</p>
+
+<p>This is a series of talks and interviews from the La Trobe University
+Archaeology department. The topics vary wildly, from the traditional
+Ancient Egypt and Cyprus, to relatively modern digs in <a href="http://en.wikipedia.org/wiki/Melbourne">Melbourne
+city</a> (founded in 1835). As the
+series is archaeologically focussed there is more emphasis on the
+extraction and identification of objects than history. At present there
+are 12 episodes - 2 are short videos (around 3 minutes) and the
+remainder are audio only. Two of the audio podcasts are hour long
+scholarly presentations, while the other 8 are interviews of between 15
+to 20 minutes duration. There may be more episodes in the series as the
+entries so far have trickled in over the last 2 years. Production
+quality is high for the whole series.</p>
+
+<p>There are two podcasts on archaeology in
+<a href="http://en.wikipedia.org/wiki/Oceania">Oceania</a>, particularly
+<a href="http://en.wikipedia.org/wiki/Hawaii">Hawaii</a>. One is an academic
+presentation, while the other is an interview with the same presenter on
+the same topic. There is some talk on
+<a href="http://en.wikipedia.org/wiki/Collapse:_How_Societies_Choose_to_Fail_or_Succeed">Jared
+Diamond’s Collapse book</a>. Diamond suggests that society on the
+Polynesian island <a href="http://en.wikipedia.org/wiki/Mangareva">Mangareva</a>
+due to overforestation. However, the presenter’s research suggests
+instead that the deforestation was caused by a lack of phosphorus in the
+soil due to the killing of sea birds. The discussion of Hawaii is
+similarly focussed on the affect of intensive cultivation on soil
+quality. Unsurprisingly the indigenous people started agriculture on the
+best land and as population grew, expanded out to less productive land.
+Once all arable areas were cultivated, the land became more subdivided
+and population growth slowed. Also there is evidence of political
+consolidation beginning around the same time.</p>
+
+<p>Another paired presentation and interview discuss excavations at the
+ancient Egyptian capital
+<a href="http://en.wikipedia.org/wiki/Akhetaton">Amarna</a>. They are focussed on
+the industry of the time - in particular small metal work and glazed
+pottery. Details of the materials used are probed with
+<a href="http://en.wikipedia.org/wiki/Synchrotron">synchrotrons</a> and a bit of
+experimental archaeology is conducted to determine the techniques used
+to manufacture them.</p>
+
+<p>Another episode details the search for ships lost in Vietnam by the
+Chinese emperor <a href="http://en.wikipedia.org/wiki/Kublai_Khan">Kublai Khan</a>
+at the
+<a href="http://en.wikipedia.org/wiki/Battle_of_B%E1%BA%A1ch_%C4%90%E1%BA%B1ng_(1288)">Battle
+of Bach Dang</a>. Three episodes (including both video podcasts) discuss
+the tools and evolution of early humans, especially the position in the
+evolutionary tree of some complete skeletons recently found in
+<a href="http://en.wikipedia.org/wiki/Sediba">Sediba</a>. There is also an
+interview about bronze age burials in Cyprus and other podcasts focus on
+the archaeological difficulties and discoveries underwater or in cities.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">March 10, 2012</span>
+  <h4><a href="/blog/2012/03/navigablemap-timebased-caches.html">NavigableMap & time-based caches</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I often find myself writing time-based caches. Something like storing
+the last X hours of ticks from a data feed. Most teams I join usually
+have a utility class to help with such tasks. In a recent move I joined
+a team that didn’t have such a utility, but did have a need for such a
+cache. Before coding, I thought I do a quick check to see if anything
+new had come along to help. At this point I discovered the Java 6
+<a href="http://docs.oracle.com/javase/6/docs/api/java/util/NavigableMap.html">NavigableMap</a>
+interface.</p>
+
+<p>NavigableMap defines a type of sorted map with handy methods for
+obtaining submaps. So to get a map of the entries greater than a
+particular value use the <code class="highlighter-rouge">tailMap</code> method. The corresponding method for
+the submap less than a value is <code class="highlighter-rouge">headMap</code>. These methods return a view
+on the original map. So changes to the submap are reflected in the
+original map. The JDK provides
+<a href="http://docs.oracle.com/javase/6/docs/api/java/util/concurrent/ConcurrentSkipListMap.html">concurrent</a>
+and
+<a href="http://docs.oracle.com/javase/6/docs/api/java/util/TreeMap.html">non-concurrent</a>
+implementations of the interface.</p>
+
+<p>This is very useful for a time-based cache. Create a NavigableMap sorted
+on the time (I used the epoch milliseconds returned by
+<code class="highlighter-rouge">System.currentTimeMillis()</code>) then <code class="highlighter-rouge">tailMap</code> returns the entries younger
+than a given time, and <code class="highlighter-rouge">headMap</code> those older. So to trim the cache of
+entries older than a certain time use
+<code class="highlighter-rouge">headMap(System.currentTimeMillis() - maxAge).clear()</code>. So easy!</p>
+
+<p>Here is a complete time-based cache class for use as an example.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TimeSeriesCache</span><span class="o">&lt;</span><span class="no">V</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MILLIS_IN_MINUTE</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">CLEAR_OLD_PERIOD_MINUTES</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">NavigableMap</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;</span> <span class="n">series</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ConcurrentSkipListMap</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;();</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">TickListener</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span> <span class="nc">Long</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;&gt;</span> <span class="n">subscribers</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">TimeSeriesCache</span><span class="o">(</span><span class="kt">int</span> <span class="n">maxAgeMinutes</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">maxAgeMinutes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">final</span> <span class="kt">int</span> <span class="n">maxAge</span> <span class="o">=</span> <span class="n">maxAgeMinutes</span> <span class="o">*</span> <span class="no">MILLIS_IN_MINUTE</span><span class="o">;</span>
+            <span class="nc">Executors</span><span class="o">.</span><span class="na">newSingleThreadScheduledExecutor</span><span class="o">().</span><span class="na">scheduleWithFixedDelay</span><span class="o">(</span>
+                    <span class="k">new</span> <span class="nf">Runnable</span><span class="o">()</span> <span class="o">{</span>
+                        <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"boxing"</span><span class="o">)</span>
+                        <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                            <span class="n">series</span><span class="o">.</span><span class="na">headMap</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">maxAge</span><span class="o">).</span><span class="na">clear</span><span class="o">();</span>
+
+                        <span class="o">}</span>
+                    <span class="o">},</span> <span class="no">CLEAR_OLD_PERIOD_MINUTES</span><span class="o">,</span> <span class="no">CLEAR_OLD_PERIOD_MINUTES</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MINUTES</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Collection</span><span class="o">&lt;</span><span class="no">V</span><span class="o">&gt;</span> <span class="nf">getSeriesAfter</span><span class="o">(</span><span class="nc">Long</span> <span class="n">fromTimestamp</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="na">tailMap</span><span class="o">(</span><span class="n">fromTimestamp</span><span class="o">).</span><span class="na">values</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="no">V</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">series</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">(),</span> <span class="n">value</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="nc">Long</span> <span class="n">timestamp</span><span class="o">,</span> <span class="no">V</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">series</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+
+  </div>
+  <hr/>
+
+  <span class="date">March  3, 2012</span>
+  <h4><a href="/blog/2012/03/kuala-lumpur.html">Kuala Lumpur</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/General.html">General</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I’m not sure how many people who read this blog actually know me in
+person - probably very few. However, for those that do, I am moving.
+Towards the end of the year (the exact date is still uncertain), I’m
+physically moving to <a href="http://en.wikipedia.org/wiki/Kuala_Lumpur">Kuala
+Lumpur</a>. Virtual location
+(email, website, etc) will remained unchanged. It is not yet known what
+I’ll be doing there - there are some work visa issues to be sorted out.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">February 26, 2012</span>
+  <h4><a href="/blog/2012/02/game-reviews-again.html">Game Reviews Again</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Games.html">Games</a>, 
+    
+      <a class="post" href="/blog/tag/Video Games.html">Video Games</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Almost exactly six months ago I wrote a <a href="http://www.cordinc.com/blog/2011/08/modern-gaming.html">review of some modern computer
+games</a>. All were
+well known, and I said they were all excellent. I even suggested that
+computer games were in a golden age - better than ever before. Now I
+have completed 3 more well known, highly regarded, recent games. How did
+they do in comparison? Not as well unfortunately.</p>
+
+<p>First up I played
+<a href="http://en.wikipedia.org/wiki/Call_of_Duty_4:_Modern_Warfare">Call
+Of Duty 4: Modern Warfare</a>, the original 2007 Modern Warfare game
+which spawned the incredibly popular series of <a href="http://en.wikipedia.org/wiki/First-person_shooter">first-person
+shooters</a> of the same
+name. At first I was impressed with the intensity of this game. However,
+the fast pace quickly slows with realisation there is essentially no
+penalty to getting shot. Death is a mere slight pause. I felt like I was
+on rails, being led through the action. The game was just a reaction
+speed test. Multiplayer is probably better, but I didn’t play that - I
+doubt my reactions are fast enough. The story is ok, nothing special.
+Although I did detect a possible subtle satire on war - but that could
+just be me. The story is most notable for a couple of impressive famous
+scenes (the nuke level and the gunship level) that do work very well.
+This game is probably too linear and twitchy for me.</p>
+
+<p>Next up I played
+<a href="http://en.wikipedia.org/wiki/Assassin's_Creed:_Brotherhood">Assasins
+Creed: Brotherhood</a>. I was particularly looking forward to this game
+because of its open world setting in medieval Rome. Certainly the
+graphics are beautiful and I enjoyed wandering around the ruins of Rome.
+But the controls! This game was incredibly frustrating - it was hard to
+get my avatar to perform as intended. I tried for many hours (28 total),
+but still found myself often shouting at the computer and cursing the
+clumsy controls. Eventually I just raced to finish the main story.
+Incidently, the story is very silly and not worth discussing. This game
+could have been so much better, but is just annoying.</p>
+
+<p>Just a few days ago I completed
+<a href="http://en.wikipedia.org/wiki/BioShock">Bioshock</a>. This is an excellent
+game, restoring my belief in modern gaming after the previous two
+disappointments. The Ayn Rand-gone-wild underwater setting is
+incredible. The art-deco and slightly cartoony (but I think that was the
+point) graphics are decent. I often found myself just walking around
+looking at the banners and architecture. Most importantly the controls
+were super smooth. The game was also quite intense, particularly at the
+start and end. Sometimes I jumped at a surprising action or went looking
+for someone I could hear nearby. It is interesting that both this game
+and Mass Effect 2, give the player some small choices that make minor
+differences to gameplay, as opposed to the lack of agency in Modern
+Warfare. A little choice (even if it is fairly inconsequential in plot
+terms) goes a long way in making the player feel involved.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">February 19, 2012</span>
+  <h4><a href="/blog/2012/02/rio-tinto-rtd-continued.html">Rio Tinto R&TD (continued)</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
+    
+      <a class="post" href="/blog/tag/Rio Tinto.html">Rio Tinto</a>, 
+    
+      <a class="post" href="/blog/tag/Work.html">Work</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>After joining Knowledge-based Systems at Rio Tinto R&amp;TD, my first task
+was working on the MineSim project. This was a very successful
+application to simulate minesites. To do this a user would define the
+topology/geology of a mine, the equipment/personnel available and the
+goals to pursue. The program would then simulate the mine minute by
+minute. New blocks would be blown when ready, little loaders would muck
+out the ore from the block and large trucks moved round the mine,
+picking up ore and driving back to the dumps.</p>
+
+<p class='more'><br/><a href='/blog/2012/02/rio-tinto-rtd-continued.html'>Read the rest of this entry</a></p>
+  </div>
+  <hr/>
+
+
+<!-- Pagination links -->
+<div id="post-pagination" class="pagination">
+  Page 49 of 86 
+  
+      
+        <a href="/blog/page48">Previous</a>
+      
+  
+
+  
+      <a href="/blog/page50">Next</a>
+  
+</div>
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

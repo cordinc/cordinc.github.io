@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Java NIO server example</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>August  7, 2010</b>
+<h4>Java NIO server example</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>I was looking to learn how to write a <a href="http://en.wikipedia.org/wiki/Asynchronous_I/O">non-blocking
+IO</a> server in Java, but
+couldn’t find one that suited my needs online. I found
+<a href="http://javanioserver.sourceforge.net/doc/index.html">this</a> example, but
+it didn’t handle my situation. There is also <a href="http://mina.apache.org/">Apache
+MINA</a>, but it was a little complex for my
+simple needs. So armed with these examples and a couple of tutorials
+(<a href="http://www.ibm.com/developerworks/java/tutorials/j-nio/resources.html">here</a>
+and
+<a href="http://www.java2s.com/Code/Java/Network-Protocol/Nonblockserver.htm">here</a>),
+I created my own.</p>
+
+<!--more-->
+
+<p>My code is <a href="/projects/nio.zip">available here</a>. It is an example so feel
+free to modify it as required. It consists of an abstract non-blocking
+server and a matching blocking client. Create concrete implementations
+to use them - code showing example usage is in the tests. Both are
+designed to be run in their own thread (thus the use of the Runnable
+interface), and are single threaded - more on the concurrency options
+later. The client is blocking as it only connects to a single server and
+runs in its own thread, thus it will still have to wait for messages
+from the server so there is no benefit to making it non-blocking. The
+server only handles standard TCP connections. If UDP, SSL or something
+else is required you will need to add it yourself.</p>
+
+<p>In writing this code I learnt a few things. Apart from the standard API
+calls to open and manage connections it is useful to know the differing
+use of selection keys, the tricks of message handling, and threading
+issues.</p>
+
+<p>The basics of opening and handling a connection are commonly available
+on the web and repeated in the simplified code block below (with some
+bits cut out - the full version is in the <a href="/projects/nio.zip">code
+download</a>). Start by opening a Selector (a
+multiplexor for network channels) with each channel denoted by a
+SelectionKey. Then open a server socket on a specified port. By
+registering the socket with the selector for OP_ACCEPT events, any
+incoming connections will be available on the selector. The code below
+then loops forever waiting for events on the selector. When it gets one,
+if it is a connection request, it accepts the connection and registers
+an interest in messages sent on that connection (via the OP_READ
+registration). If it is a message (key.isReadable()), then the code to
+handle the message has yet to be written. The code below is also quite
+brittle, any error will result in the server completely stopping.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Selector</span> <span class="n">selector</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="nc">ServerSocketChannel</span> <span class="n">server</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="k">try</span> <span class="o">{</span> 
+	<span class="n">selector</span> <span class="o">=</span> <span class="nc">Selector</span><span class="o">.</span><span class="na">open</span><span class="o">();</span> 
+	<span class="n">server</span> <span class="o">=</span> <span class="nc">ServerSocketChannel</span><span class="o">.</span><span class="na">open</span><span class="o">();</span> 
+	<span class="n">server</span><span class="o">.</span><span class="na">socket</span><span class="o">().</span><span class="na">bind</span><span class="o">(</span><span class="k">new</span> <span class="nc">InetSocketAddress</span><span class="o">(</span><span class="n">port</span><span class="o">));</span> 
+	<span class="n">server</span><span class="o">.</span><span class="na">configureBlocking</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span> 
+	<span class="n">server</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">selector</span><span class="o">,</span> <span class="nc">SelectionKey</span><span class="o">.</span><span class="na">OP_ACCEPT</span><span class="o">);</span> 
+	<span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">selector</span><span class="o">.</span><span class="na">select</span><span class="o">();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">SelectionKey</span><span class="o">&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="na">selectedKeys</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span> <span class="n">i</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();)</span> <span class="o">{</span> 
+			<span class="nc">SelectionKey</span> <span class="n">key</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="na">next</span><span class="o">();</span> 
+			<span class="n">i</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span> 
+			<span class="k">if</span> <span class="o">(</span><span class="n">key</span><span class="o">.</span><span class="na">isConnectable</span><span class="o">())</span> <span class="o">{</span> 
+				<span class="o">((</span><span class="nc">SocketChannel</span><span class="o">)</span><span class="n">key</span><span class="o">.</span><span class="na">channel</span><span class="o">()).</span><span class="na">finishConnect</span><span class="o">();</span> 
+			<span class="o">}</span> 
+			<span class="k">if</span> <span class="o">(</span><span class="n">key</span><span class="o">.</span><span class="na">isAcceptable</span><span class="o">())</span> <span class="o">{</span> 
+				<span class="c1">// accept connection </span>
+				<span class="nc">SocketChannel</span> <span class="n">client</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="na">accept</span><span class="o">();</span> 
+				<span class="n">client</span><span class="o">.</span><span class="na">configureBlocking</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span> 
+				<span class="n">client</span><span class="o">.</span><span class="na">socket</span><span class="o">().</span><span class="na">setTcpNoDelay</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> 
+				<span class="n">client</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">selector</span><span class="o">,</span> <span class="nc">SelectionKey</span><span class="o">.</span><span class="na">OP_READ</span><span class="o">);</span>
+			<span class="o">}</span> 
+			<span class="k">if</span> <span class="o">(</span><span class="n">key</span><span class="o">.</span><span class="na">isReadable</span><span class="o">())</span> <span class="o">{</span> 
+				<span class="c1">// ...read messages...</span>
+			<span class="o">}</span> 
+		<span class="o">}</span>
+	<span class="o">}</span>   		
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Throwable</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> 
+	<span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"Server failure: "</span><span class="o">+</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+	<span class="k">try</span> <span class="o">{</span>
+		<span class="n">selector</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+		<span class="n">server</span><span class="o">.</span><span class="na">socket</span><span class="o">().</span><span class="na">close</span><span class="o">();</span>
+		<span class="n">server</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+		<span class="n">stopped</span><span class="o">();</span>
+	<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// do nothing - server failed</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>One thing to note about selection keys is that they do not represent a
+socket. Instead they are a channel registered with the selector. Thus
+the event to open a connection from a client (the OP_ACCEPT event) will
+be on a different key to the messages sent (the OP_READ events) from
+that client. This means that different types of events from the same
+client will be on different keys. Don’t try to compare them. The benefit
+of this is that the different events can be registered with different
+selectors (the reason to do this is threading - detailed below).</p>
+
+<p>When reading a message there are a number of situations to consider.
+When reading from the connection the resulting data might not contain
+all of a message (the remainder arriving at some later time) or it may
+contain more than one message. Thus some way of denoting the end of a
+message must be considered. Then the reading code must buffer input data
+and split it up into messages. Common ways of denoting the end of a
+message are:</p>
+
+<ol>
+  <li>a fixed message size</li>
+  <li>prefixing the message with the size of the message</li>
+  <li>a special symbol representing the end of the message</li>
+</ol>
+
+<p>My code uses the second method. Each method is prefixed with 2 bytes
+containing the number of bytes in the rest of the message (thus limiting
+the message to less than 65535 bytes). Also data is read in using
+<a href="http://download-llnw.oracle.com/javase/6/docs/api/java/nio/ByteBuffer.html">ByteBuffers</a>,
+so it is useful to have a code understanding of how to use them (check
+the <a href="http://download-llnw.oracle.com/javase/6/docs/api/java/nio/ByteBuffer.html">API
+link</a>
+for a starting point). The code below reads the data and passes it to
+readMessage method to be split up into discrete messages. Note the use
+of the readBuffer. The default buffer size should be set such that it is
+as small as possible, but at the same time not so small that messages
+are regularly larger than the buffer. The smaller the buffer, the faster
+it can be processed. However, if a message received is larger than the
+buffer, the buffer must be resized to handle it.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ByteBuffer</span><span class="o">&gt;</span> <span class="nf">readIncomingMessage</span><span class="o">(</span><span class="nc">SelectionKey</span> <span class="n">key</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span> 
+	<span class="nc">ByteBuffer</span> <span class="n">readBuffer</span> <span class="o">=</span> <span class="n">readBuffers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">);</span> 
+	<span class="k">if</span> <span class="o">(</span><span class="n">readBuffer</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">readBuffer</span> <span class="o">=</span> <span class="nc">ByteBuffer</span><span class="o">.</span><span class="na">allocate</span><span class="o">(</span><span class="n">defaultBufferSize</span><span class="o">);</span> 
+		<span class="n">readBuffers</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">readBuffer</span><span class="o">);</span> 
+	<span class="o">}</span>
+	<span class="k">if</span> <span class="o">(((</span><span class="nc">ReadableByteChannel</span><span class="o">)</span><span class="n">key</span><span class="o">.</span><span class="na">channel</span><span class="o">()).</span><span class="na">read</span><span class="o">(</span><span class="n">readBuffer</span><span class="o">)==-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">throw</span> <span class="k">new</span> <span class="nf">IOException</span><span class="o">(</span><span class="s">"Read on closed key"</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="n">readBuffer</span><span class="o">.</span><span class="na">flip</span><span class="o">();</span> 
+	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">ByteBuffer</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ByteBuffer</span><span class="o">&gt;();</span>
+	   	
+	<span class="nc">ByteBuffer</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">readMessage</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">readBuffer</span><span class="o">);</span>
+	<span class="k">while</span> <span class="o">(</span><span class="n">msg</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+		<span class="n">msg</span> <span class="o">=</span> <span class="n">readMessage</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">readBuffer</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+ 	<span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Here is the code I used to split the buffered data into messages.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="nc">ByteBuffer</span> <span class="nf">readMessage</span><span class="o">(</span><span class="nc">SelectionKey</span> <span class="n">key</span><span class="o">,</span> <span class="nc">ByteBuffer</span> <span class="n">readBuffer</span><span class="o">)</span> <span class="o">{</span>
+	<span class="kt">int</span> <span class="n">bytesToRead</span><span class="o">;</span> 
+	<span class="k">if</span> <span class="o">(</span><span class="n">readBuffer</span><span class="o">.</span><span class="na">remaining</span><span class="o">()&gt;</span><span class="n">messageLength</span><span class="o">.</span><span class="na">byteLength</span><span class="o">())</span> <span class="o">{</span> <span class="c1">// must have at least enough bytes to read the size of the message	</span>
+ 		<span class="kt">byte</span><span class="o">[]</span> <span class="n">lengthBytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">messageLength</span><span class="o">.</span><span class="na">byteLength</span><span class="o">()];</span>
+		<span class="n">readBuffer</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">lengthBytes</span><span class="o">);</span>
+		<span class="n">bytesToRead</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">messageLength</span><span class="o">.</span><span class="na">bytesToLength</span><span class="o">(</span><span class="n">lengthBytes</span><span class="o">);</span>
+		<span class="k">if</span> <span class="o">((</span><span class="n">readBuffer</span><span class="o">.</span><span class="na">limit</span><span class="o">()-</span><span class="n">readBuffer</span><span class="o">.</span><span class="na">position</span><span class="o">())&lt;</span><span class="n">bytesToRead</span><span class="o">)</span> <span class="o">{</span> 
+			<span class="c1">// Not enough data - prepare for writing again </span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">readBuffer</span><span class="o">.</span><span class="na">limit</span><span class="o">()==</span><span class="n">readBuffer</span><span class="o">.</span><span class="na">capacity</span><span class="o">())</span> <span class="o">{</span>
+	    		<span class="c1">// message may be longer than buffer =&gt; resize buffer to message size</span>
+				<span class="kt">int</span> <span class="n">oldCapacity</span> <span class="o">=</span> <span class="n">readBuffer</span><span class="o">.</span><span class="na">capacity</span><span class="o">();</span>
+				<span class="nc">ByteBuffer</span> <span class="n">tmp</span> <span class="o">=</span> <span class="nc">ByteBuffer</span><span class="o">.</span><span class="na">allocate</span><span class="o">(</span><span class="n">bytesToRead</span><span class="o">+</span><span class="n">messageLength</span><span class="o">.</span><span class="na">byteLength</span><span class="o">());</span>
+				<span class="n">readBuffer</span><span class="o">.</span><span class="na">position</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+				<span class="n">tmp</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">readBuffer</span><span class="o">);</span>
+				<span class="n">readBuffer</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">;</span>   				
+				<span class="n">readBuffer</span><span class="o">.</span><span class="na">position</span><span class="o">(</span><span class="n">oldCapacity</span><span class="o">);</span> 
+    			<span class="n">readBuffer</span><span class="o">.</span><span class="na">limit</span><span class="o">(</span><span class="n">readBuffer</span><span class="o">.</span><span class="na">capacity</span><span class="o">());</span> 
+				<span class="n">readBuffers</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">readBuffer</span><span class="o">);</span> 
+	    		<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+	    	<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+	    		<span class="c1">// rest for writing</span>
+    			<span class="n">readBuffer</span><span class="o">.</span><span class="na">position</span><span class="o">(</span><span class="n">readBuffer</span><span class="o">.</span><span class="na">limit</span><span class="o">());</span> 
+    			<span class="n">readBuffer</span><span class="o">.</span><span class="na">limit</span><span class="o">(</span><span class="n">readBuffer</span><span class="o">.</span><span class="na">capacity</span><span class="o">());</span> 
+    			<span class="k">return</span> <span class="kc">null</span><span class="o">;</span> 
+	    	<span class="o">}</span>
+		<span class="o">}</span> 
+	<span class="o">}</span> <span class="k">else</span> <span class="o">{</span> 
+		<span class="c1">// Not enough data - prepare for writing again </span>
+		<span class="n">readBuffer</span><span class="o">.</span><span class="na">position</span><span class="o">(</span><span class="n">readBuffer</span><span class="o">.</span><span class="na">limit</span><span class="o">());</span> 
+		<span class="n">readBuffer</span><span class="o">.</span><span class="na">limit</span><span class="o">(</span><span class="n">readBuffer</span><span class="o">.</span><span class="na">capacity</span><span class="o">());</span> 
+		<span class="k">return</span> <span class="kc">null</span><span class="o">;</span> 
+	<span class="o">}</span> 
+	<span class="kt">byte</span><span class="o">[]</span> <span class="n">resultMessage</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">bytesToRead</span><span class="o">];</span>
+	<span class="n">readBuffer</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">resultMessage</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">bytesToRead</span><span class="o">);</span> 
+	<span class="c1">// remove read message from buffer</span>
+	<span class="kt">int</span> <span class="n">remaining</span> <span class="o">=</span> <span class="n">readBuffer</span><span class="o">.</span><span class="na">remaining</span><span class="o">();</span>
+	<span class="n">readBuffer</span><span class="o">.</span><span class="na">limit</span><span class="o">(</span><span class="n">readBuffer</span><span class="o">.</span><span class="na">capacity</span><span class="o">());</span>
+	<span class="n">readBuffer</span><span class="o">.</span><span class="na">compact</span><span class="o">();</span>
+	<span class="n">readBuffer</span><span class="o">.</span><span class="na">position</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+	<span class="n">readBuffer</span><span class="o">.</span><span class="na">limit</span><span class="o">(</span><span class="n">remaining</span><span class="o">);</span>
+	<span class="k">return</span> <span class="nc">ByteBuffer</span><span class="o">.</span><span class="na">wrap</span><span class="o">(</span><span class="n">resultMessage</span><span class="o">);</span>
+<span class="o">}</span> </code></pre></figure>
+
+<p>The example code provided is single threaded - all connections are
+handled by the same thread. It is possible to use multiple threads. On
+an individual key, reading and writing can be done by different threads,
+although only one thread at a time can do either (that is, there can’t
+be 2 threads both reading at the same time). Similarly only one thread
+at a time can use a selector. Single threaded code suited my needs, but
+there seem to be a few ways to handle concurrency. Each of the ways I
+describe uses a pool of threads handling read events, and one selector
+and thread handling OP_ACCEPT events.</p>
+
+<ol>
+  <li>One selector for each connected client. When an accept event is
+received, create a new selector and register for read events on that
+new selector. This selector then has a task to listen and handle
+read events and it is this task executed by the thread pool. I’m not
+sure how heavy a selector is on resource usage, so I don’t know how
+well this would scale.</li>
+  <li>One selector per thread. When creating executor threads assign each
+a selector and then assign clients to each selector in some balanced
+manner. Then each thread handles the read events on its selector.
+This is the method that MINA uses. The problem comes with how the
+threads are balanced (MINA uses a round-robin algorithm) - if not
+careful it is possible to end up with some threads very busy and
+others doing very little.</li>
+  <li>All events on one selector. This then requires some careful
+synchronisation as keys are passed out to the threads to be read
+while ensuring they are not read by other threads until the current
+operation is complete. Selectors would need to be very heavy before
+I could imagine this being the best way.</li>
+</ol>
+
+<p>I’ll leave handling concurrency as a task for the interested reader.
+Good luck with your code. Again, my example is
+<a href="/projects/nio.zip">here</a>.</p>
+
+<p><strong>Update 22nd Dec 2011</strong>: A reader emailed to point out that the
+original tests included a bug. Some of the tests used InputStreamReader
+which decodes bytes into a character stream, and if the characterset
+doesn’t use all 8 bits then the tests will fail for certain message
+lengths (when decoding the header length). I have updated the tests in
+the example to fix this.</p>
+
+<p><strong>Comments:</strong>
+<em>I have removed the commenting system (for privacy concerns), below are the comments that were left on this post before doing so…</em></p>
+
+<p><em>Vic Cekvenich @ 2015-01-20</em> - Hi, this is awesome, I’m using it and it works great. Do you have a suggestion how to make the client synchronous? ie write() return on messageReceived? On way is for me to pass a sequence # on write that server returns onmessage, and then I resolve to a stored callback. Do you have another suggestion?</p>
+
+<p><em>Charles @ 2015-01-20</em> - Hi Vic, glad to hear you find the code useful! How to make the client synchronous? I think your suggestion sounds fine. I think the normal technique is to lock the client until a appropriate response is received. If you need multiple synchronous requests then there needs to be some way of identifying to which request a response belongs. A sequence # seems fine here, or a thread id would also work. Don’t forget to include some sort of timeout and associated error handling. I found this <a href="http://stackoverflow.com/questions/6239480/java-networking-best-practice-mixed-synchronous-asynchronous-commands" rel="nofollow noopener" title="http://stackoverflow.com/questions/6239480/java-networking-best-practice-mixed-synchronous-asynchronous-commands">http://stackoverflow.com/qu…</a>, it says largely the same thing, but it is always nice when someone agrees with you.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

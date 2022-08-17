@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>That old favourite</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>April 29, 2011</b>
+<h4>That old favourite</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>My <a href="http://www.cordinc.com/blog/2011/01/building-a-new-pc.html">new’ish
+PC</a> worked
+fine for its first two months, then disaster struck. For the first time
+in many years I saw that old favourite, the <a href="http://en.wikipedia.org/wiki/Blue_Screen_of_Death">blue screen of
+death</a>. My initial
+investigations (based on the error code STOP 0x00000074) led me the
+wrong way, so this article is to give some Google juice to the
+resolution.</p>
+
+<p><img src="/assets/posts/bsod.jpg" alt="" /></p>
+
+<!--more-->
+
+<p>After getting the BSOD with the code STOP 0x00000074, I couldn’t start
+the PC normally, it would pause just after login and crash before I
+could do anything else. The same problem occurred starting it in <a href="http://en.wikipedia.org/wiki/Safe_mode">Safe
+Mode</a>. Going into Safe Mode with
+just the command prompt (no GUI) meant I could run some commands.
+Running <a href="http://en.wikipedia.org/wiki/CHKDSK">chkdsk</a> on the data drive
+returned no errors - a great relief. However, the Windows drive scan
+crashed the PC again. The OS was on an OCX Vertex2 SSD while the data
+was on a HDD. At this point I hit Google and posted <a href="http://answers.microsoft.com/en-us/windows/forum/windows_7-system/win-7-locks-up-and-bsod/c2da4409-2059-e011-8dfc-68b599b31bf5?page=1&amp;tm=1301503141262">this question on
+the Microsoft
+forums</a>.</p>
+
+<p>The results of searching the Internet suggested the error was in the
+registry or more likely the
+<a href="http://en.wikipedia.org/wiki/Random-access_memory">RAM</a> (see
+<a href="http://support.microsoft.com/kb/326679">here</a>).
+<a href="http://www.memtest.org/">Memtest</a> ran fine and swapping around memory
+sticks made no difference. I was fairly sure it wasn’t the memory. At
+this stage I decided to write off the OS installation and reinstall, but
+the installer said it couldn’t see a drive. The
+<a href="http://en.wikipedia.org/wiki/BIOS">BIOS</a> could see my drive, but
+Windows could not. I tried an Ubuntu CD, different cables and SATA ports - drive still couldn’t be detected by anything other than the BIOS.</p>
+
+<p>At this point the problem was either drive failure on the
+<a href="http://en.wikipedia.org/wiki/Solid-state_drive">SSD</a> (possible) or a
+strange motherboard error (unlikely). To determine which I bought a new
+Crucial SSD (a different brand). When it arrived the next day, I
+installed Windows7 on it with no problems. I then put the OCZ SSD back
+and the same problem reoccurred. Back to the Crucial for a final check
+and it worked fine and is still working to this day.</p>
+
+<p>The problem was the OCZ Vertex2 SDD failing in a manner that made it
+seem like a RAM error.</p>
+
+<p>Postscript: I sent the OCZ drive back to Ebuyer and they send me a new
+one within a week. This weekend I’m going the install Ubuntu on the new
+OCZ drive. In the meantime, the Crucial SSD is working fine and I backup
+a little more often than previously.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

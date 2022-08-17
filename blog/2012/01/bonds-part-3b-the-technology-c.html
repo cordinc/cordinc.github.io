@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Bonds: Part 3b - The Technology continued</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>January  1, 2012</b>
+<h4>Bonds: Part 3b - The Technology continued</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Finance.html">Finance</a>, 
+    
+      <a class="post" href="/blog/tag/Bonds.html">Bonds</a>
+    
+<br/><br/>
+<ul>
+  <li>Part 1 - <a href="http://www.cordinc.com/blog/2011/10/bonds-part-1-the-theory.html">The
+Theory</a></li>
+  <li>Part 2a - <a href="http://www.cordinc.com/blog/2011/10/bonds-part-2a-the-reality.html">The
+Reality</a></li>
+  <li>Part 2b - <a href="http://www.cordinc.com/blog/2011/12/bonds-part-2b-the-reality-cont.html">The Reality
+continued</a></li>
+  <li>Part 3a - <a href="http://www.cordinc.com/blog/2011/12/bonds-part-3a-the-technology.html">The
+Technology</a></li>
+  <li>Part 4 - <a href="http://www.cordinc.com/blog/2012/01/bonds-part-4-the-future.html">The
+Future</a></li>
+  <li><a href="http://www.cordinc.com/blog/2012/01/bonds-addendum.html">Addendum</a></li>
+</ul>
+
+<p>Modern investment trading relies very heavily on technology. Computers
+are now involved in nearly every corner of large banks’ trading
+activities - a big change from more manual processes over 20 years ago.
+It would certainly be impossible to run a EGB primary dealership without
+significant technology expenditure. This post details an overview of the
+technologies I saw on EGB desks.</p>
+
+<!--more-->
+
+<p>I was hired as a <a href="http://java.com">Java</a> expert, so by my very nature I
+mainly worked on Java programs. Still most code written right now (ie.
+not in old legacy systems) in the banks where I worked was Java, and by
+a wide margin. The main exceptions are financial math libraries which
+are always written in C<span class="underline"></span> (by the quant
+teams) and quick to develop, tactical desktop apps usually written in
+Excel VBA. Traders are all very familiar with Excel and use it
+extensively. On more than one occasion my job was to take a VBA app and
+convert it to a faster, more reliable server based application. I heard
+that C# was sometimes used for GUI applications, although they would
+often communicate with Java server processes.</p>
+
+<p>In Java work,
+<a href="http://en.wikipedia.org/wiki/Java_Platform,_Standard_Edition">J2SE</a>
+was used exclusively.
+<a href="http://en.wikipedia.org/wiki/Java_Platform,_Enterprise_Edition">J2EE</a>
+has a very bad reputation as too slow and process heavy.
+<a href="http://www.springsource.org/">Spring</a> is common.
+<a href="http://www.junit.org/">JUnit</a> is used everywhere for unit testing. Same
+with <a href="http://www.atlassian.com/software/jira/overview">Jira</a> for bug
+tracking, but each place I’ve worked used a different build/deploy
+system. Eclipse is the most common IDE, but IntelliJ has a few vocal
+adherents - generally coders can use any IDE they want (as long as it’s
+free).</p>
+
+<p>Servers were always Linux machines. Developer and trader desktops used
+Windows - as people are more familiar with those. Both desktops and
+servers tended to be quite powerful machines, and replaced every couple
+of years. A trader often had 2 or 3 PCs under their desk (if for no
+other reason than to run their 6+ monitors). Server side processes were
+split across multiple machines. One EGB desk had over 20 production
+servers dedicated to their systems - the others were not far behind.
+There was a constant push from infrastructure IT teams to use virtual
+servers to save money, but that never happened with anything that
+involved pricing or quoting. Speed was vital and we had the money.</p>
+
+<p>The whole system was made up of many little programs - most doing a
+single task. Any diagram describing the flow of data around the whole
+system quickly became a mess, even without considering external systems.
+There would be separate applications for position-keeping, risk,
+tracking obligations, connecting to markets, negotiating RFQs,
+straight-through-processing (STP - where a trade automatically goes
+through to backend processing), often a few for pricing, and many more.
+However a trader would normally view and control the internal EGB
+systems through a single monolithic GUI. If more than one GUI was
+required it would always generate complaints. Speed complaints around
+trader GUIs were also very common - understandably because they did so
+much.</p>
+
+<p>Trading necessarily requires dealing with external systems, both outside
+and inside the bank. We would need to pass on our data (via STP) to
+other bank teams for clearing, settlement, accounting, compliance,
+reporting. Similarly we would take in instrument static data
+(information like a bonds payment structure, credit rating, maturity).
+Externally we would connect to multiple markets for quoting, pricing and
+trading. Inside the team communication was sometimes done over bespoke
+socket or <a href="http://en.wikipedia.org/wiki/Java_remote_method_invocation">Java
+RMI</a>, but
+more normally via <a href="http://en.wikipedia.org/wiki/TIBCO_Rendezvous">Tibco
+RV</a> or Ion Marketview
+messaging systems. Inside the bank RV, <a href="http://en.wikipedia.org/wiki/IBM_WebSphere_MQ">IBM
+MQ</a> or Tibco EMS were
+both commonly used. RV is well-entrenched in banks and always had a team
+dedicated to its support, although everyone seemed to be looking for
+better.</p>
+
+<p>Databases weren’t used extensively. Mainly for initialisation data and
+historical data. Anything that was needed for pricing was cached in
+memory or passed over low-latency messaging systems - a database is just
+too slow. Their second-class status meant little effort was put into
+their design. Sybase was quite common. Oracle and SqlServer were around
+too. MySql was strangely absent.</p>
+
+<p>Tick databases, in particular
+<a href="http://en.wikipedia.org/wiki/K_(programming_language)">KDB</a>,
+were also used to varying extents. These are databases specially
+designed to hold large amount of time-series data. We used them to store
+every future price tick, every bond price tick and more. Gigabytes of
+data per day. This data could them be used to analyse market events in
+fine detail or back test new pricing algorithms. At one bank we
+implemented a future pricing algorithm that people (including traders)
+believed gave better prices. At the next bank I worked the same
+algorithm was back tested with data from KDB and proved to offer no
+benefit.</p>
+
+<p>Each market had their own API. These were regularly updated. To get
+around the constant work of writing their own gateways to the markets,
+many banks bought market gateways from Ion. They specialise in
+technology for fixed income banking and started with the market gateways
+and a messaging bus to tie them together called Marketview (often
+abbreviated to Mkv). They now produce a number of other applications to
+do nearly everything in bonds technology - pricing, quoting, RFQ
+negotiation, a GUI, position keeping and more. Every EGB team I worked
+in used Ion products to some extent. But I would be surprised if anyone
+outside for fixed income has heard of them - it is a bit of a niche
+skill.</p>
+
+<p>Ion were commonly hated by management. The company was adept at
+extracting the most money from banks without them deciding to go it
+alone. A few banks did try that (including one where I worked), but came
+back to Ion when they realised the costs involved in writing bespoke
+gateways. I found Mkv an acceptable product. They do messaging in a
+strange non-standard manner, but it worked and that is what counts to
+me.</p>
+
+<p>Most EGB systems were bespoke and written by the EGB team. Utilities
+like messaging and databases were purchased from vendors. It was
+believed that having our own systems which exactly matched the traders
+needs was a competitive advantage. Also, we were incredibly more
+responsive to traders’ functionality requests. Ion applications and
+Bloomberg were the main exceptions. All the traders have Bloomberg
+terminals and used them extensively for market research. Bloomberg was
+generally considered the authoritative source for financial information
+or maths. On two occasions I produced applications that differed from
+Bloomberg in their mathematical outputs. Both times I proved to
+everyones satisfaction that my work was correct and both times I was
+asked to change it to match Bloomberg because “that’s what everyone
+uses”. On one of those occasions Bloomberg fixed their system a month
+later so I had to change my application back to its original algorithm.
+Bloomberg have a reputation for changing their system without prior
+notice - the first time IT teams become aware of the change is when
+their systems break.</p>
+
+<p>The monitoring of production systems is omnipresent. Whenever a new
+system is delivered, one of the first questions support will ask is “how
+can we tell when it goes wrong?” Every bank I’ve worked at has a
+different monitoring system. This always includes a system to scrape log
+files checking for errors or other key terms and then flashing them up
+on support’s screen. Server resources and network traffic are similarly
+monitored. Java applications often have JMX interfaces or bespoke
+administration tools.</p>
+
+<p>Much of modern trading is controlled by computer. Certainly all the
+routine parts are automated so traders can concentrate on more complex
+issues. This includes updating prices and quotes for changes in the
+yield curve on a millisecond scale. It also means trading on behalf of
+the trader. For example, a EGB flow desk at a large bank will receive
+(in the good times) thousands of RFQs on the D2C markets every day. A
+trader would be overwhelmed trying to deal with all these, but in
+reality over 90% are dealt with by an autonegotiation system and never
+seen by a trader until it appears in their PnL. This program
+automatically works out a price to quote based on rules based on various
+parameters including the type of bond, our internal price, the quality
+of the potential client (referred to as tiering), and the bank’s current
+positions. A RFQ that falls outside the rules is passed to the trader
+for a decision, but this is the exception.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

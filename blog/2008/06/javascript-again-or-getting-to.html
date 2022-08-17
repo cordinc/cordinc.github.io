@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Javascript again (or getting tooltips to work with Scriptaculous Sortables)</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>June 24, 2008</b>
+<h4>Javascript again (or getting tooltips to work with Scriptaculous Sortables)</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Javascript.html">Javascript</a>, 
+    
+      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>Update: based on the work I detail here I have created my own
+<a href="http://www.cordinc.com/projects/tooltips.html">Javascript tooltip library based on
+Prototype</a>.</p>
+
+<p>Over a decade ago Borland had an IDE called Intrabuilder, which allowed
+you to create websites in a Visual Basic like manner using Javascript on
+the server. After leaving postgrad study I worked at a now defunct
+dot.com called Electrolley for 9 months using this tool to create an
+online grocery store. Serverside javascript was an idea well ahead of
+its time. Indeed, javascript on the client side in 1997 was crap too.
+Now <a href="http://www.prototypejs.org/">javascript is cool</a> and <a href="http://steve-yegge.blogspot.com/2008/06/rhinos-and-tigers.html">moving
+forward</a>
+(backwards?). With my new project, I need to return to Javascript and
+the last couple of days have been a hard reintroduction.</p>
+
+<p>I am using Prototype and Scriptaculous to make my website as easy to use
+as possible. I also found some random code on the web to do tooltips -
+it almost worked! Applying tooltips to Scriptaculous Sortable elements
+leads to many problems, and I have just finished largely rewriting the
+library.</p>
+
+<ul>
+  <li>After moving some sortable elements the tooltips of the moved
+elements would be displayed underneath the unmoved elements. This is
+because of the way <a href="http://www.boogdesign.com/b2evo/index.php/a/2007/06/05/scriptaculous_draggable_and_z_index">z-index stacking contexts are created in
+browsers</a>.
+In moving an element, Scriptacolous clones it and moves the clone,
+inserting a new element when the element is dropped. This causes the
+dropped item to be in a different z-index stacking context than the
+other items. To get around this, the tooltips need to be drawn
+outside the moved elements context. This can be done by cloning the
+tooltip and then inserting it into the document at a point outside
+the sortable elements’ container. I have explicitly put in the id’s
+to which the tooltips is being attached, they should probably be
+passed in (left as an exercise for the reader).</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tool_tip</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">container</span><span class="dl">"</span><span class="p">).</span><span class="nx">insertBefore</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">main_content</span><span class="dl">"</span><span class="p">));</span></code></pre></figure>
+
+<p>When the tooltip needs to be hidden, just destroy the clone:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Element</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">_clone</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span></code></pre></figure>
+
+<ul>
+  <li>This also means the tooltip needs to be positioned absolutely, so
+ensure you are using absolute screen x &amp; y coordinates.</li>
+  <li>Dragging a sortable element over other elements results in a number
+of mouse events firing as the elements are redrawn. Many of these
+events are consumed by Scriptaculous and not passed on. Thus, the
+tooltips hide and show functions may be called in any order,
+resulting in spurious and permanent copies (since it is cloned) of
+the tooltip all over the screen. To get around this just ensure
+there is only ever once tooltip on the screen at a time, so at the
+top of the show method put</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">hideTooltip</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>It seems simple now I’ve fixed the problems, but it took a couple of
+days to remember my old Javascript knowledge.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

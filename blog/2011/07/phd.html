@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>PhD</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>July 16, 2011</b>
+<h4>PhD</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
+    
+      <a class="post" href="/blog/tag/University.html">University</a>
+    
+<br/><br/>
+<p>After honours I was offered a government scholarship to study for a PhD.
+This was the standard way of financing postgrad study, all the other PhD
+students in the <a href="http://web.csse.uwa.edu.au/">UWA CS department</a> had the
+same scholarship. I started the PhD in January 1996, but by September
+1997 I had deferred the scholarship, started looking for a job and
+unofficially quit my studies. The official end came 6 months later when
+the scholarship was rescinded and a letter arrived saying “don’t ever
+come back” (I paraphrase). I don’t regret that year and a half. I learnt
+a great deal about logic, a little bit about programming and
+substantially more about the world outside of computer science - all
+paid for by the Australian taxpayer (thanks guys!).</p>
+
+<!--more-->
+
+<p>I was lost at the start of my postgrad work. I knew I wanted to do a
+PhD, but not what I wanted to study. This was a bad sign. I knew what I
+didn’t want to do: neural networks, <a href="http://www.cordinc.com/blog/2011/05/honours.html">my Honours
+thesis</a> used them and
+they seemed like statistics-based black boxes. I wanted to see what was
+happening (if only to assure myself it was working in the manner I
+expected). There was a new lecturer, Kym, whose research focused on
+logic. I asked him to supervise me and he suggested my topic <a href="http://www.cordinc.com/blog/2011/07/can-tweety-fly.html">Using
+Non-monotonic Logic to extend Inductive Logic
+Programming</a>. I
+thought that sounded interesting and started going through his suggested
+readings.</p>
+
+<p>Read, read, read. That was almost all I did for the first six months. I
+found it hard going. Maintaining concentration throughout some of the
+longer articles was difficult. Since I didn’t understand my thesis
+completely, I read a lot of papers that weren’t relevant. Especially
+papers on complexity theory as they sometimes had non-monotonic and
+logic in the title. They were particularly dense and not useful to me.
+At this stage the closest I came to coding for my project was working on
+my <a href="http://www.bibtex.org/">BibTeX</a> bibliography. After six months I
+gave a talk to the department and was “locked in” to my project.</p>
+
+<p>Most of the postgrads worked on the ground floor of the CS building,
+grouped by supervisor (and thus roughly by area of research) and placed
+into one of four labs. The Robotics and Computer Vision lab was the
+largest and best funded. They had the best computers and various cool
+robots. I remember at one point they got a server with 768MB of RAM - it
+was the most powerful computer in the department (in 1996). The next
+largest lab was the AI lab. It was just a set of desks and dividers
+creating little cubicles. The people in there didn’t talk much to other
+people - or at least not to me. Their door was usually shut and no sound
+emanated from within. They seemed very serious. The Computer Music lab
+was the opposite, it had just two people, but they were both very
+friendly and welcoming. Then there was my lab - the Miscellaneous Lab.
+Officially it was called Room 1.14 or something like that. We renamed it
+the Misc lab. I suppose by topic I should have been in the AI lab, but I
+preferred being in Misc - it was a more fun room. We were all the
+students of lecturers who didn’t have the big research grants lavished
+on the CompVis and AI lecturers. There were five official occupants of
+the lab, but one preferred to study at home (smart move). The rest were
+Luigi, Rowena, Kamran and myself. We got on pretty well as I recall and
+talked together often.</p>
+
+<p>As my supervisor was new to the department and didn’t have any grants
+yet, I got a PC from one of the undergrad labs. I also had a 21 inch
+monitor, with which I was immensely impressed - it was the biggest
+screen I had ever used. The PC was a Pentium 90MhZ and it ran Linux,
+which I installed myself. I could have used my departmental grant to
+upgrade it, but I wanted to save that money. Each student was allocated
+a few thousand dollars by the department to spend on equipment or
+travel. Most postgrads used theirs on airfare to go to conferences. I
+only ever used mine to buy a published conference proceedings (about $40
+in total I think). I never went to a big conference. I wanted to have
+something completed first. However, I did go to the departmental
+conference twice. They were good fun and not too serious. One year a
+student gave a talk on ice hockey. They appeared to be for the postgrads
+to practice presentations (and to boost the departments publications
+count).</p>
+
+<p>After reading for what felt like forever, I needed to code again. There
+were 3 projects of note during the last year of my studies, although
+only one was related to my research. I implemented a learning algorithm
+detailed in a paper that was similar to what I wanted to achieve. I then
+improved it a little with some ideas from another paper and tried
+running it on a large dataset that naturally lent itself to exceptions
+in the rules learnt - the
+<a href=" http://archive.ics.uci.edu/ml/datasets/Chess+(King-Rook+vs.+King)">KRK
+dataset</a>. A list of all 28056 possible chessboard positions for two
+kings and a rook. My program would then try to learn the rules for
+determining whether a position is legal. I wrote the system in
+<a href="http://en.wikipedia.org/wiki/Prolog">Prolog</a> and it took many days to
+run to completion. I would usually start it on Friday afternoon before
+heading out and come back on Monday to see if it had finished. Often my
+computer would crash as it ran out of memory, but eventually I got it to
+work and output the correct answer. This was the only notable
+achievement of my PhD.</p>
+
+<p>I then planned a new learning system. However, instead I ended up
+designing a logic resolver - something like Prolog. I never wrote much
+code, but spent time planning it. It would have been of little benefit
+to my research (Prolog already did the job acceptably). Also the design
+was poor. This was not the worst code I wrote while studying. That
+dishonour goes to a library I wrote to add functional coding to C (lazy
+evaluation, partially evaluated functions, etc). It was buggy, leaked
+memory like a sieve and converted everything to <code class="highlighter-rouge">void *</code>. It was a bad
+idea from the start. I didn’t use it much, but Luigi did for a while
+before abandoning it as broken. I hope I didn’t set the course of his
+PhD back too much (he completed). Despite all this non-thesis coding
+most of my time was spent not doing much. Counting programming, research
+reading, working on an unfinished literature review or other documents,
+I probably only averaged a few hours per week of useful work over the
+course. A large drop from my honours year. The rest of the time was
+spent exercising, socialising, going to lectures in other departments
+for fun (first year philosophy was a favourite), teaching and
+procrastinating.</p>
+
+<p>Teaching was a surprisingly large timesink. All the PhD students
+complained, but did it anyway as it was one of the few ways we could
+earn a little cash on top of our scholarships. It was decent money too,
+around $20/hour, but we weren’t supposed to do more than a few hours per
+week. A rule honoured more in the breach. I was a tutor for 3 semesters
+of the introductory CS course as well as a semester of databases and
+another of logic. It was fairly easy work, making me wonder why I had
+any difficulty when I did them. I could do most of the first-year
+assignments at the speed of typing. My tutorials could be given without
+preparation, though this meant I sometimes covered topics outside the
+assigned coursework. I once explained
+<a href="http://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">Garbage
+Collection</a> to a completely lost group of first-years - then had to
+spend a few minutes assuring them they wouldn’t be tested on it. I tried
+to help the students as much as possible - I genuinely enjoyed teaching.
+The majority of my time was spent on a few students in each class. Like
+me when I was a student, most students did not ask for help regardless
+of whether they needed it or not. Those that did tended to ask a lot,
+which was fine unless they became aggressive after not understanding
+(one student) or relied on me too heavily to explain things. I remember
+one student (called Doug I think), who refused to lean anything not
+taught to him in a one-on-one session with a tutor (often me), despite
+clearly being smart enough to work it out himself. One attractive
+student gave me a box of chocolates for helping her before an exam. I
+was on the receiving end of a few good-natured barbs for that.</p>
+
+<p>The downside of teaching was the marking. Every few weeks there was
+another assignment to be marked, and the markers soon wished more
+students asked more questions! We would get a pile of 30 or so
+assignments and have a week to mark them with constructive comments. It
+could take a long time. Luckily although we had 30 papers, there were
+normally only about 6 assignments. All the rest were copies. The most
+obvious copies were flagged as such, but usually nothing would happen as
+the students knew how to talk their way out of it and it just was not
+worth a fight for the lecturers. Most of the copies changed the
+comments, variable names and maybe modified the code a little. Enough to
+claim that they had worked with someone else (which was allowed), but
+had completed it themselves. Maybe that is true, but I think plagiarism
+was rife. At least the copies were quick to mark. It was the ones that
+didn’t copy and made big mistakes that took time as we had to work out
+where they had gone wrong so part marks could be assigned. This usually
+involved trying to discover the tortured logic the student was
+following. Thus I discovered the secret to good marks: make your
+teacher’s job easy!</p>
+
+<p>Socially, my PhD was split into two halves. In the first half I hung out
+with the other postgrad students. We had lunch together and occasional
+trips to the pub. After work I generally went home (I lived by myself).
+There were regular poker games, but I never got involved with those -
+there were too many good players. I didn’t have a computer at home. I
+had sold it when I started the PhD as I had 24-hour access to the labs,
+which were only 10 minutes walk away. I spent my time in contemplation,
+reading, listening to music or the radio (I didn’t have a TV). Most
+weeks I would go to the local pub by myself for their local music gigs.
+I bought just a single beer, listened to the band, and then left. I
+referred to it as being social by osmosis. Outside work hours I spent my
+time alone. I got to know the radio timetable well and gained an
+appreciation for <a href="http://en.wikipedia.org/wiki/Australian_rules_football">Aussie Rules
+Football</a>
+through the broadcast commentary. I remember Christmas 1996 fell on a
+Wednesday. The department was locked and I couldn’t get in, so I spent
+my time at home. I went out on the Monday to buy food and didn’t see or
+speak to anyone until that Friday when I went food shopping again.</p>
+
+<p>The second half of the PhD was completely different. I regularly
+listened to a <a href="http://en.wikipedia.org/wiki/House_music">house</a> and
+<a href="http://en.wikipedia.org/wiki/Techno">techno</a> radio show called Strictly
+Rhythm on <a href="http://www.rtrfm.com.au/">RTRfm</a>. The guy who presented the
+show also ran a record store and nights at local clubs. I started to
+frequent his store and attend his clubnights. I met many people through
+these events and became a peripheral member of the local “scene”. I went
+out to clubs at least once a week. This wasn’t too expensive because I
+was always on the guestlist and usually got a free drink or two. I even
+DJ’ed a few times. The details of this time deserve a post of their own.
+Suffice to say that my research suffered. I also moved into shared
+housing. My lease ran out and I needed to find somewhere cheaper. Leigh,
+another postgrad needed some extra cash, so I moved into his closet. In
+my defence it was a very big closet and had a door to the back garden. I
+think it used to be a patio that was walled in. I was only there with
+Leigh and Dougal for a few months before I moved into another sharehouse
+with Leigh and two others. Once again the damage was done, I had a
+social life at home. I even met a girlfriend through one of Leigh’s
+friend’s parties.</p>
+
+<p>By mid 1997 it had been a few months since I had done anything of note
+for my postgrad. My weekly meetings with Kym were awkward affairs.
+Eventually he said I need to get motivated and moving again. He gave me
+an ultimatum, to write a paper reviewing my research area for an
+upcoming small conference. I thought that was a good idea and started
+work. After a few days, I decided to quit the whole PhD. I found myself
+wondering why I was writing this paper. I didn’t enjoy it, I’d rather be
+coding or listening to music or going out. Academic theoretical research
+is just not for me. I prefer to be building something - more engineer
+than scientist. When I began the course I wanted a PhD, but I wasn’t
+sure why. It was not because I enjoyed the process or thought I would
+enjoy being a lecturer or researcher. It was instead just another goal
+to reach. A mark of success. I decided to quit my PhD and get a job. I
+let Kym know the next day - he didn’t seem surprised, but suggested I
+suspend for six months instead. The Head of Department called me into
+his office and told me that if I suspended I would never come back. I
+agreed, it was unlikely I would return. He said that in that case it was
+better to go sooner rather than try to carry on for a few more years. He
+wished me luck and I handed in my forms the next day, collected my
+stuff, burnt a CD of my data. That weekend I had some friends around to
+watch me barbecue some notes and papers as a symbolic end to the
+process.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

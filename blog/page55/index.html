@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+
+  <span class="date">July  9, 2011</span>
+  <h4><a href="/blog/2011/07/architecture-astronaut-rant.html">Architecture Astronaut Rant</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Software Project Management.html">Software Project Management</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Joel Spolsky has often <a href="http://www.joelonsoftware.com/items/2005/10/21.html">blogged his opinions on Software
+Architects</a>. Those
+people who design whole software environments and their tendency to
+become astronauts (that is divorced from the realities on the ground). I
+have a great deal of empathy with his view. Grounded architects may have
+some use in large companies to set a general technical direction and aid
+communication among independently working teams. In smaller groups there
+is no need for them, yet they often appear. Recently I have worked on
+small teams of 5-10 developers with 10-20 tasks that need to be done
+immediately. At these workplaces there has been a focus on getting
+things done and we have all handled our own design, relying on
+professionalism to keep us all moving in the same direction. So luckily
+I have avoided Software Architects for many years, but my luck is
+running out - I have just encountered people ready for take-off.</p>
+
+<p>I have some empathy for the architect - just a little. I used to have
+designs on being an architect. I wanted to do things the “right way” (in
+quotes because it is always a matter of opinion, with many caveats). For
+a technical person it seems like the place where you can have the most
+influence. It is also part of the informal software development career
+path, on which I was once travelling. However, as I enjoy programming I
+would help code my solutions. Thus I encountered the problems that occur
+when abstract perfection meets messy reality. Solving the problem has to
+come first - to paraphrase Jeff Atwood the <a href="http://www.codinghorror.com/blog/2004/12/it-came-from-planet-architecture.html">architecture should be
+framed in the context of the
+problem</a>.</p>
+
+<p>Now I think the first priority should be solving the clients’ problem.
+For the last 6 years or so I have chosen workplaces that emphasise
+“getting things done”, especially since timescales are always tight. One
+can make the argument that it takes time to do things right and we
+should take that time. That is true, and if that is hugely important you
+should probably work someplace else. Where I currently work, our
+original project was to create a complete European government bond
+trading platform in around 3 months. The market opportunity was fading
+fast and costs were increasing. If an extra year was taken to produce a
+technically beautiful solution the result would be useless as the
+investment wouldn’t be recouped in a reasonable timeperiod. Corners had
+to be cut and they were, but we delivered on time. Now when time allows
+we can refactor the system into a better state.</p>
+
+<p>The current architect wannabees I have encountered are ranting that the
+reason they can’t get their job done is that our environment is crap
+(despite being part of the team that created that environment). It needs
+to be ripped up and started again the “right way”. They produce eloquent
+arguments for beautiful service-oriented architectures. While I agree
+that their vision is better than our reality, it in no way reflects our
+reality. Worse, they are not very good coders, and they use our “wrong”
+but working environment as their excuse for their messy, buggy code.
+When given the chance to rework something from scratch without
+dependencies on other components they still produce buggy, messy,
+unreliable code that no one wants to use and took 4 times as long as the
+original working version. This has happened not once, but twice! As a
+result, we are further from the right way as we have to cover the other
+person’s unfinished work and fight their new code, leaving us less time
+for refactoring. Yet still they continue, it will all be better if we
+just do everything their way. Personally, I’d rather just solve the
+problem at hand - which at the moment includes them!</p>
+
+<p>Just had to get that off my chest.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">July  3, 2011</span>
+  <h4><a href="/blog/2011/07/can-tweety-fly.html">Can Tweety fly?</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
+    
+      <a class="post" href="/blog/tag/University.html">University</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>The worst question you can ask a PhD student is “tell me about your
+thesis”. Or at least, that was the joke among the postgrad students at
+the <a href="http://web.csse.uwa.edu.au/">UWA CS department</a> in the mid 1990’s.
+I took this seriously and prepared an explanation of my thesis that I
+thought most people could understand (assuming some small knowledge of
+logic). I only ever used this explanation once many years ago (at a job
+interview for Rio Tinto R&amp;TD). So it is about time I explained it again
+before I forget it all. For reference I did not complete my PhD,
+dropping out after 18 months.</p>
+
+<p>The provisional title of my thesis was “Using Nonmonotonic Logic to
+extend Inductive Logic Programming”, and the research proposal is
+<a href="/assets/posts/uni/phd_proposal.pdf">here</a>. The idea was to have
+computers learn logical rules in a more natural manner than the existing
+systems. First some background on each of the two terms in the title.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/First-order_logic">First-order Logic</a> is
+what most people mean when talking about logic. It involves formulas
+like <code class="highlighter-rouge">flies(X) &lt;- bird(X)</code> (all birds fly), which if you also have
+<code class="highlighter-rouge">bird(Tweety)</code> (Tweety is a bird) implies <code class="highlighter-rouge">flies(Tweety)</code> (Tweety can
+fly). One issue with First-order Logic is that it assumes perfect
+knowledge. That is, it assumes that everything is known and correct.
+Thus it is monotonic - it is not possible for any future information to
+invalidate any previous implications. It can’t handle the situation
+where in addition to the knowledge above, we later learn that Tweety is
+a penguin and that penguins don’t fly. This new information invalidates
+our old implication that Tweety flys and is not allowed. Instead you
+have to know from that start that birds fly unless they are penguins.
+However, Ostriches don’t fly, nor do dead birds or birds with broken
+wings. With a little bit of thought many more exceptions to the rule
+“birds fly” can be imagined, and the rule becomes unwieldly.</p>
+
+<p>In real-world problems there can be many exceptions or inconsistent data
+(noise), so First-order Logic can be problematic for machine learning.
+There are ways around this though. Often it is used in self-contained
+well-understood domain with few exceptions. However, many systems
+instead use <a href="http://en.wikipedia.org/wiki/Non-monotonic_logic">Non-monotonic
+Logic</a>, which allows
+new knowledge to contradict old beliefs. Many Non-monotonic Logic
+constructs seem so intuitive it is hard to imagine thinking without
+them. The <a href="http://en.wikipedia.org/wiki/Closed_world_assumption">Closed-world Assumption
+(CWA)</a> says that
+if something is not known it must be false. When reading a train
+timetable with a train at 8am and the next specified train at 9am, you
+are using the CWA when you assume there is no train at 8:20am. Similar
+is <a href="http://en.wikipedia.org/wiki/Negation_as_failure">Negation As Failure
+(NAF)</a> (indeed it has
+been proven they are logically the same) where if something can’t be
+proven true then it must be false - sounds like a few university
+researchers I knew. If you have used
+<a href="http://en.wikipedia.org/wiki/Prolog">Prolog</a>, then you should be
+familiar with NAF. The logic I was mainly working on was <a href="http://en.wikipedia.org/wiki/Default_logic">Default
+Logic</a>, which allows rules
+to be true by default assuming there is some justification. This allows
+exceptions in a compact and natural rule system.</p>
+
+<p>Given the rules resulting from the learning system would be in a
+Non-monotonic Logic, the next step is to describe how those rules are
+learnt. The example above where it was implied that Tweety could fly is
+an example of <a href="http://en.wikipedia.org/wiki/Deductive_reasoning">Deductive
+Reasoning</a>. Deduction
+is the process of using some rules and some background facts to imply
+new facts. <a href="http://en.wikipedia.org/wiki/Inductive_reasoning">Inductive
+Reasoning</a> is the
+reverse, deriving rules from facts. So if you know Tweety is a bird and
+that Tweety flies, then you might derive the rule that all birds fly.
+<a href="http://en.wikipedia.org/wiki/Inductive_logic_programming">Inductive Logic Programming
+(ILP)</a> is just
+the term for computer programs that perform this process with the
+resulting rules as logic system. They take a set of background knowledge
+and sets of positive and negative examples and try to create rules that
+cover as many of the positive examples as possible while covering as few
+of the negative examples as possible. This is a computationally
+expensive process, computers only got powerful enough to do this for
+non-trivial datasets in the late 80’s, so when I studied in the mid 90’s
+the field was just getting started and becoming known.</p>
+
+<p>My thesis attempted to marry the two concepts. There had been a few
+attempts at this before, but the best known ILP systems at the time
+didn’t handle exceptions or noise very well. Thus part 1 of my work was
+to construct an ILP learning system that output a Non-monotonic logic.
+This was about as far as I got, implementing some theoretical results
+from another researcher (with minor improvements). Part 2 was handling
+exceptions and noise better by flipping rules. That is, if the evidence
+against a rule became too strong the system should flip it to the
+reverse rule. I also looked at weakening the “strength” of a rule over
+time. All rules have the same applicability in non-probalistic logics.
+By “strength” I mean how long I keep a rule in my output theory before
+modifying or flipping it in the presence of negative examples, or even
+ignoring exceptions/noise if the rule is particularly “strong”. I didn’t
+come up with anything meaningful here, I just thought it might be
+useful. Although I have been told this became a hot research topic in
+the years after I quit (under the term “forgetting”, I think).</p>
+
+<p>This may sound like it was mainly a coding project, maybe because that
+was where my interests lie. Most of my time should have been spent doing
+maths to prove my work was correct as it was a very theoretical field.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">June 26, 2011</span>
+  <h4><a href="/blog/2011/06/jury-duty.html">Jury Duty</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Over 10 years ago I did <a href="http://www.courts.dotag.wa.gov.au/J/jury_duty.aspx">jury duty in
+Australia</a>. While
+researching the legalities of writing about my experience, 90% of the
+pages returned from a Google search were about how to avoid jury duty. I
+can understand the sentiment. Dodging it was my first thought upon
+receiving the letter announcing my random selection. However, work was
+slow and my employer was ok with me being away for a week, so I decided
+not to fight the summons.</p>
+
+<p>I turned up at the District Court in the Perth CBD on the allotted day.
+The couple of hundred jury candidates for that week were corralled
+together and given a talk on our responsibilities and how the system
+worked (just the standard stuff like there are 12 jurors on a case and
+not to talk to anyone about your case). We were then told to wait until
+our name was called and we left in groups of around 30 or so. There was
+not much talking or socialising - it didn’t seem that most people were
+happy to be there. I was called into the third group to depart. We went
+into a courtroom and told the case was an assault and who the main
+participants would be (so we could excuse ourselves if we knew any of
+them). Then potential jurors were called to the stand, but about half
+were rejected by the lawyers before they got there. No questions or
+reasons were given for the rejections. The lawyers didn’t event look at
+the jurors, they were head down in paper - presumably our details. My
+name wasn’t called by the time twelve jurors were chosen, so I and the
+remainder were led out of the court and back to the waiting room. I was
+called into another group after a short wait, this was for a sexual
+assault where most of the people involved had the same surname. I was
+called but rejected and quite happy about it. After another short wait I
+was called to a drug case, selected and not rejected. I was a juror.</p>
+
+<p>It was supposed to be a 3 day case, but we started late on the first day
+and finished early on the last day. Also, we (the jury) spent probably a
+third of the time out of the court as the lawyers argued points of law.
+The basics of the case were that the police were looking for a lost cat.
+While searching they looked through the window of a house and saw what
+looked like hydroponic equipment - it was also the house the cat was in.
+They called in a special squad, entered the house (let the cat out) and
+found the remains of a large marijuana cultivation operation. While no
+actual cannabis was present, there were the remains of hundreds of
+plants. All this was recorded on film, including the arrival of the
+defendant who asked what was happening at his house. The defendant gave
+a tour of the house on tape and talked (somewhat reticently, but without
+being overly pressured) about how he grew drugs there, albeit with
+little detail beyond describing what we could see.</p>
+
+<p>The procecution case rested heavily on his video confession. They then
+showed proof that the defendant actually owned the house, followed by
+evidence that it was a drug factory producing commercial quantities of
+cannabis. Finally, they said that even though no drugs were found, the
+law allowed that all the used equipment was good enough for conviction
+on the current drug cultivation charges. The defendant claimed personal
+use for a wasting illness, though there was no mention of why he needed
+so much. Then we had to decide. There was no overacting or histrionics
+like in TV or the movies. Most of the time neither lawyer looked at us -
+then were looking down at the notes the entire time, even when
+questioning witnesses. Both lawyers were just doing their job. The only
+time the process seemed to deviate from the banal, judging from the
+lawyers slightly increased excitement level, is when they would ask for
+us to be removed from the room. Or, maybe that was just me being
+intrigued by what I was missing.</p>
+
+<p>I don’t remember the details about any of my fellow jurors. They were a
+bunch of average people, no one really stood out as unreasonable. When
+we got in the room we first did an anonymous vote - about eight or nine
+of us (including me) voted guilty. After the vote we talked and it
+seemed no one was particularly keen to convict, but some people looked
+harder than others for a reason not to. At first the question was
+whether growing marijuana should be a crime at all. The scale of the
+operation won that argument fairly quickly. No one believed the personal
+use story. However, if there was only a couple of plants I think he
+would have been found innocent as the majority of us backed this view.
+Next there was the argument he was a patsy. Conspiracy theories
+abounded. I had some sympathy with these - the case wasn’t quite right
+and the constant requests for us to leave the room had made us all feel
+we were missing something. The defendant did not come across as a smart
+or rich man, yet had a second house full of drugs. There must have been
+other people involved. Also where did all the drugs go? The operation
+was supposedly shutdown a few days or few weeks before the police found
+it. Some people even thought the cat story was a bit fishy and the
+police were in on the whole thing.</p>
+
+<p>In the end the video won all arguments. The tape had no edits as far as
+we could tell, and showed the defendant from the time he first
+encountered the police. After some identification, warnings about
+getting a lawyer then without any more coercion than a few strongly put
+questions, he completely confessed. We watched it a couple of times,
+then the holdouts agreed to convict. There may have been a group of
+people involved, but the defendant was definitely one of them. The
+decision took a couple of hours. When we presented our verdict to the
+court the judge thanked us and said that the result was completely in
+keeping with the evidence presented to us. So what was the evidence not
+presented to us? We were led out of the court building immediately and
+didn’t see the sentencing.</p>
+
+<p>I never saw or spoke to any of the other jury members again. I checked
+the papers for a few days afterwards to see what happened, but couldn’t
+find anything that seemed like my case. My main memory of the experience
+was boredom. We spent most of the three days waiting. The case itself
+was interesting, but the lawyers belaboured their points. I assume they
+wanted to be certain we understood what they were saying. The whole
+thing could have been done in a couple of hours if succinctness was
+prioritised. Still, if that was a stereotypical jury experience I
+wouldn’t have an issue doing it again.</p>
+
+<p>The moral of the story is: never admit guilt on camera!</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">June 18, 2011</span>
+  <h4><a href="/blog/2011/06/imperial-rome-and-ostia.html">Imperial Rome and Ostia</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/History.html">History</a>, 
+    
+      <a class="post" href="/blog/tag/Podcasts.html">Podcasts</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Available on
+<a href="http://itunes.apple.com/gb/itunes-u/imperial-rome-ostia-for-ipod/id380223637">iTunes</a>
+and <a href="http://podcast.open.ac.uk/pod/at308-imperial-rome-and-ostia">OU
+Podcasts</a></p>
+
+<p>Moving away from the <a href="http://www.open.ac.uk/">Open University’s</a>
+<a href="http://www.cordinc.com/blog/2011/05/myth-at-the-heart-of-the-roman.html">Myth</a>
+series, these podcasts look at how
+<a href="http://en.wikipedia.org/wiki/History_of_Rome">Rome</a> (together with its
+port colony <a href="http://en.wikipedia.org/wiki/Ostia_Antica">Ostia</a>) was
+built and functioned. There are 14 videos in the series and one
+introductory audio podcast. The podcast files are prefixed with
+non-contiguous numbers, so I think that the released episodes are only
+part of a larger series. The videos are in documentary format with shots
+of a large model of Rome for context interspersed with contemporary
+scenes of the sites and talking heads. The podcasts range from under 2
+minutes (12MB) to over 11 minutes (128MB) all recorded at 640x480
+resolution, or a smaller iPod optimised format. Transcripts are
+available in PDF format.</p>
+
+<p>The videos can be split in three rough categories. There are episodes on
+Rome: how it was constructed,
+<a href="http://en.wikipedia.org/wiki/Roman_aqueduct">aqueducts</a>; the <a href="http://en.wikipedia.org/wiki/Aurelian_Walls">Aurelanic
+wall</a>; how the population
+was fed; the water system; and some industry, mainly fulleries. Then
+there are some podcasts on Ostia, its warehouses,
+<a href="http://en.wikipedia.org/wiki/Insula_(building)">insulae</a> and
+<a href="http://en.wikipedia.org/wiki/Thermae">baths</a>. The last videos focus on
+a couple of Rome’s monumental buildings, namely the
+<a href="http://en.wikipedia.org/wiki/Pantheon,_Rome">Pantheon</a> and the <a href="http://en.wikipedia.org/wiki/Baths_of_Caracalla">Baths
+of Caracalla</a>.</p>
+
+<p>At its peak, Rome had a population of around a million people - the
+largest western city in history until London and Paris in the 18th
+century. The Romans were not known for their invention, but they were
+good developers of existing technology and very organised. To maintain
+the large population aqueducts were used to bring in water, while sewers
+took the waste out (although urine was used in the
+<a href="http://en.wikipedia.org/wiki/Fullo">fulleries</a>. Grain and other goods
+were transported up the Tiber on barges from Ostia after arriving there
+from around the Mediterranean. Only the rich could afford horses and
+carts were banned in Rome during daylight. Thus the size of the city was
+dictated by walking distance. To fit the large population the city had
+to built upwards. Many people lived in apartment blocks called Insulae
+(which means “island” in Latin). Upto six stories tall, the better
+apartments were at the bottom, as these were nearer the water supply,
+involved less stairs and were safer in the event of a fire.</p>
+
+<p>The standard Roman building method used thin bricks combined with
+concrete. This technique allowed them to build strong buildings. The
+Baths of Caracalla is a massive building able to serve thousands of
+bathers at a time. It had a large dome over the caldarium (hot room),
+underfloor heating and furnaces and large windows (unusual in older
+buildings). The Pantheon at a diameter of 43 metres is still the worlds
+largest concrete dome. It is constructed using marble from all over the
+world - publicly demonstrating the Emperor’s power. The portico’s 12
+metre tall columns are each from a single block of stone quarried in
+Egypt. Peculiarly, if the columns were 15 metres tall then the portico
+would better integrate with the rotunda. It is theorized that the
+columns were originally supposed to be taller, but that it was too
+difficult produce and transport such columns to Rome - thus
+necessitating the mismatch between portico and rotunda.</p>
+
+<p>Many interesting details on the functioning of a Roman city -
+recommended.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">June 12, 2011</span>
+  <h4><a href="/blog/2011/06/blender-tutorial-roman-lamp.html">Blender Tutorial: Roman Lamp</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Blender.html">Blender</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Recently the Blender 2.5x series was properly released (as opposed to
+the beta versions that have been around for some time). There have been
+significant changes since the old 2.4x releases, so to learn the new
+interface I tried modelling something simple. Here I describe the steps
+to modelling a <a href="http://en.wikipedia.org/wiki/Ancient_Roman_pottery#Lamps">Roman
+lamp</a>, with
+the final result below.</p>
+
+<p><a href="/blender/tutorials/lamp/index.html">The continuation of this post is a set by step tutorial detailing my
+methodology</a>.</p>
+
+<p><a href="/blender/tutorials/lamp/index.html"><img src="/blender/tutorials/lamp/result.png" title="Roman Lamp" width="550" alt="Roman Lamp" /></a></p>
+
+  </div>
+  <hr/>
+
+
+<!-- Pagination links -->
+<div id="post-pagination" class="pagination">
+  Page 55 of 86 
+  
+      
+        <a href="/blog/page54">Previous</a>
+      
+  
+
+  
+      <a href="/blog/page56">Next</a>
+  
+</div>
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

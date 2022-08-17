@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Collinearity in Unity3D</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>September 20, 2012</b>
+<h4>Collinearity in Unity3D</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+    
+<br/><br/>
+<p>In Unity3D how can it be determined if a point is on the line segment
+joining two other points? My current project throws up just such
+geometry problems regularly. The problem as expressed above is a
+question of <a href="http://en.wikipedia.org/wiki/Collinearity">collinearity</a>,
+that is whether some points form a line. The first step uses the <a href="http://en.wikipedia.org/wiki/Cross_product">cross
+product</a>. If you have the
+points A, B, C then if the cross product of the line AB and the line AC
+is 0, AB and AC must be parallel. Furthermore, since both lines include
+the point A, all the points must in fact be collinear. Luckily, there is
+a cross product function built into the Unity3D library,
+<a href="http://docs.unity3d.com/Documentation/ScriptReference/Vector3.Cross.html">Vector3.Cross</a>.</p>
+
+<p>Next, just because A, B, C are collinear does not mean C is in between A
+and B. To determine this, check that C is inside the 3D volume with A &amp;
+B as diametrically opposed corners. That is just check that C’s x-axis
+value is inbetween A’s &amp; C’s and the same for its y-axis and z-axis
+values. The function below combines these tests. Note the range checks
+are performed first. This is because I imagine that the cross product is
+more computationally expensive (but I have no evidence for this) so
+should occur only if the faster calls succeed.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">OnLine</span><span class="p">(</span><span class="n">Vector3</span> <span class="n">start</span><span class="p">,</span> <span class="n">Vector3</span> <span class="n">end</span><span class="p">,</span> <span class="n">Vector3</span> <span class="n">inBetween</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">x</span> <span class="p">&lt;=</span> <span class="n">end</span><span class="p">.</span><span class="n">x</span> <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">x</span> <span class="p">&gt;=</span> <span class="n">start</span><span class="p">.</span><span class="n">x</span>
+    <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">y</span> <span class="p">&lt;=</span> <span class="n">end</span><span class="p">.</span><span class="n">y</span> <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">y</span> <span class="p">&gt;=</span> <span class="n">start</span><span class="p">.</span><span class="n">y</span>
+    <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">z</span> <span class="p">&lt;=</span> <span class="n">end</span><span class="p">.</span><span class="n">z</span> <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">z</span> <span class="p">&gt;=</span> <span class="n">start</span><span class="p">.</span><span class="n">z</span>
+    <span class="p">&amp;&amp;</span> <span class="n">Vector3</span><span class="p">.</span><span class="nf">Cross</span><span class="p">(</span><span class="n">end</span> <span class="p">-</span> <span class="n">start</span><span class="p">,</span> <span class="n">inBetween</span> <span class="p">-</span> <span class="n">start</span><span class="p">)</span> <span class="p">==</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

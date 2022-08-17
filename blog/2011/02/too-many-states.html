@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Too Many States</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>February  7, 2011</b>
+<h4>Too Many States</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>No, I’m not agitating for Tasmania to have its statehood revoked.
+Instead I want simpler state machines in programming. I’m a fan of the
+model of programming where the core of the system is a <a href="http://en.wikipedia.org/wiki/State_machine">state
+machine</a> firing
+<a href="http://en.wikipedia.org/wiki/Event-driven_programming">events</a> on state
+transitions. Listeners on those events then perform actions, possibly
+changing the state themselves. It doesn’t fit every scenario, but it
+works well in those places it can be applied.</p>
+
+<p>I’ve worked on a few such systems and a major determinant of eventual
+success is the complexity of the state machine. Sometimes this
+complexity is caused by the state machine encoding multiple state flows.
+The system would be simpler with a set of separate discrete state
+machines, each with a distinct main flow. I think software engineers can
+get obsessed with trying to find a single comprehensive solution to a
+problem. This can blind them to seeing a more understandable solution by
+breaking the system into smaller parts.</p>
+
+<p>Below is a state diagram similar to one I saw recently at the start of a
+project (I have actually simplified it a little, removing domain
+specific states and transitions for anonymity).</p>
+
+<p><img src="/assets/posts/technical/complex.png" width="550" alt="" /></p>
+
+<p>This doesn’t look right to me. Multiple start and end states, a loop,
+and if a few more error states are added the diagram starts looking like
+a spiderweb. Diagrams which have allowed designers/developers to express
+their artistic side (I once saw one in the shape of a phone) are a good
+sign that there may be too many states. In this domain there are really
+three interlocking flows which have just been placed together. Each of
+the three flows represents the state of communication with a different
+external system. There is no need for them to be combined. It makes more
+sense to separate them. Looking at this, and with a bit of domain
+knowledge (just trust me), it can be equivalently expressed by the
+diagram below.</p>
+
+<p><img src="/assets/posts/technical/simple.png" width="550" alt="" /></p>
+
+<p>I think this is much better. It involves a few more states in total, but
+each individual flow is easier to understand. The domain object holding
+the current state now has three state variables rather than one. The
+state of the whole system is now the combination of these three state
+variables. This more accurately describes the current state and adds
+more flexibility for adding new states or transitions later. It is also
+possible to split the transition listeners into one for each flow, thus
+making them more focused events.</p>
+
+<p>There are a few differences between the two state diagrams above. The
+three flows will have some interaction and the extra states are there to
+aid this. For example, the middle flow shouldn’t go to the <strong>Process</strong>
+state until either <strong>Enrich</strong> or <strong>Response Received</strong> has been reached.
+In the simplified diagram there are added <strong>Init</strong> and <strong>Pending</strong>
+states to act as placeholders while waiting for other events to occur.
+All three state variables start in the <strong>Init</strong> state, and as events
+occur they move on independently. The event that moves the middle flow
+on to <strong>Process</strong> is the event fired after one of the other flow’s
+transitions.</p>
+
+<p>In 14 years how many times has decomposing a complex state diagram been
+beneficial on my projects? Three. Is it guaranteed to work? No. Will it
+work for you? Maybe. Think about it next time you find yourself staring
+at a complex state diagram.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Rio Tinto R&TD (continued)</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>February 19, 2012</b>
+<h4>Rio Tinto R&TD (continued)</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
+    
+      <a class="post" href="/blog/tag/Rio Tinto.html">Rio Tinto</a>, 
+    
+      <a class="post" href="/blog/tag/Work.html">Work</a>
+    
+<br/><br/>
+<p>After joining Knowledge-based Systems at Rio Tinto R&amp;TD, my first task
+was working on the MineSim project. This was a very successful
+application to simulate minesites. To do this a user would define the
+topology/geology of a mine, the equipment/personnel available and the
+goals to pursue. The program would then simulate the mine minute by
+minute. New blocks would be blown when ready, little loaders would muck
+out the ore from the block and large trucks moved round the mine,
+picking up ore and driving back to the dumps.</p>
+
+<!--more-->
+
+<p>It was incredibly detailed. At the end of shifts workers would have to
+be ferried around the mine, Muslim workers would take regular breaks for
+prayers, people got sick and equipment broke down. Trucks would plot
+their own route dynamically to take account of various events like mine
+road rules, breakdowns and new areas becoming accessible or
+inaccessible. It even simulated the engine dynamics of vehicles so their
+speed and acceleration/braking profile were accurate. Very accurate as
+it turned out. When checked against reality, our model was more accurate
+than the manufacturers’. A certain US manufacturer slightly overstated
+their trucks performance in marketing materials, while a Japanese
+manufacturer slightly understated. When backtested against a couple of
+real-life mines the whole simulation was accurate to within 3% of mine
+output over a couple of months. Good enough for how it was being used
+(testing the effect of various actions like buying more trucks or the
+order of block development).</p>
+
+<p><img src="/assets/posts/work/omme_example.png" width="550" alt="" /></p>
+
+<p>The application could run in a GUI if desired or alternatively just run
+as fast as possible to the end. The picture above is the simulation
+zoomed in on part of a mine (found in an old email). Adding a GUI was an
+inspired decision. The mine would be shown as a graph with lines
+representing roads. Trucks and other equipment were marked as little
+squares - colour denoting type and size representing how much ore was
+carried. Watching the squares moving around the screen at 10x normal
+speed was hypnotic. It almost felt like a primitive game. It also gave
+our customers confidence in the simulation when they saw it happening
+right in front of them. It was also inspired to have the inputs and
+outputs work through Microsoft Excel (rather than more technically
+respectable formats) as the customers on mine sites were comfortable
+with that tool and it made visualising data easy.</p>
+
+<p>When I started on MineSim it had already been developed and used on a
+couple of <a href="http://en.wikipedia.org/wiki/Open-pit_mining">opencut mines</a>.
+My job was to make it support underground mines and expand it so that
+multi-year simulations could be run. The application at that time took
+nearly a day to simulate half a year. This is probably the closest I’ve
+come to proper algorithm work in my professional career. I improved the
+graph traversal code (used by the trucks to find a path) by recognising
+some properties of the graph and rewriting the existing suboptimal
+implementation. There were some other gains to be made by modifying the
+large amount of code written by mathematicians who taught themselves
+programming.</p>
+
+<p>Underground mines are run in a very dissimilar manner to open mines. The
+processes and equipment are quite different. A well-capitalised
+underground mine digs its main shaft first and then extracts ore from
+the bottom up (it is cheaper than going top-down, but takes longer to
+get started). This means that after “mucking out a stope” (meaning
+extracting ore from a designated block of rock), it has to be filled in
+again so trucks can drive on top of it when mucking out the level above.
+This and other improvements to MineSim consumed my working life for my
+first months at Rio Tinto.</p>
+
+<p>The end of the project was supposed to coincide with a visit to the
+underground gold mine sponsoring it. We would present them with the
+application and train them in its use. It took flights on ever smaller
+planes to reach
+<a href="http://en.wikipedia.org/wiki/Cobar,_New_South_Wales">Cobar</a>,
+the nearest town in outback Australia. I was looking forward to seeing a
+working mine. Unfortunately when we arrived it was shut down due to an
+accident with the shaft lift the day before. No one was even in the mine
+at the time of the incident (the lift was operating automatically during
+shift change), but as a safety precaution everything was stopped for a
+week while the cause was determined. It was impressive how serious
+safety was taken.</p>
+
+<p>It was probably a good thing there was no tour, it was a very busy trip.
+Our first action was to give a presentation on the program. The mine
+staff were impressed. They said most other people modelled filling in a
+stope as negative digging, but we simulated the myriad of steps
+involved. We were the most accurate simulation of underground mining
+they had seen. Then they spent some time telling us what we had done was
+still not good enough. It was an important lesson in the pitfalls of
+<a href="http://en.wikipedia.org/wiki/Waterfall_model">Waterfall process</a>. We
+should have been talking and confirming we were building the right thing
+the entire time. I ended spending all day, every day trying to fix our
+code. At the end they were happy enough to keep funding the work. They
+got everything they wanted a couple of months late.</p>
+
+<p>Part of travelling to a mine site was being given official Rio Tinto
+clothes. At the office we just wore normal office clothes. At “site”, we
+had to wear special clothes: steel-capped boots, hard wearing trousers
+and shirts (with our names embroidered on them). I was given these
+clothes a few days before leaving and when I arrived on site it was the
+first time they were worn. I was immediately an object of ridicule. The
+mine workers asked if my mother had dressed me. It seems that R&amp;TD
+people had a reputation as soft city people and brand new, clean, site
+clothes just played to the stereotype. My team leader didn’t shave that
+first morning and his clothes were uncleaned - the mine workers accepted
+him. The lesson was learnt. It was also quickly reinforced. In the
+afternoon the Beard arrived after travelling separately to the team
+leader and I. The Beard was an older mining engineer who had transferred
+from the mines to work at R&amp;TD. At the office he was always well-spoken
+and well-dressed, often with a natty waistcoat. When he arrived at the
+mine it looked like he had been lost in the bush for a week and just
+crawled out. As soon as he was spotted he turned the air blue with
+swearing. I was amazed how differently he acted looked and compared to
+the office. The mine workers loved it - they were all instant friends!
+One person joked that R&amp;TD had finally sent a real man. I just went back
+to my coding.</p>
+
+<p>The MineSim manager was pretty cool and one of the best manager’s I’ve
+had. When I needed to vent about some dodgy mathematician code (a 6 page
+function, containing tens of nested if-statements), he let me and then
+told me to go fix it. He managed to be friendly, but still get us
+working (to his advantage there was never a huge pressure to get
+something finished to a tight deadline). Senior management must have
+liked him too, as he was one of the few saved from redundancy at the
+end. He used to write two sets of travel reports: the official ones; and
+the version just for the team, written in a
+<a href="http://en.wikipedia.org/wiki/Gonzo_journalism">gonzo</a> style - very
+funny. When R&amp;TD was reoganised he managed to get our team renamed REPO
+so he could use
+<a href="http://en.wikipedia.org/wiki/Repo_Man_(film)">Repo Man</a>
+movie quotes like “the life of a repo man is always intense” and
+“ordinary fucking people, I hate ’em”. I can’t remember what REPO
+actually stood for, it was a fairly tortured acronym if recall
+correctly. His vision was that MineSim would evolve into an automated
+mine system. I hear Rio Tinto is starting to move in this direction.
+However I doubt any of our code survived. It would be surprising if
+anyone currently working on mine automation was ever aware of our work.</p>
+
+<p>Besides the underground work I did various other little jobs on the
+MineSim project during my time at Rio Tinto. Including some work for a
+diamond mine and a coal mine. There was also an aborted attempt to
+produce a similar project for ore processing plants. It was to be OreSim
+(pronounced “AWE-some”). It never went anywhere as it seemed we couldn’t
+get anyone interested in it. That was the problem with R&amp;TD. We were
+seen as internal consultants, but not very practical ones. Our work took
+time to produce and was all this “computery stuff” done by people who
+hadn’t spent much time at real minesites. When we did produce something
+worth while we couldn’t sell it to other companies due to our internal
+status. Thus we never got any scale. I believe MineSim could have been
+sold on the wider market, we sometimes heard favourable comparisons
+between us and commercial competition. A training product we produced
+was actually requested by a competitor. It would have been a big sale,
+easy, and not in any way a matter of competitive advantage (it was
+safety training). So it was suggested to senior management, who refused
+it. We had no real advantages as internal staff - we still had to market
+and sell our services to mines. However, we were handicapped by not
+being allowed to compete properly.</p>
+
+<p>There were a few other projects I worked on: an optimisation tool for a
+coal port in NSW; a website with searchable mine information; and, a
+travellers advice website (unofficially nicknamed <a href="http://en.wikipedia.org/wiki/Robert_Bogucki">Bogucki
+Net</a> after a lost tourist).
+My part of these wasn’t particular interesting. I did the
+<a href="http://en.wikipedia.org/wiki/Object-relational_mapping">ORM</a> for the
+port tool and the search and display for the websites. The port work was
+most notable for difficulties with the first-timer team leader - he was
+micromanaging, dismissive and insulting. It got to the point I had to
+make a complaint to my manager (the only time in my working life). It
+turned out the other team member had also complained about the team
+leader too, so everyone calmed down and was on their best behaviour
+until the end of the project.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

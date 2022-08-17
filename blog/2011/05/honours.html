@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Honours</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>May 22, 2011</b>
+<h4>Honours</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
+    
+      <a class="post" href="/blog/tag/University.html">University</a>
+    
+<br/><br/>
+<p>It was always my plan at university to do honours - it was a step on the
+way to a PhD. The Computer Science degree at <a href="http://www.uwa.edu.au/">The University of Western
+Australia</a> was nominally a three year degree,
+but a small number of students with good grades were invited to do a
+fourth year in order to graduate “with honours”. I got the required
+grades and thus got an invitation to do the extra year. Fourteen other
+students did the same out of a third-year class of just over 100. A few
+good students who must have had invitations refused - I knew a couple of
+them, including one who got very good grades. Although on the whole, the
+honours class was representative of the better students in our year.
+That year I worked harder than I ever had before (but have a couple of
+times more since). I needed to achieve 1st class (the highest grade
+available) to stand a good chance of getting into the PhD program. This
+is the story of that year.</p>
+
+<!--more-->
+
+<p>At the end of the honours year we would receive a single grade for our
+degree (rather than the pass/fail of the three year degree). This would
+be based solely on the grades from the extra year - as we were deemed to
+have already passed the basic course. This was quite different from
+other faculties (like Engineering) where the honours grade was
+determined on the whole 4 years worth of coursework. Lucky for me, as my
+first two years of coursework were fairly ordinary. The honours grade
+was determined as 62.5% based on coursework and 37.5% on a research
+project. Having studied the marking scheme carefully, I decided to focus
+more attention on my coursework than the project. This was a mistake as
+the final marks appeared to be more influenced by the project than the
+coursework. I heard the marks for the units and the projects were set at
+the same meeting where the final grade was determined - one can
+speculate as the to the order these were decided.</p>
+
+<p>Honours students had a couple of weeks to decide upon a suitable
+project. A couple of people already knew what they wanted to do and just
+needed to find a lecturer to supervise them. The rest of us looked at
+the project lists - two or three example projects suggested by each
+lecturer. I wanted to study something based in
+<a href="http://en.wikipedia.org/wiki/Artificial_intelligence">AI</a> and
+particularly <a href="http://en.wikipedia.org/wiki/Neural_network">neural
+networks</a>. I knew the
+supervisor I wanted, Dr Philip Hingston, who had a couple of such
+projects listed. Unfortunately, he left the department to work in
+industry just before the academic year began (as it turned out he was my
+manager at Rio Tinto R&amp;TD a few years later). So I chose the next
+closest project on the list. It was “A Connectionist Network for Object
+Recognition” supervised by Dr Paul Hadingham. I remember rushing to meet
+Paul in order to claim the project in case anyone else was interested -
+I needn’t have worried.</p>
+
+<p>The basic idea was to create a system that could classify simple line
+drawings in a way analogous to human sight. Thus it would have 3 layers.
+First, one like the back of the eye that examined the basic parameters
+of the lines (what angle it was on; whether it was curved; whether it
+joined another line). The next layer would consolidate multiple lines
+and compare these to known pattern, supposedly like the vision centres
+at the back of the brain. The final decision on the object represented
+by the drawing would be decided in the third layer, corresponding to the
+cerebral cortex. The starting point would be a representation of line
+drawings created by Dr Hadingham.</p>
+
+<p>Or at least that was the theory. I started by reading academic papers
+on: <a href="http://en.wikipedia.org/wiki/Grammar">grammar</a>, to understand
+Hadingham’s representation (including one by <a href="http://en.wikipedia.org/wiki/Noam_Chomsky">Noam
+Chomsky</a> - I felt so
+well-educated); neural networks, becoming more disillusioned the entire
+time; and human vision, which for some reason seemed to involve putting
+probes into living cats brains - gruesome stuff. However, in that end no
+of that mattered. The system worked by using Hadingham’s representation
+to convert the lines of a drawing into points in 4 or 7 dimensional
+space. The points were grouped together into “features”, and then
+probabilistically compared to templates representing various objects
+(the templates were generated by a training set of drawings
+representative of the object). If the features were close enough to an
+object’s template then the drawing was of that type of object. For
+instance to recognise a human, it would look for something resembling a
+head, to recognise a car it would look for wheels and a roof. It all
+came down to statistics, but then so do neural networks, so I didn’t
+feel to bad about the whole thing. If you are masochistic my thesis is
+available here in <a href="/assets/posts/uni/honours_thesis.pdf">PDF format</a> or
+here in the original <a href="/assets/posts/uni/honours_thesis.ps">Postscript
+format</a>. I wouldn’t recommend
+reading it - its not well written.</p>
+
+<p>Only one chapter of the thesis is devoted to the actual object
+recognition. Strange considering this was the stated aim, but expected
+considering the time spent on it. Much more time was spent writing a
+program to nicely display the 4 and 7 dimensional representation
+graphically and grouping points into features. This was because these
+were more interesting programming tasks. I thought I was a scientist,
+but my actions suggested more an engineer. Unfortunately I didn’t
+realise this. So I spent a great deal of time writing a program to input
+data files and output <a href="http://www.latex-project.org/">LaTeX</a>
+<a href="http://www.ursoswald.ch/LaTeXGraphics/picture/picture.html">picture</a>
+graphs, which I could then include in my thesis document. Below is an
+example: the image on the left was converted into the graph on the right
+(the two points off by themselves represent the head). I also spent
+quite some time coding solutions for solving the <a href="http://en.wikipedia.org/wiki/Clique_problem">maximal
+clique</a>
+<a href="http://en.wikipedia.org/wiki/NP-complete">NP-Complete</a> problem in order
+to find features in objects. NP-Complete problems are well known in
+Computer Science. It can be challenging to code solutions for them that
+produce good results for large datasets in a reasonable timeframe.
+Through my project learnt a great deal about computing, but it wasn’t
+directly applicable to my thesis.</p>
+
+<p><img src="/assets/posts/uni/conversion.png" alt="" /></p>
+
+<p>I worked hard during my honours year. Harder than any previous year of
+study. The final spurt of effort to get the thesis complete took a month
+and is one of the most intense sustained efforts I have produced (it has
+been matched twice since). Looking back at it now, I don’t know why it
+was so hard. There was a great deal of pressure to get a good grade and
+I wasn’t used to writing anything over a paragraph. Then there was
+preparation for a 30 minute presentation, posters for the hall, extra
+coding to plug gaps in the code and the coursework. My consolation is
+that all the other honours students were doing the same. Everyone pulled
+a couple of all-nighters, including people who seemed to cruise through
+3rd year. In the end my thesis was one of the shortest at just under 10
+thousand words and my presentation went well, or at least there were no
+disdainful questions at the end (as a few students encountered).</p>
+
+<p>The five courses completed during the year did not leave much of an
+impression. I had to look up two on my transcript, <a href="http://en.wikipedia.org/wiki/Expert_system">Expert
+Systems</a> and <a href="http://en.wikipedia.org/wiki/Computer_vision">Computer
+Vision</a>, as I had
+completely forgotten them. Those two and Neural Networks all overlapped
+slightly with my project, so with a bit of effort I got good grades.
+Although with Neural Nets, everyone got a good mark. The lecturer had a
+novel “binary” marking system for assignments. A submitted assignment
+would get one out of one. Only the final exam was properly marked -
+nearly everyone got over 90%. My comment on his evaluation was “1 course
+delivered: 1 out 1”. Scientific communication was my worst subject. It
+aimed to teach us to write properly - the lecturer had their work cut
+out with me. I can image it was made required after supervisors had to
+plow their way through innumerable theses written by computing students
+who hadn’t written more than code comments (if they were lucky) during
+the previous 3 years. The last course was <a href="http://en.wikipedia.org/wiki/Functional_programming">Functional
+Programming</a>,
+notable for a moment of clarity late in the course when I saw the the 10
+line solution to an assignment that took me (and most others) over a
+hundred lines. I saw the light and where my understanding was flawed. At
+that point “got” the functional style and it was good.</p>
+
+<p>There was a real sense of camaraderie among the honours group. It was
+just the 15 of us in the same classes. Our project’s were unique, so
+there was no problem with plagiarism. We spent a great deal of time in
+each other’s company. Much of which was spent playing an old Mac game
+called Fungus. As the year progressed an increasing percentage of our
+diet consisted of Coca-Cola, chocolate and pizza. High caffeine and
+sugar intake was almost a badge of honour. When we ordered in pizza
+often the postgrad students would chip in. They would reminisce on their
+honours year and tell us we were doomed. At 10pm, Mother’s (the local
+convenience store) would shut, so by 9:30pm someone was organising a
+“Mother’s run” to stock up - a small group would go and collect snacks
+for the whole group. I got to know the people working there by name.
+Occasionally there was the more desperate 2am “Maccas run” to a 24-hour
+McDonald’s in the city, but I was never part of that. Not because I
+wasn’t around at that time - I just wasn’t a fan of their food.</p>
+
+<p>We had a special room at the end of the building - the honours lab. The
+desks were arranged haphazardly, almost like a maze. It was not possible
+to see the what was happening at the back from the front of the room.
+Towards the end of the year I and a couple of others dragged a bunch of
+the long cushioned benches that were in the hall to the back of the lab
+and used them as beds. In the last few days before the thesis due date
+it was too noisy in the lab to sleep, so they were moved into a vacant
+tutorial room. There was a wide range of computers from Macs and PCs to
+<a href="http://en.wikipedia.org/wiki/SPARC">Sun Sparcs</a> all with connections to
+the department servers and the Internet. It was a very nice setup for 1995. None of us had anything remotely comparable at home. We used to
+just roam around the network. One student found an <a href="http://en.wikipedia.org/wiki/Open_mail_relay">open mail
+relay</a> (there wasn’t much
+spam around back then) and soon we were all telneting into port 25 on
+various machines to send <a href="http://en.wikipedia.org/wiki/E-mail_spoofing">spoofed
+emails</a>. Much hilarity
+ensued until it turned out some of the faked mail from the Head of
+Department wasn’t fake at all. That was the extent of my hacking.</p>
+
+<p>During honours I became aware of the Web - starting the year being
+introduced to
+<a href="http://en.wikipedia.org/wiki/Mosaic_(web_browser)">Mosaic</a>
+and ending it with
+<a href="http://en.wikipedia.org/wiki/Netscape_Navigator">Navigator</a>. I remember
+one student put up suggestive photos of his girlfriend. That was
+entertaining, until within a day the Head of Department came up to the
+room and told him to get rid of them. In case you were wondering there
+was a single woman among the 15 honours students.</p>
+
+<p>At the end of the year I got 1st class honours and a government
+scholarship for a PhD. My aims had been achieved. Dr Hadingham suggested
+I write up my thesis as a conference article. I thought that was a great
+idea and started work. It was at this point I spotted a bug in my
+recognition code. Some of the inputs were being incorrectly ignored.
+However, when fixed it the system became much less accurate - in fact
+barely better than chance. I became disillusioned at this and quietly
+abandoned the paper and chose a new supervisor for my PhD.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

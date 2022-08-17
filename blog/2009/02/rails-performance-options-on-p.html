@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Rails performance options on Phusion Passenger</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>February  8, 2009</b>
+<h4>Rails performance options on Phusion Passenger</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Rails.html">Rails</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>I run a couple of Rails websites
+(<a href="http://www.queuesaurus.com">queuesaurus</a> &amp; <a href="http://www.cordinc.info/weather">past weather
+forecasts</a>), both on a small 256MB
+virtual host at <a href="http://www.slicehost.com">Slicehost</a>. As such I don’t
+have a great deal of computing resources available to support two
+resouce hogging apps. If you have visited either of those sites, you
+will know that the first page view can take seemingly ages, but that
+after that it speeds up. As I use <a href="http://www.modrails.com/">Phusion Passenger
+(modrails)</a> to serve the apps through Apache,
+I investigated some of the config options and how they affected
+performance.</p>
+
+<!--more-->
+
+<p><strong>Setup</strong></p>
+
+<p>My setup is a virtualised server with 256MB RAM running Apache2 with
+Phusion Passenger 2.0.6. I have 2 Rails apps installed on the slice, but
+for the purposes of this investigation I will only be using one. I
+tested performance by running the same script a number of times for each
+config options. Website response time was measured using the unix time
+command on a wget call and memory usage was measured with the
+<a href="http://www.modrails.com/documentation/Users%20guide.html#_inspecting_memory_usage">passenger-memory-stats</a>
+command. The config options changed were (all other settings were left
+with their defaults):</p>
+
+<ul>
+  <li><a href="http://www.modrails.com/documentation/Users%20guide.html#PassengerPoolIdleTime">PassengerPoolIdleTime</a>:
+this is set in /etc/apache2/apache2.conf and is the maximum number
+of seconds an app can be idle before being shut down.</li>
+  <li><a href="http://groups.google.com/group/phusion-passenger/browse_thread/thread/43a735dd4e1748de?pli=1">FRAMEWORK_SPAWNER_MAX_IDLE_TIME</a>
+in
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/lib/passenger/constants.rb,
+is the number of seconds the framework spawner can be idle</li>
+  <li><a href="http://groups.google.com/group/phusion-passenger/browse_thread/thread/43a735dd4e1748de?pli=1">APP_SPAWNER_MAX_IDLE_TIME</a>
+in
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/lib/passenger/constants.rb,
+is the number of seconds the app spawner can be idle</li>
+</ul>
+
+<p><strong>How the system seems to work</strong></p>
+
+<p>Firstly there seems to be an issue with the online non-official
+documentation. <a href="http://wiki.github.com/FooBarWidget/passenger/wishlist">This
+webpage</a> seems
+to suggest that the RailsFrameworkSpawnerIdleTime &amp;
+RailsAppSpawnerIdleTime config options can be set inside the apache
+config file. I could not get this to work. If I tried setting them
+anywhere other than the constants.rb file then I got errors on starting
+Apache. The same documentation also suggests that setting these values
+to 0 means they will not timeout. In my tests this was definitely not
+the situation - set to 0 they timed out immediately! Instead I set them
+to 999999 when I didn’t want them to timeout. Beware non-official online
+documentation.</p>
+
+<p>Passenger seems to have a Passenger Spawner which is always resident in
+memory, and starts Framework Spawners as Passenger supports multiple web
+frameworks (Rails, Merb, Sinatra, etc). Framework Spawners start App
+Spawners so that multiple applications can be supported, and these App
+Spawners starts instances of of the application (and puts them in the
+instance pool) which handle actual user requests. Apart from the
+Passenger Spawner, all these can be stopped after an idle period (see
+the Setup section) to conserve memory. So it is possible that after a
+period of inactivity, just to serve a single user request, Passenger
+would need to start a Framework Spawner then an App Spawner then an app
+instance before handling the request. This is why my low usage sites are
+slow at first and then speed up. Here is the internal state of Passenger
+after a long period of inactivity (with default settings):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">--------- Passenger processes ---------
+22575  9        14.8 MB  0.1 MB   /usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/ext/apache2/ApplicationPoolServerExecutable 0 /usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/bin/passenger-spawn-server  /usr/bin/ruby1.8  /tmp/passenger_status.5364.fifo
+22576  2        47.3 MB  0.7 MB   Passenger spawn server</code></pre></figure>
+
+<p>and here it is again right after a request:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">-------- Passenger processes ----------
+22575  9        14.8 MB   0.1 MB   /usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/ext/apache2/ApplicationPoolServerExecutable 0 /usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/bin/passenger-spawn-server  /usr/bin/ruby1.8  /tmp/passenger_status.5364.fifo
+22576  2        47.3 MB   0.2 MB   Passenger spawn server
+23776  1        99.6 MB   21.9 MB  Passenger FrameworkSpawner: 2.1.0
+23781  1        138.2 MB  46.2 MB  Passenger ApplicationSpawner: /home/queuesaurus/public_html/wq
+23788  1        139.4 MB  48.1 MB  Rails: /home/queuesaurus/public_html/wq</code></pre></figure>
+
+<p>As can be seen it comes down to a tradeoff between speed and memory.
+Having all the application instances running all the time would take a
+lot of memory. Starting them as required takes time. The tests I ran
+attempted to quantify this tradeoff, setting the idle config options to
+various values such that Passenger was in a variety of states when a
+user request arrived.</p>
+
+<p><strong>Results</strong></p>
+
+<p>The first task was to create an upper and lower bound for my user
+requests. On a just started Passenger (with the memory profile like the
+first example above - nothing running apart from the Passenger Spawner),
+a certain user request took 10.9 seconds (average over 10 runs), the
+same user request made a minute after the first took 0.12 seconds. There
+was no caching in the system, so the majority of the 10.8 second
+difference is probably in starting up the Framework Spawner, Application
+Spawner and an instance (the memory profile was like the second example
+above - everything running).</p>
+
+<p>Next I tried to isolate the starting of the various components. If I had
+the Framework Spawner running, but not the App Spawner or an instance
+then it took an average of 4.5 seconds to start them and respond. If a
+Framework and App Spawner were running then it took around 2 seconds to
+start an instance and respond. If there was an instance running at the
+time of a user request it normally took under a second to respond,
+although occasionally took upto 5 seconds. I couldn’t get the App
+Spawner running by itself. If the Framework Spawner stopped then so did
+the App Spawner regardless of their idle timeouts - strange.</p>
+
+<p>The situations where just an application instance is running deserves
+greater examination. Most of the time I saw this
+(PassengerPoolIdleTime=999999, others left with default value):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">-------- Passenger processes ----------
+27504  7        14.5 MB   0.2 MB   /usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/ext/apache2/ApplicationPoolServerExecutable 0 /usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/bin/passenger-spawn-server  /usr/bin/ruby1.8  /tmp/passenger_status.5364.fifo
+27505  2        49.1 MB   3.0 MB   Passenger spawn server
+27521  1        139.1 MB  35.4 MB  Rails: /home/queuesaurus/public_html/wq
+
+Query took 0m0.191s
+
+--------- Passenger processes ----------
+27504  9        14.8 MB   0.2 MB   /usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/ext/apache2/ApplicationPoolServerExecutable 0 /usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/bin/passenger-spawn-server  /usr/bin/ruby1.8  /tmp/passenger_status.5364.fifo
+27505  2        49.1 MB   3.0 MB   Passenger spawn server
+27521  1        139.1 MB  35.5 MB  Rails: /home/queuesaurus/public_html/wq</code></pre></figure>
+
+<p>That is after a period of inactivity (32 minutes in the example above)
+there is still an instance running and it responds quickly to the
+request. Sometimes I saw this after the same 32 of inactivity
+(PassengerPoolIdleTime=999999, APP_SPAWNER_MAX_IDLE_TIME=1,
+FRAMEWORK_SPAWNER_MAX_IDLE_TIME at default):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">--------- Passenger processes ---------
+7666  9        14.8 MB   ?        /usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/ext/apache2/ApplicationPoolServerExecutable 0 /usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/bin/passenger-spawn-server  /usr/bin/ruby1.8  /tmp/passenger_status.5364.fifo
+7667  2        48.8 MB   1.5 MB   Passenger spawn server
+7683  1        139.2 MB  0.3 MB   Rails: /home/queuesaurus/public_html/wq
+
+Query took 0m7.884s
+
+--------- Passenger processes ---------
+7666  9        14.8 MB   0.1 MB   /usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/ext/apache2/ApplicationPoolServerExecutable 0 /usr/lib/ruby/gems/1.8/gems/passenger-2.0.6/bin/passenger-spawn-server  /usr/bin/ruby1.8  /tmp/passenger_status.5364.fifo
+7667  2        48.8 MB   1.5 MB   Passenger spawn server
+7683  1        139.2 MB  5.0 MB   Rails: /home/queuesaurus/public_html/wq</code></pre></figure>
+
+<p>Here the query took much longer, but nothing was started. The time seems
+to have been taken by the application instance itself in getting started
+again. Note the difference in starting memory. In the first example the
+instance has 35MB allocated before and after the query. In the second
+the instance has 0.3MB before and 5MB after. I saw a similar scenario
+with the spawners. If they never timed out then sometimes after a long
+period of time they would decrease resident memory usage and then take a
+long time to recover when action was required. Thus even if the the
+config settings are set to very large values, this is no guarantee that
+the components will react quickly, just increase the probability that
+they will. The only way to be sure memory is not being freed and that a
+component is fast is to exercise that component (for the spawners by
+creating application instances, and for application instances by
+responding to requests).</p>
+
+<p>As for memory usage, I found that Framework and Application Spawners
+used about as much resident memory each as an application instance.</p>
+
+<p><strong>Conclusion</strong></p>
+
+<p>It is important that you get an understanding of how much load your
+system has and play around with your settings to match your situation.
+If I had a high load website (with enough memory), I could have the
+spawners running all the time (setting their idle time to 999999) along
+with a set of long-lived application instances (PassengerPoolIdleTime a
+multiple of a normal user session time). Then the constant hits would
+keep starting up instances and keeping them active, with the spawners
+able to quickly respond to changes in load.</p>
+
+<p>I have a low load website, there is rarely more than a couple of people
+using it at once. Furthermore I only have 256MB of memory to play with.
+At this level it is not really worth having the spawners running, as
+each means that one less application instance can run. So I have roughly
+calculated how many instances I can have running at one and estimated 4
+rails applications instances (roughly 48M each = 192M out of 256
+available). Thus set
+<a href="http://www.modrails.com/documentation/Users%20guide.html#_passengermaxpoolsize_lt_integer_gt">PassengerMaxPoolSize</a>
+to 4 and split equally between my two apps with
+<a href="http://www.modrails.com/documentation/Users%20guide.html#_passengermaxinstancesperapp_lt_integer_gt">PassengerMaxInstancesPerApp</a>
+set to 2. Then PassengerPoolIdleTime was set to 999999, to ensure the
+instances would never time out. As this setup would quickly hit the
+maximum pool size the spawners won’t be used, thus both
+APP_SPAWNER_MAX_IDLE_TIME &amp; FRAMEWORK_SPAWNER_MAX_IDLE_TIME are
+1 so they timeout straight away.</p>
+
+<p>To ensure the application instances don’t release too much memory there
+is a cronscript running every 20 minutes to make a user request. Unless
+you have a constant heavy load website I think this is a good idea to
+keep initial response times low.</p>
+
+<p><strong>Update</strong>: It seems just making the same user request every 20 minutes
+with cron doesn’t properly keep the memory allocated in the instances. I
+am going to have to update the cron script to make a random query, as I
+think the current ones might be cached somewhere.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

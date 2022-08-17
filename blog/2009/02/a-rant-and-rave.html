@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>A Rant and Rave</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>February 13, 2009</b>
+<h4>A Rant and Rave</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>A few years ago I had the idea of creating a fairly standard online
+spaceship combat game (like <a href="http://www.eveonline.com">EVE</a>). The
+difference to other such games being that the players would not control
+their ships directly, but instead through code they submitted to the
+game - a more complicated and extended
+<a href="http://robocode.sourceforge.net/">Robocode</a> or
+<a href="http://www.corewars.org/">CoreWar</a>. At the time I stopped because I
+couldn’t work out a way of preventing <a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">Denial of service
+attacks</a> in the
+submitted code. I had hoped to use Java as it had an extensive security
+model, but I found there was no way of stopping untrusted code from
+starting too many threads or allocating too much memory.</p>
+
+<p>Fast forward many years, and I thought I’d check out if the situation
+has improved. A search on Google returned all the same webpages I read 9
+years ago - there hasn’t been much movement in the area. The Javadocs
+suggested that the thread issue had been fixed, but no word about
+memory. I checked Robocode and it seems to just ignore the memory
+allocation problem. This is because it is not fixed!</p>
+
+<p>WTF! Sun has gone on about the <a href="http://java.sun.com/developer/technicalArticles/Security/whitepaper/JS_White_Paper.pdf">Java Security
+Model</a>
+for some time now. Touting the safety of its sandbox. However, if
+untrusted code can crash the system it is broken - nothing more to say.
+I don’t care about the rest. This has been a known issue for years.</p>
+
+<p>Anyway, rant over. On a more positive side, I used
+<a href="http://stackoverflow.com/">StackOverflow</a> for the first time in
+researching this issue and it is quite cool. My question is
+<a href="http://stackoverflow.com/questions/540738/excessive-memory-allocation-in-java-sandbox-security">here</a>.
+The answer states that there is a <a href="http://jcp.org/en/jsr/detail?id=284">movement to fix the memory DoS
+attack</a>, but that it is still in
+the requirements stage and <a href="http://tech.puredanger.com/java7/">probably will not be part of
+Java7</a>.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

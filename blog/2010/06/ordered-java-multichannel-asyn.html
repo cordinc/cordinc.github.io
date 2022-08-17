@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Ordered Java Multi-channel Asynchronous Throttler</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>June 27, 2010</b>
+<h4>Ordered Java Multi-channel Asynchronous Throttler</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>Some time ago I wrote a post describing a <a href="http://www.cordinc.com/blog/2010/04/java-multichannel-asynchronous.html">Java Multi-channel
+Asynchronous
+Throttler</a>
+I had written. At the time, I stated it would preserve the order of
+calls, but as Asa commented on that blog post, this was not always the
+case. Here is a new version that does preserve order, and passes Asa’s
+test. As part of this work I also extracted common code into new classes
+and created a ChannelThrottler interface. It works by placing incoming
+tasks on an internal queue. All the code detailed in this post (and the
+other throttler post) <a href="http://www.cordinc.com/projects/throttler.zip">is available
+here</a>.</p>
+
+<!--more-->
+
+<p>I’m defining a multi-channel throttler as a class that inputs other
+Runnable tasks (together with an optional channel identifier) and
+throttles the rate they are executed. The throttling depends on rules
+defined as allowing X calls in Y time period. Different channels may
+have different rates, but there is also an overall rate. For more
+information <a href="http://www.cordinc.com/blog/2010/04/java-multichannel-asynchronous.html">see the previous blog
+post</a>.
+So the interface for a generic channel throttler becomes the below:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">//imports skipped for prettier code display</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ChannelThrottler</span> <span class="o">{</span>
+	<span class="nc">Future</span><span class="o">&lt;?&gt;</span> <span class="n">submit</span><span class="o">(</span><span class="nc">Runnable</span> <span class="n">task</span><span class="o">);</span>
+	<span class="nc">Future</span><span class="o">&lt;?&gt;</span> <span class="n">submit</span><span class="o">(</span><span class="nc">Object</span> <span class="n">channelKey</span><span class="o">,</span> <span class="nc">Runnable</span> <span class="n">task</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>From the previous work, I extracted the Rate as an independent class
+(previously it was an inner class). It keeps track of an individual
+channel throttle rate. Using this information it can calculate the delay
+that needs to be applied to a Runnable task for it to meet the
+throttling requirements.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">//imports skipped for prettier code display</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Rate</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">numberCalls</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">timeLength</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">TimeUnit</span> <span class="n">timeUnit</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;</span> <span class="n">callHistory</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;();</span>
+	
+	<span class="kd">public</span> <span class="nf">Rate</span><span class="o">(</span><span class="kt">int</span> <span class="n">numberCalls</span><span class="o">,</span> <span class="kt">int</span> <span class="n">timeLength</span><span class="o">,</span> <span class="nc">TimeUnit</span> <span class="n">timeUnit</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">numberCalls</span> <span class="o">=</span> <span class="n">numberCalls</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">timeLength</span> <span class="o">=</span> <span class="n">timeLength</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">timeUnit</span> <span class="o">=</span> <span class="n">timeUnit</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="kt">long</span> <span class="nf">timeInMillis</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">timeUnit</span><span class="o">.</span><span class="na">toMillis</span><span class="o">(</span><span class="n">timeLength</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	
+	<span class="cm">/* package */</span> <span class="kt">void</span> <span class="nf">addCall</span><span class="o">(</span><span class="kt">long</span> <span class="n">callTime</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">callHistory</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">callTime</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">cleanOld</span><span class="o">(</span><span class="kt">long</span> <span class="n">now</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">ListIterator</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">callHistory</span><span class="o">.</span><span class="na">listIterator</span><span class="o">();</span>
+		<span class="kt">long</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">now</span><span class="o">-</span><span class="n">timeInMillis</span><span class="o">();</span>
+		<span class="k">while</span> <span class="o">(</span><span class="n">i</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">i</span><span class="o">.</span><span class="na">next</span><span class="o">()&lt;=</span><span class="n">threshold</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">i</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+			<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+				<span class="k">break</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	
+	<span class="cm">/* package */</span> <span class="kt">long</span> <span class="nf">callTime</span><span class="o">(</span><span class="kt">long</span> <span class="n">now</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">cleanOld</span><span class="o">(</span><span class="n">now</span><span class="o">);</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">callHistory</span><span class="o">.</span><span class="na">size</span><span class="o">()&lt;</span><span class="n">numberCalls</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="n">now</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="kt">long</span> <span class="n">lastStart</span> <span class="o">=</span> <span class="n">callHistory</span><span class="o">.</span><span class="na">getLast</span><span class="o">()-</span><span class="n">timeInMillis</span><span class="o">();</span>
+		<span class="kt">long</span> <span class="n">firstPeriodCall</span><span class="o">=</span><span class="n">lastStart</span><span class="o">,</span> <span class="n">call</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">callHistory</span><span class="o">.</span><span class="na">descendingIterator</span><span class="o">();</span>
+		<span class="k">while</span> <span class="o">(</span><span class="n">i</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+			<span class="n">call</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">call</span><span class="o">&lt;</span><span class="n">lastStart</span><span class="o">)</span> <span class="o">{</span>
+				<span class="k">break</span><span class="o">;</span>
+			<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+				<span class="n">count</span><span class="o">++;</span>
+				<span class="n">firstPeriodCall</span> <span class="o">=</span> <span class="n">call</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">count</span><span class="o">&lt;</span><span class="n">numberCalls</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="n">firstPeriodCall</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="n">firstPeriodCall</span><span class="o">+</span><span class="n">timeInMillis</span><span class="o">()+</span><span class="mi">1</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>I also extracted some code common to both implementations (this one and
+the previous one) as an abstract super class.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">//imports skipped for prettier code display</span>
+<span class="cm">/* package */</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstractChannelThrottler</span> <span class="kd">implements</span> <span class="nc">ChannelThrottler</span> <span class="o">{</span>
+
+	<span class="kd">protected</span> <span class="kd">final</span> <span class="nc">Rate</span> <span class="n">totalRate</span><span class="o">;</span>
+	<span class="kd">protected</span> <span class="kd">final</span> <span class="nc">TimeProvider</span> <span class="n">timeProvider</span><span class="o">;</span>
+	<span class="kd">protected</span> <span class="kd">final</span> <span class="nc">ScheduledExecutorService</span> <span class="n">scheduler</span><span class="o">;</span>
+	<span class="kd">protected</span> <span class="kd">final</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">,</span> <span class="nc">Rate</span><span class="o">&gt;</span> <span class="n">channels</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">,</span> <span class="nc">Rate</span><span class="o">&gt;();</span>
+	
+	<span class="kd">protected</span> <span class="nf">AbstractChannelThrottler</span><span class="o">(</span><span class="nc">Rate</span> <span class="n">totalRate</span><span class="o">,</span> <span class="nc">ScheduledExecutorService</span> <span class="n">scheduler</span><span class="o">,</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">,</span> <span class="nc">Rate</span><span class="o">&gt;</span> <span class="n">channels</span><span class="o">,</span> <span class="nc">TimeProvider</span> <span class="n">timeProvider</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">totalRate</span> <span class="o">=</span> <span class="n">totalRate</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">scheduler</span> <span class="o">=</span> <span class="n">scheduler</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">channels</span><span class="o">.</span><span class="na">putAll</span><span class="o">(</span><span class="n">channels</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">timeProvider</span> <span class="o">=</span> <span class="n">timeProvider</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">protected</span> <span class="kd">synchronized</span> <span class="kt">long</span> <span class="nf">callTime</span><span class="o">(</span><span class="nc">Rate</span> <span class="n">channel</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">long</span> <span class="n">now</span> <span class="o">=</span> <span class="n">timeProvider</span><span class="o">.</span><span class="na">getCurrentTimeInMillis</span><span class="o">();</span>
+		<span class="kt">long</span> <span class="n">callTime</span> <span class="o">=</span> <span class="n">totalRate</span><span class="o">.</span><span class="na">callTime</span><span class="o">(</span><span class="n">now</span><span class="o">);</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">channel</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">callTime</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">callTime</span><span class="o">,</span> <span class="n">channel</span><span class="o">.</span><span class="na">callTime</span><span class="o">(</span><span class="n">now</span><span class="o">));</span>
+			<span class="n">channel</span><span class="o">.</span><span class="na">addCall</span><span class="o">(</span><span class="n">callTime</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="n">totalRate</span><span class="o">.</span><span class="na">addCall</span><span class="o">(</span><span class="n">callTime</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">callTime</span><span class="o">;</span>			
+	<span class="o">}</span>
+	
+	<span class="kd">protected</span> <span class="kt">long</span> <span class="nf">getThrottleDelay</span><span class="o">(</span><span class="nc">Object</span> <span class="n">channelKey</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">long</span> <span class="n">delay</span> <span class="o">=</span> <span class="n">callTime</span><span class="o">(</span><span class="n">channels</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">channelKey</span><span class="o">))-</span><span class="n">timeProvider</span><span class="o">.</span><span class="na">getCurrentTimeInMillis</span><span class="o">();</span>
+		<span class="k">return</span> <span class="n">delay</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">?</span><span class="mi">0</span><span class="o">:</span><span class="n">delay</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Now for the order-preserving throttler itself. The problem with the
+previous throttler was that it worked by calculating the delay necessary
+on a Runnable task to meet the various throttle rates and then schedule
+its execution just after that delay. This meant that if multiple tasks
+were scheduled at the same time the JVM would run them in any order it
+chose. To get around this, the tasks are now stored in a
+<a href="http://en.wikipedia.org/wiki/FIFO">FIFO</a> queue. The appropriate delay
+to fulfill the rate requirements is still calculated, but now it is used
+to schedule a call that takes the first task off the queue and executes
+it. Note that the queue contains
+<a href="http://java.sun.com/javase/6/docs/api/java/util/concurrent/FutureTask.html">FutureTask</a>
+objects and the input Runnable tasks are converted to a FutureTask. This
+is to maintain the proper interface and allow the process calling the
+throttler to see the progress of the task (or cancel it).</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">QueueChannelThrottler</span> <span class="kd">extends</span> <span class="nc">AbstractChannelThrottler</span> <span class="o">{</span>
+	
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">Runnable</span> <span class="n">processQueueTask</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+			<span class="nc">FutureTask</span><span class="o">&lt;?&gt;</span> <span class="n">task</span> <span class="o">=</span> <span class="n">tasks</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">task</span><span class="o">!=</span><span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">task</span><span class="o">.</span><span class="na">isCancelled</span><span class="o">())</span> <span class="o">{</span>
+				<span class="n">task</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
+			<span class="o">}</span>
+		<span class="o">}</span>		
+	<span class="o">};</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">FutureTask</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">tasks</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">FutureTask</span><span class="o">&lt;?&gt;&gt;();</span>
+
+	<span class="kd">public</span> <span class="nf">QueueChannelThrottler</span><span class="o">(</span><span class="nc">Rate</span> <span class="n">totalRate</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">(</span><span class="n">totalRate</span><span class="o">,</span> <span class="nc">Executors</span><span class="o">.</span><span class="na">newSingleThreadScheduledExecutor</span><span class="o">(),</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">,</span> <span class="nc">Rate</span><span class="o">&gt;(),</span> <span class="nc">TimeProvider</span><span class="o">.</span><span class="na">SYSTEM_PROVIDER</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="nf">QueueChannelThrottler</span><span class="o">(</span><span class="nc">Rate</span> <span class="n">totalRate</span><span class="o">,</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">,</span> <span class="nc">Rate</span><span class="o">&gt;</span> <span class="n">channels</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">(</span><span class="n">totalRate</span><span class="o">,</span> <span class="nc">Executors</span><span class="o">.</span><span class="na">newSingleThreadScheduledExecutor</span><span class="o">(),</span> <span class="n">channels</span><span class="o">,</span> <span class="nc">TimeProvider</span><span class="o">.</span><span class="na">SYSTEM_PROVIDER</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="nf">QueueChannelThrottler</span><span class="o">(</span><span class="nc">Rate</span> <span class="n">totalRate</span><span class="o">,</span> <span class="nc">ScheduledExecutorService</span> <span class="n">scheduler</span><span class="o">,</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">,</span> <span class="nc">Rate</span><span class="o">&gt;</span> <span class="n">channels</span><span class="o">,</span> <span class="nc">TimeProvider</span> <span class="n">timeProvider</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">totalRate</span><span class="o">,</span> <span class="n">scheduler</span><span class="o">,</span> <span class="n">channels</span><span class="o">,</span> <span class="n">timeProvider</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Override</span> <span class="kd">public</span> <span class="nc">Future</span><span class="o">&lt;?&gt;</span> <span class="n">submit</span><span class="o">(</span><span class="nc">Runnable</span> <span class="n">task</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="nf">submit</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">task</span><span class="o">);</span>
+	<span class="o">}</span> 
+	
+	<span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"unchecked"</span><span class="o">)</span>
+	<span class="nd">@Override</span> <span class="kd">public</span> <span class="nc">Future</span><span class="o">&lt;?&gt;</span> <span class="n">submit</span><span class="o">(</span><span class="nc">Object</span> <span class="n">channelKey</span><span class="o">,</span> <span class="nc">Runnable</span> <span class="n">task</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">long</span> <span class="n">throttledTime</span> <span class="o">=</span> <span class="n">channelKey</span><span class="o">==</span><span class="kc">null</span><span class="o">?</span><span class="n">callTime</span><span class="o">(</span><span class="kc">null</span><span class="o">):</span><span class="n">callTime</span><span class="o">(</span><span class="n">channels</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">channelKey</span><span class="o">));</span>
+		<span class="nc">FutureTask</span> <span class="n">runTask</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FutureTask</span><span class="o">(</span><span class="n">task</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+		<span class="n">tasks</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">runTask</span><span class="o">);</span>
+		<span class="kt">long</span> <span class="n">now</span> <span class="o">=</span> <span class="n">timeProvider</span><span class="o">.</span><span class="na">getCurrentTimeInMillis</span><span class="o">();</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">schedule</span><span class="o">(</span><span class="n">processQueueTask</span><span class="o">,</span> <span class="n">throttledTime</span><span class="o">&lt;</span><span class="n">now</span><span class="o">?</span><span class="mi">0</span><span class="o">:</span><span class="n">throttledTime</span><span class="o">-</span><span class="n">now</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">runTask</span><span class="o">;</span>
+	<span class="o">}</span> 
+
+<span class="o">}</span></code></pre></figure>
+
+<p>All the code detailed in this post (and the other throttler post) <a href="http://www.cordinc.com/projects/throttler.zip">is
+available here</a>. For
+reference, here are the tests used. They are very similar to the tests
+used for the previous throttler. However, I have added Asa’s ordered
+calls test.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">//imports skipped for prettier code display</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">QueueChannelThrottlerTest</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">CHANNEL1</span> <span class="o">=</span> <span class="s">"CHANNEL1"</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">CHANNEL2</span> <span class="o">=</span> <span class="s">"CHANNEL2"</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">DeterministicScheduler</span> <span class="n">scheduler</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">AtomicLong</span> <span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+	<span class="kd">private</span> <span class="nc">QueueChannelThrottler</span> <span class="n">throttler</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">AtomicInteger</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicInteger</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+	<span class="kd">private</span> <span class="nc">Runnable</span> <span class="n">countIncrementTask</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span><span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span><span class="n">count</span><span class="o">.</span><span class="na">incrementAndGet</span><span class="o">();}};</span>
+	
+	<span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"serial"</span><span class="o">)</span>
+	<span class="nd">@Before</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setupThrottler</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">scheduler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DeterministicScheduler</span><span class="o">();</span>
+		<span class="n">currentTime</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>	
+		<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">,</span> <span class="nc">Rate</span><span class="o">&gt;</span> <span class="n">channels</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">,</span> <span class="nc">Rate</span><span class="o">&gt;();</span>
+		<span class="n">put</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Rate</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">));</span>
+		<span class="n">put</span><span class="o">(</span><span class="no">CHANNEL2</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Rate</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">));</span>
+		<span class="n">throttler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">QueueChannelThrottler</span><span class="o">(</span><span class="k">new</span> <span class="nc">Rate</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">),</span> <span class="n">scheduler</span><span class="o">,</span> <span class="n">channels</span><span class="o">,</span> <span class="k">new</span> <span class="nc">TimeProvider</span><span class="o">()</span> <span class="o">{</span>
+			<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">long</span> <span class="nf">getCurrentTimeInMillis</span><span class="o">()</span> <span class="o">{</span><span class="k">return</span> <span class="n">currentTime</span><span class="o">.</span><span class="na">get</span><span class="o">();}</span>		
+		<span class="o">});</span>
+		<span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicInteger</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+	<span class="o">}</span>	
+	
+	<span class="nd">@Test</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testTotalChannelWithNoDelay</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Test</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testTotalChannelWithDelay</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1000</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Test</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testTotalChannelWithDoubleDelay</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">500</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">500</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1000</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Test</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testTotalChannelWithShortestDelay</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">777</span><span class="o">);</span>	
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">777</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">877</span><span class="o">);</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">124</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">777</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Test</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testChannel</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL2</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">777</span><span class="o">);</span>	
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">777</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL2</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">877</span><span class="o">);</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL2</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">124</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1000</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Test</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testChannelAndTotal</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">777</span><span class="o">);</span>	
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">777</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">877</span><span class="o">);</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">124</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">777</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Test</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testChannelAffectsTotal</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">777</span><span class="o">);</span>	
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">777</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">877</span><span class="o">);</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">124</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">777</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="kd">class</span> <span class="nc">OrderedTask</span> <span class="kd">implements</span> <span class="nc">Runnable</span> <span class="o">{</span>
+		<span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">order</span><span class="o">;</span>
+		<span class="kd">public</span> <span class="nf">OrderedTask</span><span class="o">(</span><span class="kt">int</span> <span class="n">order</span><span class="o">)</span> <span class="o">{</span><span class="k">this</span><span class="o">.</span><span class="na">order</span><span class="o">=</span><span class="n">order</span><span class="o">;}</span>
+		<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+			<span class="n">assertEquals</span><span class="o">(</span><span class="n">count</span><span class="o">.</span><span class="na">incrementAndGet</span><span class="o">(),</span> <span class="n">order</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">};</span>
+	
+	<span class="nd">@Test</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testChannelCallsAreOrdered</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="k">new</span> <span class="nc">OrderedTask</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL2</span><span class="o">,</span> <span class="k">new</span> <span class="nc">OrderedTask</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="k">new</span> <span class="nc">OrderedTask</span><span class="o">(</span><span class="mi">3</span><span class="o">));</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL2</span><span class="o">,</span> <span class="k">new</span> <span class="nc">OrderedTask</span><span class="o">(</span><span class="mi">4</span><span class="o">));</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL2</span><span class="o">,</span> <span class="k">new</span> <span class="nc">OrderedTask</span><span class="o">(</span><span class="mi">5</span><span class="o">));</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="k">new</span> <span class="nc">OrderedTask</span><span class="o">(</span><span class="mi">6</span><span class="o">));</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="k">new</span> <span class="nc">OrderedTask</span><span class="o">(</span><span class="mi">7</span><span class="o">));</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">5000</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Test</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testMultiChannel</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">777</span><span class="o">);</span>	
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">777</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL2</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">877</span><span class="o">);</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL2</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL2</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">123</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">778</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">999</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Test</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testMultiChannelWithTotal</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">777</span><span class="o">);</span>	
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">777</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL2</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">877</span><span class="o">);</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL2</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL2</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">countIncrementTask</span><span class="o">);</span>
+		<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="no">CHANNEL1</span><span class="o">,</span> <span class="n">countIncrementTask</span><span class="o">);</span>
+		
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">123</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">778</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1001</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">999</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">scheduler</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Test</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">scheduledTasksMonotonicallyIncreasing</span><span class="o">(){</span>
+		<span class="kt">int</span> <span class="n">numCalls</span> <span class="o">=</span> <span class="mi">50</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">totalCalls</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">ratePeriod</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+		<span class="kd">final</span> <span class="nc">CountDownLatch</span> <span class="n">latch</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CountDownLatch</span><span class="o">(</span><span class="n">totalCalls</span><span class="o">);</span>
+		<span class="nc">Rate</span> <span class="n">rate</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Rate</span><span class="o">(</span><span class="n">numCalls</span><span class="o">,</span> <span class="n">ratePeriod</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="nc">QueueChannelThrottler</span> <span class="n">throttler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">QueueChannelThrottler</span><span class="o">(</span><span class="n">rate</span><span class="o">);</span>
+		<span class="kd">final</span> <span class="nc">ConcurrentLinkedQueue</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;</span> <span class="n">base</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ConcurrentLinkedQueue</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;();</span>
+		
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">totalCalls</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
+				<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+					<span class="n">base</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">());</span>
+					<span class="n">latch</span><span class="o">.</span><span class="na">countDown</span><span class="o">();</span>
+				<span class="o">}</span>			
+			<span class="o">});</span>
+		<span class="o">}</span>
+	
+		<span class="c1">// wait for the tasks to finish, before exiting</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="n">latch</span><span class="o">.</span><span class="na">await</span><span class="o">((</span><span class="n">totalCalls</span><span class="o">/</span><span class="n">numCalls</span><span class="o">)*</span><span class="n">ratePeriod</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">fail</span><span class="o">();</span>
+		<span class="o">}</span>
+
+		<span class="n">assertEquals</span><span class="o">(</span><span class="n">base</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">1000</span><span class="o">);</span>
+		<span class="kt">long</span> <span class="n">last</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">Long</span> <span class="nl">next:</span> <span class="n">base</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">assertTrue</span><span class="o">(</span><span class="n">next</span> <span class="o">&gt;=</span> <span class="n">last</span><span class="o">);</span>
+			<span class="n">last</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Test</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">scheduledTasksShouldRunInOrder</span><span class="o">(){</span>
+		<span class="kt">int</span> <span class="n">numCalls</span> <span class="o">=</span> <span class="mi">50</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">totalCalls</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">ratePeriod</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+		<span class="nc">CountDownLatch</span> <span class="n">latch</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CountDownLatch</span><span class="o">(</span><span class="n">totalCalls</span><span class="o">);</span>
+		<span class="nc">Rate</span> <span class="n">rate</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Rate</span><span class="o">(</span><span class="n">numCalls</span><span class="o">,</span> <span class="n">ratePeriod</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="nc">QueueChannelThrottler</span> <span class="n">throttler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">QueueChannelThrottler</span><span class="o">(</span><span class="n">rate</span><span class="o">);</span>
+		<span class="nc">ConcurrentLinkedQueue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">base</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ConcurrentLinkedQueue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+		<span class="nc">ConcurrentLinkedQueue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">toCompare</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ConcurrentLinkedQueue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+		
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">totalCalls</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="k">new</span> <span class="nc">RunnableImpl</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">toCompare</span><span class="o">,</span> <span class="n">latch</span><span class="o">));</span>
+			<span class="n">base</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+		<span class="o">}</span>
+	
+		<span class="c1">// wait for the tasks to finish, before exiting</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="n">latch</span><span class="o">.</span><span class="na">await</span><span class="o">((</span><span class="n">totalCalls</span><span class="o">/</span><span class="n">numCalls</span><span class="o">)*</span><span class="n">ratePeriod</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">fail</span><span class="o">();</span>
+		<span class="o">}</span>
+
+		<span class="n">assertEquals</span><span class="o">(</span><span class="n">toCompare</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="n">base</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">toCompare</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">assertEquals</span><span class="o">(</span><span class="n">toCompare</span><span class="o">.</span><span class="na">poll</span><span class="o">(),</span> <span class="n">base</span><span class="o">.</span><span class="na">poll</span><span class="o">());</span>
+		<span class="o">}</span>
+		<span class="c1">//assertEquals(toCompare, base);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RunnableImpl</span> <span class="kd">implements</span> <span class="nc">Runnable</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+		<span class="kd">private</span> <span class="kd">final</span> <span class="nc">ConcurrentLinkedQueue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">;</span>
+		<span class="kd">private</span> <span class="kd">final</span> <span class="nc">CountDownLatch</span> <span class="n">latch</span><span class="o">;</span>
+		
+		<span class="kd">public</span> <span class="nf">RunnableImpl</span><span class="o">(</span><span class="kt">int</span> <span class="n">id</span><span class="o">,</span> <span class="nc">ConcurrentLinkedQueue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">,</span> <span class="nc">CountDownLatch</span> <span class="n">latch</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">collection</span> <span class="o">=</span> <span class="n">collection</span><span class="o">;</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">latch</span> <span class="o">=</span> <span class="n">latch</span><span class="o">;</span>
+		<span class="o">}</span>
+		
+		<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+			<span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+			<span class="n">latch</span><span class="o">.</span><span class="na">countDown</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><strong>Update 12 Feb 2012:</strong> I was recently asked to specify the license for
+the code on this page. Searching the web for a license that accurately
+captured my feelings, I found the
+<a href="http://en.wikipedia.org/wiki/WTFPL">WTFPL</a>. The code on this page and
+at the <a href="http://www.cordinc.com/projects/throttler.zip">download link
+:http://www.cordinc.com/projects/throttler.zip</a>
+is available under the WTFPL. Basically, you can do what you want with
+the code on this page, I place no restrictions on its use, but neither
+are there any guarantees. It solved the problem I had, but I can’t vouch
+for any other usage. Use at your own risk (but if you find a bug I’d be
+interested to hear about it).</p>
+
+<p><strong>Comments:</strong>
+<em>I have removed the commenting system (for privacy concerns), below are the comments that were left on this post before doing so…</em></p>
+
+<p><em>Ankush Bhatia @ 2016-01-18</em> - hi I was going through your code and must say that it is very well written. There is only one thing that I seemed confused about. Why do you reverse iterate in the callTime method of the Rate object when you determine that you cant add task in the current window. Cant we simply say firstPeriodCall+timeInMillis()+1 and schedule it. Is the iteration in the hope that by the time you reach the first element it would have run and hence become invalid thus creating a space for the current task in current window? If yes then this task will run before the already waiting tasks. if not then am I missing something?</p>
+
+<p><em>Charles @ 2016-01-19</em> - Hi Ankush, the reverse iteration in callTime is actually to find the earliest time for which the task can be scheduled that will satisfy the Rate limit, thus increasing throughput. The loop finds the first call in the most recent rate period (thus firstPeriodCall). Without the loop, how would it know this starting point? Instead we could just use the last call (lastStart+timeInMillis()+1, which without the loop is the same as firstPeriodCall+timeInMillis()+1), as that is guaranteed to be within the specified rate, but may not be the earliest the next task could run. Does that help?</p>
+
+<p><em>Ankush Bhatia @ 2016-01-20</em> - Hi cordinc, Thanks for the reply. But I guess I still believe that iterating is not necessary. I might be wrong but bear with me. Lets consider a scenario where we have a max limit of 4 tasks in 10 seconds and that when the request comes for 5th task the linked list has 5 elements out of which 4 falls in the window (current time - duration). Lets consider this starting point as 0 secs and elements in linked list to be scheduled at - 2, 3, 4, 5, 6 seconds respectively.  lets see the code of callTime</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">cleanOld</span><span class="o">(</span><span class="n">now</span><span class="o">);</span> <span class="c1">// it will delete the fifth element from the start of the linked list since -2 sec is out of the duration window. Elements in list now will be at 3,4,5,6 seconds</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">callHistory</span><span class="o">.</span><span class="na">size</span><span class="o">()&lt;</span> <span class="n">numberCalls</span><span class="o">)</span> 
+  <span class="k">return</span> <span class="n">now</span><span class="o">;</span>
+  
+<span class="c1">//can't add in this window needs to schedule later</span>
+<span class="kt">long</span> <span class="n">lastStart</span> <span class="o">=</span> <span class="n">callHistory</span><span class="o">.</span><span class="na">getLast</span><span class="o">()-</span><span class="n">timeInMillis</span><span class="o">();</span>
+<span class="kt">long</span> <span class="n">firstPeriodCall</span><span class="o">=</span><span class="n">lastStart</span><span class="o">,</span> <span class="n">call</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">callHistory</span><span class="o">.</span><span class="na">descendingIterator</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">(</span><span class="n">i</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+  <span class="n">call</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">call</span><span class="o">&lt;</span><span class="n">lastStart</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">break</span><span class="o">;</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">count</span><span class="o">++;</span>
+    <span class="n">firstPeriodCall</span> <span class="o">=</span> <span class="n">call</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>we start iterating backwards comparing the start time of new window(last call - duration) in this case (it would be 6 - 10 = -4 seconds). there will be no element for which call &lt; laststart(-4 seconds) so you will never break and count will still be 4. Since this call is synchronized no other thread will modify linked list in any way while we iterate. So you will always end at the first element(3 sec) which we can get by callHistory.getFirst()Please let me know in case my thought process is wrong. Also one another unrelated query, we are using Executors.newSingleThreadScheduledExecutor() , java docs says its one thread pool and the scheduled tasks will become enabled at the designated time but not run if the worker thread is still executing previous task. Since our thread dequeues the task and completes it before dequeing another task. Is there a possibility that dequing of the task may be delayed due to this. Should we be concern aboutr this or for all practicle purposes this may not happen.</p>
+
+<p><em>Charles @ 2016-01-21</em> - Hi, I get a slightly different answer to your example. In your example when the 5th task arrives at t=6s, the first element (t=-2s) is not cleaned as it is within 10 seconds of the current time (t=6s), so the task is scheduled for t=8.01s which is the earliest time that satisfies the rate. Even if it was cleaned, the queue should be 3, 4, 5 as the 5th task at t=6s is not been queued yet. Thus the 5th task would be schedule for t=6s as rate has not yet been exceeded. Do you agree? Here is an example of where the iterator is necessary. With the rate set to 2 tasks in 5 seconds, and tasks arrive at 0s, 1s, 2s, they will be scheduled to 0s, 1s, 5.01s. Now what happens when the next task arrives at t=3s? Nothing is cleaned as 3s-5s is before the first element. The iterator stops at the task scheduled for 1s as 0s&lt;5.01s-5s, thus the task arriving at t=3s is scheduled for 6.01s, again the earliest allowable time. Here taking the front of the queue and adding the rate period would result in it scheduled for 5.01s and thus violate the rate. You are correct that the dequeue may be delayed if the tasks runs too long. It is likely to occur if the task time may be very large relative to your rate (eg. if tasks can run for 0.5s and the rate is 2 in 1s). If that is your use case, then you will need to consider this possibility. In the original use case for this code the tasks were very, very small relative to the rate, so it was not an issue in the design. Another possible problem that was never an issue for me is, what if the queue grows very large because the rate of tasks coming in consistently exceeds the allowable rate. You may need to consider this if the code will run for a long time and there is no time to recover. Throttles work well at smoothing out bursts, using the time between bursts to recover and empty (or nearly empty) the queue. This was the original use case (plus for me no tasks would come in overnight so the queue definitely cleared during that time).</p>
+
+<p><em>Ankush Bhatia @ 2016-01-21</em> - Hi cordinc, Thanks for the reply. I made a typo in my post the request that comes in is for 6th element at t=10s and existing elements were at -2, 3,4,5,6. But it does not matter since I get what you are saying. I guess I actually overlooked the possibility that there may be tasks that are scheduled for the time later than the time of current request handling. Now I agree with the use of iterator. For avoiding the delay I could probably let worker thread dequeue the element from this queue and add it to another queue for processing.Also in my case I can discard the messages when the max rate has been achieved rather than scheduling for later processing to avoid queue growing very large.</p>
+
+<p><em>Charles @ 2016-01-22</em> - Hi Ankush, thanks for your kind comments. I’m very happy to hear the code doesn’t need to be changed :) Your ideas for adjusting the throttle sound fine to me, so good luck with your work!</p>
+
+<p><em>Nilanjan @ 2020-07-16</em> - Hello, I am trying to use your code. I know this was written a long time ago but I will be glad if you can help me. I am trying to run the code for 100 tasks in a sliding window of 1 sec. in it it is not doing that. It is sometimes more and sometimes less than the rate. If I run the test method scheduledTasksMonotonicallyIncreasing while printing like this it shows that it is sometimes more than 50 in a 100 ms time window. Is my understanding wrong somewhere?</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">scheduledTasksMonotonicallyIncreasing</span><span class="o">(){</span>
+  <span class="kt">int</span> <span class="n">numCalls</span> <span class="o">=</span> <span class="mi">50</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">totalCalls</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">ratePeriod</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+  <span class="kd">final</span> <span class="nc">CountDownLatch</span> <span class="n">latch</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CountDownLatch</span><span class="o">(</span><span class="n">totalCalls</span><span class="o">);</span>
+  <span class="nc">Rate</span> <span class="n">rate</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Rate</span><span class="o">(</span><span class="n">numCalls</span><span class="o">,</span> <span class="n">ratePeriod</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+  <span class="nc">QueueChannelThrottler</span> <span class="n">throttler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">QueueChannelThrottler</span><span class="o">(</span><span class="n">rate</span><span class="o">);</span>
+  <span class="kd">final</span> <span class="nc">ConcurrentLinkedQueue</span><span class="o">&lt;</span><span class="kt">long</span><span class="o">&gt;</span> <span class="n">base</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ConcurrentLinkedQueue</span><span class="o">&lt;</span><span class="kt">long</span><span class="o">&gt;();</span>
+  
+  <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">totalCalls</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">throttler</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
+	  <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+	    <span class="n">base</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">());</span>
+		<span class="n">latch</span><span class="o">.</span><span class="na">countDown</span><span class="o">();</span>
+	  <span class="o">}</span>
+	<span class="o">});</span>
+  <span class="o">}</span>
+  
+  <span class="c1">// wait for the tasks to finish, before exiting</span>
+  <span class="k">try</span> <span class="o">{</span>
+    <span class="n">latch</span><span class="o">.</span><span class="na">await</span><span class="o">((</span><span class="n">totalCalls</span><span class="o">/</span><span class="n">numCalls</span><span class="o">)*</span><span class="n">ratePeriod</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+  <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">fail</span><span class="o">();</span>
+  <span class="o">}</span>
+  <span class="n">assertEquals</span><span class="o">(</span><span class="mi">1000</span><span class="o">,</span> <span class="n">base</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+  <span class="kt">long</span> <span class="n">last</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="k">for</span> <span class="o">(</span><span class="nc">Long</span> <span class="nl">next:</span> <span class="n">base</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"QueueChannelThrottlerTest.scheduledTasksMonotonicallyIncreasing next="</span> <span class="o">+</span> <span class="n">next</span><span class="o">);</span>
+	<span class="n">assertTrue</span><span class="o">(</span><span class="n">next</span> <span class="o">&gt;=</span> <span class="n">last</span><span class="o">);</span>
+	<span class="n">last</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>By the way, I don’t know how to post the code in a proper format. I used code tag but it is coming out like this.</p>
+
+<p><em>Charles @ 2020-07-18</em> - Hi Nilanjan, I don’t have a Java env to hand at the moment (it’s been a few years), so this response will be theoretical for now at least. Looking at your code, it seems to be the same as the original test, but with the System.out line added. If this is correct, I have two comments/suggestions: 1) A Throttle as I understand (and needed at the time) should guarantee a maximum rate and not a minimum rate. So if the rate through the throttle is a bit less than the max (50 in 100ms) that is ok. If it is a lot less that is a problem of efficiency. If it is more than the rate, that is a bug. This code was designed to smooth out bursts of data and to not exceed a downstream hard limit. If the actual rate was a bit less than the provided rate that was fine. This can occur because of long-running tasks (probably not an issue in this test though). Perhaps your needs are different? 2) If sometimes this test shows the limit being exceeded, then that may be because of the test. This test just checks that all the tasks are executed in order. For that reason the exact time a task executes is of less importance. System.currentTimeMillis is a cheap but inaccurate call, it can be wrong by many ms, but repeated calls should be monotonically increasing (ie, it should never go backwards). This works fine for the purposes of the test, but not if you want to be sure the throttle is working correctly (there are other tests for that). Try using System.nanoTime instead, and see if that helps (see: <a href="https://stackoverflow.com/questions/351565/system-currenttimemillis-vs-system-nanotime" rel="nofollow noopener" title="https://stackoverflow.com/questions/351565/system-currenttimemillis-vs-system-nanotime">https://stackoverflow.com/q…</a> ). Does that help? If you are still seeing the rate being exceeded, let me know and I’ll see if I can get the code runing again.</p>
+
+<p><em>Nilanjan @ 2020-07-18</em> - Hello Cordinc, I am assuming your name or some part of it is Cordinc. Apologies if not. First of all, thanks a lot for replying. Yes it works alright with System.nanoTime(). You were correct. I reread your posts and yes my needs are a little bit different. For start, my calls/requests are API calls and may or may not be expensive/time consuming. For the time being, if multichannel is not required I can do with just the Timer class and some supporting code it seems. I am still testing. I am placing my requests equally distributed across the rate period and starting them. I don’t care if they carry over, the rate should be exactly same in each rate period. Your code was a very good starting point for me. But because of the newSingleThreadScheduledExecutor it seems that a lot of calls are being lost/discarded if they are time consuming. I will definitely try with newScheduledThreadPool(int) but first I need to make my test cases thread safe. I know Timer has a single thread but it does not block. I will definitely test and let you know if that can be achieved through your code.</p>
+
+<p><em>Charles @ 2020-07-20</em> - Hi Nilanjan, cordinc is my online nickname, so it is fine to call me that :) Good to hear the code is working as intended. It sounds like your needs do not require a throttle and instead a continuously repeated scheduled execution hooked up to a queue of tasks. Similar, but different enough to require some coding. The way you are going seems right to me, good luck!</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

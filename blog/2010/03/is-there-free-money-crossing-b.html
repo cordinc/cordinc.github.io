@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Is there free money crossing Betfair and Betdaq?</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>March  6, 2010</b>
+<h4>Is there free money crossing Betfair and Betdaq?</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>
+    
+<br/><br/>
+<p>It was recently suggested to me that there could be risk-free money to
+be made crossing <a href="http://www.betfair.com">Betfair</a> and
+<a href="http://www.betdaq.com">Betdaq</a>. Betfair and Betdaq are betting
+exchanges - they allow their users to bet on various events, from the
+traditional horse races to more unusual fare like netball or the UK
+general election. Unlike a normal bookmaker, the exchanges don’t provide
+the odds and take the opposing side of the bet. Instead the odds are
+determined by other users and the other side is another user. So while
+there may be someone offering 1.15 odds that Labour will win (a <a href="http://help.betfair.com/contents/itemId/i65767719/index.en.html">back
+bet</a>)
+the next UK election, someone else may offer 1.2 that they will lose (a
+<a href="http://help.betfair.com/contents/itemId/i65767719/index.en.html">lay
+bet</a>).
+When the back and lay odds match then a bet is made. Note, all the odds
+quoted in this article are <a href="http://en.wikipedia.org/wiki/Fixed-odds_betting#Decimal_odds">decimal
+odds</a> as
+this is the type of odds used on the exchanges.</p>
+
+<!--more-->
+
+<p>While Betdaq and Betfair are two different companies and run their own
+separate exchanges, there is a great deal of overlap in the events on
+which they allow betting. Thus it is possible that the lay odds on one
+exchange are less than the back odds on the other. If this is the case,
+then by placing a lay bet on one and a back bet on the other, a profit
+will be made regardless of the actual result. For example, in theory, if
+I back Labour to win the next election for £10 at 1.2 odds then I profit
+$2 if Labour wins and lose $10 if they lose. If I lay Labour to win the
+next election for £10 at 1.1 odds, then I lose £1 if they win and profit
+£10 if they win. If I can make both bets at the same time, then if
+Labour wins I profit £1 (£2 from the back bet minus £1 from the lay) and
+if they lose I’m even (£10 loss on the back and £10 gain on the lay).
+Risk free <a href="http://en.wikipedia.org/wiki/Arbitrage">arbitrage</a>!</p>
+
+<p>A friend watched the two exchanges manually and saw that occasionally
+the odds on the same event crossed. Does this mean there is money to be
+made? Let’s see.</p>
+
+<p>In the general case, a back bet of size £X at P odds will cost £X, and
+in the event of a win return £XP, resulting in a profit of £X (P-1). For
+a lay bet of size £Y at Q odds, the cost is £Y (Q-1), if the bet wins
+then it returns £YQ for a profit of £Y. To hedge a back bet the cost of
+the back has to be matched by the profit on a lay, which according to
+the above means that X = Y (i.e. the lay bet has to be the same size as
+the back bet). If this hedge is to be profitable then the cost of the
+lay has to be less than the profit on the back. That is:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">       <span class="no">Y</span><span class="p">(</span><span class="no">Q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="no">X</span><span class="p">(</span><span class="no">P</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">,</span> <span class="n">but</span> <span class="no">X</span><span class="o">=</span><span class="no">Y</span>
+    <span class="o">=&gt;</span> <span class="no">X</span><span class="p">(</span><span class="no">Q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="no">X</span><span class="p">(</span><span class="no">P</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="o">=&gt;</span>    <span class="no">Q</span><span class="o">-</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="no">P</span><span class="o">-</span><span class="mi">1</span> 
+    <span class="o">=&gt;</span>      <span class="no">Q</span> <span class="o">&lt;</span> <span class="no">P</span></code></pre></figure>
+
+<p>Thus, as long as the lay odds are less than back odds it is possible to
+make a risk-free bet by hedging the back with an equivalent sized lay
+and the profit will the difference between the back &amp; lay odds multipled
+by the bet size.</p>
+
+<p>So far so good, but the exchanges charge a fee on any winning bet
+(losing bets are free). For both exhanges this fee is expressed as a
+percentage of the profit on the bet and starts at 5% (although this can
+drop based on activity). How does this fee affect the equations above?
+Let Z be the fraction of the profit left after fees, that is if the fee
+is 5% of profit, Z=0.95. Then a back bet of size £X at P odds will cost
+£X and will result in a profit of £XZ (P-1) for a win. For a lay bet of
+size £Y at Q odds, the cost is £Y (Q-1), for a profit of £YZ. Thus to
+hedge a back, the back cost must equal the lay profit, X = YZ. The size
+of the lay has to be X/Z (which since Z has to be less or equal to 1,
+means the lay has to larger than the back). The hedge is profitable
+when:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">      <span class="n">cost</span> <span class="n">of</span> <span class="n">lay</span> <span class="o">&lt;</span> <span class="n">profit</span> <span class="n">on</span> <span class="n">back</span>
+           <span class="no">Y</span><span class="p">(</span><span class="no">Q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="no">XZ</span><span class="p">(</span><span class="no">P</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">,</span> <span class="n">but</span> <span class="no">Y</span><span class="o">=</span><span class="no">X</span><span class="o">/</span><span class="no">Z</span>
+    <span class="o">=&gt;</span> <span class="p">(</span><span class="no">X</span><span class="o">/</span><span class="no">Z</span><span class="p">)(</span><span class="no">Q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="no">XZ</span><span class="p">(</span><span class="no">P</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="o">=&gt;</span>     <span class="no">X</span><span class="p">(</span><span class="no">Q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="no">XZ</span><span class="o">^</span><span class="mi">2</span><span class="p">(</span><span class="no">P</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="o">=&gt;</span>        <span class="no">Q</span><span class="o">-</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="no">Z</span><span class="o">^</span><span class="mi">2</span><span class="p">(</span><span class="no">P</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">=&gt;</span>          <span class="no">Q</span> <span class="o">&lt;</span> <span class="no">Z</span><span class="o">^</span><span class="mi">2</span><span class="p">(</span><span class="no">P</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span></code></pre></figure>
+
+<p>This means that if the back odds are 1.2 then the lay odds have to be
+1.18 (to 2 decimal places) at 5% fees and 1.19 at 2% fees. The
+difference between back and lay odds only diverges further from there.
+As shown in the graph below.</p>
+
+<p><a href="/assets/posts/technical/cross_odds.png"><img src="/assets/posts/technical/cross_odds.png" width="550" alt="" /></a></p>
+
+<p>Armed with this extra information I manually checked whether Betfair and
+Betdaq markets cross to this degree. While there are regular crosses, I
+never saw the exchanges cross enough to make a profit.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Java NIO selector performance</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>June  4, 2011</b>
+<h4>Java NIO selector performance</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>After some previous work <a href="http://www.cordinc.com/blog/2010/08/java-nio-server-example.html">building Java NIO
+servers</a>,
+there was still some question over the performance of the system
+created. Here are the results from a number of tests I ran, to see how
+such a server would handle connection and message storms.</p>
+
+<p>The code from the previous blog article was modified so that there was a
+single-threaded selector to handle initial connections, but it handed
+off the message processing to a number of other selectors running in a
+thread pool. All of the tests were run on my 4-core Win7 64-bit desktop
+(full <a href="http://www.cordinc.com/blog/2011/01/building-a-new-pc.html">specs
+here</a>). All
+programs (both client and server components) were run through
+<a href="http://www.eclipse.org/">Eclipse</a> Helios using JDK1.6.0.24, always with
+256MB of heap space and no other VM options set. The code is not (yet)
+available online, but it shouldn’t be too hard to work out a rough
+understanding from the previous article and some Java NIO knowledge.</p>
+
+<p>Firstly, I wanted to check the system could handle a storm of
+connections. The test code would fire off 10,000 connections either: 1
+per millisecond; as fast as it could in 1 thread; or as far as it could
+with 5 threads sharing the load. The average time to reach various code
+points were recorded and results are in the table below. The Accept
+column is the time from when the connection is first received by the
+server to just after the server accepts the connection. The Server
+column is the time from when the connection is first received by the
+server until it completes all actions on the connection - this is the
+Accept column plus time spent initialising message processing. The
+Client column is the time from when the client opens a connection until
+it receives notification it is ready. Also during these tests I tracked
+heap usage and it barely budged - an extra few MB on a system that was
+already using 30MB after initialisation. All the heap gain was reversed
+after the next GC. No problems there.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Connection Speed</th>
+      <th>Accept (ms)</th>
+      <th>Server (ms)</th>
+      <th>Client (ms)</th>
+      <th>Client Max (ms)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sequential throttled</td>
+      <td>0.15</td>
+      <td>0.68</td>
+      <td>0.19</td>
+      <td>1.93</td>
+    </tr>
+    <tr>
+      <td>Sequential unthrottled</td>
+      <td>0.07</td>
+      <td>0.48</td>
+      <td>3.90</td>
+      <td>507.93</td>
+    </tr>
+    <tr>
+      <td>5 Threads unthrottled</td>
+      <td>0.07</td>
+      <td>0.51</td>
+      <td>31.83</td>
+      <td>510.22</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />As can be seen the Accept and Server times are fairly steady (I
+would guess 0.07 milliseconds is the fastest a selector can accept a
+connection on average). However, the faster the connections are created,
+the greater the lag at the client. No connections were dropped. I
+imagine the client delays are caused by some queuing. Possibly in the
+PC’s networking, but more likely in the wait before the selector starts
+processing the connection. In all the above tests the selector wait time
+is 1 millisecond, so the server will not wait long for a connections. I
+tried setting the wait time to 0, but some connections were then
+dropped. I also increased the wait time, and unsurprisingly this only
+increased the response time.</p>
+
+<p>Speeding up the server code after the accept (ie, trying to decrease the
+Server column) could speed up acceptance by decreasing the time before
+the server is ready to process the next connection. This code could be
+moved into another thread, but then I’m not sure what would happen if a
+message arrived on a connection that hadn’t finished. I also looked at
+the cost of selector creation by having each connection create a
+selector just for itself. In this scenario the time taken increased, but
+more importantly the server crashed having run out of heap after 641
+connections (the old generation filled up). I would estimate that each
+selector requires around 0.25 MB of heap.</p>
+
+<p>Next to test the message processing. The client created 10,000
+connections and once they were accepted each connection sent 10 message
+(for a total of 100,000 unique messages). The server just reflected the
+message back to the client. The client checked each message returned
+from the server was as expected (all messages were present and correct)
+and recorded total time taken. The variables in the tests were the
+number of selectors processing messages and the number of threads
+handling those selectors. The results are below. During all tests the
+heap didn’t grow to more than 55MB (from a 30MB base).</p>
+
+<p><img src="/assets/posts/technical/nio_messages.png" alt="" /></p>
+
+<p>The rule seems to be that the more selectors the better and there should
+be roughly the same number of threads as selectors (it may be easier to
+see in the raw numbers). More threads than selectors does no good at
+all. I checked a few points further out, 7 selectors/7 threads and
+10/10. They were quicker on average, but showed decreasing returns as
+they were both 1.26 milliseconds on average. However, the standard
+deviation also grew to around 2ms, when for all the other tests it was
+around 1ms (perhaps due to the extra thread scheduling in the VM)</p>
+
+<p>This such a system should handle connection and message storms short of
+a concerted
+<a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">DDOS</a> attack.
+For performance the rule seems to be pre-build as many message handling
+selectors as you wish and then provide about one thread per selector to
+support them.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

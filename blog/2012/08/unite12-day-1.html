@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Unite12 - Day 1</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>August 26, 2012</b>
+<h4>Unite12 - Day 1</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+    
+<br/><br/>
+<p>Wednesday 22 August was the first day of the
+<a href="http://unity3d.com/unite/">Unite12</a> Unity conference in Amsterdam,
+which I was lucky enough to attend. My first thought was Unity is larger
+than I thought - the conference was packed. A couple of sessions saw
+people sitting on the floor. The official attendance was 1200, over
+double my expectation (although 200 of that number are Unity employees).
+Also surprising, a nice lunch and breakfast was provided.</p>
+
+<p><a href="http://www.flickr.com/photos/33547649@N07/7862733052/in/photostream"><img src="http://farm9.staticflickr.com/8429/7862733052_d554cb9027.jpg" alt="" /></a></p>
+
+<p>Day 1 notes from the sessions I attended are below.</p>
+
+<p><a href="http://www.cordinc.com/blog/2012/08/unite12-day-2.html">Day 2 notes
+here.</a><br />
+<a href="http://www.cordinc.com/blog/2012/09/unite12---day-3.html">Day 3 notes
+here.</a></p>
+
+<!--more-->
+
+<p><strong>Keynote:</strong></p>
+
+<ul>
+  <li>After discussion of Unity’s popularity, the CEO showed off a large
+number of published games created with the tool. This included a few
+modern, well known and polished titles. <a href="http://endless-space.amplitude-studios.com/">Endless
+Space</a> and <a href="http://universesandbox.com/">Universe
+Sandbox</a> particularly surprised me as
+Unity games.</li>
+  <li>The demos of Unity4 looked particularly impressive. I don’t think a
+small Unity developer like me need to worry about performance or
+premature optimisation as the tool is obviously plenty fast enough.</li>
+  <li>A new GUI system featured among some demos of future work (in alpha
+now, probably not in Unity4, but the version after). This is quite
+exciting for me. However, at 3-6 months before being available in
+beta, I think it will come too late and I need to continue with
+<a href="http://www.tasharen.com/?page_id=140">NGUI</a>.</li>
+  <li><a href="http://en.wikipedia.org/wiki/Peter_Molyneux">Peter Molyneux</a> talked
+about his current work (using Unity). It is permanent, multiplayer
+online game about eroding a cube to see what is inside - not really
+my thing. What grabbed me about his talk is his motivations.
+Molyneux said that the common theme in his work is the creation of
+little worlds. Very similar to my ambition. He also said that games
+should be “simple, delightful, surprising, engaging and unique”.
+Sounds like good advice.</li>
+</ul>
+
+<p><strong>Performance Optimisation Tips and Tricks for Unity:</strong></p>
+
+<ul>
+  <li>Use <a href="http://msdn.microsoft.com/en-us/library/ah19swz4">structs</a> in
+preference to classes were appropriate as structs go on the stack
+and classes on the heap. Thus using structs results in less garbage
+collection and associated pauses.</li>
+  <li><a href="http://en.wikipedia.org/wiki/Object_pool_pattern">Object pooling</a>
+can also be useful for avoiding GC.</li>
+  <li>Don’t put stuff in Update() that doesn’t need to be there.</li>
+  <li>Instantiate/Destroy can be slow so try to avoid their excessive use.
+Instead deactivate objects and keep them for reuse.</li>
+  <li>Cache UnityEngine method calls like transform. This has often been
+said, but here they explained why. GameObject.tranform is a .Net
+property not a field, that does a number of matrix multiplications
+and other calculations in order to derive the GameObject’s position
+relative to its parents.</li>
+  <li>Prefer primitive colliders over Mesh colliders.</li>
+  <li>Time.fixedDeltaTime can be used to change the time granularity of
+physics calculations. This is independent of non physics updates.</li>
+  <li>Never move a collider without a rigidbody. This is a static collider
+and every time such an object is moved a large number of
+calculations are performed.</li>
+  <li>Use texture atlases (multiple textures stored in a single image) if
+bound by Draw() calls.</li>
+  <li>Desktop machines should be able to handle a few thousand Draw()
+calls (mobile devices an order of magnitude less).</li>
+</ul>
+
+<p><strong>Building Realtime Multiplayer Titles with Unity and Photon:</strong></p>
+
+<ul>
+  <li><a href="http://www.exitgames.com/">Photon</a> provide a socket-based game
+networking library similar to what I had planned. They also provide
+a cloud service for the server-side of game engines, with a small
+free option - worth a trial.</li>
+  <li>Load balancing seems to be achieved via a login server passing off
+connections to different game servers.</li>
+  <li>They suggest ConcurrentUsers x 10 = DailyAvgUsers x 10 =
+MonthlyAvgUsers &lt;&lt; downloads</li>
+  <li>Hardware costs are likely to be quickly swamped by network traffic
+costs in online games. So the lesson here is to minimise the size of
+and number of network messages in your game.</li>
+</ul>
+
+<p><strong>Roadmap and Wish List:</strong></p>
+
+<ul>
+  <li>This seemed to be more about making suggestions to participants as
+to what should be worked on and then getting feedback. Good to see
+that Unity is listening to the community.</li>
+  <li>An integrated debugger and editor (replacing MonoDevelop) seemed
+popular (much clapping). A Linux editor suggestion garnered no
+noise, so it probably won’t happen soon.</li>
+  <li>Integrated version control (starting with Subversion) and
+depreciation of the Asset Server got some applause. As did being
+able to serialise Dictionaries. Both are things I could use.</li>
+  <li>Supporting .Net 4 raised many hands, but it was unclear what benefit
+such work would bring.</li>
+</ul>
+
+<p><strong>Aliens vs Predator: Tools and Techniques:</strong></p>
+
+<ul>
+  <li>Postmortem on a game coming out in a few months. Chose this opposed
+to GUI session as that is too far away from release to be useful for
+me.</li>
+  <li>Set up a condition/action system similar to something I have
+created. The difference is their conditions are GameObjects and so
+exist in the scene. This is handy for editing during gameplay, but
+soon got so many they cluttered the hierarchy. They had to write
+special tools just to manage them, but found no performance impact.</li>
+</ul>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Blender Tutorial: Amphora - Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<h4>Blender Beginner for Beginner Tutorial: Amphora</h4>
+
+<p><b>16th August 2009 - Blender 2.47</b></p>
+
+<p>
+
+Having read a few more chapters of my
+<a href="http://www.blender3d.org/e-shop/product_info.php?products_id=96">blender
+book</a>, it is time to try another historical model (my first was a
+<a href="../tozeur_sculpture/index.html">sculpture in Tozeur</a>). Most
+Roman archaeological sites include a few
+<a href="http://en.wikipedia.org/wiki/Amphora">amphora</a> displayed
+behind glass. At
+<a href="http://en.wikipedia.org/wiki/Pompeii">Pompeii</a> they just
+stack them up all over the place. This tutorial details the steps I used
+in modelling an amphora based on photos from Pompeii. Below is one of
+these photos next to the results of my modelling.
+
+</p>
+<p>
+<center>
+
+<img src="result.png" alt="" />
+
+</center>
+</p>
+<p>
+<ol>
+<li>
+
+Create a circle (SPACE key, choosing Add -\&gt; Mesh -\&gt; Circle) and set it
+in the Z/X plane (this will make later steps easier). The radius is
+unimportant, we just want the linked vertices. Edit the circle’s
+vertices (RMB on the circle to select it, then TAB), choose a single
+vertex (any vertex) and delete it.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss2.png" />
+
+</center>
+</li>
+<li>
+
+Grab (G) one end of the line and move it to the origin (I did this by
+selecting the point, hitting N and then editing the LocX, LocY, &amp; LocZ
+values to 0). Select the other end point and put it 0.5 above the first
+(LocZ is 0.5).
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss3.png" />
+
+</center>
+</li>
+<li>
+
+Next grab each point in between the endpoints and position them into the
+outline of an amphora. Imagine cutting an amphora in half and then in
+half again - try creating the outline you would see looking at a
+cross-section of the amphora. This can be quite time consuming to get
+right, so <a href="amphora_outline.blend">here is a blend</a> of the
+outline shown below.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss4.png" />
+
+</center>
+</li>
+<li>
+
+Select all the vertices in the outline (keep pressing the A key until
+all vertices are yellow). Move the cursor to the origin with SHIFT-C.
+Shift to top view with NUMPAD7.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss6.png" />
+
+</center>
+</li>
+<li>
+
+Press the spin button on the Editing panel (F9) with the settings Degr
+180, Steps 20, Turns 1. This will spin the outline 180 degrees around
+the Z axis based on the origin (the origin because that is where the
+cursor is located, and the Z axis because we are viewing the scene in
+top view where the Z axis is hidden). If there is a problem and Blender
+refuses to spin the outline, then try closing 3D views until there is
+just one - sometimes Blender has trouble determing in which view to
+perform the spin). The image below shows the spin settings on the left
+and the resultant spin on the right.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss6a.png" />
+
+</center>
+</li>
+<li>
+
+Go out of edit mode (TAB) then add a mirror modifier on the Modifiers
+subpanel of the Editing panel (F9). To do this click the “Add Modifier”
+button and choose mirror. Make sure the mirror is only in the Z axis and
+turn on clipping by pressing the “Do Clipping” button. With this
+modifier we now have the complete body of the amphora, but any changes
+we make to one side will be mirrored on the other. Thus when we add a
+handle to one side it will automatically appear on the other - saving
+time!.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss7.png" />
+
+</center>
+</li>
+<li>
+
+Go to side view (NUMPAD3) and back into edit mode (TAB), so half of the
+view is editable and half is the mirror. Add a cylinder (SPACE key,
+choosing Add -\&gt; Mesh -\&gt; Cylinder) length 1.3, radius 0.07 with
+uncapped ends. Position the cylinder off to one side of the amphora (you
+may need to rotate it too). Go into edge select model with CTRL-TAB 3.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss9.png" />
+
+</center>
+</li>
+<li>
+
+Extend one end of the cylinder and curve it by extruding (E KEY) one end
+of the cylinder a little bit and then rotating it towards the amphora.
+It is easiest to select the end of the cylinder using edge loop select -
+RMB on one edge of the end while the ALT key is pressed and the whole
+circle of edges should be selected.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss10.png" />
+
+</center>
+</li>
+<li>
+
+Repeat the previous step until the end of the is perpendicular to the
+main body, do the same at the other end too.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss11.png" />
+
+</center>
+</li>
+<li>
+
+Select the lengthwise edge loop furthest from the body of the amphora.
+Deselect the top and bottom couple of edges from the loop. Turn on
+Connected Proportional Editing (ALT-O) and move the edge in the Y-axis
+(G then Y) towards the amphora. This should make a groove in the
+cylinder. If the groove is too big or the whole cyclinder moves,
+decrease the power of the Proportional Editing using the PAGEDOWN key.
+The power is displayed by the size of the circle around the selected
+edges, for me the power was correct when this circle’s diameter was
+slighter less than the diameter of the cylinder. Make sure the shifted
+edges to not cross the non shifted edges or the handles will look a
+little weird. When finished turn off Proportional Editing with the O
+KEY. The image on the left below is the cylinder with the edges
+selected, and the right image is the cylinder with the groove.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss13.png" />
+
+</center>
+</li>
+<li>
+
+At this point you may like to scale the cylinder to make a better
+looking handle. I scaled mine to make it wider and flatter (S then X
+keys). Move the cylinder/handle into the amphora until the bottom merges
+into the amphora at an appropriate point. Check that it meges in all
+directions. Select the top edge loop of the handle and extrude it until
+it too merges with the amphora.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss16.png" />
+
+</center>
+</li>
+<li>
+
+TAB out of edit mode and set the entire object smooth, go to the Editing
+panel (F9) and on the Mesh subpanel click the “Auto Smooth” button and
+set the Degr spinner to 60. This means that angles of less than 60
+degrees will be smoothed, while the remainder stay sharp.
+
+</li>
+<li>
+
+Assign a new material to the whole amphora. On the “Link and Materials”
+subpanel of the Editing panel click the “New” material button.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss18.png" />
+
+</center>
+</li>
+<li>
+
+On the Material subpanel of the Editing panel set the base colour of the
+material to Red 0.8, Green 0.4, and Blue 0.2 - a terracotta colour. On
+the Shadow subpanel set the Spec value to 0. This is the specular
+reflection, the concentrated point of light reflected from a light
+source, terracotta doesn’t have this so it is turned off. Similarly,
+terracotta doesn’t reflect much light in general so set the Ref value to
+0.55.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss19.png" />
+
+</center>
+</li>
+<li>
+
+On the Textures panel add 3 new textures: a Marble texture call Bands,
+this will be the feint colour bands in the amphora; a Clouds texture
+called Bumps, which will be the small grain of the material; and another
+Clouds texture also called Bumps which will be the slighly larger bumps
+in the material. Set up the textures as shown below (it is worth just
+playing with the parameters to see how they affect the material).
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss20a.jpg" />
+
+</center>
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss20b.jpg" />
+
+</center>
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss20c.jpg" />
+
+</center>
+</li>
+<li>
+
+On the Textures subpanel of Materials panel select the Bands texture. On
+the “Map Input” subpanel, this texture should repeat going up the
+amphora, so set the texture to wrap around it by pressing the Tube
+button and set the SizeX and SizeZ values to 0 and the sizeY value to
+10. The Bands only affect the colouring, so on the “Map To” subpanel
+ensure on the Col button is pressed and set the colour to Red 0.66,
+Green, 0.334, Blue 0.183 - a slightly darker colour.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss21.png" />
+
+</center>
+</li>
+<li>
+
+For the small bumps on the “Map Input” subpanel set the Tube button,
+SizeX and SizeY to 5 with SizeZ set to 1. On the “Map To” subpanel set
+the texture to affect colour and normals (the Col and Nor buttons) set
+the colour to R=0.83, G=0.38 and B=0.18 and the Nor to 0.6.
+
+</li>
+<li>
+
+For the large bumps on the “Map Input” subpanel set the Tube button,
+SizeX, SizeY and SizeZ set to 5. On the “Map To” subpanel set the
+texture to affect just normals.
+
+</li>
+</ol>
+</p>
+<p>
+
+And it is complete! You can download my <a href="amphora.blend">amphora
+blend file here</a>.
+
+</p>
+<p>
+<center>
+
+<img src="result2.jpg" />
+
+</center>
+</p>
+<p>
+
+<a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/"><img alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png" /></a><br /><span xmlns:dc="http://purl.org/dc/elements/1.1/" property="dc:title">Amphora
+Blender Model</span> by
+<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.cordinc.com" property="cc:attributionName" rel="cc:attributionURL">Charles
+Cordingley</a> is licensed under a
+<a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/">Creative
+Commons Attribution 2.0 UK: England &amp; Wales License</a>.
+
+</p>
+
+</div>
+
+<div class="col-lg-2">
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

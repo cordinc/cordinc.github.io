@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Java generics are not real generics</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>September 11, 2010</b>
+<h4>Java generics are not real generics</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p><a href="http://en.wikipedia.org/wiki/Generics_in_Java">Java 5 added generics</a>
+into the language. This allowed programmers to specify class types as
+parameters to other classes and maintain type safety. For instance
+<code class="highlighter-rouge">Set&lt;Integer&gt;</code> is a set of integers and if you try to add a
+non-integer to it, a compile time error should occur.</p>
+
+<p>Java had been around a while by the time generics were added.
+Unfortunately it was considered too hard to add generics to the <a href="http://en.wikipedia.org/wiki/Java_bytecode">Java
+bytecode</a> that forms a
+running Java program. Instead generics are just syntactic sugar. When a
+Java program is compiled the generics are checked, but after that they
+are stripped out. The bytecode that is run does not know anything about
+generics. This means it is possible to violate the generics constraints
+in the code at run-time (because the constraints don’t exist at
+run-time).</p>
+
+<p>Below is an example demonstrating the problem. A set of integers is
+created, but then using reflection a string is added to the set. This is
+clearly a violation of the set’s definition. However,
+<a href="http://java.sun.com/developer/technicalArticles/ALT/Reflection/">reflection</a>
+is a run-time process and the compiler is not smart enough to detect the
+potential error at compile-time (which would be very hard to do). If the
+set is now inspected (and not checked carefully), it will look like the
+integer 1 is in the set, rather than the actual string “1”. At this
+point various errors can occur, from the subtle <code class="highlighter-rouge">contains</code> error below,
+to outright
+<a href="http://download-llnw.oracle.com/javase/1.5.0/docs/api/java/lang/ClassCastException.html's">ClassCastException</a>
+if elements are extracted from the set as integers. As an aside,
+reflection is very cool and a great tool, but from my experience, most
+of the time it is the wrong tool.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Set</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">integerSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+<span class="nc">Method</span> <span class="n">addMethod</span> <span class="o">=</span> <span class="n">integerSet</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getMethod</span><span class="o">(</span><span class="s">"add"</span><span class="o">,</span> <span class="nc">Object</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="n">addMethod</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">integerSet</span><span class="o">,</span> <span class="s">"1"</span><span class="o">);</span>
+<span class="n">integerSet</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> <span class="c1">// -&gt; false</span></code></pre></figure>
+
+<p>Remember, Java generics are not real generics. In particular pay special
+attention to using reflection on generic objects.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

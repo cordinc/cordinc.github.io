@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+
+  <span class="date">February 19, 2009</span>
+  <h4><a href="/blog/2009/02/last-online-poker-update.html">Last Online Poker Update?</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>, 
+    
+      <a class="post" href="/blog/tag/Poker.html">Poker</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I have completed another 50 online HU poker SnGs. At least I am
+consistent - I won 26, the same as the last 50. Again, despite winning
+more games than I lose, I have less money than when I started due to
+fees (27.5 games is the breakeven point). Also like the previous 50s, I
+experienced great runs. I won 14 of the first 18 games. Which of course
+means that I won only 12 of the last 32. Urrrgh. I have read that the
+variance in HU SnGs is higher than other kinds of poker, but results
+like that still really knock your confidence. Worst of all I kept some
+stats and discovered the average game runs around 15 minutes. That
+quickly adds up and is preventing me doing other things.</p>
+
+<p>I’ve decided to take this poker thing a little less seriously. I’m not
+going to quit, but neither am I going to keep track of results and
+actively try to play more. I still have some money in my online account,
+and will play with that if I feel like it. However, I don’t think I have
+the time to continue playing at a rate high enough to get much better
+right now. Just standing still for a while will be good enough. I’m not
+yet sure what I will do if I run my account down to 0. So for the
+foreseeable future there will be no more online poker updates.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">February 13, 2009</span>
+  <h4><a href="/blog/2009/02/a-rant-and-rave.html">A Rant and Rave</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>A few years ago I had the idea of creating a fairly standard online
+spaceship combat game (like <a href="http://www.eveonline.com">EVE</a>). The
+difference to other such games being that the players would not control
+their ships directly, but instead through code they submitted to the
+game - a more complicated and extended
+<a href="http://robocode.sourceforge.net/">Robocode</a> or
+<a href="http://www.corewars.org/">CoreWar</a>. At the time I stopped because I
+couldn’t work out a way of preventing <a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">Denial of service
+attacks</a> in the
+submitted code. I had hoped to use Java as it had an extensive security
+model, but I found there was no way of stopping untrusted code from
+starting too many threads or allocating too much memory.</p>
+
+<p>Fast forward many years, and I thought I’d check out if the situation
+has improved. A search on Google returned all the same webpages I read 9
+years ago - there hasn’t been much movement in the area. The Javadocs
+suggested that the thread issue had been fixed, but no word about
+memory. I checked Robocode and it seems to just ignore the memory
+allocation problem. This is because it is not fixed!</p>
+
+<p>WTF! Sun has gone on about the <a href="http://java.sun.com/developer/technicalArticles/Security/whitepaper/JS_White_Paper.pdf">Java Security
+Model</a>
+for some time now. Touting the safety of its sandbox. However, if
+untrusted code can crash the system it is broken - nothing more to say.
+I don’t care about the rest. This has been a known issue for years.</p>
+
+<p>Anyway, rant over. On a more positive side, I used
+<a href="http://stackoverflow.com/">StackOverflow</a> for the first time in
+researching this issue and it is quite cool. My question is
+<a href="http://stackoverflow.com/questions/540738/excessive-memory-allocation-in-java-sandbox-security">here</a>.
+The answer states that there is a <a href="http://jcp.org/en/jsr/detail?id=284">movement to fix the memory DoS
+attack</a>, but that it is still in
+the requirements stage and <a href="http://tech.puredanger.com/java7/">probably will not be part of
+Java7</a>.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">February  8, 2009</span>
+  <h4><a href="/blog/2009/02/rails-performance-options-on-p.html">Rails performance options on Phusion Passenger</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Rails.html">Rails</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I run a couple of Rails websites
+(<a href="http://www.queuesaurus.com">queuesaurus</a> &amp; <a href="http://www.cordinc.info/weather">past weather
+forecasts</a>), both on a small 256MB
+virtual host at <a href="http://www.slicehost.com">Slicehost</a>. As such I don’t
+have a great deal of computing resources available to support two
+resouce hogging apps. If you have visited either of those sites, you
+will know that the first page view can take seemingly ages, but that
+after that it speeds up. As I use <a href="http://www.modrails.com/">Phusion Passenger
+(modrails)</a> to serve the apps through Apache,
+I investigated some of the config options and how they affected
+performance.</p>
+
+<p class='more'><br/><a href='/blog/2009/02/rails-performance-options-on-p.html'>Read the rest of this entry</a></p>
+  </div>
+  <hr/>
+
+  <span class="date">January 18, 2009</span>
+  <h4><a href="/blog/2009/01/online-poker-update.html">Online Poker Update</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>, 
+    
+      <a class="post" href="/blog/tag/Poker.html">Poker</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Urgh, overconfidence is a killer. I have now completed the 50 online $2+0.20 heads-up tournaments I <a href="http://www.cordinc.com/blog/2008/11/how-to-make-1hour-playing-onli.html">previously
+mentioned</a>.
+You may remember my goal was to win 70. Well, I didn’t make it. The good
+news is I won more than I lost - 52. The bad news is that with entrance
+fees, a win rate of 55% is required to break even. I lost $6 and so
+ended up with $66; a little disappointing.</p>
+
+<p>It all started so badly. I’d like to think it was just variance - that
+the luck of the cards means that sometimes you are just going to lose.
+However, reading that goal-setting blog post and remembering those first
+few games, I think I might have been overconfident. I improved a little
+over time. If I played the first 25 like the second 25, then I would
+have made a small profit, but still a long way from the 70% goal.</p>
+
+<p>Like my first posting, I think the main problem is my attitude. While
+playing this 50 I kept a record of whether I considered I played “well”
+or “badly”, together with the final result. My definition of playing
+badly included: not starting in an appropriate frame of mind; getting
+disheartened during the match; chasing pots; or bluffing too much even
+when the other player was betting back. Those are my main vices. Just
+today I played a match where after I ground the other player down for 10
+minutes, I went all in on the turn with a full house and then lost on a
+2-outer as they made a slightly better full house on the river! Despite
+still having a playable stack (around 30BB), I was tilted and busted
+stupidly a few hands later. That was badly played. Playing well meant I
+played mostly calmly the entire match, allowing a few small bad hands as
+long as they were non-terminal. Notably, the maths of poker did not
+count for much in categorisation. If both players went all in pre-flop
+after just a few hands (a surprisingly common experience), then it was
+considered well played if I was ahead at the start (the normal
+situation). One game defied categorisation as the other player
+disappeared after 2 hands and had to be blinded out. Thus there were 49
+entries.</p>
+
+<p>I played well 59% of the time. When playing well I won 72% of the time.
+When playing badly I won only 20% of the time. Even allowing a bias
+towards saying I played well if I won and badly if I lost, that is still
+a big difference. Playing badly 40% of the time is way too high. If I
+played well every match, as I should, then I would be close to my
+original goal. So the goal for the next 50 is to win 30 (60), by playing
+well 80 of the time. To that end, here is my beginner’s advice (from a
+beginner to a beginner), which I will try to follow over the next 50:</p>
+
+<ul>
+  <li>Decide before starting how many matches you want to play - many
+times the “just one more” game was a bad loss.</li>
+  <li>Only play if you want to win and can play for the 30 minutes or more
+it can take.</li>
+  <li>Don’t chase pots, especially if your opponent is betting back.</li>
+  <li>Think about what your opponent has - remember 50% of the time they
+have a better pre-flop hand.</li>
+  <li>Start tight with small bets until you get an idea of your opponent.
+If they are tight don’t bluff too much when they bet back (beware
+even if they are loose and aggressive). However, be aware people’s
+style changes with stack size.</li>
+  <li>If you play a hand badly, don’t dwell on it, but do think about
+these guidelines.</li>
+  <li>If you lose badly, stop.</li>
+</ul>
+
+  </div>
+  <hr/>
+
+  <span class="date">January 11, 2009</span>
+  <h4><a href="/blog/2009/01/3rd-poker-evening.html">3rd Poker Evening</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>, 
+    
+      <a class="post" href="/blog/tag/Poker.html">Poker</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Yesterday was the 3rd Poker evening. It was held at Ian’s place and
+seven people turned up: Me, Ann, Ian, Christian, Cristina, Pete and Ury.
+We played three games and as has become usual, started by reducing
+expectations on our ability. I didn’t take notes so my memories are a
+little limited.</p>
+
+<p>The first game was a standard £5 NLHE tournament, and I started in my
+standard heads-up manner - aggressively. As people started betting small
+amounts, I bluffed the first hand and then bet big on the turn in the
+second with a flush draw, straight draw with two overcards. Then I
+realised I was betting pot percentages, while others were making bets of
+big blind. The game settled down a bit, but with the occasional big move
+reminiscent of the first few hands. Pete went out first and rebought.
+The numbers were steadily whittled down. Just after an hour Pete had a
+run of great cards (at least the ones we saw) and knocked out the last
+few people in quick succession. I was second.</p>
+
+<p>For the second game we played with substantially smaller stacks to
+accommodate Pete and Ury who had go in an hour. This seemed to make
+everyone aggressive and as the blinds doubled when someone was knocked
+out we were all quickly down to around 10 big blinds each. It seemed
+like nearly every other hand someone was all-in. There was rarely an
+obvious bluff - people just had good cards, often in fact the same good
+cards (on at least 2 occasions the pot was split equally). I went all-in
+against Ann on the first hand when there was a spade flush on the board - whoever had the higher spade would win. Knowing that Ann is quite a
+cautious player, I thought I could scare her off the pot despite not
+having a single spade. Ann knows I bluff so after an age of thinking,
+called with her 9 of spades and I had to rebuy. The carnage continued
+and Ian was out the next hand. Pete’s run of good cards continued at the
+start, knocking out Cristina with KK vs QQ preflop. At the end Pete’s
+luck ended and mine started with three great hands in a row to beat Pete
+into second. The whole game lasted under 45 minutes - very quick.</p>
+
+<p>Only Ian and I were available for the third game, everyone else had to
+leave. Considering it was a heads up match, I don’t remember much other
+than I finished my beers right at the start. I do recall that after
+playing for a while I won a big all-in pot and thought I had crippled
+Ian. Instead after matching chips we were equal with perhaps Ian
+slightly ahead! Ian was grinding me down. I tried to tighten up, but it
+didn’t work and I got annoyed at a couple of hands I definitely played
+too weakly postflop. In the end I misread Ian’s body language thinking
+he had nothing when infact he was trying to disguise having the nuts.
+Ian won.</p>
+
+  </div>
+  <hr/>
+
+
+<!-- Pagination links -->
+<div id="post-pagination" class="pagination">
+  Page 78 of 86 
+  
+      
+        <a href="/blog/page77">Previous</a>
+      
+  
+
+  
+      <a href="/blog/page79">Next</a>
+  
+</div>
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

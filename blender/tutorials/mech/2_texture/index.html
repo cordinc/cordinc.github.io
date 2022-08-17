@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Mech Model Part 2: Texturing - Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<h4>Blender Beginner for Beginner Tutorial: Mech Model Part 2: Texturing</h4>
+
+<p><b>5th June 2010 - Blender 2.47</b></p>
+
+<p>
+
+Having created a basic low-poly
+<a href="http://en.wikipedia.org/wiki/Mecha">mecha</a> model in
+<a href="../1_model/index.html">a previous tutorial</a>, it is now time
+to liven up the model by texturing it. The application of materials and
+textures is the hardest part of modelling for me, and I’m not entirely
+happy with the result. My artistic abilities need some work. However,
+the general technique is still worth noting. The tutorial will show how
+the mech model was made to look as below. Later tutorials will show how
+to rig the model and animate a walk cycle.
+
+</p>
+<p>
+
+<b>UPDATE:</b> I have discovered since writing this tutorial I have
+textured the mech in completely the wrong way for importing it into game
+engines. Instead of having multiple materials for the mesh and textures
+applied to just a few faces, there should be a single material for the
+entire mesh and textures should be images applied to all the faces. Also
+normal maps should not be black and white, but a special colour scheme.
+See the <a href="../../spaceship/index.html">spaceship tutorial</a> for
+a better way of texturing if the goal is using your model in a game.
+
+</p>
+<p>
+<ul>
+<li>
+
+<a href="../1_model/index.html">Mech Model Part 1: Modelling</a>
+
+</li>
+<li>
+
+Mech Model Part 2: Texturing
+
+</li>
+<li>
+
+<a href="../3_rigging/index.html">Mech Model Part 3: Rigging</a>
+
+</li>
+<li>
+
+<a href="../4_animating/index.html">Mech Model Part 4: Animating</a>
+
+</li>
+</ul>
+</p>
+<p>
+<center>
+
+<img src="result.png" alt="Mech" />
+
+</center>
+</p>
+<p>
+<ol>
+<li>
+
+Start by setting the base material for the model which will be green
+hard matte plastic (later a simple camouflage texture will be applied).
+On the Link and Materials subpanel of the Editing (F9) panel, create a
+new material by clicking the New button under the material selector. By
+default this first material will apply to all faces. This is fine for
+now. On the Shading (F5) panel set the colour of the new material to a
+medium green, (R,G,B) at (0.316, 0.614, 0.267). Then set the specularity
+and mirror colours to pale greens, say (0.77, 0.98, 0.72). This will be
+the reflected colour which should be very similar to the base colour.
+Use an Oren-Nayer Shader as it is good with matte surfaces. I set the
+reflection down to 0.6 (as the material is matte and doesn’t reflect too
+much) and the roughness very low at 0.5. Use Blinn (as it works well
+with Oren-Nayer) for specular highlights with Spec lowered to 0.2 so the
+light reflected is quite low, but there is still some. Set the hardness
+way down at 1 to make the specular highlights diffuse (that is the edge
+of light reflecting off the model should not be sharp).
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss1.png" />
+
+</center>
+</li>
+<li>
+
+Next apply a camouflage pattern. Create 2 textures using the Textures
+panel. One should be a Stucci texture with noise size 0.1, turbulence 5
+which becomes the camo detail. The other will be a noise texture for
+dirt.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss2a1.png" /> <img src="ss2a2.png" />
+
+</center>
+
+Map them both orco (on the Map Input subpanel of the Materials panel)
+and have both only affect colour. The camo texture should be a dark
+green and greatly change the colour (set to 1 using the Col slider on
+the Map To subpanel, see the image below), the dirt should be black and
+only slightly change the colour (the Col slider should be 0.2). This
+should complete the camo base, although you could add a third colour
+(perhaps black) with another Stucci texture to the current 2-colour camo
+if you desire.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss2b.png" /> <img src="ss2c.png" />
+
+</center>
+</li>
+<li>
+
+When creating new materials, Blender will by default copy the previous
+material (or at least the one displayed in the material selector when
+new is pressed). So next create those materials with the same camo
+texture as the base material to save having to recreate it later.
+Firstly a unit number will be placed on the top of the mech. In the
+image editing program of your choice (I used
+<a href="http://www.gimp.org/">The Gimp</a>) create an image with the
+unit number and ensure the background is transparent. If it isn’t
+transparent (and a white background is used) then it will affect the
+colour of the whole area to which the image is appiled (for a white
+background this would make the green paler), not just the bit you want
+to add. The image I created and used is <a href="74.png">here</a>. It
+will help if in the next step there is a UV window open. This displays
+how any image texture will be applied to the selected faces. RMB on the
+join between the 3D view window and the panel window. Select Split
+window and size a small window. Then using the Window Type selector
+(usually in the bottom left corner of each window), select UV Image
+Editor type. Select the top four faces of the mech like the left image,
+unwrap (with U KEY) like the right image below and create a new material
+just for these faces (create a new material, then click assign to make
+it applied to just the selected faces).
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss3a1.png" /> <img src="ss3a2.png" />
+
+</center>
+
+The four faces shown in the UV window are projections of the 3D faces on
+the mech onto the 2D of a texture image. The grid behind the faces will
+be the texture image. So it is possible to arrange the faces in any way
+over the image. For now leave them as they are. At this point there will
+be no discernable difference to the mech, as the new material is a copy
+of the base material. Add a new image texture and load the
+<a href="74.png">74.png image</a>. Set it to Clip using the clip button
+on the Map Image subpanel of the Texture panel. This means if the image
+doesn’t take up all the faces of the material, the image will not be
+stretched to fit, the remaining area will just not have the image
+applied. Repeat would repeat the image texture. Extend would stretch the
+edge of the image to the edge of the faces - since the edge of the unit
+number image is transparent this will look the same as clipping.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss3a3.png" />
+
+</center>
+
+On the Map Input subpanel of the Material panel use UV mapping (with the
+UV button) to have the image applied to the faces according to the
+layout of the UV window. On the Map To subpanel set it only affect the
+colour.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss3z.png" />
+
+</center>
+
+Thus the unit number is now painted on top of the mech as shown below. I
+followed the same process to apply the number to the left side of the
+back of the body of the mech.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss3a4.png" />
+
+</center>
+</li>
+<li>
+
+In a similar manner to the previous step the <a href="hatch.png">hatch
+image</a> was applied to the right side of the back panel of the mech.
+The <a href="warning.png">warning image</a> was applied to the join
+between the head and legs and <a href="arrow.png">arrow images</a> to
+the outside of each knee (so you know which way is forward!). Scale,
+rotate and move the UV unwraps to get the images in the right place for
+the faces selected. The faces may extend beyond the texture image to
+make the image appear smaller than the faces (useful for the arrows).
+Remember to set the image textures to clip. Also a good tip to see if
+you have the right faces selected for your material is after creating
+the material and assigning faces, deselect all faces and use the select
+button under “Link and Materials” to see what Blender thinks the faces
+for the material should be.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss4.png" />
+
+</center>
+</li>
+<li>
+
+<b>UPDATE:</b> The below is the wrong way to affect normals - normal
+maps should not be black and white, but a special colour scheme. See the
+<a href="../../spaceship/index.html">spaceship tutorial</a> for a better
+way of texturing if the goal is using your model in a game.  
+<br /><br />The face panels of the mech will be a sensor mesh. To that end
+I created a <a href="mesh_reverse.png">sensor mesh image</a>. Select the
+faces and assign them a new material. Also do a UV unwrap with a cube
+projection and scale them to fit within an applied image (that is the
+faces all fit inside the UV grid) - this is so the image is applied to
+all the faces.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss5a2.png" /> <img src="ss5a1.png" />
+
+</center>
+
+It took me a few attempts to get the UV unwrapping looking right when
+the image texture was applied. Try the different unwrapping systems, see
+how the result looks and try to work out why. Create a new image texture
+and load the <a href="mesh_reverse.png">sensor mesh image</a>. It is a
+photo negative of the actual mesh. This is so that the single image can
+be applied to both the colour and normals - as colour can be reverse
+applied like normals (but not the other way around) and I wanted the
+mesh to appear sunken into the body of the mech. Delete the camo
+textures. Have the image use UV mapping (on Map Input) and affect colour
+(0.4 as I still wanted the green to show through) and normals (10, to
+make the mesh show through strongly).
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss5a3.png" />
+
+</center>
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss5z.png" />
+
+</center>
+</li>
+<li>
+
+As a last little feature let’s place a little laser bud on the nose.
+Select just the nose faces. Create two textures: the first a sphere
+blend texture (applied to the normals only); and <a href="red_dot.png">a
+little red dot image</a> applied to both normal and colour.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss6a2.png" /> <img src="ss6a1.png" />
+
+</center>
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss6a3.png" />
+
+</center>
+</li>
+<li>
+
+Now pack the textures into the blend file. Go to File -\&gt; External Data
+-\&gt; Make All Paths Relative, then File -\&gt; External Data -\&gt; Pack into
+.blend file. This loads the image files used for textures on the model
+into the blender save file itself, so that the blend file contains
+everything necessary to display the model and the images don’t have to
+be distributed separately. This last step is not necessary, but I have
+performed it on the blend file that can be downloaded as an example.
+
+</li>
+</ol>
+</p>
+<p>
+
+You can download the <a href="mech_texture.blend">blend file here</a>.
+The next stage is to rig the mech for animation and the tutorial for
+that is <a href="../3_rigging/index.html">available here</a>.
+
+</p>
+<p>
+
+<a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/"><img alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png" /></a><br /><span xmlns:dc="http://purl.org/dc/elements/1.1/" property="dc:title">Mech
+Texture Blender Model</span> by
+<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.cordinc.com" property="cc:attributionName" rel="cc:attributionURL">Charles
+Cordingley</a> is licensed under a
+<a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/">Creative
+Commons Attribution 2.0 UK: England &amp; Wales License</a>.
+
+</p>
+
+</div>
+
+<div class="col-lg-2">
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

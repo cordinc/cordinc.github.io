@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Cut and Paste from Java Swing JTable to Clipboard (and Excel)</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>December 11, 2010</b>
+<h4>Cut and Paste from Java Swing JTable to Clipboard (and Excel)</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>For a project, I needed to cut, copy and paste from a Java JTable to
+Excel. The KeyAdapter I ended up writing is below. As it turns out,
+there is <a href="http://www.javaworld.com/javatips/jw-javatip77.html">another similar version online from 1999 at
+Javaworld</a> (I
+borrowed the contiguous block check from this code, as I hadn’t
+previously considered that possibility) - but I like mine better.</p>
+
+<p>To copy to Excel, a Java program must put the data onto the clipboard in
+a format Excel understands. The easiest way to do this is to use a
+String, structured as a series of cells separated by tabs and rows
+separated by line breaks. To read in data Excel puts on the clipboard,
+is just a matter of parsing a similarly structured String. There are
+other data formats available on the clipboard, but just using plain text
+is all that was needed for my requirements. However if you need to
+escape tabs and line breaks in your data then it might be worth
+investigating them. The code below just converts tabs and line breaks to
+spaces when copying to the clipboard, and ignore them when reading in
+(as tabs can’t be in an Excel cell and I couldn’t see how to detect line
+breaks in a cell rather than separating lines). To use this class just
+add it as a KeyListener on the table (<code class="highlighter-rouge">JTable.addKeyLisenter</code>).</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">cordinc</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">gui</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.awt.Toolkit</span><span class="o">;</span> 
+<span class="kn">import</span> <span class="nn">java.awt.datatransfer.Clipboard</span><span class="o">;</span> 
+<span class="kn">import</span> <span class="nn">java.awt.datatransfer.DataFlavor</span><span class="o">;</span> 
+<span class="kn">import</span> <span class="nn">java.awt.datatransfer.StringSelection</span><span class="o">;</span> 
+<span class="kn">import</span> <span class="nn">java.awt.event.KeyAdapter</span><span class="o">;</span> 
+<span class="kn">import</span> <span class="nn">java.awt.event.KeyEvent</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.swing.JOptionPane</span><span class="o">;</span> 
+<span class="kn">import</span> <span class="nn">javax.swing.JTable</span><span class="o">;</span>
+
+<span class="cm">/** 
+ * KeyAdapter to detect Windows standard cut, copy and paste keystrokes on a JTable and put them to the clipboard 
+ * in Excel friendly plain text format. Assumes that null represents an empty column for cut operations. 
+ * Replaces line breaks and tabs in copied cells to spaces in the clipboard. 
+ * 
+ * @see java.awt.event.KeyAdapter 
+ * @see javax.swing.JTable 
+ */</span> 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClipboardKeyAdapter</span> <span class="kd">extends</span> <span class="nc">KeyAdapter</span> <span class="o">{</span>
+
+        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">LINE_BREAK</span> <span class="o">=</span> <span class="s">"\n"</span><span class="o">;</span> 
+        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">CELL_BREAK</span> <span class="o">=</span> <span class="s">"\t"</span><span class="o">;</span> 
+        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Clipboard</span> <span class="no">CLIPBOARD</span> <span class="o">=</span> <span class="nc">Toolkit</span><span class="o">.</span><span class="na">getDefaultToolkit</span><span class="o">().</span><span class="na">getSystemClipboard</span><span class="o">();</span> 
+        
+        <span class="kd">private</span> <span class="kd">final</span> <span class="nc">JTable</span> <span class="n">table</span><span class="o">;</span> 
+        
+        <span class="kd">public</span> <span class="nf">ClipboardKeyAdapter</span><span class="o">(</span><span class="nc">JTable</span> <span class="n">table</span><span class="o">)</span> <span class="o">{</span> 
+                <span class="k">this</span><span class="o">.</span><span class="na">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">;</span> 
+        <span class="o">}</span> 
+        
+        <span class="nd">@Override</span> 
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">keyReleased</span><span class="o">(</span><span class="nc">KeyEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span> 
+                <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">isControlDown</span><span class="o">())</span> <span class="o">{</span> 
+                        <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKeyCode</span><span class="o">()==</span><span class="nc">KeyEvent</span><span class="o">.</span><span class="na">VK_C</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// Copy                        </span>
+                                <span class="n">cancelEditing</span><span class="o">();</span> 
+                                <span class="n">copyToClipboard</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span> 
+                        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKeyCode</span><span class="o">()==</span><span class="nc">KeyEvent</span><span class="o">.</span><span class="na">VK_X</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// Cut </span>
+                                <span class="n">cancelEditing</span><span class="o">();</span> 
+                                <span class="n">copyToClipboard</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> 
+                        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKeyCode</span><span class="o">()==</span><span class="nc">KeyEvent</span><span class="o">.</span><span class="na">VK_V</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// Paste </span>
+                                <span class="n">cancelEditing</span><span class="o">();</span> 
+                                <span class="n">pasteFromClipboard</span><span class="o">();</span>           
+                        <span class="o">}</span> 
+                <span class="o">}</span> 
+        <span class="o">}</span> 
+        
+        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">copyToClipboard</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">isCut</span><span class="o">)</span> <span class="o">{</span> 
+                <span class="kt">int</span> <span class="n">numCols</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectedColumnCount</span><span class="o">();</span> 
+                <span class="kt">int</span> <span class="n">numRows</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectedRowCount</span><span class="o">();</span> 
+                <span class="kt">int</span><span class="o">[]</span> <span class="n">rowsSelected</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectedRows</span><span class="o">();</span> 
+                <span class="kt">int</span><span class="o">[]</span> <span class="n">colsSelected</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectedColumns</span><span class="o">();</span> 
+                <span class="k">if</span> <span class="o">(</span><span class="n">numRows</span><span class="o">!=</span><span class="n">rowsSelected</span><span class="o">[</span><span class="n">rowsSelected</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">]-</span><span class="n">rowsSelected</span><span class="o">[</span><span class="mi">0</span><span class="o">]+</span><span class="mi">1</span> <span class="o">||</span> <span class="n">numRows</span><span class="o">!=</span><span class="n">rowsSelected</span><span class="o">.</span><span class="na">length</span> <span class="o">||</span> 
+                                <span class="n">numCols</span><span class="o">!=</span><span class="n">colsSelected</span><span class="o">[</span><span class="n">colsSelected</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">]-</span><span class="n">colsSelected</span><span class="o">[</span><span class="mi">0</span><span class="o">]+</span><span class="mi">1</span> <span class="o">||</span> <span class="n">numCols</span><span class="o">!=</span><span class="n">colsSelected</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+
+                        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">"Invalid Copy Selection"</span><span class="o">,</span> <span class="s">"Invalid Copy Selection"</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">ERROR_MESSAGE</span><span class="o">);</span>
+                        <span class="k">return</span><span class="o">;</span> 
+                <span class="o">}</span> 
+                
+                <span class="nc">StringBuffer</span> <span class="n">excelStr</span><span class="o">=</span><span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span> 
+                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">numRows</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> 
+                        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">numCols</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span> 
+                                <span class="n">excelStr</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">escape</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">getValueAt</span><span class="o">(</span><span class="n">rowsSelected</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">colsSelected</span><span class="o">[</span><span class="n">j</span><span class="o">])));</span> 
+                                <span class="k">if</span> <span class="o">(</span><span class="n">isCut</span><span class="o">)</span> <span class="o">{</span> 
+                                        <span class="n">table</span><span class="o">.</span><span class="na">setValueAt</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">rowsSelected</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">colsSelected</span><span class="o">[</span><span class="n">j</span><span class="o">]);</span> 
+                                <span class="o">}</span> 
+                                <span class="k">if</span> <span class="o">(</span><span class="n">j</span><span class="o">&lt;</span><span class="n">numCols</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span> 
+                                        <span class="n">excelStr</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="no">CELL_BREAK</span><span class="o">);</span> 
+                                <span class="o">}</span> 
+                        <span class="o">}</span> 
+                        <span class="n">excelStr</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="no">LINE_BREAK</span><span class="o">);</span> 
+                <span class="o">}</span> 
+                
+                <span class="nc">StringSelection</span> <span class="n">sel</span>  <span class="o">=</span> <span class="k">new</span> <span class="nc">StringSelection</span><span class="o">(</span><span class="n">excelStr</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span> 
+                <span class="no">CLIPBOARD</span><span class="o">.</span><span class="na">setContents</span><span class="o">(</span><span class="n">sel</span><span class="o">,</span> <span class="n">sel</span><span class="o">);</span> 
+        <span class="o">}</span> 
+        
+        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">pasteFromClipboard</span><span class="o">()</span> <span class="o">{</span> 
+                <span class="kt">int</span> <span class="n">startRow</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectedRows</span><span class="o">()[</span><span class="mi">0</span><span class="o">];</span> 
+                <span class="kt">int</span> <span class="n">startCol</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectedColumns</span><span class="o">()[</span><span class="mi">0</span><span class="o">];</span>
+
+                <span class="nc">String</span> <span class="n">pasteString</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span> 
+                <span class="k">try</span> <span class="o">{</span> 
+                        <span class="n">pasteString</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)(</span><span class="no">CLIPBOARD</span><span class="o">.</span><span class="na">getContents</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">getTransferData</span><span class="o">(</span><span class="nc">DataFlavor</span><span class="o">.</span><span class="na">stringFlavor</span><span class="o">));</span> 
+                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> 
+                        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">"Invalid Paste Type"</span><span class="o">,</span> <span class="s">"Invalid Paste Type"</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">ERROR_MESSAGE</span><span class="o">);</span>
+                        <span class="k">return</span><span class="o">;</span> 
+                <span class="o">}</span> 
+                
+                <span class="nc">String</span><span class="o">[]</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">pasteString</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="no">LINE_BREAK</span><span class="o">);</span> 
+                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">lines</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> 
+                        <span class="nc">String</span><span class="o">[]</span> <span class="n">cells</span> <span class="o">=</span> <span class="n">lines</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">split</span><span class="o">(</span><span class="no">CELL_BREAK</span><span class="o">);</span> 
+                        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span> <span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">cells</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span> 
+                                <span class="k">if</span> <span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">getRowCount</span><span class="o">()&gt;</span><span class="n">startRow</span><span class="o">+</span><span class="n">i</span> <span class="o">&amp;&amp;</span> <span class="n">table</span><span class="o">.</span><span class="na">getColumnCount</span><span class="o">()&gt;</span><span class="n">startCol</span><span class="o">+</span><span class="n">j</span><span class="o">)</span> <span class="o">{</span> 
+                                        <span class="n">table</span><span class="o">.</span><span class="na">setValueAt</span><span class="o">(</span><span class="n">cells</span><span class="o">[</span><span class="n">j</span><span class="o">],</span> <span class="n">startRow</span><span class="o">+</span><span class="n">i</span><span class="o">,</span> <span class="n">startCol</span><span class="o">+</span><span class="n">j</span><span class="o">);</span> 
+                                <span class="o">}</span> 
+                        <span class="o">}</span> 
+                <span class="o">}</span> 
+        <span class="o">}</span> 
+        
+        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">cancelEditing</span><span class="o">()</span> <span class="o">{</span> 
+                <span class="k">if</span> <span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">getCellEditor</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> 
+                        <span class="n">table</span><span class="o">.</span><span class="na">getCellEditor</span><span class="o">().</span><span class="na">cancelCellEditing</span><span class="o">();</span> 
+            <span class="o">}</span> 
+        <span class="o">}</span> 
+        
+        <span class="kd">private</span> <span class="nc">String</span> <span class="nf">escape</span><span class="o">(</span><span class="nc">Object</span> <span class="n">cell</span><span class="o">)</span> <span class="o">{</span> 
+                <span class="k">return</span> <span class="n">cell</span><span class="o">.</span><span class="na">toString</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="no">LINE_BREAK</span><span class="o">,</span> <span class="s">" "</span><span class="o">).</span><span class="na">replace</span><span class="o">(</span><span class="no">CELL_BREAK</span><span class="o">,</span> <span class="s">" "</span><span class="o">);</span> 
+        <span class="o">}</span> 
+<span class="o">}</span> </code></pre></figure>
+
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

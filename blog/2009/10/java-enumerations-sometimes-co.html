@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Java Enumerations (Sometimes) Considered Harmful</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>October  5, 2009</b>
+<h4>Java Enumerations (Sometimes) Considered Harmful</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>In a recent coding project I fell foul of Java enumerations. They seem
+like a very good idea, and indeed they are when used properly. However,
+there is sometimes a tendency to overuse them - something unfortunately
+learnt from personal experience.</p>
+
+<p>Intially Java had no inbuilt concept of <a href="http://en.wikipedia.org/wiki/Enumerated_type">enumerated
+types</a>. Developers often
+found themselves inadequately simulating them by creating a bunch on
+integer constants. Proper enumerations were added to Java in JDK1.5 with
+the enum keyword and developers rejoiced (or at least I did). The
+following example from the <a href="http://java.sun.com/j2se/1.5.0/docs/guide/language/enums.html">Java Language
+Guide</a>
+shows how they are used:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Rank</span> <span class="o">{</span> <span class="no">DEUCE</span><span class="o">,</span> <span class="no">THREE</span><span class="o">,</span> <span class="no">FOUR</span><span class="o">,</span> <span class="no">FIVE</span><span class="o">,</span> <span class="no">SIX</span><span class="o">,</span>
+        <span class="no">SEVEN</span><span class="o">,</span> <span class="no">EIGHT</span><span class="o">,</span> <span class="no">NINE</span><span class="o">,</span> <span class="no">TEN</span><span class="o">,</span> <span class="no">JACK</span><span class="o">,</span> <span class="no">QUEEN</span><span class="o">,</span> <span class="no">KING</span><span class="o">,</span> <span class="no">ACE</span> <span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Suit</span> <span class="o">{</span> <span class="no">CLUBS</span><span class="o">,</span> <span class="no">DIAMONDS</span><span class="o">,</span> <span class="no">HEARTS</span><span class="o">,</span> <span class="no">SPADES</span> <span class="o">}</span></code></pre></figure>
+
+<p>Actually, the above is just the basic usage pattern. Java enums can have
+data and behavior, as shown in the <code class="highlighter-rouge">Planet</code> example below (from the same
+<a href="http://java.sun.com/j2se/1.5.0/docs/guide/language/enums.html">guide</a>).
+They can also implement abstract methods directly at the definition (see
+the guide) but they cannot be subclassed.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Planet</span> <span class="o">{</span>
+    <span class="no">MERCURY</span> <span class="o">(</span><span class="mf">3.303</span><span class="n">e</span><span class="o">+</span><span class="mi">23</span><span class="o">,</span> <span class="mf">2.4397e6</span><span class="o">),</span>
+    <span class="no">VENUS</span>   <span class="o">(</span><span class="mf">4.869</span><span class="n">e</span><span class="o">+</span><span class="mi">24</span><span class="o">,</span> <span class="mf">6.0518e6</span><span class="o">),</span>
+    <span class="no">EARTH</span>   <span class="o">(</span><span class="mf">5.976</span><span class="n">e</span><span class="o">+</span><span class="mi">24</span><span class="o">,</span> <span class="mf">6.37814e6</span><span class="o">),</span>
+    <span class="no">MARS</span>    <span class="o">(</span><span class="mf">6.421</span><span class="n">e</span><span class="o">+</span><span class="mi">23</span><span class="o">,</span> <span class="mf">3.3972e6</span><span class="o">),</span>
+    <span class="no">JUPITER</span> <span class="o">(</span><span class="mf">1.9</span><span class="n">e</span><span class="o">+</span><span class="mi">27</span><span class="o">,</span>   <span class="mf">7.1492e7</span><span class="o">),</span>
+    <span class="no">SATURN</span>  <span class="o">(</span><span class="mf">5.688</span><span class="n">e</span><span class="o">+</span><span class="mi">26</span><span class="o">,</span> <span class="mf">6.0268e7</span><span class="o">),</span>
+    <span class="no">URANUS</span>  <span class="o">(</span><span class="mf">8.686</span><span class="n">e</span><span class="o">+</span><span class="mi">25</span><span class="o">,</span> <span class="mf">2.5559e7</span><span class="o">),</span>
+    <span class="no">NEPTUNE</span> <span class="o">(</span><span class="mf">1.024</span><span class="n">e</span><span class="o">+</span><span class="mi">26</span><span class="o">,</span> <span class="mf">2.4746e7</span><span class="o">),</span>
+    <span class="no">PLUTO</span>   <span class="o">(</span><span class="mf">1.27</span><span class="n">e</span><span class="o">+</span><span class="mi">22</span><span class="o">,</span>  <span class="mf">1.137e6</span><span class="o">);</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">mass</span><span class="o">;</span>   <span class="c1">// in kilograms</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">radius</span><span class="o">;</span> <span class="c1">// in meters</span>
+    <span class="nc">Planet</span><span class="o">(</span><span class="kt">double</span> <span class="n">mass</span><span class="o">,</span> <span class="kt">double</span> <span class="n">radius</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">mass</span> <span class="o">=</span> <span class="n">mass</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">radius</span> <span class="o">=</span> <span class="n">radius</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">mass</span><span class="o">()</span>   <span class="o">{</span> <span class="k">return</span> <span class="n">mass</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">radius</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">radius</span><span class="o">;</span> <span class="o">}</span>
+
+    <span class="c1">// universal gravitational constant  (m3 kg-1 s-2)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">G</span> <span class="o">=</span> <span class="mf">6.67300</span><span class="no">E</span><span class="o">-</span><span class="mi">11</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">surfaceGravity</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="no">G</span> <span class="o">*</span> <span class="n">mass</span> <span class="o">/</span> <span class="o">(</span><span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">surfaceWeight</span><span class="o">(</span><span class="kt">double</span> <span class="n">otherMass</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">otherMass</span> <span class="o">*</span> <span class="n">surfaceGravity</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>I think the first (<code class="highlighter-rouge">Rank</code> &amp; <code class="highlighter-rouge">suit</code>) example is correct usage of enums -
+essentially treating them as related constant values. In my opinion, the
+second example is problematic. Here the <code class="highlighter-rouge">Planet</code> enum is acting
+similarly to a class with each instance being like an object, with data
+and associated behaviour. At the level of the example this may seem
+acceptable - not much is happening here. However, code rarely stays
+static. Requirements change and thus the code changes to handle
+different functionality. It is not hard to imagine more data being
+required for each <code class="highlighter-rouge">Planet</code>. Object-oriented classes are designed to help
+handle this change. Enumerations are not and there is no inheritance,
+nor is it possible to pass non static constructor arguments. As a
+result, as the functionality of an enum becomes more “object-like”, the
+code supporting it becomes increasingly messy.</p>
+
+<p>The general rule is that linked constants should be enumerations, but
+anything more than that should probably be a class.</p>
+
+<p>I have broken this rule myself and lived to regret it. A project I
+recently worked on aggregated a number of different financial markets
+and presented a single interface for downstream clients. This project
+used quite a few enumerations. For example, there were enums to define
+the market defined type of a financial instrument and another for its
+pricing method. These worked fine, they were mutually exclusive values
+read from the markets essentially as constants. There was also an enum
+for the markets themselves. At first this was fine, each market was
+treated the same. However, as the system expanded to new markets and
+extra functionality, differences between markets began to appear. More
+and more logic began to hang off the market enum. Some was data stored
+on the market enum. Most was determined by the environment and was set
+by configuration settings. This logic ended up in various special
+classes constructed by
+<a href="http://en.wikipedia.org/wiki/Factory_method_pattern">Factory</a> classes
+switching on market. Indeed there was quite a bit of logic in the system
+that switched code path depending on market. The code would definitely
+have worked better had there been a <code class="highlighter-rouge">Market</code> class rather than
+enumeration. Refactoring all the code to use a class rather than a
+enumeration was a big job in an important working system.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Using BBC Backstage Weather</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>November  9, 2008</b>
+<h4>Using BBC Backstage Weather</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Weather.html">Weather</a>
+    
+<br/><br/>
+<p>Recently for a little project I wanted to get weather reports, and being
+in London my first thought was to use <a href="http://www.bbc.co.uk/weather/">BBC
+weather</a>. Doing a little searching, the
+BBC provides a number of RSS feeds for its data (news, weather, etc), as
+part of the <a href="http://backstage.bbc.co.uk">Backstage</a> project. Details of
+the weather feeds are
+<a href="http://backstage.bbc.co.uk/data/WeatherFeeds">here</a>. This post gives
+some of the tips and tricks I discovered using these feeds.</p>
+
+<!--more-->
+
+<p>The feeds are split into a number of categories. There are the global
+and UK feeds; forecasts and observations. <a href="http://backstage.bbc.co.uk/data/WeatherFeeds">The details of the feeds are
+here</a>. The world feed
+includes many UK cities too. For example the world forecast feed for
+London, UK is
+<a href="http://feeds.bbc.co.uk/weather/feeds/rss/5day/worl">http://feeds.bbc.co.uk/weather/feeds/rss/5day/world/0008.xml</a>
+d/0008.xml. Note the last part of the URL: the number is the BBC
+location ID. There are different IDs for the world and UK feeds, London
+is 1769 on the UK feed. As far as I can tell, these IDs do not match any
+other location ID system, they are certainly not the same as the
+yahoo.com or weather.com location IDs. There also does not seem to be an
+official list of IDs, but <a href="http://www.cordinc.com/projects/bbc_locations.csv">here is a CSV of the world
+locations</a> I managed
+to generate earlier. Looking at the list you will see that large parts
+of the number line are empty, for example there are no entries between
+525 and 999. Some of these missing entries come back as blank, but most
+come back as duplicates of previously seen locations. Aberporth, is both
+location ID 380 and 7510. For me, they are mainly duplicates of London
+(0008), but I think this may be related to having this set as my “home”
+city on the BBC website.</p>
+
+<p>The observation feed is a little different to what one might hope. It is
+a point in time observation (updated at least twice a day according to
+the BBC website). However, there seems to be no guarantee of when these
+updates will occur. Thus, this feed is often out of date and not
+representative of that day’s weather. The observation feeds also seem
+far more fragile. The data is often marked as N/A. For most purposes I
+find the forecast feed to be more useful than the observations. The
+current day’s weather is the first day of the forecast.</p>
+
+<p>A forecast feed has the <a href="http://cyber.law.harvard.edu/rss/rss.html">standard rss xml
+tags</a>, with one <code class="highlighter-rouge">&lt;item&gt;</code> per
+day’s forecast, starting with the current day and going forward 3 or 5
+days. Also, the <code class="highlighter-rouge">&lt;image&gt;</code> tag for the channel contains the url of an
+image depicting the current day’s weather. Other than that, most of the
+interesting data is in the <code class="highlighter-rouge">&lt;item&gt;</code>’s. Below is an example of a verbatim
+<code class="highlighter-rouge">&lt;item&gt;</code> tag for London (take a look at a feed for the other tags):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;item&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Sunday: light showers, Max Temp: 12<span class="ni">&amp;#xB0;</span>C (54<span class="ni">&amp;#xB0;</span>F), Min Temp: 6<span class="ni">&amp;#xB0;</span>C (43<span class="ni">&amp;#xB0;</span>F)<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;link&gt;</span>http://www.bbc.co.uk/weather/5day.shtml?world=0008<span class="nt">&lt;/link&gt;</span>
+  <span class="nt">&lt;description&gt;</span>Max Temp: 12<span class="ni">&amp;#xB0;</span>C (54<span class="ni">&amp;#xB0;</span>F), Min Temp: 6<span class="ni">&amp;#xB0;</span>C (43<span class="ni">&amp;#xB0;</span>F), Wind Direction: SSW, Wind Speed:   29mph, Visibility: poor, Pressure: 1011mb, Humidity: 52, UV risk: low, Pollution: moderate, Sunrise: 07:07GMT,  Sunset: 16:21GMT<span class="nt">&lt;/description&gt;</span>
+  <span class="nt">&lt;guid</span> <span class="na">isPermaLink=</span><span class="s">"false"</span><span class="nt">&gt;</span>tag:feeds.bbc.co.uk,(none):/weather/5day/world/0008-1<span class="nt">&lt;/guid&gt;</span>
+  <span class="nt">&lt;pubDate&gt;</span>Sun,  9 Nov 2008 08:10:04 +0000<span class="nt">&lt;/pubDate&gt;</span>
+  <span class="nt">&lt;geo:lat&gt;</span>51.52<span class="nt">&lt;/geo:lat&gt;</span>
+  <span class="nt">&lt;geo:long&gt;</span>-0.10<span class="nt">&lt;/geo:long&gt;</span>
+<span class="nt">&lt;/item&gt;</span></code></pre></figure>
+
+<p>If you need to do something other than just display the weather
+forecast, you will need to parse the <code class="highlighter-rouge">&lt;title&gt;</code> or <code class="highlighter-rouge">&lt;description&gt;</code> tags.
+I don’t personally recommend this as the data is unstructured and liable
+to change. In particular I have found:</p>
+
+<ul>
+  <li>extra spaces are sometimes inserted or removed</li>
+  <li>data is often missing (for instance the latitude and longitude tags
+are present but empty for location IDs 7500 through to 7518)</li>
+  <li>data can often be marked as “NA”, N/A” or “none”</li>
+</ul>
+
+<p>Given that disclaimer, the regular expressions below (in <a href="http://www.regular-">Ruby regex
+format</a> expressions.info/ruby.html) worked for my
+task and may be a starting point for you when parsing:</p>
+
+<ul>
+  <li>@<title>@ uses the format</title></li>
+</ul>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">@</span><span class="o">/</span><span class="p">([\</span><span class="n">w</span> <span class="o">-</span><span class="p">\</span><span class="sr">/]+): ([\w -]+|N\/A|NA|\(none\)), Max Temp: (.*)/m</span><span class="err">@</span></code></pre></figure>
+<p>the first matching group is the day and the  second is the forecast description</p>
+<ul>
+  <li>@<description>@  has the format</description></li>
+</ul>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">@</span><span class="o">/</span><span class="no">Max</span> <span class="no">Temp</span><span class="p">:</span>  <span class="p">([</span><span class="o">-</span><span class="p">\</span><span class="n">d</span><span class="p">\</span><span class="o">.</span><span class="p">]</span><span class="o">+|</span><span class="no">N</span><span class="p">\</span><span class="sr">/A|NA|\(none\))(\w+) \((.+)\), Min Temp: ([-\d\.]+|N\/A|NA|\(none\))(\w+) \((.+)\), Wind Direction:  ([\w -\/\(\)]+), Wind Speed: ([\d\.]*|N\/A|NA|\(none\))mph, Visibility: ([\w -\/]+), Pressure: ([\d\.]+|N\/A|NA| \(none\))m([bB]), Humidity: ([\d\.]+|N\/A|NA|\(none\))(.*)/m</span><span class="err">@</span></code></pre></figure>
+<p>matching group 1 is the max temperature in  celsius, 4 is the min temperature, 7 is the wind direction, 8 is the wind speed, 9 is the visibility, 10 is the  pressure and 12 is the humidity.</p>
+
+<p>One other thing to remember when accessing the BBC weather feeds is that
+there appears to be an undocumented throttling feature. If you make too
+many requests, for a short period of time your requests will be
+rejected. From experimentation, making one request every 3 seconds will
+not breach the limit and you won’t be rejected. However, making a
+request every 2 seconds will result in being blocked for a couple of
+minutes after 1000 or so requests. I suggest using the slowest request
+rate you can accept.</p>
+
+<p>The unstructured nature of the weather data (ie, the various individual
+pieces of data are not available in their own tags and have to be
+extracted from the description text) and somewhat hidden nature of the
+location IDs (without a discovery service I could find) suggest these
+feeds are only designed to be used for display. Next time I’ll try the
+Yahoo or Weather.com APIs and see if they are any different.</p>
+
+<p><strong>Update:</strong> The regex patterns shown above no longer work in all
+circumstances. The BBC have changed the format of their weather RSS
+feeds a couple of times since I wrote this blog post. If you wish to
+parse the feed, a little extra work updating the regexs (perhaps using
+the given patterns as a base) will be required.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

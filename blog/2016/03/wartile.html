@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Wartile</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>March 26, 2016</b>
+<h4>Wartile</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Games.html">Games</a>, 
+    
+      <a class="post" href="/blog/tag/Let&#8217;s Play.html">Let&#8217;s Play</a>, 
+    
+      <a class="post" href="/blog/tag/Video Games.html">Video Games</a>
+    
+<br/><br/>
+<p>As an experiment, I recently recorded my first Let’s Play on YouTube.
+The chosen game is the pre-alpha demo of
+<a href="http://www.wartile.com">Wartile</a> - a tabletop inspired tactical combat
+game with a Viking theme. The video’s concept is to look at the game
+from the point-of-view of a another game developer and talk about the
+design of the game as well as the gameplay. I might do more similar
+videos in future.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ketg1llwpt0" frameborder="0" allowfullscreen=""></iframe>
+
+<p>The TL;DWatch version is that Wartile is is a fun playable demo and the
+game is already very pretty. It is a good base on which to build a great
+gaming experience with a bit of extra polish. For me, one issue is that
+the core game mechanic feels a little confused. Some parts of the game
+suggest a turn-based game, but it plays as a real-time game.</p>
+
+<!--more-->
+
+<p>In the Wartile demo the player controls 4 sturdy Viking warriors about
+to ravish the British isles. Or, at least loot a small monastery for a
+bit of coin. For some reason the Vikings have chosen a surprisingly well
+defended religious institution. There is a watchtower and they are
+outnumbered at least 3-1 by English soldiers. Luckily the defenders are
+spread out and are very dumb, preferring to stand idly until the Vikings
+are nearly on top of them (well it is pre-alpha, can’t expect great AI
+at this stage).</p>
+
+<p>This monastery level is gorgeous. The graphics are beautiful in a
+tabletop inspired way. The ground is broken into hexes, all the people
+are modelled as figurines with bases, and, the waves are frozen at the
+point they crash upon the rocks (but a ship’s sails actively billow in
+the wind - strange). It is a board gamer’s dream, imagine how cool it
+would be to play a skirmish war-game at your local game-store that
+looked like this! Well, now you can on your computer. To help show off
+the graphics, the camera is player controlled and very mobile (zoom,
+rotate and pan in two dimensions). From my experience such camera work
+makes development harder and the artwork needs to be fully 3D (no hiding
+the unfinished backs of buildings, like in the movies). Well done to the
+team for getting it done.</p>
+
+<p><a href="/assets/posts/lps/wartile_demo/pretty.png"><img src="/assets/posts/lps/wartile_demo/pretty_thumb.png" alt="" /></a></p>
+
+<p>The core gameplay is maneurving your Viking warriors around the board by
+dragging and dropping them on the desired destination within the
+movement range of the figure. Then a cooldown timer starts - the figure
+can’t act again until it has expired (just a couple of seconds). When
+two opposing figures touch they immediately enter automatic combat.
+Bashing each without player interaction, unless the player moves their
+figure mid-combat. The combat is driven by a standard set of combat
+stats: how much health they have, how much damage they do in an attack,
+etc.</p>
+
+<p>When defeated, the figurines fracture and crumble - a nice bit of
+tabletop-like feedback. If it is an enemy it may release a reward in the
+form of a small action point or coin. Either have to be quickly clicked
+to gather them, otherwise they disappear forever. Click, click, click
+quickly. The coins don’t seem to have any benefit, yet. As the game
+expands they could be used to add a meta-game of buying better equipment
+and the like.</p>
+
+<p>Collecting the action points is vital. Each player has a set of cards
+they can play at any time by dragging them onto the board, if they have
+the action points available to pay their cost. The cards give various
+combat buffs or healing actions. Some of the cards are for any of the
+player’s warriors, some are special moves only available to certain
+figures.</p>
+
+<p>And that is the core gameplay loop. Manoeuvre your figures into good
+attacking situation, use cards when appropriate, and quickly click your
+rewards. Simple, but it works well. I had fun trying out various tactics
+to isolate and surround the enemy, then working out the most economical
+use of cards. Each attempt at the level was 5-10 minutes and it took
+three attempts before successfully completing it fully (but I got
+incredibly close on the second attempt!). So the difficulty level felt
+about right for me.</p>
+
+<p><a href="/assets/posts/lps/wartile_demo/combat.png"><img src="/assets/posts/lps/wartile_demo/combat_thumb.png" alt="" /></a></p>
+
+<p>Some of the implementation details are a little rough, but nothing that
+can’t be fixed. The action points and coins felt small when rushing to
+click them - I don’t think the clicking mechanic is supposed to be
+reaction-based mini game, but it can feel that way. Also, the
+description of the warrior stats and other tips appear in the top-left
+corner of the screen, rather than tooltips hovering over the pointer.
+The learning player constantly has to swing their head up to the top
+left corner to see the description.</p>
+
+<p>Overall, this game definitely has great potential. Especially with
+adding some meta game or progression between missions with the coins or
+extra cards or equipment. They could also add a storyline, or just leave
+it as skirmishes. It could all work nicely. Well done to the dev team.</p>
+
+<p>However, the game did confuse me a little.</p>
+
+<p>The problem is, for me at least, when I first saw screenshots and even
+videos of this game, I thought, “wow that looks like a great turn-based
+tactical game”, and of course its not turn-based, its realtime. I was
+surprised. Even after playing it, the game felt turn-based, and I
+immediately wondered why.</p>
+
+<p>Realtime tactical game are all about the tension of action. You might
+know what needs to be done, but can’t do it quick enough. The player has
+to think fast and execute actions faster. It is often about overwhelming
+the player, or the enemy. Some parts of Wartile fit this: playing the
+cards is often tense for me, will I get it done in time? Same with
+rushing to click action points and coins before they disappear. Also you
+can slow down time for a bit with a satisfying noise and camera effect.</p>
+
+<p>However, there are aspects of the game that work against that realtime
+feel. The movement feels strange - figures jump immediately to their
+destination and then just stay there until you move them again after
+their cooldown timer expires. That doesn’t feel realtime. It makes it
+hard to organise coordinated attacks, for instance moving one figure up
+a hidden back path while the remainder attack from the front. Most
+realtime games let you give a final destination and the unit will just
+trundle along at its own speed until arriving.</p>
+
+<p>Here movement (the main this a player controls) is discreet, like a
+tabletop game, but tabletop games are turn-based. The art style also
+screams turn-based tabletop with the figures, hexes and static
+background. As does the way nothing happens if no orders are given. I
+feel outside combat I could give no commands, instead using the time to
+thoroughly plan my actions, and the game would just sit there waiting
+for me. Which is the feeling turn-based games try provide - planning out
+tactics and then seeing what happens.</p>
+
+<p><a href="/assets/posts/lps/wartile_demo/warriors.png"><img src="/assets/posts/lps/wartile_demo/warriors_thumb.png" alt="" /></a></p>
+
+<p>Basically, sometimes the game feels turn-based and sometimes it feels
+realtime. For me, at the moment, this is just a little confusing and
+feels strange. I’d recommend committing to one or the other (personally
+I’d suggest turn-based, but I’m biased). Then again perhaps the
+developers are aiming for the feeling of careful planning punctuated by
+hectic combat. It could be a novel game mechanic. Maybe that mix could
+work, but if so the game still needs some work to reach that ideal.
+Currently I’m not sure, as a player, what the developers intended - is
+it about action and tension, or is it about seeing your carefully
+planned tactics come to fruition.</p>
+
+<p>There is another issue around this game, but not to do with the
+gameplay. I first became aware of Wartile through its Kickstarter
+campaign. Liking the game and wishing to see it completed, I considered
+pledging while recording the Let’s Play. But I couldn’t, because they
+have cancelled it. Wartile’s Kickstarter page seemed fine. Their video
+was professional (it got me to download their demo!). The goal was not
+excessive, and there was a pretty, playable demo. I also saw a large
+number of other Let’s Play videos and some press in the larger gaming
+outlets. They had a decent pr push. However, with 10 days left on the
+campaign, they were only on around 45% of their target amount - not even
+close. I feel for the dev team. If I was putting this on Kickstarter,
+I’d be quietly confident of funding successfully. Maybe the
+Indiepocalyse has claimed another victim. I’d love to hear from the
+developers why they think it didn’t work out.</p>
+
+<p>Anyway, good luck to the team. I hope you can still finish this game, as
+I really want to see how it turns out.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

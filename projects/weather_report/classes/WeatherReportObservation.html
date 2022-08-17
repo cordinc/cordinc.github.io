@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: WeatherReportObservation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">WeatherReportObservation</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/weather_report_rb.html">
+                lib/weather_report.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+The current weather observations (at least at the time of reading - given
+by attribute reading_date)
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000007">new</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="WeatherReportLocation.html">WeatherReportLocation</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DESCRIPTION</td>
+          <td>=</td>
+          <td class="context-item-value">/(.*)Temperature: ([-\d\.]+|N\/A|NA|\(none\))(.+)Wind Direction: ([\w -\/\(\)]*), Wind Speed: ([-\d\.]+|N\/A|NA|\(none\))([ ]*)mph, Relative Humidity: ([\d\.]+|N\/A|NA|\(none\))(.*), Pressure: ([\d\.]+|N\/A|NA|\(none\))mB, ([\w -\/]+), Visibility: ([\w -\/]+)/</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">SUMMARY</td>
+          <td>=</td>
+          <td class="context-item-value">/(.+):(\W+)([\w -\/\(\)]+). (.+)/m</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">description</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">humidity</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">pressure</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">pressure_state</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">reading_date</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">temperature</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">visibility</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">wind_direction</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">wind_speed</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="#M000007" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(document)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Constructs the weather observation from an XML string or file containing
+the XML in BBC Backstage weather format
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/weather_report.rb, line 98</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">document</span>)
+    <span class="ruby-identifier">doc</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">document</span>
+    
+    <span class="ruby-identifier">loadLocation</span>(<span class="ruby-identifier">doc</span>)
+    <span class="ruby-ivar">@reading_date</span> = <span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">now</span>
+    <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span>(<span class="ruby-value str">&quot;rss/channel/item[1]/title[1]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span> 
+      <span class="ruby-identifier">md</span> = <span class="ruby-constant">SUMMARY</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">element</span>.<span class="ruby-identifier">text</span>)
+      <span class="ruby-ivar">@description</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">3</span>]
+    }
+      
+    <span class="ruby-identifier">hasDesc</span> = <span class="ruby-keyword kw">false</span>
+    <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">each</span>(<span class="ruby-value str">&quot;rss/channel/item[1]/description[1]&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span> 
+      <span class="ruby-identifier">hasDesc</span> = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-identifier">md</span> = <span class="ruby-constant">DESCRIPTION</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">element</span>.<span class="ruby-identifier">text</span>)
+      <span class="ruby-ivar">@temperature</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">to_f</span>
+      <span class="ruby-ivar">@wind_direction</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">4</span>]
+      <span class="ruby-ivar">@wind_speed</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">5</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">1.61</span>
+      <span class="ruby-ivar">@humidity</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">7</span>].<span class="ruby-identifier">to_f</span>
+      <span class="ruby-ivar">@pressure</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">9</span>].<span class="ruby-identifier">to_f</span>
+      <span class="ruby-ivar">@pressure_state</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">10</span>]
+      <span class="ruby-ivar">@visibility</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">11</span>]
+    }
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">WeatherReport</span><span class="ruby-operator">::</span><span class="ruby-constant">WeatherReportFormatError</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">hasDesc</span>
+    
+    <span class="ruby-keyword kw">rescue</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">WeatherReport</span><span class="ruby-operator">::</span><span class="ruby-constant">WeatherReportFormatError</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

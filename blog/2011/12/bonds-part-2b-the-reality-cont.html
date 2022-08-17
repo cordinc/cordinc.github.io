@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Bonds: Part 2b - The Reality continued</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>December  3, 2011</b>
+<h4>Bonds: Part 2b - The Reality continued</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Finance.html">Finance</a>, 
+    
+      <a class="post" href="/blog/tag/Bonds.html">Bonds</a>
+    
+<br/><br/>
+<ul>
+  <li>Part 1 - <a href="http://www.cordinc.com/blog/2011/10/bonds-part-1-the-theory.html">The
+Theory</a></li>
+  <li>Part 2a - <a href="http://www.cordinc.com/blog/2011/10/bonds-part-2a-the-reality.html">The
+Reality</a></li>
+  <li>Part 3a - <a href="http://www.cordinc.com/blog/2011/12/bonds-part-3a-the-technology.html">The
+Technology</a></li>
+  <li>Part 3b - <a href="http://www.cordinc.com/blog/2012/01/bonds-part-3b-the-technology-c.html">The Technology
+continued</a></li>
+  <li>Part 4 - <a href="http://www.cordinc.com/blog/2012/01/bonds-part-4-the-future.html">The
+Future</a></li>
+  <li><a href="http://www.cordinc.com/blog/2012/01/bonds-addendum.html">Addendum</a></li>
+</ul>
+
+<p>Calculating the price of an EGB bond has to be fast. A big bank may have
+400 or so European bond obligations and the quotes need to be
+recalculated quickly when the market moves. It is possible to recover
+from incorrect prices on D2C markets, with their negotiable RFQs.
+However, if an executable D2D quote is wrong then the trader will likely
+lose money.</p>
+
+<!--more-->
+
+<p>By fast I mean determining all the actively quoted prices and sending
+them to the market in around 50 milliseconds. Fast enough that humans
+can not be involved in the pricing system in any direct manner. Other
+instruments, like
+<a href="http://en.wikipedia.org/wiki/Foreign_exchange_market">FX</a> and
+<a href="http://en.wikipedia.org/wiki/Stock">equities</a> have even lower latency
+requirements (they need to be faster), but they don’t need as much
+calculation. This is an ever decreasing target, when I started on EGB
+desks in 2007 the equivalent figure was around 125 milliseconds. It
+depends entirely on the relative speed of the other banks on the D2D
+markets. There are three rough categories of EGB pricing speed. The
+fastest couple of banks can get their prices updated quickly enough that
+they can make money off the slowest handful - a process known as latency
+arbitrage. The majority of banks sit safely inbetween these two
+extremes, neither profiting from the slower banks nor losing money
+(except to mistakes). Of course over time banks improve their systems
+and the speeds needed to be safe or profitable only increase. I have
+worked for banks that at various points have been in all three
+categories and a significant proportion of my time has been spend
+analysing and improving EGB pricing speed. At the moment I would guess
+50ms pricing would definitely be safe, towards 100ms is danger territory
+and below 10ms could be profitable.</p>
+
+<p>It is vital to detect when the yield curve moves and reprice
+appropriately. For EGBs the yield curve is driven by <a href="http://en.wikipedia.org/wiki/Eurex#Interest-rate_derivatives">German bond
+futures</a>
+traded on the Eurex market in Frankfurt. These futures are derivative
+contracts to deliver a specified German government bond at a future
+date. There are a number of them categorised by the maturity of the bond
+to be delivered. The Schatz delivers a bond with a remaining maturity
+around 2 years in the future. The Bobl delivers a 5 year bond, while the
+Bund returns a 10 year and a 30 year bond for the Buxl. The contracts
+last 9 months and new futures contracts are created every 3 months. So
+there is always a current contract with the correct tenor. Every quarter
+the futures used in the yield curve are converted to the current
+contract. The point every quarter where the new futures take over from
+the old contracts is known as the “futures roll”.</p>
+
+<p>For example at the moment there are three <a href="http://www.eurexchange.com/trading/products/INT/FIX/FGBL_en.html">Bund futures
+contracts</a>
+available for trading - expiring in December 2011, March 2012 or June 2012. This month the December contract will expire and be replaced with
+a September 2012 contract. When the December contract matures those that
+are short will have to deliver German bonds maturing in roughly 10 years
+to those with long positions. The contract will list a basket of bonds
+which may be delivered. The cheapest of these is known as the Cheapest
+To Deliver (CTD) and is always the one which is actually delivered.
+Normally the CTD does not change during the length of the contract, but
+a basket is specified to make it hard to manipulate the futures price.</p>
+
+<p>There are also Italian Government bond futures, but I haven’t heard of
+these being used for pricing, just hedging. Even if they were used for
+pricing I can’t imagine it would be for anything other than Italian
+bonds, whereas the German bond futures affect the entire Euro bond
+market.</p>
+
+<p>The Schatz, Bobl and Bund futures are the most liquid instruments on the
+European yield curve and so are used for the 2, 5 and 10 year points.
+The relatively new Buxl contract is increasingly used as the driving
+point at the long end of the curve. Although there is some question over
+its liquidity, so some places may use swaps or a specially computed
+point instead. Below the 2 year mark Euribor futures are used to drive
+the curve - although I haven’t dealt much with the short end. I’ve seen
+curves with other instruments like swaps, but for EGB pricing the German
+bond futures are always the dominant drivers. If a future changes value
+then the curve adjusts slightly and the bond prices are recalculated.</p>
+
+<p>Bond prices are determined using a spread off the yield curve at the
+point corresponding to the bond’s maturity. The size of the spread is
+determined by credit risk plus liquidity or other terms. Some banks may
+have a yield curve for each Eurozone country despite them having the
+same currency and central bank. Visualising these country curves better
+capture the credit risk of each country and a quant once suggested it
+also aided pricing. The German curve is the closest to the idealised
+curve, as it is the safest country. Other countries then spread further
+away until Greece is reached, clearly worse and separate from the core.
+As all these curves are based off the same futures, they all move
+roughly in sync with each other as the futures move. Sometimes they move
+separately if a country’s perceived risk changes relative to the
+benchmark - the Bund future.</p>
+
+<p>Thus European government bonds generally move in known ways relative to
+each other and the futures. This can be used for hedging. Traders are
+constantly aware of the interest rate risk they are taking with their
+positions (using DV01 as described in Part 1). Generally they are
+supposed to keep their risk flat - that is close to 0. They will have a
+set risk limit and every night their positions will be checked against
+this limit. Regularly or excessively exceeding your limit is a serious
+offence. Trying to hide being over the risk limit is one of the
+definitions of a <a href="http://en.wikipedia.org/wiki/Rogue_trader">rogue
+trader</a>. EGB traders
+generally are not supposed to take risks and so have relatively low risk
+limits. They are considered flow traders, working to create business
+with clients and this doesn’t require them to take risks (although some
+do take small’ish risks). They are not supposed to be trading for the
+bank’s account (like <a href="http://en.wikipedia.org/wiki/Proprietary_trading">proprietary or prop
+trading</a>). Instead
+they keep their positions small and take a small cut of a large flow of
+trades with clients (or at least that is the theory). It is supposed to
+be steady money, without taking any directional bets, just taking the
+spread difference between the D2D and D2C markets. When I started a
+quant explained to me that an EGB desk should not make huge amounts of
+money, but should never lose money either.</p>
+
+<p>When a position is taken, to keep their risk down the EGB traders hedge.
+That is they trade something else in such a way as to counteract the
+interest rate risk of the original trade. Thus the two (or more) trades
+when combined result in flat risk. The obvious way to do this is just to
+do the reverse trade. That is if a trader buys 10 million of a bond from
+a client, then immediate turn around and sell the same bonds to someone
+else. Thus the total position is zero and the risk is zero. However,
+this is not normally profitable (due to the spread). There was a
+beginner trader who liked to do this - he constantly lost money in a
+booming market and was sacked after a few months. Normally it is
+necessary to hold onto a position for some time before trading out of a
+position profitably, so other means of hedging are utilised.</p>
+
+<p>Usually hedging means trading the German bond futures. With every
+futures roll, the proportion of each future that offsets each bond is
+calculated (usually by the quants). Thus at a point in time a trader may
+known that for every million in a bond they hold, selling 500,000 Bunds
+and 200,000 Schatz will offset their risk. This works as the futures are
+more liquid than any particular bond and the spreads are tighter. Of
+course the fact that most Euro bonds are hedged with futures is one of
+the reasons they are so liquid. The Italian bond futures and swaps are
+also used for hedging on occasion, but the German futures are the most
+popular. The liquidity in the futures market also means that traders use
+various strategies to eke out a little extra profit without too much
+risk. For example a trader may only hedge half of what they need
+immediately if the market is moving in their favour, hedging the rest a
+little later at a better price.</p>
+
+<p>Hedging out interest rate risk does not mean there is no risk associated
+with holding a position. Credit risk is still present. Imagine a Spanish
+bond is hedged with the German futures. What happens if the Spanish
+yield curve moves independently of the German curve, because Spain’s
+credit risk changes relative to the rest of Europe (or at least
+Germany). At this point the hedge breaks down and the trader either
+makes or loses money depending on their position. This is what is
+happening right now in the debt markets. Italy is seen as an increasing
+risk versus Germany and thus its yields are rising. Anyone long Italian
+bonds hedged with short German futures is losing money. I know this is
+happening to some people at the moment.</p>
+
+<p>Theoretically it is possible to hedge away the credit risk with <a href="http://en.wikipedia.org/wiki/Credit_default_swap">Credit
+Default Swaps (CDS)</a>,
+which is basically just insurance on a bond issuer’s default. However I
+never saw this used - I’m not sure why, perhaps the cost was too high or
+it was seen as unnecessary. Instead EGB traders either ignored credit
+risk (the likelihood a country in the Eurozone defaulting seemed very
+remote until recently) or just didn’t keep their positions for long.</p>
+
+<p>EGB desks are not like High Frequency Trading (HFT) desks where the
+length of time a position is held can be counted in milliseconds.
+Normally it is hours, or often days. If the position was very large the
+traders may skew the price to encourage others to hit their prices, or
+ask the salespeople to work away their inventory. In any case, a
+position is rarely held to maturity. I know of a few bugs in risk
+systems at large banks related to maturing bonds or futures and which
+have never been fixed because “that situation never happens” (as a
+trader once said to me about futures). Holding an instrument to maturity
+doesn’t involve much profit, but does involve extra bureaucracy and
+paperwork (especially for futures with the delivery of the relevant
+underlying bond). It’s easier just to flat the position before maturity.</p>
+
+<p>As previously stated, the two main components of a European government
+bond’s price are interest rates and credit risk. Credit risk is
+basically the risk of the country defaulting. This risk is driving
+European bond prices at the moment. Prices rising for this reason is
+often called the result of “bond vigilantes” - traders punishing a
+government for its poor finances and worsening position. It is claimed
+that austerity will save us from these vigilantes. Although such claims
+from politicians ignore the other factor driving bond prices. A country
+heading towards a recession will likely lower its interest rates in the
+near future to stimulate its economy. Alternatively, in a booming
+economy interest rates tend to rise. So other things being equal, if a
+country’s economy is slowing then the yield of its bonds is likely to
+decrease in the expectation of lower interest rates from the central
+bank. This is what we are seeing in the UK, credit risk hasn’t changed
+much but with a recession likely or at least a weak economy, bond yields
+are at historic lows.</p>
+
+<p>EGB traders keep an eye out for any news that may affect these factors.
+Millisecond to millisecond pricing is done by the futures driving the
+yield curve. So traders instead use expectations to adjust spreads, grow
+or shrink positions for a little profit (within their limits) or turn
+off quoting in advance of expected volatility. If a large or step change
+in futures’ pricing is possible, then turning off quotes until the
+market has settled lessens the likelihood of making a trade which is bad
+a few milliseconds later (and thus meaning the hedge is done at the
+wrong level). This often occurred around big economic announcements
+which could quickly change views of an economy’s direction.</p>
+
+<p>Quoting was always turned off for the largest economic news - monthly US
+non-farm payrolls (often abbreviated to just “non-farm”), announced on
+the first Friday of each month at 8:30am New York time (usually 1:30pm
+London time). The payroll figure describes the number of jobs created
+(or lost) in the US economy over the previous month along with average
+pay rises and hours worked. This gives an indication of where the US
+economy is heading, and thus the world as the US is still the largest
+component of the world economy. If the US is booming, it is more likely
+the rest of the world will be too - and vice-versa. The neutral payroll
+figure is around 200,000 jobs created in a month, as this matches the
+monthly workforce increase in the US (it is a big country!). Thus lower
+jobs figures suggest lower bond yields and higher job figures imply
+higher bond yields.</p>
+
+<p>As always with such economic indicators, it is the difference in
+expectations that has an effect. In the days leading up to the
+announcement analysts try to predict the figure and the consensus of
+these expectations are built into bond prices. When the real figure is
+announced the prices are adjusted relative to the expected figure. Thus
+if the market expects a payroll gain of 20K and the announced figure is
+80K gained, then yields will rise despite the small gain suggesting a
+slowing economy.</p>
+
+<p>Resolving the difference between reality and expectation can cause bond
+prices to jump. This creates lots of noise on the trading floor. Someone
+junior normally has the job of shouting out the figure as it is
+released. The more surprising the announcement, the louder the shouting
+afterward. When the series of bad payroll numbers came out during the
+financial crisis, the traders cheered loudly. It seems perverse to cheer
+US job destruction, but as previously stated traders only look at their
+personal PnL, not the wider picture. In this case the traders had
+permission to build up a long position and so the falling yields after a
+bad number made them money.</p>
+
+<p>The noisiest I have heard a trading floor was immediately after
+non-farms during the start of the financial crisis and the day after
+Lehman’s went bust. On these occasions it got close to the levels seen
+in movies when there is a panic. Trading floors are generally noisy
+places with lots of desks packed together. There are always people
+shouting instructions, conversing or talking on phones. TVs are
+constantly on but with the sound turned off unless something big is
+happening (terrorist attack, Lehman’s collapse, the
+<a href="http://en.wikipedia.org/wiki/The_Ashes">Ashes</a>). The most annoying
+noise is the computers. Traders often have their PCs set up to play a
+noise on various events: a trade done, RFQ received, large price move,
+etc. So there are constant laser blasts, ka-chings, buzzers, animal
+sounds, movie quotes and more. It can be hard to concentrate with these
+intentionally attention grabbing noises. Traders don’t seem to mind too
+much, they are constantly focussed on the present - though not so good
+for programming. Strangely one noise almost never heard on a trading
+floor is a mobile phone ring. Banks like to record all communication for
+compliance reasons, so personal mobiles are banned or discouraged as
+they can’t be recorded.</p>
+
+<p>There is probably more to EGB trading than the above - but this is what
+I have seen and had explained to me.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

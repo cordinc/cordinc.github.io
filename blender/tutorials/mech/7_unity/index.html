@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Unity3D Beginner for Beginner Tutorial: Mech - Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<h4>Unity3D Beginner for Beginner Tutorial: Mech</h4>
+
+<script type="text/javascript" src="UnityObject.js">
+</script>
+
+<script type="text/javascript">
+<!--        
+    function GetUnity() {if (typeof unityObject != "undefined") {unityObject.getObjectById("unityPlayer");} return null;}
+    if (typeof unityObject != "undefined") {unityObject.embedUnity("unityPlayer", "WebPlayer.unity3d", 600, 450);}
+    -->
+</script>
+
+<style type="text/css">
+<!--
+    div.content {margin: auto; width: 600px; border:1px solid black; }
+    div.missing {margin: auto; position: relative; top: 50%; width: 193px; }    
+    div.missing a {height: 63px; position: relative; top: -31px; }
+    div.missing img {border-width: 0px; }       
+    div#unityPlayer {cursor: default; height: 450px; width: 600px; }        
+    -->
+</style>
+
+<p><b>16th April 2011 - Unity3D 3.3 &amp; Blender 2.47</b></p>
+
+<p>
+
+After creating a simple game with Ogre3D
+(<a href="../5_ogre/index.html">part 1</a> &amp;
+<a href="../6_ogre_part2/index.html">part 2</a>), I thought I should try
+a different library for comparison. In this tutorial I will detail the
+steps used to create the same game as the previous tutorials, but using
+<a href="http://unity3d.com/">Unity3D</a> instead. Unity3D is a
+commercial game development tool, although there is a free version with
+less functionality (I used the free version). While Ogre3D just provides
+a graphics library (with plugins for other tools), Unity3D provides
+almost everything “in the box”: 3D graphics, sound, physics, networking
+and more. It allows a number of languages for scripting - I used
+Javascript, as that is the one with which I am most familiar. The free
+version allows deployment to Windows or the web (using a browser
+plugin), the paid version adds
+<a href="http://en.wikipedia.org/wiki/Android_(operating_system)">Android</a>
+and <a href="http://en.wikipedia.org/wiki/IOS_(Apple)">iOS</a>. The web
+version of the finished program is below (if it is not playing you will
+need the <a href="http://unity3d.com/webplayer/">Unity Player</a>, to
+start a new game you need to reload this webpage). The final Unity3D
+project created by this tutorial is
+<a href="MechWalkUnity.zip">available here</a>.
+
+</p>
+<p>
+<div class="content">
+<div id="unityPlayer">
+<div class="missing">
+
+<a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!"><img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" /></a>
+
+</div>
+</div>
+</div>
+</p>
+<p>
+<ol>
+<li>
+
+First download and install <a href="http://unity3d.com/">Unity3D</a>
+(this tutorial is written with version 3.3). This is just a standard
+windows package (there is an OSX version, but no Linux version is
+available) and it installed for me with no issues.
+
+</li>
+<li>
+
+Read, or at least scan, the beginner tutorials describing how Unity3D
+works. There are some
+<a href="http://unity3d.com/support/documentation/video/">videos on the
+GUI here</a> and an
+<a href="http://docwiki.unity3d.com/uploads/Main/Scripting%20Tutorial.pdf">introduction
+to Unity scripting here</a>. Those together with the  
+<a href="http://unity3d.com/support/documentation/ScriptReference/index.html">Scripting
+Reference</a> and googling (often ending up at the
+<a href="http://forum.unity3d.com/">forums</a> or
+<a href="http://answers.unity3d.com/">Q&amp;A site</a>) were enough for me
+to do this little project. This tutorial will assume you know your way
+around the GUI - for example the difference between the Hierarchy,
+Project and Inspector panels.
+
+</li>
+<li>
+
+To start a new project create a new empty folder called MechWalkUnity
+(or whatever you prefer). Then in Unity: File -\&gt; New Project, select
+the new folder and don’t select any packages to import (this is just a
+simple project). In the MechWalkUnity folder there should now be a
+Library folder and an Assets folder. Anything placed into the Assets
+folder will be automagically loaded into the project (and visible in the
+Project panel). Unity3D can automagically detect and import files of
+known types
+(<a href="http://unity3d.com/support/documentation/Manual/HOWTO-ImportObjectBlender.html">including
+blender files</a> if an appropriate version of Blender is detected) in
+the Assets folder. Copy BumpyMetal.jpg, mech.blend and sculpture.blend
+into Assets, switch back to Unity and they should now be in your Project
+panel. Click on the mech and the details should be in the Inspector
+panel (as shown in the screenshot below). To add the mech to the scene
+just drag it from the Project panel onto the Scene viewer (which will
+also add it to the Hierarchy panel) - easy! Now from the menu File -\&gt;
+Save Scene will save this initial scene. If you play the scene now, you
+may need to move the camera around first until it points towards the
+mech, as otherwise nothing will be displayed.
+
+<center>
+
+<a href="ss3.png"><img width="500" src="ss3.png" /></a>
+
+</center>
+</li>
+<li>
+
+Now to create the ground on which the mech will stand. Use the menu
+option GameObject -\&gt; Create Other -\&gt; Plane to create a new plane in
+the scene (and in the Hierarchy panel). With the new plane selected,
+drag BumpyMetal from the Project panel onto the MeshRender component in
+the Inspector panel. In Unity3D the properties of game objects are
+determined by their set of components, which are viewable and editable
+in the Inspector (the editor displays the details of whatever object is
+selected). The MeshRenderer component determines how an object is
+displayed (the blender models will use a Skinned Mesh Renderer to do the
+same thing, but that is done by default when the model is imported). By
+dragging the BumpyMetal object onto the renderer, Unity knows to use
+this as the image textured on the plane. On the same Mesh Renderer
+component set x &amp; y tiling to 25, that is repeat the texture 25 times in
+each direction. Set the position in the Transform component (which
+determines position, size and orientation) to (0,0,0) and scale to
+(25,1,25) for the (X, Y, Z) values. In Unity3D the Y axes is the
+vertical axis. I also renamed the object Ground at the top of the
+Inspector, Plane seemed a bit plain. Click on mech in Hierarchy panel,
+set its position to (0,0,0) in its Transform component in the Inspector,
+so it stands nicely on top of the ground. I also renamed it Player.
+
+<center>
+
+<a href="ss4a.png"><img width="500" src="ss4a.png" /></a>
+
+</center>
+
+If you now play the scene or click on the camera (to get the camera
+preview) there may be a strange view depending on where the camera is
+pointing. Select the camera and set its position to (0,250,~~250) and a
+rotation of (45,0,0)~~ note Unity3D uses degrees as the default unit for
+angles. This can be done in the Inspector or by just moving the camera
+in the scene view, switching between translation, rotation &amp; scale,
+(although it is hard to get things exactly right without the Inspector).
+Now if the scene is played the view is centred (I also changed the Field
+of View to 45 in the Camera component, so more of the ground can be
+seen).
+
+<center>
+
+<a href="ss4b.png"><img width="500" src="ss4b.png" /></a>
+
+</center>
+</li>
+<li>
+
+The scene is a bit dark when played, we need to add some lights. From
+the menus use GameObject -\&gt; CreateOther -\&gt; Spotlight four times to add
+4 spotlights. Rename them Spotlight1 through Spotlight4 and on their
+Light components set the Range to 500 and Spot Angle to 60. Using Ctrl-D
+to duplicate an object may help here. Set Spotlight1 to position
+(200,200,–200) and rotation to (45,315,–0). Set the other spotlights to
+positions (200,200,200), (–200,200,200) &amp; (–200,200,~~200) and rotations
+(45,225,0), (45,135,0) &amp; (45,45,0). Now we have the same lighting setup
+as in the Ogre tutorials and the scene is much lighter when played.
+However, something seems missing~~ shadows! It seems the free version of
+Unity3D doesn’t do dynamic shadows, you will have to pay for the Pro
+version for proper shadows.
+
+<center>
+
+<a href="ss5.png"><img width="500" src="ss5.png" /></a>
+
+</center>
+</li>
+<li>
+
+Next we will make the camera rotate around the playing area. From the
+menus use Assets -\&gt; Create -\&gt; Javascript to create a script file. In
+the Project panel rename the script to MoveCamera. Select the Camera
+object (in Hierarchy panel or Scene view) and then select from the menu
+options Components -\&gt; Script -\&gt; MoveCamera. This attaches the
+MoveCamera script to the camera. Select the script in the Project panel
+and the text of the script is displayed in the Inspector panel. As seen
+in the Inspector, the script starts with just an Update() function. Any
+code inserted inside the Update() function will be executed every frame.
+Click the edit button in the Inspector and write the following into the
+script.
+
+<div style="background: #DFE8DF; overflow: auto; padding: 2px; margin-bottom: 10px; margin-top: 1px; height: 120px">
+
+    function Update () {
+      if (Input.GetKey (KeyCode.Z)) {
+        transform.RotateAround (Vector3.zero, Vector3.up, 20 * Time.deltaTime);
+      } else if (Input.GetKey (KeyCode.X)) {
+        transform.RotateAround (Vector3.zero, Vector3.up, -20 * Time.deltaTime)
+      }
+    }
+
+</div>
+
+As this script has been attached to the camera, the `transform` object
+in the script is the Transform component of the camera. So this script
+just rotates the camera around the Y-axis (passing through the origin)
+at a rate of 20 degrees per second (the Z key rotates clockwise, X
+rotates counter-clockwise). `Time.deltaTime` is the number of seconds
+since the last frame was drawn, and thus the last time this method was
+called.
+
+<center>
+
+<a href="ss6.png"><img width="500" src="ss6.png" /></a>
+
+</center>
+</li>
+<li>
+
+Now to make the mech move around using its
+<a href="../4_animating/index.html">Walkcycle animation</a>. When the
+scene is played the mech performs one walkcycle animation on the spot.
+To stop this, deselect Play Automatically by clicking it on the
+Animation component in the Player’s Inspector. Use Assets -\&gt; Create -\&gt;
+Javascript to create a new script - rename it PlayerControl and
+associate it with the Player mech by selecting the Player object and
+using Components -\&gt; Script -\&gt; PlayerControl. First, to get the mech
+rotating clockwise/anti-clockwise on pressing the right/left arrow key,
+add the below to the new script.
+
+<div style="background: #DFE8DF; overflow: auto; padding: 2px; margin-bottom: 10px; margin-top: 1px; height: 100px">
+
+    var rotateSpeed = 50;
+
+    function Update () {
+      transform.Rotate(0, Input.GetAxis("Horizontal") * Time.deltaTime * rotateSpeed, 0);
+    }
+
+</div>
+
+The `Rotate` function rotates the object around the (X,Y,Z) axis by the
+specified degrees. Thus in the above code, the object only rotates
+around the Y axis (the X &amp; Z values being 0).
+`Input.GetAxis("Horizontal")` returns any user input on the horizontal
+access, defined to be the arrow keys by default. This system is used to
+transparently handle input devices other than a keyboard - it is
+possible to set the input axes to be from the mouse or gamepad. Since
+`rotateSpeed` is set to 50, the mech will rotate at 50 degrees per
+second. As `rotateSpeed` is set as a var outside the function its value
+is editable in the PlayerControl component on the mech’s Inspector. If
+you change the value in the script you may need to reset the component
+for the change to be reflected in the GUI (refresh is on the menu
+available through the little gear icon on the components top-left
+corner).
+
+<br /><br />To make the mech move forward, the `Update` method has to
+change a bit.
+
+<div style="background: #DFE8DF; overflow: auto; padding: 2px; margin-bottom: 10px; margin-top: 1px; height: 400px">
+
+    static var max_speed = 100.0;
+    static var min_speed = 0.0
+    var rotateSpeed = 2000;
+    private var speed = min_speed;
+
+    function Update () {
+      if (Input.GetKey (KeyCode.UpArrow) &amp;&amp; speed&lt;max_speed) {
+        speed++;
+      } else if (Input.GetKey (KeyCode.DownArrow) &amp;&amp; speed&gt;min_speed) {
+        speed--;
+      }
+      if (speed&gt;0) {
+        animation["Walkcycle"].speed = speed/50;
+        animation.Play("Walkcycle")
+        transform.Rotate(0,Input.GetAxis("Horizontal") * Time.deltaTime * rotateSpeed / speed, 0);
+        var directionForward = transform.InverseTransformDirection(transform.forward);
+        transform.Translate(directionForward * Time.deltaTime * speed/4);
+      } else {
+        animation.Stop();
+      }
+    }
+
+    function OnGUI() {
+      GUI.Label(Rect(50, 50, 100, 20), "Speed: "+speed);
+    }
+
+</div>
+
+This code stores the mech’s current speed (set to `private` so it is not
+editable in the Unity3D GUI). The speed is increased, but not beyond a
+max value, buy the up arrow key - similar for decreasing speed. If the
+mech’s speed is 0 then the walkcycle animation is stopped. If the speed
+is greater than 0, then the animation is played. The direction the mech
+is facing in local coordinates is found and the mech moved forward.
+Also, the speed of rotation is modified so that the faster the mech
+goes, the larger its turning circle. The `OnGui` method is called at
+least once per frame (maybe more) - here we use it to display the
+current speed.
+
+<center>
+
+<a href="ss7.png"><img width="500" src="ss7.png" /></a>
+
+</center>
+</li>
+<li>
+
+At the moment it is possible for the mech to run off the edge of the
+ground. Some kind of boundary checking must be applied. Rather than
+programmatically detect this condition like in the previous Ogre
+tutorial, instead Unity3D’s builtin physics and collision detection
+functionality will be used. Build low walls along the edge of the ground
+- see image below.
+
+<center>
+
+<a href="ss8b.png"><img width="500" src="ss8b.png" /></a>
+
+</center>
+
+These walls and the ground are created with mesh colliders components by
+default. That means they will detect collisions between them and other
+objects with collider components. However, at the moment the mech can
+still run straight through them because nothing is done with the
+collision event. Collider and Rigidbody components need to be added to
+the mech. The collider will register the collision and the Rigidbody
+will apply physics to the mech (ie, will stop it moving through the
+object with which it collided). The mech’s collider and Rigidbody
+configuration can be seen in the image below.
+
+<center>
+
+<a href="ss8a.png"><img width="500" src="ss8a.png" /></a>
+
+</center>
+
+To add the collider, select the Player in the Hierarchy and then use
+Component -\&gt; Physics -\&gt; ? Collider, where? is the collider of choice.
+I used a box collider despite it not completely containing the mech mesh
+when it is moving (thus sometimes the mech’s feet protrude through the
+walls) as I had issues with a Mesh Collider sometimes going completely
+through walls. To add the Rigidbody, use Component -\&gt; Physics -\&gt;
+Rigidbody. On the Rigidbody component I needed to freeze y position (see
+image above) and rotation or the force of colliding with a wall would
+have the mech flying off into space! That might have been fixable by
+adding gravity to the scene, but then the mechs would still fall over -
+not what I wanted.
+
+</li>
+<li>
+
+Adding the sculpture is just a matter of dragging the sculpture mesh
+from the Project window to the scene, positioning it and then adding a
+collider for collision detection. Then move the mech to a new starting
+position. Easy! As the direction the mech will move is determined in
+local coordinates and then transformed to global coordinates, the mech
+can be placed with any desired orientation and the move functionality
+will still work.
+
+<center>
+
+<a href="ss9.png"><img width="500" src="ss9.png" /></a>
+
+</center>
+</li>
+<li>
+
+Now to add the opposing mech. Duplicate (with Ctrl-D) the mech-Material
+(under Materials in the Project panel). Rename the new material
+opponent-Material and in its Inspector change its colour to purple.
+
+<center>
+
+<a href="ss10a.png"><img width="500" src="ss10a.png" /></a>
+
+</center>
+
+In the Hierarchy duplicate the Player object, rename it Opponent and
+move/rotate it to the diagonally opposite corner. Remove the
+PlayerControl script component.
+
+<center>
+
+<a href="ss10b.png"><img width="500" src="ss10b.png" /></a>
+
+</center>
+
+With the Opponent object selected in the Hierarchy, expand it and click
+on Master, this is the mesh of the Opponent mech. In its Inspector,
+under Skinned Mesh Renderer -\&gt; Materials -\&gt; Element 0, click on the
+selector and choose opponent-Material (or just drag opponent-Material
+onto this field). Now opponent mech is purple, but it doesn’t move.
+
+<center>
+
+<a href="ss10c.png"><img width="500" src="ss10c.png" /></a>
+
+</center>
+</li>
+<li>
+
+Create a script named OpponentControl and add it as a component to the
+Opponent object. This will be used to make the Opponent move. Edit the
+new script to contain the text below, which will make the opponent loop
+around in circles. The `Start` function is called once (if the script is
+enabled) when the program starts.
+
+<div style="background: #DFE8DF; overflow: auto; padding: 2px; margin-bottom: 10px; margin-top: 1px; height: 180px">
+
+    var speed = 40
+    var rotateSpeed = 20;
+
+    function Start() {
+      animation["Walkcycle"].speed = 0.75;
+    }
+
+    function Update () {
+      animation.Play("Walkcycle");
+      transform.Rotate(0, Time.deltaTime * rotateSpeed, 0);
+      var directionForward = transform.InverseTransformDirection(transform.forward);
+      transform.Translate(directionForward * Time.deltaTime * speed/2);
+    }
+
+</div>
+</li>
+<li>
+
+Now to shoot! Select the Materials folder in the Project panel. From the
+menu select Assets -\&gt; Create -\&gt; Material. In the Project rename the
+New Material to be laser-Material, as this will be the material used to
+display a laser shot. In the material’s Inspector, select the
+Self-Illumin/Diffuse shader from the Shader dropdown . As can be seen in
+the dropdown, there are many different types of shader. To see what they
+all do
+<a href="http://unity3d.com/support/documentation/Components/Built-in%20Shader%20Guide.html">check
+the documentation</a>. The Self-Illumin/Diffuse shader makes the object
+appear as if it has an internal flat light source. Set the Main Color to
+something reddish.
+
+<center>
+
+<a href="ss12a.png"><img width="500" src="ss12a.png" /></a>
+
+</center>
+
+The logic for displaying a laser should be the same for both Player and
+Opponent, so it will go into a common script. Create a new script called
+MechControl, but do not associate it with any object. Edit the new
+script as below. All scripts in Unity3D extend MonoBehaviour implicitly
+if not otherwise specified, but this has been made explicit here so
+other scripts can extend it. This script provides methods to set up a
+laser object. The laser it self is a line drawn with a LineRenderer
+using the laser-Material and initially not drawn. The line when drawn
+has two points which are set in the `FireLaser` method.
+
+<div style="background: #DFE8DF; overflow: auto; padding: 2px; margin-bottom: 10px; margin-top: 1px; height: 500px">
+
+    class MechControl extends MonoBehaviour {
+
+    protected var isAlive = true;
+    protected var laserStart = 1.5;
+    protected var laserRange = 50.0+laserStart;
+    protected var laserOffset = Vector3(0,15,0);
+    protected var laser : LineRenderer;
+    var laserMaterial : Material;
+
+    function InitLaser() {
+      laser = this.gameObject.AddComponent(LineRenderer);
+      laser.SetWidth(0.5, 0.5);
+      laser.SetVertexCount(2);
+      laser.material = laserMaterial;
+      laser.renderer.enabled = false;
+      laser.useWorldSpace = true;
+
+    }
+
+    function ClearLaser() {
+      if (laser.renderer.enabled) {
+        laser.renderer.enabled = false;
+      }
+    }
+
+    function FireLaser() {
+      laser.SetPosition(0, transform.position+transform.forward*laserStart+laserOffset)
+      laser.SetPosition(1, transform.position+transform.forward*laserRange+laserOffset);
+      laser.renderer.enabled = true;
+    }
+
+    }
+
+</div>
+
+For the Player and Opponent to be able to use this script we make their
+control scripts extend the MechControl script. This is done by adding
+the line `class PlayerControl extends MechControl {` to the top of the
+PlayerControl script along with a corresponding `}` at the bottom. The
+OpponentControl script has `class OpponentControl extends MechControl {`
+added to the top. To initialise the laser call `InitLaser&gt;` in each of
+the Player’s and Opponents `Start` methods. Then to make the Player be
+able to shoot when the space bar is pressed add the following code to
+the bottom of the Player’s `Update` method.
+
+<div style="background: #DFE8DF; overflow: auto; padding: 2px; margin-bottom: 10px; margin-top: 1px; height: 100px">
+
+    if (Input.GetKey(KeyCode.Space)) {
+      FireLaser();
+    } else {
+      ClearLaser();
+    }
+
+</div>
+<center>
+
+<a href="ss12b.png"><img width="500" src="ss12b.png" /></a>
+
+</center>
+</li>
+<li>
+
+When a laser shot is fired a RayCast will be used to detect collisions
+with colliders along the laser’s length. This is done by the code below.
+`Hit` throws out a ray matching the length of the laser. If this ray
+intersects with any colliders, it will attempt to call the `LaserStrike`
+method on the object that is hit. As this method is in the MechControl
+script only the mechs will have it, so only the mechs will respond to a
+laser strike. That is if the Player fires a laser, the Player’s `Hit`
+method will be called, but if it hits the Opponent, then the Opponent’s
+`LaserStrike` will be called. If the laser intersects a non-mech
+collider, like the walls, then nothing will happen. `LaserStrike` marks
+the mech as no longer alive and flips it upside down.
+
+<div style="background: #DFE8DF; overflow: auto; padding: 2px; margin-bottom: 10px; margin-top: 1px; height: 350px">
+
+    function FireLaser() {
+      laser.SetPosition(0, transform.position+transform.forward*laserStart+laserOffset);
+      laser.SetPosition(1, transform.position+transform.forward*laserRange+laserOffset);
+      laser.renderer.enabled = true;
+      Hit();
+    }
+
+    function Hit() {
+
+    var hit : RaycastHit;
+      if (Physics.Raycast(transform.position+transform.forward*laserStart, transform.forward, hit, laserRange)) {
+        hit.transform.SendMessage("LaserStrike",gameObject, SendMessageOptions.DontRequireReceiver);
+      }
+    }
+
+    function LaserStrike(source : GameObject) {
+      if (isAlive) {
+        transform.Rotate(180, 0, 0);
+        transform.Translate(0, -collider.size.y, 0);
+      }
+      isAlive = false;
+    }
+
+</div>
+
+To stop mechs continuing after a hit (one hit, one kill), in both mech’s
+`Update` method add the following to the top.
+
+<div style="background: #DFE8DF; overflow: auto; padding: 2px; margin-bottom: 10px; margin-top: 1px; height: 100px">
+
+    if (!isAlive) {
+      ClearLaser();
+      animation.Stop();
+      return;
+    }
+
+</div>
+
+To make the Opponent fire, it will check the direction and range of the
+Player at every update. If a laser shot would hit, it fires - a deadly
+aim! In the Player’s Inspector set the Tag to Player. This tag will be
+used to check to see if the object with which the raycast collides is
+the Player, as seen in the code below. Also the computer controlled
+Opponent fires so quick, the laser shot needs to linger on the screen a
+bit so it can be seen. To achieve this add `private var laserShow = 0;`
+to the variable definitions at the top of OpponentControl, and then add
+the block of code below to the bottom of `Update`.
+
+<div style="background: #DFE8DF; overflow: auto; padding: 2px; margin-bottom: 10px; margin-top: 1px; height: 150px">
+
+    if (WouldHit()) {
+      FireLaser();
+      laserShow = 2;
+    } else {
+      if (laserShow&gt;0) {
+        laserShow-= Time.deltaTime;
+      } else {
+        ClearLaser();
+      }
+    }
+
+</div>
+
+To test if the laser shot would hit, add the method below to
+OpponentControl.
+
+<div style="background: #DFE8DF; overflow: auto; padding: 2px; margin-bottom: 10px; margin-top: 1px; height: 150px">
+
+    function WouldHit():boolean {
+      var hit : RaycastHit;
+      if (Physics.Raycast ( transform.position+transform.forward*laserStart, transform.forward, hit, laserRange)) {
+        return hit.collider.tag.Equals("Player");
+      } else {
+        return false;
+      }
+    }
+
+</div>
+<center>
+
+<a href="ss13a.png"><img width="500" src="ss13a.png" /></a>
+
+</center>
+</li>
+<li>
+
+The final part of the game is to display the result. Change the Player’s
+`OnGui` method to detect if the Player is no longer alive and display a
+message to this affect. Similar code proclaiming victory should go in
+OpponentControl
+
+<div style="background: #DFE8DF; overflow: auto; padding: 2px; margin-bottom: 10px; margin-top: 1px; height: 150px">
+
+    function OnGUI() {
+      GUI.Label(Rect(50, 50, 100, 20), "Speed: "+speed);
+      if (!isAlive) {
+        var res = Screen.currentResolution
+        GUI.Label(Rect((Screen.width/2) - 30 , (Screen.height/2) - 10 , 90, 20), "You Lose!");
+      }
+    }
+
+</div>
+</li>
+</ol>
+</p>
+
+<p><br /></p>
+
+<p>
+
+That’s it. The controls are a little clunky, but not bad for a day’s
+work. It was very fast to get this code finished (it probably took
+longer to write this tutorial). Admittedly I had a very clear vision of
+the result, but it still took suprisingly little time.  
+Unity3D certainly speeds development and little code needs to be
+written, it seems to be largely a matter of configuration. However, it
+is yet to be seen whether it is flexible enough to create something more
+complex. I look forward to investigating further. The final Unity3D
+project created by this tutorial is
+<a href="MechWalkUnity.zip">available here</a>.
+
+</p>
+
+<p><br /></p>
+
+<center>
+
+<img width="500" src="screenshot.png" />
+
+</center>
+
+</div>
+
+<div class="col-lg-2">
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

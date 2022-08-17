@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Electrolley</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>March 26, 2011</b>
+<h4>Electrolley</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Work.html">Work</a>, 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>
+    
+<br/><br/>
+<p>I quit my PhD studies and gave up the associated scholarship at the
+start of September 1997. I needed to find a job fast and I wasn’t sure
+how to go about getting one. A friend suggested some agents and I was
+soon interviewing at various places. The first couple of interviews went
+badly (including the agent sending me to one for which I was completely
+unqualified - at least it was short). I began to calculate how long I
+could cover my rent before resorting to selling stuff. Then in late
+October I found myself talking to Alain at the agent’s offices. It was
+supposed to be a proper interview, but Alain’s company didn’t have any
+offices and it was more a friendly chat than the interrogations to which
+I was now accustomed. He offered me a 3 month contract starting a couple
+of weeks later. I accepted.</p>
+
+<p><img src="/assets/posts/work/electrolley.jpg" alt="" /></p>
+
+<!--more-->
+
+<p>Alain was a one of three co-founders of Electrolley, a company which at
+the time existed only in name. The plan was to create an online website
+for grocery shopping. A small supermarket had agreed to supply groceries
+and now they needed the website. Alain had a technical background in
+database development. However, he kept his full-time job at another
+company didn’t have much time to spend on Electrolley. The other two
+founders, Tim and Dennis, had a successful background in business. They
+would provide the funding and day-to-day management, but had no coding
+skills. As Electrolley’s first and only employee, my task was to create
+the website.</p>
+
+<p>In early November I turned up to my first day of work in Alain’s garage.
+Admittedly he had converted it to an office, but it used to be the
+garage. I was sat down in front of the computer and Alain showed me what
+he had created - a simple product list page backed by a product database
+table - all created in a Borland product called
+<a href="http://www.drdobbs.com/architecture-and-design/184415559">Intrabuilder</a>.
+It was a <a href="http://en.wikipedia.org/wiki/JavaScript">Javascript</a> based
+development environment for websites combined with its own webserver.
+Intrabuilder no longer exists now, disappearing a good decade before
+server-side Javascript became cool (as it now seems to be with
+<a href="http://en.wikipedia.org/wiki/Node.js">Node.js</a>. I was also given a book
+to self-learn, I think it was “Teach Yourself Intrabuilder In 21 Days”.</p>
+
+<p>Luckily it took me a lot less than 21 days to learn and Electrolley was
+largely complete by February. Customers could login, browse products,
+create lists of favourites, put products in their shopping cart and
+checkout, with various admin tools for us. It wasn’t pretty, but it
+worked. By then I worked in a proper office in South Perth, near our
+associated supermarket. Alain was largely absent, but Tim and Dennis
+came in every day to run the company. I liked them as people and envied
+their lifestyle. I used to joke they only started Electrolley to have
+something to do in their early retirement. They would come in later than
+me, leave earlier and have longer lunches. In their defence there wasn’t
+much for them to do at this stage. The business model and marketing had
+been worked out, they just needed the website finished.</p>
+
+<p>Once Electrolley started trading at the beginning of 1998 there was, for
+a time, even more to do. In addition to the inevitable bug fixes and new
+functionality, I also handled the day-to-day operations, working as a
+system administrator (Intrabuilder only worked on Windows) and liaising
+with the supermarket. I remember sticky-taping a plastic cup over the
+power button of our production server after it was accidentally bumped a
+couple of times. Our partner supermarket also had no net connection.
+When an order came in I had print and fax it to the supermarket to
+handle. Also a few times a week I would walk round to the supermarket
+and download onto floppy their product list and pricing. It was on these
+trips I found a taste for a lunch of chicken &amp; chips or a chicken roll
+from the fast food place next to the supermarket. I gained weight fast.</p>
+
+<p>The business process in our office was normally quite smooth - problems
+tended to occur once the order was faxed to the supermarket. The
+supermarket would pick the ordered items and then leave them for a
+courier to deliver. Unfortunately, there were often errors in the
+picking - unnecessarily missed items, or just plain wrong items. If this
+occurred Tim or Dennis would drive around to the customer with the
+correct product and apologise. It was decided we needed to track that
+the proper products were selected. To that end I wrote a program for a
+handheld barcode scanner that ensured the correct items were picked. As
+the product was taken off the shelf, the picker would scan its barcode -
+any illicit substitution or something missed would be flagged as an
+error. It was interesting little project as it was lower level coding
+than I’m usually doing (memory and speed was severely limited). However,
+the plan fell apart because the cost of the scanners was too great
+considering company revenue.</p>
+
+<p>Although growth was slow and steady, not enough revenue was always a
+problem. The profit growth line was linear for most of the time I was
+there, but we needed to grow much larger in order to negotiate better
+pricing on groceries and deliveries. The couriers were a particular
+issue. Because we were only making a few deliveries per day, it was too
+many to do ourselves (I didn’t even have a car at the time), but not
+enough for a dedicated delivery service. Standard parcel couriers were
+expensive meaning our delivery charges to customers was often 10% of the
+total bill. Our margins on the groceries were so low we couldn’t absorb
+the costs and thus we were noticeably more expensive than local
+supermarkets. Still, we found a reasonable number of people would pay
+for the convenience of home delivery. Although Perth’s low population
+density played havoc - it is a very spread out city. The further out
+from the supermarket we delivered, the higher the delivery costs. While
+the catchment area was large, the population of that area was low. To
+grow, delivery costs need to decrease or more supermarkets needed to be
+added. I know the owners were working on both, but by the time I left
+there was no progress on either.</p>
+
+<p>Towards the end of my 9 months at Electrolley, work was slowing a bit.
+Bugfixes were becoming rarer and new functionality was problematic.
+Intrabuilder was a product ahead of its time. While server-side
+Javascript is hot right now, back then it was looked down upon (it’s
+still not on my CV), mainly because it was slow - very slow. Maybe I
+could have done something to speed it up, but I wasn’t experienced
+enough. Instead I recreated some core functionality using Java
+<a href="http://en.wikipedia.org/wiki/Java_Servlet">Servlets</a> (this being before
+<a href="http://en.wikipedia.org/wiki/JavaServer_Pages">JSPs</a>) and it was nearly
+an order of magnitude faster. The owners were rightfully concerned with
+the possibility of a rewrite, but in my naive innocence I thought it was
+the only way to go. To keep me coding and happy, the owners had me write
+a classifieds system, but they never put it live (as far as I remember).</p>
+
+<p>After that my motivation began to slide. I had calculated the
+profitability of Electrolley and extrapolated based on the trend. Our
+gross profit wasn’t even enough to cover our Internet connection and
+marketing, let alone me (the firm’s greatest cost) and wouldn’t for many
+years. I didn’t foresee a rosy future. At the same time some old
+university friends were saying how great things were at <a href="http://www.riotinto.com">Rio
+Tinto</a>, and that they were hiring. I asked the
+owners for a large pay rise - not quite double my initial rate. My
+housemate, Leigh, said this was the market rate at the time and my
+research suggested it was possible, but optimistic (although that was
+for an experienced developer, not one with only 9 months under their
+belt). The owners balked and talked instead about the options I would be
+given when Electrolley was a success, as they had on many previous
+occasions. My thought was that options in a failed company are worth
+nothing. I applied to Rio Tinto, got offered a job and handed in my
+notice to Electrolley.</p>
+
+<p>I left in early august 1998, after a week of training my successor. A
+year later the site was relaunched after being rewritten using
+<a href="http://en.wikipedia.org/wiki/Active_Server_Pages">Microsoft ASP</a>
+technology. For a while they became moderately well known around town,
+but they soon seemed to disappear. I know they survived the <a href="http://en.wikipedia.org/wiki/Dot-com_bubble#The_bubble_bursts">dotcom
+bust</a>, as
+I met with Tim and Dennis in early 2001. They were beginning to
+specialise in bulky high-value products like nappies and flowers, but I
+guess that didn’t work out. I can’t find any evidence that Electrolley
+still exists. The old web address goes to a domain holding page and I
+haven’t heard anything about them for a long time. It was a good first
+job, I learnt a lot.</p>
+
+<p><a href="/assets/posts/work/electrolley.pdf"><img src="/assets/posts/work/electrolley.png" alt="" /></a></p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

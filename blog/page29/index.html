@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+
+  <span class="date">October 18, 2014</span>
+  <h4><a href="/blog/2014/10/bank-transfers.html">Bank Transfer Errors</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Finance.html">Finance</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>At least in the UK, it is often best to pay money to people via bank
+transfer. This is the process where the payer enters the bank account
+number of the payee into some system and then the money is moved
+directly from bank account to bank account. It is easy and costs nothing
+(in the UK). I used to use it all the time for paying rent and similar
+bills.</p>
+
+<p>It is surprising to hear that errors regularly occur in this process.
+People type in an incorrect bank account number and so the wrong person
+receives the money. Obviously in some distress, the payer contacts the
+bank to fix the problem, but the bank doesn’t see it as their problem.
+Pushing or getting the media involved often gets the required results
+(see
+<a href="http://www.theguardian.com/money/2014/jun/30/online-cash-transfer-error">here</a>,
+<a href="http://www.theguardian.com/money/2013/mar/18/banks-slow-transferred-cash-wrong-account">here</a>,
+<a href="http://www.theguardian.com/money/2013/feb/09/26000-banking-error">here</a>
+and many more online stories).</p>
+
+<p>I’m not surprised people type the account number incorrectly; that is
+always going to happen. I’m surprised that such an error results in a
+valid bank account. If the bank account number included a
+<a href="http://en.wikipedia.org/wiki/Checksum">checksum</a>, then an incorrectly
+transcribed number is unlikely to still be valid. Credit cards use a
+<a href="http://en.wikipedia.org/wiki/Luhn_algorithm">checksum algorithm</a> and
+this is why when you type one incorrectly the response is “invalid card
+number” rather than the wrong account being charged. However, bank
+account numbers seem to rarely use this simple error-checking technology
+(codes by country are <a href="http://docs.oracle.com/cd/E18727_01/doc.121/e13483/T359831T498954.htm">listed
+here</a>).
+Why not? Perhaps when the bank account system was established many
+decades ago, checksums were not seem as important. Either because there
+was a person (the local bank manager) in the loop to double check the
+numbers, or because checksums were too computationally costly
+(especially if humans had to do the calculation themselves as computers
+weren’t available). Of course now people use the Internet to make
+transfers and the whole process is performed by computers without human
+interference, and the cost of using checksums is miniscule on even
+relatively old processors.</p>
+
+<p>Banks could add checksums now, placing an optional extra character to
+the end of bank account numbers (several countries have done this). In
+the UK this would be a huge act of customer service. However, from
+experience I would doubt the banks interest in serving their customers.
+At the moment any errors cost the banks little and changing the system
+would be expensive. The core computer programs handling bank accounts
+and transfers between them are ancient COBOL programs (at least at the
+bank where I worked). Rules like the number of digits in a bank account
+are hardcoded and changing them would cascade through various systems.
+Testing the change would be a massive task in itself. I can’t imagine
+any bank voluntarily undertaking such a project - especially as most
+banks are determined to reduced IT costs. Too bad for bank customers.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">October  4, 2014</span>
+  <h4><a href="/blog/2014/10/prs.html">PRS</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
+    
+      <a class="post" href="/blog/tag/Work.html">Work</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>After leaving <a href="/blog/2013/06/beacon-technology-part-1.html">Beacon</a> and
+finishing the MBA, I jumped on a flight to London in mid 2002. Perth was
+too constraining, I didn’t want to do consulting or mining software for
+the rest of my career. London seemed like the land of work opportunity.
+It would also be easier to travel around the world from a base in
+Europe. Both these reasons turned out to be correct, but I forgot the
+downsides of London - the expense, the crowds and strangely even the
+weather. For a good five years or so the positives outweighed the
+negatives, but then the balance shifted. However, upon arrival I was
+extremely optimistic.</p>
+
+<p>Crashing in the spare rooms and sofas of old uni friends (the Perth to
+London road was well travelled by my age cohort), I started to learn
+about the local IT job market. 2002 was the middle of the dot crash
+slump. Stories of easy jobs with large pay rates and regular job hopping
+abounded, but they always ended with “of course that was before the
+crash.” Most of my acquaintances said that contract work was the way to
+go - better pay and less bureaucracy, at the expense of career
+progression (none of my friends planned to stay long, so that was not an
+issue). I aimed for the same, but in the downturn a person with no
+record in London couldn’t get through the door for contracting roles - I
+was too much of an unknown considering the large number of people
+looking for work. After a few months I switched to permanent roles and
+started getting interviews again. Lastminute was a notable interview
+because the interviewer was so offensive I pledged to never use their
+service - a promise I hold to this day, despite being right in their
+target market. After 4 months my funds were evaporating quickly and if I
+didn’t get one of the two jobs for which I was interviewing then a
+return to Perth would be required. <a href="http://www.rbs.co.uk/">RBS</a> was my
+preferred option (and I even delayed the other possibility while waiting
+for them to decide). However, RBS decided I was “too cold” for a
+management position (at least they gave a reason), so I went to work at
+the <a href="http://en.wikipedia.org/wiki/PRS_for_Music">MCPS-PRS Alliance</a>.</p>
+
+<p><img src="/assets/posts/work/mcps_prs_alliance.gif" alt="PRS Logo" title="PRS Logo" /></p>
+
+<p class='more'><br/><a href='/blog/2014/10/prs.html'>Read the rest of this entry</a></p>
+  </div>
+  <hr/>
+
+  <span class="date">September 27, 2014</span>
+  <h4><a href="/blog/2014/09/anu-astro2x.html">ANU-ASTRO2x Exoplanets</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/EdX.html">EdX</a>, 
+    
+      <a class="post" href="/blog/tag/MOOC.html">MOOC</a>, 
+    
+      <a class="post" href="/blog/tag/Astronomy.html">Astronomy</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>The previous astronomy MOOC I completed, <a href="/blog/2014/06/anu-astro1x.html">ANU-ASTRO1x Greatest Unsolved
+Mysteries of the Universe</a>, was merely
+the first of a series. In total, the 4 courses in the series supposedly
+comprise the first year course in astronomy at the <a href="http://www.anu.edu.au/">Australian National
+University</a>. I just completed the second course
+of the series, <a href="https://www.edx.org/course/anux/anux-anu-astro2x-exoplanets-1443">ANU-ASTRO2x
+Exoplanets</a>.</p>
+
+<p>Exoplanets is a 9-week course on the science behind detecting planets
+beyond our solar system. The format is the same as the previous course,
+with about an hour per week of video lectures. There are also mini-tests
+and a homework assignment each week with a final exam. The exam is again
+based on a “mystery” universe, so prior knowledge of exoplanets (or
+wikipedia) won’t help - students just have to do the maths themselves.
+The lectures are almost a conversational back-and-forth between the
+presenters <a href="http://www.mso.anu.edu.au/pfrancis/">Paul Francis</a> and
+<a href="http://en.wikipedia.org/wiki/Brian_Schmidt">Brian Schmidt</a> (with
+pictures and notes appearing projected behind them).</p>
+
+<p>As for difficulty, this course is easy. Easier than the previous ANU
+course. Basic algebra is all the maths ability required. No assignment
+took me more than 30 minutes, most took much less. I read an
+<a href="http://techcrunch.com/2014/09/11/the-mooc-revolution-that-wasnt/">article</a>
+suggesting that the “MOOC revolution” is failing for many reasons, one
+of which is that the courses are getting easier and certainly are no
+where near as testing as the original university courses. I can’t help
+but think that must be true for this course. The material is
+interesting, but I would find it hard to believe that first year science
+students at a respected university like ANU (one of the top tier
+universities in Australia) are gifted with such an easy course where a
+mark of 100% can be obtained with barely an hour of work each week.</p>
+
+<p>Starting with the first exoplanet discovered, surprisingly around a
+<a href="http://en.wikipedia.org/wiki/Pulsar_planet">pulsar</a>, the course goes
+through the <a href="http://en.wikipedia.org/wiki/Methods_of_detecting_exoplanets">methods used to find
+exoplanets</a>.
+The pulsar planet was found through reflex motion - a wiggle in a star’s
+movement caused by a planet’s mass. Most exoplanets have been found
+through transits, that is the periodic dimming of a star as a planet
+passes between it and us. It is also possible to find exoplanets with
+<a href="http://en.wikipedia.org/wiki/Gravitational_microlensing">gravitational
+micro-lensing</a>,
+which is when a planet passes in front of a star and focuses its light
+on us. This method is has the benefit of finding planets that are not
+orbiting stars but are instead free floating. The downside is that such
+planets can only be observed once (as they pass the star). Still, the
+number of discovered micro-lensing events suggests there are a large
+number of such free-floating planets in existence. Lastly it is becoming
+possible to directly observe exoplanets with modern <a href="http://en.wikipedia.org/wiki/Adaptive_optics">adaptive
+optics</a> technology applied
+to telescopes. The course also addresses what is known about the
+exoplanets discovered - calculating their mass, temperature and thus the
+composition of both their atmosphere and surface.</p>
+
+<p>An easy and interesting discussion of the current state of detecting
+exoplanets. However, the field of exoplanet detection is very active and
+fast moving. I’m not sure how quickly this course will age.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">September 20, 2014</span>
+  <h4><a href="/blog/2014/09/perth-restaurants.html">Perth Restaurants</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Restaurant.html">Restaurant</a>, 
+    
+      <a class="post" href="/blog/tag/Australia.html">Australia</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>When I grew up in <a href="http://en.wikipedia.org/wiki/Perth">Perth</a> the
+supermarkets always had good and relatively cheap food available.
+However, I remember the local restaurants seemed to lack effort as far
+as the menu was concerned (good service was never an issue). It was as
+though they just relied on the high quality ingredients to carry them.
+Coming back to town after 13 years abroad, I think that situation has
+changed. We ate excellent meals everywhere we went, and the range of
+styles available was impressive. Perth is becoming a world city, at
+least as far as cuisine is concerned. It was also nice that all but two
+of the restaurants we visited (over a fortnight) had <a href="http://en.wikipedia.org/wiki/Al_fresco_dining">Al
+fresco</a> sections -
+unfortunately the weather was a bit damp for us to take proper advantage
+of them. I also noted with interest that most restaurants listed the
+providence of their ingredients and that the vast majority of these
+originated inside West Australia itself - overseas elements were notable
+in their rarity.</p>
+
+<p>While in Perth, two restaurants in stood out as being of a particularly
+high quality.</p>
+
+<p><a href="http://www.lot20.co">Lot 20</a> is almost hidden in a building on the edge
+of the cultural district near James St in Northbridge. The decor is
+modern gastropub. The service was very friendly without being too much.
+When asking about <a href="http://www.bbcgoodfood.com/recipes/12471/soninlaw-eggs">son-in-law
+eggs</a>, the reply
+not only included the recipe, but also their cultural significance (a
+Thai dish made as warning to behave to a new son-in-law). After ordering
+the eggs, asparagus, cauliflower and a chicken dish, we got to watch
+them being prepared in the open kitchen which our table overlooked. All
+the food was excellent and perfectly cooked. The chicken deserves
+special mention. At first I thought it had been undercooked, but an
+exploratory taste showed I was completely wrong. It had been cooked <a href="http://en.wikipedia.org/wiki/Sous-vide">in
+a water bath</a> to keep it moist
+and tender - incredible. We also drank some excellent local beers. I
+used to say that beer, chocolate and TV were all clearly better in
+London. Now I will have say that the beer (and perhaps chocolate) are
+about the same - TV in Britain is still better though.</p>
+
+<p>When I lived in Perth, Steve’s on the river in Nedlands was a large
+student pub (<a href="http://www.uwa.edu.au">UWA</a> is nearby). Since then the pub
+has been demolished and turned into fancy apartments. However, there is
+still a restaurant and wine shop at the site, still called
+<a href="http://www.steves.com.au">Steve’s</a>. Wine is a large focus of the
+restaurant and there is a dedicated sommelier as well as a large
+selection of local wines. The cuisine is vaguely French inspired. For an
+entree I had a chorizo soup - a spicy meaty mix, well balanced and not
+oily. Then the pork cassoulet with a side salad for mains. Beautifully
+cooked, it quickly filled my stomach, but I kept eating until finished -
+it was too good to leave anything behind. The wine was also very good,
+but I don’t remember what we ordered.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">September 15, 2014</span>
+  <h4><a href="/blog/2014/09/perth.html">Perth</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Travel.html">Travel</a>, 
+    
+      <a class="post" href="/blog/tag/Australia.html">Australia</a>, 
+    
+      <a class="post" href="/blog/tag/Slideshow.html">Slideshow</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>After 11 years away I finally returned to my
+<a href="http://en.wikipedia.org/wiki/Perth">hometown</a>, but only for one very
+busy week, followed by a slower week down south near <a href="http://en.wikipedia.org/wiki/Margaret_River,_Western_Australia">Margret
+River</a>.
+It was a strange fortnight being reminded what the place is like, and I
+was sorry to be leaving again so quickly. It was surprising how liveable
+the city appears and how relaxed the people seem to be. It was also nice
+to be in place again with so much space and clean air! Of course all
+that comes at the expense of it being a quiet city compared to the
+bustling hyperactive metropolis of London (and to a lesser extent KL).</p>
+
+<p>The best photos from the trip are in a short slideshow <a href="/slideshows/wa_14.html">available
+here</a>.</p>
+
+<p><a href="/slideshows/wa_14.html"><img src="/assets/slideshow/wa_14/koala_main.jpg" alt="Koala" /></a></p>
+
+  </div>
+  <hr/>
+
+
+<!-- Pagination links -->
+<div id="post-pagination" class="pagination">
+  Page 29 of 86 
+  
+      
+        <a href="/blog/page28">Previous</a>
+      
+  
+
+  
+      <a href="/blog/page30">Next</a>
+  
+</div>
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

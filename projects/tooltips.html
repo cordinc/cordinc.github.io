@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <link rel="stylesheet" type="text/css" href="tooltip_scripts/cordinc.css" />
+  <title>Tooltips - Cordinc</title>
+  <script src="tooltip_scripts/prototype.js" type="text/javascript"></script>
+  <script src="tooltip_scripts/cordinc_tooltip.js" type="text/javascript"></script>  
+  <script src="tooltip_scripts/application.js" type="text/javascript"></script>
+  <script src="tooltip_scripts/effects.js" type="text/javascript"></script>
+  <script src="tooltip_scripts/controls.js" type="text/javascript"></script>
+  <script src="tooltip_scripts/dragdrop.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="main_content" id="toolTipContainer">
+  <div class="titleBlock" id="beforeToolTip">
+    <div class="title">Cordinc</div>
+  </div>
+
+  <div class="mainBlock">
+    <div class="subTitle">Javascript Tooltip Library</div>
+    
+    <p>
+    cordinc_tooltip.js is a simple, free javascript library based on <a href="http://www.prototypejs.org/">Prototype</a> for displaying tooltips in a browser. The tooltip will appear after a mouseover event on the trigger element and disappear after a mouseout event.
+    It can handle Scriptaculous Sortable elements which can cause problems in other libraries.
+    It has been tested on Firefox 2/3 &amp; IE6/7.
+    
+    <ul>
+      <li><a href="#news"/>News</a></li>
+      <li><a href="#usage"/>Usage</a></li>
+      <li><a href="#hooks"/>Hooks</a></li>
+      <li><a href="#effects"/>Effects</a></li>
+      <li><a href="#trigger"/>Trigger</a></li>
+      <li><a href="#delay"/>Delay</a></li>
+      <li><a href="#offset"/>Offset</a></li>
+      <li><a href="#license"/>License</a></li>
+      <li><a href="#download"/>Download</a></li>
+      <li><a href="#future"/>Future</a></li>
+      <li><a href="#api"/>API</a></li>
+    </ul>  
+    </p>
+    
+    <p><div class="subTitle"><a name="news">News</a></div>
+        <ul>
+        <li>27<sup>th</sup> August 2008 - Released version 1.0.2, remove non-div tooltips entirely for browser compatibility
+        <li>15<sup>th</sup> August 2008 - Released version 1.0.1, fixed bugs with non-div tooltips on IE
+        <li>1<sup>st</sup> July 2008 - Released version 1.0
+      </ul>
+    </p>
+    
+    <p><div class="subTitle"><a name="usage">Usage</a></div>
+    To add tooltips to your web page first include the tooltip and <a href="http://www.prototypejs.org/">Prototype</a> 1.6 javascript libraries to your page:<br>
+    <br/><code>
+    &lt;script src="../scripts/prototype.js" type="text/javascript"&gt;&lt;/script&gt;<br/>
+    &lt;script src="../scripts/tooltip.js" type="text/javascript"&gt;&lt;/script&gt;  <br/>
+    </code>
+    <br/>
+    Then the items you want to have tooltips will require a unique CSS id to identify them (elements with non-unique ids may fail to display on some browsers). After that it is simply a matter of a short script to specify the target and the CSS id of the element to act as the tooltip, plus any options The code snippet below created this example: 
+    <br/><br/><center><div id="tooltipTarget" style="background: #949C94; width: 20px; height: 20px;"></div></center>       
+    <br/><div id="tip_basic">tooltip text here</div><script type="text/javascript">new Tooltip('tooltipTarget', 'tip_basic', {className: 'tooltip'})</script>
+    <code>
+      &lt;div id="tooltipTarget" style="background: #A6FFA3; width: 20px; height: 20px;"&gt;&lt;/div&gt;<br/>  
+      &lt;div id=&quot;tip_basic&quot; class=&quot;tooltip&quot;&gt;tooltip text here&lt;/div&gt;<br> 
+      &lt;script type="text/javascript"&gt;new Tooltip('tooltipTarget', 'tip_basic', {className: 'tooltip'})&lt;/script>
+    </code>
+
+    <br/><br/>
+    If the item with the tooltip is a Scriptaculous Sortable or other element that is often redrawn then you need to use the option <code>DOM_location</code> to place the tooltip outside the redrawn area
+    so that it is in a higher z-index stacking context (for example, off your main CSS container): <code>DOM_location: {parentId: "toolTipContainer", successorId: "beforeToolTip"}</code>.
+    <br/><br/>
+    For more information see the <a href="#api"/>API</a> section.
+    </p>
+    
+    <p><div class="subTitle"><a name="hooks">Hooks</a></div>
+    It is possible to change the location the tooltip will be shown relative to the target element. 
+    The <code>hook</code> option specifies the corners on the target element and tooltip that will be made closest to eachother (before the offset is applied).
+    By default this option is set to {target:'topRight', tip:'bottomLeft'}.
+     <br/><br/><center><table id="hookDemo">
+        <tr><td id="topLeft"></td><td id="topMid"></td><td id="topRight"></td></tr>
+        <tr><td id="leftMid"></td><td style="background: #FFFFFF;"></td><td id="rightMid"></td></tr>
+        <tr><td id="bottomLeft"></td><td id="bottomMid"></td><td id="bottomRight"></td></tr>
+      </table></center>
+      
+      <div id='tip_bottomLeft' class="tooltip">hook: {target:'topRight', tip:'bottomLeft'}</div>
+      <div id='tip_bottomMid' class="tooltip">hook: {target:'topMid', tip:'bottomMid'}</div>
+      <div id='tip_bottomRight' class="tooltip">hook: {target:'topLeft', tip:'bottomRight'}</div>
+      <div id='tip_rightMid' class="tooltip">hook: {target:'leftMid', tip:'rightMid'}</div>
+      <div id='tip_leftMid' class="tooltip">hook: {target:'rightMid', tip:'leftMid'}</div>
+      <div id='tip_topRight' class="tooltip">hook: {target:'bottomLeft', tip:'topRight'}</div>
+      <div id='tip_topMid' class="tooltip">hook: {target:'bottomMid', tip:'topMid'}</div>
+      <div id='tip_topLeft' class="tooltip">hook: {target:'bottomRight', tip:'topLeft'}</div>
+      <script type="text/javascript">
+        new Tooltip('topRight', 'tip_bottomLeft', {DOM_location: {parentId: "toolTipContainer", successorId: "beforeToolTip"}, offset: {x:2, y:-2}, hook: {target:'topRight', tip:'bottomLeft'} })
+        new Tooltip('topMid', 'tip_bottomMid', {DOM_location: {parentId: "toolTipContainer", successorId: "beforeToolTip"}, offset: {x:0, y:-2}, hook: {target:'topMid', tip:'bottomMid'} })
+        new Tooltip('topLeft', 'tip_bottomRight', {DOM_location: {parentId: "toolTipContainer", successorId: "beforeToolTip"}, offset: {x:-2, y:-2}, hook: {target:'topLeft', tip:'bottomRight'} })
+        new Tooltip('leftMid', 'tip_rightMid', {DOM_location: {parentId: "toolTipContainer", successorId: "beforeToolTip"}, offset: {x:-2, y:0}, hook: {target:'leftMid', tip:'rightMid'} })
+        new Tooltip('rightMid', 'tip_leftMid', {DOM_location: {parentId: "toolTipContainer", successorId: "beforeToolTip"}, offset: {x:2, y:0}, hook: {target:'rightMid', tip:'leftMid'} })
+        new Tooltip('bottomLeft', 'tip_topRight', {DOM_location: {parentId: "toolTipContainer", successorId: "beforeToolTip"}, offset: {x:-2, y:2}, hook: {target:'bottomLeft', tip:'topRight'} })
+        new Tooltip('bottomMid', 'tip_topMid', {DOM_location: {parentId: "toolTipContainer", successorId: "beforeToolTip"}, offset: {x:0, y:2}, hook: {target:'bottomMid', tip:'topMid'} })
+        new Tooltip('bottomRight', 'tip_topLeft', {DOM_location: {parentId: "toolTipContainer", successorId: "beforeToolTip"}, offset: {x:2, y:2}, hook: {target:'bottomRight', tip:'topLeft'} })
+     </script>
+    </p>
+    
+    <p><div class="subTitle"><a name="effects">Effects</a></div>
+        It is possible to specify both start and end effects, to occur just after the tooltip appears and disappears respectively. 
+        Just specify a function start_effect or end_effect in the tooltip options, eg <code>new Tooltip('starteffect', 'tip_starteffect', { start_effect: function(element) {element.shake();} })</code>.
+        Both methods should accept single parameter which is the tooltip being displayed (a copy of the original tooltip). By default there are no start or end effects.
+
+        Start effect example using <a href="http://script.aculo.us/">Scriptaculous</a> shake: 
+        <p>Start effect example: <center><div id="starteffect" style="width: 20px; height:20px; background:#949C94"></div></center></p>       
+        <br/> 
+        End effect example using <a href="http://script.aculo.us/">Scriptaculous</a> puff (note that this has an <a name="#delay">end delay</a> applied so that it is possible to see the end effect before the tooltip disappears):
+        <p>End effect example: <center><div id="endeffect" style="width: 20px; height:20px; background:#949C94"></div></center></p>
+        <div id='tip_starteffect' class="tooltip">start_effect: function(element) {element.shake();}</div>
+        <div id='tip_endeffect' class="tooltip">end_effect: function(element) {element.puff();}, delay: {start: 0, end: 1}</div>
+
+        <script type="text/javascript">new Tooltip('starteffect', 'tip_starteffect', {DOM_location: {parentId: "toolTipContainer", successorId: "beforeToolTip"}, offset: {x:2, y:-2}, hook: {target:'topRight', tip:'bottomLeft'}, start_effect: function(element) {element.shake();} })</script>
+        <script type="text/javascript">new Tooltip('endeffect', 'tip_endeffect', {DOM_location: {parentId: "toolTipContainer", successorId: "beforeToolTip"}, offset: {x:2, y:-2}, hook: {target:'topRight', tip:'bottomLeft'}, end_effect: function(element) {element.puff();},delay: {start: 0, end: 1}})</script>
+    </p>
+    
+    <p><div class="subTitle"><a name="trigger">Trigger</a></div>
+      If the element next to which the tooltip will be displayed is not the element which should trigger the tooltip, then this can be specifued with the <code>trigger</code> option.
+      If specified, the mouseovers on the trigger element will cause the tooltip to be displayed on the target element. By default the trigger and target elements are the same.
+    
+      <br/><center><div id="target" style="background: #949C94; width: 20px; height: 20px;"></div>       
+      &nbsp;
+      <div id="other" style="background: #949C94; width: 20px; height: 20px;"></div></center>
+      <div id="tip_trigger">trigger: other</div>
+      <script type="text/javascript">new Tooltip('target', 'tip_trigger', {offset: {x:2, y:-2}, trigger: 'other', className: 'tooltip'})</script>
+      
+    </p>
+    
+    <p><div class="subTitle"><a name="delay">Delay</a></div>
+        It is possible to define a delay before the tooltip appears or disappers using the <code>delay</code> option. The start delay is the number of seconds that the mouse
+        needs to be over the trigger element before the tooltip appears, and the end delay is the number of seconds after the mouse has left the target element before the tooltip is
+        removed (this is handy for end effects). The default is zero seconds for both start and end delay.
+
+        <br/><center><div id="delay_target" style="background: #949C94; width: 20px; height: 20px;"></div>   </center>    
+        <div id="tip_delay">delay: {start: 1, end: 2}</div><script type="text/javascript">new Tooltip('delay_target', 'tip_delay', {offset: {x:2, y:-2}, delay: {start: 1, end: 2}, className: 'tooltip'})</script>
+
+    </p>
+    
+    <p><div class="subTitle"><a name="offset">Offset</a></div>
+        To fine-tune the position of the tooltip use the <code>offset</code> option. This specifies a x &amp; y coordinate offset from the normal position of the tooltip.
+        The default offset is 0.
+
+        <br/><center><div id="offset_target" style="background: #949C94; width: 20px; height: 20px;"></div>      </center>     
+        <div id="tip_offset">offset: {x: -5, y: -5}</div><script type="text/javascript">new Tooltip('offset_target', 'tip_offset', {delay: {start: 0.5, end: 0}, offset: {x: -5, y: -5}, className: 'tooltip'})</script>
+
+    </p>
+    
+    <p><div class="subTitle"><a name="license">License</a></div>
+      This code is available under the <a href="http://creativecommons.org/licenses/BSD/">Opensource BSD license</a>. Copyright (c) 2009 Charles Cordingley.
+    </p>
+    
+    <p><div class="subTitle"><a name="download">Download</a></div>
+     cordinc_tooltip.js can be downloaded <a href="../scripts/cordinc_tooltip.js">here</a>.
+    </p>
+    
+    <p><div class="subTitle"><a name="future">Future</a></div>
+        <ul>
+          <li>Mouse positioning (position of tooltip is determined by the position of the mouse)</li>
+          <li>Replace DOM_location with Prototype insert functions</li>
+          <li>Handle events other than mouseover/mouseout</li>
+          <li>Handle non-div based tooltips</li>
+        </ul>
+    </p>
+    
+    <p><div class="subTitle"><a name="api">API</a></div>
+        The call to create a tooltip is:<br/> new Tooltip(&lt;unique ID of the element on which the tooltip will be displayed&gt;, &lt;ID of the tooltip element&gt;, {&lt;options&gt;})
+        <br/><br/>
+        The <code>destroy()</code> method on the tooltip can be used to cleanup up the remove the tooltip and stop listening to events.
+        <br/><br/>
+<table border=1>
+<tr><td style="width:15%;">Option</td><td style="width:30%;">Default</td><td style="width:55%;">Description</td></tr>
+<tr><td>className</td><td>none</td><td>The CSS class to apply to the tooltip</td></tr>
+<tr><td>delay</td><td>{start: 0, end: 0}</td><td>Time (in seconds) to wait before displaying (the start option) or removing (the end option) the tooltip</td></tr>
+<tr><td>DOM_location</td><td>none</td><td>Location in the document DOM to place the tooltip (Can be used to avoid problems with zindex stacking contexts)</td></tr>
+<tr><td>end_effect</td><td>function(element) {}</td><td>Function to run on the tooltip immediately before it is removed</td></tr>
+<tr><td>hook</td><td>{target:'topRight', tip:'bottomLeft'}</td><td>Location the tooltip will be shown relative to the target element</td></tr>
+<tr><td>offset</td><td>{x:0, y:0}</td><td>The x &amp; y coordinate offset from the normal position of the tooltip</td></tr>
+<tr><td>start_effect</td><td>function(element) {}</td><td>Function to run on the tooltip immediately before it is displayed</td></tr>
+<tr><td>trigger</td><td></td><td>The element for which mouse events will trigger display of the tooltip, if different to the tooltip target</td></tr>
+<tr><td>zindex</td><td>1000</td><td>The z-index of the tooltip when displayed. Normally this would not need to change</td></tr>
+</table>
+    </p>
+  </div>
+  
+  
+  <div class="navigation">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="index.html">Projects</a></li>
+      <li><a href="../blender/index.html">Blender</a></li>
+      <li><a href="../blog">Blog</a></li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

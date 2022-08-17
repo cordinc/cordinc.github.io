@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+
+  <span class="date">November 15, 2012</span>
+  <h4><a href="/blog/2012/11/old-concerns-in-bandwidth-1.html">Old concerns in bandwidth</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/General.html">General</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I recently finished reading <a href="http://en.wikipedia.org/wiki/A_Fire_Upon_the_Deep">A Fire Upon The
+Deep</a> and <a href="http://en.wikipedia.org/wiki/The_Star_Fraction">The Star
+Fraction</a>. Both are
+science-fiction novels written in the early-mid 1990’s by authors with a
+computer science background, and both share (as part of the background
+context) a somewhat antiquated concern with network bandwidth. A Fire
+Upon The Deep is a rollicking <a href="http://en.wikipedia.org/wiki/Space_opera">space
+opera</a> - an exciting and fast
+paced adventure containing many interesting ideas. The Star Fraction is
+a near future tale of a possible singularity event (largely avoided) and
+wasn’t nearly as enjoyable due to a dominant preoccupation with politics
+that didn’t flow nicely with the action.</p>
+
+<p>Both novels feature <a href="http://en.wikipedia.org/wiki/Usenet">Usenet-like</a>
+communication and both fret at points about having enough bandwidth. I
+think Star Fraction even makes a reference to
+<a href="http://en.wikipedia.org/wiki/Gopher_(protocol)">gopher</a> at
+one point. Younger readers might wonder what I’m talking about. In the
+early 90’s the dominant forms of communication on the Internet were
+email and Usenet. The Web had just been developed, but had not yet
+gained popularity, and it was competing with the similar Gopher
+technology. Usenet was a system of discussion groups like modern message
+forums (e.g. Reddit), but much more primitive. At the time bandwidth was
+severely limited and often a concern. For playing a text-only online
+game in 1992, I was banned from a computer system for excessive
+bandwidth usage amounting to a few hundred kilobytes over several hours!
+Email has survived, but Usenet and Gopher have both been superseded by
+the more flexible Web. Bandwidth has risen to the level where HD movies
+(measured in gigabytes) can easily be watched online.</p>
+
+<p>I can imagine both authors were blinded by their closeness to their
+contemporary technology to see the revolutionary change about to occur.
+Thus their books are now quaintly dated. It is interesting to compare
+this to <a href="http://en.wikipedia.org/wiki/Neuromancer">Neuromancer</a>. Written
+a decade earlier than the other novels and dealing heavily with computer
+networks, it hasn’t aged too badly with its portrayal of cyberspace (a
+term first coined in the book), despite being written by someone with
+little background in computing. In an interview the author states that
+the Net as depicted in Neuromancer was a metaphor for the media, but it
+still works. Evidence of the cliche that being too much of an expert can
+cloud your powers of extrapolation.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">November  3, 2012</span>
+  <h4><a href="/blog/2012/11/coursera-functional-programmin.html">Coursera & Functional Programming Principles In Scala</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Coursera.html">Coursera</a>, 
+    
+      <a class="post" href="/blog/tag/Scala.html">Scala</a>, 
+    
+      <a class="post" href="/blog/tag/MOOC.html">MOOC</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p><a href="http://www.scala-lang.org">Scala</a> is an interesting language to a Java
+programmer that wishes they were doing more <a href="http://en.wikipedia.org/wiki/Functional_programming">Functional
+Programming</a>. As
+such a person, when I saw <a href="https://www.coursera.org">Coursera</a> hosting a
+course called <a href="https://www.coursera.org/course/progfun">Functional Programming Principles In
+Scala</a> with <a href="http://en.wikipedia.org/wiki/Martin_Odersky">Martin
+Odersky</a> (Scala’s creator),
+I immediately signed up for both the site and course. Coursera is one of
+the new online education websites. They partner with various
+universities around the world and and run their courses over the web.
+They have some impressive courses including an AI course by <a href="http://en.wikipedia.org/wiki/Peter_Norvig">Peter
+Norvig</a> and an Algorithms
+course by
+<a href="http://en.wikipedia.org/wiki/Robert_Sedgewick_(computer_scientist)">Robert
+Sedgewick</a>.</p>
+
+<p>The Scala course was 7 weeks long and took between 3 &amp; 8 hours a week to
+complete (the first week was 3 hours and the last 8 hours). Each week
+consisted of an hour or two of lectures (broken into 10-20 minutes
+chunks) and a machine graded assignment. There was no final exam. The
+lectures were a good introduction to functional programming, but did
+appear to assume some programming ability (fine by me). Scala is not a
+pure functional language, but the course presented as pure a subset as
+possible, using immutable data structures and only the occasionally
+<code class="highlighter-rouge">println</code> as the only side-effect. It seems the language has either
+greatly improved since I first used it in 2008/9 or I completely missed
+the best bits back then. Now Martin covered all the stuff I remember
+loving about Haskell back when I was university: lazy evaluation;
+partial evaluation or currying; for/list comprehensions; and pattern
+matching (although only for <code class="highlighter-rouge">case</code> classes in Scala). The language
+definitely deserves another look, especially since the tooling with
+Eclipse is definitely much better now. I imagine my old <a href="http://www.cordinc.com/blog/2009/04/combinatorial-iterators-in-jav.html">Scala
+combinatorial iterator
+test</a>
+would be much better with lazy list comprehensions.</p>
+
+<p>Completing weekly assignments was definitely a mixed blessing. The only
+difference between this course and just finding Scala tutorials on the
+web was the quality of the teaching and the assignments. The assignments
+reinforced that week’s concepts. However, sometimes it was hard to find
+time to do them, as they are due a week after being released. Generally
+though they weren’t too hard, although the last one took me around 6
+hours. The assignments were graded automatically, I imagine that is the
+only way thousands of assignments could be marked in the required
+timeframe. Unfortunately this meant that there was little feedback other
+than a overall grade and an indication of where marks were lost. Marks
+were gained for passing unit tests and some syntactic tests to ensure
+good code style. This means it was possible to write a less than optimal
+solution, but still get full marks and no feedback as how to do it
+better. I’m certain that a couple of points my answers were clumsy
+implementations - I felt there must be a better way, but got no
+direction as to what that could be. In this way the course can only take
+you to a certain level of expertise.</p>
+
+<p>The assignments can also be submitted as many times as desired and each
+submission is graded. This made it easy to keep going until achieving
+100% (as I did in each assignment). It also made me lazy. Rather than
+write proper tests, I just relied on the automatic grading system. If it
+said I got the question right, who am I to argue? I think the course
+coordinators may have noticed students doing this during the course as
+the last assignment required us to write a couple of our own tests.</p>
+
+<p>The lack of human interaction with lecturers or other teaching staff
+could be a real problem and I think this the largest issue holding back
+large-scale online education. I enjoyed the course and got good marks,
+but it would have been easy for me to cheat (I didn’t). I can’t believe
+that a significant percentage of students wouldn’t have cheated.
+Cheating was rampant when I marked university assignments and every
+single one was checked by hand (which the students knew). Now with just
+machine checking, it must be easier to get away with it on such simple
+assignments (where the number of possible solutions is relatively low).
+Harder assignments would require prohibitive amounts of time to mark.</p>
+
+<p>Most of the problems are for Coursera in increasing the legitimacy of
+their courses. I just wanted to refresh my Functional Programming
+knowledge and learn Scala. Thus, I am very happy with the course and
+achieved my goals. Having just completed one course I would happily sign
+up for another if it caught my eye (time allowing).</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">October 23, 2012</span>
+  <h4><a href="/blog/2012/10/crusader-kings-ii.html">Crusader Kings II</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Games.html">Games</a>, 
+    
+      <a class="post" href="/blog/tag/Video Games.html">Video Games</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>This excellent game is evil. It is a succubus come to drain your time
+away. After a few little abortive starts just to learn the rules I
+played a proper game all the way from 1066 to 1453. It took over 70
+hours! And I could easily play it again (indeed I plan to do so, just
+not for a while).</p>
+
+<p>In <a href="http://en.wikipedia.org/wiki/Crusader_Kings_II">Crusader Kings II</a>
+you take the role of a Count, Duke, King or Emperor and their heirs.
+Guiding them through the years in dealing with their liege (if any),
+their vassals, crusades, jihads, and the Mongol invasion. There is no
+imposed winning criteria, players can make their own goals: create a
+large empire; conquer Spain for Christendom; participate in the
+Crusades. There is also DLC for playing Muslim for Byzantine players,
+but I haven’t tried them yet.</p>
+
+<p>The game is strategic in nature. Battles are fought when two opposing
+armies occupy the same county and the outcome is determined
+automatically by the computer. Instead gameplay is about keeping your
+vassals from revolt, handling your court and most importantly ensuring a
+smooth succession for your heir. Conquest revolves around finding a
+reason to declare war (you have to have a valid reason) and then the
+logistics of building and positioning your forces. Definitely more a
+thinking and planning game.</p>
+
+<p>The epic nature of the game lends itself to player created stories
+spanning generations. RockPaperShotgun started <a href="http://www.rockpapershotgun.com/2012/08/02/an-iberian-winter-crusader-kings-ii-diary-part-one/">such a
+series</a>,
+but it seems to have stopped after a single episode. I found myself
+constructing a narrative of the mad Count Loinsech’s quest to unify
+Ireland. His Mongol descendents completing the conquest of all
+Britannia. Below is how the game ended at 1453 (the game-enforced forced
+end-date). Count Loinsech of Munster’s heirs 12 generations later
+control all of Britannia and southern Norway. Relatives also rule over
+Denmark, Poland, Finland and what is left of France.</p>
+
+<p><a href="/assets/posts/games/CK2_end.jpg"><img src="/assets/posts/games/CK2_end.jpg" width="550" alt="" /></a></p>
+
+<p>During this game the three big tasks were succession planning, war
+planning and placating or defeating my vassals. Every time my current
+ruler died, their vassals would become unhappy. Large scale revolts
+often resulted if the new ruler was unable to immediately stamp their
+authority. Queen Lann the Cruel spent nearly her entire 12 year reign
+putting down revolts in Scotland and Wales, largely because she was a
+women with a female heir and my vassals were misogynists (a viewpoint
+probably strengthend after they spent the last few years of their lives
+in her dungeon). Patrick the Unready took 10 years to pacify his
+subjects after ascending to the throne at the age of 8. This was despite
+preparing for the event by hiring thousands of mercenaries and
+positioning them near the worst troublemakers (I’m looking at you Duke
+of Cornwall and Duke of Galloway).</p>
+
+<p>To help avoid revolt upon succession, careful planning is required
+(although a large, well funded army doesn’t hurt). This means marrying
+well, ensuring your heirs are well-educated and pretenders are isolated
+(or killed). Still it can all go wrong or right based on luck. Queen
+Lann only came to power after she assassinated her younger brother - an
+event beyond my control. King Putiata lived to be nearly 90 and survived
+all his male sons and grandsons. His great grandson was not part of his
+court and so out of player control, I just had to accept what the game
+had generated. Luckily, Putiata had been preparing for his death for 30
+years and the transition was smooth’ish. I wonder though what would have
+happened had King Puiata lived another 4 months to see his last son born
+(randy old bugger). Born after his father’s death, Eric didn’t inherit
+Britannia, but did inherit Denmark from his mother.</p>
+
+<p>War basically comes down to planning and then using overwhelming force.
+It seemed that in battle the larger force won approximately 90% of the
+time. Thus it was far more important to ensure you had enough money to
+finish a war (sieges take a long time) and a good reason to start a war.
+The later could take a long time to engineer. So it often came down to a
+waiting game. In conquering England, I had to wait until they were
+already involved in another war and then quickly sneak in and take a
+county at a time. By the time I had a quarter of the country I worked to
+destabilise the Kingdom enough to keep it in a constant state of war so
+my forces could continue their slow progress. Apart from religious war
+(which I never tried) conquering a decent sized opponent in this game is
+a multi-generation endeavour.</p>
+
+<p>This game has that “just one more turn” feeling. Despite its large scope
+there is almost always something happening that require attention. It is
+very good and very addictive - beware!</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">October 16, 2012</span>
+  <h4><a href="/blog/2012/10/dd-campaign-history-part-1.html">D&D Campaign History - Part 1</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Games.html">Games</a>, 
+    
+      <a class="post" href="/blog/tag/RPGs.html">RPGs</a>, 
+    
+      <a class="post" href="/blog/tag/D&amp;D.html">D&amp;D</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>After <a href="http://www.cordinc.com/blog/2012/09/old-dd-campaign-maps.html">posting some
+maps</a>
+from my old <a href="http://en.wikipedia.org/wiki/Dungeons_%26_Dragons">D&amp;D</a>
+campaign, I got a little nostalgic for the game. Here is a history of
+that campaign in many parts (it did run for 5 years). While I would
+prefer to tell the stories “in character”, my memory of the first year
+or so is a little fuzzy, so this first part of the history will be
+largely a statement of actions (as remembered) without too much creative
+embellishment.</p>
+
+<p>I first started playing D&amp;D in 1985, when I got the famous 1983 red box
+version of the old original 1st edition basic set. With a few friends we
+played a few little adventures, but it never really got any traction. It
+was only in late 1987 that a permanent game emerged. We just called it
+the “campaign”, although during its 5 year existence we played more than
+one game. There was a single D&amp;D game that thread through the years, but
+there was a significant amount of the scandalously unknown
+<a href="http://en.wikipedia.org/wiki/2300_AD">2300AD</a>, plus brief sojourns with
+<a href="http://en.wikipedia.org/wiki/Cyberpunk_2020">Cyberpunk 2020</a>,
+<a href="http://en.wikipedia.org/wiki/Middle-earth_Role_Playing">MERP</a>,
+<a href="http://en.wikipedia.org/wiki/James_Bond_007_(role-playing_game)">James
+Bond RPG</a> and <a href="http://en.wikipedia.org/wiki/Warhammer_Fantasy_Roleplay">Warhammer
+FRPG</a>. However,
+we started and finished with D&amp;D.</p>
+
+<p>The first session was held in my bedroom after school on a Friday. A
+bunch of eight 12-13 year old boys. We rolled up characters, with the
+special rule that each character could have one automatic 18 (the
+highest possible value) in an attribute of their choice and the rest
+should be rolled normally. Still most characters had two 18s - we must
+have been a very lucky bunch. One of the “lucky” ones was the magic-user
+Bandance, that was my character. I am also certain there was another
+magic-user, Greymarel, in the party. Kur-Tas Kai, a cleric of the war
+god
+<a href="http://en.wikipedia.org/wiki/List_of_Dragonlance_deities#Kiri-Jolith">Kiri-Jolith</a>
+(we used the Krynn dieties) might have been present, but if not was
+definitely around by the second adventure. I don’t remember the rest -
+most of them didn’t last long.</p>
+
+<p><img src="/assets/posts/rpg/B2ModuleCover.jpg" alt="" /></p>
+
+<p>For the first few adventures we would rotate the <a href="http://en.wikipedia.org/wiki/Dungeon_Master">Dungeon Master
+(DM)</a> position among the
+group. Later I took on the role permanently. I don’t know who was the
+first DM, but it definitely wasn’t me. The first adventure was the
+classic <a href="http://en.wikipedia.org/wiki/The_Keep_on_the_Borderlands">Keep on the
+Borderlands</a>.
+Arriving at the Keep the party was soon approached by a shadowy figure
+and hired to kill the Castellan. Being adventuring neophytes, the party
+neglected to demand some money upfront. The Castellan, hearing that a
+group of sturdy young men from out of town had arrived, invited them to
+dinner. At the dinner he suggested he had a job for the party, but got
+no further. Bandance attacked and quickly killed the Castellan. The rest
+of the party was shocked but regardless included in the resulting melee
+with the guards. They managed to escape by starting fires in the Keep
+and running into the surrounding wilderness. There the party stayed a
+few days exploring the local caves before attempting a return to the
+Keep in order to collect their reward. However their passage was blocked
+and no reward was forthcoming. Realising they had been ripped off and
+tired of trudging around the dangerous borderlands, they decided to
+return home. I’m not sure this adventure went as the DM planned.</p>
+
+<p>Next a much smaller group of players did <a href="http://rpggeek.com/rpgissuearticle/139/the-beacon-at-enon-tor">The Beacon at Enon
+Tor</a>
+adventure. I don’t remember much about this other than it was short and
+involved saving a mad wizard. Nor can I remember the next small
+adventure we did, Jack of Knaves (which I can’t even find on Google).</p>
+
+<p>Next a larger group got together and played
+<a href="http://en.wikipedia.org/wiki/Rahasia">Rahasia</a>. At this stage the group
+was Greymarel, Bandance and Kur-Tas Kai plus the dwarf Kleeton, the
+fighter Hugle, the thief Aeflebad and the elf Celembor (this is in notes
+taken at the time). The party was hired to save an elven princess from
+an evil temple. Payment this time was whatever treasure we found on the
+way. As we played it, there wasn’t a great deal of combat in this
+adventure. For the first (and probably last) time the party even managed
+to talk its way out of a fight. The most dangerous encounter was between
+members of the party itself. After the princess was saved, a fight broke
+out over how to split the treasure. Bandance was on the losing side. My
+notes for this adventure state “saved princess, befriended intelligent
+snake, almost got lynched by party over magic items and now holds
+grudge”.</p>
+
+<p>The straight up goblin-bashing of <a href="http://en.wikipedia.org/wiki/Horror_on_the_Hill">The Horror on the
+Hill</a> was next. This
+was quickly followed by the equally badly named and similar orc-bashing
+of Death Dungeon. Neither of these were particularly notable and both
+mainly involved constant fighting with a little exploring thrown in. I’m
+certain I DM’ed these two (especially since I wrote Death Dungeon and it
+wouldn’t be fair that I play it too). At this point the party added
+Talin (a ranger) and a little later Ugarit (a fighter and not the right
+name, but neither I nor the person playing him can remember what he was
+called), but lost a couple of the others. So the group was Greymarel,
+Bandance, Kur-Tas Kai, Celembor, Ugarit and Talin. However, the person
+playing Celembor left somewhere around here after having personal
+differences with a few other players. I remember it centered on how to
+have fun in roleplaying games. Celembor said he played in a way to have
+fun without caring about the other players, while the rest of the party
+said it was about having fun as a group. I think this counter-argument
+was lead by the person playing Kur-Tas Kai, who was becoming de facto
+party spokesman. Celembor was increasingly disruptive and ostracized by
+the rest of the party until he left. At this stage we started playing a
+hybrid of D&amp;D with AD&amp;D and some homebrew rules. The result was combat
+was quicker (with critical hits and misses) and spell-casters more
+powerful.</p>
+
+<p>The last adventure of the campaign’s early stage was <a href="http://en.wikipedia.org/wiki/The_Isle_of_Dread">Isle of
+Dread</a>. Again my memory
+is hazy on this and I have no notes to fall back on. The party sailed
+across the ocean and investigated a semi-tropical island, killing locals
+until we got tired and sailed home. By the end the campaign had been
+running over a year and all the characters were level 5. This was also
+the last adventure not DM’ed by me. It was also the last standalone
+adventure. After this the adventures merged into one another as a
+continuous story, albeit one that was largely made-up as we went along.</p>
+
+<p><a href="/blog/2013/02/dd-campaign-history-part-2.html">The story will
+continue…</a></p>
+
+  </div>
+  <hr/>
+
+  <span class="date">October  7, 2012</span>
+  <h4><a href="/blog/2012/10/history-of-rome.html">History Of Rome</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/History.html">History</a>, 
+    
+      <a class="post" href="/blog/tag/Podcasts.html">Podcasts</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Available from
+<a href="http://itunes.apple.com/gb/podcast/the-history-of-rome/id261654474">iTunes</a>
+and on its blog, <a href="http://thehistoryofrome.typepad.com">The History of
+Rome</a></p>
+
+<p>This podcast series by Mike Duncan aims to tell the complete history of
+Rome from founding through the
+<a href="http://en.wikipedia.org/wiki/Roman_Republic">Republic</a> and
+<a href="http://en.wikipedia.org/wiki/Roman_empire">Empire</a> to its fall. There
+are 189 episodes for a total of 74 hours (each episode being around 20
+minutes in length). The podcasts are audio only and have high production
+values (the first few are a little more raw, but still fine).</p>
+
+<p>I am breaking one of my rules and reviewing this series before having
+completely finished it. I am only a quarter of the way through. This
+means I’m listened to 59 episodes totalling 17 hours and have only just
+reached the <a href="http://en.wikipedia.org/wiki/Battle_of_Actium">Battle of
+Actium</a> in 31 BC marking
+the end of the Republic. This is a huge and comprehensive history of
+Rome. It covers in detail the events that other series tend to skim
+over. Other histories I have consumed tend to start in the late
+Republic, and don’t really get going until reaching
+<a href="http://en.wikipedia.org/wiki/Julius_Caesar">Caesar</a> or
+<a href="http://en.wikipedia.org/wiki/Augustus">Augustus</a>. Here, the 400 year
+period of the Kingdom, early, and middle Republic (ending with the
+<a href="http://en.wikipedia.org/wiki/Gracchi">Gracchi</a>) is covered over 36
+episodes and 10 hours. Roman history is presented in chronological order
+and in detail. The various early political manoeuvrings around Patrician
+versus Plebeian laws, the <a href="http://en.wikipedia.org/wiki/Samnite_Wars">Samnite
+wars</a> and the <a href="http://en.wikipedia.org/wiki/Latin_War">Latin
+war</a> are all covered along with
+much more. Looking at the episode list, I can only assume this fine
+coverage continues all the way to the <a href="http://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire">fall of the Western Roman
+Empire</a>
+in 476 AD.</p>
+
+<p>Mike is a great speaker and the information is presented in an
+interesting manner. Often he will say a story is probably apocryphal,
+but then give the detail anyway. Very entertaining. This series is
+highly recommended.</p>
+
+  </div>
+  <hr/>
+
+
+<!-- Pagination links -->
+<div id="post-pagination" class="pagination">
+  Page 43 of 86 
+  
+      
+        <a href="/blog/page42">Previous</a>
+      
+  
+
+  
+      <a href="/blog/page44">Next</a>
+  
+</div>
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

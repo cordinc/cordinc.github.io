@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>JButtons in a JTable</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>January 30, 2010</b>
+<h4>JButtons in a JTable</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>Recently I wanted to have a clickable button in a table. Searching on
+Google for <a href="http://www.google.co.uk/search?q=JButton+in+JTable">JButton in
+JTable</a> I found a
+couple of suggestions, most notably this <a href="http://www.devx.com/getHelpOn/10MinuteSolution/20425">DevX
+article</a> and this
+<a href="http://www.esus.com/docs/GetQuestionPage.jsp?uid=1285">Esus article</a>.
+There was also a <a href="http://stackoverflow.com/questions/764417/is-it-possible-to-include-jbutton-in-a-jtable/">StackOverflow
+question</a>
+that just referenced other solutions. None really satisfied me. So
+borrowing their ideas I created my own solution.</p>
+
+<!--more-->
+
+<p>Fundamentally, there are two problems with having a JButton in a JTable.
+Firstly, by default a JTable will display cell values as a String, so
+JButtons appear as “javax.swing.JButton”. Secondly, a JTable does not
+pass clicks through to the cells.</p>
+
+<p>To display the buttons correctly a custom cell renderer needs to be
+applied to any columns displaying JButtons. This can be done with the
+code
+<code class="highlighter-rouge">table.getColumn("Button1").setCellRenderer(new JTableButtonRenderer())</code>
+(this assumes that there is a column in the table labelled “Button1”.
+The button renderer is below. The default renderer always returns a
+JLabel, but this one returns a JButton after colouring it in an
+appropriate manner. Note, this renderer assumes the contents of column
+will always be a JButton and will throw an exception if this is not the
+case. If the table column may not contain JButtons, just extend
+<code class="highlighter-rouge">DefaultTableCellRenderer</code>, detect if the value is a JButton (or even a
+Swing component) with <code class="highlighter-rouge">instanceof</code>, otherwise call <code class="highlighter-rouge">super</code>. This <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/table.html#renderer">Sun
+article</a>
+may help with this.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JTableButtonRenderer</span> <span class="kd">implements</span> <span class="nc">TableCellRenderer</span> <span class="o">{</span>		
+  <span class="nd">@Override</span> <span class="kd">public</span> <span class="nc">Component</span> <span class="nf">getTableCellRendererComponent</span><span class="o">(</span><span class="nc">JTable</span> <span class="n">table</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">value</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isSelected</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">hasFocus</span><span class="o">,</span> <span class="kt">int</span> <span class="n">row</span><span class="o">,</span> <span class="kt">int</span> <span class="n">column</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">JButton</span> <span class="n">button</span> <span class="o">=</span> <span class="o">(</span><span class="nc">JButton</span><span class="o">)</span><span class="n">value</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">isSelected</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">button</span><span class="o">.</span><span class="na">setForeground</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectionForeground</span><span class="o">());</span>
+      <span class="n">button</span><span class="o">.</span><span class="na">setBackground</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectionBackground</span><span class="o">());</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+      <span class="n">button</span><span class="o">.</span><span class="na">setForeground</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">getForeground</span><span class="o">());</span>
+      <span class="n">button</span><span class="o">.</span><span class="na">setBackground</span><span class="o">(</span><span class="nc">UIManager</span><span class="o">.</span><span class="na">getColor</span><span class="o">(</span><span class="s">"Button.background"</span><span class="o">));</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">button</span><span class="o">;</span>	
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>To get the table to pass clicks through to the button, add a mouse
+listener to the table with
+<code class="highlighter-rouge">table.addMouseListener(new JTableButtonMouseListener(table))</code>. This
+mouse listener (example below) will have to take the click, work out in
+which cell it occurred and if that cell contains a JButton, click it.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JTableButtonMouseListener</span> <span class="kd">extends</span> <span class="nc">MouseAdapter</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="nc">JTable</span> <span class="n">table</span><span class="o">;</span>
+		
+  <span class="kd">public</span> <span class="nf">JTableButtonMouseListener</span><span class="o">(</span><span class="nc">JTable</span> <span class="n">table</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">mouseClicked</span><span class="o">(</span><span class="nc">MouseEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">column</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="na">getColumnModel</span><span class="o">().</span><span class="na">getColumnIndexAtX</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getX</span><span class="o">());</span>
+    <span class="kt">int</span> <span class="n">row</span>    <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getY</span><span class="o">()/</span><span class="n">table</span><span class="o">.</span><span class="na">getRowHeight</span><span class="o">();</span> 
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">row</span> <span class="o">&lt;</span> <span class="n">table</span><span class="o">.</span><span class="na">getRowCount</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">table</span><span class="o">.</span><span class="na">getColumnCount</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Object</span> <span class="n">value</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="na">getValueAt</span><span class="o">(</span><span class="n">row</span><span class="o">,</span> <span class="n">column</span><span class="o">);</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">value</span> <span class="k">instanceof</span> <span class="nc">JButton</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">((</span><span class="nc">JButton</span><span class="o">)</span><span class="n">value</span><span class="o">).</span><span class="na">doClick</span><span class="o">();</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>And with that, the buttons in your table should start to work. All you
+need to do is return the buttons (which perform the required actions)
+when requested from your model, using <code class="highlighter-rouge">getValueAt()</code>. A complete working
+example is below.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.awt.BorderLayout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Component</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Dimension</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionListener</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.MouseAdapter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.MouseEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JButton</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JFrame</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JOptionPane</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JScrollPane</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JTable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.UIManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.table.AbstractTableModel</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.table.TableCellRenderer</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ButtonExample</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">final</span> <span class="nc">ButtonExample</span> <span class="n">example</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ButtonExample</span><span class="o">();</span>
+        <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+            	<span class="n">example</span><span class="o">.</span><span class="na">createAndShowGUI</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">createAndShowGUI</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Button Example"</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+        
+        <span class="nc">JTable</span> <span class="n">table</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTable</span><span class="o">(</span><span class="k">new</span> <span class="nc">JTableModel</span><span class="o">());</span> 
+        <span class="nc">JScrollPane</span> <span class="n">scrollPane</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JScrollPane</span><span class="o">(</span><span class="n">table</span><span class="o">);</span>
+		<span class="n">table</span><span class="o">.</span><span class="na">setFillsViewportHeight</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>	
+		
+		<span class="nc">TableCellRenderer</span> <span class="n">buttonRenderer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTableButtonRenderer</span><span class="o">();</span>
+		<span class="n">table</span><span class="o">.</span><span class="na">getColumn</span><span class="o">(</span><span class="s">"Button1"</span><span class="o">).</span><span class="na">setCellRenderer</span><span class="o">(</span><span class="n">buttonRenderer</span><span class="o">);</span>
+		<span class="n">table</span><span class="o">.</span><span class="na">getColumn</span><span class="o">(</span><span class="s">"Button2"</span><span class="o">).</span><span class="na">setCellRenderer</span><span class="o">(</span><span class="n">buttonRenderer</span><span class="o">);</span>
+		<span class="n">table</span><span class="o">.</span><span class="na">addMouseListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">JTableButtonMouseListener</span><span class="o">(</span><span class="n">table</span><span class="o">));</span>
+        
+        <span class="n">frame</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">scrollPane</span><span class="o">,</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">().</span><span class="na">setPreferredSize</span><span class="o">(</span><span class="k">new</span> <span class="nc">Dimension</span><span class="o">(</span><span class="mi">500</span><span class="o">,</span> <span class="mi">200</span><span class="o">));</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">pack</span><span class="o">();</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">JTableModel</span> <span class="kd">extends</span> <span class="nc">AbstractTableModel</span> <span class="o">{</span>
+		<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+		<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span><span class="o">[]</span> <span class="no">COLUMN_NAMES</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[]</span> <span class="o">{</span><span class="s">"Id"</span><span class="o">,</span> <span class="s">"Stuff"</span><span class="o">,</span> <span class="s">"Button1"</span><span class="o">,</span> <span class="s">"Button2"</span><span class="o">};</span>
+		<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Class</span><span class="o">&lt;?&gt;[]</span> <span class="no">COLUMN_TYPES</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Class</span><span class="o">&lt;?&gt;[]</span> <span class="o">{</span><span class="nc">Integer</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="nc">String</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="nc">JButton</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>  <span class="nc">JButton</span><span class="o">.</span><span class="na">class</span><span class="o">};</span>
+		
+		<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getColumnCount</span><span class="o">()</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="no">COLUMN_NAMES</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+		<span class="o">}</span>
+
+		<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getRowCount</span><span class="o">()</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="mi">4</span><span class="o">;</span>
+		<span class="o">}</span>
+		
+		<span class="nd">@Override</span> <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getColumnName</span><span class="o">(</span><span class="kt">int</span> <span class="n">columnIndex</span><span class="o">)</span> <span class="o">{</span>
+	        <span class="k">return</span> <span class="no">COLUMN_NAMES</span><span class="o">[</span><span class="n">columnIndex</span><span class="o">];</span>
+	    <span class="o">}</span>
+		
+		<span class="nd">@Override</span> <span class="kd">public</span> <span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">getColumnClass</span><span class="o">(</span><span class="kt">int</span> <span class="n">columnIndex</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="no">COLUMN_TYPES</span><span class="o">[</span><span class="n">columnIndex</span><span class="o">];</span>
+		<span class="o">}</span>
+
+		<span class="nd">@Override</span> <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">getValueAt</span><span class="o">(</span><span class="kd">final</span> <span class="kt">int</span> <span class="n">rowIndex</span><span class="o">,</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">columnIndex</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">switch</span> <span class="o">(</span><span class="n">columnIndex</span><span class="o">)</span> <span class="o">{</span>
+				<span class="k">case</span> <span class="mi">0</span><span class="o">:</span> <span class="k">return</span> <span class="n">rowIndex</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="k">return</span> <span class="s">"Text for "</span><span class="o">+</span><span class="n">rowIndex</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="c1">// fall through</span>
+				<span class="k">case</span> <span class="mi">3</span><span class="o">:</span> <span class="kd">final</span> <span class="nc">JButton</span> <span class="n">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="no">COLUMN_NAMES</span><span class="o">[</span><span class="n">columnIndex</span><span class="o">]);</span>
+						<span class="n">button</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+							<span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>
+								<span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="nc">JOptionPane</span><span class="o">.</span><span class="na">getFrameForComponent</span><span class="o">(</span><span class="n">button</span><span class="o">),</span> 
+										<span class="s">"Button clicked for row "</span><span class="o">+</span><span class="n">rowIndex</span><span class="o">);</span>
+							<span class="o">}</span>
+						<span class="o">});</span>
+						<span class="k">return</span> <span class="n">button</span><span class="o">;</span>
+				<span class="k">default</span><span class="o">:</span> <span class="k">return</span> <span class="s">"Error"</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>	
+	<span class="o">}</span>
+
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">JTableButtonRenderer</span> <span class="kd">implements</span> <span class="nc">TableCellRenderer</span> <span class="o">{</span>		
+		<span class="nd">@Override</span> <span class="kd">public</span> <span class="nc">Component</span> <span class="nf">getTableCellRendererComponent</span><span class="o">(</span><span class="nc">JTable</span> <span class="n">table</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">value</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">isSelected</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">hasFocus</span><span class="o">,</span> <span class="kt">int</span> <span class="n">row</span><span class="o">,</span> <span class="kt">int</span> <span class="n">column</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">JButton</span> <span class="n">button</span> <span class="o">=</span> <span class="o">(</span><span class="nc">JButton</span><span class="o">)</span><span class="n">value</span><span class="o">;</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">isSelected</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">button</span><span class="o">.</span><span class="na">setForeground</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectionForeground</span><span class="o">());</span>
+				<span class="n">button</span><span class="o">.</span><span class="na">setBackground</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectionBackground</span><span class="o">());</span>
+		    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+		    	<span class="n">button</span><span class="o">.</span><span class="na">setForeground</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">getForeground</span><span class="o">());</span>
+		    	<span class="n">button</span><span class="o">.</span><span class="na">setBackground</span><span class="o">(</span><span class="nc">UIManager</span><span class="o">.</span><span class="na">getColor</span><span class="o">(</span><span class="s">"Button.background"</span><span class="o">));</span>
+		    <span class="o">}</span>
+			<span class="k">return</span> <span class="n">button</span><span class="o">;</span>	
+		<span class="o">}</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">JTableButtonMouseListener</span> <span class="kd">extends</span> <span class="nc">MouseAdapter</span> <span class="o">{</span>
+		<span class="kd">private</span> <span class="kd">final</span> <span class="nc">JTable</span> <span class="n">table</span><span class="o">;</span>
+		
+		<span class="kd">public</span> <span class="nf">JTableButtonMouseListener</span><span class="o">(</span><span class="nc">JTable</span> <span class="n">table</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">;</span>
+		<span class="o">}</span>
+
+		<span class="kd">public</span> <span class="kt">void</span> <span class="nf">mouseClicked</span><span class="o">(</span><span class="nc">MouseEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="kt">int</span> <span class="n">column</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="na">getColumnModel</span><span class="o">().</span><span class="na">getColumnIndexAtX</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getX</span><span class="o">());</span>
+			<span class="kt">int</span> <span class="n">row</span>    <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getY</span><span class="o">()/</span><span class="n">table</span><span class="o">.</span><span class="na">getRowHeight</span><span class="o">();</span> 
+
+			<span class="k">if</span> <span class="o">(</span><span class="n">row</span> <span class="o">&lt;</span> <span class="n">table</span><span class="o">.</span><span class="na">getRowCount</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">table</span><span class="o">.</span><span class="na">getColumnCount</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">column</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+			    <span class="nc">Object</span> <span class="n">value</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="na">getValueAt</span><span class="o">(</span><span class="n">row</span><span class="o">,</span> <span class="n">column</span><span class="o">);</span>
+			    <span class="k">if</span> <span class="o">(</span><span class="n">value</span> <span class="k">instanceof</span> <span class="nc">JButton</span><span class="o">)</span> <span class="o">{</span>
+			    	<span class="o">((</span><span class="nc">JButton</span><span class="o">)</span><span class="n">value</span><span class="o">).</span><span class="na">doClick</span><span class="o">();</span>
+			    <span class="o">}</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><strong>Comments:</strong>
+<em>I have removed the commenting system (for privacy concerns), below are the comments that were left on this post before doing so…</em></p>
+
+<p><em>yonaides @ 2014-04-15</em> - Excelente ejemplo!</p>
+
+<p><em>Lily @ 2014-07-08</em> - Do you have a function for the button to delete the entire row ? Instead of a messagebox?</p>
+
+<p><em>Janemba Bokusa @ 2015-05-10</em> - great tuto</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Models and Events</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>November  8, 2009</b>
+<h4>Models and Events</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>I have been thinking that software development is all about models and
+events. By models I mean <a href="http://en.wikipedia.org/wiki/Domain_model">domain
+models</a>, and by events I’m
+referring to an <a href="http://en.wikipedia.org/wiki/Event-driven_architecture">event-driven
+architecture</a>.
+Not quite the <a href="http://stuffinvestmentbankerslike.blogspot.com/2008/06/40-models-and-bottles.html">models and
+bottles</a>
+of Investment Banking.</p>
+
+<p>The domain model is where the application’s data lives. It is the model
+part of the
+<a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a>
+pattern. For example, in a system that manipulates songs, a song would
+be part of the domain model, together with the song’s name, artist,
+album etc (in
+<a href="http://en.wikipedia.org/wiki/Object-oriented_programming">Object-oriented</a>
+systems there would be a song class containing these attributes). The
+more time I spend coding, the more I find that the future course of a
+project is directly related to how its domain model was conceived. Using
+MVC, changing the model later can involve a great deal of work if the
+model touches everything else. Thus usually some time is spent on
+working out the model and refactoring it if necessary. Indeed, I
+remember once describing a less than satisfying job as drawing pictures
+all day, meaning
+<a href="http://en.wikipedia.org/wiki/Unified_Modeling_Language">UML</a> mainly for
+the domain (I would have preferred to be coding).</p>
+
+<p>I have a few tips for domain models. Follow the ideal of MVC, that is
+keep view and controller logic out of the model. Also, try to have <a href="http://blog.kineticweb.com/articles/2007/06/01/skinny-controller-fat-model">fat
+models and skinny
+controllers</a>
+(this is a <a href="http://rubyonrails.org/">Ruby On Rails</a> idea, but I find it
+works well in general). Keep model classes immutable if possible.
+Lastly, write your own containers (containing and hiding actual
+SDK-based containers) for easy aggregation functions (and
+parallelising). None of this is particularly controversial, few people I
+have worked with would disagree.</p>
+
+<p>What I have recently found surprising is that people do disagree with
+using an event based architecture where I feel it would work well.
+Event-driven systems are ones where changes to domain state are packaged
+as events and passed to listeners of those events through some form of
+callback. This helps promote a
+<a href="http://en.wikipedia.org/wiki/Loose_coupling">loosely-coupled</a> design,
+something else I would strongly encourage. Also recommended is keeping
+the events at the lowest level appropriate in the model (a rule I’ve
+broken a few times). For instance, if you have an album which contains
+songs, a “songAdded” event would go on the album listeners, but a
+“songUpdated” event should fire on the song’s listeners. Other people
+seem to prefer a system of loops polling for changes (or something
+similar). I find their code far more complicated. Event-driven systems
+are simple to write, simple to understand and you only need to handle
+the events you are interested in. I would be interested to hear what
+other experienced programmers have found works.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

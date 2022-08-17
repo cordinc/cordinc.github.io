@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Discrete Java Timer</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>March 14, 2010</b>
+<h4>Discrete Java Timer</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>Java provides a number of methods to run code at scheduled future time,
+the implementations of
+<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/ScheduledExecutorService.html">ScheduledExecutorService</a>
+generally being the best way at the moment. ScheduledExecutorService
+also defines methods to run the code a periodic intervals
+(scheduleAtFixedRate &amp; scheduleWithFixedDelay). However, what if you
+have classes that need to be notified at regular discrete intervals and
+need to know which interval they are in. A timer is required that with a
+set periodicity fires an event on any listeners and passes the number of
+times the period has elapsed. What this is doing is breaking up
+continuous “realtime” into discrete blocks or quantums of time. For
+example, if the period is 10 seconds, at the start the time quantum is 0
+until 10 seconds have elapsed and an event is fired denoting the start
+of the first time quantum. Ten seconds later another event fires as the
+2nd time quantum starts, and so on.</p>
+
+<p>This is a fairly simple bit of Java code. Any experienced Java developer
+has probably already worked out a good solution, but for me it has come
+up a couple of times in the last few months so I thought I’d write it
+down.</p>
+
+<!--more-->
+
+<p>First, an interface for listeners to the discrete time blocks. Whenever
+a new time quantum starts this method will be called on any registered
+listeners.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">TimeQuantumListener</span> <span class="o">{</span>	
+	<span class="kt">void</span> <span class="nf">nextTimeQuantum</span><span class="o">(</span><span class="kt">long</span> <span class="n">timeQuantum</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Then the timer itself. It acts as detailed above. Once started the timer
+fires an event to it’s listeners with the period specified in the
+constructor, while keeping a count of how many such events have been
+fired.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.CopyOnWriteArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.Executors</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.ScheduledExecutorService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.TimeUnit</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.atomic.AtomicBoolean</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.atomic.AtomicLong</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TimeQuantumTimer</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">TimeQuantumListener</span><span class="o">&gt;</span> <span class="n">listeners</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CopyOnWriteArrayList</span><span class="o">&lt;</span><span class="nc">TimeQuantumListener</span><span class="o">&gt;();</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">period</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">TimeUnit</span> <span class="n">timeUnit</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">ScheduledExecutorService</span> <span class="n">scheduler</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">AtomicLong</span> <span class="n">currentTimeQuantum</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">AtomicBoolean</span> <span class="n">hasStarted</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicBoolean</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+	
+	<span class="kd">public</span> <span class="nf">TimeQuantumTimer</span><span class="o">(</span><span class="kt">int</span> <span class="n">period</span><span class="o">,</span> <span class="nc">TimeUnit</span> <span class="n">timeUnit</span><span class="o">,</span> <span class="nc">ScheduledExecutorService</span> <span class="n">scheduler</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">period</span> <span class="o">=</span> <span class="n">period</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">timeUnit</span> <span class="o">=</span> <span class="n">timeUnit</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">scheduler</span> <span class="o">=</span> <span class="n">scheduler</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="nf">TimeQuantumTimer</span><span class="o">(</span><span class="kt">int</span> <span class="n">period</span><span class="o">,</span> <span class="nc">TimeUnit</span> <span class="n">timeUnit</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">(</span><span class="n">period</span><span class="o">,</span> <span class="n">timeUnit</span><span class="o">,</span> <span class="nc">Executors</span><span class="o">.</span><span class="na">newSingleThreadScheduledExecutor</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">long</span> <span class="nf">getCurrentTime</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">currentTimeQuantum</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(!</span><span class="n">hasStarted</span><span class="o">.</span><span class="na">getAndSet</span><span class="o">(</span><span class="kc">true</span><span class="o">))</span> <span class="o">{</span>
+			<span class="n">scheduler</span><span class="o">.</span><span class="na">scheduleAtFixedRate</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
+				<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+					<span class="n">fireNextTimeQuantum</span><span class="o">(</span><span class="n">currentTimeQuantum</span><span class="o">.</span><span class="na">incrementAndGet</span><span class="o">());</span>
+				<span class="o">}</span>			
+			<span class="o">},</span> <span class="n">period</span><span class="o">,</span> <span class="n">period</span><span class="o">,</span> <span class="n">timeUnit</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">addListener</span><span class="o">(</span><span class="nc">TimeQuantumListener</span> <span class="n">listener</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">listeners</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">listener</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">fireNextTimeQuantum</span><span class="o">(</span><span class="kt">long</span> <span class="n">timeQuantum</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">TimeQuantumListener</span> <span class="nl">l:</span> <span class="n">listeners</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">l</span><span class="o">.</span><span class="na">nextTimeQuantum</span><span class="o">(</span><span class="n">timeQuantum</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Here is a test for the timer. It uses
+<a href="http://www.jmock.org/javadoc/2.5.1/org/jmock/lib/concurrent/DeterministicScheduler.html">DeterministicScheduler</a>
+a very useful class from the <a href="http://www.jmock.org/">jMock</a> to mock out
+<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/ScheduledExecutorService.html">Java 1.5 scheduled
+executors</a>.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.concurrent.TimeUnit</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.atomic.AtomicInteger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">junit.framework.TestCase</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.jmock.lib.concurrent.DeterministicScheduler</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TimeQuantumTimerTest</span> <span class="kd">extends</span> <span class="nc">TestCase</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testNoStart</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">DeterministicScheduler</span> <span class="n">sched</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DeterministicScheduler</span><span class="o">();</span>
+		<span class="nc">TimeQuantumTimer</span> <span class="n">timer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TimeQuantumTimer</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">,</span> <span class="n">sched</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">timer</span><span class="o">.</span><span class="na">getCurrentTime</span><span class="o">());</span>
+		<span class="n">sched</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">timer</span><span class="o">.</span><span class="na">getCurrentTime</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testListeners</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">DeterministicScheduler</span> <span class="n">sched</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DeterministicScheduler</span><span class="o">();</span>
+		<span class="nc">TimeQuantumTimer</span> <span class="n">timer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TimeQuantumTimer</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">,</span> <span class="n">sched</span><span class="o">);</span>
+		<span class="kd">final</span> <span class="nc">AtomicInteger</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AtomicInteger</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+		<span class="n">timer</span><span class="o">.</span><span class="na">addListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">TimeQuantumListener</span><span class="o">()</span> <span class="o">{</span>	
+			<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">nextTimeQuantum</span><span class="o">(</span><span class="kt">long</span> <span class="n">timeQuantum</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">count</span><span class="o">.</span><span class="na">incrementAndGet</span><span class="o">();</span>			
+			<span class="o">}</span>
+		<span class="o">});</span>	
+		<span class="n">timer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">sched</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">sched</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">501</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+		<span class="n">sched</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">500</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">count</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testCurrentTime</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">DeterministicScheduler</span> <span class="n">sched</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DeterministicScheduler</span><span class="o">();</span>
+		<span class="nc">TimeQuantumTimer</span> <span class="n">timer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TimeQuantumTimer</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">,</span> <span class="n">sched</span><span class="o">);</span>
+		<span class="n">timer</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">timer</span><span class="o">.</span><span class="na">getCurrentTime</span><span class="o">());</span>
+		<span class="n">sched</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">timer</span><span class="o">.</span><span class="na">getCurrentTime</span><span class="o">());</span>
+		<span class="n">sched</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">501</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">timer</span><span class="o">.</span><span class="na">getCurrentTime</span><span class="o">());</span>
+		<span class="n">sched</span><span class="o">.</span><span class="na">tick</span><span class="o">(</span><span class="mi">500</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MILLISECONDS</span><span class="o">);</span>
+		<span class="n">assertEquals</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">timer</span><span class="o">.</span><span class="na">getCurrentTime</span><span class="o">());</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Bonds: Part 2a - The Reality</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>October 29, 2011</b>
+<h4>Bonds: Part 2a - The Reality</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Finance.html">Finance</a>, 
+    
+      <a class="post" href="/blog/tag/Bonds.html">Bonds</a>
+    
+<br/><br/>
+<ul>
+  <li>Part 1 - <a href="http://www.cordinc.com/blog/2011/10/bonds-part-1-the-theory.html">The
+Theory</a></li>
+  <li>Part 2b - <a href="http://www.cordinc.com/blog/2011/12/bonds-part-2b-the-reality-cont.html">The Reality
+continued</a></li>
+  <li>Part 3a - <a href="http://www.cordinc.com/blog/2011/12/bonds-part-3a-the-technology.html">The
+Technology</a></li>
+  <li>Part 3b - <a href="http://www.cordinc.com/blog/2012/01/bonds-part-3b-the-technology-c.html">The Technology
+continued</a></li>
+  <li>Part 4 - <a href="http://www.cordinc.com/blog/2012/01/bonds-part-4-the-future.html">The
+Future</a></li>
+  <li><a href="http://www.cordinc.com/blog/2012/01/bonds-addendum.html">Addendum</a></li>
+</ul>
+
+<p>When I first interviewed for a technology job in fixed income, I knew
+the “basics” and explained how to do a discounted cash flow analysis to
+price a bond. The interviewer smiled and said yes, that was the correct
+way to price a bond, but that wasn’t how it was done in practice.</p>
+
+<!--more-->
+
+<p>The reality of EGB trading is strongly influenced by the markets used to
+trade. If one wants to trade bonds there are two options:
+Dealer-to-Client (D2C) markets; and, Dealer-to-Dealer (D2D) markets. D2C
+markets (like Bloomberg or Tradeweb) are where dealers (usually the
+banks) quote prices on bonds for clients like fund managers or insurance
+companies to buy or sell. On D2D markets (MTS is the main one in Europe)
+the big banks can trade with each other and smaller players (even hedge
+funds) are not allowed to participate. The two types of market work
+quite differently.</p>
+
+<p>On D2C markets trading is a negotiation. When a potential client wants
+to buy or sell a bond they send a Request For Quotes (RFQ). This RFQ can
+go to a specfic bank or multiple banks at once and starts a negotiation
+process. The banks send back their quotes and the client chooses one
+quote or makes a counter offer and so on until the price is agreed and
+the trade done or alternatively no agreement is reached and the RFQ
+canceled. Banks can send prices to the markets (know as quotes), but
+these are usually just indicative - that is a price at which they are
+likely, but not necessarily, willing to trade. It is like advertising.
+RFQs ensure that trade is done at a price with which the trader (and
+client) is happy. Thus they should be profitable for the bank unless
+there is an error somewhere or are intentionally done at a bad price
+(perhaps as a favour to a client or to offload a large position). Some
+D2C markets allow “firm pricing”, where the quoted prices should be
+executable - that is the published price is the final price, no
+negotiation involved. However, they are not really executable and the
+trader still gets a last look to ensure the firm price is good (the
+downside is that if they reject too many firm price trades the market
+will stop them sending firm prices). To get around the possibility of a
+bad trade with firm prices the traders send quotes with wider spreads
+than for indicative prices (ie. the prices are worse than might
+otherwise be available). Banks almost never send RFQs on D2C markets.
+The spreads are tighter (and thus the prices better) on the D2D markets.</p>
+
+<p>Government bonds can also be traded on D2D markets (but not corporates).
+The main D2D market in Europe is <a href="http://www.mtsmarkets.com/">MTS</a>.
+There are a few others, but MTS is by far the biggest. D2D markets use
+strictly executable quotes. If a price is quoted and someone else trades
+at that price, then the trade is done - no negotiation or last look. The
+terminology is that if your quote is traded then you have been lifted,
+if you trade on someone else’s quote then you have hit them - although
+at times I have heard the terms used interchangeably.</p>
+
+<p>Executable quotes make the D2D markets a very different place for
+traders. If a trader is quoting an incorrect price and it is lifted then
+they lose money with no chance of avoidance (other than not having a bad
+price). The likelihood of having bad prices hit is very high as all the
+other market participants are sophisticated traders - other large banks.
+Generally if some other bank is initiating a trade with you then you are
+getting the worst of it. There is little motivation for them to lift
+your quote if it is the correct price (unless they are trying to move
+inventory or have an error of their own). Most traders hate quoting on
+the D2D markets.</p>
+
+<p>So why do banks quote on D2D markets? Partly it is because quoting is
+seen as integral to being a “real bank” and that the D2D markets gives
+banks access to government bonds cheaper than D2C markets. However, the
+main reason is they are forced to quote. European governments like to
+have liquid secondary markets in their bonds. If potential buyers know
+that their government bonds can be easily resold, then the initial price
+they are willing to pay at issue increases. Thus governments can pay a
+lower rate of interest. To get the banks to quote in the D2D markets,
+European governments have set up the primary dealership program. Banks
+can apply to become a primary dealer in a country’s debt. The number of
+primary dealers is generally restricted, so only large international
+banks and the country’s own banks tend to be approved. The largest
+recent change in primary dealers was around 2008-09 when some large
+banks disappeared:
+<a href="http://en.wikipedia.org/wiki/Lehman_Brothers">Lehmans</a> went bust; <a href="http://en.wikipedia.org/wiki/Bear_Stearns">Bear
+Stearns</a> and <a href="http://en.wikipedia.org/wiki/Merrill_Lynch">Merrill
+Lynch</a> were merged into
+other firms. This allowed a couple of smaller banks like
+<a href="http://www.rbc.com/country-select.html">RBC</a> and
+<a href="http://www.jefco.com/">Jefferies</a> to take up primary dealerships across
+Europe.</p>
+
+<p>Primary dealers are required to quote on the D2D markets. This is called
+their “obligations”. The government bestowing primary dealership will
+sent a list of bonds every month together with the length of time they
+should be quoted, the maximum spread they should be quoted and the
+minimum volume to quote. For example, the French government may say that
+its primary dealers should quote a set of 50 French government bonds for
+at least four hours per day at a spread no greater than 50 basis points
+and at volume of at least 10 million.</p>
+
+<p>The primary dealers are ranked each month on how well they did at
+meeting their obligation requirements. This ranking then feeds into the
+bidding process on government bond auctions. When European governments
+issue new bonds, they do so at auctions where only primary dealers can
+bid. The government will state the characteristics of the new bond and
+banks then bid what they are willing to pay for them. Normally when
+primary dealers buy bonds at issue they can immediately sell them at a
+profit on the D2C markets. The gains made at auction (together with the
+prestige of being a primary dealer) make up for the occasions when
+quotes are lifted. Although a trader might not see it that way when they
+have been hit a few times in quick succession.</p>
+
+<p>So far all the trading has been done electronically. That is the trade
+is completed between computers under human instruction. No <a href="http://en.wikipedia.org/wiki/Open_outcry">open
+outcry</a> like in old films of
+the stockmarket. A trader in London may trade with someone in a
+different country who they have never met or even spoken. In fact the
+nature of the markets make this very likely. At one former employer, a
+trader calculated that he had made a large amount of money off one
+particular person at a competing bank and joked he should send them a
+Christmas card, but he didn’t know their real name (only their market
+login nickname).</p>
+
+<p>Some trades on the D2C markets still have a human touch. However, this
+is not from the traders. Alongside the traders (although organised into
+their own desks) are the salespeople. They work to drum up business. The
+salespeople themselves aren’t allowed to trade (in London you have to be
+licensed by the <a href="http://www.fsa.gov.uk/">FSA</a>), the actual trade
+execution has to be done by a proper trader. The salespeople try to
+think up trade ideas for the bank’s clients. Essentially justifiction
+for the client to trade with them. Simplistically, this is of the form,
+“if you do X I think you’ll make money”, although I heard rumours
+sometimes trades are done more as favours.</p>
+
+<p>I have had very little to do with sales desks. So I can’t give more than
+a basic description of their function. I have noticed that sales desks
+tend to have a higher percentage of women than other front office areas.
+There also tends to be higher proportion of young’ish good looking
+people in such teams. Perhaps it makes persuasion easier. On government
+bond trading desks across 3 different banks, I have yet to meet a single
+trader who was female and only two who were from an ethnic minority
+(both East Asian) - otherwise they have all been white European men.
+This is less the case in other teams. I get the impression that the
+number of minorities on a trading desk is inversely related to the age
+of the business of the desk. Government bond trading desks tend to have
+been around for decades and is definitely a boys club. The newer
+corporate desks are more varied and the recent ABS/MBS traders were
+about half minorities - at two places I worked they were run by women.</p>
+
+<p>Trading tends to be a young man’s game. Most of the traders I worked
+with were in their early 30’s, with the occasional guy younger or older.
+However, most of them were younger than they looked! The stress and
+early mornings weren’t doing them any favours. A trader’s basic salary
+tends to be a small part of their overall remuneration. Most of their
+pay comes in an end of year bonus that is driven largely by PnL. A
+trader roughly expects some (usually single digit) percentage of their
+PnL to be paid as their bonus. They monitor their PnL constantly
+throughout the day. So there is realtime feedback on how well they are
+doing their job (making money) and know that will directly affect their
+remuneration. In addition, EGB traders in London start trading at 7am,
+as that is when the markets in Europe open. Most are sitting at their
+desks 15-30 minutes before then. Lunch is normally eaten at their desk,
+only juniors seem to spend significant time away from the desk. EGB
+traders could always be found during the day staring at their 6 or so
+computer screens. The trading day ends at 4:30pm London time, but after
+that is administrative work and meetings - getting out around 5:30pm
+would be a good day. Very long days - although not as long as I hear
+investment bankers endure.</p>
+
+<p>Constant financial feedback and long stressful days don’t lead naturally
+to emotional stability. I found traders often at extremes - either very
+happy or angry. If they were calm it didn’t take much to tip them over.
+The stereotype of the shouty trader certainly has a basis in reality
+around the EGB desk - if they are losing money. Of course when making
+money they were nice people. Most of the time I have been working with
+EGB desks they have been profitable, and the traders generally pleasant.
+Although, before talking to a trader I (and many others) would first
+check if they were making money that day. If they were up we would pop
+around and have a chat. If they were down on the day then we would avoid
+them.</p>
+
+<p>I have many personal or second-hand stories of highly strung traders at
+work. However, I have no stories of post-work shenanigans. I never
+socialised with the traders outside of work, both because I was never
+invited and I was never interested. Traders shouting and swearing at
+people is such a standard occurrence the experienced support person soon
+barely notices it, unless it is extreme or continuous. Dismissive and
+demanding behaviour was also common. Traders run the place and look
+after themselves. One trader was well known for demanding that support
+or a developer come see them immediately, but once they had arrived
+telling them he was busy and making them wait 5 or 10 minutes before
+making his normally non-urgent request. Trader’s often seem to have a
+compressed sense of time. When estimating duration they would grossly
+overestimate. Most support people would smirk at the concept of a
+“trader minute”, which actually is only a few seconds long (ie “my
+prices were wrong for minutes!”). Another time I was sitting with a
+support person while trying to solve a trader’s problem with a market
+(it was the market’s fault). Nearly every minute the trader would call
+ask for a progress update and when it would be fixed. The support person
+always replied with the accurate and decreasing time estimate, after
+which the trader would tell them to fix it now (and not in a nice
+manner). I could see no way that the problem could be fixed faster than
+the support person was managing. At least the trader didn’t storm around
+and stand over the support person until the issue was resolved (which I
+have seen happen).</p>
+
+<p>Losing money really aggravates a trader, especially if they don’t see it
+as their fault (which is nearly always). I’ve heard traders demand we
+have a trade reversed on the market, even though they know we can’t do
+that. Once a trader demanded that we have the market open early so he
+could cover some positions (also not possible, we told him to just wait
+the 5 minutes until 7am). I’ve also heard of a trader reaching into a
+support person’s pocket to get their wallet in order recover a loss on a
+trade - although he was just kidding and returned the wallet back
+unmolested.</p>
+
+<p>Traders also compete with their colleagues to protect their personal
+PnL. Underperforming traders are often let go - that is a given. Also,
+within an EGB desk traders are organised by seniority. The most senior
+EGB trader is normally responsible for bonds around the 10-year mark as
+that is the most profitable part of the EGB yield curve. Developers are
+seen as a cost, but if we do something to generate profit it is hidden
+in the trader’s PnL. At one bank we wrote a simple automatic trading
+system that we believed worked quite well - certainly it was doing a
+large amount of business and the traders praised it. When this system
+traded it did so as one of the existing traders as this is required by
+the FSA, so any PnL gain went to that trader. We told the traders we
+would break out the PnL for the automatic system so they could see how
+it was performing - and provide the technology team with a little good
+PR. The traders were insistent that we shouldn’t do that. I believe the
+main reason (and I wasn’t the only one) was to ensure we didn’t try to
+claim some of the profit for ourselves (but as a contractor I didn’t get
+a bonus anyway).</p>
+
+<p>Traders are just the tip of the pyramid - there are a large number of
+people supporting them. There are the aforementioned salespeople feeding
+business to traders. Research people produce reports on the current
+financial environment with forecasts. Quants are the highly mathematical
+people (usually with a PhD) creating financial models or tools.
+Sometimes the previous roles merge to some degree - eg a mathematical
+research person who also does some sales. While EGB traders are often
+decent mathematicians in their own right (all I know have quantitative
+science or engineering degrees), quants are usually better. There are
+various support teams - normally there is a desk of technical support
+people dedicated to the bond desks. In addition there are phone support,
+desktop support (for machine problems), marketdata support (for data
+feeds from the market) and others that handle queries across the whole
+company. Sometimes support people from external companies (like
+Bloomberg or Reuters) are also available onsite. Bloomberg was
+particularly known for typically hiring very attractive young women and
+sending them to clients as support - the traders were always nice to
+them! Software developers also do second or third line support if a
+problem arose with our systems. There always had to be someone around
+during market hours to field queries. So at each of the three places I
+worked there was a duty roster for 7am starts and being on-call out of
+office hours.</p>
+
+<p>Behind the scenes there were also various <a href="http://en.wikipedia.org/wiki/Middle_office">middle
+office</a> (risk and control)
+and <a href="http://en.wikipedia.org/wiki/Back_office">back office</a> (compliance,
+trade settlement &amp; clearance) teams. Although these people often sat in
+different buildings and I only occasionally conversed with them via
+email or over the phone. Most IT people were classed as back office, but
+those of us who interacted directly with traders (and sometimes sat on
+the trading floor) were placed in Front Office IT, a half-way house.
+Everyone wants to be attached to a profit centre rather than a cost
+centre. That made most difference to the permanent employees and their
+bonus, though still probably at least an order of magnitude or two less
+than the true front office “money makers”.</p>
+
+<p>Front office people are also required by the FSA to take 2 weeks
+consecutive leave in order to make fraud harder (which included me at 2
+of the 3 places I worked). In public this was taken begrudgingly, but in
+private people were happy for it. Most front office (or teams that
+aspired to front office status) espoused a hard-working, hard-charging
+image. We also had to complete various risk and compliance courses
+(normally given and tested online). These were universally considered a
+joke - passing required little more than remembering that stealing is
+wrong.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

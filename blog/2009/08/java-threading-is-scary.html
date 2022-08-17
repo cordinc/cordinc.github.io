@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Java Threading is Scary</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>August 29, 2009</b>
+<h4>Java Threading is Scary</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>Recently I have been thinking hard about threading in a Java project of
+mine, and it definitely requires a great deal of hard thinking. When I
+started working with Java there weren’t any native threads, so it was
+just easier to make everything single threaded as the performance gain
+was minimal. However, as time has passed more and more of my code both
+at work and home has needed to work multi-threaded. As I learn more
+about Java threading, I realise how wrong I was doing it before - a
+cycle repeated a few times in the last 12 years. It was only after
+reading the great book <a href="http://jcip.net/">Java Concurrency In Practice</a>
+a few years ago that I realised that in Java “locking is not just about
+mutual exclusion; it is also about memory visibility.” I can only hope
+that this is the last such cycle, but realise it’s probably not.</p>
+
+<p>Talking to other developers there seems to be a standard progression in
+Java multi-threaded programming skill:</p>
+
+<ol>
+  <li>Just write single threaded programs</li>
+  <li>Write multi-threaded programs by marking everything synchronized</li>
+  <li>Use wait() and notifyAll() to build up “threadsafe” collection
+classes</li>
+  <li>Realise your “thread-safe” collection classes aren’t particularly
+thread-safe and try using <a href="http://en.wikipedia.org/wiki/Immutable_object">immutable domain
+objects</a> with
+stateless controllers to work around the problem</li>
+  <li>Trust in the <a href="http://java.sun.com/j2se/1.5.0/docs/api/index.html?">Java API concurrent
+utilities</a>
+java/util/concurrent/package-summary.html, with its collections,
+locks and executors</li>
+  <li>Realise that these classes don’t solve all the problems and start
+thinking hard about all the issues in your code</li>
+  <li>Become very scared about Java threading</li>
+</ol>
+
+<p>I think the next step may be using another language that doesn’t allow
+shared state. <a href="http://www.scala-lang.org/node/242">Scala uses an Actor
+model</a> to asynchronously pass
+messages between threads. There is no shared memory so no threading
+problems. This sounds like a good way to go, but I still work in Java
+for most of my programming (not many Scala or Erlang jobs around!).</p>
+
+<p>This whole situation reminds me of <a href="http://en.wikipedia.org/wiki/Memory_management">memory
+management</a> in C<span class="underline"></span>. There were simple rules to follow to reduce
+memory leakage, but the problem was hard to completely solve (especially
+to a newbie programmer) and normally your program still leaked. I
+remember leaning heavily on
+<a href="http://en.wikipedia.org/wiki/IBM_Rational_Purify">Purify</a>. Then Java
+came along with its automatic memory management and the problem largely
+disappeared. Developers could focus on the business logic of their code
+rather than housekeeping. Hopefully a similar thing will happen with
+Java threading.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

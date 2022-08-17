@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Mech Model Part 3: Rigging - Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<h4>Blender Beginner for Beginner Tutorial: Mech Model Part 3: Rigging</h4>
+
+<p><b>20th June 2010 - Blender 2.47</b></p>
+
+<p>
+
+After <a href="../1_model/index.html">creating</a> and
+<a href="../2_texture/index.html">texturing</a> a mech model, the next
+step towards animating it is rigging. This is the process of setting up
+bones in the model such that when the bone is moved, the mech mesh
+deforms in an expected manner. The final set of bones to animate a walk
+cycle is shown in the image below. Once this step is complete, the model
+will be ready to animate.
+
+</p>
+<p>
+<ul>
+<li>
+
+<a href="../1_model/index.html">Mech Model Part 1: Modelling</a>
+
+</li>
+<li>
+
+<a href="../2_texture/index.html">Mech Model Part 2: Texturing</a>
+
+</li>
+<li>
+
+Mech Model Part 3: Rigging
+
+</li>
+<li>
+
+<a href="../4_animating/index.html">Mech Model Part 4: Animating</a>
+
+</li>
+</ul>
+</p>
+<p>
+<center>
+
+<img src="result.png" alt="Mech" />
+
+</center>
+</p>
+<p>
+<ol>
+<li>
+
+Before starting ensure the mech is positioned such that it straddles the
+X-axis - place a leg on each side of the origin with the average X
+location of the whole mech set to 0 (assuming the mech is symmetrical).
+This is so that some mirroring functions of rigging, which work only in
+the X-axis, can be applied.
+
+</li>
+<li>
+
+Go to a side view (NUMPAD3). Start by removing any transformations,
+(there shouldn’t be any, but just in case we don’t want them interfering
+with the bones). With the mech model selected in Object mode press
+CTRL-A and choose to set Scale and Rotation to ObData (as a result the
+model’s Rot values should go to 0 and the Scale values to 1 - look at
+the Transform Properties with the N KEY). Now add the armature (SPACE
+-\&gt; Add -\&gt; Armature). A little double-headed pyramid object will appear
+- this is the master bone, other bones will be connected to it such that
+when the master bone moves all other bones move the same way. Use the G
+KEY to position it behind the hips of the mech. Also the tip (narrow bit
+of the bone) should be facing away from the mech, while the root
+(thicker part of the bone) should be nearer the mech. The bone can be
+stretched or angled by selecting it in Object mode and then going to
+Editing mode (TAB) then grabbing the tip to move it - just like other
+objects. On the Armature subpanel of the Editing (F9) panel set Names on
+(so the names of the bones are shown on screen) and X-Ray on (so the
+bones can be seen through the model). With the bone in Edit mode change
+its name from the default Bone to Master, this is done on the Transform
+Properties box on bone. Also, disable the transformation manipulator, so
+the screen is less cluttered (CTRL-SPACE -\&gt; Disable).
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss1.png" />
+
+</center>
+</li>
+<li>
+
+Next the leg bones. Set X-Axis Mirror on the Armature subpanel (this is
+why the mech was positioned across the x-axis). Select the root of the
+master bone in edit mode and then press SHIFT-E. This will extrude two
+bones out from the master bone, although only one can be seen at the
+moment. The master bone will be the parent of these new bones . The
+parent relationship means that the bones move with each other. Move the
+end of the extruded bone to the centre of the knee.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss2.png" />
+
+</center>
+</li>
+<li>
+
+Go to front view (NUMPAD1) and grab one of the extruded bones. As you
+move it you will see another mirrored bone. One will be named Master\_L
+and one Master\_R, for left and right. Whichever you have grabbed, move
+it to the appropriate leg so that the root is in the centre of the hip
+and the tip in the centre of the knee. Shift back and forth between side
+and front views, moving the bone until it is properly positioned inside
+the upper leg of the mech (roughly positioned is good enough, pinpoint
+accuracy is not required). By positioning one of the bones, the other
+should also be in the correct position thanks to the X-Axis Mirroring.
+Then rename them Upper\_Leg\_L and Upper\_Leg\_R.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss3.png" />
+
+</center>
+</li>
+<li>
+
+Select the tip of one of the upper leg bones and press SHIFT-E again.
+Two more bones are extruded this time with their roots attached to the
+tip of the upper leg bones. Because we extruded from the tip rather than
+the root this means this bone is a connected child of the upper leg bone
+(extruding from the root makes the child bone unconnected). Move them so
+that they go from the knee to the foot (again switching views). Rename
+them Lower\_Leg\_L and Lower\_Leg\_R.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss4a.png" /> <img src="ss4b.png" />
+
+</center>
+</li>
+<li>
+
+Next create the ankle by selecting the tip of lower leg and CTRL\_RMB
+click behind the base of the leg (this works like extrude, the resulting
+bone is a child of the first bone). Position the ankles so that they
+extrude horizontally from the tip of the lower legs. Rename them as
+ankles and remove their parent bone by blanking the “child of” box on
+the Armature Bones subpanel when the bone is selected. It might help to
+change from viewing the bones as octahedrons to sticks, as the former
+will fill up too much of the screen for the fine detail work to come.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss5.png" />
+
+</center>
+</li>
+<li>
+
+Create the feet by selecting the tip of the lower leg again and
+CTRL\_RMB click in the centre of foot. Position them and rename them as
+feet. The feet should be children of the ankles - select one of the feet
+then SHIFT select the appropriate ankle, press CTRL-P to create the
+parent relationship (select Keep Offset). This wasn’t done by extruding
+from the ankle so that everything is in the right position.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss6.png" />
+
+</center>
+</li>
+<li>
+
+Make the toes children of the feet. They should not be connected to the
+feet and should be positioned at the edge of the mesh’s toes so the toes
+won’t roll strangely as the side toes are off-axis compared to the of
+the rest of the legs.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss7.png" />
+
+</center>
+</li>
+<li>
+
+Select all bones (press A KEY until all bones are selected). Press
+CTRL-N and accept the option presented - this will remove any roll
+applied to the bone and will make predicting the way they move easier.
+Next the legs should act as a chain, so moving the lower leg moves the
+upper leg too. This is called an IK chain. The ankles will be the
+controllers for the legs - moving them will move the entire leg. Go to
+Pose mode (CTRL-TAB until the mode selector says Pose, or just select it
+from the dropdown), select the ankle and SHIFT select the lower leg.
+Press CTRL-I and accept the To Active Bone option. This makes the ankle
+the target bone of the IK chain bones in the legs. IK means Blender will
+move the chain bones (lower leg) to keep the end bones (upper leg) in
+place despite movement of the target (ankles). The IK target can’t be a
+child of one of the bones in the chain (this causes a cyclic
+dependency), so this is why the ankles are not children of the lower
+legs. Try grabbing the ankle (you know which one is selected as it will
+be highlighted in blue) and moving or rotating it to see how the IK
+chain works, but make sure you return it to the original location when
+done.
+
+</li>
+<li>
+
+The toes should only be able to move up or down, not from side to side.
+To prevent this, click the little lock icon next to the Loc values and
+Rot values on the Transform Properties panel, except for the LocZ value.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss9.png" />
+
+</center>
+</li>
+<li>
+
+To make the ankles move with the mech as a whole, set them to have the
+master bone as their parent, keeping the offset.
+
+</li>
+<li>
+
+Now the legs are setup, bones for the body are required so that it too
+will move with the mech. Create a bone for the spine running from the
+hips up to the top of the body, with the master bone as its parent.
+Create another bone as a child of the spine, which runs along the body
+horizontally (or nearly so). Create a bone running along the hips as a
+child of the spine.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss11.png" />
+
+</center>
+
+Make the upper legs children of the hips. Since we don’t want the IK
+chain to affect the hips, the length of the chain needs to be set to 2,
+so it just affects the lower and upper legs (2 being the number of bones
+in the chain). By default an IK chain will affect all the bones up a
+chain. With one of the leg bones selected in Pose mode, set the ChainLen
+value to 2 on the IK constraints config on the Constraints subpanel.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss11a.png" />
+
+</center>
+</li>
+<li>
+
+So far when the bones are moved the mech mesh does not move too. With
+the armature complete we can make it deform the mech. Go to Object mode
+and select the whole armature, then SHIFT select the mech model and
+press CTRL-P, selecting Object from the options displayed. With the mech
+selected in Object mode, go to the Modifiers subpanel of the Editing
+panel. Click Add Modifier and choose Armature from the available
+options. Deselect the Vert Group option on the new modifier’s config and
+enter the name of the armature (probably “Armature”) in the Ob field.
+
+</li>
+<li>
+
+Select the armature and go into Pose mode. Select an ankle and try
+moving it. The mech mesh underneath moves as well. Unfortunately, you
+will probably find too much of the mesh moves. This is because each bone
+is affecting too much of the mesh. In the image below you will see that
+when a leg is moved, some of the body and toes also move in a strange
+way.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss13a.png" />
+
+</center>
+
+The parts of the mesh affected by each bone need to be changed. This can
+be done in in pose mode, turn on Envelope option on the Armature
+subpanel (the shaded bit around the bone shows the area of influence of
+the bone), select a bone and then use ALT-S to change the size of the
+envelope. This doesn’t work for this mesh - there is too much fine
+detail and the mesh vertices need to be assigned individually to bones.
+To do this, turn off Envelopes on the mesh’s Armature constraint on the
+Modifier subpanel and turn on Vert Groups. Select the armature, enter
+Pose mode, and select the all bones. Select the mech model and enter
+Weight Paint mode (CTRL-TAB until the mode selector displays Weight
+Paint), press W and confirm “Apply Bones Envelopes to Vertex Groups”.
+Now Blender is using vertex groups rather than envelopes to determine
+what is affected, and you have converted the previous envelopes to
+vertex groups. Selecting a bone now will show a weight map of what is
+affected by that bone. The below image shows the vertices affected by
+the upper leg.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss13c.png" />
+
+</center>
+
+Red represents those parts of the mesh greatly affected by the selected
+bone, blue shows those parts not affected. So you can see above that
+moving the upper leg will also affect part of the body (the non-blue
+bit). The Weight Paint mode allows “painting” on the model to choose
+which vertices are affected by the selected bone. The Paint subpanel on
+the Editing panel allows control of the painting. Turn on the All Face,
+Wire and Soft options. The Sub option will remove vertices, so use this
+with the upper leg selected and remove any non-blue vertices other than
+the upper leg and knee. Do the same on the other side. It should look
+like the below.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss13d.png" />
+
+</center>
+
+Do the same with all the bones using Sub or Add, with various brush
+sizes to have the bones affect the mesh as you expect (to get back to
+Paint mode from Pose mode perform the same process of selecting all the
+bones in Pose mode, then selecting the mesh, then going to Weight Paint
+mode - although don’t press W after the first time).
+
+</li>
+</ol>
+</p>
+<p>
+
+And it is done. Try moving the mech around using the master, spine and
+ankle bones - this should provide all the movement required. You can
+download the <a href="mech_rig.blend.blend">blend file here</a>. The
+next stage is to <a href="../4_animating/index.html">animate a walk
+cycle</a>
+
+</p>
+<p>
+
+<a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/"><img alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png" /></a><br /><span xmlns:dc="http://purl.org/dc/elements/1.1/" property="dc:title">Mech
+Rigged Blender Model</span> by
+<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.cordinc.com" property="cc:attributionName" rel="cc:attributionURL">Charles
+Cordingley</a> is licensed under a
+<a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/">Creative
+Commons Attribution 2.0 UK: England &amp; Wales License</a>.
+
+</p>
+
+</div>
+
+<div class="col-lg-2">
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

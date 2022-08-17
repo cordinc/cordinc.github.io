@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Unite12 - Day 3</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>September  1, 2012</b>
+<h4>Unite12 - Day 3</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+    
+<br/><br/>
+<p>The third day of Unite12 started quietly after the awards party the
+night before. To their credit the winners of the big prize got up in
+time to deliver one of the first sessions of the day (which I didn’t
+attend). The crowd seemed typical to other IT related conferences or
+courses - 90-95% male and averaging around 30. There also wasn’t much
+swapping of business cards in general - swapping contact details
+electronically seems to be far more popular now.</p>
+
+<p><a href="http://www.flickr.com/photos/33547649@N07/7862728480/in/photostream"><img src="http://farm8.staticflickr.com/7273/7862728480_8abfae0edf.jpg" alt="" /></a></p>
+
+<p>Day 3 notes from the sessions I attended are below.</p>
+
+<p><a href="http://www.cordinc.com/blog/2012/08/unite12-day-1.html">Day 1 notes
+here.</a><br />
+<a href="http://www.cordinc.com/blog/2012/08/unite12-day-2.html">Day 2 notes
+here.</a></p>
+
+<!--more-->
+
+<p><strong>Advanced Editor Scripting:</strong></p>
+
+<ul>
+  <li>Can get all the scenes by getting all the assets using
+AssetDatabase.GetAllAssetPaths() and then looking for paths ending
+with “.unity”.</li>
+  <li>The AssetPostProcessor class allows work on an asset just before or
+after it is imported.</li>
+  <li>The unity build process can be controlled via the BuildPipeline
+class.</li>
+  <li>The editor.log cantains a list of all assets included in a build
+(and a lot of other stuff too).</li>
+  <li>It is possible to decompile the UnityEditor or UnityEngine DLLs
+(using something like dotPeek by JetBrains) and then use reflection
+to hook into it.</li>
+</ul>
+
+<p><strong>PR Roundtable:</strong></p>
+
+<ul>
+  <li>This was a surprisingly useful session, a lot of good ideas were
+suggested.</li>
+  <li>Identify the 5 things people love about your game and push them over
+and over.</li>
+  <li>PR should be in sync with development. Plans should be
+platform/audience specific. Mobile should aim for big Day 1 push,
+Desktop should start 6-9 months before release.</li>
+  <li>Release previews and assets showing feature over time (not all
+features at once).</li>
+  <li>Produce awesome assets and screenshots. Focus on 5 main things.
+Check for good framing and try to tell a story.</li>
+  <li>Trailers are very important. Keep them short, 45-70 seconds max.</li>
+  <li>Be creative in assets (eg. developer diaries).</li>
+  <li>PR releases.
+    <ul>
+      <li>The headline should deliver the key message in one sentence.</li>
+      <li>Aim for succint and clear. Avoid buzzwords and hyperbole.</li>
+      <li>Who, what, when, where, why, and how of the game</li>
+      <li>Have a link for a press kit</li>
+      <li>Make text cut and pastable - make the journalists’ job easy.</li>
+      <li>Make preview copies available (and linked in release).</li>
+    </ul>
+  </li>
+  <li>Review campaign should target outlets. Do simple research and
+contact journalists (build relationships in advance). The review
+pitch should be short, concise and include working code and press
+assets. Follow up after a few days.</li>
+  <li>Contact global press, not just locals. Different areas like
+different games - your game could be big in Korea, how will you find
+out?</li>
+</ul>
+
+<p><strong>Continuously Bootstrapping an Indie Studio:</strong></p>
+
+<ul>
+  <li>Prototype well. Keep working and changing idea.</li>
+  <li>Assume 1 day’s work on a prototype means 1 month to polish. So a 7
+day prototype followed by 7 months to finish is a good goal.</li>
+  <li>Throwing away prototype is ok.</li>
+  <li>Build a game, not technology. If technology is 75% done that is
+usually good enough. Use external libraries and assets.</li>
+  <li>Actually market your game. People need to know about it. Find a
+voice.</li>
+  <li>Cycle between contract and original IP work for financial safety.
+Aim for 6 months paid contract work that earns enough to cover for 6
+months of own work. Thus if original work fails no one needs to be
+sacked.</li>
+  <li>Network like mad. Get known for something. Go to conferences with a
+purpose and a message. GDC and Unite best for finding contract work,
+E3 worst. PAX good for meeting consumers.</li>
+</ul>
+
+<p><strong>Teaching Game Design through Bronze Age Mythology:</strong></p>
+
+<ul>
+  <li>Used Unity to create models of Pompeiian buildings (<a href="http://pompeii.uark.edu/DigitalPompeii_Content/Models.html">viewable
+here</a>).
+The models teach Roman household art and how rooms are connected.</li>
+  <li>Also used Unity in teaching game design and mythology by having
+students design and create small games based on Homer’s
+<a href="http://en.wikipedia.org/wiki/Odyssey">Odyssey</a>.<br />
+The couse text is Schell’s <a href="http://artofgamedesign.com/">The Art Of Game
+Design</a></li>
+</ul>
+
+<p><strong>Creating the Universe with Unity:</strong></p>
+
+<ul>
+  <li>Rewriting <a href="http://universesandbox.com/">Universe Sandbox</a> with
+Unity.</li>
+  <li>They have a nice glow effect on planets and stars. Close up of star
+surface done using a turbulence library from Asset Store.</li>
+  <li>They show a grid to give a sense of distance. Drawn with lines (not
+a texture).</li>
+  <li>They use LOD on models.</li>
+  <li>Nice camera movement. The camera doesn’t change position, instead
+everything around it is scaled and moved.</li>
+</ul>
+
+<p><strong>The Temple Run Story:</strong></p>
+
+<ul>
+  <li>Presenter ported <a href="http://en.wikipedia.org/wiki/Temple_Run">Temple
+Run</a> to Android using
+Unity. iOS original used a bespoke engine. Temple Run earns
+“approximately a metric fuck ton load… per month”.</li>
+  <li>Had problems with Unity’s prefabs (can’t nest them) and GUI.
+Recommends Merlin’s Prefab Lab and NGUI from the asset store. Also
+like Prime31 libraries.</li>
+  <li>Android is deeply fragmented, but still worth it.</li>
+  <li>Indie studio formula:
+    <ul>
+      <li>Keep it simple</li>
+      <li>Small Team (4 people or less)</li>
+      <li>Publish rapidly - assume failure (consider it a learning event)
+and be able to continue. Don’t aim for one big great game, aim
+for many small great games.</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

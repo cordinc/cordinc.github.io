@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Bank Transfer Errors</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>October 18, 2014</b>
+<h4>Bank Transfer Errors</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Finance.html">Finance</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>At least in the UK, it is often best to pay money to people via bank
+transfer. This is the process where the payer enters the bank account
+number of the payee into some system and then the money is moved
+directly from bank account to bank account. It is easy and costs nothing
+(in the UK). I used to use it all the time for paying rent and similar
+bills.</p>
+
+<p>It is surprising to hear that errors regularly occur in this process.
+People type in an incorrect bank account number and so the wrong person
+receives the money. Obviously in some distress, the payer contacts the
+bank to fix the problem, but the bank doesn’t see it as their problem.
+Pushing or getting the media involved often gets the required results
+(see
+<a href="http://www.theguardian.com/money/2014/jun/30/online-cash-transfer-error">here</a>,
+<a href="http://www.theguardian.com/money/2013/mar/18/banks-slow-transferred-cash-wrong-account">here</a>,
+<a href="http://www.theguardian.com/money/2013/feb/09/26000-banking-error">here</a>
+and many more online stories).</p>
+
+<p>I’m not surprised people type the account number incorrectly; that is
+always going to happen. I’m surprised that such an error results in a
+valid bank account. If the bank account number included a
+<a href="http://en.wikipedia.org/wiki/Checksum">checksum</a>, then an incorrectly
+transcribed number is unlikely to still be valid. Credit cards use a
+<a href="http://en.wikipedia.org/wiki/Luhn_algorithm">checksum algorithm</a> and
+this is why when you type one incorrectly the response is “invalid card
+number” rather than the wrong account being charged. However, bank
+account numbers seem to rarely use this simple error-checking technology
+(codes by country are <a href="http://docs.oracle.com/cd/E18727_01/doc.121/e13483/T359831T498954.htm">listed
+here</a>).
+Why not? Perhaps when the bank account system was established many
+decades ago, checksums were not seem as important. Either because there
+was a person (the local bank manager) in the loop to double check the
+numbers, or because checksums were too computationally costly
+(especially if humans had to do the calculation themselves as computers
+weren’t available). Of course now people use the Internet to make
+transfers and the whole process is performed by computers without human
+interference, and the cost of using checksums is miniscule on even
+relatively old processors.</p>
+
+<p>Banks could add checksums now, placing an optional extra character to
+the end of bank account numbers (several countries have done this). In
+the UK this would be a huge act of customer service. However, from
+experience I would doubt the banks interest in serving their customers.
+At the moment any errors cost the banks little and changing the system
+would be expensive. The core computer programs handling bank accounts
+and transfers between them are ancient COBOL programs (at least at the
+bank where I worked). Rules like the number of digits in a bank account
+are hardcoded and changing them would cascade through various systems.
+Testing the change would be a massive task in itself. I can’t imagine
+any bank voluntarily undertaking such a project - especially as most
+banks are determined to reduced IT costs. Too bad for bank customers.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

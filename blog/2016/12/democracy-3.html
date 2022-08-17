@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Democracy 3</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>December 12, 2016</b>
+<h4>Democracy 3</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/A Gamedev Plays.html">A Gamedev Plays</a>
+    
+<br/><br/>
+<p><em>This post is from the now defunct website “A GameDev Plays…”, copied here for posterity</em></p>
+
+<p>Is a one-party state or assassination in your future political career?
+Find out in the entertaining (and occasionally thought-provoking)
+<a href="http://positech.co.uk/democracy3/">Democracy 3</a> as you pander to those
+population nodes, or maybe just reorganise the country to better
+optimise the demographics.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/54TYU5HYP_E" frameborder="0" allowfullscreen=""></iframe>
+
+<!--more-->
+
+<p>The aim of Democracy 3 is to win elections. To do this the player
+decides upon, and to what extent, various policies should be
+implemented. Consequences flow through a vast array of other policies,
+possible events and demographics. Finally all the changes feed into to a
+popularity score determining the likelihood of re-election.</p>
+
+<p>The game is played out over 3 month turns, leading towards regularly
+spaced elections. There are limits on what the player can do each turn.
+The more controversial a policy, the greater the political capital
+required to implement it. At the start of each turn the player’s
+political capital is replenished depending on the loyalty of the cabinet
+(who can be fired &amp; hired as desired). There is never quite enough to do
+all that is needed. Some policies require little capital, like Community
+Policing, other require so much I have never been able to enact them,
+like an Inheritance Tax.</p>
+
+<p><a href="/assets/agdp/democracy3/main_full.png"><img src="/assets/agdp/democracy3/main.png" alt="Graph optimisation FTW" title="Graph optimisation FTW" /></a></p>
+
+<p>The mass of interconnected policies, events and people lead this to
+becoming essentially a game about graph optimisation. Luckily, I enjoy
+such games, and for a few hours this well-made game was no exception.
+Such simulations often collapse as they are built to teach a certain
+ideology. However, I could not detect that issue here. There are a wide
+array of possible policies ranging from the obvious like policing and
+education, through to the controversial like whether evolution is taught
+in schools, or even the unlikely such as anti-gravity research and
+banning divorce. The linkages between nodes appear reasonable.</p>
+
+<p>The internal model seems to be designed more as a play-pit. After a few
+games, the fun comes increasingly from just trying out some of the more
+extreme possibilities. It is possible to build a socialist utopia,
+police state, or theocracy and still win elections. A big reason for
+this and one of the main advantages of the design, is that it is
+possible to change the demographics of the country. Teaching creationism
+in schools makes the religious demographic segment grow, taxing the rich
+makes them more likely to leave. Players can warp virtual society to
+their ends.</p>
+
+<p><a href="/assets/agdp/democracy3/connections_full.png"><img src="/assets/agdp/democracy3/connections.png" alt="How it all fits together" title="How it all fits together" /></a></p>
+
+<p>A game like this is highly dependent on a smooth user interface, and
+Democracy 3 largely succeeds on this requirement. The main screen holds
+all the information needed to see the current state of the game.
+Hovering over an item highlights its inputs/outputs so it is immediately
+clear how it influences the system. However, sometimes some thought is
+needed to determine whether a linkage is providing a useful effect or
+not. For instance, a positive impact on Pollution means a worse
+environment, but a similar flow to Environment means a better
+environment. After a while these switches become less confusing and
+easier to spot.</p>
+
+<p>Democracy 3 has a real “just one more turn” feel to it. Many times I
+kept playing longer than expected to see what would happen next or if I
+could keep up my popularity. Unfortunately what often happened was
+assassination or runaway success. The system always seems unstable at
+first (why do players start so unpopular when they are supposed to have
+just won an election?). Although after playing for a while, the country
+usually flies off towards one of two steady(ish) states: collapse (and
+death) or unwavering electoral popularity.</p>
+
+<p>In one game my country had 10 years of greater than 50% budget deficits
+with a C credit rating, but it didn’t cause problems. How is that debt
+funded? The economy was wrecked with GDP constantly falling. Despite
+this, I kept being re-elected with 90% majorities. My policies of
+universal health-care, extensive education and a large police force
+keeping everyone happy. Cabinet also just seemed an annoyance with
+little impact and events began to repeat themselves. I started clicking
+“Next” without making any policy changes - year after year of inaction
+and my popularity never waned. Perhaps you are not supposed to play that
+long?</p>
+
+<p><a href="/assets/agdp/democracy3/specifics_full.png"><img src="/assets/agdp/democracy3/specifics.png" alt="Deep dive on Tobacco Tax" title="Deep dive on Tobacco Tax" /></a></p>
+
+<p>I enjoyed playing this game, and it made me think for a few hours.
+However, I do not think I will be playing it again soon. There is
+definitely fun in working out how the internal model works, but not much
+longevity after that. It seems to be too deterministic for a realistic
+simulation. Extreme <a href="https://en.wikipedia.org/wiki/Black_swan_theory">black swan
+events</a> (either
+domestic or foreign) don’t seem to play a big enough role. Still it can
+be fun to try creating some radical political cultures. It is definitely
+worth picking up when cheap in a bundle. Plus it lets you play as
+Australia!</p>
+
+<p>Democracy 3 is on the Steam
+<a href="http://store.steampowered.com/app/245470/">store</a> for PC, Mac and Linux
+at US$24.99. There are many DLC products available and the game has been
+bundled.</p>
+
+<p><a href="/assets/agdp/democracy3/assassination_full.png"><img src="/assets/agdp/democracy3/assassination.png" alt="A common end to my games" title="A common end to my games" /></a></p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

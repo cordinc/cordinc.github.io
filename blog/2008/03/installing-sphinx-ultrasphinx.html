@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Installing Sphinx & Ultrasphinx on Windows</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>March 26, 2008</b>
+<h4>Installing Sphinx & Ultrasphinx on Windows</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
+    
+      <a class="post" href="/blog/tag/Sphinx.html">Sphinx</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>So you have decided to add full-text searching to your Ruby on Rails
+application. After some investigation (see
+<a href="http://www.mail-archive.com/rubyonrails-deployment@googlegroups.com/msg01882.html">here</a>
+and
+<a href="http://blog.evanweaver.com/articles/2008/03/17/rails-search-benchmarks/">here</a>)
+<a href="http://www.sphinxsearch.com/">Sphinx</a> with the
+<a href="http://blog.evanweaver.com/files/doc/fauna/ultrasphinx/files/README.html">Ultrasphinx</a>
+plugin looks like the best solution for your needs. Just one problem,
+despite your deployment environment being Linux, for various reasons
+your current development environment is Windows. While Sphinx runs on
+Windows, it explicitly states it prefers to run on other systems and
+there are a few little gotchas. Here is the step by step guide to
+getting it working:</p>
+
+<ol>
+  <li>Download the <a href="http://www.sphinxsearch.com/downloads.html">Windows
+binaries</a> rather than
+the source code.</li>
+  <li>Extract the contents of the bin/release folder in the zip file you
+just downloaded into a location of your choice (eg. C:\Sphinx).</li>
+  <li>Add the location of the folder in step 2 into your system path.</li>
+  <li>Install chronic - <code class="highlighter-rouge">gem install chronic</code></li>
+  <li>Install Ultrasphinx -
+<code class="highlighter-rouge">svn export svn://rubyforge.org/var/svn/fauna/ultrasphinx/trunk vendor/plugins/ultrasphinx</code></li>
+  <li>Copy the example default.base to the app config folder and edit it.
+The path variable is the path to the location of the index (created
+in step 10), not the Sphinx binaries. Also, find the “set_rotate”
+option and set it to 0. This is not supported on Windows at the time
+of writing. You probably want to have this set differently in
+production.</li>
+  <li>Run <code class="highlighter-rouge">rake ultrasphinx:configure</code> You should now have a Sphinx conf
+file.</li>
+  <li>Add indexing to your model.</li>
+  <li>Edit the Ultrasphinx.rake (in plugins/ultrasphinx/tasks) and where
+you see ‘#{Ultrasphinx::CONF_PATH}’ remove the apostrophes,
+otherwise the rake task below won’t be able to find the
+configuration file.</li>
+  <li>Run rake <code class="highlighter-rouge">ultrasphinx:index</code> You should now have an index in the
+location specified in the conf path.</li>
+  <li>Run rake <code class="highlighter-rouge">ultrasphinx:daemon:start</code> The sphinx daemon should start
+up.</li>
+  <li>You are done and should be able to search. Good luck.</li>
+</ol>
+
+<p><strong>Update:</strong> In case you are not reading the comments, <a href="http://www.cordinc.com/blog/2008/03/installing-sphinx-ultrasphinx.html#comment-1">Naomi
+Novik</a>
+has pointed out that Sphinx/Ultrasphinx doesn’t seem to want to work if
+the Rails project is in a directory with spaces in the path.</p>
+
+<p><strong>Update:</strong> Some people have had problems beyond those I mentioned
+above. Take a look at
+<a href="https://rubyforge.org/forum/message.php?msg_id=49341">this</a> and
+<a href="http://www.ruby-forum.com/topic/146630">this</a> if you have extra
+problems.</p>
+
+<hr />
+
+<p><strong>Comments:</strong>
+<em>I have removed the commenting system (for privacy concerns), below are the comments that were left on this post before doing so…</em></p>
+
+<p><em>Naomi Novik @ 2008-04-06</em> - Thanks so much for this terrific rundown – saved much much time. I thought I would add on that one other problem in Windows I encountered is that Sphinx/Ultrasphinx doesn’t seem to want to work if the Rails project is in a directory with spaces in the path (eg if you’re working under My Documents or whatnot).</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>SOAP and REST</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>August  9, 2009</b>
+<h4>SOAP and REST</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>For a recent project I had to connect to two different read-only web
+services. Both were from commercial vendors providing very similar
+information (which I aggregated). One API was
+<a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>
+based the other used <a href="http://en.wikipedia.org/wiki/SOAP">SOAP</a>. The REST
+interface took me a few hours to write, the SOAP one took days!</p>
+
+<p>For the REST interface I had to send requests to a URL that somewhat
+indicated what I was attempting to do - eg
+http://example.site/contracts/123 to get the details of contract with id 123. An <a href="http://en.wikipedia.org/wiki/XML">XML</a> was returned and using a
+<a href="http://en.wikipedia.org/wiki/Simple_API_for_XML">SAX</a> parser
+constructed my internal objects. In total it took 340 lines of my code
+to handle the entire web service. Easy!</p>
+
+<p>Using the SOAP interface required me to download their
+<a href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">WSDL</a>
+and then construct a model of their domain objects - I used <a href="http://ws.apache.org/axis2/">Apache
+Axis2</a> (not Apache Axis though, that is an
+old and unmaintained project that does the same thing - a confusion that
+cost me some time). Unfortunately the WSDL was wrong and the model
+didn’t generate properly. I had to dive into the 2000 line WSDL file to
+find and fix the error - and it was near unreadable! Try looking at a
+commercial WSDL file some time. After some trial and error the model was
+right and when surrounded by copious error handling code it could be
+sent and data received from the service. It took 810 lines of my code,
+plus hundreds more in the generated model. Urgh. At this point one might
+suggest it was just a problem caused by a dodgy service provider.
+However, I have since added a third read-only web service to the
+project. It is also SOAP based and just as difficult to get running
+properly - apart from having to modify the WSDL since theirs was correct
+from the start.</p>
+
+<p>I also have experience from the other side, providing a web service.
+Using <a href="http://rubyonrails.org/">Ruby on Rails</a> I added a REST interface
+to my existing website by just providing XML views of the data. While
+working at a bank a SOAP interface to an existing legacy system was
+required, it took a great deal of fiddling and trust in our IBM
+development tools to get it working after a couple of days.</p>
+
+<p>The experience reminds me of an <a href="http://www.theregister.co.uk/2006/04/29/oreilly_amazon/">interview on The
+Register</a> where
+Tim O’Reilly suggests that SOAP is a standards first specification
+created without reference to how it would be used in the real world
+(because at the time the spec was created there weren’t any people using
+it). SOAP definitely feels like an overengineered solution. The kind of
+thing I would have loved earlier in my career when suffering from
+<a href="http://en.wikipedia.org/wiki/Second-system_effect">Second System
+Syndrome</a>. Over time
+I am becoming increasingly appreciative of simplicity in code.</p>
+
+<p>For me, there is now no comparison. SOAP just doesn’t seem to work well
+in any place I’ve seen it tried. My first choice for web service API
+will have to be REST.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

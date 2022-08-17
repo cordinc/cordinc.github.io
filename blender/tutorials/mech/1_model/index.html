@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Mech Model Part 1: Modelling - Cordinc</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<h4>Blender Beginner for Beginner Tutorial: Mech Model Part 1: Modelling</h4>
+
+<p><b>26th May 2010 - Blender 2.47</b></p>
+
+<p>
+
+I decided to move away from historical models for this tutorial. I chose
+a <a href="http://en.wikipedia.org/wiki/Mecha">mecha</a>, a walking
+robot, as an exercise in texturing, rigging and animation. The idea is
+to first create a low-poly model so that most of the visual detail is in
+the textures applied. Then a walk cycle will be animated using bone
+rigging to aid further animations. The result will be the sort of model
+that could be used in a simple game. As there are quite a few steps in
+achieving all of this, the tutorial has been split into four parts. This
+first part creates the base model. Following posts will cover texturing,
+rigging and animating.
+
+</p>
+<p>
+<ul>
+<li>
+
+Mech Model Part 1: Modelling
+
+</li>
+<li>
+
+<a href="../2_texture/index.html">Mech Model Part 2: Texturing</a>
+
+</li>
+<li>
+
+<a href="../3_rigging/index.html">Mech Model Part 3: Rigging</a>
+
+</li>
+<li>
+
+<a href="../4_animating/index.html">Mech Model Part 4: Animating</a>
+
+</li>
+</ul>
+</p>
+<p>
+<center>
+
+<img src="result.png" alt="Mech" />
+
+</center>
+</p>
+<p>
+<ol>
+<li>
+
+Centre the cursor (SHIFT-C), use a top-down view (NUMPAD7) and create a
+circle (SPACE key, choosing Add -\&gt; Mesh -\&gt; Circle) 6 vertices and
+radius 1. A hexagon is drawn - this will become the foot of the mech.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss1.png" />
+
+</center>
+</li>
+<li>
+
+Select the circle and go into edit mode (TAB), extrude (E KEY) the edges
+up 0.5 in the Z axis to create the volume of the foot.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss2.png" />
+
+</center>
+</li>
+<li>
+
+Switch to face select mode (CTRL-TAB and select the Faces option) and
+select one of the faces. Go into top view (NUMPAD7) and extrude (E KEY)
+the face 1.5 (this should be performed in the XY plane). Then with the
+newly extruded face selected, scale 0.6 in the X (S then X key then 0.6)
+and then 0.6 in the Y (S then Y key then 0.6). Do the same for two more
+neighbouring faces of the original hexagon. These will be the toes of
+the mech’s foot.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss3.png" />
+
+</center>
+</li>
+<li>
+
+Close up the base of the foot, by selecting 3 or 4 consecutive points on
+the base of the hexagon (you will have to go back to vertex select mode
+- CTRL-TAB and the Vertices option) and using F KEY to form a face.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss4.png" />
+
+</center>
+</li>
+<li>
+
+Now to close up the top of the foot. Go into edge select mode (CTRL-TAB
+and select the Edges option) and select the edge at the top of the
+hexagon directly opposite the middle toe. Extrude it up in the Z axis
+0.5 (this will be the ankle) and then close up the top of the foot by
+selecting vertices and forming faces with the F KEY.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss5.png" />
+
+</center>
+</li>
+<li>
+
+Create a cylinder (SPACE key, choosing Add -\&gt; Mesh -\&gt; Cylinder)
+uncapped with 6 vertices, length 7 and radius 0.05. Angle it slightly
+(with the R key to rotate, probably just on a single axis - the Y axis
+for me) and position it so the base is hidden in the foot (using G for
+grab). This is the lower leg.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss6.png" />
+
+</center>
+</li>
+<li>
+
+Using side view (NUMPAD1) is good for this step. Create a cyclinder with
+32 vertices, radius 1, depth 1 and capped. Smooth the curved part of the
+cylinder (by selecting all the faces in the curve and then pressing “Set
+Smooth” on the “Link and Materials” subpanel of the Editing panel. Place
+the cylinder at the end of the lower leg - this is the knee. Next the
+upper leg. Create another cylinder, 6 vertices, uncapped, radius 0.5
+with a length, angle and position such that it joins the knee at its
+base and angles up back along the line of the lower leg finishing
+roughly above the foot. Now a single leg is complete.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss7.png" />
+
+</center>
+</li>
+<li>
+
+Join the meshes comprising the leg together by selecting them all and
+using CTRL-J. Move the leg off centre and then duplicate it with SHIFT-D
+so there are two legs - make sure they are in the same position except
+being mirrored across the Y axis.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss8.png" />
+
+</center>
+</li>
+<li>
+
+Create a capped cylinder with 32 vertices, radius 1. Smooth it, then
+scale it to a length long enough to span both upper legs and position it
+as shown below. This will be the hip.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss9.png" />
+
+</center>
+</li>
+<li>
+
+Create a cube and transform it to dimensions x=1.5, y=4, z=2 and then
+move it so the centre is the same as the hips in X and Y axes with it
+slightly higher in the Z axis - this is where the hips/legs will attach
+to the body.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss10.png" />
+
+</center>
+</li>
+<li>
+
+Create a capped cylinder with radius 3, 36 vertices and a depth of 5.
+Move so that it sits directly in front of the hips and scale it in down
+the vertical (Z) axis to 4.5 diameter creating an oval. This will become
+the body of the mech.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss11.png" />
+
+</center>
+</li>
+<li>
+
+Select the cylinder, go into edit mode and select only the front faces
+(those of the end of the cylinder furthest from the hips). Scale it down
+0.25 (to create something like a nose) in all axes. Select all the side
+faces below the midline and delete them. Do the same to the back end.
+The cylinder should look like the example on the left. Next the cylinder
+needs to be closed up again. In vertex select mode, select the bottom
+point of the front end, and the mid point and one neighbouring side
+point of the back end, fill a triangle. Do the same with the other side.
+Then create faces from each neighbouring pairs of points along the front
+end with the back end point on the same side until the cylinder is
+closed up again - like the picture on the right.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss12.png" /> <img src="ss12a.png" />
+
+</center>
+</li>
+<li>
+
+Extrude the back faces until they extend past the hip attachment, thus
+attaching the body to the hip.
+
+<center style="margin-top:5px;margin-bottom:5px">
+
+<img src="ss13.png" />
+
+</center>
+</li>
+<li>
+
+Optional cheat. I wanted to keep the polygon count low, but during the
+texturing stage the hard edges on the circular parts (nose, hips and
+knees) looked too exact and I couldn’t fix this with normal maps. In the
+end I decided to bevel these edges. Select one edge in the circle, then
+edge loop select (RMB on one edge while the ALT key is pressed and the
+whole circle of edges should be selected) then W KEY and choose Bevel,
+enter a value of 0.01 and enter. It just softens the edge by creating
+another edge right next and parallel to it.
+
+</li>
+<li>
+
+Play around and set smooth on the faces to your satisfaction. Then
+select all the meshes and joining them together with CTRL-J.
+
+</li>
+</ol>
+</p>
+<p>
+
+And the basic model is complete! You can download the
+<a href="mech_model.blend">blend file here</a>. The next stage is to
+texture the mech and <a href="../2_texture/index.html">the tutorial for
+that is here</a>.
+
+</p>
+<p>
+
+<a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/"><img alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png" /></a><br /><span xmlns:dc="http://purl.org/dc/elements/1.1/" property="dc:title">Mech
+Model Blender Model</span> by
+<a xmlns:cc="http://creativecommons.org/ns#" href="http://www.cordinc.com" property="cc:attributionName" rel="cc:attributionURL">Charles
+Cordingley</a> is licensed under a
+<a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/">Creative
+Commons Attribution 2.0 UK: England &amp; Wales License</a>.
+
+</p>
+
+</div>
+
+<div class="col-lg-2">
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

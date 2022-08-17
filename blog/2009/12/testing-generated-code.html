@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>Testing generated code</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>December  7, 2009</b>
+<h4>Testing generated code</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+<br/><br/>
+<p>What is the accepted way to test generated source code? A recent work
+project required me to generate some Java source code from small
+definition files as part of a larger framework. The plan was for other
+project teams to take the framework and use the generator to create
+source which would become part of their project. I wanted to write unit
+tests for the source code. The problem was how to write a test for code
+that didn’t exist at the time the test was written because it hadn’t
+been generated yet! I came up with a few options:</p>
+
+<ul>
+  <li>Do a text comparison between generated code and the previously
+created known text output of the generation process. If they are
+exactly the same, the test passes. This tests the generation process
+if correct but doesn’t test the logic of the generated code. If the
+generated code has syntactic errors, compilers or IDEs will pick
+this up quite fast and the developers in the other project will
+complain quickly, but subtle logic could go unchecked for ages.</li>
+  <li>Write a test that generates a class file from known inputs then
+compiles it programmactically with the <a href="http://java.sun.com/javase/6/docs/api/javax/tools/JavaCompiler.html">Java Compiler
+API</a>
+then loads the class into the JVM and runs tests against it. This
+would be better than the previous idea, as it tests the
+functionality of the result. This was my first choice solution.
+However, getting the Java Compiler API to work can be a bit hard.
+There was a paucity of documentation on this and in the end I
+couldn’t get it to work within time constraints.</li>
+  <li>Generate the test at the same time as the generated code and pass
+them both to the other project. The other project would then test
+the generated code as if it was their code. This felt wrong to me.
+No other generations systems do this - it is like passing the buck.
+If there is an error in the generated code then the generator needs
+to be fixed not the generated class!</li>
+  <li>A 2-step process - test the functionality and generation process
+separately. First, create a class that should be the same as a
+generated class given known inputs (probably by generating it!) and
+write tests that work against that class. Thus the problem of
+testing not yet existing code is solved by using some code generated
+earlier. This tests the generated code’s functionality as long as
+the generating process doesn’t change. So the second part is to test
+the generation process hasn’t changed using the first test in this
+list. Add another test to generate the code and check that it is
+exactly the same text as the class the rest of the test is written
+against. If the generation output changes then you have to modify
+the pre-generated class, and thus change the functionality test if
+required. Easy.</li>
+</ul>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/06/ipod.html">iPod</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/goals.html">Goals</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/10/game-time.html">Game Time</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2021/07/too-many-games.html">Too Many Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>
