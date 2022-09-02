@@ -38,6 +38,79 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">August 25, 2008</span>
+  <h4><a href="/blog/2008/08/golf-reviews.html">Golf Reviews</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Golf.html">Golf</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Back in May I decided it was time to learn to play golf. Since then I
+have been to a golf school, 2 golf courses, a driving range and an
+indoor video golf centre. I thought I would write briefly about them.</p>
+
+<p><strong>The James Andrews School Of Golf</strong></p>
+
+<p>I signed up for a 3 day residential training course with <a href="http://golfschool.co.uk/">The James
+Andrews School Of Golf</a> as a holiday. I
+greatly enjoyed the break. Although I can’t claim to be a good golfer at
+the moment, I can say that I am a better golfer as a result of the
+course as I saw my swing improve over the 3 days (considering I
+consistently missed the ball entirely at the start). Indeed most of the
+course focussed on the swing. The general format was swing practice,
+putting/pitching practice, and then the swing again before lunch and
+having the afternoon to ourselves. Nice course, good teacher, highly
+recommended (although the food could have been better considering the
+cost). I certainly left feeling prepared to tackle a proper course.</p>
+
+<p><strong>World Of Golf</strong></p>
+
+<p>Unfortunately it took a while before I managed to get myself onto a
+proper golf course, so in the interim I kept up my driving skills with a
+couple of visits to <a href="http://www.worldofgolf-uk.co.uk/driving+ranges/sidcup">World Of
+Golf</a>, a local
+driving range. I never had to queue for a bay, itis £7 for 100 balls and
+you can hire clubs, not much more to say. I still go regularly.</p>
+
+<p><strong>Hobbs Cross Golf Course</strong></p>
+
+<p>My first proper game of golf was at <a href="http://www.hobbscrossgolfcentre.com/">Hobbs
+Cross</a>. in Essex. It seemed like a
+friendly course, geared towards beginners. There was a 9-hole par-3 and
+another more normal 9-hole. For the record I was 57-over for the full</p>
+<ol>
+  <li>There was a driving range, but the cafe was closed - take your own
+food just in case. A good course and I’ll go back eventually (it’s a
+good distance away from where I live).</li>
+</ol>
+
+<p><strong>Beckenham Place Park Golf Course</strong></p>
+
+<p><a href="http://www.glendale-golf.com/course-7-beckenham-place.aspx">Beckenham Place
+Park</a> is
+probably the nearest course to my current abode. It is a cheap public
+course (£50 for 2 and club hire), and is a bit harder than Hobbs Cross.
+Aside from the golf, I was not greatly impressed: the hire clubs seemed
+poor to me; the cafe was disappointing (salad in sandwiches is
+apparently not often requested); there were many groups of kids
+wandering around and the toilets were closed. On the golf side, quite a
+few of the holes are uphill which causes me some problems. I’m in no
+rush to return.</p>
+
+<p><strong>City Golf</strong></p>
+
+<p>I was given a voucher for a complimentary session at <a href="http://www.citygolfclubs.com/">City
+Golf</a>, where you play golf inside,
+hitting your balls towards a video screen. While this was ok for driving
+practice, nothing else played as I would expect it. Putting was hopeless
+and so was trying to get out of the rough - there was just no feel.
+Although it was free to me, the costs seemed quite high. I doubt I am
+their target market. I can’t imagine I’ll be going back anytime soon.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">August 17, 2008</span>
   <h4><a href="/blog/2008/08/2nd-poker-evening.html">2nd Poker Evening</a></h4> 
   Tags: 
@@ -213,86 +286,6 @@ networking side and the actual project side.</p>
   </div>
   <hr/>
 
-  <span class="date">June 24, 2008</span>
-  <h4><a href="/blog/2008/06/javascript-again-or-getting-to.html">Javascript again (or getting tooltips to work with Scriptaculous Sortables)</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Javascript.html">Javascript</a>, 
-    
-      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Update: based on the work I detail here I have created my own
-<a href="http://www.cordinc.com/projects/tooltips.html">Javascript tooltip library based on
-Prototype</a>.</p>
-
-<p>Over a decade ago Borland had an IDE called Intrabuilder, which allowed
-you to create websites in a Visual Basic like manner using Javascript on
-the server. After leaving postgrad study I worked at a now defunct
-dot.com called Electrolley for 9 months using this tool to create an
-online grocery store. Serverside javascript was an idea well ahead of
-its time. Indeed, javascript on the client side in 1997 was crap too.
-Now <a href="http://www.prototypejs.org/">javascript is cool</a> and <a href="http://steve-yegge.blogspot.com/2008/06/rhinos-and-tigers.html">moving
-forward</a>
-(backwards?). With my new project, I need to return to Javascript and
-the last couple of days have been a hard reintroduction.</p>
-
-<p>I am using Prototype and Scriptaculous to make my website as easy to use
-as possible. I also found some random code on the web to do tooltips -
-it almost worked! Applying tooltips to Scriptaculous Sortable elements
-leads to many problems, and I have just finished largely rewriting the
-library.</p>
-
-<ul>
-  <li>After moving some sortable elements the tooltips of the moved
-elements would be displayed underneath the unmoved elements. This is
-because of the way <a href="http://www.boogdesign.com/b2evo/index.php/a/2007/06/05/scriptaculous_draggable_and_z_index">z-index stacking contexts are created in
-browsers</a>.
-In moving an element, Scriptacolous clones it and moves the clone,
-inserting a new element when the element is dropped. This causes the
-dropped item to be in a different z-index stacking context than the
-other items. To get around this, the tooltips need to be drawn
-outside the moved elements context. This can be done by cloning the
-tooltip and then inserting it into the document at a point outside
-the sortable elements’ container. I have explicitly put in the id’s
-to which the tooltips is being attached, they should probably be
-passed in (left as an exercise for the reader).</li>
-</ul>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tool_tip</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">container</span><span class="dl">"</span><span class="p">).</span><span class="nx">insertBefore</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">main_content</span><span class="dl">"</span><span class="p">));</span></code></pre></figure>
-
-<p>When the tooltip needs to be hidden, just destroy the clone:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Element</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">);</span>
-<span class="k">this</span><span class="p">.</span><span class="nx">_clone</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span></code></pre></figure>
-
-<ul>
-  <li>This also means the tooltip needs to be positioned absolutely, so
-ensure you are using absolute screen x &amp; y coordinates.</li>
-  <li>Dragging a sortable element over other elements results in a number
-of mouse events firing as the elements are redrawn. Many of these
-events are consumed by Scriptaculous and not passed on. Thus, the
-tooltips hide and show functions may be called in any order,
-resulting in spurious and permanent copies (since it is cloned) of
-the tooltip all over the screen. To get around this just ensure
-there is only ever once tooltip on the screen at a time, so at the
-top of the show method put</li>
-</ul>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">)</span> <span class="p">{</span>
-   <span class="nx">hideTooltip</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>It seems simple now I’ve fixed the problems, but it took a couple of
-days to remember my old Javascript knowledge.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -319,6 +312,10 @@ days to remember my old Javascript knowledge.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/09/hosting.html">Hosting</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/08/roguelike.html">Roguelike Tutorial 2022</a> 
@@ -355,16 +352,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2021/10/game-time.html">Game Time</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

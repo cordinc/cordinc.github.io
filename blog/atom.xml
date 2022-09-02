@@ -3,13 +3,29 @@
     <title type="text" xml:lang="en">Cordinc Blog</title>
     <link type="application/atom+xml" href="http://www.cordinc.com/blog/atom.xml" rel="self"/>
     <link type="text" href="http://www.cordinc.com" rel="alternate"/>
-    <updated>2022-08-17T17:30:04+08:00</updated>
+    <updated>2022-09-02T19:59:02+08:00</updated>
     <id>http://www.cordinc.com</id>
     <author>
         <name>Cordinc Blog</name>
     </author>
     <rights>Copyright (c) 2013-2020 Cordinc Blog</rights>
 
+    
+    <entry>
+        <title>Hosting</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2022/09/hosting.html/"/>
+        <published>2022-09-02T00:00:00+08:00</published>
+        <updated>2022-09-02T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2022/09/hosting.html/</id>
+        <content type="html">&lt;p&gt;This website has moved. &lt;a href=&quot;/blog/2013/08/site-move.html&quot;&gt;Since 2013&lt;/a&gt; it has been hosted on a small virtual server at &lt;a href=&quot;www.linode.com&quot;&gt;Linode&lt;/a&gt;. Now it is hosted through &lt;a href=&quot;www.github.com&quot;&gt;Github Pages&lt;/a&gt;. I should mention I have been very happy with Linode’s service and cost, but their minimum service is still overkill for this simple static website. I continue to use Linode for the &lt;a href=&quot;www.concealedintent.com&quot;&gt;Concealed Intent&lt;/a&gt; game server (for now).&lt;/p&gt;
+
+&lt;p&gt;So why the move? Maintaining an Internet facing server is a pain. There are a number of threats and it is just not worth the time in upkeep. Or worse, no support is performed and the server slowly degrades, becoming increasingly vulnerable (of which I am guilty since 2019). With Github all that work is handled by someone else, and the cost is 100% less (Github is free on my current plan, but even if I need to go to the paid plan later it’s still 25% cheaper).&lt;/p&gt;
+
+&lt;p&gt;There are some useful side effects of going to Github too. The site uses &lt;a href=&quot;https://en.wikipedia.org/wiki/HTTPS&quot;&gt;HTTPS&lt;/a&gt; always, without me needing to play around with certs! Also, I changed DNS provider to &lt;a href=&quot;www.cloudflare.com&quot;&gt;Cloudflare&lt;/a&gt;, and so far their free service is great too - they even cache &amp;amp; compress the website so it should load super quick.&lt;/p&gt;
+
+&lt;p&gt;Overall, I have been happy with the process and outcome. There was a bit of fiddliness getting the DNS setup due to lag in updates propogating, but that was it for problems. The only issue to solve now is how to handle automatic backups, but then Github is probably more reliable then me, so I’m not rushing (touch wood). Might have to look into moving Concealed Intent too, although that’s a much bigger task.&lt;/p&gt;
+</content>
+    </entry>
     
     <entry>
         <title>Roguelike Tutorial 2022</title>
@@ -214,32 +230,6 @@
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/211260/They_Bleed_Pixels/&quot;&gt;They Bleed Pixels&lt;/a&gt;&lt;/strong&gt; (1hr): A super-hard 2D platformer with pixel graphics. Looks good, but way too difficult for me - I couldn’t even get through the prologue. No game for old men.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/1127610/Iris_and_the_Giant/&quot;&gt;Iris and the Giant&lt;/a&gt;&lt;/strong&gt; (7hrs): Cute little deckbuilder, where you play as a young girl fighting her inner demons. It has the interesting mechanic that cards can only be played once and are then gone - if your deck empties it is game over. Also a clever way to defeat the final boss (which took me way too long to discover). There is a lot of replayability with secret paths and powerups, but once I got the end I felt I had done enough. A worthwhile game.&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Game Time</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2021/10/game-time.html/"/>
-        <published>2021-10-06T00:00:00+08:00</published>
-        <updated>2021-10-06T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2021/10/game-time.html/</id>
-        <content type="html">&lt;p&gt;This is the third “short game reviews” post in a row, so I decided to quantify the amount of time spent playing games since the last post (over 2 months ago). I have added the amount of playing time (nearest hour) to each game review. Of course I chose to start this right before playing Civ6 and Battletech, oh no!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.epicgames.com/store/en-US/p/control&quot;&gt;Control&lt;/a&gt;&lt;/strong&gt; (3 hours): Well made FPS with high production values. I found this midly interesting as the game started building an interesting world. However, I was incredibly bad at this game and it quickly became more frustrating than enjoyable.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.epicgames.com/store/en-US/p/sid-meiers-civilization-vi&quot;&gt;Civilisation VI&lt;/a&gt;&lt;/strong&gt; (20 hours): The latest iteration of the iconic turn-based 4X. I played the first and second versions way too much when they were released (and tried out the others). I got away from from this one lightly. The new thing is that cities now sprawl out over the map rather than being constrained to a single hex. Otherwise it seems like another highly polished, but largely unchanged sequel - why break a winning formula? It still gets really fiddly in the end game with lots of cities and units, and there are tons of rules and options. The main thing is, it is as addictive as ever. I played a couple of learning games, then in my first proper game played 12 hours straight! I had to stop after that (completing a military victory first).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://brunodias.itch.io/voyageur&quot;&gt;Voyageur&lt;/a&gt;&lt;/strong&gt; (1 hour): A procedurally gernerated space trading game. Quite small and repetitive. Occasional hints of a story and some legacy mechanics between games, but after playing for just over an hour nothing really changed. Given the limited gameplay I stopped.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.epicgames.com/store/en-US/p/shadowrun-hong-kong&quot;&gt;Shadowrun Hongkong&lt;/a&gt;&lt;/strong&gt; (4 hours): This reminds me of Wasteland 2 - a turn-based tactical combat game with lots of RPG elements. You start by building a character, but with no guide on what is appropriate - did I do it right? No idea and this is a particular bugbear of mine. There is also lots of talking - I didn’t want to replay and go through it all again, so when stuck I just stopped. This feels like a visual novel with a bit of fighting. Walk, talk, walk, talk.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.epicgames.com/store/en-US/p/crying-suns&quot;&gt;Crying Suns&lt;/a&gt;&lt;/strong&gt; (10 hours): This mix of roguelike and realtime tactics (with pause) set on a spaceship reminds me heavily of FTL. It also shares many story elements and that same red tide pushing you forward across the map. The story is dark and it is not set in a fun world. Interesting art style, 8-bit for items and characters, but most of the GUI is very smooth. A good game and a lot easier than FTL, but not nearly as charming.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/637090/BATTLETECH/&quot;&gt;Battletech&lt;/a&gt;&lt;/strong&gt; (50 hours): Turn-based tactics and fairly faithful reproduction of the old 80’s tabletop minatures game (which I used to play). Teams of giant mecha blast eachother across a hex map. Beautiful graphics and satisfying turn-by-turn gameplay led me to finish the game over the course of a fortnight. To nickpick minor issues in a great game: 1) the uninspiring story that I skipped through as much as possible, especially as I could detect no impact to the conversation choices at all; 2) each instance of a particular mission type is  similar to the others of the same type and always goes the same way, making the game more like a puzzle. Despite that, a very enjoyable game and pleasant trip down memory lane.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/792100/7_Billion_Humans/&quot;&gt;7 Billion Humans&lt;/a&gt;&lt;/strong&gt; (1 hour): Humourous programming game where you work for HR giving tasks to humans in computer controlled world. Seemed interesting, but programming games feel like work to me so I didn’t play long.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/395570/We_Are_The_Dwarves/&quot;&gt;We Are The Dwarves&lt;/a&gt;&lt;/strong&gt; (1 hour): Action RPG about sci-fi (or steampunk?) dwarves exploring an underground world. The tutorial was hard to understand and they even gave me an achievement for unintentionally not following it (hmmm). Graphics felt dated. These games are not my thing and this one didn’t come close to changing my view.&lt;/p&gt;
 </content>
     </entry>
     

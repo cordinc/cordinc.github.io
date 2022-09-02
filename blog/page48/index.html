@@ -38,6 +38,50 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">May 12, 2012</span>
+  <h4><a href="/blog/2012/05/debugging-context-in-unity3d.html">Debugging context in Unity3D</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>A cool little feature of Unity3D scripting I recently found is using
+conditional compilation for debug statements. The C based languages (but
+not Java unfortuately) have inbuilt preprocessors that allow developers
+to only compile certain parts of the code if certain parameters are set
+(it can also do much more, including macros). Thus you could write the
+below and the code would only be included in the executable if <code class="highlighter-rouge">DEBUG</code>
+is defined.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="k">if</span> <span class="nx">DEBUG</span>
+    <span class="c1">// do some special code</span>
+<span class="err">#</span><span class="nx">endif</span></code></pre></figure>
+
+<p>Unity3D has a similar system. Mostly the docs (<a href="http://unity3d.com/support/documentation/Manual/Platform%20Dependent%20Compilation.html">available
+here</a>)
+seem to suggest this is for specialist code for different platforms:
+iPhone, Web, PC, etc. Thus the defined parameters are set in advance
+(e.g. <code class="highlighter-rouge">UNITY_IPHONE</code>). However, there is one that is useful for
+debugging, <code class="highlighter-rouge">UNITY_EDITOR</code>. This will only be set if the application is
+running inside the Unity3D GUI. Once you build the app those lines of
+code will be skipped. It can be used like the below example - very
+handy.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="k">if</span> <span class="nx">UNITY_EDITOR</span>
+    <span class="nx">Debug</span><span class="p">.</span><span class="nx">Log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Debugging</span><span class="dl">"</span><span class="p">);</span>
+<span class="err">#</span><span class="nx">endif</span> </code></pre></figure>
+
+<p>According to <a href="http://forum.unity3d.com/threads/71445-How-To-Set-Project-Wide-pragma-Directives-with-JavaScript">this Unity3D forum
+post</a>
+it is also possible to define your own project specific preprocessor
+parameters.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">May  4, 2012</span>
   <h4><a href="/blog/2012/05/unit-testing-unityscript-in-un.html">Unit Testing UnityScript in Unity3D with SharpUnit</a></h4> 
   Tags: 
@@ -244,39 +288,6 @@ To me these differences are enough to prevent want I wanted to achieve.</p>
   </div>
   <hr/>
 
-  <span class="date">April  1, 2012</span>
-  <h4><a href="/blog/2012/04/lost-code.html">Lost Code</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Recently at work I was asked to find out if anyone was still using a
-small tactical program I wrote. If it was unused, they apologetically
-asked me to shut it down. No apology was required, but I understand why
-it was offered. Some developers can become quite precious about their
-code and want to see it keep running forever. However, after working in
-this fast-paced industry for nearly 15 years I have long accepted that
-most of my code is no longer running. I’d be lucky if most of it is even
-still backed up somewhere rather than being sent to
-<a href="http://en.wikipedia.org/wiki//dev/null">/dev/null</a>.</p>
-
-<p>Four of my old teams were shutdown with near total loss of code. Another
-two years were spent at a consulting firm where most of the clients I
-serviced no longer exist. Those 5 jobs combined mean that half of my
-working life’s production is largely gone. At a guess I would say 10% of
-the code from my first five working years is still used; around 30% from
-the second five years; and, over two-thirds of the last 5 years of my
-code is currently running. My professional code appears to have a
-half-life of around 4 years. This sounds about right considering the
-rate of technology change.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -303,6 +314,10 @@ rate of technology change.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/09/hosting.html">Hosting</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/08/roguelike.html">Roguelike Tutorial 2022</a> 
@@ -339,16 +354,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2021/10/game-time.html">Game Time</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

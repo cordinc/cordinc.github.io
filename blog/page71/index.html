@@ -38,6 +38,66 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">December  7, 2009</span>
+  <h4><a href="/blog/2009/12/testing-generated-code.html">Testing generated code</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>What is the accepted way to test generated source code? A recent work
+project required me to generate some Java source code from small
+definition files as part of a larger framework. The plan was for other
+project teams to take the framework and use the generator to create
+source which would become part of their project. I wanted to write unit
+tests for the source code. The problem was how to write a test for code
+that didn’t exist at the time the test was written because it hadn’t
+been generated yet! I came up with a few options:</p>
+
+<ul>
+  <li>Do a text comparison between generated code and the previously
+created known text output of the generation process. If they are
+exactly the same, the test passes. This tests the generation process
+if correct but doesn’t test the logic of the generated code. If the
+generated code has syntactic errors, compilers or IDEs will pick
+this up quite fast and the developers in the other project will
+complain quickly, but subtle logic could go unchecked for ages.</li>
+  <li>Write a test that generates a class file from known inputs then
+compiles it programmactically with the <a href="http://java.sun.com/javase/6/docs/api/javax/tools/JavaCompiler.html">Java Compiler
+API</a>
+then loads the class into the JVM and runs tests against it. This
+would be better than the previous idea, as it tests the
+functionality of the result. This was my first choice solution.
+However, getting the Java Compiler API to work can be a bit hard.
+There was a paucity of documentation on this and in the end I
+couldn’t get it to work within time constraints.</li>
+  <li>Generate the test at the same time as the generated code and pass
+them both to the other project. The other project would then test
+the generated code as if it was their code. This felt wrong to me.
+No other generations systems do this - it is like passing the buck.
+If there is an error in the generated code then the generator needs
+to be fixed not the generated class!</li>
+  <li>A 2-step process - test the functionality and generation process
+separately. First, create a class that should be the same as a
+generated class given known inputs (probably by generating it!) and
+write tests that work against that class. Thus the problem of
+testing not yet existing code is solved by using some code generated
+earlier. This tests the generated code’s functionality as long as
+the generating process doesn’t change. So the second part is to test
+the generation process hasn’t changed using the first test in this
+list. Add another test to generate the code and check that it is
+exactly the same text as the class the rest of the test is written
+against. If the generation output changes then you have to modify
+the pre-generated class, and thus change the functionality test if
+required. Easy.</li>
+</ul>
+
+  </div>
+  <hr/>
+
   <span class="date">December  2, 2009</span>
   <h4><a href="/blog/2009/12/clcv-205-introduction-to-ancie.html">CLCV 205: Introduction to Ancient Greek History</a></h4> 
   Tags: 
@@ -266,41 +326,6 @@ detail but they have interesting visuals of current Roman sites and art.</li>
   </div>
   <hr/>
 
-  <span class="date">November 15, 2009</span>
-  <h4><a href="/blog/2009/11/scientists-have-discovered.html">Scientists have discovered...</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/General.html">General</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Time for a pet peeve. Why do people say “scientists” as if they are some
-homogeneous group? Nearly every morning I hear reporters say “scientists
-have discovered that blah, blah, blah” during their token science story.
-It seems to be a lazy way to avoid saying biologist, astronomer,
-chemist, physicist, etc. Now I can’t claim to be a scientist of any
-description (I dropped out of a PhD in Computer Science). Professionally
-I’m more of an engineer nowadays (although that is another category
-occasionally lumped into the media’s science bucket). However, I know a
-few PhDs or lecturers in science subjects and there is a fairly large
-difference between the things they do, so it’s not that hard to broadly
-differentiate them into categories more specific than scientist. Asking
-them is often a good start! Also, there is rarely a mention of where or
-how the work was done. I personally would be more impressed by a
-statistically significant result in a double blind study from MIT than a
-report from the Pond’s Institute (although TV commercials would suggest
-the Pond’s Institute has nicer labs).</p>
-
-<p>Not convinced? Try this comparison. Next time you listen to the sport
-section of the news replace any mention of a specific game with “sport”
-and the players with “sports players”, then just remove any mention of
-specific teams. “Last night in sport, a group of sports players from
-Manchester beat 3-2 a bunch of sport players from London.” Not very
-informative.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -327,6 +352,10 @@ informative.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/09/hosting.html">Hosting</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/08/roguelike.html">Roguelike Tutorial 2022</a> 
@@ -363,16 +392,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2021/10/game-time.html">Game Time</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>
