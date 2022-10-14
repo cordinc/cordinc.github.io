@@ -38,6 +38,69 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">March 11, 2011</span>
+  <h4><a href="/blog/2011/03/myth-in-the-greek-and-roman-wo.html">Myth in the Greek and Roman Worlds</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/History.html">History</a>, 
+    
+      <a class="post" href="/blog/tag/Podcasts.html">Podcasts</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Available on
+<a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=387973532">iTunes</a>
+and <a href="http://podcast.open.ac.uk/oulearn/arts-and-humanities/podcast-a330-nemi">OU
+Podcasts</a></p>
+
+<p>These podcasts were produced as part of <a href="http://www.open.ac.uk/">The Open
+University</a> course <a href="http://www3.open.ac.uk/study/undergraduate/course/a330.htm">A330: Myth in the Greek and
+Roman
+Worlds</a>.
+However, it just concentrates on a single example, the artifacts found
+at the <a href="http://en.wikipedia.org/wiki/Diana_Nemorensis">Temple of Diana at
+Nemi</a>, popular in
+<a href="http://en.wikipedia.org/wiki/Ancient_Rome">Ancient Rome</a>. The series is
+composed of 8 episodes, although only 4 of these are on the temple. The
+remainder are introductions or discussions on context. The 4 temple
+podcasts are video slideshows of photos with narration describing what
+is being shown. The video podcasts are all around 5 minutes long (50MB)
+and recorded at 640x360 resolution, or a smaller iPod optimised format.
+Transcripts are available in PDF format.</p>
+
+<p>Very little of the original temple and sanctuary still exists at Nemi,
+so these podcasts look at four of the items found on the site. There is
+a podcast devoted to a model of a temple, about which not much is known.
+Perhaps it is a <a href="http://en.wikipedia.org/wiki/Votive_offering">votive
+offering</a> like the small
+sculpture of a women with some internal organs visible. Apparently
+<a href="http://en.wikipedia.org/wiki/Diana_(mythology)">Diana</a> was
+not just the goddess of the hunt, but also had a healing aspect,
+especially for women. Thus when ill, Roman people may turn to Diana and
+leave votive offerings representing their ailment to aid their recovery.
+Another offering is an oil lamp decorated with what may be a proud
+statement of profession - a painting of a street entertainer with his
+monkey and cat. This is a low status profession, but gifts to the gods
+(and <a href="http://www.cordinc.com/blog/2010/08/roman-funerary-monuments.html">funerary
+monuments</a>)
+were the main way the poor and slaves could celebrate their backgrounds.
+Hence the stern statue of his ex-owner paid for by a freed slave. The
+narration proposes the statue is constructed in an archaic style, the
+<a href="http://en.wikipedia.org/wiki/Herma">herm</a>, so as to suggest the
+ex-owner as almost an ancestor to the ex-slave.</p>
+
+<p>The non-temple episodes introduce the series and discuss the role of
+myth in the ancient world. Myth surrounded the population and provided
+purpose and entertainment. There is also some talk about how classical
+myths have continued through the ages and still influence us now. These
+episodes add little to historical understanding, instead justifying the
+course in a modern context.</p>
+
+<p>The temple artifact episodes are interesting, but not vital viewing.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">March  6, 2011</span>
   <h4><a href="/blog/2011/03/ogre-beginner-for-beginner-tut.html">Ogre Beginner for Beginner Tutorial: Opponent & simple collision detection</a></h4> 
   Tags: 
@@ -240,80 +303,6 @@ trial itself, it depends how much you trust Cicero’s account.</p>
   </div>
   <hr/>
 
-  <span class="date">February  7, 2011</span>
-  <h4><a href="/blog/2011/02/too-many-states.html">Too Many States</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>No, I’m not agitating for Tasmania to have its statehood revoked.
-Instead I want simpler state machines in programming. I’m a fan of the
-model of programming where the core of the system is a <a href="http://en.wikipedia.org/wiki/State_machine">state
-machine</a> firing
-<a href="http://en.wikipedia.org/wiki/Event-driven_programming">events</a> on state
-transitions. Listeners on those events then perform actions, possibly
-changing the state themselves. It doesn’t fit every scenario, but it
-works well in those places it can be applied.</p>
-
-<p>I’ve worked on a few such systems and a major determinant of eventual
-success is the complexity of the state machine. Sometimes this
-complexity is caused by the state machine encoding multiple state flows.
-The system would be simpler with a set of separate discrete state
-machines, each with a distinct main flow. I think software engineers can
-get obsessed with trying to find a single comprehensive solution to a
-problem. This can blind them to seeing a more understandable solution by
-breaking the system into smaller parts.</p>
-
-<p>Below is a state diagram similar to one I saw recently at the start of a
-project (I have actually simplified it a little, removing domain
-specific states and transitions for anonymity).</p>
-
-<p><img src="/assets/posts/technical/complex.png" width="550" alt="" /></p>
-
-<p>This doesn’t look right to me. Multiple start and end states, a loop,
-and if a few more error states are added the diagram starts looking like
-a spiderweb. Diagrams which have allowed designers/developers to express
-their artistic side (I once saw one in the shape of a phone) are a good
-sign that there may be too many states. In this domain there are really
-three interlocking flows which have just been placed together. Each of
-the three flows represents the state of communication with a different
-external system. There is no need for them to be combined. It makes more
-sense to separate them. Looking at this, and with a bit of domain
-knowledge (just trust me), it can be equivalently expressed by the
-diagram below.</p>
-
-<p><img src="/assets/posts/technical/simple.png" width="550" alt="" /></p>
-
-<p>I think this is much better. It involves a few more states in total, but
-each individual flow is easier to understand. The domain object holding
-the current state now has three state variables rather than one. The
-state of the whole system is now the combination of these three state
-variables. This more accurately describes the current state and adds
-more flexibility for adding new states or transitions later. It is also
-possible to split the transition listeners into one for each flow, thus
-making them more focused events.</p>
-
-<p>There are a few differences between the two state diagrams above. The
-three flows will have some interaction and the extra states are there to
-aid this. For example, the middle flow shouldn’t go to the <strong>Process</strong>
-state until either <strong>Enrich</strong> or <strong>Response Received</strong> has been reached.
-In the simplified diagram there are added <strong>Init</strong> and <strong>Pending</strong>
-states to act as placeholders while waiting for other events to occur.
-All three state variables start in the <strong>Init</strong> state, and as events
-occur they move on independently. The event that moves the middle flow
-on to <strong>Process</strong> is the event fired after one of the other flow’s
-transitions.</p>
-
-<p>In 14 years how many times has decomposing a complex state diagram been
-beneficial on my projects? Three. Is it guaranteed to work? No. Will it
-work for you? Maybe. Think about it next time you find yourself staring
-at a complex state diagram.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -340,6 +329,10 @@ at a complex state diagram.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/09/hosting.html">Hosting</a> 
@@ -375,10 +368,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/01/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
   </li>  
 
 </ul>

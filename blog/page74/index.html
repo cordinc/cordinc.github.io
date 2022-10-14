@@ -38,6 +38,71 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">August  9, 2009</span>
+  <h4><a href="/blog/2009/08/soap-and-rest.html">SOAP and REST</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>For a recent project I had to connect to two different read-only web
+services. Both were from commercial vendors providing very similar
+information (which I aggregated). One API was
+<a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>
+based the other used <a href="http://en.wikipedia.org/wiki/SOAP">SOAP</a>. The REST
+interface took me a few hours to write, the SOAP one took days!</p>
+
+<p>For the REST interface I had to send requests to a URL that somewhat
+indicated what I was attempting to do - eg
+http://example.site/contracts/123 to get the details of contract with id 123. An <a href="http://en.wikipedia.org/wiki/XML">XML</a> was returned and using a
+<a href="http://en.wikipedia.org/wiki/Simple_API_for_XML">SAX</a> parser
+constructed my internal objects. In total it took 340 lines of my code
+to handle the entire web service. Easy!</p>
+
+<p>Using the SOAP interface required me to download their
+<a href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">WSDL</a>
+and then construct a model of their domain objects - I used <a href="http://ws.apache.org/axis2/">Apache
+Axis2</a> (not Apache Axis though, that is an
+old and unmaintained project that does the same thing - a confusion that
+cost me some time). Unfortunately the WSDL was wrong and the model
+didn’t generate properly. I had to dive into the 2000 line WSDL file to
+find and fix the error - and it was near unreadable! Try looking at a
+commercial WSDL file some time. After some trial and error the model was
+right and when surrounded by copious error handling code it could be
+sent and data received from the service. It took 810 lines of my code,
+plus hundreds more in the generated model. Urgh. At this point one might
+suggest it was just a problem caused by a dodgy service provider.
+However, I have since added a third read-only web service to the
+project. It is also SOAP based and just as difficult to get running
+properly - apart from having to modify the WSDL since theirs was correct
+from the start.</p>
+
+<p>I also have experience from the other side, providing a web service.
+Using <a href="http://rubyonrails.org/">Ruby on Rails</a> I added a REST interface
+to my existing website by just providing XML views of the data. While
+working at a bank a SOAP interface to an existing legacy system was
+required, it took a great deal of fiddling and trust in our IBM
+development tools to get it working after a couple of days.</p>
+
+<p>The experience reminds me of an <a href="http://www.theregister.co.uk/2006/04/29/oreilly_amazon/">interview on The
+Register</a> where
+Tim O’Reilly suggests that SOAP is a standards first specification
+created without reference to how it would be used in the real world
+(because at the time the spec was created there weren’t any people using
+it). SOAP definitely feels like an overengineered solution. The kind of
+thing I would have loved earlier in my career when suffering from
+<a href="http://en.wikipedia.org/wiki/Second-system_effect">Second System
+Syndrome</a>. Over time
+I am becoming increasingly appreciative of simplicity in code.</p>
+
+<p>For me, there is now no comparison. SOAP just doesn’t seem to work well
+in any place I’ve seen it tried. My first choice for web service API
+will have to be REST.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">August  2, 2009</span>
   <h4><a href="/blog/2009/08/gone-but-not-forgotten.html">Gone, but not forgotten</a></h4> 
   Tags: 
@@ -222,50 +287,6 @@ interesting.</p>
   </div>
   <hr/>
 
-  <span class="date">July 12, 2009</span>
-  <h4><a href="/blog/2009/07/durness-golf-course.html">Durness Golf Course</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Golf.html">Golf</a>, 
-    
-      <a class="post" href="/blog/tag/Scotland.html">Scotland</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I’m just back from a fortnight’s holiday to Scotland. While there I
-played at Scotland’s most north westerly golf course, as <a href="http://www.durnessgolfclub.org">Durness Golf
-Course</a> is advertised. It is in
-Balnakeil just next to
-<a href="http://maps.google.co.uk/maps?hl=en&amp;client=firefox-a&amp;rls=org.mozilla:en-GB:official&amp;hs=QFG&amp;q=Balnakeil%20google%20map&amp;um=1&amp;ie=UTF-8&amp;sa=N&amp;tab=wl">Durness</a>.
-We visited on a sunny day and had to visit the <a href="http://www.flickr.com/photos/33547649@N07/3710867464/">nearby Balnakeil
-beach</a> after our
-game.</p>
-
-<p>The course is 9 holes, but each hole has four different tees for a bit
-of variety. On the men’s white tees it is a 2762 yard par 35 course. The
-course has a few hills and on most holes you are hitting up, down or
-around them. The flag is obscured from many tees and you have to drive
-towards the marker posts and use the layout diagrams on the scorecard.
-Luckily, considering my play, the rough is not very rough. Also, there
-are few trees, thus players have a good view of the Scottish coast
-(which is very beautiful). Apart from its location, the course is
-probably best known for its 9th hole - a short 100 or so yards,
-enlivened by a good 80 of those yards being over an inlet to the
-Atlantic! I (unintentionally) donated my ball to the ocean. The photo
-below is from the tee.</p>
-
-<p><img src="http://farm3.static.flickr.com/2477/3710865892_42c919f980.jpg?v=0" alt="9th hole at Durness Golf Course" title="9th hole at Durness Golf Course" /></p>
-
-<p>It cost £15 for nine holes and £5 to hire a half set of clubs - they let
-me choose the clubs. The staff were very friendly and helpful. The club
-house is not much more than a lounge and changing rooms, although there
-are self service chocolates and drinks. The course was nearly empty with
-great views. If you are travelling through the area, I recommend going
-for a round.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -292,6 +313,10 @@ for a round.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/09/hosting.html">Hosting</a> 
@@ -327,10 +352,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/01/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
   </li>  
 
 </ul>

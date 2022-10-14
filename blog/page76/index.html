@@ -38,6 +38,97 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">May 28, 2009</span>
+  <h4><a href="/blog/2009/05/what-makes-projects-work.html">What Makes Projects Work</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Software Project Management.html">Software Project Management</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Recently I got in a drunken conversation with another long time
+developer and consultant about what makes software projects succeed. We
+both had many years of experience with many different projects, so it
+was particularly gratifying that we largely agreed with each other (or
+was that the alcohol?). Having seen many people write their
+prescriptions to project success, I thought I’d add my 2 cents in the
+form of my observations. I would consider project success to be that the
+software is delivered, the clients are satisfied with the result and
+there were no surprises on time or budget (time/budget could be higher
+than initially planned, but any slippage was identified and explained
+well in advance). As a technical person, I also include the subjective
+measure that the codebase would not cause embarrassment (no
+<a href="http://thedailywtf.com/">WTFs</a> here).</p>
+
+<p>Below are the some characteristics of successful projects I have seen,
+in no particular order. None of them is sufficient by themselves and
+I’ve seen projects succeed when some of these characteristics were
+glaringly absent. However, I can’t remember seeing any project succeed
+without more than a few of these present.</p>
+
+<ul>
+  <li>Good People. If not the most factor important for success, certainly
+the most important for enjoyment. I actually think that smart,
+motivated people who want to get things done can ameliorate many
+project difficulties. Thus forming a team of good developers should
+be the first goal of any project. Note here I haven’t said “Smart
+People”. While being smart certainly helps it’s is not everything (I
+have a little disagreement with Google’s “only the best” hiring
+practices here). On more than one occasion I have seen some very
+smart people get tied up in irrelevancies and doing things “right”
+resulting in nothing being done at all!</li>
+  <li>Political Support or Cover. The senior management have to want the
+project to succeed (not always a given in some political firms!).
+Otherwise, the project will have problems getting the resources it
+needs. Similarly in larger organisations a project needs to have
+managerial support, both in terms of the problem being solved and
+the manner it will be solved. I was once at a place where the senior
+IT management were all old waterfall process COBOL coders and
+distrusted iterative development. There was so much friction and so
+many people just waiting to say “I told you so” (on both sides) that
+forward movement was difficult. At another place with similarly
+minded senior management, our immediate manager provided us with
+cover. To higher management he presented reports conforming to their
+waterfall style, but allowed us to run the project as we saw fit.</li>
+  <li>Well Understood Problem. The more similar the problem being solved
+is to previous problems the team has solved the more effectively
+pitfalls will be avoided. This is one of the premises behind
+prototyping - solve the exact same problem twice and the second time
+should be much easier.</li>
+  <li>Tight Iterations with End-user Interaction. I started commercial
+work just as iterative development was becoming popular (we were
+taught waterfall at university) and I’m a big believer. I have found
+iterations lasting just a week or so (or as short as possible while
+still getting some decent work in each iteration) and then deployed
+to an environment where an end-user can see it (and hopefully try it
+out) work best. The idea is to get regular and high quality feedback
+on whether the project is heading in the right direction as well as
+priorities for future work and changes required. Every project I
+have been on has significantly changed requirements from start to
+end. The chances for project success are greatly enhanced if change
+is accepted and handled. Indeed the best option is to proactively
+seek out the changes required and this is where short iterations
+with user feedback help immensely.</li>
+  <li>Small Teams. I was once on a project with over 100 other technical
+people. The back and forth of meetings and coordination was
+inordinately complex. I think Brooks had this right in <a href="http://en.wikipedia.org/wiki/The_Mythical_Man-Month">The Mythical
+Man Month</a>, and
+teams should be kept no larger than around 9 people. That number
+seems to work well and if they are good people, a great deal can be
+achieved. On that 100 person project, I strongly believe that the 9
+best people in a single team would have done much, much better than
+the other 91 as a team.</li>
+  <li>Flexible Process. <a href="http://www.cordinc.com/blog/2009/05/contect-in-software-developmen.html">I wrote about this
+before</a>,
+basically I think software projects work best where they are done by
+people who look to understand their environment and can adapt - not
+just retrying the same old thing that worked last time (for you or
+someone else).</li>
+</ul>
+
+  </div>
+  <hr/>
+
   <span class="date">May 19, 2009</span>
   <h4><a href="/blog/2009/05/printing-money.html">Printing money</a></h4> 
   Tags: 
@@ -233,78 +324,6 @@ Earlsfield if you want something to eat.</p>
   </div>
   <hr/>
 
-  <span class="date">May  1, 2009</span>
-  <h4><a href="/blog/2009/05/context-in-software-developmen.html">Context in Software Development Advice</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Software Project Management.html">Software Project Management</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Previously I wrote about big companies not using Ruby, Scala or similar
-new languages because they are not mature enough, adding that this
-probably wouldn’t apply in small companies. This implies an underlying
-assumption - that big and small companies are different. This might be
-obvious to most readers, but based on my experience it isn’t to many
-people I see working in software. Much of the software development
-advice around is only useful for one type of organisation, although
-people get hung up on trying to apply it to everyone.</p>
-
-<p>To me, as far as a software team is concerned, a big company is one
-where there is a sizeable layer of bureaucracy. This can manifest as a
-large number of political players, passive stakeholders who can greatly
-change requirements, seemingly arbitrary requirements, or just filling
-in forms and otherwise jumping through hoops. This is not to say that
-all of this is unnecessary - some degree of bureaucracy is required to
-stop developers going off on complete flights of fancy. Also government
-regulation often requires development to follow a set path; a developer
-doing their own thing could unknowingly expose the company to sanctions
-or lawsuits. There seems to be a correlation between the traditional
-measures of a big firm and bureaucracy (employees and revenues), but
-they don’t always align. I have worked for a very profitable 50K+
-employee firm and been allowed to do largely as I wished. While at a 50
-person startup in a highly regulated (and litigious!) domain, I was
-drowned in paperwork.</p>
-
-<p>Each system has its own advantages &amp; disadvantages. Personally I prefer
-working in smaller companies, or at least in parts of large companies
-that have more of a small company feel. However, far more developers
-work under big firm conditions, and I have met good developers who
-prefer the system. So when I read about <a href="http://steveblank.com/2009/04/22/killing-innovation-with-corner-cases/">avoiding corner
-cases</a>
-I think “yeah, lets get things done”, but at the same time realise this
-might not work in an IT department of a large commercial bank. I can
-also empathise with <a href="http://www.se-radio.net/podcast/2009-04/episode-132-top-10-architecture-mistakes-eoin-woods">Eoin
-Woods</a>
-about how a Software Architect needs to be able to find and involve all
-the stakeholders of a project, especially the hidden, passive ones that
-can stop a project right before it goes into production - a lesson I
-learnt the hard way. Although, most small firms wouldn’t even need a
-Software Architect. Obviously the context of the advice is crucial.</p>
-
-<p>Some of the best advice I ever received in software development was
-while working at a small <a href="http://en.wikipedia.org/wiki/IBM_Rational_Unified_Process">Rational Unified
-Process</a>
-consultancy in the late 90’s. The RUP is a large and detailed beast
-often favoured by large companies, although the consultancy successfully
-applied it to many clients large and small. This was done by never
-straying from the spirit of the process, but very regularly deviating
-from the written word of the process. I remember one of the owners there
-telling me the first step of the RUP on a project was to work out which
-bits of it you should throw out as unnecessary (the implication being
-that most of it would be bypassed).</p>
-
-<p>Basically, there is <a href="http://en.wikipedia.org/wiki/No_Silver_Bullet">no silver
-bullet</a>. Advice is just
-that, advice. Think about how the advice fits your situation - what are
-the premises, and don’t just blindly follow it. I think software
-projects work best where they are done by people who look to understand
-their environment and can adapt - not just retrying the same old thing
-that worked last time (for you or someone else).</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -331,6 +350,10 @@ that worked last time (for you or someone else).</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/09/hosting.html">Hosting</a> 
@@ -366,10 +389,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/01/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
   </li>  
 
 </ul>

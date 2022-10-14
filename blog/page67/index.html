@@ -38,6 +38,61 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">May  8, 2010</span>
+  <h4><a href="/blog/2010/05/lies-damn-lies-and-indexes.html">Lies, Damn Lies and Indices</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Politics.html">Politics</a>, 
+    
+      <a class="post" href="/blog/tag/Finance.html">Finance</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>The last few days before the UK election saw the image below circulating
+around the city. I saw it first on <a href="http://ftalphaville.ft.com">FT
+Alphaville</a>. I find this image incredibly
+annoying. Not because the message is necessarily wrong. There is a
+strong case to be made that the Labour’s party’s rhetoric on their
+ability to manage the UK economy is in no way matched by their actual
+management of the economy (although it’s debatable whether the Tories
+would have been any better). Instead, it is because the image is using a
+misunderstood part of the financial world to produce a misleading graph.</p>
+
+<p><a href="/assets/posts/boom-to-bust.jpg"><img src="/assets/posts/boom-to-bust.jpg" width="550" alt="" /></a></p>
+
+<p>The image is a graph of the <a href="http://en.wikipedia.org/wiki/FTSE_100_Index">FTSE
+100</a> stock <a href="http://en.wikipedia.org/wiki/Share_index">market
+index</a> of the largest
+companies listed on the <a href="www.londonstockexchange.com/">London Stock Exchange
+(LSE)</a>. It is a UK version of the <a href="http://en.wikipedia.org/wiki/S%26P_500">S&amp;P
+500</a>. Like other share indexes
+it is often quoted on the news in absolute terms as well as the absolute
+rise or drop over some time period. For example yesterday the FTSE 100
+closed at 5123, a drop of 138 points. However, to compare movements the
+absolute point value should not be used. This is because the index is
+calculated as the change relative to some reference date. Calculated
+from this base, the larger the index, the larger point move required to
+be equivalent to a move at a smaller index move. A 2% move when the
+index is at 5000 is 100 points, when the index is at 2000 an equivalent
+move is 40 points. As the index gets larger, point movements will
+naturally become larger for no difference in activity. Thus the graph
+above is misleading because it exaggerates the more recent point moves
+at a larger index level compared to the earlier moves.</p>
+
+<p>It is the percentage move that is important. If the graph showed
+percentage moves the 1987 crash would appear much larger and the recent
+crashes smaller. To better show the relative moves, I found a graph of
+the <a href="http://uk.finance.yahoo.com/echarts?s=^FTSE#chart3:symbol=^ftse;range=my;indicator=volume;charttype=line;crosshair=on;ohlcvalues=0;logscale=on;source=undefined">FTSE using a logarithmic scale on
+Yahoo</a>.
+As can be seen below the recent boom and bust don’t seem as large, but
+they are still there. So the same message could have been sent with a
+less misleading graph.</p>
+
+<p><a href="/assets/posts/ftse.GIF"><img src="/assets/posts/ftse.GIF" width="550" alt="" /></a></p>
+
+  </div>
+  <hr/>
+
   <span class="date">May  3, 2010</span>
   <h4><a href="/blog/2010/05/impressions-of-greece.html">Impressions of Greece</a></h4> 
   Tags: 
@@ -215,35 +270,6 @@ here</a>.</p>
   </div>
   <hr/>
 
-  <span class="date">April  3, 2010</span>
-  <h4><a href="/blog/2010/04/java-multichannel-asynchronous.html">Java Multi-channel Asynchronous Throttler</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>In another of my recent series of generic utility Java classes, I
-present a multi-channel asynchronous throttler. My project connected to
-an external webservice which imposed draconian restrictions if usage
-went above a certain level - defined as whether there were more than <code class="highlighter-rouge">X</code>
-service calls in <code class="highlighter-rouge">Y</code> seconds. I was determined to stay under this level.
-Furthermore, some types of service calls were more expensive than others
-and had their own limits in addition to the overall limit. That is for
-certain types of service call I had stay under two limits - a call
-specific limit and the overall limit that applied to all calls. I refer
-to this as multi-channel throttling. Also, I wanted the throttler to be
-asynchronous, that is I did not want to stop procesing while waiting for
-the webservice to respond to my call. Looking on the web I found a
-number of throttlers, but none that matched my multi-channel,
-asynchronous requirements.</p>
-
-<p class='more'><br/><a href='/blog/2010/04/java-multichannel-asynchronous.html'>Read the rest of this entry</a></p>
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -270,6 +296,10 @@ asynchronous requirements.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/09/hosting.html">Hosting</a> 
@@ -305,10 +335,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/01/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
   </li>  
 
 </ul>

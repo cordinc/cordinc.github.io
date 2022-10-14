@@ -38,6 +38,68 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">April  7, 2012</span>
+  <h4><a href="/blog/2012/04/failure-unity-javascript-in-ja.html">Failure: Unity Javascript in Java VM</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>School science teachers like to emphasize that the failure of an
+experiment is as useful a learning experience as its success. Of course
+the high-achieving student knows that is bollocks and ensures their
+experiements always succeed - if you need a straight line, only gather
+two data points! Despite that I think the underlying idea is correct and
+experimental failure should not be hidden.</p>
+
+<p>A recent experiment of mine failed. I am writing a game with an online
+component and wanted the same code running on both the client and server - as this would reduce the chance of bugs. For ease of development
+<a href="http://unity3d.com/">Unity3D</a> is being used for the client end, so the
+code there is either Javascript or C#. I have been writing Java servers
+professionally for years so it seemed silly not to use that knowledge.
+Clearly there is no common ground there. However, there is a project
+called <a href="http://www.mozilla.org/rhino/">Rhino</a> to allow Javascript to run
+inside the Java JVM.</p>
+
+<p>So can Javascript from Unity run in a Java environment? The short answer
+is “no”, but the longer answer is “sometimes, with many caveats”.</p>
+
+<p>Firstly it is possible to run Javascript functions in Java. Load up the
+Rhino library into the classpath and if you have Javascript code like:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">square</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">i</span><span class="o">*</span><span class="nx">i</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>then you can run it in Java with the folowing:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Context</span> <span class="n">cx</span> <span class="o">=</span> <span class="nc">Context</span><span class="o">.</span><span class="na">enter</span><span class="o">();</span>
+<span class="nc">Scriptable</span> <span class="n">scope</span> <span class="o">=</span> <span class="n">cx</span><span class="o">.</span><span class="na">initStandardObjects</span><span class="o">();</span>
+<span class="nc">Function</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">cx</span><span class="o">.</span><span class="na">compileFunction</span><span class="o">(</span><span class="n">scope</span><span class="o">,</span> <span class="n">readFile</span><span class="o">(</span><span class="s">"src/test_fn.js"</span><span class="o">),</span> <span class="s">"&lt;cmd&gt;"</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">f1</span><span class="o">.</span><span class="na">call</span><span class="o">(</span><span class="n">cx</span><span class="o">,</span> <span class="n">scope</span><span class="o">,</span> <span class="n">f1</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Object</span><span class="o">[]</span> <span class="o">{</span><span class="mi">5</span><span class="o">}));</span></code></pre></figure>
+
+<p>So far so good. If your Unity Javascript is just a collection of simple
+functions then this is all that is required. However, there is a good
+chance this is not the case. Obviously any Unity specific functions and
+classes are not available (eg Ray, Input, etc). However, more important
+are the big differences between Unity Javascript and standard (ECMA)
+Javascript.</p>
+
+<p>Many people say that Javascript in Unity should more accurately be
+referred to as UnityScript. I think that is definitely true. Although it
+looks like Javascript there are some fundamental changes. Most
+importantly, Javascript uses a <a href="http://stackoverflow.com/questions/387707/whats-the-best-way-to-define-a-class-in-javascript">prototype-based scheme to define
+classes</a>.
+UnityScript has an inheritance model, and <a href="http://unifycommunity.com/wiki/index.php?title=UnityScript_versus_JavaScript">the two schemes are not
+compatible</a>.
+To me these differences are enough to prevent want I wanted to achieve.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">April  1, 2012</span>
   <h4><a href="/blog/2012/04/lost-code.html">Lost Code</a></h4> 
   Tags: 
@@ -295,25 +357,6 @@ entries older than a certain time use
   </div>
   <hr/>
 
-  <span class="date">March  3, 2012</span>
-  <h4><a href="/blog/2012/03/kuala-lumpur.html">Kuala Lumpur</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/General.html">General</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I’m not sure how many people who read this blog actually know me in
-person - probably very few. However, for those that do, I am moving.
-Towards the end of the year (the exact date is still uncertain), I’m
-physically moving to <a href="http://en.wikipedia.org/wiki/Kuala_Lumpur">Kuala
-Lumpur</a>. Virtual location
-(email, website, etc) will remained unchanged. It is not yet known what
-I’ll be doing there - there are some work visa issues to be sorted out.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -340,6 +383,10 @@ I’ll be doing there - there are some work visa issues to be sorted out.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/09/hosting.html">Hosting</a> 
@@ -375,10 +422,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/01/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/01/end-of-year-gaming.html">End of Year Gaming</a> 
   </li>  
 
 </ul>
