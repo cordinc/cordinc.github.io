@@ -38,6 +38,29 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">April 14, 2012</span>
+  <h4><a href="/blog/2012/04/rio-rambo-course.html">Rio Rambo Course</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
+    
+      <a class="post" href="/blog/tag/Rio Tinto.html">Rio Tinto</a>, 
+    
+      <a class="post" href="/blog/tag/Work.html">Work</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>The most oft repeated tale of my time at Rio Tinto R&amp;TD is the Rambo
+course. Every year a dozen or so staff would be sent on a management
+training course. Many people were eager to avoid it. Although everyone
+had to do it at least once and it was advisable to go if you wanted to
+be promoted (so I was keen). Most people had been multiple times. Since
+our team was so small, about a third of the facility went each year.</p>
+
+<p class='more'><br/><a href='/blog/2012/04/rio-rambo-course.html'>Read the rest of this entry</a></p>
+  </div>
+  <hr/>
+
   <span class="date">April  7, 2012</span>
   <h4><a href="/blog/2012/04/failure-unity-javascript-in-ja.html">Failure: Unity Javascript in Java VM</a></h4> 
   Tags: 
@@ -279,84 +302,6 @@ the archaeological difficulties and discoveries underwater or in cities.</p>
   </div>
   <hr/>
 
-  <span class="date">March 10, 2012</span>
-  <h4><a href="/blog/2012/03/navigablemap-timebased-caches.html">NavigableMap & time-based caches</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I often find myself writing time-based caches. Something like storing
-the last X hours of ticks from a data feed. Most teams I join usually
-have a utility class to help with such tasks. In a recent move I joined
-a team that didn’t have such a utility, but did have a need for such a
-cache. Before coding, I thought I do a quick check to see if anything
-new had come along to help. At this point I discovered the Java 6
-<a href="http://docs.oracle.com/javase/6/docs/api/java/util/NavigableMap.html">NavigableMap</a>
-interface.</p>
-
-<p>NavigableMap defines a type of sorted map with handy methods for
-obtaining submaps. So to get a map of the entries greater than a
-particular value use the <code class="highlighter-rouge">tailMap</code> method. The corresponding method for
-the submap less than a value is <code class="highlighter-rouge">headMap</code>. These methods return a view
-on the original map. So changes to the submap are reflected in the
-original map. The JDK provides
-<a href="http://docs.oracle.com/javase/6/docs/api/java/util/concurrent/ConcurrentSkipListMap.html">concurrent</a>
-and
-<a href="http://docs.oracle.com/javase/6/docs/api/java/util/TreeMap.html">non-concurrent</a>
-implementations of the interface.</p>
-
-<p>This is very useful for a time-based cache. Create a NavigableMap sorted
-on the time (I used the epoch milliseconds returned by
-<code class="highlighter-rouge">System.currentTimeMillis()</code>) then <code class="highlighter-rouge">tailMap</code> returns the entries younger
-than a given time, and <code class="highlighter-rouge">headMap</code> those older. So to trim the cache of
-entries older than a certain time use
-<code class="highlighter-rouge">headMap(System.currentTimeMillis() - maxAge).clear()</code>. So easy!</p>
-
-<p>Here is a complete time-based cache class for use as an example.</p>
-
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TimeSeriesCache</span><span class="o">&lt;</span><span class="no">V</span><span class="o">&gt;</span> <span class="o">{</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MILLIS_IN_MINUTE</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">CLEAR_OLD_PERIOD_MINUTES</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">NavigableMap</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;</span> <span class="n">series</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ConcurrentSkipListMap</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;();</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">TickListener</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span> <span class="nc">Long</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;&gt;</span> <span class="n">subscribers</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="nf">TimeSeriesCache</span><span class="o">(</span><span class="kt">int</span> <span class="n">maxAgeMinutes</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">maxAgeMinutes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">final</span> <span class="kt">int</span> <span class="n">maxAge</span> <span class="o">=</span> <span class="n">maxAgeMinutes</span> <span class="o">*</span> <span class="no">MILLIS_IN_MINUTE</span><span class="o">;</span>
-            <span class="nc">Executors</span><span class="o">.</span><span class="na">newSingleThreadScheduledExecutor</span><span class="o">().</span><span class="na">scheduleWithFixedDelay</span><span class="o">(</span>
-                    <span class="k">new</span> <span class="nf">Runnable</span><span class="o">()</span> <span class="o">{</span>
-                        <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"boxing"</span><span class="o">)</span>
-                        <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-                            <span class="n">series</span><span class="o">.</span><span class="na">headMap</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">maxAge</span><span class="o">).</span><span class="na">clear</span><span class="o">();</span>
-
-                        <span class="o">}</span>
-                    <span class="o">},</span> <span class="no">CLEAR_OLD_PERIOD_MINUTES</span><span class="o">,</span> <span class="no">CLEAR_OLD_PERIOD_MINUTES</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MINUTES</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="nc">Collection</span><span class="o">&lt;</span><span class="no">V</span><span class="o">&gt;</span> <span class="nf">getSeriesAfter</span><span class="o">(</span><span class="nc">Long</span> <span class="n">fromTimestamp</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="na">tailMap</span><span class="o">(</span><span class="n">fromTimestamp</span><span class="o">).</span><span class="na">values</span><span class="o">();</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="no">V</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">series</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">(),</span> <span class="n">value</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="nc">Long</span> <span class="n">timestamp</span><span class="o">,</span> <span class="no">V</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">series</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
-
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -383,6 +328,10 @@ entries older than a certain time use
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/12/release.html">Release</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
@@ -418,10 +367,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/01/goals.html">Goals</a> 
   </li>  
 
 </ul>

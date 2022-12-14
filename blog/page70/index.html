@@ -38,6 +38,27 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">January 23, 2010</span>
+  <h4><a href="/blog/2010/01/italy-photos.html">Italy Photos</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Travel.html">Travel</a>, 
+    
+      <a class="post" href="/blog/tag/Italy.html">Italy</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>A while ago I put up some <a href="http://www.cordinc.com/blog/2009/06/pompeii-photos.html">photos from
+Pompeii</a>, and
+it is about time I put up the best photos from the rest of that holiday
+in Italy. The <a href="http://www.flickr.com/photos/33547649@N07/sets/72157623143607329/show/">set on Flickr is
+here</a>.</p>
+
+<p><a href="http://www.flickr.com/photos/33547649@N07/sets/72157623143607329/show/"><img src="http://farm3.static.flickr.com/2693/4298200246_7a8889c2ca.jpg" alt="The Roman Forum" /></a></p>
+
+  </div>
+  <hr/>
+
   <span class="date">January 17, 2010</span>
   <h4><a href="/blog/2010/01/history-110-roman-republic.html">History 110: Roman Republic</a></h4> 
   Tags: 
@@ -326,45 +347,6 @@ worth a look.</p>
   </div>
   <hr/>
 
-  <span class="date">December 20, 2009</span>
-  <h4><a href="/blog/2009/12/singularly_lazy.html">Singularly Lazy</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Ah, the <a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>
-pattern. It is used to create a single, globally accessible instance of
-a class, preventing any further instantiations (so only one object of
-the class can ever exist). When I first learnt about Singletons soon
-after leaving university, I thought they were wonderful and used them
-often. Now I think that they are often a very bad idea. Not because of
-security concerns, as one person once suggested to me, but because I
-don’t want static methods/classes hanging round (increasing global
-state) or I later realise more than one is needed!</p>
-
-<p>Once when creating a consumer website for a bank I needed access to
-various pieces of bank information at numerous points in the code.
-“There is only one bank”, I reasoned and made the class containing this
-information a singleton. Then the bank acquired another two banks so my
-design was broken and refactoring had to take place right before launch.
-However, despite learning repeatedly from experience, I still find
-myself creating more. I think this is due to laziness on my part. If I’m
-short of time or feel that it is not particularly important, I fall back
-on habit. Later, while refactoring I realise a better result could have
-been achieved with some thought. For instance, if the global access of
-singletons is a problem, perhaps using an
-<a href="http://en.wikipedia.org/wiki/Inversion_of_control">IoC</a> container (like
-<a href="http://www.springsource.org/about">Spring</a>) to wire everything up could
-help.</p>
-
-<p>I hereby resolve not to use Singletons without thinking very hard first
-about whether there is a better way.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -391,6 +373,10 @@ about whether there is a better way.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/12/release.html">Release</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
@@ -426,10 +412,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/01/goals.html">Goals</a> 
   </li>  
 
 </ul>

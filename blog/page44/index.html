@@ -38,6 +38,102 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">November  3, 2012</span>
+  <h4><a href="/blog/2012/11/coursera-functional-programmin.html">Coursera & Functional Programming Principles In Scala</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Coursera.html">Coursera</a>, 
+    
+      <a class="post" href="/blog/tag/Scala.html">Scala</a>, 
+    
+      <a class="post" href="/blog/tag/MOOC.html">MOOC</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p><a href="http://www.scala-lang.org">Scala</a> is an interesting language to a Java
+programmer that wishes they were doing more <a href="http://en.wikipedia.org/wiki/Functional_programming">Functional
+Programming</a>. As
+such a person, when I saw <a href="https://www.coursera.org">Coursera</a> hosting a
+course called <a href="https://www.coursera.org/course/progfun">Functional Programming Principles In
+Scala</a> with <a href="http://en.wikipedia.org/wiki/Martin_Odersky">Martin
+Odersky</a> (Scala’s creator),
+I immediately signed up for both the site and course. Coursera is one of
+the new online education websites. They partner with various
+universities around the world and and run their courses over the web.
+They have some impressive courses including an AI course by <a href="http://en.wikipedia.org/wiki/Peter_Norvig">Peter
+Norvig</a> and an Algorithms
+course by
+<a href="http://en.wikipedia.org/wiki/Robert_Sedgewick_(computer_scientist)">Robert
+Sedgewick</a>.</p>
+
+<p>The Scala course was 7 weeks long and took between 3 &amp; 8 hours a week to
+complete (the first week was 3 hours and the last 8 hours). Each week
+consisted of an hour or two of lectures (broken into 10-20 minutes
+chunks) and a machine graded assignment. There was no final exam. The
+lectures were a good introduction to functional programming, but did
+appear to assume some programming ability (fine by me). Scala is not a
+pure functional language, but the course presented as pure a subset as
+possible, using immutable data structures and only the occasionally
+<code class="highlighter-rouge">println</code> as the only side-effect. It seems the language has either
+greatly improved since I first used it in 2008/9 or I completely missed
+the best bits back then. Now Martin covered all the stuff I remember
+loving about Haskell back when I was university: lazy evaluation;
+partial evaluation or currying; for/list comprehensions; and pattern
+matching (although only for <code class="highlighter-rouge">case</code> classes in Scala). The language
+definitely deserves another look, especially since the tooling with
+Eclipse is definitely much better now. I imagine my old <a href="http://www.cordinc.com/blog/2009/04/combinatorial-iterators-in-jav.html">Scala
+combinatorial iterator
+test</a>
+would be much better with lazy list comprehensions.</p>
+
+<p>Completing weekly assignments was definitely a mixed blessing. The only
+difference between this course and just finding Scala tutorials on the
+web was the quality of the teaching and the assignments. The assignments
+reinforced that week’s concepts. However, sometimes it was hard to find
+time to do them, as they are due a week after being released. Generally
+though they weren’t too hard, although the last one took me around 6
+hours. The assignments were graded automatically, I imagine that is the
+only way thousands of assignments could be marked in the required
+timeframe. Unfortunately this meant that there was little feedback other
+than a overall grade and an indication of where marks were lost. Marks
+were gained for passing unit tests and some syntactic tests to ensure
+good code style. This means it was possible to write a less than optimal
+solution, but still get full marks and no feedback as how to do it
+better. I’m certain that a couple of points my answers were clumsy
+implementations - I felt there must be a better way, but got no
+direction as to what that could be. In this way the course can only take
+you to a certain level of expertise.</p>
+
+<p>The assignments can also be submitted as many times as desired and each
+submission is graded. This made it easy to keep going until achieving
+100% (as I did in each assignment). It also made me lazy. Rather than
+write proper tests, I just relied on the automatic grading system. If it
+said I got the question right, who am I to argue? I think the course
+coordinators may have noticed students doing this during the course as
+the last assignment required us to write a couple of our own tests.</p>
+
+<p>The lack of human interaction with lecturers or other teaching staff
+could be a real problem and I think this the largest issue holding back
+large-scale online education. I enjoyed the course and got good marks,
+but it would have been easy for me to cheat (I didn’t). I can’t believe
+that a significant percentage of students wouldn’t have cheated.
+Cheating was rampant when I marked university assignments and every
+single one was checked by hand (which the students knew). Now with just
+machine checking, it must be easier to get away with it on such simple
+assignments (where the number of possible solutions is relatively low).
+Harder assignments would require prohibitive amounts of time to mark.</p>
+
+<p>Most of the problems are for Coursera in increasing the legitimacy of
+their courses. I just wanted to refresh my Functional Programming
+knowledge and learn Scala. Thus, I am very happy with the course and
+achieved my goals. Having just completed one course I would happily sign
+up for another if it caught my eye (time allowing).</p>
+
+  </div>
+  <hr/>
+
   <span class="date">October 23, 2012</span>
   <h4><a href="/blog/2012/10/crusader-kings-ii.html">Crusader Kings II</a></h4> 
   Tags: 
@@ -367,48 +463,6 @@ one).</p>
   </div>
   <hr/>
 
-  <span class="date">September 20, 2012</span>
-  <h4><a href="/blog/2012/09/collinearity-in-unity3d.html">Collinearity in Unity3D</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
-    
-      <a class="post" href="/blog/tag/Unity.html">Unity</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>In Unity3D how can it be determined if a point is on the line segment
-joining two other points? My current project throws up just such
-geometry problems regularly. The problem as expressed above is a
-question of <a href="http://en.wikipedia.org/wiki/Collinearity">collinearity</a>,
-that is whether some points form a line. The first step uses the <a href="http://en.wikipedia.org/wiki/Cross_product">cross
-product</a>. If you have the
-points A, B, C then if the cross product of the line AB and the line AC
-is 0, AB and AC must be parallel. Furthermore, since both lines include
-the point A, all the points must in fact be collinear. Luckily, there is
-a cross product function built into the Unity3D library,
-<a href="http://docs.unity3d.com/Documentation/ScriptReference/Vector3.Cross.html">Vector3.Cross</a>.</p>
-
-<p>Next, just because A, B, C are collinear does not mean C is in between A
-and B. To determine this, check that C is inside the 3D volume with A &amp;
-B as diametrically opposed corners. That is just check that C’s x-axis
-value is inbetween A’s &amp; C’s and the same for its y-axis and z-axis
-values. The function below combines these tests. Note the range checks
-are performed first. This is because I imagine that the cross product is
-more computationally expensive (but I have no evidence for this) so
-should occur only if the faster calls succeed.</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">OnLine</span><span class="p">(</span><span class="n">Vector3</span> <span class="n">start</span><span class="p">,</span> <span class="n">Vector3</span> <span class="n">end</span><span class="p">,</span> <span class="n">Vector3</span> <span class="n">inBetween</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">x</span> <span class="p">&lt;=</span> <span class="n">end</span><span class="p">.</span><span class="n">x</span> <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">x</span> <span class="p">&gt;=</span> <span class="n">start</span><span class="p">.</span><span class="n">x</span>
-    <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">y</span> <span class="p">&lt;=</span> <span class="n">end</span><span class="p">.</span><span class="n">y</span> <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">y</span> <span class="p">&gt;=</span> <span class="n">start</span><span class="p">.</span><span class="n">y</span>
-    <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">z</span> <span class="p">&lt;=</span> <span class="n">end</span><span class="p">.</span><span class="n">z</span> <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">z</span> <span class="p">&gt;=</span> <span class="n">start</span><span class="p">.</span><span class="n">z</span>
-    <span class="p">&amp;&amp;</span> <span class="n">Vector3</span><span class="p">.</span><span class="nf">Cross</span><span class="p">(</span><span class="n">end</span> <span class="p">-</span> <span class="n">start</span><span class="p">,</span> <span class="n">inBetween</span> <span class="p">-</span> <span class="n">start</span><span class="p">)</span> <span class="p">==</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
-
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -435,6 +489,10 @@ should occur only if the faster calls succeed.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/12/release.html">Release</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
@@ -470,10 +528,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/01/goals.html">Goals</a> 
   </li>  
 
 </ul>

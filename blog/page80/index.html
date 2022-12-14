@@ -38,6 +38,86 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">December 21, 2008</span>
+  <h4><a href="/blog/2008/12/ruby-on-rails-hosting.html">Ruby on Rails Hosting</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Rails.html">Rails</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Now that I have a couple of sites up and running on the web, I thought
+I’d talk about how I chose my hosting providers and how it’s going. For
+those who just want the short version: I use
+<a href="http://www.slicehost.com/">Slicehost</a> and am very happy with them. Read
+on for more details.</p>
+
+<p>When looking at potential hosts for my Rails web apps I took into
+consideration price, speed/memory, reliability and flexibility. I
+basically wanted something cheap, reliable and fast. I’ve been an
+amateur sysadmin before (and at my first dotcom job was technically a
+pro sysadmin), so I wasn’t scared of getting into the unix command line.
+Thus support wasn’t important. Similarly for a small project, bandwidth,
+email accounts and credit-card billing systems would not be used. I
+wanted more than a hobbyist’s hosting site (even if that is exactly what
+I am), but not costly, professional hosting.</p>
+
+<p>My first thoughts were my domain name register,
+<a href="http://www.godaddy.com/">GoDaddy</a>, or the host of this blog,
+<a href="http://www.pair.com/">pair</a>. I know a number of people have issues with
+GoDaddy, but I’ve always found them fine for buying domain names and I
+can just ignore their constant upselling. However, I wasn’t sure about
+their Rails hosting and a search only found bad stories (eg.
+<a href="http://www.37signals.com/svn/archives2/godaddy_hosting_now_supports_rails.php">here</a>,
+<a href="http://www.ericdaugherty.com/blog/2007/07/rails-on-godaddy.html">here</a>
+and
+<a href="http://blog.mcmoyer.com/2007/9/14/running-rails-on-godaddy-a-k-a-how-do-you-keep-a-geek-entertained">here</a>).
+I’ve also been happy with the service Pair have provided with this blog
+and associated static website. I didn’t find much online about their
+Rails hosting and decided it would in any case be best to use different
+providers for this blog and my Rails apps.</p>
+
+<p>Next I took a look at some webpages specifically listing Rails web
+hosts, such as on the <a href="http://wiki.rubyonrails.org/rails/pages/RailsWebHosts">Rails
+wiki</a>. Among the
+massive listing there, special mention is made of
+<a href="http://joyent.com/">Joyent</a> and
+<a href="http://www.engineyard.com/">EngineYard</a> on a couple of occasions.
+Certainly, these two companies seem to be held in very high esteem in
+the Rails community and host many well known Rails sites. However, they
+are both quite expensive - aiming for the high-end market. Too expensive
+for my goals or really anyone without funding. They are more
+aspirational - it would be nice to one day need the services of such a
+hosting firm.</p>
+
+<p>I also found a couple of lists at
+<a href="http://www.rubyonrailswebhost.com/">rubyonrailswebhost</a> and <a href="http://antoniocangiano.com/2006/01/01/rails-hosting/">Zen and
+the Art of
+Programming</a>. They
+rate <a href="http://www.dreamhost.com/">Dreamhost</a> and
+<a href="http://www.site5.com/">Site5</a> highly and both hosts matched my needs:
+dirt cheap (under $10/month) and with decent reliability according to
+reviews. Before signing up I sent Antonio Cangiano at <a href="http://antoniocangiano.com">Zen and the Art
+of Programming</a> (a decent Rails blog I now
+subscribe to) an email asking if he had any updated advice since his
+blog on hosting was nearly 2 years old. Antonio suggested a new name,
+<a href="http://www.slicehost.com/">Slicehost</a>. Slicehost use a virtualisation
+system so that it appears to the hosted application that it has a whole
+server to itself (albeit a fairly small server). This means that someone
+else’s app can’t hog resources slowing down your app. With memory
+intensive Rails apps this is very useful. They also have full command
+line access - you basically start with a clean build and can
+install/configure it how you like. While any “point and click” users
+would find it daunting, this really appealed to me. They provide a
+number of <a href="http://articles.slicehost.com/">useful getting started
+articles</a>, including some Rails ones, so
+I was sold. They are more expensive than other hosts at $20/month for a
+256MB, but I have been very happy with their service over the last 6
+months.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">December 13, 2008</span>
   <h4><a href="/blog/2008/12/quick-timezone-calculation.html">Quick Timezone Calculation</a></h4> 
   Tags: 
@@ -244,31 +324,6 @@ or trying a different game.</p>
   </div>
   <hr/>
 
-  <span class="date">November  9, 2008</span>
-  <h4><a href="/blog/2008/11/using-bbc-backstage-weather.html">Using BBC Backstage Weather</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
-    
-      <a class="post" href="/blog/tag/Weather.html">Weather</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Recently for a little project I wanted to get weather reports, and being
-in London my first thought was to use <a href="http://www.bbc.co.uk/weather/">BBC
-weather</a>. Doing a little searching, the
-BBC provides a number of RSS feeds for its data (news, weather, etc), as
-part of the <a href="http://backstage.bbc.co.uk">Backstage</a> project. Details of
-the weather feeds are
-<a href="http://backstage.bbc.co.uk/data/WeatherFeeds">here</a>. This post gives
-some of the tips and tricks I discovered using these feeds.</p>
-
-<p class='more'><br/><a href='/blog/2008/11/using-bbc-backstage-weather.html'>Read the rest of this entry</a></p>
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -295,6 +350,10 @@ some of the tips and tricks I discovered using these feeds.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/12/release.html">Release</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
@@ -330,10 +389,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/01/goals.html">Goals</a> 
   </li>  
 
 </ul>

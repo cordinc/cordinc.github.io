@@ -6,9 +6,32 @@
     <atom:link href="http://www.cordinc.com/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Cordinc Blog</description>
     <language>en-us</language>
-    <pubDate>Fri, 14 Oct 2022 16:55:29 +0800</pubDate>
-    <lastBuildDate>Fri, 14 Oct 2022 16:55:29 +0800</lastBuildDate>
+    <pubDate>Wed, 14 Dec 2022 16:44:00 +0800</pubDate>
+    <lastBuildDate>Wed, 14 Dec 2022 16:44:00 +0800</lastBuildDate>
 
+    
+    <item>
+      <title>Release</title>
+      <link>http://www.cordinc.com/blog/2022/12/release.html</link>
+      <pubDate>Wed, 14 Dec 2022 00:00:00 +0800</pubDate>
+      <guid>http://www.cordinc.com/blog/2022/12/release</guid>
+      <description>&lt;p&gt;Just after the pandemic started, I used the time in lockdown to start writing a new computer game. Later I stopped because it was a mess, but soon after I started again. Now it is released! Since it was never supposed to be a full game (just an experiment to get things going again) I have greatly skimped on promotion and marketing. Ohh, and the name. It is called Space Hex Duel. It is a turn-based game of strategy and careful positioning.&lt;/p&gt;
+
+&lt;center&gt;&lt;a href=&quot;https://www.jarrahtechnology.com/games/spacehexduel&quot;&gt;&lt;img src=&quot;https://www.jarrahtechnology.com/assets/posts/ahb/capsule_lg.png&quot; alt=&quot;Space Hex Duel&quot; /&gt;&lt;/a&gt;&lt;/center&gt;
+
+&lt;p&gt;Here is a short trailer showing off the gameplay:&lt;/p&gt;
+
+&lt;center&gt;&lt;iframe src=&quot;http://www.youtube.com/embed/62viGwySbjk&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/center&gt;
+
+&lt;p&gt;I have put it up on &lt;a href=&quot;https://jarrahtech.itch.io/spacehexduel&quot;&gt;Itch.io&lt;/a&gt; as a Pay-What-You-Want (PWYW) download (suggested donation US$2). I recommend interested people download it for free, and if they enjoy it and would like to say thankyou, then go back and donate. Maybe later I will put it out on Steam too.&lt;/p&gt;
+
+&lt;center&gt; &lt;iframe frameborder=&quot;0&quot; src=&quot;https://itch.io/embed/1823532?linkback=true&quot; width=&quot;552&quot; height=&quot;167&quot;&gt;&lt;a href=&quot;https://jarrahtech.itch.io/spacehexduel&quot;&gt;Space Hex Duel by JarrahTech&lt;/a&gt;&lt;/iframe&gt;&lt;/center&gt;
+
+&lt;p&gt;All the info on the game is ( or will be) on its &lt;a href=&quot;https://www.jarrahtechnology.com/games/spacehexduel&quot;&gt;Jarrah Technology webpage&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now I need to decide what to do next…&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Back Again Gaming</title>
@@ -192,33 +215,6 @@
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/793460/112_Operator&quot;&gt;112 Operator&lt;/a&gt;&lt;/strong&gt; (4 hrs): A management sim game where the players acts as the dispatcher for the emergency services (police, ambulance and fire brigade). You even occasionally need to answer emergency calls yourself (using multiple choice responses). There is a campaign, but I didn’t see much of a story, just escalating difficulty. The big draw is being able to play on a map of any city in the world, although when I tried to play on my home town it just crashed :( Ultimately this game didn’t grab me, the scenarios got bigger and increasingly hectic, but not more interesting.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/349730/Popup_Dungeon/&quot;&gt;Popup Dungeon&lt;/a&gt;&lt;/strong&gt; (7 hrs): Dungeon delving rogue-like designed to look like paper miniatures and cut-outs as if it was being played on a tabletop. This theme carries through everything including the slow diegetic menus. Although the fantasy theme strangely applied as it includes superheroes and sci-fi characters. At one point I found myself in a modern fast-food restaurant. Continuously tries to be funny, but completely failed for me (and that distracted hugely from enjoying the game). Slow and RNG heavy with big difficulty spikes this just couldn’t maintain my attention.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Goals</title>
-      <link>http://www.cordinc.com/blog/2022/01/goals.html</link>
-      <pubDate>Thu, 13 Jan 2022 00:00:00 +0800</pubDate>
-      <guid>http://www.cordinc.com/blog/2022/01/goals</guid>
-      <description>&lt;p&gt;Time for &lt;a href=&quot;/blog/2021/03/goals.html&quot;&gt;my yearly lowering of expectations&lt;/a&gt;. 2021 felt like a standstill year, but hopefully with some preparations for more productive future years. Firstly an appraisal of last year’s goals:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Maintain strength and aerobic fitness&lt;/strong&gt;: This started out well, setting many strength bests in the first few months of the year. Then when a few local lockdowns occurred, I started to miss weeks. Most of the last 6 months have been maintenance work and an aborted attempt at a cut. So I end the year a little lighter than I started, but probably about the same strength. Similar with aerobic fitness. I’ll count this as a success (barely, thanks to a low target).&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Finish and release one game, then start the next&lt;/strong&gt;: Nope, a definite fail. About 7 months ago, I hit a deadend in AbstractHexBattle. I started development fast and dirty, so eventually hit a point where continuing was difficult - especially with the AI. This was not enjoyable so I stopped, built a series of (hopefully) reusable libraries and then restarted the project as SpaceHexDuel. Now I am at the same point as I was this time last year. There is also a paper prototype of my card game IPO in progress and improving.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;12 blog articles (including Jarrah Technology)&lt;/strong&gt;: 17 in total, so goal completed. I have started to write irregular status updates on the Jarrah Technology blog and this is what allowed me to reach the requied number easily.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So what about this year? Time for some ambitious goals, not sure I can get all this done, but worth an attempt:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Increase strength and aerobic fitness&lt;/strong&gt;: Since the start of the year, I have built up a home gym. Soon the last pieces of equipment (including a bike stationary trainer) will arrive, probably about the same time my back injury from setting it all up will heal. After this I will have no excuse not to get back to proper lifting and exercising - pandemic be damned. No excuses, so how about some hard goals, by the end of the year I hope to have personal bests for 5 reps (powerlifting rules) in bench press, overhead press, and pullups. Legs and back are a bit difficult because of regular injuries, but I’ll try for records there too.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Finish and release SHD&lt;/strong&gt;: A soft Itch.io release counts, not sure this game is worth a lot of effort. No need for online play, although it would be nice to get a reference or even reusable implementation done.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Update Common Library&lt;/strong&gt;: This is interesting as I’m not even sure it is the right thing to do, as it ties me somewhat to Unity (and an old version). In any case I will need the library to handle card-based games (as there are a few coming) and general AI patterns. It would also be nice for the online code to be fixed up and some dialogue functionality (probably by integrating the Ink library) added, but these should not be immediately necessary, so can wait.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Computer prototype Ci2D&lt;/strong&gt;: After SHD, I’ll start work on Concealed Intent 2D (working title). I should have a basic playable something reasonably quickly using the libraries created for SHD, plus I already have tons of artwork.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Paper prototype IPO, Ci2D, &amp;amp; maybe one other&lt;/strong&gt;: Working out IPO on paper has convinced me this is the way to go wherever possible. I plan to paper prototype Ci2D before starting programming work, and continuing to refine IPO. After that I already have 3 or 4 other games that could have a tabletop version first - I will start one of them at least.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;18 blog articles (including Jarrah Technology)&lt;/strong&gt;: Should be easy with monthly updates and the release. Would also be good to write some non-game posts.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Fix steps, reticulation, ceiling crack &amp;amp; shading&lt;/strong&gt;: I have a bunch of tasks to get done around the house. These are probably the most urgent to be done by the end of this year.&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

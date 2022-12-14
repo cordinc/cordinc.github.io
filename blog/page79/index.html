@@ -38,6 +38,54 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">February 13, 2009</span>
+  <h4><a href="/blog/2009/02/a-rant-and-rave.html">A Rant and Rave</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>A few years ago I had the idea of creating a fairly standard online
+spaceship combat game (like <a href="http://www.eveonline.com">EVE</a>). The
+difference to other such games being that the players would not control
+their ships directly, but instead through code they submitted to the
+game - a more complicated and extended
+<a href="http://robocode.sourceforge.net/">Robocode</a> or
+<a href="http://www.corewars.org/">CoreWar</a>. At the time I stopped because I
+couldn’t work out a way of preventing <a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">Denial of service
+attacks</a> in the
+submitted code. I had hoped to use Java as it had an extensive security
+model, but I found there was no way of stopping untrusted code from
+starting too many threads or allocating too much memory.</p>
+
+<p>Fast forward many years, and I thought I’d check out if the situation
+has improved. A search on Google returned all the same webpages I read 9
+years ago - there hasn’t been much movement in the area. The Javadocs
+suggested that the thread issue had been fixed, but no word about
+memory. I checked Robocode and it seems to just ignore the memory
+allocation problem. This is because it is not fixed!</p>
+
+<p>WTF! Sun has gone on about the <a href="http://java.sun.com/developer/technicalArticles/Security/whitepaper/JS_White_Paper.pdf">Java Security
+Model</a>
+for some time now. Touting the safety of its sandbox. However, if
+untrusted code can crash the system it is broken - nothing more to say.
+I don’t care about the rest. This has been a known issue for years.</p>
+
+<p>Anyway, rant over. On a more positive side, I used
+<a href="http://stackoverflow.com/">StackOverflow</a> for the first time in
+researching this issue and it is quite cool. My question is
+<a href="http://stackoverflow.com/questions/540738/excessive-memory-allocation-in-java-sandbox-security">here</a>.
+The answer states that there is a <a href="http://jcp.org/en/jsr/detail?id=284">movement to fix the memory DoS
+attack</a>, but that it is still in
+the requirements stage and <a href="http://tech.puredanger.com/java7/">probably will not be part of
+Java7</a>.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">February  8, 2009</span>
   <h4><a href="/blog/2009/02/rails-performance-options-on-p.html">Rails performance options on Phusion Passenger</a></h4> 
   Tags: 
@@ -222,86 +270,6 @@ In future I will put more photos up under that Flickr account.</p>
   </div>
   <hr/>
 
-  <span class="date">December 21, 2008</span>
-  <h4><a href="/blog/2008/12/ruby-on-rails-hosting.html">Ruby on Rails Hosting</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Rails.html">Rails</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Now that I have a couple of sites up and running on the web, I thought
-I’d talk about how I chose my hosting providers and how it’s going. For
-those who just want the short version: I use
-<a href="http://www.slicehost.com/">Slicehost</a> and am very happy with them. Read
-on for more details.</p>
-
-<p>When looking at potential hosts for my Rails web apps I took into
-consideration price, speed/memory, reliability and flexibility. I
-basically wanted something cheap, reliable and fast. I’ve been an
-amateur sysadmin before (and at my first dotcom job was technically a
-pro sysadmin), so I wasn’t scared of getting into the unix command line.
-Thus support wasn’t important. Similarly for a small project, bandwidth,
-email accounts and credit-card billing systems would not be used. I
-wanted more than a hobbyist’s hosting site (even if that is exactly what
-I am), but not costly, professional hosting.</p>
-
-<p>My first thoughts were my domain name register,
-<a href="http://www.godaddy.com/">GoDaddy</a>, or the host of this blog,
-<a href="http://www.pair.com/">pair</a>. I know a number of people have issues with
-GoDaddy, but I’ve always found them fine for buying domain names and I
-can just ignore their constant upselling. However, I wasn’t sure about
-their Rails hosting and a search only found bad stories (eg.
-<a href="http://www.37signals.com/svn/archives2/godaddy_hosting_now_supports_rails.php">here</a>,
-<a href="http://www.ericdaugherty.com/blog/2007/07/rails-on-godaddy.html">here</a>
-and
-<a href="http://blog.mcmoyer.com/2007/9/14/running-rails-on-godaddy-a-k-a-how-do-you-keep-a-geek-entertained">here</a>).
-I’ve also been happy with the service Pair have provided with this blog
-and associated static website. I didn’t find much online about their
-Rails hosting and decided it would in any case be best to use different
-providers for this blog and my Rails apps.</p>
-
-<p>Next I took a look at some webpages specifically listing Rails web
-hosts, such as on the <a href="http://wiki.rubyonrails.org/rails/pages/RailsWebHosts">Rails
-wiki</a>. Among the
-massive listing there, special mention is made of
-<a href="http://joyent.com/">Joyent</a> and
-<a href="http://www.engineyard.com/">EngineYard</a> on a couple of occasions.
-Certainly, these two companies seem to be held in very high esteem in
-the Rails community and host many well known Rails sites. However, they
-are both quite expensive - aiming for the high-end market. Too expensive
-for my goals or really anyone without funding. They are more
-aspirational - it would be nice to one day need the services of such a
-hosting firm.</p>
-
-<p>I also found a couple of lists at
-<a href="http://www.rubyonrailswebhost.com/">rubyonrailswebhost</a> and <a href="http://antoniocangiano.com/2006/01/01/rails-hosting/">Zen and
-the Art of
-Programming</a>. They
-rate <a href="http://www.dreamhost.com/">Dreamhost</a> and
-<a href="http://www.site5.com/">Site5</a> highly and both hosts matched my needs:
-dirt cheap (under $10/month) and with decent reliability according to
-reviews. Before signing up I sent Antonio Cangiano at <a href="http://antoniocangiano.com">Zen and the Art
-of Programming</a> (a decent Rails blog I now
-subscribe to) an email asking if he had any updated advice since his
-blog on hosting was nearly 2 years old. Antonio suggested a new name,
-<a href="http://www.slicehost.com/">Slicehost</a>. Slicehost use a virtualisation
-system so that it appears to the hosted application that it has a whole
-server to itself (albeit a fairly small server). This means that someone
-else’s app can’t hog resources slowing down your app. With memory
-intensive Rails apps this is very useful. They also have full command
-line access - you basically start with a clean build and can
-install/configure it how you like. While any “point and click” users
-would find it daunting, this really appealed to me. They provide a
-number of <a href="http://articles.slicehost.com/">useful getting started
-articles</a>, including some Rails ones, so
-I was sold. They are more expensive than other hosts at $20/month for a
-256MB, but I have been very happy with their service over the last 6
-months.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -328,6 +296,10 @@ months.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2022/12/release.html">Release</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
@@ -363,10 +335,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/01/goals.html">Goals</a> 
   </li>  
 
 </ul>
