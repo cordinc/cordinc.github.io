@@ -38,6 +38,49 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">April 17, 2008</span>
+  <h4><a href="/blog/2008/04/minor-status-update.html">Minor Status Update</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Entrepreneurship.html">Entrepreneurship</a>, 
+    
+      <a class="post" href="/blog/tag/Projects.html">Projects</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I reached a milestone in my project progress yesterday. I have just put
+a very crude version of my app out for alpha testing. Unfortunately this
+is three weeks later than I had originally planned back in January. At
+that time I was hoping to do an alpha release over the Easter holiday.
+About half the delay is due to problems with the place I decided to host
+the app, <a href="http://www.heroku.com/">Heroku</a>. My app seemed to screw up
+their import system and for days I could do nothing. It also seems a bit
+slow - noticeably slower in production mode than my old laptop in
+development mode. When I get to beta testing I’ll probably move to a
+different host. I can’t complain too much, as their service is free and
+in beta. They are definitely worth checking out for small developments
+or hosting.</p>
+
+<p>The other half of the delay is caused by the time taken for my
+expectations to return to their original level. Over the last three
+months my ideas on what the app should do have expanded greatly, and
+that week of delay was me trying to add some last minute features. I
+could have kept going forever before releasing anything. Ultimately I
+decided it would be best to get something out even if I knew it was a
+crappy bare minimum. I hope my alpha tester will persist through some
+trying times, but right now I need a little direction. The app is
+definitely not as easy to use as it needs to be and I suspect the design
+is atrocious. The plan is my alpha tester will help direct me to the
+areas that need most attention, and guide me away from those that are
+less important.</p>
+
+<p>I have decided that my next milestone will be the end of May for
+expanded alpha testing. By then I hope to have something that I can show
+to a small, but slightly larger group of people. Anyone interested?</p>
+
+  </div>
+  <hr/>
+
   <span class="date">April 14, 2008</span>
   <h4><a href="/blog/2008/04/hint.html">Hint</a></h4> 
   Tags: 
@@ -192,96 +235,6 @@ don’t remember there being a good answer.</p>
   </div>
   <hr/>
 
-  <span class="date">March  5, 2008</span>
-  <h4><a href="/blog/2008/03/code.html">Code</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Entrepreneurship.html">Entrepreneurship</a>, 
-    
-      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
-    
-      <a class="post" href="/blog/tag/Rails.html">Rails</a>, 
-    
-      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>After having the simple startup idea (see
-<a href="/blog/2008/02/ideas.html">here</a>) over the New Year holiday, I next
-needed to decide how to implement it. Many people would say I needed to
-write design/spec/use case documents first, but for this project I think
-best to start working and see what happens. It would be easy to draw
-diagrams and think about problems with nifty solutions. However, the
-main goal is to DELIVER. I want to get something up and running quickly,
-get some people to use it and then improve it. I believe the longer it
-takes to get something up in front of people, the more likely I never
-will reach that point or go further. Having people use the system (even
-as testers) is a form of commitment.</p>
-
-<p>As a result I chose to use <a href="http://www.rubyonrails.org/">Ruby on Rails</a>
-for development - something many people who know me may find surprising.
-I have never programmed in Ruby before, so I’m learning it at the same
-time as trying to quickly develop a new system with fuzzy requirements.
-What happened to avoiding development risks and not trying to do too
-much at once? If I did a project risk assessment like most of my
-previous employers this would raise some serious red flags - the project
-would not be allowed to go ahead. Although, no previous employer would
-allow my idea to go ahead anyway, they would see it as too small. So why
-did I make the Ruby decision?</p>
-
-<p>For the last 6 years I have almost entirely developed in Java (and
-before that a mix of Java, C<span class="underline"></span> and other
-languages that will never appear on my resume). I have worked on
-developing a wide range of systems from the large (over 100 people for a
-few years) to the very small (just me for a couple of weeks), although
-mainly for large financial firms. However, I specifically did not want
-to develop in Java. I may be faster in Java, but there are a number of
-reasons I thought it best not use it this time. People say it can be
-heavier to develop, with more boilerplate code, and I can certainly
-understand that. There are also less decent internet hosting options for
-Java, nearly every hosting firm provides PHP or Ruby options, but
-finding a good Java host is harder. However, the main reason for me was
-that with Java I was liable to get bogged down in the intricacies of the
-language and various libraries or third party tools. With a new language
-I wouldn’t have time to think further than the next problem I was facing
-and finding a solution for it - there would be fewer distractions simply
-because there wouldn’t be time to lose focus or investigate interesting
-side issues.</p>
-
-<p>Choosing the language was difficult. There were so many I wanted to try
-as I haven’t properly taught myself new language since C# some years
-ago. I have been reading (with interest) blog posts arguing (flaming?)
-the pros and cons of various web development languages and frameworks.
-Ruby on Rails seems to have a large following and been around for a
-while. The basic idea has been copied so many times by other languages
-(<a href="http://grails.org/">Groovy on Rails</a>, <a href="http://steve-yegge.blogspot.com/2007/12/codes-worst-enemy.html">Rhino on
-Rails</a>,
-…) that I felt there must be something useful in there. I rejected all
-the derivatives because I didn’t think they would be mature enough yet
-and didn’t have a large enough community behind them. After all a
-framework with a
-<a href="http://www.zedshaw.com/rants/rails_is_a_ghetto.html">backlash</a> must
-have reached a certain level of maturity! The <a href="http://www.joelonsoftware.com/items/2006/09/12.html">speed
-issue</a> was my main
-concern. At work code execution speed is extremely important and has a
-direct affect on the bottom line (I work on financial trading systems).
-However, the performance requirements for my system are far less than at
-work. Ruby will probably be fast enough - or at least fast enough at the
-start to see if the idea is worth pursuing. So I decided to just give
-Ruby a try. If it didn’t work out I could quickly move onto something
-else.</p>
-
-<p>Anyway, I’ve been writing Ruby on Rails code for nearly the last two
-months in my spare time - probably only the equivalent of only a handful
-of workdays in total. Yet I am quite impressed by how much functionality
-I have implemented. I am probably only a couple of weeks away from being
-ready for alpha testing on the functionality (the website design is
-still a mess). So far I have to say that Ruby on Rails has been a
-positive experience, although I am yet to properly test its performance.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -308,6 +261,10 @@ positive experience, although I am yet to properly test its performance.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/02/goals.html">Goals</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/12/release.html">Release</a> 
@@ -343,10 +300,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
   </li>  
 
 </ul>

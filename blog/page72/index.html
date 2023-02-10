@@ -38,6 +38,52 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">November 29, 2009</span>
+  <h4><a href="/blog/2009/11/cafe-spice-namaste.html">Cafe Spice Namaste</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Restaurant.html">Restaurant</a>, 
+    
+      <a class="post" href="/blog/tag/UK.html">UK</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>My mobile phone company recently gave me a two-for-one dinner voucher.
+Most of the qualifying venues were high-end fast food chains, but
+looking through the list I spotted a little gem - <a href="http://www.cafespice.co.uk/">Cafe Spice
+Namaste</a>. I had heard a few things about
+this Indian restaurant near Tower Bridge, so was keen to give it a try.
+We went along on a Wednesday night and there were quite a few people
+there, suggesting a booking would definitely be necessary on more
+popular nights. The polite head waiter spent some time checking the
+voucher as we were apparently the first people to use such a voucher
+there. Once that was sorted out we ordered.</p>
+
+<p>The menu was a little different to the standard Indian. For a start it
+was much shorter, just a few dishes, rather than the numerous curry
+combinations found elsewhere. We had poppadoms for starters followed by
+lamb shank and spiced partridge with naan and a potato/cauliflower/pea
+side dish. The food was very good. The poppadoms and chutneys were
+noticeably nicer than other places. My lamb shank was beautifully cooked
+and the slightly spiced sauce very more’ish - when I finished my plate
+was clean. The off-the-bone partridge was equally good. The portions
+were a good size and after that lot (plus some beer) we were too full
+for dessert. Although seeing the Belgian chocolate icecream at the next
+table tempted us, we did not waver and got the bill.</p>
+
+<p>The service was very fast and efficient. It was more expensive than
+other Indian places, but also far better. Although, it was by no means
+expensive by general London standards, a little over £60 before the
+voucher discount (and including service). For comparison, the next best
+Indian restaurant I’ve been is
+<a href="http://www.cordinc.com/blog/2009/04/fancy-restaurants-part-deux.html">Babur</a>.
+Without a discount Cafe Spice Namaste is a little more expensive than
+Babur, but with better food (thanks to the poppadoms) and easily better
+service. This is definitely a place I’ll be visiting again.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">November 23, 2009</span>
   <h4><a href="/blog/2009/11/new-website-and-blender-pages.html">New website and Blender pages</a></h4> 
   Tags: 
@@ -206,72 +252,6 @@ use it, but they would have to fix it for the new RSS format first.</p>
   </div>
   <hr/>
 
-  <span class="date">November  8, 2009</span>
-  <h4><a href="/blog/2009/11/models-and-events.html">Models and Events</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I have been thinking that software development is all about models and
-events. By models I mean <a href="http://en.wikipedia.org/wiki/Domain_model">domain
-models</a>, and by events I’m
-referring to an <a href="http://en.wikipedia.org/wiki/Event-driven_architecture">event-driven
-architecture</a>.
-Not quite the <a href="http://stuffinvestmentbankerslike.blogspot.com/2008/06/40-models-and-bottles.html">models and
-bottles</a>
-of Investment Banking.</p>
-
-<p>The domain model is where the application’s data lives. It is the model
-part of the
-<a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a>
-pattern. For example, in a system that manipulates songs, a song would
-be part of the domain model, together with the song’s name, artist,
-album etc (in
-<a href="http://en.wikipedia.org/wiki/Object-oriented_programming">Object-oriented</a>
-systems there would be a song class containing these attributes). The
-more time I spend coding, the more I find that the future course of a
-project is directly related to how its domain model was conceived. Using
-MVC, changing the model later can involve a great deal of work if the
-model touches everything else. Thus usually some time is spent on
-working out the model and refactoring it if necessary. Indeed, I
-remember once describing a less than satisfying job as drawing pictures
-all day, meaning
-<a href="http://en.wikipedia.org/wiki/Unified_Modeling_Language">UML</a> mainly for
-the domain (I would have preferred to be coding).</p>
-
-<p>I have a few tips for domain models. Follow the ideal of MVC, that is
-keep view and controller logic out of the model. Also, try to have <a href="http://blog.kineticweb.com/articles/2007/06/01/skinny-controller-fat-model">fat
-models and skinny
-controllers</a>
-(this is a <a href="http://rubyonrails.org/">Ruby On Rails</a> idea, but I find it
-works well in general). Keep model classes immutable if possible.
-Lastly, write your own containers (containing and hiding actual
-SDK-based containers) for easy aggregation functions (and
-parallelising). None of this is particularly controversial, few people I
-have worked with would disagree.</p>
-
-<p>What I have recently found surprising is that people do disagree with
-using an event based architecture where I feel it would work well.
-Event-driven systems are ones where changes to domain state are packaged
-as events and passed to listeners of those events through some form of
-callback. This helps promote a
-<a href="http://en.wikipedia.org/wiki/Loose_coupling">loosely-coupled</a> design,
-something else I would strongly encourage. Also recommended is keeping
-the events at the lowest level appropriate in the model (a rule I’ve
-broken a few times). For instance, if you have an album which contains
-songs, a “songAdded” event would go on the album listeners, but a
-“songUpdated” event should fire on the song’s listeners. Other people
-seem to prefer a system of loops polling for changes (or something
-similar). I find their code far more complicated. Event-driven systems
-are simple to write, simple to understand and you only need to handle
-the events you are interested in. I would be interested to hear what
-other experienced programmers have found works.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -298,6 +278,10 @@ other experienced programmers have found works.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/02/goals.html">Goals</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/12/release.html">Release</a> 
@@ -333,10 +317,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
   </li>  
 
 </ul>

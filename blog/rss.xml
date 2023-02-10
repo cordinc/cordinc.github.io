@@ -6,9 +6,41 @@
     <atom:link href="http://www.cordinc.com/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Cordinc Blog</description>
     <language>en-us</language>
-    <pubDate>Wed, 14 Dec 2022 16:44:00 +0800</pubDate>
-    <lastBuildDate>Wed, 14 Dec 2022 16:44:00 +0800</lastBuildDate>
+    <pubDate>Fri, 10 Feb 2023 11:51:06 +0800</pubDate>
+    <lastBuildDate>Fri, 10 Feb 2023 11:51:06 +0800</lastBuildDate>
 
+    
+    <item>
+      <title>Goals</title>
+      <link>http://www.cordinc.com/blog/2023/02/goals.html</link>
+      <pubDate>Fri, 10 Feb 2023 00:00:00 +0800</pubDate>
+      <guid>http://www.cordinc.com/blog/2023/02/goals</guid>
+      <description>&lt;p&gt;Why do I do this? Am I a masochist? Time again to assess &lt;a href=&quot;/blog/2022/01/goals.html&quot;&gt;last years goals&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Increase strength and aerobic fitness&lt;/strong&gt;: As I write this, I am injured - a reoccurrence of an old foot problem. So my exercise plan is on pause. This happened a couple of times last year. The plan was to lose some weight and then push for new highs. However, due to injury, covid and other things I didn’t manage to start losing weight until November. Thus I am definitely not stronger this year. I have been cycling regularly (until my foot injury a couple of days ago) so I might be fitter aerobically. Call this one a partial success.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Finish and release SHD&lt;/strong&gt;: &lt;a href=&quot;/blog/2022/12/release.html&quot;&gt;Done&lt;/a&gt;! There should be a patch release soon too.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Update Common Library&lt;/strong&gt;: Done! Or at least done enough to qualify as a success.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Computer prototype Ci2D&lt;/strong&gt;: Nope, not even started (but the plan is to start in March).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Paper prototype IPO, Ci2D, &amp;amp; maybe one other&lt;/strong&gt;: Done! I have decent, not obviously broken, prototypes of IPO &amp;amp; Ci2d. Both could use a few more iterations, but not too bad.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;18 blog articles (including Jarrah Technology)&lt;/strong&gt;: Done! There were 12 posts here and 14 on jarrahtechnology.com.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Fix steps, reticulation, ceiling crack &amp;amp; shading&lt;/strong&gt;: Done!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;5.5 out of 7. Not too bad actually.&lt;/p&gt;
+
+&lt;p&gt;I’m not going to be as ambitious this coming year:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Increase strength and aerobic fitness&lt;/strong&gt;: Once my foot heals it is time to get back on track. So I need to be aerobically fitter according to my HRM (currently 39 VO2max) and have personal bests for 5 reps (powerlifting rules) in bench press (90kg), overhead press (45kg), and pullups (102kg).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Demo quality Ci2D&lt;/strong&gt;: Have something good enough to show other people (by my assessment).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Continue on IPO &amp;amp; maybe one other&lt;/strong&gt;: IPO might have some potential. I should keep going with it.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;18 blog articles (including Jarrah Technology)&lt;/strong&gt;: Same as last year. Easy but just need to do it.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Fix the bedroom window issues, fix the terrace drainage problem &amp;amp; build a rabbit hutch&lt;/strong&gt;: Some things I’ve promised around the house.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Paint at least 10 minatures, and have played all my boardgames&lt;/strong&gt;: I have taken up minature painting although my skill is severely lacking. I should give it a decent try. There are also 5 games currently in my boardgame collection I haven’t played - I need to change that.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Release</title>
@@ -188,33 +220,6 @@
   &lt;li&gt;No whiff of consciousneess. When I swapped from neural nets into logic systems it was because I was unimpressed by them as just complex statistical inference. I still hold that opinion, but the results can’t be ignored. Now Pathways can do basic logical inference out of its connections. The conflation of intelligence and consiousness is under attack. It will be interesting to see where the final line is drawn as the importance of consciousness decreases.&lt;/li&gt;
   &lt;li&gt;Language as root of functional intelligence? All these great results are coming out of language models. Is that because there is a fundamental link between communication and intelligence? Or is it simply because that is where researchers focus their attention? I don’t know.&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Enough Gaming</title>
-      <link>http://www.cordinc.com/blog/2022/04/enough-gaming.html</link>
-      <pubDate>Sun, 10 Apr 2022 00:00:00 +0800</pubDate>
-      <guid>http://www.cordinc.com/blog/2022/04/enough-gaming</guid>
-      <description>&lt;p&gt;Enough! At least as far as writing games blog posts (not for actually playing the games). I should some posts about other topics for a bit, rather than these easy but repetitive game short reviews. Anyway, are you interested in what have I been playing since the start of year? You are in luck, read on…&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/351090/Regency_Solitaire/&quot;&gt;Regency Solitaire&lt;/a&gt;&lt;/strong&gt; (15hrs): Many hours of the card game solitaire with unusual card layouts and little powerups. Not particularly hard, but can get a little grindy in the middle as you build a collection of powerups. There is a basic &lt;a href=&quot;https://en.wikipedia.org/wiki/Regency_era&quot;&gt;regency&lt;/a&gt; story told between rounds (like a simplistic Jane Austen plot). Nice game, delivers exactly what the title promises, kept me playing until the end.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/481180/System_Crash/&quot;&gt;System Crash&lt;/a&gt;&lt;/strong&gt; (8hrs): Cyberpunk themed card battler with some deckbuilder mechanisms. The theme seems strangely applied, you are supposed to be a hacker, but almost all the cards are people who fight physically. Deckbuilding UI is a bit awkward. The battles are conventional (at least at first) with a decent implementation, but not enough to keep me interested. Everything about this game is “ok”.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/1100260/Circle_Empires_Rivals&quot;&gt;Circle Empires&lt;/a&gt;&lt;/strong&gt; (5hrs): Fast casual mini-RTS where the playing area is a grid of small circles each usually containing a bunch of enemies all drawn in a cartoony style. This game (at least on single player) devolves into a process of build a big army as fast of possible and then steamrolling your opposition. Very simple and not very deep, but then it is supposed to be casual. I’m surprised I only played 5 hours, I thought it would be more as I got gamified trying to get extra awards and game settings. I like that it plays fast, this game delivers exactly as promised - I enjoyed it.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.epicgames.com/en-US/p/inscryption-6b29ab&quot;&gt;Inscryption&lt;/a&gt;&lt;/strong&gt; (16hrs): WTF. Well that is the standard review for this game out of the way. This is a game of surprises and secrets, thus best unspoiled. The basic gameplay is a deckbuilding card battler. It seems to be broken and unbalanced on purpose, so it is not the best by itself, but never outstays its welcome before things change enough to renew interest. The main point of the game is discovering what is going on, and that mystery is a decent story, although I personally found Act 3 to drag a little - not uncommon for me in story games. A good game about the experience, not so much the mechanics.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/1599340/Lost_Ark/&quot;&gt;Lost Ark&lt;/a&gt;&lt;/strong&gt; (5 hrs): An action RPG MMO from Amazon. Your laconic avatar bashes their way through hordes of monsters with an impressive array of powerful and pretty attacking moves. Gives the player a sense of being overpowered, while not seeming too easy (at least to me) - nicely done. The story feels strange with so many other players running around doing the same thing - mini-bosses would spawn and die repeatedly in front of me (bigger bosses are &lt;a href=&quot;https://en.wikipedia.org/wiki/Instance_dungeon&quot;&gt;instanced&lt;/a&gt;). There are sooo many cutscenes! Art style is glossy JRPG and well done. Free-to-play with loot-boxes. Polished, well-made and impressive game, but I can’t imagine an MMO will hook me - and I definitely won’t be paying real money for it.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.eveonline.com/&quot;&gt;Eve Online&lt;/a&gt;&lt;/strong&gt; (too many hrs): Just wanted to go back and see if Eve was the same as before (see &lt;a href=&quot;http://cordinc.com/blog/2014/08/eve-online.html&quot;&gt;here&lt;/a&gt;). Yep, still the same. Grindy or focused on multiplayer - neither are for me.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/392110/Endless_Space_2/&quot;&gt;Endless Space 2&lt;/a&gt;&lt;/strong&gt; (20 hrs): Space 4X are a weakness of mine, and after a single 16 hour game, this is certainly a compelling one. It attempts to create stories with little chains of events, and has some interesting factions. Although it suffers from the standard problems of the genre (in my opinion) - it is too complex with many fiddly game mechanics, so that by the late mid-game it becomes a chore to manage your systems. The “game feel” is very similar to Stellaris, so you probably don’t need both, but now I own it, I will give it another go.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/793460/112_Operator&quot;&gt;112 Operator&lt;/a&gt;&lt;/strong&gt; (4 hrs): A management sim game where the players acts as the dispatcher for the emergency services (police, ambulance and fire brigade). You even occasionally need to answer emergency calls yourself (using multiple choice responses). There is a campaign, but I didn’t see much of a story, just escalating difficulty. The big draw is being able to play on a map of any city in the world, although when I tried to play on my home town it just crashed :( Ultimately this game didn’t grab me, the scenarios got bigger and increasingly hectic, but not more interesting.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/349730/Popup_Dungeon/&quot;&gt;Popup Dungeon&lt;/a&gt;&lt;/strong&gt; (7 hrs): Dungeon delving rogue-like designed to look like paper miniatures and cut-outs as if it was being played on a tabletop. This theme carries through everything including the slow diegetic menus. Although the fantasy theme strangely applied as it includes superheroes and sci-fi characters. At one point I found myself in a modern fast-food restaurant. Continuously tries to be funny, but completely failed for me (and that distracted hugely from enjoying the game). Slow and RNG heavy with big difficulty spikes this just couldn’t maintain my attention.&lt;/p&gt;
 </description>
     </item>
     

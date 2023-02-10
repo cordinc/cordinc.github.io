@@ -38,6 +38,72 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">November  8, 2009</span>
+  <h4><a href="/blog/2009/11/models-and-events.html">Models and Events</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I have been thinking that software development is all about models and
+events. By models I mean <a href="http://en.wikipedia.org/wiki/Domain_model">domain
+models</a>, and by events I’m
+referring to an <a href="http://en.wikipedia.org/wiki/Event-driven_architecture">event-driven
+architecture</a>.
+Not quite the <a href="http://stuffinvestmentbankerslike.blogspot.com/2008/06/40-models-and-bottles.html">models and
+bottles</a>
+of Investment Banking.</p>
+
+<p>The domain model is where the application’s data lives. It is the model
+part of the
+<a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a>
+pattern. For example, in a system that manipulates songs, a song would
+be part of the domain model, together with the song’s name, artist,
+album etc (in
+<a href="http://en.wikipedia.org/wiki/Object-oriented_programming">Object-oriented</a>
+systems there would be a song class containing these attributes). The
+more time I spend coding, the more I find that the future course of a
+project is directly related to how its domain model was conceived. Using
+MVC, changing the model later can involve a great deal of work if the
+model touches everything else. Thus usually some time is spent on
+working out the model and refactoring it if necessary. Indeed, I
+remember once describing a less than satisfying job as drawing pictures
+all day, meaning
+<a href="http://en.wikipedia.org/wiki/Unified_Modeling_Language">UML</a> mainly for
+the domain (I would have preferred to be coding).</p>
+
+<p>I have a few tips for domain models. Follow the ideal of MVC, that is
+keep view and controller logic out of the model. Also, try to have <a href="http://blog.kineticweb.com/articles/2007/06/01/skinny-controller-fat-model">fat
+models and skinny
+controllers</a>
+(this is a <a href="http://rubyonrails.org/">Ruby On Rails</a> idea, but I find it
+works well in general). Keep model classes immutable if possible.
+Lastly, write your own containers (containing and hiding actual
+SDK-based containers) for easy aggregation functions (and
+parallelising). None of this is particularly controversial, few people I
+have worked with would disagree.</p>
+
+<p>What I have recently found surprising is that people do disagree with
+using an event based architecture where I feel it would work well.
+Event-driven systems are ones where changes to domain state are packaged
+as events and passed to listeners of those events through some form of
+callback. This helps promote a
+<a href="http://en.wikipedia.org/wiki/Loose_coupling">loosely-coupled</a> design,
+something else I would strongly encourage. Also recommended is keeping
+the events at the lowest level appropriate in the model (a rule I’ve
+broken a few times). For instance, if you have an album which contains
+songs, a “songAdded” event would go on the album listeners, but a
+“songUpdated” event should fire on the song’s listeners. Other people
+seem to prefer a system of loops polling for changes (or something
+similar). I find their code far more complicated. Event-driven systems
+are simple to write, simple to understand and you only need to handle
+the events you are interested in. I would be interested to hear what
+other experienced programmers have found works.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">October  5, 2009</span>
   <h4><a href="/blog/2009/10/java-enumerations-sometimes-co.html">Java Enumerations (Sometimes) Considered Harmful</a></h4> 
   Tags: 
@@ -267,71 +333,6 @@ changes). Interesting.</p>
   </div>
   <hr/>
 
-  <span class="date">August 29, 2009</span>
-  <h4><a href="/blog/2009/08/java-threading-is-scary.html">Java Threading is Scary</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Recently I have been thinking hard about threading in a Java project of
-mine, and it definitely requires a great deal of hard thinking. When I
-started working with Java there weren’t any native threads, so it was
-just easier to make everything single threaded as the performance gain
-was minimal. However, as time has passed more and more of my code both
-at work and home has needed to work multi-threaded. As I learn more
-about Java threading, I realise how wrong I was doing it before - a
-cycle repeated a few times in the last 12 years. It was only after
-reading the great book <a href="http://jcip.net/">Java Concurrency In Practice</a>
-a few years ago that I realised that in Java “locking is not just about
-mutual exclusion; it is also about memory visibility.” I can only hope
-that this is the last such cycle, but realise it’s probably not.</p>
-
-<p>Talking to other developers there seems to be a standard progression in
-Java multi-threaded programming skill:</p>
-
-<ol>
-  <li>Just write single threaded programs</li>
-  <li>Write multi-threaded programs by marking everything synchronized</li>
-  <li>Use wait() and notifyAll() to build up “threadsafe” collection
-classes</li>
-  <li>Realise your “thread-safe” collection classes aren’t particularly
-thread-safe and try using <a href="http://en.wikipedia.org/wiki/Immutable_object">immutable domain
-objects</a> with
-stateless controllers to work around the problem</li>
-  <li>Trust in the <a href="http://java.sun.com/j2se/1.5.0/docs/api/index.html?">Java API concurrent
-utilities</a>
-java/util/concurrent/package-summary.html, with its collections,
-locks and executors</li>
-  <li>Realise that these classes don’t solve all the problems and start
-thinking hard about all the issues in your code</li>
-  <li>Become very scared about Java threading</li>
-</ol>
-
-<p>I think the next step may be using another language that doesn’t allow
-shared state. <a href="http://www.scala-lang.org/node/242">Scala uses an Actor
-model</a> to asynchronously pass
-messages between threads. There is no shared memory so no threading
-problems. This sounds like a good way to go, but I still work in Java
-for most of my programming (not many Scala or Erlang jobs around!).</p>
-
-<p>This whole situation reminds me of <a href="http://en.wikipedia.org/wiki/Memory_management">memory
-management</a> in C<span class="underline"></span>. There were simple rules to follow to reduce
-memory leakage, but the problem was hard to completely solve (especially
-to a newbie programmer) and normally your program still leaked. I
-remember leaning heavily on
-<a href="http://en.wikipedia.org/wiki/IBM_Rational_Purify">Purify</a>. Then Java
-came along with its automatic memory management and the problem largely
-disappeared. Developers could focus on the business logic of their code
-rather than housekeeping. Hopefully a similar thing will happen with
-Java threading.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -358,6 +359,10 @@ Java threading.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/02/goals.html">Goals</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2022/12/release.html">Release</a> 
@@ -393,10 +398,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/04/enough-gaming.html">Enough Gaming</a> 
   </li>  
 
 </ul>
