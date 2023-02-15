@@ -38,6 +38,85 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">January 10, 2010</span>
+  <h4><a href="/blog/2010/01/new-goals-again.html">New goals, again</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Goals.html">Goals</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I don’t like new year resolutions detailing plans to make yourself
+better - I’m already great! However, I do like the idea of setting a few
+goals. This year’s goals are fairly similar to last years, but a little
+less ambitious:</p>
+
+<ul>
+  <li>Blog at an average rate of at least 4 times a month. Fairly sure I
+can do this with the
+<a href="http://www.cordinc.com/cgi-sys/cgiwrap/cordinc/managed-mt/mt-search.cgi?tag=Blender&amp;blog_id=1">Blender</a>
+and <a href="http://www.cordinc.com/cgi-sys/cgiwrap/cordinc/managed-mt/mt-search.cgi?tag=History&amp;blog_id=1">History
+Podcast</a>
+posts I’m planning.</li>
+  <li>Only have 2 programming projects going at the same time. Reassess
+projects every 3 months. The first two are: learning how to load and
+animate blender models in a 3D graphics engine; and a secret
+project.</li>
+  <li>Complete 3 Blender models and write tutorials on them - the models
+are a robot (to learn animation), a
+<a href="http://en.wikipedia.org/wiki/Thermopolium">Thermopolium</a>, and a
+<a href="http://en.wikipedia.org/wiki/Broch">Broch</a>.</li>
+  <li>Maintain Queuesaurus and general ruby skills. Try to use Scala.</li>
+  <li>Run 5km in 25 minutes. This is a bit ambitious.</li>
+  <li>Decrease net ownership of physical goods</li>
+</ul>
+
+  </div>
+  <hr/>
+
+  <span class="date">January  9, 2010</span>
+  <h4><a href="/blog/2010/01/recap.html">Recap</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/General.html">General</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Almost a year ago I wrote <a href="/blog/2009/02/new-goals.html">some goals for the new
+year</a>. Now it is time for an assessment.</p>
+
+<ul>
+  <li><strong>Goal: Improve Ruby skills. Result: Partial success.</strong> I’m not at
+what I would consider a professional standard, but not far off it. I
+gemify’ed my BBC weather library, but have since abandoned it as
+keeping up with the BBC’s constant API changes was frustrating. I
+use <a href="http://www.queuesaurus.com">Queusaurus</a> even if no one else
+does. I started another project, but it didn’t get far enough to
+publicise.</li>
+  <li><strong>Goal: Learn Scala. Result: Have done some, but not much.</strong></li>
+  <li><strong>Goal: Learn Blender. Result: Near Success.</strong> I feel confident
+enough about this one. I haven’t completed an ancient scene, but I’m
+sure I could.</li>
+  <li><strong>Goal: Decrease net ownership of physical goods. Result: Success.</strong>
+Doing this slowly but surely - I own fewer things now than when I
+wrote that goal, but not by much.</li>
+  <li><strong>Goal: 48 blog posts in a year. Result: 44 posts.</strong> I’m fairly
+happy with that. Holidays and looking for a new work contract slowed
+me down a bit.</li>
+  <li><strong>Goal: Run 5km in 25 minutes. Result: Not even close.</strong> The less
+said the better.</li>
+  <li>On the stretch goals, all are still a long distance away.</li>
+</ul>
+
+<p>I think the main problem with achieving those goals was my tendency to
+try doing too much. At one point (and continuing for a couple of months)
+I had 6 programming projects on the go at once. Nothing progressed at
+any pace over the last half of the year and that is what caused the most
+slippage. Something to be aware of for the coming year.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">January  2, 2010</span>
   <h4><a href="/blog/2010/01/starting-a-uk-company.html">Starting a UK Company</a></h4> 
   Tags: 
@@ -260,143 +339,10 @@ by poor production.</p>
   </div>
   <hr/>
 
-  <span class="date">December  7, 2009</span>
-  <h4><a href="/blog/2009/12/testing-generated-code.html">Testing generated code</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>What is the accepted way to test generated source code? A recent work
-project required me to generate some Java source code from small
-definition files as part of a larger framework. The plan was for other
-project teams to take the framework and use the generator to create
-source which would become part of their project. I wanted to write unit
-tests for the source code. The problem was how to write a test for code
-that didn’t exist at the time the test was written because it hadn’t
-been generated yet! I came up with a few options:</p>
-
-<ul>
-  <li>Do a text comparison between generated code and the previously
-created known text output of the generation process. If they are
-exactly the same, the test passes. This tests the generation process
-if correct but doesn’t test the logic of the generated code. If the
-generated code has syntactic errors, compilers or IDEs will pick
-this up quite fast and the developers in the other project will
-complain quickly, but subtle logic could go unchecked for ages.</li>
-  <li>Write a test that generates a class file from known inputs then
-compiles it programmactically with the <a href="http://java.sun.com/javase/6/docs/api/javax/tools/JavaCompiler.html">Java Compiler
-API</a>
-then loads the class into the JVM and runs tests against it. This
-would be better than the previous idea, as it tests the
-functionality of the result. This was my first choice solution.
-However, getting the Java Compiler API to work can be a bit hard.
-There was a paucity of documentation on this and in the end I
-couldn’t get it to work within time constraints.</li>
-  <li>Generate the test at the same time as the generated code and pass
-them both to the other project. The other project would then test
-the generated code as if it was their code. This felt wrong to me.
-No other generations systems do this - it is like passing the buck.
-If there is an error in the generated code then the generator needs
-to be fixed not the generated class!</li>
-  <li>A 2-step process - test the functionality and generation process
-separately. First, create a class that should be the same as a
-generated class given known inputs (probably by generating it!) and
-write tests that work against that class. Thus the problem of
-testing not yet existing code is solved by using some code generated
-earlier. This tests the generated code’s functionality as long as
-the generating process doesn’t change. So the second part is to test
-the generation process hasn’t changed using the first test in this
-list. Add another test to generate the code and check that it is
-exactly the same text as the class the rest of the test is written
-against. If the generation output changes then you have to modify
-the pre-generated class, and thus change the functionality test if
-required. Easy.</li>
-</ul>
-
-  </div>
-  <hr/>
-
-  <span class="date">December  2, 2009</span>
-  <h4><a href="/blog/2009/12/clcv-205-introduction-to-ancie.html">CLCV 205: Introduction to Ancient Greek History</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/History.html">History</a>, 
-    
-      <a class="post" href="/blog/tag/Podcasts.html">Podcasts</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Available on
-<a href="http://deimos3.apple.com/WebObjects/Core.woa/Browse/yale.edu.1899726321.01899726329">iTunesU</a>
-with a <a href="http://oyc.yale.edu/classics/introduction-to-ancient-greek-history/">course
-website</a>.</p>
-
-<p>This complete university course (from Fall 2007) on Ancient Greek
-History from <a href="http://www.yale.edu/">Yale</a> is the best history podcast I
-have found so far. It consists of 24 lectures of about an hour’s length
-each, all given by Professor <a href="http://en.wikipedia.org/wiki/Donald_Kagan">Donald
-Kagan</a>. It starts with an
-introduction to <a href="http://en.wikipedia.org/wiki/Mycenaean_Greece">Mycenaean
-Greece</a> before moving
-onto the <a href="http://en.wikipedia.org/wiki/Greek_Dark_Ages">Greek Dark Ages</a>
-and Homeric stories. The series ends with Philip of Macedon’s victory at
-the <a href="http://en.wikipedia.org/wiki/Battle_of_Chaeronea_%28338_BC%29">Battle of
-Chaeronea</a>
-and the Greek Polis’ permanent loss of independence. Along the way it
-details all the major events including: the rise and strangeness of
-Sparta; the rise of Athens and democracy; Persian wars; and the slow
-decrease of power in the struggle for hegemony after the Peloponnesian
-War. Only the 27 years of the <a href="http://en.wikipedia.org/wiki/Peloponnesian_War">Peloponnesian
-War</a> seem to be under
-represented in coverage (from my previous knowledge of history). Despite
-4 lectures being dedicated to it in the syllabus, most of these are
-taken by finishing prior topics and the buildup to the war. For the war
-itself, Professor Kagan suggests looking to other sources as it it too
-much to cover properly, and instead talks in detail about two related
-topics - <a href="http://en.wikipedia.org/wiki/Pericles">Pericles’</a> strategy and
-<a href="http://en.wikipedia.org/wiki/Thucydides">Thucydides’</a> history.</p>
-
-<p>One thing I can’t fault is the production. The podcasts are professional
-from start to finish. The only blemish is Professor Kagan’s occasional
-coughing, but this is a minor issue. The podcasts are available in a
-number of formats on the course website: audio-only (the same mp3s that
-are on iTunes); video, in both high (around 700 MB) &amp; medium (around 250
-MB) bandwith forms; and, complete text transcripts. The website also
-includes the notes handed out with each lecture, although these
-unfortunately are without the original images due to copyright problems.
-The website itself is downloadable too (albeit with only links to the
-audio and video files). While videos of the lectures are available, it
-is not really necessary to download them as they mainly just show Kagan
-talking at his podium. Rarely does he use any visual aid during the
-lectures. Thus these are excellent podcasts to listen to audio-only -
-very little will be missed.</p>
-
-<p>The lectures are often a recitation of events together with discussion
-of how and why things may have occurred that way (for instance a section
-on various military strategies and whether they were correct). The aim
-appears to be getting the listener into the mindset of the ancient Greek
-statesmen (and thus the citystates in general). A goal largely achieved
-to my mind. There is less discourse on daily life (but still some).
-Professor Kagan also talks a little about historical controversies and
-often compares ancient events to modern history (in particular around
-the use of military force). In both situations he tends to declare his
-own prejudices so the listener is not led too much.</p>
-
-<p>This is a highly recommended lecture series - interesting content that
-goes into the subject with some depth and so well produced it is
-surprisingly easy listening.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 71 of 87 
+  Page 71 of 88 
   
       
         <a href="/blog/page70">Previous</a>
@@ -419,6 +365,14 @@ surprisingly easy listening.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2023/02/15-years.html">15 years</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/02/goals.html">Goals</a> 
@@ -450,14 +404,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
   </li>  
 
 </ul>

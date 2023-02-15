@@ -38,6 +38,79 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">July  2, 2012</span>
+  <h4><a href="/blog/2012/07/the-future-in-three-images.html">The Future in Three Images</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Concealed Intent.html">Concealed Intent</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>After last week’s look back, now it is time to look forward. I expect
+the next year of my life will be dominated by these images.</p>
+
+<p><img src="/assets/posts/travel/640px-Kuala_Lumpur_City_View.jpg" width="550" alt="" /></p>
+
+<p>At the end of this year I am moving to <a href="http://en.wikipedia.org/wiki/Kuala_Lumpur">Kuala
+Lumpur</a> for my partner’s
+work. I’ll be there for possibly 4 years. I’m not sure what I’ll be
+doing there, but I hope to continue with this:</p>
+
+<p><img src="/assets/posts/work/spacesub.png" alt="" /></p>
+
+<p>Above are 2 player drones and a player corvette rounding a small planet
+and closing on a stack of 3 enemy ships. It is from a computer game I’m
+working on codenamed SpaceSub (because it’s all about stealth). It is
+still in a fairly early stage of development. More news on it will be
+available at:</p>
+
+<p><img src="/assets/posts/work/logo_shadow_vertical_unrounded.png" alt="" /></p>
+
+<p>I’m repurposing <a href="http://www.jarrahtechnology.com">Jarrah Technology</a>, my
+old consulting company, as an indie game developer for SpaceSub. The
+website will soon be updated to reflect that new identity.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">June 17, 2012</span>
+  <h4><a href="/blog/2012/06/blog-stats.html">Blog Stats</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Meta.html">Meta</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>On February 5th 2008, the first post on this blog was published. This is
+the 201st posting, so it is time for a recap. The blog was originally to
+document the creation of a business website. That business idea,
+Queuesaurus, has been and gone, but the blog continues. I think it is
+useful to practice writing - it’s certainly not for the money!</p>
+
+<p>In nearly four and a half years this blog has generated 133,340 page
+views from 70,904 unique visitors. This has resulted in 77 AdSense
+clicks for income of $31 (versus a hosting cost over the same period of
+$104). However, it is gratifying to see that the number of visitors is
+on a steadily upward trend. As the graph below shows, the number of
+monthly visits has grown to around 4500/month at present.</p>
+
+<p><img src="/assets/posts/meta/visitors.png" width="550" alt="" /></p>
+
+<p>Most people visiting this blog will never read this post. 75% of people
+come to it through a search engine (mainly Google) and view a single
+technical article. The top ten posts account for 60% of the page views
+and all of those ten are technical in nature (<a href="http://cordinc.com/blog/2009/04/multiple-attachments-with-vali.html">this is the most popular
+page</a>,
+and <a href="http://cordinc.com/blog/2008/03/installing-sphinx-ultrasphinx.html">this the second most
+popular</a>).</p>
+
+<p>Unfortunately there are only 14 comments on the site. I had to turn
+comments off a couple of years ago because I was receiving about 50 spam
+comments a day after the spam filters cleared out the most obvious ones!</p>
+
+  </div>
+  <hr/>
+
   <span class="date">June 10, 2012</span>
   <h4><a href="/blog/2012/06/budapest.html">Budapest</a></h4> 
   Tags: 
@@ -152,156 +225,10 @@ and that childbirth was considered equivalent of going to war.</p>
   </div>
   <hr/>
 
-  <span class="date">May 12, 2012</span>
-  <h4><a href="/blog/2012/05/debugging-context-in-unity3d.html">Debugging context in Unity3D</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
-    
-      <a class="post" href="/blog/tag/Unity.html">Unity</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>A cool little feature of Unity3D scripting I recently found is using
-conditional compilation for debug statements. The C based languages (but
-not Java unfortuately) have inbuilt preprocessors that allow developers
-to only compile certain parts of the code if certain parameters are set
-(it can also do much more, including macros). Thus you could write the
-below and the code would only be included in the executable if <code class="highlighter-rouge">DEBUG</code>
-is defined.</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="k">if</span> <span class="nx">DEBUG</span>
-    <span class="c1">// do some special code</span>
-<span class="err">#</span><span class="nx">endif</span></code></pre></figure>
-
-<p>Unity3D has a similar system. Mostly the docs (<a href="http://unity3d.com/support/documentation/Manual/Platform%20Dependent%20Compilation.html">available
-here</a>)
-seem to suggest this is for specialist code for different platforms:
-iPhone, Web, PC, etc. Thus the defined parameters are set in advance
-(e.g. <code class="highlighter-rouge">UNITY_IPHONE</code>). However, there is one that is useful for
-debugging, <code class="highlighter-rouge">UNITY_EDITOR</code>. This will only be set if the application is
-running inside the Unity3D GUI. Once you build the app those lines of
-code will be skipped. It can be used like the below example - very
-handy.</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="k">if</span> <span class="nx">UNITY_EDITOR</span>
-    <span class="nx">Debug</span><span class="p">.</span><span class="nx">Log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Debugging</span><span class="dl">"</span><span class="p">);</span>
-<span class="err">#</span><span class="nx">endif</span> </code></pre></figure>
-
-<p>According to <a href="http://forum.unity3d.com/threads/71445-How-To-Set-Project-Wide-pragma-Directives-with-JavaScript">this Unity3D forum
-post</a>
-it is also possible to define your own project specific preprocessor
-parameters.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">May  4, 2012</span>
-  <h4><a href="/blog/2012/05/unit-testing-unityscript-in-un.html">Unit Testing UnityScript in Unity3D with SharpUnit</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
-    
-      <a class="post" href="/blog/tag/Unity.html">Unity</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I have been programming mainly in <a href="http://unity3d.com/">Unity3D</a> over
-the last fortnight, and thought it time to write some unit tests for my
-work. I found reference to a <a href="http://unifycommunity.com/wiki/index.php?title=Category:Unit_Test_Framework">few testing frameworks
-online</a>.
-The most promising appeared to be
-<a href="http://www.unifycommunity.com/wiki/index.php?title=SharpUnit">SharpUnit</a>,
-and it is also released under a fairly relaxed license. However, I had
-to make a few changed to get it running, so this post details that work.</p>
-
-<p>SharpUnit works like a standard unit testing framework for C# code in
-Unity3D (although all output goes to the console, but that is fine for
-me). Although my work has largely been in UnityScript (Unity3D’s
-JavaScript like language) and this didn’t work so well due to issues
-with compilation order and SharpUnit’s use of .Net custom attributes.
-After making the changes below, I found SharpUnit works well, and I’ll
-probably be using it for my unit testing.</p>
-
-<p>Unity3D compiles scripts in a set order (<a href="http://unity3d.com/support/documentation/ScriptReference/index.Script_compilation_28Advanced29.html">as described
-here</a>).
-Thus if you have C# code that references a UnityScript class there can
-be a problem - although the reverse is not such an issue. When testing
-UnityScript with SharpUnit this means that the C# <code class="highlighter-rouge">Unity3D_TestRunner</code>
-class can be an issue. It references the <code class="highlighter-rouge">TestCase</code> classes, which I
-want to write in UnityScript. To do this I put the SharpUnit code in a
-folder under the <code class="highlighter-rouge">Plugins</code> top-level folder (the <code class="highlighter-rouge">Standard Assets</code>
-folder would have also worked). This means the SharpUnit code is
-compiled first. Then my tests went in a new folder together with a
-UnityScript rewrite of <code class="highlighter-rouge">Unity3D_TestRunner</code>, as shown below. This
-UnityScript TestRunner script is then attached to the TestRunner
-GameObject (in a special testing scene) rather than the C# version as
-described in the SharpUnit instructions.</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="nx">pragma</span> <span class="nx">strict</span>
-
-<span class="k">import</span> <span class="nx">SharpUnit</span><span class="p">;</span>
-
-<span class="kd">function</span> <span class="nx">Start</span> <span class="p">()</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">suite</span><span class="p">:</span> <span class="nx">TestSuite</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TestSuite</span><span class="p">();</span>
-	<span class="nx">suite</span><span class="p">.</span><span class="nx">AddAll</span><span class="p">(</span><span class="nx">DummyTest</span><span class="p">());</span>
-	<span class="kd">var</span> <span class="nx">res</span><span class="p">:</span> <span class="nx">TestResult</span> <span class="o">=</span> <span class="nx">suite</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
-	<span class="kd">var</span> <span class="nx">reporter</span><span class="p">:</span> <span class="nx">Unity3D_TestReporter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Unity3D_TestReporter</span><span class="p">();</span>
-    <span class="nx">reporter</span><span class="p">.</span><span class="nx">LogResults</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Other possible solutions to this problem would be to just write my code
-in C# or to change SharpUnit to load <code class="highlighter-rouge">TestCase</code> classes dynamically at
-runtime. Rewriting the TestRunner seemed easiest.</p>
-
-<p>The other problem encountered is that SharpUnit uses the C# custom
-attribute <code class="highlighter-rouge">[UnitTest]</code> to identify its test methods. The equivalent in
-UnityScript is a script directive (see <a href="http://answers.unity3d.com/questions/12911/what-are-the-syntax-differences-in-c-and-javascrip.html">the relevant section
-here</a>).
-Thus <code class="highlighter-rouge">@UnitTest</code> needs to be placed at the top of each test function.</p>
-
-<p>After that change I could run UnityScript tests with SharpUnit. An
-example test is below:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="nx">pragma</span> <span class="nx">strict</span>
-
-<span class="k">import</span> <span class="nx">SharpUnit</span><span class="p">;</span>
-
-<span class="kd">class</span> <span class="nx">DummyTest</span> <span class="kd">extends</span> <span class="nx">TestCase</span> <span class="p">{</span>
-
-    <span class="kd">var</span> <span class="nx">dummy</span><span class="p">:</span> <span class="nb">String</span><span class="p">;</span>  
-
-    <span class="cm">/** Setup test resources, called before each test. */</span>
-    <span class="kd">function</span> <span class="nx">SetUp</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">dummy</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">lkjkjh</span><span class="dl">"</span><span class="p">;</span> 
-    <span class="p">}</span>
-
-    <span class="cm">/** Dispose of test resources, called after each test */</span>
-    <span class="kd">function</span> <span class="nx">TearDown</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">dummy</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> 
-    <span class="p">}</span>
-
-    <span class="cm">/** Sample test that passes */</span>
-    <span class="p">@</span><span class="nd">UnitTest</span>
-    <span class="kd">function</span> <span class="nx">TestDummy_Pass</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">Assert</span><span class="p">.</span><span class="nx">NotNull</span><span class="p">(</span><span class="nx">dummy</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="cm">/** Sample test that fails. */</span>
-    <span class="p">@</span><span class="nd">UnitTest</span>
-    <span class="kd">function</span> <span class="nx">TestDummy_Fail</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">Assert</span><span class="p">.</span><span class="nx">Null</span><span class="p">(</span><span class="nx">dummy</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 48 of 87 
+  Page 48 of 88 
   
       
         <a href="/blog/page47">Previous</a>
@@ -324,6 +251,14 @@ example test is below:</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2023/02/15-years.html">15 years</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/02/goals.html">Goals</a> 
@@ -355,14 +290,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
   </li>  
 
 </ul>

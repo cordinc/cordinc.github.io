@@ -1,4 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-10T11:51:06+08:00</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Goals</title><link href="http://localhost:4000/blog/2023/02/goals.html" rel="alternate" type="text/html" title="Goals" /><published>2023-02-10T00:00:00+08:00</published><updated>2023-02-10T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/02/goals</id><content type="html" xml:base="http://localhost:4000/blog/2023/02/goals.html">&lt;p&gt;Why do I do this? Am I a masochist? Time again to assess &lt;a href=&quot;/blog/2022/01/goals.html&quot;&gt;last years goals&lt;/a&gt;:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-15T17:04:25+08:00</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Boardgames of 2022</title><link href="http://localhost:4000/blog/2023/02/boardgames.html" rel="alternate" type="text/html" title="Boardgames of 2022" /><published>2023-02-15T00:00:00+08:00</published><updated>2023-02-15T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/02/boardgames</id><content type="html" xml:base="http://localhost:4000/blog/2023/02/boardgames.html">&lt;p&gt;I have started tracking the boardgames I play during the year. In 2022 I played 11 different titles for a total of 34 games. That doesn’t seem like much to me (but there were also 6 games of my prototypes). Here is the list:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Game&lt;/th&gt;
+      &lt;th&gt;Plays&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/173346/7-wonders-duel&quot;&gt;7 Wonders: Duel&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/328871/terraforming-mars-ares-expedition&quot;&gt;Terraforming Mars: AE&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/251658/sprawlopolis&quot;&gt;Sprawlopolis&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/274364/watergate&quot;&gt;Watergate&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/230253/star-realms-frontiers&quot;&gt;Star Realms: Frontiers&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/227789/heaven-ale&quot;&gt;Heaven &amp;amp; Ale&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/281655/high-frontier-4-all&quot;&gt;High Frontier (Space Diamonds version)&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/14996/ticket-ride-europe&quot;&gt;Ticket To Ride: Europe&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/103885/star-wars-x-wing-miniatures-game&quot;&gt;X-Wing&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/30549/pandemic&quot;&gt;Pandemic&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/283864/trails-tucana&quot;&gt;Trails of Tucana&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;And now some short reviews of the games I own and have played at least 3 times:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;7 Wonders Duel&lt;/strong&gt;: this is a 2-player only version of the also excellent deckbuilder &lt;a href=&quot;https://boardgamegeek.com/boardgame/68448/7-wonders&quot;&gt;7 Wonders&lt;/a&gt;. The goal is to build an ancient civilisation by selecting cards from layouts of escalating power. Some of the cards are hidden until they can be chosen other are visible from the start. There are lots of ways to acculumate points and many strategies. You have to adapt to the situation and your opponent. This is an excellent game and so much fun. I’ll be playing much more.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Terraforming Mars: Ares Expedition&lt;/strong&gt;: the 2-player version of &lt;a href=&quot;https://boardgamegeek.com/boardgame/167791/terraforming-mars&quot;&gt;Terraforming Mars&lt;/a&gt;, an engine building game where the players vie to contribute the most towards making Mars human habitable. The back of the box says it plays in under an hour but I never taken less than 90 minutes. So far there is little interaction with the opponent, but the depth of tactics and huge number of possibilities keeps me interested. A good game I’ll keep playing for now, but will it keep me interested when it is more familiar?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Sprawlopolis&lt;/strong&gt;: 18 card city builder. Quick and challenging, you lay the cards down like tiles to plan out a city, while trying to satisfy 3 randomly generated scoring rules. Can be played solo. Everyone I have played this with loves it, and deservedly so. Great to carry around as time-filler between other things (as were all the plays this year).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;FYI: 3 plays is the review minimum because that excludes Watergate. I like the asymmetric gameplay of that Watergate, but am worried one side may have an winning advantage - I need more plays before giving a fair review.&lt;/p&gt;</content><author><name>Charles</name></author><category term="Blog" /><category term="Games" /><category term="Board Games" /><summary type="html">I have started tracking the boardgames I play during the year. In 2022 I played 11 different titles for a total of 34 games. That doesn’t seem like much to me (but there were also 6 games of my prototypes). Here is the list:</summary></entry><entry><title type="html">15 years</title><link href="http://localhost:4000/blog/2023/02/15-years.html" rel="alternate" type="text/html" title="15 years" /><published>2023-02-14T00:00:00+08:00</published><updated>2023-02-14T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/02/15-years</id><content type="html" xml:base="http://localhost:4000/blog/2023/02/15-years.html">&lt;p&gt;The first post published here was fifteen years ago this month. Now there are 436 posts in total (including this one) corresponding to a rate of 29 posts/year. The result is 2.6MB of ascii text and around 240000 words which means an average post is 550 words.&lt;/p&gt;
+
+&lt;p&gt;Since the last similar &lt;a href=&quot;/blog/2015/02/blog-stats.html&quot;&gt;meta post&lt;/a&gt; 7 years ago, I have removed all visitor tracking, so no cookies or comments (or at least there shouldn’t be unless someone is injecting them - let me know if you see any). The site is also hosted for free on Github without logs. Thus it is no longer possible to be sure how many people visit, or from where, or for how long. Although I suspect that the trend is downwards as there are less of the technical posts that picked up organic Google Search traffic in the past and more posts about games I’m playing.&lt;/p&gt;
+
+&lt;p&gt;On the plus side, this blog no longers costs me anything (other than writing time). At the start it cost US$10/month for hosting plus my sysadmin time. Then it went to US$5/month + sysadmin as improving technology compared to my relatively static requirements meant I could use smaller systems. Now hosting a few GB of static site is effectively no cost, and certainly no cost to me.&lt;/p&gt;
+
+&lt;p&gt;In the &lt;a href=&quot;/blog/2008/02/the-beginning-again.html&quot;&gt;very first post&lt;/a&gt; I detailed my reasons for creating this blog:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;“The aim of this blog is to detail my attempts to create a business that exists on more just selling my time as a consultant; other programming projects I undertake; and any other nonsense I think about.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I think that last clause has been met :) It has been some time since the last programming post (other than advertising for my games). Most of my days are spent coding, but I rarely feel what I doing is notable enough for public comment. I should probably change that, and just force out some technical posts.&lt;/p&gt;</content><author><name>Charles</name></author><category term="Blog" /><category term="Meta" /><category term="General" /><summary type="html">The first post published here was fifteen years ago this month. Now there are 436 posts in total (including this one) corresponding to a rate of 29 posts/year. The result is 2.6MB of ascii text and around 240000 words which means an average post is 550 words.</summary></entry><entry><title type="html">Goals</title><link href="http://localhost:4000/blog/2023/02/goals.html" rel="alternate" type="text/html" title="Goals" /><published>2023-02-10T00:00:00+08:00</published><updated>2023-02-10T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/02/goals</id><content type="html" xml:base="http://localhost:4000/blog/2023/02/goals.html">&lt;p&gt;Why do I do this? Am I a masochist? Time again to assess &lt;a href=&quot;/blog/2022/01/goals.html&quot;&gt;last years goals&lt;/a&gt;:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Increase strength and aerobic fitness&lt;/strong&gt;: As I write this, I am injured - a reoccurrence of an old foot problem. So my exercise plan is on pause. This happened a couple of times last year. The plan was to lose some weight and then push for new highs. However, due to injury, covid and other things I didn’t manage to start losing weight until November. Thus I am definitely not stronger this year. I have been cycling regularly (until my foot injury a couple of days ago) so I might be fitter aerobically. Call this one a partial success.&lt;/li&gt;
@@ -102,23 +178,4 @@
 
 &lt;p&gt;Some photos from the trip are in a short slideshow &lt;a href=&quot;/slideshows/esperance_22.html&quot;&gt;available here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/slideshows/esperance_22.html&quot;&gt;&lt;img src=&quot;/assets/slideshow/esperance_22/lucky_bay_main.png&quot; alt=&quot;&quot; title=&quot;Lucky Bay&quot; /&gt;&lt;/a&gt;&lt;/p&gt;</content><author><name>Charles</name></author><category term="Posts" /><category term="Travel" /><category term="Australia" /><summary type="html">Late last month (scheduled to avoid school holidays) I went on a week’s holiday. Three nights in Esperance, and 3 nights on the journey there and back.</summary></entry><entry><title type="html">Real Dreams</title><link href="http://localhost:4000/blog/2022/04/real-dreams.html" rel="alternate" type="text/html" title="Real Dreams" /><published>2022-04-13T00:00:00+08:00</published><updated>2022-04-13T00:00:00+08:00</updated><id>http://localhost:4000/blog/2022/04/real-dreams</id><content type="html" xml:base="http://localhost:4000/blog/2022/04/real-dreams.html">&lt;p&gt;Starting as a teenager and continuing into my 20’s I had occasionally recurring dream of going up the Swan River from Perth (where I grew up). Within a few twists and turns it would quickly transform from urban city into wild bush with high river banks. Then I would arrive at a wonderful water funpark in the middle of this wilderness. I never thought much of it.&lt;/p&gt;
-
-&lt;p&gt;Recently I moved back to Perth. Now I live in Maylands, just a few kilometres from the city centre. Part of this area is a pennisula into a curve of the Swan River. Soon after moving in I went for a walk down to the river and immediately had a sense of deja vu. The area around the river is a park giving way to a swamp before the water, and on the other side are high banks with trees and modern apartment blocks poking up over the top.  It reminded me of more realistic version of that dream (if the apartment blocks were gone).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/posts/dreamscape1.png&quot; alt=&quot;Maylands Pennisula&quot; title=&quot;Maylands Pennisula&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;And then I saw the water park. It is clearly for small children - just some shallow pools and small slides. No photos as it is currently under reconstruction and mostly just looks like a building site. Presumably that dream must have been based on a real (and probably happy?) visit to this place when I was a very young. Forgotten consciously, it lived on in slumbering fantasy.&lt;/p&gt;</content><author><name>Charles</name></author><category term="Posts" /><category term="Memories" /><summary type="html">Starting as a teenager and continuing into my 20’s I had occasionally recurring dream of going up the Swan River from Perth (where I grew up). Within a few twists and turns it would quickly transform from urban city into wild bush with high river banks. Then I would arrive at a wonderful water funpark in the middle of this wilderness. I never thought much of it.</summary></entry><entry><title type="html">AI Hot Take</title><link href="http://localhost:4000/blog/2022/04/ai-hot-take.html" rel="alternate" type="text/html" title="AI Hot Take" /><published>2022-04-12T00:00:00+08:00</published><updated>2022-04-12T00:00:00+08:00</updated><id>http://localhost:4000/blog/2022/04/ai-hot-take</id><content type="html" xml:base="http://localhost:4000/blog/2022/04/ai-hot-take.html">&lt;p&gt;Some recent news on AI advances had me thinking about the implications and reminiscing on my own work in that area. Google’s new large language model named &lt;a href=&quot;https://ai.googleblog.com/2022/04/pathways-language-model-palm-scaling-to.html&quot;&gt;Pathways&lt;/a&gt; is the current trigger. Its results are impressive. I find its ability to reason about language almost incredible.&lt;/p&gt;
-
-&lt;p&gt;My views are definitely hot-takes as I am no longer an AI professional. Even when I was, I worked a long way from the pointy end that gets written up in research papers. Reader beware, the following could be bollocks. Still I’m not quite as shrill as &lt;a href=&quot;https://www.lesswrong.com/posts/wrkEnGrTTrM2mnmGa/retracted-it-s-time-for-ea-leadership-to-pull-the-short&quot;&gt;this hot-take&lt;/a&gt; but probably not as thoughtful as &lt;a href=&quot;https://twitter.com/russelljkaplan/status/1513128005828165634&quot;&gt;these tweets&lt;/a&gt; either.&lt;/p&gt;
-
-&lt;p&gt;For reference, I did my undergrad thesis on neural nets in the mid-90s (just as they were going out of fashion again) and then worked on logic programming for postgrad research (as symbolic techniques were popular at the time). Most of my professional career has not been AI related - until 2018 when I worked for a company using older machine learning techniques to analyse financial market research (I left in 2020). However, I have kept an interested eye on the field the whole time.&lt;/p&gt;
-
-&lt;p&gt;So my thoughts:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Improvement in AI models remain much worse than non-linear. It is a particulary bugbear of mine when people suggest making an AI twice as “smart” would only be twice as hard (a common argument amoung non-technical singularity advocates). Nope, twice as good is more like 1000x as hard or worse. When doing logic research I counted myself lucky if the algorithms were merely of exponential complexity. Current researchers are throwing exponentially (at least) more hardware and resources at these problems to get incremental changes. Only the largest and incredibly well financed organisations can hope to compete.&lt;/li&gt;
-  &lt;li&gt;Connectionist systems FTW. The history of AI has seen many swings between connectionist and symbolic techniques. However, with the improvement in neural networks since the advent of deep learning in the 2000’s, Team Connectionist is ascendant and for so long with no change in sight. The computational logic parts of CS departments must be in heavy decline.&lt;/li&gt;
-  &lt;li&gt;No whiff of consciousneess. When I swapped from neural nets into logic systems it was because I was unimpressed by them as just complex statistical inference. I still hold that opinion, but the results can’t be ignored. Now Pathways can do basic logical inference out of its connections. The conflation of intelligence and consiousness is under attack. It will be interesting to see where the final line is drawn as the importance of consciousness decreases.&lt;/li&gt;
-  &lt;li&gt;Language as root of functional intelligence? All these great results are coming out of language models. Is that because there is a fundamental link between communication and intelligence? Or is it simply because that is where researchers focus their attention? I don’t know.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Charles</name></author><category term="Posts" /><category term="General" /><summary type="html">Some recent news on AI advances had me thinking about the implications and reminiscing on my own work in that area. Google’s new large language model named Pathways is the current trigger. Its results are impressive. I find its ability to reason about language almost incredible.</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;/slideshows/esperance_22.html&quot;&gt;&lt;img src=&quot;/assets/slideshow/esperance_22/lucky_bay_main.png&quot; alt=&quot;&quot; title=&quot;Lucky Bay&quot; /&gt;&lt;/a&gt;&lt;/p&gt;</content><author><name>Charles</name></author><category term="Posts" /><category term="Travel" /><category term="Australia" /><summary type="html">Late last month (scheduled to avoid school holidays) I went on a week’s holiday. Three nights in Esperance, and 3 nights on the journey there and back.</summary></entry></feed>

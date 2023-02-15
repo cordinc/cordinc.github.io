@@ -38,6 +38,123 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">March 26, 2008</span>
+  <h4><a href="/blog/2008/03/installing-sphinx-ultrasphinx.html">Installing Sphinx & Ultrasphinx on Windows</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
+    
+      <a class="post" href="/blog/tag/Sphinx.html">Sphinx</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>So you have decided to add full-text searching to your Ruby on Rails
+application. After some investigation (see
+<a href="http://www.mail-archive.com/rubyonrails-deployment@googlegroups.com/msg01882.html">here</a>
+and
+<a href="http://blog.evanweaver.com/articles/2008/03/17/rails-search-benchmarks/">here</a>)
+<a href="http://www.sphinxsearch.com/">Sphinx</a> with the
+<a href="http://blog.evanweaver.com/files/doc/fauna/ultrasphinx/files/README.html">Ultrasphinx</a>
+plugin looks like the best solution for your needs. Just one problem,
+despite your deployment environment being Linux, for various reasons
+your current development environment is Windows. While Sphinx runs on
+Windows, it explicitly states it prefers to run on other systems and
+there are a few little gotchas. Here is the step by step guide to
+getting it working:</p>
+
+<ol>
+  <li>Download the <a href="http://www.sphinxsearch.com/downloads.html">Windows
+binaries</a> rather than
+the source code.</li>
+  <li>Extract the contents of the bin/release folder in the zip file you
+just downloaded into a location of your choice (eg. C:\Sphinx).</li>
+  <li>Add the location of the folder in step 2 into your system path.</li>
+  <li>Install chronic - <code class="highlighter-rouge">gem install chronic</code></li>
+  <li>Install Ultrasphinx -
+<code class="highlighter-rouge">svn export svn://rubyforge.org/var/svn/fauna/ultrasphinx/trunk vendor/plugins/ultrasphinx</code></li>
+  <li>Copy the example default.base to the app config folder and edit it.
+The path variable is the path to the location of the index (created
+in step 10), not the Sphinx binaries. Also, find the “set_rotate”
+option and set it to 0. This is not supported on Windows at the time
+of writing. You probably want to have this set differently in
+production.</li>
+  <li>Run <code class="highlighter-rouge">rake ultrasphinx:configure</code> You should now have a Sphinx conf
+file.</li>
+  <li>Add indexing to your model.</li>
+  <li>Edit the Ultrasphinx.rake (in plugins/ultrasphinx/tasks) and where
+you see ‘#{Ultrasphinx::CONF_PATH}’ remove the apostrophes,
+otherwise the rake task below won’t be able to find the
+configuration file.</li>
+  <li>Run rake <code class="highlighter-rouge">ultrasphinx:index</code> You should now have an index in the
+location specified in the conf path.</li>
+  <li>Run rake <code class="highlighter-rouge">ultrasphinx:daemon:start</code> The sphinx daemon should start
+up.</li>
+  <li>You are done and should be able to search. Good luck.</li>
+</ol>
+
+<p><strong>Update:</strong> In case you are not reading the comments, <a href="http://www.cordinc.com/blog/2008/03/installing-sphinx-ultrasphinx.html#comment-1">Naomi
+Novik</a>
+has pointed out that Sphinx/Ultrasphinx doesn’t seem to want to work if
+the Rails project is in a directory with spaces in the path.</p>
+
+<p><strong>Update:</strong> Some people have had problems beyond those I mentioned
+above. Take a look at
+<a href="https://rubyforge.org/forum/message.php?msg_id=49341">this</a> and
+<a href="http://www.ruby-forum.com/topic/146630">this</a> if you have extra
+problems.</p>
+
+<hr />
+
+<p><strong>Comments:</strong>
+<em>I have removed the commenting system (for privacy concerns), below are the comments that were left on this post before doing so…</em></p>
+
+<p><em>Naomi Novik @ 2008-04-06</em> - Thanks so much for this terrific rundown – saved much much time. I thought I would add on that one other problem in Windows I encountered is that Sphinx/Ultrasphinx doesn’t seem to want to work if the Rails project is in a directory with spaces in the path (eg if you’re working under My Documents or whatnot).</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">March 19, 2008</span>
+  <h4><a href="/blog/2008/03/design.html">Design</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/General.html">General</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>A recent <a href="http://javaposse.com/">Java Posse</a> podcast discussed UI design
+and mentioned that some places like Apple take design very seriously,
+actually starting the development process by deciding what the finished
+product will visually look like. This has worked very well for Apple (I
+love my Apple stuff) and is probably a good way to go if your product’s
+end users may not be technically oriented. Unfortunately I have no
+design skills (it is beginning to show in my project) and a key part of
+what I’m trying to develop is that is easy to use, mainly because it is
+not targeted at technical people.</p>
+
+<p>I like to think of designs as a state-space (this itself is probably a
+bad start!). Imagine a mountain range, the higher the peak the better
+the design, so you want to stand at the highest point you can. Starting
+at any random place in the range, you can either climb the mountain you
+are on to the top or go down to climb a different taller mountain. It
+all depends on whether you can see a taller mountain nearby. For the
+purposes of this metaphor, I am nearly blind. Unless very lucky I will
+not end up very high. Much like most of the other software engineers I
+know!</p>
+
+<p>Knowing these shortcomings, instead of a normal design process, I follow
+the “Break &amp; Enter” school of design. That is I find something simple I
+like and largely copy it. That’s fine for corporate websites or GUIs,
+but I’m not sure how well it will work with the general public. This is
+something I need to think about (comments welcome). At least it’s a
+common problem. In the Java Posse podcast there were repeated questions
+around how to instil a design culture or hire for design skills - I
+don’t remember there being a good answer.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">March  5, 2008</span>
   <h4><a href="/blog/2008/03/code.html">Code</a></h4> 
   Tags: 
@@ -197,103 +314,10 @@ YMMV.</p>
   </div>
   <hr/>
 
-  <span class="date">February 21, 2008</span>
-  <h4><a href="/blog/2008/02/rhetoric.html">Rhetoric</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/General.html">General</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Logically bad arguments are annoying. It is almost as annoying when
-people argue that a premise is clear when it is not. Often people make
-assumptions about their argument’s starting points, perhaps to avoid
-examining the implications of their premise. Sometimes this is done for
-rhetorical reasons (they just want to win an argument - politicians seem
-particularly guilty of this). Other times it appears to be due to a lack
-of thought.</p>
-
-<p>That small rant was prompted by a segment on breakfast TV about
-performance-enhancing drugs. The premise was that performance-enhancing
-drugs were unfair and how hard they were to detect. Why it was unfair
-was never examined. The situation may well be unfair, and being a fan of
-cycling I mourn the damage drugs have done to that sport. However, what
-caught my attention was the background of the presenter. He was a UK
-Olympic gold medallist in rowing. Many people would consider such a
-person eminently qualified to talk about fairness in sport. I would not
-be so sure.</p>
-
-<p>One of my earliest memories of the Olympics was watching the cycling
-team time trial, a 100km 4-member team race against the clock. The
-competitive teams were on the latest expensive bicycles costing
-thousands and had been in intensive high-tech training camps to ensure
-their best performance. Then the Ethiopian team was shown. Their bikes
-were clearly of a much older and cheaper design - lacking all the
-aerodynamic finery necessary in modern cycling. They had no chance in
-the race. Is it unfair that the Ethiopians were not as competitive as
-others because they had worse technology? Is it unfair that having more
-money spent on an athlete (in support, training, a high-tech bike or
-better boat) makes them more likely to win?</p>
-
-<p>It may be possible to say that the best athlete at the start of the
-competition has the best chance of winning. However, drugs and money
-give a distinct and often insurmountable advantage before the
-competition begins. Drugs and money distort the playing field from the
-very start and always have. The breakfast TV presenter benefitted
-greatly from this situation. While people suggest a complete ban on
-performance-enhancing drugs for the sake of fairness (at least on this
-breakfast TV show), there is no similar call for fairness in money. It
-could be argued that money fairness is impractical and could not be
-enforced, but that’s not the point (incidentally HGH use can’t be
-detected and thus its ban can’t be enforced at present).</p>
-
-<p>If fairness is defined as all have the same chance of winning at the
-start, then competitive sport is inherently unfair. I’m not sure that is
-a bad thing - I certainly don’t have a problem with it. The best have
-advantages (I haven’t even touched on the concept of genetic unfairness)
-and that should just be accepted, it is the nature of the competition. I
-would prefer to see a different argument against performance-enhancing
-drugs.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">February 15, 2008</span>
-  <h4><a href="/blog/2008/02/apology-for-dale.html">Apology for Dale</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Memories.html">Memories</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I’m a lapsed fan of sci-fi novels. It has been a while since I last read
-one which caused as much thought as Neuromancer or The Foundation series
-or the early Culture books. The last sci-fi book I read, the Algebraist,
-just didn’t cut it. I’ve also found myself outside circles where
-recommendations are readily available, so reading <a href="http://blog.pmarca.com/2007/06/top_10_science_.html">Marc Andreessen’s
-modern top 10 sci-fi authors blog
-post</a> piqued my
-interest and I think I may be trying a few of them out soon.</p>
-
-<p>The description of some of the books as
-<a href="http://www-rohan.sdsu.edu/faculty/vinge/misc/singularity.html">post-Singularity</a>
-caught my attention. It is a very interesting idea and reminded my of
-the first time I heard of the concept while reading Diaspora by Greg
-Egan (from my home town of Perth). The book was lent to me by a
-workmate, Dale (I can’t remember his surname). At the time it made
-little impression on me at all - I think I told Dale I found it cold.
-However, memories of the story have stayed with me for many years now
-and I often think about the ideas I first encountered reading it.</p>
-
-<p>Sorry Dale, you are right, Diaspora is a good book.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 86 of 87 
+  Page 86 of 88 
   
       
         <a href="/blog/page85">Previous</a>
@@ -316,6 +340,14 @@ and I often think about the ideas I first encountered reading it.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2023/02/15-years.html">15 years</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/02/goals.html">Goals</a> 
@@ -347,14 +379,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/04/real-dreams.html">Real Dreams</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/04/ai-hot-take.html">AI Hot Take</a> 
   </li>  
 
 </ul>
