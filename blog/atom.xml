@@ -3,13 +3,27 @@
     <title type="text" xml:lang="en">Cordinc Blog</title>
     <link type="application/atom+xml" href="http://www.cordinc.com/blog/atom.xml" rel="self"/>
     <link type="text" href="http://www.cordinc.com" rel="alternate"/>
-    <updated>2023-02-15T17:04:25+08:00</updated>
+    <updated>2023-03-15T19:49:25+08:00</updated>
     <id>http://www.cordinc.com</id>
     <author>
         <name>Cordinc Blog</name>
     </author>
     <rights>Copyright (c) 2013-2020 Cordinc Blog</rights>
 
+    
+    <entry>
+        <title>Blame</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2023/03/blame.html/"/>
+        <published>2023-03-15T00:00:00+08:00</published>
+        <updated>2023-03-15T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2023/03/blame.html/</id>
+        <content type="html">&lt;p&gt;Some time ago the news included a story about the British government hiring an Australian ex-politician to be a trade envoy during the Brexit upheavel. I thought this was an understandable move from the point-of-view of British politicians and civil servants. If it all went badly (as was likely) thay could just blame the Aussie and sack him.&lt;/p&gt;
+
+&lt;p&gt;It reminded me of the blame management I sometimes saw while working at large firms. At a couple of places there was a layer of management usually above the team managers and below senior managers that had “taking the blame” as a big part of their implicit job description. At some places outside consultants seemed to occupy the same role. Officially they were always in charge of this or that project, but had no direct power to get work done. They had responsibility without authority. If things didn’t succeed they got the blame for events outside their control. The cynic would suggest they were just the sacrificial lambs to ensure the senior managers remained unblemished. Rarely did any technical (ie non-management) get serious blame for the larger problems. Smaller things we got the blame for all the time, often deservedly, but here I mean the larger failures noticable to senior management. I wonder if this was the same outside the IT world? I suspect in my world blaming the people close to the work (like Software Engineers) would be counter-productive as we could just leave and get another job very easily. I also assume senior management never considered themselves the problem.&lt;/p&gt;
+
+&lt;p&gt;I developed a rule of thumb for identifying blame managers. If you job was to “coordinate” or other vague terms that seemed to describe a lack of concrete responsibilty, you were safe. You could probably worm yourself out of a bad situation. If your job was “delivery” or running a project and you did not actually have any resources or subordinates, especially if you are in a &lt;a href=&quot;https://en.wikipedia.org/wiki/Matrix_management&quot;&gt;matrix-based organisation&lt;/a&gt; - watch out!&lt;/p&gt;
+</content>
+    </entry>
     
     <entry>
         <title>Boardgames of 2022</title>
@@ -261,33 +275,6 @@
 &lt;p&gt;I loved all of my iPods, even the short-lived second one that had battery issues from purchase and was quickly replaced by the improved 2007 model. I like to walk around aimlessly, so have always carried a means of listening to music on-the-go. However, the iPod with its small size and large capacity proved to be a step-change in quality compared to old &lt;a href=&quot;https://en.wikipedia.org/wiki/Walkman&quot;&gt;Walkmans&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Discman&quot;&gt;Discmans&lt;/a&gt; or just a radio. They gave me the time to listen to great music and my first taste of a world of interesting podcasts.&lt;/p&gt;
 
 &lt;p&gt;It is sad that they have fallen foul of mobile phones’ hunger for new functionality. RIP my old friend, at least until a nostalgic return in a decade or two.&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Esperance (and places along the way)</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2022/04/esperance.html/"/>
-        <published>2022-04-16T00:00:00+08:00</published>
-        <updated>2022-04-16T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2022/04/esperance.html/</id>
-        <content type="html">&lt;p&gt;Late last month (scheduled to avoid school holidays) I went on a week’s holiday. Three nights in &lt;a href=&quot;https://en.wikipedia.org/wiki/Esperance,_Western_Australia&quot;&gt;Esperance&lt;/a&gt;, and 3 nights on the journey there and back.&lt;/p&gt;
-
-&lt;p&gt;Some thoughts:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;I expected to be unimpressed by &lt;a href=&quot;https://en.wikipedia.org/wiki/Wave_Rock&quot;&gt;Wave Rock&lt;/a&gt;. While the rock itself is largely as expected and will be largely “done” in a matter of minutes, the surrounding area has a few other interesting sights and walks. Well worth spending a day checking the place out.&lt;/li&gt;
-  &lt;li&gt;The size of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Wheatbelt_(Western_Australia)&quot;&gt;wheatbelt&lt;/a&gt; is astounding. We could drive for hours (often speeding) for 2 days only seeing continuous wheat fields broken occasionally by huge “bins” (horizontal wheat silos) and even more rarely by a tiny town.&lt;/li&gt;
-  &lt;li&gt;Esperance is larger, greener and further than expected (again). It is a decent sized town with enough local industry to maintain itself - it is not just a tourist town (but there is a decent amount of that). I have this idea that the desert starts not far from Perth, and nearly no one lives out there. Clearly this is not true, although it took long days of driving to get to Esperance, and we passed very little on the way other than dry’ish farmland.&lt;/li&gt;
-  &lt;li&gt;Tourist Esperance is mainly about spending time outside. There are so many beautiful beaches we became numb to them by the end.&lt;/li&gt;
-  &lt;li&gt;It was incredibly and constantly windy for our entire time in Esperance.&lt;/li&gt;
-  &lt;li&gt;If &lt;a href=&quot;https://en.wikipedia.org/wiki/Albany,_Western_Australia&quot;&gt;Albany&lt;/a&gt; harbour was in Europe or China I’m sure it would be the base of a famous or historical town. It definitely looks like it should be full of tall ships or triremes.&lt;/li&gt;
-  &lt;li&gt;Restaurant food continues to be disappointing outside Perth and a couple of tourist towns. We had one good (and one decent) restaurant meal on the entire trip - the rest were poor.&lt;/li&gt;
-  &lt;li&gt;IPhones take decent photos! All the photos here were taken on phones despite having my old trusty point &amp;amp; click camera. It is hard to justify taking the extra device when the phone does so well. I suspect just discovering this means I am years behind the times.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Some photos from the trip are in a short slideshow &lt;a href=&quot;/slideshows/esperance_22.html&quot;&gt;available here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/slideshows/esperance_22.html&quot;&gt;&lt;img src=&quot;/assets/slideshow/esperance_22/lucky_bay_main.png&quot; alt=&quot;&quot; title=&quot;Lucky Bay&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 </content>
     </entry>
     

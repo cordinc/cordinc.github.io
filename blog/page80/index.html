@@ -38,6 +38,32 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">February  8, 2009</span>
+  <h4><a href="/blog/2009/02/rails-performance-options-on-p.html">Rails performance options on Phusion Passenger</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Rails.html">Rails</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I run a couple of Rails websites
+(<a href="http://www.queuesaurus.com">queuesaurus</a> &amp; <a href="http://www.cordinc.info/weather">past weather
+forecasts</a>), both on a small 256MB
+virtual host at <a href="http://www.slicehost.com">Slicehost</a>. As such I don’t
+have a great deal of computing resources available to support two
+resouce hogging apps. If you have visited either of those sites, you
+will know that the first page view can take seemingly ages, but that
+after that it speeds up. As I use <a href="http://www.modrails.com/">Phusion Passenger
+(modrails)</a> to serve the apps through Apache,
+I investigated some of the config options and how they affected
+performance.</p>
+
+<p class='more'><br/><a href='/blog/2009/02/rails-performance-options-on-p.html'>Read the rest of this entry</a></p>
+  </div>
+  <hr/>
+
   <span class="date">January 18, 2009</span>
   <h4><a href="/blog/2009/01/online-poker-update.html">Online Poker Update</a></h4> 
   Tags: 
@@ -276,38 +302,6 @@ months.</p>
   </div>
   <hr/>
 
-  <span class="date">December 13, 2008</span>
-  <h4><a href="/blog/2008/12/quick-timezone-calculation.html">Quick Timezone Calculation</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I have been asked what time I get the forecasts for a location in my
-<a href="http://www.cordinc.info/weather/">historical weather forecast system</a>.
-The obvious problem being that if I read all the forecasts at nearly the
-same time, different cities could be in different days due to differing
-timezones.</p>
-
-<p>The answer is, I read the forecasts at roughly midday in each of the
-locations. That is, every hour I read the forecasts for the locations
-where it is roughly midday. This is done by approximating the various
-<a href="http://en.wikipedia.org/wiki/Time_zone">timezones</a> using the location’s
-longitude. This isn’t exact - it doesn’t account for daylight savings or
-places like China, which is all one timezone despite being wide enough
-to be split into many. Generally it is accurate to within a couple of
-hours - fine for the purpose. The code is below.</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">time_band</span> <span class="o">=</span> <span class="o">-</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">gmtime</span><span class="p">.</span><span class="nf">hour</span> <span class="o">+</span> <span class="mi">12</span>
-<span class="n">locs</span> <span class="o">=</span> <span class="no">Location</span><span class="p">.</span><span class="nf">find_by_sql</span> <span class="p">[</span><span class="s2">"select * from locations where longitude &gt;= ? and longitude &lt; ?"</span><span class="p">,</span> <span class="p">(</span><span class="n">time_band</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">15</span><span class="p">,</span> <span class="n">time_band</span><span class="o">*</span><span class="mi">15</span><span class="p">]</span></code></pre></figure>
-
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -334,6 +328,10 @@ hours - fine for the purpose. The code is below.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/03/blame.html">Blame</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
@@ -369,10 +367,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/06/ipod.html">iPod</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
   </li>  
 
 </ul>

@@ -38,6 +38,38 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">December 13, 2008</span>
+  <h4><a href="/blog/2008/12/quick-timezone-calculation.html">Quick Timezone Calculation</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I have been asked what time I get the forecasts for a location in my
+<a href="http://www.cordinc.info/weather/">historical weather forecast system</a>.
+The obvious problem being that if I read all the forecasts at nearly the
+same time, different cities could be in different days due to differing
+timezones.</p>
+
+<p>The answer is, I read the forecasts at roughly midday in each of the
+locations. That is, every hour I read the forecasts for the locations
+where it is roughly midday. This is done by approximating the various
+<a href="http://en.wikipedia.org/wiki/Time_zone">timezones</a> using the location’s
+longitude. This isn’t exact - it doesn’t account for daylight savings or
+places like China, which is all one timezone despite being wide enough
+to be split into many. Generally it is accurate to within a couple of
+hours - fine for the purpose. The code is below.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">time_band</span> <span class="o">=</span> <span class="o">-</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">gmtime</span><span class="p">.</span><span class="nf">hour</span> <span class="o">+</span> <span class="mi">12</span>
+<span class="n">locs</span> <span class="o">=</span> <span class="no">Location</span><span class="p">.</span><span class="nf">find_by_sql</span> <span class="p">[</span><span class="s2">"select * from locations where longitude &gt;= ? and longitude &lt; ?"</span><span class="p">,</span> <span class="p">(</span><span class="n">time_band</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">15</span><span class="p">,</span> <span class="n">time_band</span><span class="o">*</span><span class="mi">15</span><span class="p">]</span></code></pre></figure>
+
+
+  </div>
+  <hr/>
+
   <span class="date">December  8, 2008</span>
   <h4><a href="/blog/2008/12/past-weather-forecasts.html">Past weather forecasts</a></h4> 
   Tags: 
@@ -237,53 +269,6 @@ some of the tips and tricks I discovered using these feeds.</p>
   </div>
   <hr/>
 
-  <span class="date">October 18, 2008</span>
-  <h4><a href="/blog/2008/10/fowa-london-2008.html">FOWA London 2008</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Entrepreneurship.html">Entrepreneurship</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Last Friday I went to the <a href="http://london2008.futureofwebapps.com/">Future of Web Apps (FOWA) London 2008
-conference</a>. As I only had the
-single day off work I decided to get the expo only entrance (£5) rather
-than a two-day full pass for nearly £400. Thus I didn’t get to see any
-of the proper talks, instead I just walked around the floor to see the
-booths and one “FOWA university” talk.</p>
-
-<p>The talk was by <a href="http://www.yuuguu.com">Yuuguu</a> on how to run a company
-when all employees telecommute. Apparently, the FOWA conference is the
-first time all the Yuuguu employees have met at the same time. Most of
-the talk was fairly bland and many in the audience were head down on
-their laptops or iPhones. However, there were a few interesting points.
-Yuuguu people don’t work if they meet in person, they consider the time
-too important to waste on work and they bond instead. Also, every Friday
-they get together online for virtual “beers”.</p>
-
-<p>There were a couple dozen companies with booths. A few big names like
-Microsoft, Sun and Myspace were there, but most were firms I had never
-heard mentioned before. This caused some awkward experiences, as their
-names normally give no hint as to their business areas. I would squint
-at their posters trying to work out what they did (which often didn’t
-help much either). Meanwhile some marketing person would creep up on me,
-start talking and give me their <a href="http://www.moo.com/">Moo mini business
-card</a> (these were literally everywhere). I left the
-conference knowing what every exhibiting business did, but only about
-half of them were marginally relevant to me.</p>
-
-<p>The Microsoft booth was by far the best. Among the computers they had a
-couple of Xboxs and a <a href="http://www.microsoft.com/surface">Surface box</a> -
-the Xboxs were empty while it was hard to see the Surface through the
-crowd. Rightly so, it was an impressive machine. All that made me want
-to code rather than talk and I left after an hour, skipping the
-Diggnation filming - I saw it last year. Anyway if want you can see the
-FOWA talks
-<a href="http://events.carsonified.com/fowa/2008/london/content">here</a>.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -310,6 +295,10 @@ FOWA talks
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/03/blame.html">Blame</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
@@ -345,10 +334,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/06/ipod.html">iPod</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/04/esperance.html">Esperance (and places along the way)</a> 
   </li>  
 
 </ul>
