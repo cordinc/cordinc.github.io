@@ -3,13 +3,41 @@
     <title type="text" xml:lang="en">Cordinc Blog</title>
     <link type="application/atom+xml" href="http://www.cordinc.com/blog/atom.xml" rel="self"/>
     <link type="text" href="http://www.cordinc.com" rel="alternate"/>
-    <updated>2023-03-15T19:49:25+08:00</updated>
+    <updated>2023-05-03T15:38:50+08:00</updated>
     <id>http://www.cordinc.com</id>
     <author>
         <name>Cordinc Blog</name>
     </author>
     <rights>Copyright (c) 2013-2020 Cordinc Blog</rights>
 
+    
+    <entry>
+        <title>Adelaide</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2023/05/adelaide.html/"/>
+        <published>2023-05-03T00:00:00+08:00</published>
+        <updated>2023-05-03T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2023/05/adelaide.html/</id>
+        <content type="html">&lt;p&gt;It has been a while since I last travelled out of Perth, so it was nice to get away to Adelaide and its surrounds for a week.&lt;/p&gt;
+
+&lt;p&gt;Some thoughts:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Adelaide seems like a very quiet city, it reminds of Perth in that regard. However, where Perth is all about the beach or river, for Adelaide it is all about wineries. Must be a nice place to live.&lt;/li&gt;
+  &lt;li&gt;The Adelaide city markets are definitely worth a visit - should be more places like this in Australia.&lt;/li&gt;
+  &lt;li&gt;The little laneways around the edges of either end of Rundle St (not the mall) have some great alfresco dining.&lt;/li&gt;
+  &lt;li&gt;The center of Adelaide is very well laid out and pleasant to be around. It is encircled by a park which is excellent planning (reminded me of the half-encircling Turia Gardens in Valencia).&lt;/li&gt;
+  &lt;li&gt;The last winery in a winery tour should pay the tour organisers. Anecdotally, the last place on the tour makes the most sales since everyone is a little drunk.&lt;/li&gt;
+  &lt;li&gt;Going to wineries gets a bit repetitive - how many ways are there to say “this is a nice wine”?&lt;/li&gt;
+  &lt;li&gt;There is not much to see at the mouth of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Murray_River&quot;&gt;Murray River&lt;/a&gt; (Australia’s longest river), but the drive down there has some interesting sights (and of course, wineries).&lt;/li&gt;
+  &lt;li&gt;Still using my iPhone for photos, maybe time to dump the old camera?&lt;/li&gt;
+  &lt;li&gt;A week is more than enough to “see” Adelaide.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some photos from the trip are in a short slideshow &lt;a href=&quot;/slideshows/adelaide_23.html&quot;&gt;available here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/slideshows/adelaide_23.html&quot;&gt;&lt;img src=&quot;/assets/slideshow/adelaide_23/vineyard_main.png&quot; alt=&quot;&quot; title=&quot;Barossa vineyard&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+    </entry>
     
     <entry>
         <title>Blame</title>
@@ -259,22 +287,6 @@
 &lt;p&gt;&lt;a href=&quot;/assets/posts/travel/brisbane.jpg&quot;&gt;&lt;img src=&quot;/assets/posts/travel/brisbane.jpg&quot; width=&quot;640&quot; alt=&quot;Brisbane&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;/assets/posts/travel/goldcoast.jpg&quot;&gt;&lt;img src=&quot;/assets/posts/travel/goldcoast.jpg&quot; width=&quot;640&quot; alt=&quot;The Gold Coast&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>iPod</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2022/06/ipod.html/"/>
-        <published>2022-06-01T00:00:00+08:00</published>
-        <updated>2022-06-01T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2022/06/ipod.html/</id>
-        <content type="html">&lt;p&gt;The &lt;a href=&quot;https://www.bbc.com/news/technology-61401626&quot;&gt;iPod is no more&lt;/a&gt;, long live the iPod. My first iPod was a second generation model bought in early 2003. Since then I have always had one, my third and last was a leaving gift from teammates at Merrill Lynch in December 2007 (such a great gift). Despite currently poor battery life, it is still running (in near daily use) as the music/podcast system for my car (see pic below).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/posts/last_ipod.png&quot; alt=&quot;My last iPod&quot; title=&quot;My last iPod&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I loved all of my iPods, even the short-lived second one that had battery issues from purchase and was quickly replaced by the improved 2007 model. I like to walk around aimlessly, so have always carried a means of listening to music on-the-go. However, the iPod with its small size and large capacity proved to be a step-change in quality compared to old &lt;a href=&quot;https://en.wikipedia.org/wiki/Walkman&quot;&gt;Walkmans&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Discman&quot;&gt;Discmans&lt;/a&gt; or just a radio. They gave me the time to listen to great music and my first taste of a world of interesting podcasts.&lt;/p&gt;
-
-&lt;p&gt;It is sad that they have fallen foul of mobile phones’ hunger for new functionality. RIP my old friend, at least until a nostalgic return in a decade or two.&lt;/p&gt;
 </content>
     </entry>
     

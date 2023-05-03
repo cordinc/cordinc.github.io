@@ -38,6 +38,65 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">October 17, 2010</span>
+  <h4><a href="/blog/2010/10/companies-are-people-too.html">Companies are people too</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/General.html">General</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I recently read <a href="http://www.accelerando.org/">Charlie Stross’</a> novel
+Accelerando (<a href="http://www.antipope.org/charlie/blog-static/fiction/online-fiction-by-charles-stro.html">available free online
+here</a>).
+Accelerando is an episodic story about multiple generations of a family
+through a dark vision of the
+<a href="http://en.wikipedia.org/wiki/Technological_singularity">singularity</a>.
+Like all good sci-fi it raises some interesting lines of thought, one of
+which resonated with me as I was pondering a similar question. What
+should the nature of companies be?</p>
+
+<p>In Accelerando companies become self-sentient. That is they are
+vechicles for artificial intelligences, which use them for independence
+as there are no humans involved in running or owning these companies. It
+is the technological fulfillment of the modern legal concept that
+companies are people. In the novel this doesn’t end quite the way
+biological humans might like - but read the book to see what happens.
+For now think about whether companies should legally be people. I think
+most people would find the idea silly, but most countries since the 19th
+century have made corporations <a href="http://en.wikipedia.org/wiki/Legal_personality">legal
+personalities</a>. Thus
+they are treated like people for the purposes of taxation, lawsuits and
+contracts, but not for things like voting, marrying or holding office.
+Recently, in the US companies even gained some free spech rights under a
+recent <a href="http://en.wikipedia.org/wiki/Citizens_United_v._Federal_Election_Commission">Supreme Court
+ruling</a>
+(there is a <a href="http://www.slate.com/id/2242210/">discussion on the ruling
+here</a>).</p>
+
+<p>I can see the need for this in civil proceedings, contracts and the
+like. However, I’m not sure how it works with issues such as crime and
+responsibility. A company is ultimately controlled by humans (at least
+for the present, although they can already <a href="http://www.bbc.co.uk/news/business-11444051">conduct business without
+human involvement</a>), but
+liability is limited for these people in the case of any wrongdoing by
+the company. The worst that will happen is bad PR, a fine or maybe the
+company being wound up. While there have been large scale ethical lapses
+in the recent (current?) financial crisis, only a handful of people have
+been charged with any wrongdoing. There can be a disconnect between the
+way people would act if their actions were attributed solely to them and
+the way they act inside a company. Similarly, some people suggest that
+<a href="http://www.thecorporation.com/">if corporations are people, they are
+pyschopaths</a>. Others think that the
+<a href="http://www.ritholtz.com/blog/2010/09/you-vs-corporations/">corporations versus humans
+dynamic</a> in
+Accelerando is already here.</p>
+
+<p>I need to think about this further.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">October 10, 2010</span>
   <h4><a href="/blog/2010/10/spam-spam-spam.html">Spam, spam, spam</a></h4> 
   Tags: 
@@ -251,58 +310,6 @@ values. One of the better podcast series available.</p>
   </div>
   <hr/>
 
-  <span class="date">September 11, 2010</span>
-  <h4><a href="/blog/2010/09/java-generics-are-not-real-gen.html">Java generics are not real generics</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p><a href="http://en.wikipedia.org/wiki/Generics_in_Java">Java 5 added generics</a>
-into the language. This allowed programmers to specify class types as
-parameters to other classes and maintain type safety. For instance
-<code class="highlighter-rouge">Set&lt;Integer&gt;</code> is a set of integers and if you try to add a
-non-integer to it, a compile time error should occur.</p>
-
-<p>Java had been around a while by the time generics were added.
-Unfortunately it was considered too hard to add generics to the <a href="http://en.wikipedia.org/wiki/Java_bytecode">Java
-bytecode</a> that forms a
-running Java program. Instead generics are just syntactic sugar. When a
-Java program is compiled the generics are checked, but after that they
-are stripped out. The bytecode that is run does not know anything about
-generics. This means it is possible to violate the generics constraints
-in the code at run-time (because the constraints don’t exist at
-run-time).</p>
-
-<p>Below is an example demonstrating the problem. A set of integers is
-created, but then using reflection a string is added to the set. This is
-clearly a violation of the set’s definition. However,
-<a href="http://java.sun.com/developer/technicalArticles/ALT/Reflection/">reflection</a>
-is a run-time process and the compiler is not smart enough to detect the
-potential error at compile-time (which would be very hard to do). If the
-set is now inspected (and not checked carefully), it will look like the
-integer 1 is in the set, rather than the actual string “1”. At this
-point various errors can occur, from the subtle <code class="highlighter-rouge">contains</code> error below,
-to outright
-<a href="http://download-llnw.oracle.com/javase/1.5.0/docs/api/java/lang/ClassCastException.html's">ClassCastException</a>
-if elements are extracted from the set as integers. As an aside,
-reflection is very cool and a great tool, but from my experience, most
-of the time it is the wrong tool.</p>
-
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Set</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">integerSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
-<span class="nc">Method</span> <span class="n">addMethod</span> <span class="o">=</span> <span class="n">integerSet</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getMethod</span><span class="o">(</span><span class="s">"add"</span><span class="o">,</span> <span class="nc">Object</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-<span class="n">addMethod</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">integerSet</span><span class="o">,</span> <span class="s">"1"</span><span class="o">);</span>
-<span class="n">integerSet</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> <span class="c1">// -&gt; false</span></code></pre></figure>
-
-<p>Remember, Java generics are not real generics. In particular pay special
-attention to using reflection on generic objects.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -329,6 +336,10 @@ attention to using reflection on generic objects.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/03/blame.html">Blame</a> 
@@ -364,10 +375,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/06/ipod.html">iPod</a> 
   </li>  
 
 </ul>

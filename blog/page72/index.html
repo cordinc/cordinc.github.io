@@ -38,6 +38,45 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">December 20, 2009</span>
+  <h4><a href="/blog/2009/12/singularly_lazy.html">Singularly Lazy</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Ah, the <a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>
+pattern. It is used to create a single, globally accessible instance of
+a class, preventing any further instantiations (so only one object of
+the class can ever exist). When I first learnt about Singletons soon
+after leaving university, I thought they were wonderful and used them
+often. Now I think that they are often a very bad idea. Not because of
+security concerns, as one person once suggested to me, but because I
+don’t want static methods/classes hanging round (increasing global
+state) or I later realise more than one is needed!</p>
+
+<p>Once when creating a consumer website for a bank I needed access to
+various pieces of bank information at numerous points in the code.
+“There is only one bank”, I reasoned and made the class containing this
+information a singleton. Then the bank acquired another two banks so my
+design was broken and refactoring had to take place right before launch.
+However, despite learning repeatedly from experience, I still find
+myself creating more. I think this is due to laziness on my part. If I’m
+short of time or feel that it is not particularly important, I fall back
+on habit. Later, while refactoring I realise a better result could have
+been achieved with some thought. For instance, if the global access of
+singletons is a problem, perhaps using an
+<a href="http://en.wikipedia.org/wiki/Inversion_of_control">IoC</a> container (like
+<a href="http://www.springsource.org/about">Spring</a>) to wire everything up could
+help.</p>
+
+<p>I hereby resolve not to use Singletons without thinking very hard first
+about whether there is a better way.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">December 14, 2009</span>
   <h4><a href="/blog/2009/12/history-4a-the-ancient-mediter.html">History 4A: The Ancient Mediterranean World</a></h4> 
   Tags: 
@@ -280,25 +319,6 @@ service. This is definitely a place I’ll be visiting again.</p>
   </div>
   <hr/>
 
-  <span class="date">November 23, 2009</span>
-  <h4><a href="/blog/2009/11/new-website-and-blender-pages.html">New website and Blender pages</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Meta.html">Meta</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>If you go to my <a href="http://www.cordinc.com">main website</a>, you will now
-find it changed. Previously it was a basic advert for my professional
-services. However, the company I ran those services through will be
-shutting down soon. So the site is now a hook upon which to place my
-little side projects. Thus I have added a <a href="http://www.cordinc.com/blender">Blender
-page</a> to aggregate all the Blender and
-general 3D modelling content I have created - check it out.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -325,6 +345,10 @@ general 3D modelling content I have created - check it out.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/03/blame.html">Blame</a> 
@@ -360,10 +384,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/06/ipod.html">iPod</a> 
   </li>  
 
 </ul>

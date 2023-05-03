@@ -38,6 +38,48 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">September 20, 2012</span>
+  <h4><a href="/blog/2012/09/collinearity-in-unity3d.html">Collinearity in Unity3D</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>In Unity3D how can it be determined if a point is on the line segment
+joining two other points? My current project throws up just such
+geometry problems regularly. The problem as expressed above is a
+question of <a href="http://en.wikipedia.org/wiki/Collinearity">collinearity</a>,
+that is whether some points form a line. The first step uses the <a href="http://en.wikipedia.org/wiki/Cross_product">cross
+product</a>. If you have the
+points A, B, C then if the cross product of the line AB and the line AC
+is 0, AB and AC must be parallel. Furthermore, since both lines include
+the point A, all the points must in fact be collinear. Luckily, there is
+a cross product function built into the Unity3D library,
+<a href="http://docs.unity3d.com/Documentation/ScriptReference/Vector3.Cross.html">Vector3.Cross</a>.</p>
+
+<p>Next, just because A, B, C are collinear does not mean C is in between A
+and B. To determine this, check that C is inside the 3D volume with A &amp;
+B as diametrically opposed corners. That is just check that C’s x-axis
+value is inbetween A’s &amp; C’s and the same for its y-axis and z-axis
+values. The function below combines these tests. Note the range checks
+are performed first. This is because I imagine that the cross product is
+more computationally expensive (but I have no evidence for this) so
+should occur only if the faster calls succeed.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">OnLine</span><span class="p">(</span><span class="n">Vector3</span> <span class="n">start</span><span class="p">,</span> <span class="n">Vector3</span> <span class="n">end</span><span class="p">,</span> <span class="n">Vector3</span> <span class="n">inBetween</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">x</span> <span class="p">&lt;=</span> <span class="n">end</span><span class="p">.</span><span class="n">x</span> <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">x</span> <span class="p">&gt;=</span> <span class="n">start</span><span class="p">.</span><span class="n">x</span>
+    <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">y</span> <span class="p">&lt;=</span> <span class="n">end</span><span class="p">.</span><span class="n">y</span> <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">y</span> <span class="p">&gt;=</span> <span class="n">start</span><span class="p">.</span><span class="n">y</span>
+    <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">z</span> <span class="p">&lt;=</span> <span class="n">end</span><span class="p">.</span><span class="n">z</span> <span class="p">&amp;&amp;</span> <span class="n">inBetween</span><span class="p">.</span><span class="n">z</span> <span class="p">&gt;=</span> <span class="n">start</span><span class="p">.</span><span class="n">z</span>
+    <span class="p">&amp;&amp;</span> <span class="n">Vector3</span><span class="p">.</span><span class="nf">Cross</span><span class="p">(</span><span class="n">end</span> <span class="p">-</span> <span class="n">start</span><span class="p">,</span> <span class="n">inBetween</span> <span class="p">-</span> <span class="n">start</span><span class="p">)</span> <span class="p">==</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+
+  </div>
+  <hr/>
+
   <span class="date">September 15, 2012</span>
   <h4><a href="/blog/2012/09/small-games.html">Small Games</a></h4> 
   Tags: 
@@ -237,37 +279,6 @@ here.</a></p>
   </div>
   <hr/>
 
-  <span class="date">August 26, 2012</span>
-  <h4><a href="/blog/2012/08/unite12-day-1.html">Unite12 - Day 1</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
-    
-      <a class="post" href="/blog/tag/Unity.html">Unity</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Wednesday 22 August was the first day of the
-<a href="http://unity3d.com/unite/">Unite12</a> Unity conference in Amsterdam,
-which I was lucky enough to attend. My first thought was Unity is larger
-than I thought - the conference was packed. A couple of sessions saw
-people sitting on the floor. The official attendance was 1200, over
-double my expectation (although 200 of that number are Unity employees).
-Also surprising, a nice lunch and breakfast was provided.</p>
-
-<p><a href="http://www.flickr.com/photos/33547649@N07/7862733052/in/photostream"><img src="http://farm9.staticflickr.com/8429/7862733052_d554cb9027.jpg" alt="" /></a></p>
-
-<p>Day 1 notes from the sessions I attended are below.</p>
-
-<p><a href="http://www.cordinc.com/blog/2012/08/unite12-day-2.html">Day 2 notes
-here.</a><br />
-<a href="http://www.cordinc.com/blog/2012/09/unite12---day-3.html">Day 3 notes
-here.</a></p>
-
-<p class='more'><br/><a href='/blog/2012/08/unite12-day-1.html'>Read the rest of this entry</a></p>
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -294,6 +305,10 @@ here.</a></p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/03/blame.html">Blame</a> 
@@ -329,10 +344,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/06/ipod.html">iPod</a> 
   </li>  
 
 </ul>
