@@ -6,9 +6,33 @@
     <atom:link href="http://www.cordinc.com/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Cordinc Blog</description>
     <language>en-us</language>
-    <pubDate>Wed, 03 May 2023 15:38:50 +0800</pubDate>
-    <lastBuildDate>Wed, 03 May 2023 15:38:50 +0800</lastBuildDate>
+    <pubDate>Tue, 06 Jun 2023 11:20:56 +0800</pubDate>
+    <lastBuildDate>Tue, 06 Jun 2023 11:20:56 +0800</lastBuildDate>
 
+    
+    <item>
+      <title>Miniatures</title>
+      <link>http://www.cordinc.com/blog/2023/06/miniatures.html</link>
+      <pubDate>Tue, 06 Jun 2023 00:00:00 +0800</pubDate>
+      <guid>http://www.cordinc.com/blog/2023/06/miniatures</guid>
+      <description>&lt;p&gt;Through the purchase of various bordgames I have acquired a large number of small miniatures. Most of them are just the monochrome plastic. I thought it might be nice to try painting them. However, I didn’t want to start by wrecking the minis of any of my current games, so I bought a learn to paint kit (from Reaper Miniatures) which came with a few test minis.&lt;/p&gt;
+
+&lt;p&gt;Behold the result of my labours:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/minis/minis1.png&quot; width=&quot;640&quot; alt=&quot;First Attempt&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Not great, but not awful. They are each about 5 centimeters in height and at a tabletop viewing distance look “ok”. Of course if you get close or look at closeup photos, all you can see are the errors. So what did I learn apart from my eyesight is getting worse and my hands are unsteady?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The less paint per layer the better. It is easier to fix up a watered down bad stroke with another stroke/layer, rather than being stuck with too much paint hiding details or just in the wrong place.&lt;/li&gt;
+  &lt;li&gt;Take regular breaks.&lt;/li&gt;
+  &lt;li&gt;Have a “mistake” brush handy. If paint goes where it shouldn’t, promptly brushing it with water will usually fix it up.&lt;/li&gt;
+  &lt;li&gt;They took about 3 hours each (one at a time), so try doing a few at once. Hopefully I’ll speed up.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I think it is worth continuing. Next up I’m going to try some duplicate BattleTech miniatures.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Adelaide</title>
@@ -259,23 +283,6 @@
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://github.com/jarrahtech/RoguelikeTutorial2022/blob/main/assets/img/logo.png?raw=true&quot; alt=&quot;/r/roguelikedev Tutorial2022 Logo&quot; width=&quot;640&quot; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Brisbane</title>
-      <link>http://www.cordinc.com/blog/2022/06/brisbane.html</link>
-      <pubDate>Mon, 27 Jun 2022 00:00:00 +0800</pubDate>
-      <guid>http://www.cordinc.com/blog/2022/06/brisbane</guid>
-      <description>&lt;p&gt;I’m just back from a week in &lt;a href=&quot;https://en.wikipedia.org/wiki/Brisbane&quot;&gt;Brisbane&lt;/a&gt; (or more like 5 days when travel days are taken into account). It is worth visiting, but I don’t feel any need to return (is this how people feel about Perth?). It seems like a city for living. We spent most of time walking around the city and just hanging out. Surprisingly pleasant thing to do as long as one doesn’t travel too far into the suburbs. The city makes decent (but not great) use of its river. There are good crowds in the CBD, good public transport - it all felt safe. A nice trip.&lt;/p&gt;
-
-&lt;p&gt;We also spent a day on the &lt;a href=&quot;https://en.wikipedia.org/wiki/Gold_Coast,_Queensland&quot;&gt;Gold Coast&lt;/a&gt; and my thoughts of that city are less favourable. It felt sterile and empty, like a retirement village. However, many of the shops and bars suggest a beach &amp;amp; alcohol centred holiday resort (like parts of Spain, not my sort of thing). So maybe it was quiet because it was a working winter’s day.&lt;/p&gt;
-
-&lt;p&gt;Not enough good photos to create a slideshow of this trip. I rarely felt the need to take a photo.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/assets/posts/travel/brisbane.jpg&quot;&gt;&lt;img src=&quot;/assets/posts/travel/brisbane.jpg&quot; width=&quot;640&quot; alt=&quot;Brisbane&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/assets/posts/travel/goldcoast.jpg&quot;&gt;&lt;img src=&quot;/assets/posts/travel/goldcoast.jpg&quot; width=&quot;640&quot; alt=&quot;The Gold Coast&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

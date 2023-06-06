@@ -38,6 +38,32 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">June 27, 2010</span>
+  <h4><a href="/blog/2010/06/ordered-java-multichannel-asyn.html">Ordered Java Multi-channel Asynchronous Throttler</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Some time ago I wrote a post describing a <a href="http://www.cordinc.com/blog/2010/04/java-multichannel-asynchronous.html">Java Multi-channel
+Asynchronous
+Throttler</a>
+I had written. At the time, I stated it would preserve the order of
+calls, but as Asa commented on that blog post, this was not always the
+case. Here is a new version that does preserve order, and passes Asa’s
+test. As part of this work I also extracted common code into new classes
+and created a ChannelThrottler interface. It works by placing incoming
+tasks on an internal queue. All the code detailed in this post (and the
+other throttler post) <a href="http://www.cordinc.com/projects/throttler.zip">is available
+here</a>.</p>
+
+<p class='more'><br/><a href='/blog/2010/06/ordered-java-multichannel-asyn.html'>Read the rest of this entry</a></p>
+  </div>
+  <hr/>
+
   <span class="date">June 25, 2010</span>
   <h4><a href="/blog/2010/06/blender-tutorial-mech-model-pa-2.html">Blender Tutorial: Mech Model Part 3: Rigging</a></h4> 
   Tags: 
@@ -241,33 +267,6 @@ methodology</a>.</p>
   </div>
   <hr/>
 
-  <span class="date">May 26, 2010</span>
-  <h4><a href="/blog/2010/05/blender-tutorial-mech-model-pa.html">Blender Tutorial: Mech Model Part 1: Modelling</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Blender.html">Blender</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I decided to move away from historical models for this tutorial. I chose
-a <a href="http://en.wikipedia.org/wiki/Mecha">mecha</a>, a walking robot, as an
-exercise in texturing, rigging and animation. The idea is to first
-create a low-poly model so that most of the visual detail is in the
-textures applied. Then a walk cycle will be animated using bone rigging
-to aid further animations. The result will be the sort of model that
-could be used in a simple game. As there are quite a few steps in
-achieving all of this, the tutorial has been split into four parts. This
-first part creates the base model. Following posts will cover texturing,
-rigging and animating.</p>
-
-<p><a href="/blender/tutorials/mech/1_model/">The continuation of this post is a set by step tutorial detailing my
-methodology</a>.</p>
-
-<p><a href="/blender/tutorials/mech/1_model/"><img src="/blender/tutorials/mech/1_model/result.png" title="Mech model" width="550" alt="Mech model" /></a></p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -294,6 +293,10 @@ methodology</a>.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/06/miniatures.html">Miniatures</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
@@ -329,10 +332,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/08/roguelike.html">Roguelike Tutorial 2022</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
   </li>  
 
 </ul>

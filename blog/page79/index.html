@@ -38,6 +38,37 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">April 12, 2009</span>
+  <h4><a href="/blog/2009/04/multiple-attachments-with-vali.html">Multiple Attachments with Validations In Rails with Paperclip</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Rails.html">Rails</a>, 
+    
+      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I wanted a project to allow attachments to be added to tasks. My
+requirements were that: users should be able to add multiple attachments
+to a task up to some maximum limit; there should be validation on the
+size of the attachments (combined with the number limit this should
+ensure I don’t run out of disk space too fast); and, that there should
+be some security on downloading a task’s attachments.
+<a href="http://www.thoughtbot.com/projects/paperclip/">Paperclip</a> seems to be
+the popular Rails attachment at the moment and is still under active
+development, so I hoped to use that. However, it does not handle
+multiple attachments for a model. There is a plugin
+<a href="http://github.com/heavysixer/paperclippolymorph/tree/master">PaperclipPolymorph</a>
+which adds multiple attachments to Paperclip, but I just couldn’t get it
+to meet my validation and security requirements. In the end I wrote my
+own solution and this article details it.</p>
+
+<p class='more'><br/><a href='/blog/2009/04/multiple-attachments-with-vali.html'>Read the rest of this entry</a></p>
+  </div>
+  <hr/>
+
   <span class="date">April  8, 2009</span>
   <h4><a href="/blog/2009/04/companies-i-love.html">Companies I love</a></h4> 
   Tags: 
@@ -216,39 +247,6 @@ analyser)</li>
   </div>
   <hr/>
 
-  <span class="date">February 19, 2009</span>
-  <h4><a href="/blog/2009/02/last-online-poker-update.html">Last Online Poker Update?</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>, 
-    
-      <a class="post" href="/blog/tag/Poker.html">Poker</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I have completed another 50 online HU poker SnGs. At least I am
-consistent - I won 26, the same as the last 50. Again, despite winning
-more games than I lose, I have less money than when I started due to
-fees (27.5 games is the breakeven point). Also like the previous 50s, I
-experienced great runs. I won 14 of the first 18 games. Which of course
-means that I won only 12 of the last 32. Urrrgh. I have read that the
-variance in HU SnGs is higher than other kinds of poker, but results
-like that still really knock your confidence. Worst of all I kept some
-stats and discovered the average game runs around 15 minutes. That
-quickly adds up and is preventing me doing other things.</p>
-
-<p>I’ve decided to take this poker thing a little less seriously. I’m not
-going to quit, but neither am I going to keep track of results and
-actively try to play more. I still have some money in my online account,
-and will play with that if I feel like it. However, I don’t think I have
-the time to continue playing at a rate high enough to get much better
-right now. Just standing still for a while will be good enough. I’m not
-yet sure what I will do if I run my account down to 0. So for the
-foreseeable future there will be no more online poker updates.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -275,6 +273,10 @@ foreseeable future there will be no more online poker updates.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/06/miniatures.html">Miniatures</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
@@ -310,10 +312,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/08/roguelike.html">Roguelike Tutorial 2022</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
   </li>  
 
 </ul>

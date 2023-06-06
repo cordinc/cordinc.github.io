@@ -1580,7 +1580,7 @@
     </url>
     <url>
         <loc>http://localhost:4000/blog/2017/09/morphblade.html</loc>
-        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+        <lastmod>2023-06-06T10:50:53+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/blog/2017/09/one-night-stand.html</loc>
@@ -1716,7 +1716,7 @@
     </url>
     <url>
         <loc>http://localhost:4000/blog/2022/06/ipod.html</loc>
-        <lastmod>2022-06-01T20:13:05+08:00</lastmod>
+        <lastmod>2023-06-06T11:20:56+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/blog/2022/06/brisbane.html</loc>
@@ -1757,6 +1757,10 @@
     <url>
         <loc>http://localhost:4000/blog/2023/05/adelaide.html</loc>
         <lastmod>2023-05-03T15:38:50+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/blog/2023/06/miniatures.html</loc>
+        <lastmod>2023-06-06T11:19:23+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/404.html</loc>
@@ -1812,7 +1816,7 @@
     </url>
     <url>
         <loc>http://localhost:4000/</loc>
-        <lastmod>2023-05-03T15:38:50+08:00</lastmod>
+        <lastmod>2023-06-06T11:20:56+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/blender/</loc>

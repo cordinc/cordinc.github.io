@@ -38,6 +38,42 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">May  6, 2009</span>
+  <h4><a href="/blog/2009/05/intrade-implied-interest-rates.html">Intrade Implied Interest Rates in Java</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>, 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>A while ago I wrote a blog post asking <a href="http://www.cordinc.com/blog/2008/10/is-there-dumb-money-on-intrade.html">is there dumb money on
+Intrade?</a>
+The short answer was probably not once the implied interest rate was
+considered, unless a chain of nearly expired “easy money” trades could
+be constructed. When I heard that the Goggle app engine supported Java I
+was keen to try it out. So I ported my manual Intrade interest rate
+calculation to Java and had it read the Intrade XML feed to check for
+any contracts finishing soon with high implied interest rates.
+Unfortunately, the code fell foul of Google’s time limit on reading data
+from other websites. Rather than see the code go to waste, I decided to
+clean it up and release it. It is a command line Java app with all the
+code available under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT
+license</a>. It’s
+probably best to just load it up in Eclipse and run the launch file to
+see it working. Enjoy!</p>
+
+<p>You can download the whole <a href="http://www.cordinc.com/projects/IntradeChecker.zip">eclipse project
+here</a>.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">May  5, 2009</span>
   <h4><a href="/blog/2009/05/central-london-golf-centre.html">Central London Golf Centre</a></h4> 
   Tags: 
@@ -245,37 +281,6 @@ Overall, despite the hassle it’s worth a visit.</p>
   </div>
   <hr/>
 
-  <span class="date">April 12, 2009</span>
-  <h4><a href="/blog/2009/04/multiple-attachments-with-vali.html">Multiple Attachments with Validations In Rails with Paperclip</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Rails.html">Rails</a>, 
-    
-      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I wanted a project to allow attachments to be added to tasks. My
-requirements were that: users should be able to add multiple attachments
-to a task up to some maximum limit; there should be validation on the
-size of the attachments (combined with the number limit this should
-ensure I don’t run out of disk space too fast); and, that there should
-be some security on downloading a task’s attachments.
-<a href="http://www.thoughtbot.com/projects/paperclip/">Paperclip</a> seems to be
-the popular Rails attachment at the moment and is still under active
-development, so I hoped to use that. However, it does not handle
-multiple attachments for a model. There is a plugin
-<a href="http://github.com/heavysixer/paperclippolymorph/tree/master">PaperclipPolymorph</a>
-which adds multiple attachments to Paperclip, but I just couldn’t get it
-to meet my validation and security requirements. In the end I wrote my
-own solution and this article details it.</p>
-
-<p class='more'><br/><a href='/blog/2009/04/multiple-attachments-with-vali.html'>Read the rest of this entry</a></p>
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -302,6 +307,10 @@ own solution and this article details it.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/06/miniatures.html">Miniatures</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
@@ -337,10 +346,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/08/roguelike.html">Roguelike Tutorial 2022</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/06/brisbane.html">Brisbane</a> 
   </li>  
 
 </ul>
