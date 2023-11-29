@@ -38,6 +38,63 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">May 10, 2009</span>
+  <h4><a href="/blog/2009/05/weather-report-a-ruby-gem-for.html">weather_report - a Ruby gem for retrieving weather forecasts</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
+    
+      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Weather.html">Weather</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p><strong>Update:</strong> The weather_report project and the weather archive is no
+more. The effort required to maintain it was too great, for more
+information <a href="http://www.cordinc.com/blog/2009/11/the-weather-archive-is-not-mor.html">see
+here</a>.</p>
+
+<p>Today I have released my first Ruby gem:
+<a href="http://www.cordinc.com/projects/weather_report">weather_report</a>,
+version 0.0.1. It connects to the <a href="http://backstage.bbc.co.uk">BBC
+Backstage</a> weather API and gets weather
+observations or forecasts for thousands of cities worldwide. Don’t be
+fooled by the low version number, it is usable. However, it can only
+handle the BBC weather feed, requires pre-knowledge of BBC weather
+location ids and is metric only (all things I plan to fix).</p>
+
+<p>With weather_report, you can do things like:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'weather_report'</span>
+<span class="c1"># 8 is the BBC Backstage weather code for London, UK</span>
+<span class="n">londonWeather</span> <span class="o">=</span> <span class="no">WeatherReport</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># to get the current temperature</span>
+<span class="n">londonWeather</span><span class="p">.</span><span class="nf">observation</span><span class="p">.</span><span class="nf">temperature</span> 
+
+<span class="c1"># to get the tomorrow's max temperature</span>
+<span class="n">londonWeather</span><span class="p">.</span><span class="nf">forecast</span><span class="p">.</span><span class="nf">for_tomorrow</span><span class="p">.</span><span class="nf">max_temperature</span>
+
+<span class="c1"># and much more!</span></code></pre></figure>
+
+<p>It can be obtained through rubyforge:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>gem <span class="nb">install </span>weather_report</code></pre></figure>
+
+<p>There is also a <a href="http://www.cordinc.com/projects/weather_report">website with documentation
+here</a>.</p>
+
+<p>I would like to say thanks to the authors of
+<a href="http://newgem.rubyforge.org/index.html">newgem</a> and this <a href="http://blog.bogojoker.com/category/rr/">rubyforge
+tutorial</a>, both of which greatly
+aided in weather_report’s creation.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">May  6, 2009</span>
   <h4><a href="/blog/2009/05/intrade-implied-interest-rates.html">Intrade Implied Interest Rates in Java</a></h4> 
   Tags: 
@@ -217,74 +274,10 @@ languages, plus Java (which I use every day at work).</p>
   </div>
   <hr/>
 
-  <span class="date">April 13, 2009</span>
-  <h4><a href="/blog/2009/04/fancy-restaurants-part-deux.html">Fancy Restaurants Part Deux</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Restaurant.html">Restaurant</a>, 
-    
-      <a class="post" href="/blog/tag/UK.html">UK</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p><strong>Deux because they’re fancy!</strong></p>
-
-<p>Starting with the best, <a href="http://www.pied-a-terre.co.uk/">Pied a Terre</a>
-is a small, intimate restaurant in Fitzrovia. At least I think it is
-small. It appears to be a converted house, so there are many small
-rooms. We were in the front room with four tables, most of which were
-empty during our meal, and none were in our eyeline. The large front
-window was frosted to just above head height. The room felt light, but
-no one on the street could see in, nor could we be distracted. Combined
-with the staff materialising as if from nowhere whenever required, the
-impression was a private dining experience. It is the effect
-<a href="http://www.cordinc.com/blog/2008/05/fancy-restaurants.html">Hakkasan</a>
-was attempting and failing to achieve (there I felt as if I was on a
-stage with down lighting trying to isolate our table in a large room).
-We ordered the tasting menu with the discovery wines option. Were I to
-describe each dish it would become a bore of hyperbole. It is safe to
-say the food was incredible, sometime surprisingly so. I’m not normally
-a fan of raw tuna, but here the flavour was exquisite. The wine was of a
-high standard with two outstanding exceptions and another disappointing
-exception (which turned out to be from my home town). Although with 8
-glasses over 10 courses it was too much and we had to leave nearly half.
-The staff were friendly but to the point and never instrusive. Overall,
-the meal was verging on perfection. The main negative point was the
-expense - oh my lord the expense. It is by far the most expensive meal
-I’ve ever had by a long way. About 50% more expensive than Hakkasan,
-which I thought was expensive. For the cost of this meal for two, you
-could feed eleven at The Sportsman. Having said that, I’m glad to have
-been once, just not sure I could justify another visit before I win the
-Lotto jackpot. If this is what two Michelin stars is like, how much
-better can three be?</p>
-
-<p><a href="http://www.babur.info/website/index.php">Babur</a> is an Indian
-restuaurant in Forest Hill (about 15 minutes walk from where I live)
-which recently won an award. I thought it was the “Best Cheap Eat in
-South London”, but I’m told that’s not right, and if it is correct then
-it must only just qualify on the price criteria (to my mind it’s at the
-high end of cheap - £60 for two, with beer but no wine or dessert).
-Their takeaway menu is very good so we went for a sitdown meal. The food
-was excellent. I had the ostrich starter with tandoori jumbo prawns (the
-largest prawns I have seen in Britain), it was mouthwatering and
-satisfying in the way good curry can be. Based on the food alone, this
-would be one of my favourites. However, I found the service a little
-lacking. Our naan was forgotten, but when pointed out it was removed
-from the bill with no hassle. Also they tried to sell us a loyalty card
-a little too strongly. At first I was interested, but after a quick
-calculation realised it wouldn’t be much use to us. We politely refused.
-So far no problem. However, they then proceeded to try selling it to us
-a further two times, each time explaining to us the “benefits” in full
-as if we hadn’t grasped the system the first time. I wasn’t impressed.
-Overall, despite the hassle it’s worth a visit.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 78 of 88 
+  Page 78 of 89 
   
       
         <a href="/blog/page77">Previous</a>
@@ -307,6 +300,10 @@ Overall, despite the hassle it’s worth a visit.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2023/10/china.html">China</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/06/miniatures.html">Miniatures</a> 
@@ -342,10 +339,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/09/hosting.html">Hosting</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/08/roguelike.html">Roguelike Tutorial 2022</a> 
   </li>  
 
 </ul>

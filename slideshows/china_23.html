@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>China</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/jssor.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jssor.slider.min.js"></script>
+<script>
+        jssor_slider1_starter = function (containerId) {
+
+            var options = {
+                $AutoPlay: true,
+                $FillMode: 1, 
+                $PauseOnHover: 3,
+                $ArrowKeyNavigation: true,
+                $SlideDuration: 800,
+                $SlideshowOptions: {
+                    $Class: $JssorSlideshowRunner$,
+                    $Transitions: [{$Duration: 1200, $During: { $Left: [0.3, 0.7] }, $FlyDirection: 1, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear },$ScaleHorizontal: 0.3, $Opacity: 2 }],
+                    $ShowLink: true
+                },
+                $DirectionNavigatorOptions: {
+                    $Class: $JssorDirectionNavigator$,
+                    $ChanceToShow: 1      
+                },
+                $ThumbnailNavigatorOptions: {
+                    $Class: $JssorThumbnailNavigator$,
+                    $ChanceToShow: 2,  
+                    $SpacingX: 5,
+                    $DisplayPieces: 10,
+                    $ParkingPosition: 360
+                },
+                $CaptionSliderOptions: {                            
+                    $Class: $JssorCaptionSlider$,                  
+                    $CaptionTransitions: [], 
+                    $PlayInMode: 1,                                
+                    $PlayOutMode: 1
+                }
+            };
+
+            var jssor_slider1 = new $JssorSlider$(containerId, options);
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizes
+            function ScaleSlider() {
+                var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+                if (parentWidth)
+                    jssor_slider1.$SetScaleWidth(Math.max(Math.min(parentWidth, 800), 300));
+                else
+                    $JssorUtils$.$Delay(ScaleSlider, 30);
+            }
+
+            ScaleSlider();
+            $JssorUtils$.$AddEvent(window, "load", ScaleSlider);
+
+            if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
+                $JssorUtils$.$OnWindowResize(window, ScaleSlider);
+            }
+            //responsive code end
+        };
+    </script>
+</head>
+
+
+<body>
+    
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+<div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+              <div class="col-lg-8">
+                <h4 style="text-align: center;">China (September 2023)</h4>
+
+    <!-- Jssor Slider Begin -->
+    <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 800px;
+        height: 581px; background: #191919; overflow: hidden; border-top-color: #191919; border-top-style: solid; border-top-width: 10px; border-bottom-color: #191919; border-bottom-style: solid; border-bottom-width: 5px;">   
+
+        <!-- Loading Screen -->
+        <div u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
+                background-color: #000000; top: 0px; left: 0px;width: 100%;height:100%;">
+            </div>
+            <div style="position: absolute; display: block; background: url(/assets/img/loading.gif) no-repeat center center;
+                top: 0px; left: 0px;width: 100%;height:100%;">
+            </div>
+        </div>  
+
+        <!-- Slides Container -->
+        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 800px; height: 460px; overflow: hidden;">
+
+            <div>
+                <a u="image" href="/assets/slideshow/china_23/forbidden.png"><img u="image" src="/assets/slideshow/china_23/forbidden_main.png" /></a>
+                <div u="caption" style="position: absolute; top: 440px; left: 0px; width: 800px;  height: 25px;">
+                    <div style="position: absolute; top: 0px; left: 0px; width: 800px; height: 20px;
+                        color: White; font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">
+                        First courtyard in the Forbidden City
+                    </div>
+                </div>
+                <img u="thumb" src="/assets/slideshow/china_23/forbidden_thumb.png" />
+            </div>
+
+<div>
+                <a u="image" href="/assets/slideshow/china_23/hechi.png"><img u="image" src="/assets/slideshow/china_23/hechi_main.png" /></a>
+                <div u="caption" style="position: absolute; top: 440px; left: 0px; width: 800px;  height: 25px;">
+                    <div style="position: absolute; top: 0px; left: 0px; width: 800px; height: 20px;
+                        color: White; font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">
+                        Hechi
+                    </div>
+                </div>
+                <img u="thumb" src="/assets/slideshow/china_23/hechi_thumb.png" />
+            </div>
+
+<div>
+                <a u="image" href="/assets/slideshow/china_23/hechi_river.png"><img u="image" src="/assets/slideshow/china_23/hechi_river_main.png" /></a>
+                <div u="caption" style="position: absolute; top: 440px; left: 0px; width: 800px;  height: 25px;">
+                    <div style="position: absolute; top: 0px; left: 0px; width: 800px; height: 20px;
+                        color: White; font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">
+                        River near Hechi
+                    </div>
+                </div>
+                <img u="thumb" src="/assets/slideshow/china_23/hechi_river_thumb.png" />
+            </div>
+
+<div>
+                <a u="image" href="/assets/slideshow/china_23/guilin.png"><img u="image" src="/assets/slideshow/china_23/guilin_main.png" /></a>
+                <div u="caption" style="position: absolute; top: 440px; left: 0px; width: 800px;  height: 25px;">
+                    <div style="position: absolute; top: 0px; left: 0px; width: 800px; height: 20px;
+                        color: White; font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">
+                        Guilin cruise
+                    </div>
+                </div>
+                <img u="thumb" src="/assets/slideshow/china_23/guilin_thumb.png" />
+            </div>
+
+<div>
+                <a u="image" href="/assets/slideshow/china_23/guilin_lights.png"><img u="image" src="/assets/slideshow/china_23/guilin_lights_main.png" /></a>
+                <div u="caption" style="position: absolute; top: 440px; left: 0px; width: 800px;  height: 25px;">
+                    <div style="position: absolute; top: 0px; left: 0px; width: 800px; height: 20px;
+                        color: White; font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">
+                        Guilin lights
+                    </div>
+                </div>
+                <img u="thumb" src="/assets/slideshow/china_23/guilin_lights_thumb.png" />
+            </div>
+
+<div>
+                <a u="image" href="/assets/slideshow/china_23/wuhan.png"><img u="image" src="/assets/slideshow/china_23/wuhan_main.png" /></a>
+                <div u="caption" style="position: absolute; top: 440px; left: 0px; width: 800px;  height: 25px;">
+                    <div style="position: absolute; top: 0px; left: 0px; width: 800px; height: 20px;
+                        color: White; font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">
+                        Crane Tower in Wuhan
+                    </div>
+                </div>
+                <img u="thumb" src="/assets/slideshow/china_23/wuhan_thumb.png" />
+            </div>
+
+<div>
+                <a u="image" href="/assets/slideshow/china_23/wall.png"><img u="image" src="/assets/slideshow/china_23/wall_main.png" /></a>
+                <div u="caption" style="position: absolute; top: 440px; left: 0px; width: 800px;  height: 25px;">
+                    <div style="position: absolute; top: 0px; left: 0px; width: 800px; height: 20px;
+                        color: White; font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">
+                        The Great Wall
+                    </div>
+                </div>
+                <img u="thumb" src="/assets/slideshow/china_23/wall_thumb.png" />
+            </div>
+
+<div>
+                <a u="image" href="/assets/slideshow/china_23/tiantan.png"><img u="image" src="/assets/slideshow/china_23/tiantan_main.png" /></a>
+                <div u="caption" style="position: absolute; top: 440px; left: 0px; width: 800px;  height: 25px;">
+                    <div style="position: absolute; top: 0px; left: 0px; width: 800px; height: 20px;
+                        color: White; font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">
+                        Tiantan in Beijing
+                    </div>
+                </div>
+                <img u="thumb" src="/assets/slideshow/china_23/tiantan_thumb.png" />
+            </div>
+
+<div>
+                <a u="image" href="/assets/slideshow/china_23/shanghai.png"><img u="image" src="/assets/slideshow/china_23/shanghai_main.png" /></a>
+                <div u="caption" style="position: absolute; top: 440px; left: 0px; width: 800px;  height: 25px;">
+                    <div style="position: absolute; top: 0px; left: 0px; width: 800px; height: 20px;
+                        color: White; font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">
+                        Shanghai
+                    </div>
+                </div>
+                <img u="thumb" src="/assets/slideshow/china_23/shanghai_thumb.png" />
+            </div>
+
+<div>
+                <a u="image" href="/assets/slideshow/china_23/zhujiajiao.png"><img u="image" src="/assets/slideshow/china_23/zhujiajiao_main.png" /></a>
+                <div u="caption" style="position: absolute; top: 440px; left: 0px; width: 800px;  height: 25px;">
+                    <div style="position: absolute; top: 0px; left: 0px; width: 800px; height: 20px;
+                        color: White; font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">
+                        Zhujiajiao near Shanghai
+                    </div>
+                </div>
+                <img u="thumb" src="/assets/slideshow/china_23/zhujiajiao_thumb.png" />
+            </div>
+
+<div>
+                <a u="image" href="/assets/slideshow/china_23/silkworm.png"><img u="image" src="/assets/slideshow/china_23/silkworm_main.png" /></a>
+                <div u="caption" style="position: absolute; top: 440px; left: 0px; width: 800px;  height: 25px;">
+                    <div style="position: absolute; top: 0px; left: 0px; width: 800px; height: 20px;
+                        color: White; font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">
+                        Silkworms near Hechi
+                    </div>
+                </div>
+                <img u="thumb" src="/assets/slideshow/china_23/silkworm_thumb.png" />
+            </div>
+
+<div>
+                <a u="image" href="/assets/slideshow/china_23/trains.png"><img u="image" src="/assets/slideshow/china_23/trains_main.png" /></a>
+                <div u="caption" style="position: absolute; top: 440px; left: 0px; width: 800px;  height: 25px;">
+                    <div style="position: absolute; top: 0px; left: 0px; width: 800px; height: 20px;
+                        color: White; font-size: 16px; font-weight: bold; line-height: 20px; text-align: center;">
+                        Shanghai Train Station
+                    </div>
+                </div>
+                <img u="thumb" src="/assets/slideshow/china_23/trains_thumb.png" />
+            </div>
+
+
+        </div>
+
+        <!-- Arrow Left -->
+        <span u="arrowleft" class="jssord05l" style="width: 40px; height: 40px; top: 158px; left: 8px;"></span>
+        <!-- Arrow Right -->
+        <span u="arrowright" class="jssord05r" style="width: 40px; height: 40px; top: 158px; right: 8px"></span>
+        <!-- Direction Navigator Skin End -->
+        
+        <!-- Thumbnail Navigator Skin Begin -->
+        <div u="thumbnavigator" class="jssort01" style="position: absolute; width: 800px; height: 125px; left:0px; bottom: 0px;">
+
+            <div u="slides" style="cursor: move;">
+                <div u="prototype" class="p" style="position: absolute; width: 72px; height: 72px; top: 0; left: 0;">
+                    <div class=w><thumbnailtemplate style=" width: 100%; height: 100%; border: none;position:absolute; top: 0; left: 0;"></thumbnailtemplate></div>
+                    <div class=c>
+                    </div>
+                </div>
+            </div>
+            <!-- Thumbnail Item Skin End -->
+        </div>
+        <!-- Thumbnail Navigator Skin End -->
+
+        <!-- Trigger -->
+        <script>
+            jssor_slider1_starter('slider1_container');
+        </script>
+    </div>
+    <!-- Jssor Slider End -->
+
+</div>
+            </div>
+       </div>
+
+    </div><!-- /.container -->
+
+</body>
+</html>
