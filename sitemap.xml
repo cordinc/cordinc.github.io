@@ -1740,7 +1740,7 @@
     </url>
     <url>
         <loc>http://localhost:4000/blog/2023/02/goals.html</loc>
-        <lastmod>2023-02-10T11:51:06+08:00</lastmod>
+        <lastmod>2024-01-12T15:36:26+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/blog/2023/02/15-years.html</loc>
@@ -1748,7 +1748,7 @@
     </url>
     <url>
         <loc>http://localhost:4000/blog/2023/02/boardgames.html</loc>
-        <lastmod>2023-02-15T17:00:53+08:00</lastmod>
+        <lastmod>2024-01-12T17:27:17+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/blog/2023/03/blame.html</loc>
@@ -1765,6 +1765,14 @@
     <url>
         <loc>http://localhost:4000/blog/2023/10/china.html</loc>
         <lastmod>2023-11-29T17:29:05+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/blog/2024/01/goals.html</loc>
+        <lastmod>2024-01-14T11:26:26+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/blog/2024/01/boardgames.html</loc>
+        <lastmod>2024-01-14T11:28:29+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/404.html</loc>
@@ -1824,7 +1832,7 @@
     </url>
     <url>
         <loc>http://localhost:4000/</loc>
-        <lastmod>2023-11-29T17:29:05+08:00</lastmod>
+        <lastmod>2024-01-14T11:28:29+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/blender/</loc>

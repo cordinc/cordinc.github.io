@@ -38,6 +38,101 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">April  7, 2012</span>
+  <h4><a href="/blog/2012/04/failure-unity-javascript-in-ja.html">Failure: Unity Javascript in Java VM</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>School science teachers like to emphasize that the failure of an
+experiment is as useful a learning experience as its success. Of course
+the high-achieving student knows that is bollocks and ensures their
+experiements always succeed - if you need a straight line, only gather
+two data points! Despite that I think the underlying idea is correct and
+experimental failure should not be hidden.</p>
+
+<p>A recent experiment of mine failed. I am writing a game with an online
+component and wanted the same code running on both the client and server - as this would reduce the chance of bugs. For ease of development
+<a href="http://unity3d.com/">Unity3D</a> is being used for the client end, so the
+code there is either Javascript or C#. I have been writing Java servers
+professionally for years so it seemed silly not to use that knowledge.
+Clearly there is no common ground there. However, there is a project
+called <a href="http://www.mozilla.org/rhino/">Rhino</a> to allow Javascript to run
+inside the Java JVM.</p>
+
+<p>So can Javascript from Unity run in a Java environment? The short answer
+is “no”, but the longer answer is “sometimes, with many caveats”.</p>
+
+<p>Firstly it is possible to run Javascript functions in Java. Load up the
+Rhino library into the classpath and if you have Javascript code like:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">square</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">i</span><span class="o">*</span><span class="nx">i</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>then you can run it in Java with the folowing:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Context</span> <span class="n">cx</span> <span class="o">=</span> <span class="nc">Context</span><span class="o">.</span><span class="na">enter</span><span class="o">();</span>
+<span class="nc">Scriptable</span> <span class="n">scope</span> <span class="o">=</span> <span class="n">cx</span><span class="o">.</span><span class="na">initStandardObjects</span><span class="o">();</span>
+<span class="nc">Function</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">cx</span><span class="o">.</span><span class="na">compileFunction</span><span class="o">(</span><span class="n">scope</span><span class="o">,</span> <span class="n">readFile</span><span class="o">(</span><span class="s">"src/test_fn.js"</span><span class="o">),</span> <span class="s">"&lt;cmd&gt;"</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">f1</span><span class="o">.</span><span class="na">call</span><span class="o">(</span><span class="n">cx</span><span class="o">,</span> <span class="n">scope</span><span class="o">,</span> <span class="n">f1</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Object</span><span class="o">[]</span> <span class="o">{</span><span class="mi">5</span><span class="o">}));</span></code></pre></figure>
+
+<p>So far so good. If your Unity Javascript is just a collection of simple
+functions then this is all that is required. However, there is a good
+chance this is not the case. Obviously any Unity specific functions and
+classes are not available (eg Ray, Input, etc). However, more important
+are the big differences between Unity Javascript and standard (ECMA)
+Javascript.</p>
+
+<p>Many people say that Javascript in Unity should more accurately be
+referred to as UnityScript. I think that is definitely true. Although it
+looks like Javascript there are some fundamental changes. Most
+importantly, Javascript uses a <a href="http://stackoverflow.com/questions/387707/whats-the-best-way-to-define-a-class-in-javascript">prototype-based scheme to define
+classes</a>.
+UnityScript has an inheritance model, and <a href="http://unifycommunity.com/wiki/index.php?title=UnityScript_versus_JavaScript">the two schemes are not
+compatible</a>.
+To me these differences are enough to prevent want I wanted to achieve.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">April  1, 2012</span>
+  <h4><a href="/blog/2012/04/lost-code.html">Lost Code</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Recently at work I was asked to find out if anyone was still using a
+small tactical program I wrote. If it was unused, they apologetically
+asked me to shut it down. No apology was required, but I understand why
+it was offered. Some developers can become quite precious about their
+code and want to see it keep running forever. However, after working in
+this fast-paced industry for nearly 15 years I have long accepted that
+most of my code is no longer running. I’d be lucky if most of it is even
+still backed up somewhere rather than being sent to
+<a href="http://en.wikipedia.org/wiki//dev/null">/dev/null</a>.</p>
+
+<p>Four of my old teams were shutdown with near total loss of code. Another
+two years were spent at a consulting firm where most of the clients I
+serviced no longer exist. Those 5 jobs combined mean that half of my
+working life’s production is largely gone. At a guess I would say 10% of
+the code from my first five working years is still used; around 30% from
+the second five years; and, over two-thirds of the last 5 years of my
+code is currently running. My professional code appears to have a
+half-life of around 4 years. This sounds about right considering the
+rate of technology change.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">March 26, 2012</span>
   <h4><a href="/blog/2012/03/line-plane-intersection-in-uni.html">Line / Plane Intersection in Unity3D</a></h4> 
   Tags: 
@@ -262,88 +357,6 @@ entries older than a certain time use
   </div>
   <hr/>
 
-  <span class="date">March  3, 2012</span>
-  <h4><a href="/blog/2012/03/kuala-lumpur.html">Kuala Lumpur</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/General.html">General</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I’m not sure how many people who read this blog actually know me in
-person - probably very few. However, for those that do, I am moving.
-Towards the end of the year (the exact date is still uncertain), I’m
-physically moving to <a href="http://en.wikipedia.org/wiki/Kuala_Lumpur">Kuala
-Lumpur</a>. Virtual location
-(email, website, etc) will remained unchanged. It is not yet known what
-I’ll be doing there - there are some work visa issues to be sorted out.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">February 26, 2012</span>
-  <h4><a href="/blog/2012/02/game-reviews-again.html">Game Reviews Again</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Games.html">Games</a>, 
-    
-      <a class="post" href="/blog/tag/Video Games.html">Video Games</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Almost exactly six months ago I wrote a <a href="http://www.cordinc.com/blog/2011/08/modern-gaming.html">review of some modern computer
-games</a>. All were
-well known, and I said they were all excellent. I even suggested that
-computer games were in a golden age - better than ever before. Now I
-have completed 3 more well known, highly regarded, recent games. How did
-they do in comparison? Not as well unfortunately.</p>
-
-<p>First up I played
-<a href="http://en.wikipedia.org/wiki/Call_of_Duty_4:_Modern_Warfare">Call
-Of Duty 4: Modern Warfare</a>, the original 2007 Modern Warfare game
-which spawned the incredibly popular series of <a href="http://en.wikipedia.org/wiki/First-person_shooter">first-person
-shooters</a> of the same
-name. At first I was impressed with the intensity of this game. However,
-the fast pace quickly slows with realisation there is essentially no
-penalty to getting shot. Death is a mere slight pause. I felt like I was
-on rails, being led through the action. The game was just a reaction
-speed test. Multiplayer is probably better, but I didn’t play that - I
-doubt my reactions are fast enough. The story is ok, nothing special.
-Although I did detect a possible subtle satire on war - but that could
-just be me. The story is most notable for a couple of impressive famous
-scenes (the nuke level and the gunship level) that do work very well.
-This game is probably too linear and twitchy for me.</p>
-
-<p>Next up I played
-<a href="http://en.wikipedia.org/wiki/Assassin's_Creed:_Brotherhood">Assasins
-Creed: Brotherhood</a>. I was particularly looking forward to this game
-because of its open world setting in medieval Rome. Certainly the
-graphics are beautiful and I enjoyed wandering around the ruins of Rome.
-But the controls! This game was incredibly frustrating - it was hard to
-get my avatar to perform as intended. I tried for many hours (28 total),
-but still found myself often shouting at the computer and cursing the
-clumsy controls. Eventually I just raced to finish the main story.
-Incidently, the story is very silly and not worth discussing. This game
-could have been so much better, but is just annoying.</p>
-
-<p>Just a few days ago I completed
-<a href="http://en.wikipedia.org/wiki/BioShock">Bioshock</a>. This is an excellent
-game, restoring my belief in modern gaming after the previous two
-disappointments. The Ayn Rand-gone-wild underwater setting is
-incredible. The art-deco and slightly cartoony (but I think that was the
-point) graphics are decent. I often found myself just walking around
-looking at the banners and architecture. Most importantly the controls
-were super smooth. The game was also quite intense, particularly at the
-start and end. Sometimes I jumped at a surprising action or went looking
-for someone I could hear nearby. It is interesting that both this game
-and Mass Effect 2, give the player some small choices that make minor
-differences to gameplay, as opposed to the lack of agency in Modern
-Warfare. A little choice (even if it is fairly inconsequential in plot
-terms) goes a long way in making the player feel involved.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -370,6 +383,14 @@ terms) goes a long way in making the player feel involved.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/01/goals.html">Goals 2024</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/10/china.html">China</a> 
@@ -401,14 +422,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/09/hosting.html">Hosting</a> 
   </li>  
 
 </ul>

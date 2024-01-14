@@ -3,13 +3,162 @@
     <title type="text" xml:lang="en">Cordinc Blog</title>
     <link type="application/atom+xml" href="http://www.cordinc.com/blog/atom.xml" rel="self"/>
     <link type="text" href="http://www.cordinc.com" rel="alternate"/>
-    <updated>2023-11-29T17:29:05+08:00</updated>
+    <updated>2024-01-14T11:28:29+08:00</updated>
     <id>http://www.cordinc.com</id>
     <author>
         <name>Cordinc Blog</name>
     </author>
     <rights>Copyright (c) 2013-2020 Cordinc Blog</rights>
 
+    
+    <entry>
+        <title>Boardgames of 2022</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2024/01/boardgames.html/"/>
+        <published>2024-01-12T00:00:00+08:00</published>
+        <updated>2024-01-12T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2024/01/boardgames.html/</id>
+        <content type="html">&lt;p&gt;I continued tracking the boardgames I played through 2023 (&lt;a href=&quot;/blog/2023/02/boardgames.html&quot;&gt;see the 2022 list&lt;/a&gt;). Last year I played 21 different games a total of 47 times. The increase was largely due to joining a couple of clubs: &lt;a href=&quot;https://boardgamegeek.com/guild/view/4251&quot;&gt;Strategy Boardgamers WA&lt;/a&gt; is a reborn version of the Perth Long Boardgames club that shutdown during the Covid lockdowns; The Salvage League (no website) is devoted to playing quick games of Battletech: Alpha Strike. I had a goal of finishing the year having played all my previous unplayed games (they are marked in bold). I missed one, &lt;a href=&quot;https://boardgamegeek.com/boardgame/163154/falling-sky-gallic-revolt-against-caesar&quot;&gt;Falling Sky&lt;/a&gt;, but it is on the schedule to be played at SBWA in a few months (fingers crossed).&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Game&lt;/th&gt;
+      &lt;th&gt;Plays&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/142526/battletech-alpha-strike&quot;&gt;&lt;strong&gt;Battletech: Alpha Strike&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;12&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/266192/wingspan&quot;&gt;Wingspan&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/173346/7-wonders-duel&quot;&gt;7 Wonders: Duel&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/241724/villagers&quot;&gt;Villagers&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/251658/sprawlopolis&quot;&gt;Sprawlopolis&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/180263/7th-continent&quot;&gt;&lt;strong&gt;7th Continent&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2 (sessions)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/62222/commands-colors-napoleonics&quot;&gt;&lt;em&gt;Commands &amp;amp; Colors: Napoleonics&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/281655/high-frontier-4-all&quot;&gt;&lt;strong&gt;High Frontier (Race For Glory version)&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/281655/high-frontier-4-all&quot;&gt;&lt;strong&gt;High Frontier (full version)&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/1540/battletech&quot;&gt;&lt;strong&gt;Battletech: Classic&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/251442/liberation&quot;&gt;&lt;strong&gt;Liberation&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/30549/pandemic&quot;&gt;Pandemic&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/245654/railroad-ink-deep-blue-edition&quot;&gt;&lt;em&gt;Railroad Ink&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/205637/arkham-horror-card-game&quot;&gt;&lt;strong&gt;Arkham Horror&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/12891/friedrich&quot;&gt;&lt;em&gt;Friedreich&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/214234/tank-duel-enemy-crosshairs&quot;&gt;&lt;em&gt;Tank Duel&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/253506/versailles-1919&quot;&gt;&lt;em&gt;Versailles 1919&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/234477/battle-rokugan&quot;&gt;&lt;em&gt;Battle of Rokugan&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/295103/almoravid-reconquista-and-riposte-spain-1085-1086&quot;&gt;&lt;em&gt;Almoravid&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/289937/ancient-civilizations-middle-east&quot;&gt;&lt;em&gt;Ancient Civilizations of the Middle East&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/400314/apiary&quot;&gt;&lt;em&gt;Apiary&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Games listed in &lt;em&gt;italics&lt;/em&gt; are games I do not own, while those in &lt;strong&gt;bold&lt;/strong&gt; are my games that I played for the first time in 2023. Very long games split over multiple days are counted in distinct play sessions (of at least 2 hours).&lt;/p&gt;
+
+&lt;p&gt;Here are my thoughts on any game I played more than once, and haven’t previously reviewed (consider my plays of 7 Wonders Duel &amp;amp; Sprawlopolis as a sign of my continued enjoyment):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Battletech&lt;/strong&gt;: Large &lt;a href=&quot;https://en.wikipedia.org/wiki/Mecha&quot;&gt;mecha&lt;/a&gt; battling other large mecha in a 31st century beset by war. This miniatures wargame came out 40 years ago and has been moderately popular ever since. I like it, and have played a lot of the faster paced, larger scale Alpha Strike version, but the more detailed, slower classic version is good too.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Wingspan&lt;/strong&gt;: Cute tableau builder about collecting birds for a sanctuary. Beautiful art and strangely popular with people who don’t play many boardgames. Enjoyable but I’m not  good player as a there is enough randomness that plans go astray quickly. Maybe that is why people like playing against me.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Villagers&lt;/strong&gt;: Fast tableau builder about building up a medieval village by tempting increasingly skilled and thus valuable workpeople to move in.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;High Frontier&lt;/strong&gt;: Complicated simulation of spaceship travel and construction through the solar system. Designed by an ex-NASA engineer with known physics (no faster-than-light stuff here). Requires commitment, concentration, patience and several hours to play. Finishing a game successfully gives a sense of satisfaction, like an exhausting workout. Very hard to get other people interested in trying it, a certain mindset is required :)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;7th Continent&lt;/strong&gt;: A long card-based cooperative narrative adventure game that is like a cross between a choose-your-own-adventure and a boardgame. Very long - my first game was 5 hours and the second 6, both were losses. Interesting, but it seems very puzzle based, so the more you play, the more you recognise situations and the easier it becomes. I feel this may not be a keeper and after a few more games it will be time to move it on.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Commands &amp;amp; Colors: Napoleonics&lt;/strong&gt;: A cross between a boardgame and a miniatures game, here you move blocks denoting various units around a board to recreate various Napoleonic battles. The hook is that you can’t just move and fight at will. To model the problems of historical command, each player must play cards that dictate which units may act. Frustrating, but in a good way, and fast playing, so it doesn’t feel unfair.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Goals 2024</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2024/01/goals.html/"/>
+        <published>2024-01-11T00:00:00+08:00</published>
+        <updated>2024-01-11T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2024/01/goals.html/</id>
+        <content type="html">&lt;p&gt;My attempt to achieve &lt;a href=&quot;/blog/2023/02/goals.html&quot;&gt;last years goals&lt;/a&gt; was a failure. Not completely, I did manage to complete the two easiest and one other goal, but that is only a 50% success rate. It has been a year of distractions: from self-inflicted injury, long holidays, and technology indecision. Here is the assessment:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Increase strength and aerobic fitness&lt;/strong&gt;: Fail. This was going well until I tore my supraspinatus shoulder tendon in May. The physio recommended no exercise (other than light recovery exercise) for several months, but I’ve gone longer due to other things, and haven’t started again yet.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Demo quality Ci2D&lt;/strong&gt;: Nope, nowhere near this. I started working on it four times in different languages/engines this year (Unity, Scala, Typescript and Godot). I don’t want to use Unity anymore after their &lt;a href=&quot;https://www.jarrahtechnology.com/2023/10/01/Smug-Mode.html&quot;&gt;fiasco&lt;/a&gt;, but I’m struggling to find a suitable replacement.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Continue on IPO &amp;amp; maybe one other&lt;/strong&gt;: Done, but barely. I created another version of IPO, and nothing else.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;18 blog articles (including Jarrah Technology)&lt;/strong&gt;: Done. Eight here and 12 on Jarrah Technology, this is the easiest goal.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Fix the bedroom window issues, fix the terrace drainage problem &amp;amp; build a chicken coop&lt;/strong&gt;: Done, and not too badly. See the photo below of the chicken coop I built.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Paint at least 10 miniatures, and have played all my boardgames&lt;/strong&gt;: So close, but no. After &lt;a href=&quot;/blog/2023/06/miniatures.html&quot;&gt;a late start&lt;/a&gt;, I now have two dozen painted minis and I’m getting better. However, I have one unplayed boardgame: &lt;a href=&quot;https://boardgamegeek.com/boardgame/163154/falling-sky-gallic-revolt-against-caesar&quot;&gt;Falling Sky&lt;/a&gt;, a heavy and long wargame about Caesar’s Gallic Wars (perhaps a hard sell for other players:). Still I have found a group willing to play but scheduling issues mean it is down for April.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/chicken_coop.png&quot; alt=&quot;Chicken Coop&quot; title=&quot;Chicken Coop&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Will next year be better?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Return to a decent level of fitness and strength&lt;/strong&gt;: Just in the last month my shoulder is feeling good again. Time to (gently) get back to exercise.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Improve Spanish&lt;/strong&gt;: With my extra time, I restarted learning Spanish last year. It came back fairly quickly. I should keep it up.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Learn to 3D print (and then paint the result)&lt;/strong&gt;: I bought myself a 3D printer for christmas. I should learn to use it properly, print some minis, and paint them.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;18 blog articles (including Jarrah Technology)&lt;/strong&gt;:  An easy one to ensure I hit at least one of these.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Demo quality Ci2D&lt;/strong&gt;: This is ambitious, but I need to choose a technology and start moving.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </entry>
     
     <entry>
         <title>China</title>
@@ -193,7 +342,7 @@
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;7 Wonders Duel&lt;/strong&gt;: this is a 2-player only version of the also excellent deckbuilder &lt;a href=&quot;https://boardgamegeek.com/boardgame/68448/7-wonders&quot;&gt;7 Wonders&lt;/a&gt;. The goal is to build an ancient civilisation by selecting cards from layouts of escalating power. Some of the cards are hidden until they can be chosen other are visible from the start. There are lots of ways to acculumate points and many strategies. You have to adapt to the situation and your opponent. This is an excellent game and so much fun. I’ll be playing much more.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Terraforming Mars: Ares Expedition&lt;/strong&gt;: the 2-player version of &lt;a href=&quot;https://boardgamegeek.com/boardgame/167791/terraforming-mars&quot;&gt;Terraforming Mars&lt;/a&gt;, an engine building game where the players vie to contribute the most towards making Mars human habitable. The back of the box says it plays in under an hour but I never taken less than 90 minutes. So far there is little interaction with the opponent, but the depth of tactics and huge number of possibilities keeps me interested. A good game I’ll keep playing for now, but will it keep me interested when it is more familiar?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Terraforming Mars: Ares Expedition&lt;/strong&gt;: the 2-player version of &lt;a href=&quot;https://boardgamegeek.com/boardgame/167791/terraforming-mars&quot;&gt;Terraforming Mars&lt;/a&gt;, an engine building game where the players vie to contribute the most towards making Mars human habitable. The back of the box says it plays in under an hour but I have never taken less than 90 minutes. So far there is little interaction with the opponent, but the depth of tactics and huge number of possibilities keeps me interested. A good game I’ll keep playing for now, but will it keep me interested when it is more familiar?&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Sprawlopolis&lt;/strong&gt;: 18 card city builder. Quick and challenging, you lay the cards down like tiles to plan out a city, while trying to satisfy 3 randomly generated scoring rules. Can be played solo. Everyone I have played this with loves it, and deservedly so. Great to carry around as time-filler between other things (as were all the plays this year).&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -249,8 +398,8 @@
   &lt;li&gt;&lt;strong&gt;Demo quality Ci2D&lt;/strong&gt;: Have something good enough to show other people (by my assessment).&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Continue on IPO &amp;amp; maybe one other&lt;/strong&gt;: IPO might have some potential. I should keep going with it.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;18 blog articles (including Jarrah Technology)&lt;/strong&gt;: Same as last year. Easy but just need to do it.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Fix the bedroom window issues, fix the terrace drainage problem &amp;amp; build a rabbit hutch&lt;/strong&gt;: Some things I’ve promised around the house.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Paint at least 10 minatures, and have played all my boardgames&lt;/strong&gt;: I have taken up minature painting although my skill is severely lacking. I should give it a decent try. There are also 5 games currently in my boardgame collection I haven’t played - I need to change that.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Fix the bedroom window issues, fix the terrace drainage problem &amp;amp; build a chicken coop&lt;/strong&gt;: Some things I’ve promised around the house.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Paint at least 10 miniatures, and have played all my boardgames&lt;/strong&gt;: I have taken up miniature painting although my skill is severely lacking. I should give it a decent try. There are also 5 games currently in my boardgame collection I haven’t played - I need to change that.&lt;/li&gt;
 &lt;/ul&gt;
 </content>
     </entry>
@@ -276,46 +425,6 @@
 &lt;p&gt;All the info on the game is ( or will be) on its &lt;a href=&quot;https://www.jarrahtechnology.com/games/spacehexduel&quot;&gt;Jarrah Technology webpage&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Now I need to decide what to do next…&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Back Again Gaming</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2022/10/back-again-gaming.html/"/>
-        <published>2022-10-14T00:00:00+08:00</published>
-        <updated>2022-10-14T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2022/10/back-again-gaming.html/</id>
-        <content type="html">&lt;p&gt;Since the last gaming post 6 months ago, I have cut down a little on game playing, but still played a few…&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/871530/Radio_Commander/&quot;&gt;Radio Commander&lt;/a&gt;&lt;/strong&gt; (5hrs):  A tactical wargame where you only have a map and radio to command your Vietnam war soldiers. You find out what is happening via radio reports and issue orders the same way. Adds an element of confusion to what is happening - have I updated the map with the latest positions? Guaranteed that you will make a mistake at least once and called down artillery on your own men. This is a brilliant idea, but just doesn’t feel compelling. Maybe it is too slow? Maybe you are too detached from the action? Worth a try, but I stopped half way.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.epicgames.com/en-US/p/jurassic-world-evolution&quot;&gt;Jurassic World Evolution&lt;/a&gt;&lt;/strong&gt; (5hrs): Manage escape artist dinosaurs at an tourist park in this pretty city builder. Seems heavily tied into the recent films, which I haven’t seen. Has the nice idea of needing the player to complete missions for various departments - with any ignored departments sabotaging the park in revenge (where is HR when you need them!). Ok game, but way too fiddly for me. You are always in-motion - clicking something, or just repositioning the camera after it has flown off somewhere (again!). I prefer a slower, more thoughtful builder.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/596970/Sunless_Skies_Sovereign_Edition/&quot;&gt;Sunless Skies&lt;/a&gt;&lt;/strong&gt; (12hrs): I have a love/hate relationship with this story/trading/roguelike game with some legacy mechanics (so many mechanics for such sparse gameplay!). A sequel to Sunless Skies, it sees you traversing a dangerous map in a steampunk sky world in a flying steam engine. Better than its predecessor, but still problematic as it is so slow! I played for 12 hours and the vast majority of that time was just getting between stops. I got an hour or two of story, another hour of action, but the rest was nothing happening as I travelled. I only kept going because the story and non-travel gameplay is very good - but not good enough. This game did not respect my time and I have better things to do.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/760650/Hammerting&quot;&gt;Hammerting&lt;/a&gt;&lt;/strong&gt; (3rs): This game feels a little undercooked. As a crafting based colony survival game (a genre I generally do not enjoy), it would need to work hard to gain my favour. Short review - it didn’t. In just a couple of hours it crashed twice and the tutorial didn’t tell me much so I could never really get going when it was working. It also suffered from the common problem with this type of game: it is incredibly fiddly.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/874390/The_Battle_of_Polytopia/&quot;&gt;The Battle of Polytopia&lt;/a&gt;&lt;/strong&gt; (3hrs): Cute casual 4X game. Played 4 times in 3 hours. Not super deep, but gives a quick hit of gaming goodness. Probably played enough now, but a decent little game.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/235540/Warhammer_End_Times__Vermintide/&quot;&gt;Vermintide&lt;/a&gt;&lt;/strong&gt; (3hrs): Online cooperative FPS set in the medieval grimdark Warhammer Fantasy setting where you battle hordes of Skaven (rat people). I had decent fun bashing rats over the head with my hammer. However, everything about this game is built for online play with 3 friends, and since it came out in 2015, there are now no other players. Literally the lobby was empty every time I turned it on. Nice game, but so lonely.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://playruneterra.com/en-us/&quot;&gt;Legends of Runeterra&lt;/a&gt;&lt;/strong&gt; (too many hrs, Riot doesn’t tell you): Free-to-play collectable card battler from the makers of League of Legends (Riot Games) and reusing that IP. Has a nice offline single player mode, so no need to fight against real people and all the work of following a meta which that entails. While the game uses many of the modern innovations of computer-bases CCGs, the single player version suffers from some RNG problems. In an online game, if your cards just don’t roll out out, too bad (next time design the deck better). Here (in single-player) you play predesigned decks so when atrocious luck screws you and wastes 10 minutes it is not your fault, but the designers. Otherwise a good game, and the monetization seems particularly gentle, so worth a look.&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Hosting</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2022/09/hosting.html/"/>
-        <published>2022-09-02T00:00:00+08:00</published>
-        <updated>2022-09-02T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2022/09/hosting.html/</id>
-        <content type="html">&lt;p&gt;This website has moved. &lt;a href=&quot;/blog/2013/08/site-move.html&quot;&gt;Since 2013&lt;/a&gt; it has been hosted on a small virtual server at &lt;a href=&quot;www.linode.com&quot;&gt;Linode&lt;/a&gt;. Now it is hosted through &lt;a href=&quot;www.github.com&quot;&gt;Github Pages&lt;/a&gt;. I should mention I have been very happy with Linode’s service and cost, but their minimum service is still overkill for this simple static website. I continue to use Linode for the &lt;a href=&quot;www.concealedintent.com&quot;&gt;Concealed Intent&lt;/a&gt; game server (for now).&lt;/p&gt;
-
-&lt;p&gt;So why the move? Maintaining an Internet facing server is a pain. There are a number of threats and it is just not worth the time in upkeep. Or worse, no support is performed and the server slowly degrades, becoming increasingly vulnerable (of which I am guilty since 2019). With Github all that work is handled by someone else, and the cost is 100% less (Github is free on my current plan, but even if I need to go to the paid plan later it’s still 25% cheaper).&lt;/p&gt;
-
-&lt;p&gt;There are some useful side effects of going to Github too. The site uses &lt;a href=&quot;https://en.wikipedia.org/wiki/HTTPS&quot;&gt;HTTPS&lt;/a&gt; always, without me needing to play around with certs! Also, I changed DNS provider to &lt;a href=&quot;www.cloudflare.com&quot;&gt;Cloudflare&lt;/a&gt;, and so far their free service is great too - they even cache &amp;amp; compress the website so it should load super quick.&lt;/p&gt;
-
-&lt;p&gt;Overall, I have been happy with the process and outcome. There was a bit of fiddliness getting the DNS setup due to lag in updates propogating, but that was it for problems. The only issue to solve now is how to handle automatic backups, but then Github is probably more reliable then me, so I’m not rushing (touch wood). Might have to look into moving Concealed Intent too, although that’s a much bigger task.&lt;/p&gt;
 </content>
     </entry>
     

@@ -38,6 +38,131 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">July 13, 2008</span>
+  <h4><a href="/blog/2008/07/techcrunch-pitch.html">Techcrunch Pitch!</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Entrepreneurship.html">Entrepreneurship</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>On Thursday I went to the <a href="http://uk.techcrunch.com/2008/07/11/techcrunch-pitch-mini-wrap-up/">London Techcrunch Pitch!
+Event</a>.
+Not as a competitor - I just wanted to get an idea of the standard of
+technology startups in London. I now know the standard is surprisingly
+high and I have a lot of work to do if I decide to try joining them.</p>
+
+<p>The format was first a series of 30 second pitches by firms that didn’t
+quite make the grade for the later 5 minute talks - about eight of each.
+Afterwards there was a vote by the audience for who was the best. My
+vote went to <a href="http://www.tioti.com/">TIOTI</a> who were probably the only
+one who had a product I would consider using. Although it was very close
+with a few others including the winner
+<a href="http://www.watzatsong.com/">WatZatSong</a> who had a good idea and a very
+slick presentation. Only one of the talks I would consider bad (poor
+idea and poor presentation), everyone else was good and some were very
+impressive. In general the 5 minute talks were a lot better than the 30
+second ones, perhaps because the longer talks were given to the more
+promising firms, or perhaps because 30 seconds is a very short time to
+get a point across.</p>
+
+<p>The competition seemed to be open to firms looking for funding, from
+£150K up to a few million. None required seed funding. Many were up to
+their second round of proper funding. I think all had launched and some
+had significant revenues. In short they all seemed at the mature end of
+the startup range. Indeed there was a high incidence of grey hairs among
+the presenters.</p>
+
+<p>Many of the people there seemed to know each other (or at least they
+went with friends). Before, after and sometimes during the talks, groups
+were talking to each other. At times I felt like a tourist, which
+strictly speaking I suppose I was. If I decide to become serious about
+this startup thing then I have a lot further to go, both on the
+networking side and the actual project side.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">June 24, 2008</span>
+  <h4><a href="/blog/2008/06/javascript-again-or-getting-to.html">Javascript again (or getting tooltips to work with Scriptaculous Sortables)</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Javascript.html">Javascript</a>, 
+    
+      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Update: based on the work I detail here I have created my own
+<a href="http://www.cordinc.com/projects/tooltips.html">Javascript tooltip library based on
+Prototype</a>.</p>
+
+<p>Over a decade ago Borland had an IDE called Intrabuilder, which allowed
+you to create websites in a Visual Basic like manner using Javascript on
+the server. After leaving postgrad study I worked at a now defunct
+dot.com called Electrolley for 9 months using this tool to create an
+online grocery store. Serverside javascript was an idea well ahead of
+its time. Indeed, javascript on the client side in 1997 was crap too.
+Now <a href="http://www.prototypejs.org/">javascript is cool</a> and <a href="http://steve-yegge.blogspot.com/2008/06/rhinos-and-tigers.html">moving
+forward</a>
+(backwards?). With my new project, I need to return to Javascript and
+the last couple of days have been a hard reintroduction.</p>
+
+<p>I am using Prototype and Scriptaculous to make my website as easy to use
+as possible. I also found some random code on the web to do tooltips -
+it almost worked! Applying tooltips to Scriptaculous Sortable elements
+leads to many problems, and I have just finished largely rewriting the
+library.</p>
+
+<ul>
+  <li>After moving some sortable elements the tooltips of the moved
+elements would be displayed underneath the unmoved elements. This is
+because of the way <a href="http://www.boogdesign.com/b2evo/index.php/a/2007/06/05/scriptaculous_draggable_and_z_index">z-index stacking contexts are created in
+browsers</a>.
+In moving an element, Scriptacolous clones it and moves the clone,
+inserting a new element when the element is dropped. This causes the
+dropped item to be in a different z-index stacking context than the
+other items. To get around this, the tooltips need to be drawn
+outside the moved elements context. This can be done by cloning the
+tooltip and then inserting it into the document at a point outside
+the sortable elements’ container. I have explicitly put in the id’s
+to which the tooltips is being attached, they should probably be
+passed in (left as an exercise for the reader).</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tool_tip</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">container</span><span class="dl">"</span><span class="p">).</span><span class="nx">insertBefore</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">main_content</span><span class="dl">"</span><span class="p">));</span></code></pre></figure>
+
+<p>When the tooltip needs to be hidden, just destroy the clone:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Element</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">_clone</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span></code></pre></figure>
+
+<ul>
+  <li>This also means the tooltip needs to be positioned absolutely, so
+ensure you are using absolute screen x &amp; y coordinates.</li>
+  <li>Dragging a sortable element over other elements results in a number
+of mouse events firing as the elements are redrawn. Many of these
+events are consumed by Scriptaculous and not passed on. Thus, the
+tooltips hide and show functions may be called in any order,
+resulting in spurious and permanent copies (since it is cloned) of
+the tooltip all over the screen. To get around this just ensure
+there is only ever once tooltip on the screen at a time, so at the
+top of the show method put</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">hideTooltip</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>It seems simple now I’ve fixed the problems, but it took a couple of
+days to remember my old Javascript knowledge.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">June 14, 2008</span>
   <h4><a href="/blog/2008/06/reality-used-to-be-a-friend-of.html">Reality used to be a friend of mine</a></h4> 
   Tags: 
@@ -154,131 +279,6 @@ to say that so far on my current project I have avoided all of them.</p>
   </div>
   <hr/>
 
-  <span class="date">June  1, 2008</span>
-  <h4><a href="/blog/2008/06/1st-poker-evening.html">1st Poker Evening</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>, 
-    
-      <a class="post" href="/blog/tag/Poker.html">Poker</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Yesterday was the first poker game I organised at my place. I have been
-playing poker for a little over a month now, mainly free online games. I
-felt it was time to try playing against people. Although I was hoping it
-would be more of a social event than a full-blooded competition. For
-many years I was put off playing poker due to the “fresh victims”
-attitude many experienced players had towards people new to the game. It
-didn’t seem like the learning experience would be much fun. I hoped we
-would avoid that and think we succeeded.</p>
-
-<p>I sounded out a few friends and invited them around for an afternoon and
-evening of tournament style play. In the end there were six of us
-playing - Ann, Ian, Ury, Christian, Cristina, and me. A good number
-considering the space. Ian and Ury said they had played before, but
-everyone else claimed to be a beginner. We played two £5 buy-in
-tournaments with the blinds doubling every half-hour and rebuys allowed
-for the first hour (although no one used them). I don’t remember many of
-the hands, but will attempt a short description of the evening.</p>
-
-<p>In the first game Christian went out first, almost right on the hour
-mark, then Ury went, quickly followed by myself. However, Ury was lucky
-not to be the first out on a few occasions. Ann’s patented “fold-raise”
-tactic put out an unlucky Cristina and bewildered the other players. On
-three hands when Ann was the big blind she “folded” before being
-reminded checking was free. Then post flop she would raise or call
-against Cristina’s all-in. All three times she won with river or turn
-cards. The Cristina event was the last appearance of the “fold-raise”,
-perhaps due to the laughter and friendly taunts that ensued. Still, we
-all left the night with a new poker trick in our arsenal, though I
-personally wouldn’t have the audacity to attempt it! Ann assures us it
-was just “ditzy play”, but who knows? Ann ended up beating Ian heads-up
-as he lost 5 showdowns in a row as the rising blinds forced one or both
-all-in pre-flop.</p>
-
-<p>In the second game Ian was out first - although this was just after a
-call from his girlfriend inquiring as to his whereabouts. He left soon
-after. Then Ury and I went out. At this point the game settled down with
-three roughly equal stacks and few big raises. As the blinds rose Ann
-tried a few bluffs and got burnt by calls. With a single big blind left
-she went all-in a couple of times without looking at her cards, busting
-out Christian in the process. Ann and Cristina went heads-up for the
-win. Again the rising blinds forced pre-flop all-in play and again,
-despite starting the heads-up as the small stack, Ann was the lucky
-winner.</p>
-
-<p>Afterwards Ann described her winning tactics as “staying sober and
-bamboozling them with ditzy play”. Future opponents beware!</p>
-
-<p>Things I learnt from the evening:</p>
-
-<ul>
-  <li>Watch out for people staying sober!</li>
-  <li>Poker games go longer than expected.</li>
-  <li>Having the blinds rise so high that the game finishes with people
-being forced to go all-in pre-flop every hand is not a satisfying
-end. However, I can’t see a way of forcing an end otherwise.</li>
-  <li>Don’t bluff people who always call.</li>
-  <li>I won’t remember specific hands later - I should take notes if they
-are noteworthy.</li>
-  <li>It is fun to play (as long as there is not too much at risk - at
-least at my level). I will definitely organise another.</li>
-</ul>
-
-<p>If any of the players remember any other good hands other than the ones
-I mentioned, feel free to add them in the comments.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">May 26, 2008</span>
-  <h4><a href="/blog/2008/05/fancy-restaurants.html">Fancy Restaurants</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Restaurant.html">Restaurant</a>, 
-    
-      <a class="post" href="/blog/tag/UK.html">UK</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I have recently had occasion to visit a couple Michelin star
-restaurants. Together with a previous dinner, I have been to a total of
-three restaurants rated one Michelin star (none higher rated). As there
-is a bit of buzz at the moment around chefs and restaurants, here are
-some brief reviews.</p>
-
-<p><a href="http://www.rivercafe.co.uk/">River Cafe</a> - I used to share a flat
-around the corner from this place. There were always expensive cars
-parked out the front, some with chauffeurs reading a paper in the front
-seat. I wanted to see what it was like before leaving London. I had a
-crab pasta dish. It was very nice, but I was slightly unimpressed
-considering the cost. Nice food, nice wine, it just didn’t grab me.
-Although I’d be happy to give it another try sometime.</p>
-
-<p><a href="http://en.wikipedia.org/wiki/Hakkasan">Hakkasan</a> - A subterranean
-Chinese restaurant in the west end. The decor was very stylish. The
-tables were spotlighted but the paths were in darkness - a cool affect.
-The food was very good but my foremost memory of this place is the
-service. I found it excessive. The staff were constantly checking on us.
-I joked that if I dropped my napkin one of the waiters would catch it
-before it hit the floor. Looking around there seemed to be more staff
-than diners. Neither I or my partner could relax. I enjoyed the food,
-but probably would not go again.</p>
-
-<p><a href="http://www.thesportsmanseasalter.co.uk/">The Sportsman</a> - This is a
-gastro-pub on the coast at Seasalter near Whitstable. It looks like a
-standard pub from the outside. Inside it is light (on an overcast day)
-and spacious. The staff were friendly, although they did warn me the
-stout had a strong taste, maybe they thought I was a tourist. I had a
-crab starter with a lamb main and it was cooked perfectly. In short,
-unpretentious atmosphere and excellent food. Most surprising of all, the
-cost was about the same as an average London restaurant. Definitely
-recommended.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -305,6 +305,14 @@ recommended.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/01/goals.html">Goals 2024</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/10/china.html">China</a> 
@@ -336,14 +344,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/09/hosting.html">Hosting</a> 
   </li>  
 
 </ul>

@@ -38,6 +38,117 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">May 19, 2012</span>
+  <h4><a href="/blog/2012/05/maya-weekend.html">Maya Weekend</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/History.html">History</a>, 
+    
+      <a class="post" href="/blog/tag/Podcasts.html">Podcasts</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Available from
+<a href="http://itunes.apple.com/us/itunes-u/maya-weekend/id443941013">iTunes</a>
+with the video podcasts also on
+<a href="http://www.youtube.com/user/pennmuseum/videos?query=maya">YouTube</a></p>
+
+<p>In 2011 <a href="http://www.penn.museum/">Penn Museum</a> hosted a weekend academic
+conference on the <a href="http://en.wikipedia.org/wiki/Maya_civilization">Maya
+civilization</a>. This
+series consists of recordings from that conference; each podcast is a
+single presentation. The topics covered focus on Mayan women and
+archaeological techniques (lots of discussion of research from doctoral
+dissertations). There are eleven episodes all around 30-40 minutes in
+length. Five are videos of presentations (so that the presenter and
+their slides are visible), but the remainder are audio-only recordings.
+Production quality is generally good, although the videos do
+occasionally go out of focus. The talks are quite academic and dry. I
+found it hard to follow sometimes, perhaps because I don’t have enough
+background in Mayan history to hang the new facts upon. This series is
+probably best for people who already have a knowledge of Mayan history.</p>
+
+<p>The five video presentations all look at aspects of modern archaeology
+technique. One looks at remote sensing - the process of using photos or
+data from planes and satellites to identity large ancient sites (usually
+because the vegetation growing over ruins is somehow different to
+normal). Another presentation takes the complete opposite approach and
+details pedestrian surveys. This is as it sounds - walking around and
+recording what is seen, not as easy as it sounds in a jungle. This talk
+provided some interesting details on
+<a href="http://en.wikipedia.org/wiki/Chunchucmil">Chunchucmil</a>, a town much
+larger than local agriculture could support so trading must have
+occurred. One presentation looks at what can be discovered from skeletal
+remains. This is not just looking at the wear and tear on the body, but
+also analysing isotopes in the bones. In this manner the researcher
+discovered about a quarter of people at one site emigrated from their
+childhood areas. Another researcher analysed pollen samples found in
+lake sediment to determine historical ecology. They found that the
+highest levels of deforestation occurred soon after agriculture began.
+It seems these first farmers didn’t know the limits of the land. At the
+time of the <a href="http://en.wikipedia.org/wiki/Classic_Maya_collapse">Mayan
+collapse</a> forest
+levels were fairly balanced, opposing some theories suggesting that
+deforestation was the cause. Instead, evidence was found for drought
+around this time, boosting an opposing theory. The last video
+presentation promotes a new <a href="http://mayaarch3d.unm.edu/">repository of 3D measurements and models of
+Mayan sites</a>.</p>
+
+<p>Without the aid of visuals many of the audio-only podcasts are very dry
+and hard to follow. Some becoming just recitations of events in Mayan
+history. All but one of the audio presentation look at the position of
+women in Mayan culture (the other concerned with inter-city interaction
+and trade). Some notable facts include that at least three women rose to
+become <a href="http://en.wikipedia.org/wiki/Ajaw">Ajaws</a> (rulers of their city)
+and that childbirth was considered equivalent of going to war.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">May 12, 2012</span>
+  <h4><a href="/blog/2012/05/debugging-context-in-unity3d.html">Debugging context in Unity3D</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>A cool little feature of Unity3D scripting I recently found is using
+conditional compilation for debug statements. The C based languages (but
+not Java unfortuately) have inbuilt preprocessors that allow developers
+to only compile certain parts of the code if certain parameters are set
+(it can also do much more, including macros). Thus you could write the
+below and the code would only be included in the executable if <code class="highlighter-rouge">DEBUG</code>
+is defined.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="k">if</span> <span class="nx">DEBUG</span>
+    <span class="c1">// do some special code</span>
+<span class="err">#</span><span class="nx">endif</span></code></pre></figure>
+
+<p>Unity3D has a similar system. Mostly the docs (<a href="http://unity3d.com/support/documentation/Manual/Platform%20Dependent%20Compilation.html">available
+here</a>)
+seem to suggest this is for specialist code for different platforms:
+iPhone, Web, PC, etc. Thus the defined parameters are set in advance
+(e.g. <code class="highlighter-rouge">UNITY_IPHONE</code>). However, there is one that is useful for
+debugging, <code class="highlighter-rouge">UNITY_EDITOR</code>. This will only be set if the application is
+running inside the Unity3D GUI. Once you build the app those lines of
+code will be skipped. It can be used like the below example - very
+handy.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="k">if</span> <span class="nx">UNITY_EDITOR</span>
+    <span class="nx">Debug</span><span class="p">.</span><span class="nx">Log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Debugging</span><span class="dl">"</span><span class="p">);</span>
+<span class="err">#</span><span class="nx">endif</span> </code></pre></figure>
+
+<p>According to <a href="http://forum.unity3d.com/threads/71445-How-To-Set-Project-Wide-pragma-Directives-with-JavaScript">this Unity3D forum
+post</a>
+it is also possible to define your own project specific preprocessor
+parameters.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">May  4, 2012</span>
   <h4><a href="/blog/2012/05/unit-testing-unityscript-in-un.html">Unit Testing UnityScript in Unity3D with SharpUnit</a></h4> 
   Tags: 
@@ -182,101 +293,6 @@ our team was so small, about a third of the facility went each year.</p>
   </div>
   <hr/>
 
-  <span class="date">April  7, 2012</span>
-  <h4><a href="/blog/2012/04/failure-unity-javascript-in-ja.html">Failure: Unity Javascript in Java VM</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
-    
-      <a class="post" href="/blog/tag/Unity.html">Unity</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>School science teachers like to emphasize that the failure of an
-experiment is as useful a learning experience as its success. Of course
-the high-achieving student knows that is bollocks and ensures their
-experiements always succeed - if you need a straight line, only gather
-two data points! Despite that I think the underlying idea is correct and
-experimental failure should not be hidden.</p>
-
-<p>A recent experiment of mine failed. I am writing a game with an online
-component and wanted the same code running on both the client and server - as this would reduce the chance of bugs. For ease of development
-<a href="http://unity3d.com/">Unity3D</a> is being used for the client end, so the
-code there is either Javascript or C#. I have been writing Java servers
-professionally for years so it seemed silly not to use that knowledge.
-Clearly there is no common ground there. However, there is a project
-called <a href="http://www.mozilla.org/rhino/">Rhino</a> to allow Javascript to run
-inside the Java JVM.</p>
-
-<p>So can Javascript from Unity run in a Java environment? The short answer
-is “no”, but the longer answer is “sometimes, with many caveats”.</p>
-
-<p>Firstly it is possible to run Javascript functions in Java. Load up the
-Rhino library into the classpath and if you have Javascript code like:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">square</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="nx">i</span><span class="o">*</span><span class="nx">i</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>then you can run it in Java with the folowing:</p>
-
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Context</span> <span class="n">cx</span> <span class="o">=</span> <span class="nc">Context</span><span class="o">.</span><span class="na">enter</span><span class="o">();</span>
-<span class="nc">Scriptable</span> <span class="n">scope</span> <span class="o">=</span> <span class="n">cx</span><span class="o">.</span><span class="na">initStandardObjects</span><span class="o">();</span>
-<span class="nc">Function</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">cx</span><span class="o">.</span><span class="na">compileFunction</span><span class="o">(</span><span class="n">scope</span><span class="o">,</span> <span class="n">readFile</span><span class="o">(</span><span class="s">"src/test_fn.js"</span><span class="o">),</span> <span class="s">"&lt;cmd&gt;"</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">f1</span><span class="o">.</span><span class="na">call</span><span class="o">(</span><span class="n">cx</span><span class="o">,</span> <span class="n">scope</span><span class="o">,</span> <span class="n">f1</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Object</span><span class="o">[]</span> <span class="o">{</span><span class="mi">5</span><span class="o">}));</span></code></pre></figure>
-
-<p>So far so good. If your Unity Javascript is just a collection of simple
-functions then this is all that is required. However, there is a good
-chance this is not the case. Obviously any Unity specific functions and
-classes are not available (eg Ray, Input, etc). However, more important
-are the big differences between Unity Javascript and standard (ECMA)
-Javascript.</p>
-
-<p>Many people say that Javascript in Unity should more accurately be
-referred to as UnityScript. I think that is definitely true. Although it
-looks like Javascript there are some fundamental changes. Most
-importantly, Javascript uses a <a href="http://stackoverflow.com/questions/387707/whats-the-best-way-to-define-a-class-in-javascript">prototype-based scheme to define
-classes</a>.
-UnityScript has an inheritance model, and <a href="http://unifycommunity.com/wiki/index.php?title=UnityScript_versus_JavaScript">the two schemes are not
-compatible</a>.
-To me these differences are enough to prevent want I wanted to achieve.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">April  1, 2012</span>
-  <h4><a href="/blog/2012/04/lost-code.html">Lost Code</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Recently at work I was asked to find out if anyone was still using a
-small tactical program I wrote. If it was unused, they apologetically
-asked me to shut it down. No apology was required, but I understand why
-it was offered. Some developers can become quite precious about their
-code and want to see it keep running forever. However, after working in
-this fast-paced industry for nearly 15 years I have long accepted that
-most of my code is no longer running. I’d be lucky if most of it is even
-still backed up somewhere rather than being sent to
-<a href="http://en.wikipedia.org/wiki//dev/null">/dev/null</a>.</p>
-
-<p>Four of my old teams were shutdown with near total loss of code. Another
-two years were spent at a consulting firm where most of the clients I
-serviced no longer exist. Those 5 jobs combined mean that half of my
-working life’s production is largely gone. At a guess I would say 10% of
-the code from my first five working years is still used; around 30% from
-the second five years; and, over two-thirds of the last 5 years of my
-code is currently running. My professional code appears to have a
-half-life of around 4 years. This sounds about right considering the
-rate of technology change.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -303,6 +319,14 @@ rate of technology change.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/01/goals.html">Goals 2024</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/10/china.html">China</a> 
@@ -334,14 +358,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/09/hosting.html">Hosting</a> 
   </li>  
 
 </ul>

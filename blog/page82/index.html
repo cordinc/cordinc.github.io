@@ -38,6 +38,69 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">December 13, 2008</span>
+  <h4><a href="/blog/2008/12/quick-timezone-calculation.html">Quick Timezone Calculation</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I have been asked what time I get the forecasts for a location in my
+<a href="http://www.cordinc.info/weather/">historical weather forecast system</a>.
+The obvious problem being that if I read all the forecasts at nearly the
+same time, different cities could be in different days due to differing
+timezones.</p>
+
+<p>The answer is, I read the forecasts at roughly midday in each of the
+locations. That is, every hour I read the forecasts for the locations
+where it is roughly midday. This is done by approximating the various
+<a href="http://en.wikipedia.org/wiki/Time_zone">timezones</a> using the location’s
+longitude. This isn’t exact - it doesn’t account for daylight savings or
+places like China, which is all one timezone despite being wide enough
+to be split into many. Generally it is accurate to within a couple of
+hours - fine for the purpose. The code is below.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">time_band</span> <span class="o">=</span> <span class="o">-</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">gmtime</span><span class="p">.</span><span class="nf">hour</span> <span class="o">+</span> <span class="mi">12</span>
+<span class="n">locs</span> <span class="o">=</span> <span class="no">Location</span><span class="p">.</span><span class="nf">find_by_sql</span> <span class="p">[</span><span class="s2">"select * from locations where longitude &gt;= ? and longitude &lt; ?"</span><span class="p">,</span> <span class="p">(</span><span class="n">time_band</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">15</span><span class="p">,</span> <span class="n">time_band</span><span class="o">*</span><span class="mi">15</span><span class="p">]</span></code></pre></figure>
+
+
+  </div>
+  <hr/>
+
+  <span class="date">December  8, 2008</span>
+  <h4><a href="/blog/2008/12/past-weather-forecasts.html">Past weather forecasts</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
+    
+      <a class="post" href="/blog/tag/Weather.html">Weather</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p><strong>Update:</strong> The weather_report project and the weather archive is no
+more. The effort required to maintain it was too great, for more
+information <a href="http://www.cordinc.com/blog/2009/11/the-weather-archive-is-not-mor.html">see
+here</a>.</p>
+
+<p>I often have ideas for little projects, most never go anywhere, but some
+act as distractions and bother me until I complete them. Recently, I
+wanted to know what the weather was in London a few days in the past.
+Easy, I thought, I just find it online. I couldn’t. There are many sites
+with the current weather or forecasts. However, I could not find any
+with historical weather. So I quickly created one based on my knowledge
+of <a href="http://www.cordinc.com/blog/2008/11/using-bbc-backstage-weather.html">BBC
+Backstage</a>.</p>
+
+<p>I have put the system up <a href="http://www.cordinc.info/weather">here</a>. It is
+still at an early state, it may change or be shutdown. At the moment it
+displays only last month’s historical weather forecasts.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">November 21, 2008</span>
   <h4><a href="/blog/2008/11/rails-text-field-with-auto-com.html">Rails text_field_with_auto_complete and not displaying the selected item</a></h4> 
   Tags: 
@@ -206,77 +269,6 @@ some of the tips and tricks I discovered using these feeds.</p>
   </div>
   <hr/>
 
-  <span class="date">October 18, 2008</span>
-  <h4><a href="/blog/2008/10/fowa-london-2008.html">FOWA London 2008</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Entrepreneurship.html">Entrepreneurship</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Last Friday I went to the <a href="http://london2008.futureofwebapps.com/">Future of Web Apps (FOWA) London 2008
-conference</a>. As I only had the
-single day off work I decided to get the expo only entrance (£5) rather
-than a two-day full pass for nearly £400. Thus I didn’t get to see any
-of the proper talks, instead I just walked around the floor to see the
-booths and one “FOWA university” talk.</p>
-
-<p>The talk was by <a href="http://www.yuuguu.com">Yuuguu</a> on how to run a company
-when all employees telecommute. Apparently, the FOWA conference is the
-first time all the Yuuguu employees have met at the same time. Most of
-the talk was fairly bland and many in the audience were head down on
-their laptops or iPhones. However, there were a few interesting points.
-Yuuguu people don’t work if they meet in person, they consider the time
-too important to waste on work and they bond instead. Also, every Friday
-they get together online for virtual “beers”.</p>
-
-<p>There were a couple dozen companies with booths. A few big names like
-Microsoft, Sun and Myspace were there, but most were firms I had never
-heard mentioned before. This caused some awkward experiences, as their
-names normally give no hint as to their business areas. I would squint
-at their posters trying to work out what they did (which often didn’t
-help much either). Meanwhile some marketing person would creep up on me,
-start talking and give me their <a href="http://www.moo.com/">Moo mini business
-card</a> (these were literally everywhere). I left the
-conference knowing what every exhibiting business did, but only about
-half of them were marginally relevant to me.</p>
-
-<p>The Microsoft booth was by far the best. Among the computers they had a
-couple of Xboxs and a <a href="http://www.microsoft.com/surface">Surface box</a> -
-the Xboxs were empty while it was hard to see the Surface through the
-crowd. Rightly so, it was an impressive machine. All that made me want
-to code rather than talk and I left after an hour, skipping the
-Diggnation filming - I saw it last year. Anyway if want you can see the
-FOWA talks
-<a href="http://events.carsonified.com/fowa/2008/london/content">here</a>.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">October 12, 2008</span>
-  <h4><a href="/blog/2008/10/is-there-dumb-money-on-intrade.html">Is there dumb money on Intrade?</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>A friend recently mentioned that there is dumb money on
-<a href="http://www.intrade.com">Intrade</a>, a site that creates markets in
-various real-life events such as the US Presidential elections. They
-said that there are still people betting that Hillary Clinton will
-become President in November. I’m a big fan of free money so I thought
-I’d check it out. Sure enough, according to Intrade, there is a 1.6%
-chance Hillary will be elected President, with thousands of dollars
-worth of contracts available. I’ll grant the chance of Hillary being
-elected as non-zero, but it must be orders of magnitude less than 1.6%,
-so what’s going on? It was a quiet day so I thought I’d work out if it
-was a scam or a bad deal.</p>
-
-<p class='more'><br/><a href='/blog/2008/10/is-there-dumb-money-on-intrade.html'>Read the rest of this entry</a></p>
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -303,6 +295,14 @@ was a scam or a bad deal.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/01/goals.html">Goals 2024</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/10/china.html">China</a> 
@@ -334,14 +334,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/09/hosting.html">Hosting</a> 
   </li>  
 
 </ul>

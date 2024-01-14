@@ -38,6 +38,151 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">February  7, 2011</span>
+  <h4><a href="/blog/2011/02/too-many-states.html">Too Many States</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>No, I’m not agitating for Tasmania to have its statehood revoked.
+Instead I want simpler state machines in programming. I’m a fan of the
+model of programming where the core of the system is a <a href="http://en.wikipedia.org/wiki/State_machine">state
+machine</a> firing
+<a href="http://en.wikipedia.org/wiki/Event-driven_programming">events</a> on state
+transitions. Listeners on those events then perform actions, possibly
+changing the state themselves. It doesn’t fit every scenario, but it
+works well in those places it can be applied.</p>
+
+<p>I’ve worked on a few such systems and a major determinant of eventual
+success is the complexity of the state machine. Sometimes this
+complexity is caused by the state machine encoding multiple state flows.
+The system would be simpler with a set of separate discrete state
+machines, each with a distinct main flow. I think software engineers can
+get obsessed with trying to find a single comprehensive solution to a
+problem. This can blind them to seeing a more understandable solution by
+breaking the system into smaller parts.</p>
+
+<p>Below is a state diagram similar to one I saw recently at the start of a
+project (I have actually simplified it a little, removing domain
+specific states and transitions for anonymity).</p>
+
+<p><img src="/assets/posts/technical/complex.png" width="550" alt="" /></p>
+
+<p>This doesn’t look right to me. Multiple start and end states, a loop,
+and if a few more error states are added the diagram starts looking like
+a spiderweb. Diagrams which have allowed designers/developers to express
+their artistic side (I once saw one in the shape of a phone) are a good
+sign that there may be too many states. In this domain there are really
+three interlocking flows which have just been placed together. Each of
+the three flows represents the state of communication with a different
+external system. There is no need for them to be combined. It makes more
+sense to separate them. Looking at this, and with a bit of domain
+knowledge (just trust me), it can be equivalently expressed by the
+diagram below.</p>
+
+<p><img src="/assets/posts/technical/simple.png" width="550" alt="" /></p>
+
+<p>I think this is much better. It involves a few more states in total, but
+each individual flow is easier to understand. The domain object holding
+the current state now has three state variables rather than one. The
+state of the whole system is now the combination of these three state
+variables. This more accurately describes the current state and adds
+more flexibility for adding new states or transitions later. It is also
+possible to split the transition listeners into one for each flow, thus
+making them more focused events.</p>
+
+<p>There are a few differences between the two state diagrams above. The
+three flows will have some interaction and the extra states are there to
+aid this. For example, the middle flow shouldn’t go to the <strong>Process</strong>
+state until either <strong>Enrich</strong> or <strong>Response Received</strong> has been reached.
+In the simplified diagram there are added <strong>Init</strong> and <strong>Pending</strong>
+states to act as placeholders while waiting for other events to occur.
+All three state variables start in the <strong>Init</strong> state, and as events
+occur they move on independently. The event that moves the middle flow
+on to <strong>Process</strong> is the event fired after one of the other flow’s
+transitions.</p>
+
+<p>In 14 years how many times has decomposing a complex state diagram been
+beneficial on my projects? Three. Is it guaranteed to work? No. Will it
+work for you? Maybe. Think about it next time you find yourself staring
+at a complex state diagram.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">January 30, 2011</span>
+  <h4><a href="/blog/2011/01/life-on-a-building-site.html">Life on a building site</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I grew up on a building site. Not literally, but effectively. For a
+decade of my youth a building site was always just a short walk or bike
+ride away. We were one of the first families to move into the suburb of
+<a href="http://en.wikipedia.org/wiki/Leeming,_Western_Australia">Leeming</a> in
+<a href="http://en.wikipedia.org/wiki/Perth,_Western_Australia">Perth</a>, which
+developed from just a few houses to several thousand over the years we
+were there.</p>
+
+<p>In the late 1970’s Perth expanded into several new suburbs that had
+previously been farmland or bush. One of these was Leeming. Ours must
+have been within the first dozen houses built in the suburb. When we
+moved in, the house next door was under construction - every other side
+was bush. There were a few houses around the corner and several on
+Gracechurch Crescent, although most of those were display houses. Over
+time the land was cleared, blocks marked out and buildings would rise.
+The bush over the road was turned into a park. The foreign cliche is
+that Australians have kangaroos jumping down their streets. It is
+virtually never true, Australia is a very urbanised country and
+kangaroos generally don’t like cities. I never saw kangaroos on the
+street, but there were some in the bush over the road as well as <a href="http://en.wikipedia.org/wiki/Goanna">small
+goannas</a>, snakes and spiders. I
+remember a goanna eating the strawberries in our front garden. Apart
+from the spiders (which were everywhere), these animals slowly
+disappeared.</p>
+
+<p>The building sites that replaced the bush were much more fun for play.
+All the local kids knew the rhythm of a new build. We could run around
+the original sparse bush, but when the land was cleared and flattened
+the games were paused. Then a concrete pad was laid to act as a
+foundation for the house which offered a few minutes of interest. We
+returned to the site while the walls (2 layers of brick with a small air
+gap between them) were erected. This was the best time on site. We could
+run round the rooms, hide behind half built walls in games of chase or
+something more violent (cops &amp; robbers, throwing tennis balls at each
+other). Also there would be bits of metal or broken bricks to
+investigate or throw around. Normally there was a large pile of yellow
+sand for the cement mixer that was useful for making sand castles and
+the like. A few kids liked making tunnels in the piles of sand using
+detritus from the build as supports. I help make some of these, but
+never went inside, I was a little too claustrophobic. I heard a few kids
+around Perth died when such tunnels collapsed, but there was never a
+collapse in our area (that I knew about). When the walls were complete
+the roof went on. The sand would disappear to be replaced by piles of
+tiles. I can only assume the builders knew a few would be broken after
+school hours. Once the roof was finished, the windows and doors quickly
+went in. That was the end of the site for play. No one I knew broke the
+windows or into a house - it always seemed easier just to move onto the
+site next door. Lastly someone would move in and we would see if any new
+kids were around. A couple of times we went and knocked on the door and
+asked if there were any children who wanted to play.</p>
+
+<p>As time passed the distance to new sites grew ever larger, corresponding
+with lessening interest in playing on them. A few years into school I
+had to travel to the other end of Leeming to find a site (there were
+some big ones over there - retail buildings, schools, a large road). I
+didn’t do this often. Although I remember one friend, Stephen, who had
+just moved to the area and like to explore the sites, so I kept my hand
+in. By the mid 80’s we moved out of the area and I haven’t played on a
+building site since.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">January 23, 2011</span>
   <h4><a href="/blog/2011/01/building-a-new-pc.html">Building a new PC</a></h4> 
   Tags: 
@@ -188,75 +333,6 @@ wait to have my foot in good condition again and start running
   </div>
   <hr/>
 
-  <span class="date">January  1, 2011</span>
-  <h4><a href="/blog/2011/01/a-global-history-of-architectu.html">A Global History of Architecture</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/History.html">History</a>, 
-    
-      <a class="post" href="/blog/tag/Architecture.html">Architecture</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Around six months ago I received an email on my Flickr account asking if
-one of my photos (the Pompeii Basilica) could be used in a forthcoming
-architecture book. A little suspicious at first, after some
-investigation I decided it was probably a legimate request and there was
-nothing to lose. So I gave my permission and expected nothing to occur
-(but I did hope). Well last week <a href="http://eu.wiley.com/WileyCDA/WileyTitle/productCd-0470402571.html">A Global History of
-Architecture</a>
-(<a href="http://www.amazon.co.uk/Global-History-Architecture-Francis-Advisor/dp/0470402571/ref=sr_1_2?ie=UTF8&amp;qid=1293707766&amp;sr=8-2">Amazon
-UK</a>)
-by Ching, Jarzombek &amp; Prakash turned up on the doorstep.</p>
-
-<p><a href="http://www.amazon.co.uk/Global-History-Architecture-Francis-Advisor/dp/0470402571/ref=sr\_1\_2?ie=UTF8&amp;qid=1293707766&amp;sr=8-2"><img src="/assets/posts/global_history_of_architecture.jpg" alt="A Global History of
-Architecture" /></a></p>
-
-<p>It is a very impressive book. Clearly designed as a textbook, I can
-easily imagine dipping in to read a passage now and then. Not being an
-architect or historian, I’m not sure how good it is as a reference
-source, but I can vouch for the quality of the production (including
-many fine diagrams and photos - may I recommend the Pompeii Basilica on
-page 155) and the breadth of content.</p>
-
-<p>Here is the photo used (on page 155).</p>
-
-<p><a href="http://www.flickr.com/photos/33547649@N07/3646474885/sizes/m/in/set-72157620005024571/"><img src="http://farm4.static.flickr.com/3654/3646474885_3554384197_d.jpg" alt="Pompeii Basilica" /></a></p>
-
-  </div>
-  <hr/>
-
-  <span class="date">December 27, 2010</span>
-  <h4><a href="/blog/2010/12/the-theory-of-poker.html">The Theory of Poker</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p><a href="http://www.cordinc.com/blog/2009/06/tilt.html">As previously noted</a>, I
-don’t have a good track record with online poker. I resolved that before
-playing again (since I still have a little money online) I would read
-<a href="http://en.wikipedia.org/wiki/David_Sklansky">David Sklansky’s</a> <a href="http://www.twoplustwo.com/books/poker/theory-of-poker/">The
-Theory of Poker</a>
-(published by <a href="http://www.twoplustwo.com/">2+2</a>) through twice, take
-notes and write a review. Hopefully somewhere in that process some poker
-knowledge has seeped into my cerebrum.</p>
-
-<p>The Theory of Poker was first published in 1987, long before the
-domination of <a href="http://en.wikipedia.org/wiki/Texas_hold_'em">No
-Limit Texas Hold’em</a> in televised poker and the subsequent poker
-boom. Thus it doesn’t focus on any particular form of poker, instead
-providing examples from various types of the game. Having said that, in
-my reading I concentrated on advice applicable to online Hold’em, as
-that is what I play.</p>
-
-<p><a href="http://www.twoplustwo.com/books/poker/theory-of-poker/"><img src="/assets/posts/TP.jpg" alt="The Theory of Poker" /></a></p>
-
-<p class='more'><br/><a href='/blog/2010/12/the-theory-of-poker.html'>Read the rest of this entry</a></p>
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -283,6 +359,14 @@ that is what I play.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/01/goals.html">Goals 2024</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2023/10/china.html">China</a> 
@@ -314,14 +398,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/10/back-again-gaming.html">Back Again Gaming</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/09/hosting.html">Hosting</a> 
   </li>  
 
 </ul>
