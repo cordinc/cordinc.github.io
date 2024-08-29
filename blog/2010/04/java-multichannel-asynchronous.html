@@ -49,8 +49,8 @@ Tags:
 <p>In another of my recent series of generic utility Java classes, I
 present a multi-channel asynchronous throttler. My project connected to
 an external webservice which imposed draconian restrictions if usage
-went above a certain level - defined as whether there were more than <code class="highlighter-rouge">X</code>
-service calls in <code class="highlighter-rouge">Y</code> seconds. I was determined to stay under this level.
+went above a certain level - defined as whether there were more than <code class="language-plaintext highlighter-rouge">X</code>
+service calls in <code class="language-plaintext highlighter-rouge">Y</code> seconds. I was determined to stay under this level.
 Furthermore, some types of service calls were more expensive than others
 and had their own limits in addition to the overall limit. That is for
 certain types of service call I had stay under two limits - a call
@@ -64,7 +64,7 @@ asynchronous requirements.</p>
 <!--more-->
 
 <p>The class I coded is below. The interface allows for both synchronous
-(with the <code class="highlighter-rouge">submitSync</code> methods) and asynchronous (with the <code class="highlighter-rouge">submit</code>
+(with the <code class="language-plaintext highlighter-rouge">submitSync</code> methods) and asynchronous (with the <code class="language-plaintext highlighter-rouge">submit</code>
 methods, returning a
 <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/Future.html">Future</a>
 object)
@@ -76,11 +76,11 @@ Rate, the overall throttle, must be defined. Extra channel throttles can
 be passed into the constructor as a
 <a href="http://java.sun.com/javase/6/docs/api/java/util/Map.html">Map</a> of Rates
 keyed by any object. Then calls to
-<code class="highlighter-rouge">submit(Object channelKey, Runnable task)</code> will throttle based on both
+<code class="language-plaintext highlighter-rouge">submit(Object channelKey, Runnable task)</code> will throttle based on both
 the overall throttle and the channel throttle with the specified key if
 it exists.</p>
 
-<p>The Rate is specified in terms of <code class="highlighter-rouge">X</code> calls in <code class="highlighter-rouge">Y</code> time period. The time
+<p>The Rate is specified in terms of <code class="language-plaintext highlighter-rouge">X</code> calls in <code class="language-plaintext highlighter-rouge">Y</code> time period. The time
 period being defined using a <a href="http://www.martinfowler.com/ap2/quantity.html">Quantity
 pattern</a>, a scandalously
 underused pattern in business code - use it! The throttle uses a rolling
@@ -229,7 +229,7 @@ Furthermore, as it is not practically possible to mock the Java System
 class and thus control internal time, I have had to create a
 TimeProvider interface. I can use this to properly mock time and provide
 a default implementation that just redirects to
-<code class="highlighter-rouge">System.currentTimeMillis()</code>.</p>
+<code class="language-plaintext highlighter-rouge">System.currentTimeMillis()</code>.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">//imports skipped for prettier code display</span>
 <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"serial"</span><span class="o">)</span>
@@ -507,6 +507,18 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
   </li>  
   
@@ -533,24 +545,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

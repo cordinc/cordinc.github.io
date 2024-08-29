@@ -71,11 +71,11 @@ thread-safety (or for the other language examples) as I don’t presently
 need it in my single threaded application. I have omitted the comments
 to keep the size down (similarly test classes are not shown). It works
 by storing the indices into the element list of the next combination to
-return with a call to <code class="highlighter-rouge">next()</code>. Then after constructing the combination,
-the indices are incremented (<code class="highlighter-rouge">incrementIndices()</code>) by finding the next
+return with a call to <code class="language-plaintext highlighter-rouge">next()</code>. Then after constructing the combination,
+the indices are incremented (<code class="language-plaintext highlighter-rouge">incrementIndices()</code>) by finding the next
 index to increase and then setting the indices after this to be one
 higher than the one before. With a bit of testing, this was the fastest
-version I found (which is why I use <code class="highlighter-rouge">indices != null</code> as the end
+version I found (which is why I use <code class="language-plaintext highlighter-rouge">indices != null</code> as the end
 condition - it was a little faster).</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
@@ -153,7 +153,7 @@ condition - it was a little faster).</p>
 <p>In an unscientific test, this chose combinations of 5 from 50 elements
 in around half a second, and 5 from 100 in 18 seconds on my old, slow
 laptop. The first thing to notice is that to use the class easily in
-Java I implemented the <code class="highlighter-rouge">Iterator</code> and <code class="highlighter-rouge">Iterable</code> interfaces. This allows
+Java I implemented the <code class="language-plaintext highlighter-rouge">Iterator</code> and <code class="language-plaintext highlighter-rouge">Iterable</code> interfaces. This allows
 me to do things like:</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">init</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
@@ -164,9 +164,9 @@ me to do things like:</p>
 <span class="o">}</span></code></pre></figure>
 
 <p>However, there is quite a bit of code to do not much. Implementing
-<code class="highlighter-rouge">remove()</code> just to throw an exception is a little pointless and
+<code class="language-plaintext highlighter-rouge">remove()</code> just to throw an exception is a little pointless and
 annoying. So I reimplemented the algorithm in Scala similarly
-implementing the language’s <code class="highlighter-rouge">Iterator</code> trait. Below is my second
+implementing the language’s <code class="language-plaintext highlighter-rouge">Iterator</code> trait. Below is my second
 version:</p>
 
 <figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">class</span> <span class="nc">CombinatorialIterator</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">number</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">items</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span> <span class="k">extends</span> <span class="nc">Iterator</span><span class="o">[</span><span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">]]</span> <span class="o">{</span>
@@ -211,7 +211,7 @@ version:</p>
 <span class="o">}</span></code></pre></figure>
 
 <p>This version is not particularly functional. My first version did the
-<code class="highlighter-rouge">incrementIndex</code> in far fewer lines (shown below - there are probably
+<code class="language-plaintext highlighter-rouge">incrementIndex</code> in far fewer lines (shown below - there are probably
 even better ways), but the result was an order of magnitude slower.</p>
 
 <figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="nf">if</span> <span class="o">(</span><span class="nf">indices</span><span class="o">(</span><span class="mi">0</span><span class="o">)==</span><span class="nf">maxIndices</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span> <span class="o">{</span>
@@ -239,7 +239,7 @@ test.</p>
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">CombinatorialIterator</span>
   
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
-    <span class="k">raise</span> <span class="s2">"|items| &gt;= number &amp;&amp; number &gt; 1"</span> <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="nf">nil?</span> <span class="n">or</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="n">or</span> <span class="n">items</span><span class="p">.</span><span class="nf">size</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="s2">"|items| &gt;= number &amp;&amp; number &gt; 1"</span> <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="nf">nil?</span> <span class="ow">or</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">items</span><span class="p">.</span><span class="nf">size</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">)</span>
     <span class="vi">@elements</span> <span class="o">=</span> <span class="n">items</span>
     <span class="vi">@indices</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="o">...</span><span class="n">number</span><span class="p">).</span><span class="nf">to_a</span>
     <span class="vi">@max_indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="nf">length</span><span class="o">-</span><span class="n">number</span> <span class="o">...</span> <span class="n">items</span><span class="p">.</span><span class="nf">length</span><span class="p">).</span><span class="nf">to_a</span>
@@ -279,13 +279,13 @@ test.</p>
 
 <p>However, that’s not fair on Ruby because the generally accepted way of
 implementing iterator functionality in the language is to pass a block
-to a function which <code class="highlighter-rouge">yield</code>’s for each element of the iterator. A much
+to a function which <code class="language-plaintext highlighter-rouge">yield</code>’s for each element of the iterator. A much
 nicer Ruby version using this paradigm is below.</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">CombinatorialIterator</span>
   
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
-    <span class="k">raise</span> <span class="s2">"|items| &gt;= number &amp;&amp; number &gt; 1"</span> <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="nf">nil?</span> <span class="n">or</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="n">or</span> <span class="n">items</span><span class="p">.</span><span class="nf">size</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="s2">"|items| &gt;= number &amp;&amp; number &gt; 1"</span> <span class="k">if</span> <span class="p">(</span><span class="n">items</span><span class="p">.</span><span class="nf">nil?</span> <span class="ow">or</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">items</span><span class="p">.</span><span class="nf">size</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">)</span>
     <span class="vi">@number</span> <span class="o">=</span> <span class="n">number</span>
     <span class="vi">@elements</span> <span class="o">=</span> <span class="n">items</span>
   <span class="k">end</span>
@@ -318,7 +318,7 @@ implementation, one couldn’t for instance stop at an arbitrary point in
 the iteration. Although, it does win the beautiful code competition. A
 similarly elegant Scala version should be possible at the expense of
 either: creating a version similar to the Ruby above and giving up the
-<code class="highlighter-rouge">Iterator</code> trait and (and thus the extra functionality it provides - see
+<code class="language-plaintext highlighter-rouge">Iterator</code> trait and (and thus the extra functionality it provides - see
 later); or, using list functions and becoming roughly the same speed as
 the Ruby version.</p>
 
@@ -326,9 +326,9 @@ the Ruby version.</p>
 would be a mess due to the lack of closures and the need to create an
 interface to handle the code blocks to which to yield. Best not to think
 about it. It would be fairly easy to write a similar Scala version, but
-completely unnecessary. The Scala <code class="highlighter-rouge">Iterator</code> trait provides a number of
+completely unnecessary. The Scala <code class="language-plaintext highlighter-rouge">Iterator</code> trait provides a number of
 methods that allow you to map, fold, filter, and more over the iteration
-elements just by implementing <code class="highlighter-rouge">hasNext</code> and <code class="highlighter-rouge">next</code>. So to get the number
+elements just by implementing <code class="language-plaintext highlighter-rouge">hasNext</code> and <code class="language-plaintext highlighter-rouge">next</code>. So to get the number
 of items in the iterator you could iterate using these functions:</p>
 
 <figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="nv">l</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">CombinatorialIterator</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="nv">List</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">52</span><span class="o">))</span>
@@ -345,7 +345,7 @@ of items in the iterator you could iterate using these functions:</p>
   <span class="n">total</span> <span class="k">=</span> <span class="n">total</span><span class="o">+</span><span class="mi">1</span>
 <span class="o">}</span></code></pre></figure>
 
-<p>Or, the <code class="highlighter-rouge">Iterator</code>’s fold:</p>
+<p>Or, the <code class="language-plaintext highlighter-rouge">Iterator</code>’s fold:</p>
 
 <figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">val</span> <span class="nv">total</span> <span class="k">=</span> <span class="nc">CombinatorialIterator</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="nv">List</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">52</span><span class="o">)).</span><span class="py">foldLeft</span><span class="o">(</span><span class="mi">0</span><span class="o">)((</span><span class="n">c</span><span class="o">,</span><span class="k">_</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="o">)</span></code></pre></figure>
 
@@ -410,6 +410,18 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
   </li>  
   
@@ -436,24 +448,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

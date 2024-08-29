@@ -66,8 +66,8 @@ setup is as described in the Railscast.</p>
 
 <p>The trick to displaying something different to what was selected is to
 have the field to be displayed hidden in the selection list. To do this
-add a <code class="highlighter-rouge">&lt;div&gt;</code> with a class into the selection item with
-<code class="highlighter-rouge">style='display:none'</code>. Thus the text in the div will not be displayed
+add a <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> with a class into the selection item with
+<code class="language-plaintext highlighter-rouge">style='display:none'</code>. Thus the text in the div will not be displayed
 in the dropdown, but the text is there. Put the text to show when an
 item is selected into the hidden div. In the file to create the list of
 selection items I had the following:</p>
@@ -77,10 +77,10 @@ selection items I had the following:</p>
 <span class="o">&lt;</span><span class="sx">%= content_tag("ul", items) %&gt;</span></code></pre></figure>
 
 <p>Then in call to the text_field_with_auto_complete method specify
-<code class="highlighter-rouge">:select</code> in the fourth argument. The value of the <code class="highlighter-rouge">:select</code> is the
+<code class="language-plaintext highlighter-rouge">:select</code> in the fourth argument. The value of the <code class="language-plaintext highlighter-rouge">:select</code> is the
 class name of the div to use for displaying. So I used the below and
-voila, the <code class="highlighter-rouge">wq_full</code> div is displayed in the dropdown and the
-<code class="highlighter-rouge">wq_display</code> div is displayed in the text box when selected!</p>
+voila, the <code class="language-plaintext highlighter-rouge">wq_full</code> div is displayed in the dropdown and the
+<code class="language-plaintext highlighter-rouge">wq_display</code> div is displayed in the text box when selected!</p>
 
 <figure class="highlight"><pre><code class="language-erb" data-lang="erb">Queue <span class="cp">&lt;%=</span> <span class="n">text_field_with_auto_complete</span> <span class="ss">:add</span><span class="p">,</span> <span class="ss">:queue</span><span class="p">,</span> 
        <span class="p">{</span><span class="ss">:size</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span> <span class="ss">:maxlength</span> <span class="o">=&gt;</span> <span class="mi">40</span> <span class="p">},</span> 
@@ -95,7 +95,7 @@ items containing the id:</p>
 	<span class="s2">"&lt;div class='wq_display' style='display:none'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">name</span><span class="si">}</span><span class="s2">&lt;/div&gt;&lt;div class='wq_full'&gt;# {entry.name_and_owner}&lt;/div&gt;&lt;div class='wq_id' style='display:none'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">id</span><span class="si">}</span><span class="s2">&lt;/div&gt;"</span><span class="p">)</span> <span class="p">}</span> <span class="cp">%&gt;</span>
 <span class="cp">&lt;%=</span> <span class="n">content_tag</span><span class="p">(</span><span class="s2">"ul"</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span> <span class="cp">%&gt;</span></code></pre></figure>
 
-<p>Then I use <code class="highlighter-rouge">:after_update_element</code> to provide a javascript function that
+<p>Then I use <code class="language-plaintext highlighter-rouge">:after_update_element</code> to provide a javascript function that
 runs after an item is selected. Here it sets the value of a hidden input
 field to the text inside the new div.</p>
 
@@ -126,6 +126,18 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
   </li>  
   
@@ -152,24 +164,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

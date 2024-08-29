@@ -85,12 +85,12 @@ to which the tooltips is being attached, they should probably be
 passed in (left as an exercise for the reader).</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tool_tip</span><span class="p">.</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">container</span><span class="dl">"</span><span class="p">).</span><span class="nx">insertBefore</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">main_content</span><span class="dl">"</span><span class="p">));</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tool_tip</span><span class="p">.</span><span class="nf">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="nf">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">container</span><span class="dl">"</span><span class="p">).</span><span class="nf">insertBefore</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">,</span> <span class="nf">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">main_content</span><span class="dl">"</span><span class="p">));</span></code></pre></figure>
 
 <p>When the tooltip needs to be hidden, just destroy the clone:</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Element</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Element</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">);</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">_clone</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span></code></pre></figure>
 
 <ul>
@@ -106,8 +106,8 @@ there is only ever once tooltip on the screen at a time, so at the
 top of the show method put</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">)</span> <span class="p">{</span>
-   <span class="nx">hideTooltip</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_clone</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nf">hideTooltip</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
 <span class="p">}</span></code></pre></figure>
 
 <p>It seems simple now I’ve fixed the problems, but it took a couple of
@@ -125,6 +125,18 @@ days to remember my old Javascript knowledge.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
@@ -153,24 +165,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

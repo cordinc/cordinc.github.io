@@ -190,11 +190,11 @@
     </url>
     <url>
         <loc>http://localhost:4000/blog/2009/04/companies-of-which-i-am-not-a.html</loc>
-        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+        <lastmod>2024-08-18T17:27:30+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/blog/2009/04/companies-i-love.html</loc>
-        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+        <lastmod>2024-08-18T17:27:38+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/blog/2009/04/multiple-attachments-with-vali.html</loc>
@@ -1775,12 +1775,24 @@
         <lastmod>2024-01-14T11:28:29+08:00</lastmod>
     </url>
     <url>
+        <loc>http://localhost:4000/blog/2024/03/media.html</loc>
+        <lastmod>2024-08-29T13:48:12+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/blog/2024/05/bad_companies.html</loc>
+        <lastmod>2024-08-27T20:07:35+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/blog/2024/08/malaysia.html</loc>
+        <lastmod>2024-08-27T18:04:44+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://localhost:4000/404.html</loc>
         <lastmod>2022-08-17T15:17:23+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/about</loc>
-        <lastmod>2021-10-29T11:27:01+08:00</lastmod>
+        <lastmod>2024-04-05T14:27:20+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/slideshows/adelaide_23</loc>
@@ -1832,110 +1844,22 @@
     </url>
     <url>
         <loc>http://localhost:4000/</loc>
-        <lastmod>2024-01-14T11:28:29+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/blender/</loc>
-        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/blender/tutorials/</loc>
-        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/blender/tutorials/tozeur_sculpture/</loc>
-        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/01_January1/</loc>
-        <lastmod>2021-10-29T11:27:10+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/02_January2/</loc>
-        <lastmod>2021-10-29T11:27:14+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/03_February/</loc>
-        <lastmod>2021-10-29T11:27:41+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/04_March/</loc>
-        <lastmod>2021-10-29T11:27:43+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/05_April/</loc>
-        <lastmod>2021-10-29T11:27:45+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/06_May/</loc>
-        <lastmod>2021-10-29T11:27:48+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/07_June1/</loc>
-        <lastmod>2021-10-29T11:27:51+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/blender/tutorials/spaceship/</loc>
-        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/09_July1/</loc>
-        <lastmod>2021-10-29T11:28:08+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/10_July2/</loc>
-        <lastmod>2021-10-29T11:28:18+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/11_August/</loc>
-        <lastmod>2021-10-29T11:28:28+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/12_September/</loc>
-        <lastmod>2021-10-29T11:28:36+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/13_October1/</loc>
-        <lastmod>2021-10-29T11:28:40+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/14_October2/</loc>
-        <lastmod>2021-10-29T11:28:43+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/15_November1/</loc>
-        <lastmod>2021-10-29T11:28:45+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/16_November2/</loc>
-        <lastmod>2021-10-29T11:28:51+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/17_December1/</loc>
-        <lastmod>2021-10-29T11:28:55+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/18_December2/</loc>
-        <lastmod>2021-10-29T11:29:02+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/final/</loc>
-        <lastmod>2021-10-29T11:29:09+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/pandemic/</loc>
-        <lastmod>2021-10-29T11:29:09+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/projects/</loc>
-        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+        <lastmod>2024-08-29T13:48:12+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/blender/tutorials/roman_stand/</loc>
         <lastmod>2021-10-29T11:01:01+08:00</lastmod>
     </url>
     <url>
-        <loc>http://localhost:4000/blender/tutorials/mech/</loc>
+        <loc>http://localhost:4000/blender/tutorials/spaceship/</loc>
+        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/blender/tutorials/amphora/</loc>
+        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/blender/tutorials/mech/2_texture/</loc>
         <lastmod>2021-10-29T11:01:01+08:00</lastmod>
     </url>
     <url>
@@ -1947,19 +1871,7 @@
         <lastmod>2021-10-29T11:01:01+08:00</lastmod>
     </url>
     <url>
-        <loc>http://localhost:4000/blender/tutorials/mech/5_ogre/</loc>
-        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/blender/tutorials/mech/4_animating/</loc>
-        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
-    </url>
-    <url>
         <loc>http://localhost:4000/blender/tutorials/mech/3_rigging/</loc>
-        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://localhost:4000/blender/tutorials/mech/2_texture/</loc>
         <lastmod>2021-10-29T11:01:01+08:00</lastmod>
     </url>
     <url>
@@ -1967,20 +1879,120 @@
         <lastmod>2021-10-29T11:01:01+08:00</lastmod>
     </url>
     <url>
+        <loc>http://localhost:4000/blender/tutorials/mech/4_animating/</loc>
+        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/blender/tutorials/mech/5_ogre/</loc>
+        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/blender/tutorials/mech/</loc>
+        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/blender/tutorials/tozeur_sculpture/</loc>
+        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://localhost:4000/blender/tutorials/lamp/</loc>
         <lastmod>2021-10-29T11:01:01+08:00</lastmod>
     </url>
     <url>
+        <loc>http://localhost:4000/blender/tutorials/</loc>
+        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/blender/</loc>
+        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://localhost:4000/slideshows/</loc>
-        <lastmod>2023-11-23T14:50:38+08:00</lastmod>
+        <lastmod>2024-08-13T11:06:12+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/projects/</loc>
+        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/02_January2/</loc>
+        <lastmod>2021-10-29T11:27:14+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/07_June1/</loc>
+        <lastmod>2021-10-29T11:27:51+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/12_September/</loc>
+        <lastmod>2021-10-29T11:28:36+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/15_November1/</loc>
+        <lastmod>2021-10-29T11:28:45+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/16_November2/</loc>
+        <lastmod>2021-10-29T11:28:51+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/04_March/</loc>
+        <lastmod>2021-10-29T11:27:43+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/13_October1/</loc>
+        <lastmod>2021-10-29T11:28:40+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/05_April/</loc>
+        <lastmod>2021-10-29T11:27:45+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/06_May/</loc>
+        <lastmod>2021-10-29T11:27:48+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/11_August/</loc>
+        <lastmod>2021-10-29T11:28:28+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/10_July2/</loc>
+        <lastmod>2021-10-29T11:28:18+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/03_February/</loc>
+        <lastmod>2021-10-29T11:27:41+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/09_July1/</loc>
+        <lastmod>2021-10-29T11:28:08+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/final/</loc>
+        <lastmod>2021-10-29T11:29:09+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/18_December2/</loc>
+        <lastmod>2021-10-29T11:29:02+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/17_December1/</loc>
+        <lastmod>2021-10-29T11:28:55+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/01_January1/</loc>
+        <lastmod>2021-10-29T11:27:10+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/pandemic/08_June2/</loc>
         <lastmod>2021-10-29T11:28:04+08:00</lastmod>
     </url>
     <url>
-        <loc>http://localhost:4000/blender/tutorials/amphora/</loc>
-        <lastmod>2021-10-29T11:01:01+08:00</lastmod>
+        <loc>http://localhost:4000/pandemic/14_October2/</loc>
+        <lastmod>2021-10-29T11:28:43+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/pandemic/</loc>
+        <lastmod>2021-10-29T11:29:09+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/slideshows/ipoh_highlands_16</loc>
@@ -1997,6 +2009,10 @@
     <url>
         <loc>http://localhost:4000/slideshows/kuching_16</loc>
         <lastmod>2021-10-29T11:27:01+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:4000/slideshows/malaysia_24</loc>
+        <lastmod>2024-08-13T14:38:37+08:00</lastmod>
     </url>
     <url>
         <loc>http://localhost:4000/slideshows/reykjavik_18</loc>

@@ -57,8 +57,8 @@ interface.</p>
 
 <p>NavigableMap defines a type of sorted map with handy methods for
 obtaining submaps. So to get a map of the entries greater than a
-particular value use the <code class="highlighter-rouge">tailMap</code> method. The corresponding method for
-the submap less than a value is <code class="highlighter-rouge">headMap</code>. These methods return a view
+particular value use the <code class="language-plaintext highlighter-rouge">tailMap</code> method. The corresponding method for
+the submap less than a value is <code class="language-plaintext highlighter-rouge">headMap</code>. These methods return a view
 on the original map. So changes to the submap are reflected in the
 original map. The JDK provides
 <a href="http://docs.oracle.com/javase/6/docs/api/java/util/concurrent/ConcurrentSkipListMap.html">concurrent</a>
@@ -68,10 +68,10 @@ implementations of the interface.</p>
 
 <p>This is very useful for a time-based cache. Create a NavigableMap sorted
 on the time (I used the epoch milliseconds returned by
-<code class="highlighter-rouge">System.currentTimeMillis()</code>) then <code class="highlighter-rouge">tailMap</code> returns the entries younger
-than a given time, and <code class="highlighter-rouge">headMap</code> those older. So to trim the cache of
+<code class="language-plaintext highlighter-rouge">System.currentTimeMillis()</code>) then <code class="language-plaintext highlighter-rouge">tailMap</code> returns the entries younger
+than a given time, and <code class="language-plaintext highlighter-rouge">headMap</code> those older. So to trim the cache of
 entries older than a certain time use
-<code class="highlighter-rouge">headMap(System.currentTimeMillis() - maxAge).clear()</code>. So easy!</p>
+<code class="language-plaintext highlighter-rouge">headMap(System.currentTimeMillis() - maxAge).clear()</code>. So easy!</p>
 
 <p>Here is a complete time-based cache class for use as an example.</p>
 
@@ -125,6 +125,18 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
   </li>  
   
@@ -151,24 +163,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

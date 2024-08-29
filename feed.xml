@@ -1,318 +1,324 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-14T11:28:29+08:00</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Boardgames of 2022</title><link href="http://localhost:4000/blog/2024/01/boardgames.html" rel="alternate" type="text/html" title="Boardgames of 2022" /><published>2024-01-12T00:00:00+08:00</published><updated>2024-01-12T00:00:00+08:00</updated><id>http://localhost:4000/blog/2024/01/boardgames</id><content type="html" xml:base="http://localhost:4000/blog/2024/01/boardgames.html">&lt;p&gt;I continued tracking the boardgames I played through 2023 (&lt;a href=&quot;/blog/2023/02/boardgames.html&quot;&gt;see the 2022 list&lt;/a&gt;). Last year I played 21 different games a total of 47 times. The increase was largely due to joining a couple of clubs: &lt;a href=&quot;https://boardgamegeek.com/guild/view/4251&quot;&gt;Strategy Boardgamers WA&lt;/a&gt; is a reborn version of the Perth Long Boardgames club that shutdown during the Covid lockdowns; The Salvage League (no website) is devoted to playing quick games of Battletech: Alpha Strike. I had a goal of finishing the year having played all my previous unplayed games (they are marked in bold). I missed one, &lt;a href=&quot;https://boardgamegeek.com/boardgame/163154/falling-sky-gallic-revolt-against-caesar&quot;&gt;Falling Sky&lt;/a&gt;, but it is on the schedule to be played at SBWA in a few months (fingers crossed).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-08-29T13:48:12+08:00</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Malaysia (again)</title><link href="http://localhost:4000/blog/2024/08/malaysia.html" rel="alternate" type="text/html" title="Malaysia (again)" /><published>2024-08-08T00:00:00+08:00</published><updated>2024-08-08T00:00:00+08:00</updated><id>http://localhost:4000/blog/2024/08/malaysia</id><content type="html" xml:base="http://localhost:4000/blog/2024/08/malaysia.html"><![CDATA[<p>At the end of last month I was in Kuala Lumpur for a wedding. As I lived in <a href="/blog/tag/Malaysia.html">Malaysia</a> for nearly 5 years back before the pandemic, I greatly enjoyed just walking around and eating for a few days. Restoran Kin Kin still has great noodles; Pelitas is a good as ever; and, I remain unconvinced by <a href="https://en.wikipedia.org/wiki/Durian">durian</a>. There are a lot more towers in the city now, including a couple of very tall ones, higher than the Petronas towers. Although it’s good to see the KL penchant for skybridges is unchanged. Kampung Baru is being slowly surrounded by high apartment complexes. The old UK High Commission (<a href="/blog/2014/03/compound-living.html">where I lived for a year</a>) is now another set of 3 massive towers, over 60 floors by my count and getting bigger! However, Ampang Mall (where I used to eat an excellent Nasi Lemak) is now a skate park, so not everything is getting taller.</p>
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Game&lt;/th&gt;
-      &lt;th&gt;Plays&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/142526/battletech-alpha-strike&quot;&gt;&lt;strong&gt;Battletech: Alpha Strike&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;12&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/266192/wingspan&quot;&gt;Wingspan&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/173346/7-wonders-duel&quot;&gt;7 Wonders: Duel&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/241724/villagers&quot;&gt;Villagers&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/251658/sprawlopolis&quot;&gt;Sprawlopolis&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/180263/7th-continent&quot;&gt;&lt;strong&gt;7th Continent&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2 (sessions)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/62222/commands-colors-napoleonics&quot;&gt;&lt;em&gt;Commands &amp;amp; Colors: Napoleonics&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/281655/high-frontier-4-all&quot;&gt;&lt;strong&gt;High Frontier (Race For Glory version)&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/281655/high-frontier-4-all&quot;&gt;&lt;strong&gt;High Frontier (full version)&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/1540/battletech&quot;&gt;&lt;strong&gt;Battletech: Classic&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/251442/liberation&quot;&gt;&lt;strong&gt;Liberation&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/30549/pandemic&quot;&gt;Pandemic&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/245654/railroad-ink-deep-blue-edition&quot;&gt;&lt;em&gt;Railroad Ink&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/205637/arkham-horror-card-game&quot;&gt;&lt;strong&gt;Arkham Horror&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/12891/friedrich&quot;&gt;&lt;em&gt;Friedreich&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/214234/tank-duel-enemy-crosshairs&quot;&gt;&lt;em&gt;Tank Duel&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/253506/versailles-1919&quot;&gt;&lt;em&gt;Versailles 1919&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/234477/battle-rokugan&quot;&gt;&lt;em&gt;Battle of Rokugan&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/295103/almoravid-reconquista-and-riposte-spain-1085-1086&quot;&gt;&lt;em&gt;Almoravid&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/289937/ancient-civilizations-middle-east&quot;&gt;&lt;em&gt;Ancient Civilizations of the Middle East&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/400314/apiary&quot;&gt;&lt;em&gt;Apiary&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+<p>After the wedding I went to Sabah and hiked up <a href="https://en.wikipedia.org/wiki/Mount_Kinabalu">Mount Kinabalu</a>. It is an elevation gain of roughly 2200m over 2 days to a final altitude of 4095m, the highest I’ve ever been. Luckily no altitude sickness for me this time (unlike <a href="/blog/2010/11/peru-photos.html">the Inca Trail</a>), but we were climbing at the slow “unfit” rate. The hike was well organised and not too uncomfortable compared to others I’ve done. Unfortunately for three quarters of the hike we could only see the trees around us due to the mist and rain (very common according to the guide). Only once we passed the treeline (and above the clouds) did the amazing views emerge.</p>
 
-&lt;p&gt;Games listed in &lt;em&gt;italics&lt;/em&gt; are games I do not own, while those in &lt;strong&gt;bold&lt;/strong&gt; are my games that I played for the first time in 2023. Very long games split over multiple days are counted in distinct play sessions (of at least 2 hours).&lt;/p&gt;
+<p>Some photos from the trip are in a short slideshow <a href="/slideshows/malaysia_24.html">available here</a>.</p>
 
-&lt;p&gt;Here are my thoughts on any game I played more than once, and haven’t previously reviewed (consider my plays of 7 Wonders Duel &amp;amp; Sprawlopolis as a sign of my continued enjoyment):&lt;/p&gt;
+<p><a href="/slideshows/malaysia_24.html"><img src="/assets/slideshow/malaysia_24/kk_shadow_main.png" alt="" title="Mount Kinabalu's shadow" /></a></p>]]></content><author><name>Charles</name></author><category term="Posts" /><category term="Travel" /><category term="Malaysia" /><summary type="html"><![CDATA[At the end of last month I was in Kuala Lumpur for a wedding. As I lived in Malaysia for nearly 5 years back before the pandemic, I greatly enjoyed just walking around and eating for a few days. Restoran Kin Kin still has great noodles; Pelitas is a good as ever; and, I remain unconvinced by durian. There are a lot more towers in the city now, including a couple of very tall ones, higher than the Petronas towers. Although it’s good to see the KL penchant for skybridges is unchanged. Kampung Baru is being slowly surrounded by high apartment complexes. The old UK High Commission (where I lived for a year) is now another set of 3 massive towers, over 60 floors by my count and getting bigger! However, Ampang Mall (where I used to eat an excellent Nasi Lemak) is now a skate park, so not everything is getting taller. After the wedding I went to Sabah and hiked up Mount Kinabalu. It is an elevation gain of roughly 2200m over 2 days to a final altitude of 4095m, the highest I’ve ever been. Luckily no altitude sickness for me this time (unlike the Inca Trail), but we were climbing at the slow “unfit” rate. The hike was well organised and not too uncomfortable compared to others I’ve done. Unfortunately for three quarters of the hike we could only see the trees around us due to the mist and rain (very common according to the guide). Only once we passed the treeline (and above the clouds) did the amazing views emerge. Some photos from the trip are in a short slideshow available here.]]></summary></entry><entry><title type="html">Bad Companies</title><link href="http://localhost:4000/blog/2024/05/bad_companies.html" rel="alternate" type="text/html" title="Bad Companies" /><published>2024-05-03T00:00:00+08:00</published><updated>2024-05-03T00:00:00+08:00</updated><id>http://localhost:4000/blog/2024/05/bad_companies</id><content type="html" xml:base="http://localhost:4000/blog/2024/05/bad_companies.html"><![CDATA[<p>Soon after starting this blog I wrote posts on <a href="/blog/2009/04/companies-of-which-i-am-not-a.html">companies of which I have been a paying customer, but will never be a customer again</a> and separately <a href="/blog/2009/04/companies-i-love.html">companies I love</a>. The first post was much longer than the second. I’ve been meaning to write an update on those for some time, but never got around to it. Now it is time. As always no links to bad companies, they don’t deserve the slightest referral. Also, I’ve probably forgotten a bunch in the intervening years.</p>
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Battletech&lt;/strong&gt;: Large &lt;a href=&quot;https://en.wikipedia.org/wiki/Mecha&quot;&gt;mecha&lt;/a&gt; battling other large mecha in a 31st century beset by war. This miniatures wargame came out 40 years ago and has been moderately popular ever since. I like it, and have played a lot of the faster paced, larger scale Alpha Strike version, but the more detailed, slower classic version is good too.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Wingspan&lt;/strong&gt;: Cute tableau builder about collecting birds for a sanctuary. Beautiful art and strangely popular with people who don’t play many boardgames. Enjoyable but I’m not  good player as a there is enough randomness that plans go astray quickly. Maybe that is why people like playing against me.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Villagers&lt;/strong&gt;: Fast tableau builder about building up a medieval village by tempting increasingly skilled and thus valuable workpeople to move in.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;High Frontier&lt;/strong&gt;: Complicated simulation of spaceship travel and construction through the solar system. Designed by an ex-NASA engineer with known physics (no faster-than-light stuff here). Requires commitment, concentration, patience and several hours to play. Finishing a game successfully gives a sense of satisfaction, like an exhausting workout. Very hard to get other people interested in trying it, a certain mindset is required :)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;7th Continent&lt;/strong&gt;: A long card-based cooperative narrative adventure game that is like a cross between a choose-your-own-adventure and a boardgame. Very long - my first game was 5 hours and the second 6, both were losses. Interesting, but it seems very puzzle based, so the more you play, the more you recognise situations and the easier it becomes. I feel this may not be a keeper and after a few more games it will be time to move it on.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Commands &amp;amp; Colors: Napoleonics&lt;/strong&gt;: A cross between a boardgame and a miniatures game, here you move blocks denoting various units around a board to recreate various Napoleonic battles. The hook is that you can’t just move and fight at will. To model the problems of historical command, each player must play cards that dictate which units may act. Frustrating, but in a good way, and fast playing, so it doesn’t feel unfair.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Charles</name></author><category term="Blog" /><category term="Games" /><category term="Board Games" /><summary type="html">I continued tracking the boardgames I played through 2023 (see the 2022 list). Last year I played 21 different games a total of 47 times. The increase was largely due to joining a couple of clubs: Strategy Boardgamers WA is a reborn version of the Perth Long Boardgames club that shutdown during the Covid lockdowns; The Salvage League (no website) is devoted to playing quick games of Battletech: Alpha Strike. I had a goal of finishing the year having played all my previous unplayed games (they are marked in bold). I missed one, Falling Sky, but it is on the schedule to be played at SBWA in a few months (fingers crossed).</summary></entry><entry><title type="html">Goals 2024</title><link href="http://localhost:4000/blog/2024/01/goals.html" rel="alternate" type="text/html" title="Goals 2024" /><published>2024-01-11T00:00:00+08:00</published><updated>2024-01-11T00:00:00+08:00</updated><id>http://localhost:4000/blog/2024/01/goals</id><content type="html" xml:base="http://localhost:4000/blog/2024/01/goals.html">&lt;p&gt;My attempt to achieve &lt;a href=&quot;/blog/2023/02/goals.html&quot;&gt;last years goals&lt;/a&gt; was a failure. Not completely, I did manage to complete the two easiest and one other goal, but that is only a 50% success rate. It has been a year of distractions: from self-inflicted injury, long holidays, and technology indecision. Here is the assessment:&lt;/p&gt;
+<p><strong>More companies of which I have been a paying customer, but will never be a customer again</strong></p>
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Increase strength and aerobic fitness&lt;/strong&gt;: Fail. This was going well until I tore my supraspinatus shoulder tendon in May. The physio recommended no exercise (other than light recovery exercise) for several months, but I’ve gone longer due to other things, and haven’t started again yet.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Demo quality Ci2D&lt;/strong&gt;: Nope, nowhere near this. I started working on it four times in different languages/engines this year (Unity, Scala, Typescript and Godot). I don’t want to use Unity anymore after their &lt;a href=&quot;https://www.jarrahtechnology.com/2023/10/01/Smug-Mode.html&quot;&gt;fiasco&lt;/a&gt;, but I’m struggling to find a suitable replacement.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Continue on IPO &amp;amp; maybe one other&lt;/strong&gt;: Done, but barely. I created another version of IPO, and nothing else.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;18 blog articles (including Jarrah Technology)&lt;/strong&gt;: Done. Eight here and 12 on Jarrah Technology, this is the easiest goal.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Fix the bedroom window issues, fix the terrace drainage problem &amp;amp; build a chicken coop&lt;/strong&gt;: Done, and not too badly. See the photo below of the chicken coop I built.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Paint at least 10 miniatures, and have played all my boardgames&lt;/strong&gt;: So close, but no. After &lt;a href=&quot;/blog/2023/06/miniatures.html&quot;&gt;a late start&lt;/a&gt;, I now have two dozen painted minis and I’m getting better. However, I have one unplayed boardgame: &lt;a href=&quot;https://boardgamegeek.com/boardgame/163154/falling-sky-gallic-revolt-against-caesar&quot;&gt;Falling Sky&lt;/a&gt;, a heavy and long wargame about Caesar’s Gallic Wars (perhaps a hard sell for other players:). Still I have found a group willing to play but scheduling issues mean it is down for April.&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+  <li>Tango - They sell gift cards, supposedly.</li>
+  <li>Thomasz Developments - Real estate developers.</li>
+  <li>NYT Real Estate - is there a good real estate company? I’ve never found one.</li>
+  <li>McDonalds - This one has been on my naughty list since 1999, I just forgot last time.</li>
+</ul>
 
-&lt;p&gt;&lt;img src=&quot;/assets/posts/chicken_coop.png&quot; alt=&quot;Chicken Coop&quot; title=&quot;Chicken Coop&quot; /&gt;&lt;/p&gt;
+<p><strong>Companies which I will try avoid</strong></p>
 
-&lt;p&gt;Will next year be better?&lt;/p&gt;
+<p>I am still customers of these companies (although pay them no money), but I wish I wasn’t, and am slowly working to remove them from my life.</p>
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Return to a decent level of fitness and strength&lt;/strong&gt;: Just in the last month my shoulder is feeling good again. Time to (gently) get back to exercise.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Improve Spanish&lt;/strong&gt;: With my extra time, I restarted learning Spanish last year. It came back fairly quickly. I should keep it up.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Learn to 3D print (and then paint the result)&lt;/strong&gt;: I bought myself a 3D printer for christmas. I should learn to use it properly, print some minis, and paint them.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;18 blog articles (including Jarrah Technology)&lt;/strong&gt;:  An easy one to ensure I hit at least one of these.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Demo quality Ci2D&lt;/strong&gt;: This is ambitious, but I need to choose a technology and start moving.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Charles</name></author><category term="Blog" /><category term="Goals" /><summary type="html">My attempt to achieve last years goals was a failure. Not completely, I did manage to complete the two easiest and one other goal, but that is only a 50% success rate. It has been a year of distractions: from self-inflicted injury, long holidays, and technology indecision. Here is the assessment:</summary></entry><entry><title type="html">China</title><link href="http://localhost:4000/blog/2023/10/china.html" rel="alternate" type="text/html" title="China" /><published>2023-10-06T00:00:00+08:00</published><updated>2023-10-06T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/10/china</id><content type="html" xml:base="http://localhost:4000/blog/2023/10/china.html">&lt;p&gt;I recently spent nearly a month in China. A fortnight in &lt;a href=&quot;https://en.wikipedia.org/wiki/Guangxi&quot;&gt;Guangxi&lt;/a&gt; (mostly &lt;a href=&quot;https://en.wikipedia.org/wiki/Hechi&quot;&gt;Hechi&lt;/a&gt; &amp;amp; &lt;a href=&quot;https://en.wikipedia.org/wiki/Guilin&quot;&gt;Guilin&lt;/a&gt;) staying with a friend’s family, and then a few days each in &lt;a href=&quot;https://en.wikipedia.org/wiki/Wuhan&quot;&gt;Wuhan&lt;/a&gt; (halfway between Guilin and Beijing on the train), &lt;a href=&quot;https://en.wikipedia.org/wiki/Beijing&quot;&gt;Beijing&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Shanghai&quot;&gt;Shanghai&lt;/a&gt;. I took hundreds of photos and could write a great deal, but will try to keep it succinct with some notes.&lt;/p&gt;
+<ul>
+  <li>Dropbox</li>
+  <li>HSBC - I have one account left with First Direct in the UK, it is still useful, but I’m looking at possible alternatives.</li>
+  <li>Microsoft - Only their size and ubiquity save this repeat offender. I am off Windows again (and back to Linux), hopefully that can continue.</li>
+</ul>
 
-&lt;ul&gt;
-  &lt;li&gt;The first day was spent in &lt;a href=&quot;https://en.wikipedia.org/wiki/Nanning&quot;&gt;Nanning&lt;/a&gt; and I quickly noticed that the streets were quieter than expected. Almost all of the scooters on the road and about a fifth of the cars were electric so made little noise. It was easy to tell which cars were electric as they had green number plates while ICE cars had other colours. There were a wide range of electric car brands, most were local and I had never heard about them before. Tesla’s were common too. In Shanghai around half the cars seemed to be electric, but in Beijing and Wuhan it was around 10-20%.&lt;/li&gt;
-  &lt;li&gt;There are lots of building sites, usually of huge towers but most showed no evidence of currently being worked on (that I could see). Of course I may have missed some signs or they just weren’t being worked on at the time I passed. Still it was noticable.&lt;/li&gt;
-  &lt;li&gt;Travelling across the country we saw many wide navigatable rivers. Also everywhere was green and verdant. Farms seemed small (compared to Australian standards). A big one would be a few acres or more. Every bit of spare space was turned to cultivation: empty city blocks and roadside verges often had neat rows of fruit/vegetable plants.&lt;/li&gt;
-  &lt;li&gt;All the cities were clean (like Perth) and felt safe no matter what alley we walked down. Some of the villages were a little rougher (not much!) but that is to be expected in working agricultural centers. The vast majority of people we met (including security) were polite and friendly.&lt;/li&gt;
-  &lt;li&gt;High-speed trains are awesome. Quick to get on at the station, and a few hours later you are at the center of another city. They have a speed display between cabins and the highest I saw was 359km/h. Most train stations are monumental - so big they look half empty even with thousands of people in them (&lt;a href=&quot;/slideshows/china_23.html&quot;&gt;see photo slideshow&lt;/a&gt;).&lt;/li&gt;
-  &lt;li&gt;Once we left Hechi there was air pollution everywhere. Not too bad, I’ve seen far worse, but it was still noticable. The horizon looked grey and distant buildings would fade into it. I would sneeze or cough for a few minutes each morning when leaving the hotel.&lt;/li&gt;
-  &lt;li&gt;Everything is done electronically. WeChat or Alipay is an absolute necesity. Train tickets, tourist site tickets, communicating with people, nearly everything we did was organised through WeChat. This worked fine until we reached Shanghai and found Alipay (which we didn’t have) was more popular, so we had problems getting things done (the ferry told us to go away).&lt;/li&gt;
-  &lt;li&gt;All payment is electronic through WeChat or Alipay. In my entire time in China I didn’t see a single credit card (nor use one), nor a paper ticket and I saw cash twice: once a tourist at a tourist site and once a local paying at a market. Everything else either has you send money directly through an app or has a QR code for transfers. Street stalls, hotels, trains, taxis, even the binoculars at tourist sites have QR codes. Usually this is the only way to pay. The country runs on QR codes.&lt;/li&gt;
-  &lt;li&gt;It must be impossible to survive as an independent tourist in China without access to these apps. We had one person with WeChat (through a local relative) and used that. As non-residents it requires some planning to get them. I applied for restricted WeChat (payment, messaging and a few other things) and it took 15 days to get access. So for the first half of the trip I was completely reliant on other people.&lt;/li&gt;
-  &lt;li&gt;Also you don’t have to go far off the tourist trail before having great difficulty with English. Unless you have access to WeChat/Alipay and someone who speaks Mandarin I would recommend using tour groups.&lt;/li&gt;
-  &lt;li&gt;Everyone has a fancy phone and spends most of their time staring at it (just like home :) Tiktok is incredibly popular, people would talk about it all the time. Public phone chargers are common and often unattended (you pay via QR code).&lt;/li&gt;
-  &lt;li&gt;Highspeed wifi or 5G is nearly ubiquitous, much better than in Australia. However, the Great Firewall is real and works all too well. If you want to access a website or service from outside China then bring a good VPN with you - no recommendations because the list of working ones changes every few months as the firewall is constantly updated.&lt;/li&gt;
-  &lt;li&gt;In the south at least the local languages seem to be disappearing, with the younger generations using Mandarin, while the middle aged and older would still use their regional language as default.&lt;/li&gt;
-  &lt;li&gt;China is a nation of shopkeepers. So many shops or stalls everywhere. I also saw lots of delivery drivers with stacks of packages, so Internet shopping is clearly big business too. Who is buying all the stuff? I hope the rent on shops is cheap to keep overheads low.&lt;/li&gt;
-  &lt;li&gt;Water fountains sometimes had 3 settings: cold, tepid, and boiling hot. That is not an exaggeration! It was boiling water that people used for pot noodles.&lt;/li&gt;
-  &lt;li&gt;We visited a couple of villages and the houses looked recent and decent, but they seemed empty. I am told people would move to the cities and then build a nice house back in the village but not live there (or only for short periods). The village’s permanent residents were mainly older or poorer people.&lt;/li&gt;
-  &lt;li&gt;A goat costs AU$400. I know because that is what we paid to provide one for a village feast. There were also ducks, chickens and geese just wandering around the village, but apparently people know who owns them. Ducks get carried around in little pastic bags with their heads poking out. Its cute, but they are often being carried to become dinner. The meat was definitely full of flavour, but also chewy. The tofu was noticable tastier than in Australia (but then our hosts were tofu makers by profession). All of the village alcohol is home made, carried around in very large bowls and quite strong. It was some kind of grain spirit (but I was told it was not rice). Alcoholism was an issue.&lt;/li&gt;
-  &lt;li&gt;The ground floor of village houses were an extension of the outside. Some used it for equipment storage, or animals. A couple of places used it to store silkworms on a bed of mulberry leaves (&lt;a href=&quot;/slideshows/china_23.html&quot;&gt;see photo slideshow&lt;/a&gt;). A good way to earn extra money I’m told.&lt;/li&gt;
-  &lt;li&gt;Every house/apartment we visited had a large flatscreen TV and water filtration system. Some in the villages (but not the city) had scary exposed wiring that I told was usually done by the owner - the week before we arrived a friend of our hosts was electrocuted to death.&lt;/li&gt;
-  &lt;li&gt;I often saw men smoke (like Australia over 30 years ago), but never saw a woman smoking. Men seemed to be drinking far more often too. Alcohol and cigarettes are cheap, presumably the tax on them is lower?&lt;/li&gt;
-  &lt;li&gt;Cities got more expensive as we travelled: Hechi &amp;lt; Guilin &amp;lt; Wuhan &amp;lt; Beijing &amp;lt; Shanghai. Shanghai didn’t feel much cheaper than smaller Australian cities (apart from the alcohol and street food). Also people became clearly taller once we left Guangxi.&lt;/li&gt;
-  &lt;li&gt;After Hechi, we booked hotels through WeChat, but many had a no foreigners policy. All the hotels we stayed in were good, quiet and clean.&lt;/li&gt;
-  &lt;li&gt;Once we got to Beijing there was definite increase in police/military security. Before and after that city it was around but didn’t feel too much (we had our ID checked twice at all the train stations for example - but it was far quicker than at an airport). In Beijing we would be stoppped and have our ID and bags checked several times per day just walking around, plus extra at any tourist sites. It was always polite, fast and friendly (apart from Tianamen Square, where they gruffly checked every item in my bag individually and I had to wait for them to read each page of paper I was carrying). There were also many uniformed police or military standing, walking or marching around. Also lots more video cameras (about to London levels).&lt;/li&gt;
-  &lt;li&gt;Sometimes it seemed these checks were security theatre. Once I took a step too far and could see the screen of the guy checking my passport. I saw him enter an incorrect last digit of my passport number and then saw a big red warning message appear. He simply returned my passport and waved me through with a smile.&lt;/li&gt;
-  &lt;li&gt;We went to visit a street market and &lt;a href=&quot;https://en.wikipedia.org/wiki/Hutong&quot;&gt;Hutong&lt;/a&gt; (local alleyways) one of us used to frequent when they lived in Beijing for a few months 20 years ago. They no longer existed. They had been replaced by modern shops and apartments. Apparently a common occurrence. We did find a Hutong, but it felt very touristy.&lt;/li&gt;
-  &lt;li&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Forbidden_City&quot;&gt;Forbidden City&lt;/a&gt; is huge and a great place to visit. We spent half a day there and could easily have spent longer. Recommended.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Great_Wall_of_China&quot;&gt;The Great Wall&lt;/a&gt; is overrated as a tourist site. The wall is impressive because of its extent, something you will not be able to appreciate on the few kilometers accessible at a time. It is also very busy and could be renamed the Great Line of China. We waited nearly 3 hours in line for a leisurely hour on the wall, shoulder to shoulder with other tourists. I have to say the lines were well organised. Full of turns and broken into stages, it never seemed like there was that many people in front of you - until you turned the corner. Each new stage of the queue was like a new stage in the &lt;a href=&quot;https://en.wikipedia.org/wiki/&quot;&gt;5 stages of grief&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;In Guangxi apartments tended to have security grates over the windows. At the time I was told this was normal all over the country, but I rarely saw it anywhere else we went. Strange. I was also told that Guangxi had great water and it could be found bottled throughout the country, this was definitely true in my experience.&lt;/li&gt;
-  &lt;li&gt;Guilin is a tourist trap, everywhere we went the exit was through a gift shop or three. It is a pretty place, but I didn’t find it much prettier than areas around Hechi. I probably would have been more impressed if went there first.&lt;/li&gt;
-  &lt;li&gt;Many tourist sites sell icecreams in the shape of the tourist site. Reader, I succumbed to the herd instinct and bought one. They are better then I expected - not great, but decent.&lt;/li&gt;
-  &lt;li&gt;In Guangxi there many shops selling scooter batteries with a poster of a benevolent &lt;a href=&quot;https://en.wikipedia.org/wiki/Donnie_Yen&quot;&gt;Donnie Yen&lt;/a&gt; gazing down upon the street. He was the only person on street advertising that I recognized. It was strangely comforting.&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Companies no longer loved</strong></p>
 
-&lt;p&gt;Some photos from the trip are in a short slideshow &lt;a href=&quot;/slideshows/china_23.html&quot;&gt;available here&lt;/a&gt;.&lt;/p&gt;
+<p>Neither of the previously loved companies get to maintain that level. No company has shown especially good customer service to me in recent years, so no company gets any sense of loyalty from me.</p>
 
-&lt;p&gt;&lt;a href=&quot;/slideshows/china_23.html&quot;&gt;&lt;img src=&quot;/assets/slideshow/china_23/forbidden_main.png&quot; alt=&quot;&quot; title=&quot;The Forbidden City&quot; /&gt;&lt;/a&gt;&lt;/p&gt;</content><author><name>Charles</name></author><category term="Posts" /><category term="Travel" /><category term="China" /><summary type="html">I recently spent nearly a month in China. A fortnight in Guangxi (mostly Hechi &amp;amp; Guilin) staying with a friend’s family, and then a few days each in Wuhan (halfway between Guilin and Beijing on the train), Beijing and Shanghai. I took hundreds of photos and could write a great deal, but will try to keep it succinct with some notes.</summary></entry><entry><title type="html">Miniatures</title><link href="http://localhost:4000/blog/2023/06/miniatures.html" rel="alternate" type="text/html" title="Miniatures" /><published>2023-06-06T00:00:00+08:00</published><updated>2023-06-06T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/06/miniatures</id><content type="html" xml:base="http://localhost:4000/blog/2023/06/miniatures.html">&lt;p&gt;Through the purchase of various bordgames I have acquired a large number of small miniatures. Most of them are just the monochrome plastic. I thought it might be nice to try painting them. However, I didn’t want to start by wrecking the minis of any of my current games, so I bought a learn to paint kit (from Reaper Miniatures) which came with a few test minis.&lt;/p&gt;
+<ul>
+  <li>Amazon - Continually getting worse. I’d still buy from them, but definitely don’t consider their customer service to be nearly as good as before.</li>
+  <li>First direct - Part of HSBC, see above.</li>
+</ul>]]></content><author><name>Charles</name></author><category term="Posts" /><category term="General" /><summary type="html"><![CDATA[Soon after starting this blog I wrote posts on companies of which I have been a paying customer, but will never be a customer again and separately companies I love. The first post was much longer than the second. I’ve been meaning to write an update on those for some time, but never got around to it. Now it is time. As always no links to bad companies, they don’t deserve the slightest referral. Also, I’ve probably forgotten a bunch in the intervening years. More companies of which I have been a paying customer, but will never be a customer again Tango - They sell gift cards, supposedly. Thomasz Developments - Real estate developers. NYT Real Estate - is there a good real estate company? I’ve never found one. McDonalds - This one has been on my naughty list since 1999, I just forgot last time. Companies which I will try avoid I am still customers of these companies (although pay them no money), but I wish I wasn’t, and am slowly working to remove them from my life. Dropbox HSBC - I have one account left with First Direct in the UK, it is still useful, but I’m looking at possible alternatives. Microsoft - Only their size and ubiquity save this repeat offender. I am off Windows again (and back to Linux), hopefully that can continue. Companies no longer loved Neither of the previously loved companies get to maintain that level. No company has shown especially good customer service to me in recent years, so no company gets any sense of loyalty from me. Amazon - Continually getting worse. I’d still buy from them, but definitely don’t consider their customer service to be nearly as good as before. First direct - Part of HSBC, see above.]]></summary></entry><entry><title type="html">Media Bias</title><link href="http://localhost:4000/blog/2024/03/media.html" rel="alternate" type="text/html" title="Media Bias" /><published>2024-03-02T00:00:00+08:00</published><updated>2024-03-02T00:00:00+08:00</updated><id>http://localhost:4000/blog/2024/03/media</id><content type="html" xml:base="http://localhost:4000/blog/2024/03/media.html"><![CDATA[<p>I often hear a complaint that the news from newspaper X or channel Y is biased. Yes of course, but does it matter? Often the same person will follow up with, “so I get my news from outlet Z”, which is some other obviously biased news source. Probably all news media is biased, I imagine it would be near impossible to be unbiased. If you find yourself agreeing with a source all the time, most likely their bias matches yours, not that they are especially accurate.</p>
 
-&lt;p&gt;Behold the result of my labours:&lt;/p&gt;
+<p>So if they are all biased, should you just abandon all of them? No, I don’t think that is necessary.</p>
 
-&lt;p&gt;&lt;img src=&quot;/assets/posts/minis/minis1.png&quot; width=&quot;640&quot; alt=&quot;First Attempt&quot; /&gt;&lt;/p&gt;
+<p>I liken handling bias in news to managing process improvement. It is not about being perfect every time, but about being able to adjust for errors. For example in aiming, you might not expect to hit the center of the target, but there is a process for adjusting technique for improving accuracy. For news or the media, I find equivalent techniques apply.</p>
 
-&lt;p&gt;Not great, but not awful. They are each about 5 centimeters in height and at a tabletop viewing distance look “ok”. Of course if you get close or look at closeup photos, all you can see are the errors. So what did I learn apart from my eyesight is getting worse and my hands are unsteady?&lt;/p&gt;
+<p>Imagine you are shooting for the dead center of a target. You miss, people always miss. In the Olympics people don’t get perfect scores in the shooting or archery. The distance and direction to the center is the error (and in this metaphor also the bias). If your attempts are always a little to the left that’s good, you just aim a bit to the right and you should be closer to the result. You want your shots to be in a tight cluster, then adjust your aim so the cluster is where you want it. The same with news.</p>
 
-&lt;ul&gt;
-  &lt;li&gt;The less paint per layer the better. It is easier to fix up a watered down bad stroke with another stroke/layer, rather than being stuck with too much paint hiding details or just in the wrong place.&lt;/li&gt;
-  &lt;li&gt;Take regular breaks.&lt;/li&gt;
-  &lt;li&gt;Have a “mistake” brush handy. If paint goes where it shouldn’t, promptly brushing it with water will usually fix it up.&lt;/li&gt;
-  &lt;li&gt;They took about 3 hours each (one at a time), so try doing a few at once. Hopefully I’ll speed up.&lt;/li&gt;
-&lt;/ul&gt;
+<p>To that end, you need 3 things:</p>
 
-&lt;p&gt;I think it is worth continuing. Next up I’m going to try some duplicate BattleTech miniatures.&lt;/p&gt;</content><author><name>Charles</name></author><category term="Posts" /><category term="Games" /><category term="Miniatures" /><summary type="html">Through the purchase of various bordgames I have acquired a large number of small miniatures. Most of them are just the monochrome plastic. I thought it might be nice to try painting them. However, I didn’t want to start by wrecking the minis of any of my current games, so I bought a learn to paint kit (from Reaper Miniatures) which came with a few test minis.</summary></entry><entry><title type="html">Adelaide</title><link href="http://localhost:4000/blog/2023/05/adelaide.html" rel="alternate" type="text/html" title="Adelaide" /><published>2023-05-03T00:00:00+08:00</published><updated>2023-05-03T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/05/adelaide</id><content type="html" xml:base="http://localhost:4000/blog/2023/05/adelaide.html">&lt;p&gt;It has been a while since I last travelled out of Perth, so it was nice to get away to Adelaide and its surrounds for a week.&lt;/p&gt;
+<ol>
+  <li>The bias to be known - if you are reading about an event you know nothing about in an unfamiliar source, unless the bias is obvious in the text (see point 2) it will be hard to work out what is really going on. Sadly this is very common and you just need to be dubious. In the aiming metaphor, you need to be able to see where your attempt lands. If you never look at the result, then you won’t know how to adjust.</li>
+  <li>The bias to not be too extreme - This is often seen in more ideological publications, the result can be intentially misleading and thus very had to adjust for. This publications should just be avoided. While very common it is usually easy to spot. This is like if your shot misses by so much it doesn’t even reach the target.  All UK tabloids I’ve ever read fail on this test.</li>
+  <li>The bias to be constant - If the bias keeps changing, your previous adjustments may make things worse. The tighter they are clustered the easier to adjust. If one if off to the left and the next if off to the right, what do you do? News companies controlled by one person exerting some editorial control will often exhibit this, the bias changing to whatever is convienent at the time.</li>
+</ol>
 
-&lt;p&gt;Some thoughts:&lt;/p&gt;
+<p>Something to avoid are all opinion/editorial pieces. These are mostly written specificially to influence by people not experts on the topic at hand (like this blog post :). Also most culture sections are not that great, same with sports, but neither matter much to me. Definitely keep clear of anything owned and led by billionaires. In my experience they tend to espouse their owner’s interests, which change quickly and easily (so fail #3). I remember one paper decades ago that was fiercely pro-China when the owner had business interests there, but switched hard to anti-China views when those investments failed.</p>
 
-&lt;ul&gt;
-  &lt;li&gt;Adelaide seems like a very quiet city, it reminds of Perth in that regard. However, where Perth is all about the beach or river, for Adelaide it is all about wineries. Must be a nice place to live.&lt;/li&gt;
-  &lt;li&gt;The Adelaide city markets are definitely worth a visit - should be more places like this in Australia.&lt;/li&gt;
-  &lt;li&gt;The little laneways around the edges of either end of Rundle St (not the mall) have some great alfresco dining.&lt;/li&gt;
-  &lt;li&gt;The center of Adelaide is very well laid out and pleasant to be around. It is encircled by a park which is excellent planning (reminded me of the half-encircling Turia Gardens in Valencia).&lt;/li&gt;
-  &lt;li&gt;The last winery in a winery tour should pay the tour organisers. Anecdotally, the last place on the tour makes the most sales since everyone is a little drunk.&lt;/li&gt;
-  &lt;li&gt;Going to wineries gets a bit repetitive - how many ways are there to say “this is a nice wine”?&lt;/li&gt;
-  &lt;li&gt;There is not much to see at the mouth of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Murray_River&quot;&gt;Murray River&lt;/a&gt; (Australia’s longest river), but the drive down there has some interesting sights (and of course, wineries).&lt;/li&gt;
-  &lt;li&gt;Still using my iPhone for photos, maybe time to dump the old camera?&lt;/li&gt;
-  &lt;li&gt;A week is more than enough to “see” Adelaide.&lt;/li&gt;
-&lt;/ul&gt;
+<p>So what do I read? I find the new sections of the specialist finanical media good (FT, AFR, Economist, Reuters, Bloomberg). Because they are unbiased? Absolutely not, they are very biased. However, when it comes to news events they pass the 3 tests above. The bias is obvious: companies, free market, being rich and capitalism are good, anything working against those things is bad. That bias not secretive either. I remember the Economist (back when I read it regularly 20 years ago) explicitly stating their neoliberal bias as an aside every few issues. Nor is it generally extreme as they have an unspoken interest in being roughly accurate. The implicit assumption is that people will make investment decisions based on the news in these outlets, so expect them to be mostly correct, and if not they would lose reputation (a self-declared Marxist first made this argument to me).</p>
 
-&lt;p&gt;Some photos from the trip are in a short slideshow &lt;a href=&quot;/slideshows/adelaide_23.html&quot;&gt;available here&lt;/a&gt;.&lt;/p&gt;
+<p>I have lived in a few countries and found the government media generally pass the 3 tests too. For instance, I watched the BBC in the UK and SBS in Australia. Both biased, but being inside the country at the time, I was quite aware of the size and direction of that bias. If you are not in country it would be much harder to tell. I can easily imagine that the government media in some countries may fail point #2 if they are more propagandistic and less free. I also used to read the Guardian when in the UK, being well aware of its biases, as they had been the same for decades (a sort of polite, socially acceptable left-leaning).</p>]]></content><author><name>Charles</name></author><category term="Posts" /><category term="General" /><summary type="html"><![CDATA[I often hear a complaint that the news from newspaper X or channel Y is biased. Yes of course, but does it matter? Often the same person will follow up with, “so I get my news from outlet Z”, which is some other obviously biased news source. Probably all news media is biased, I imagine it would be near impossible to be unbiased. If you find yourself agreeing with a source all the time, most likely their bias matches yours, not that they are especially accurate. So if they are all biased, should you just abandon all of them? No, I don’t think that is necessary. I liken handling bias in news to managing process improvement. It is not about being perfect every time, but about being able to adjust for errors. For example in aiming, you might not expect to hit the center of the target, but there is a process for adjusting technique for improving accuracy. For news or the media, I find equivalent techniques apply. Imagine you are shooting for the dead center of a target. You miss, people always miss. In the Olympics people don’t get perfect scores in the shooting or archery. The distance and direction to the center is the error (and in this metaphor also the bias). If your attempts are always a little to the left that’s good, you just aim a bit to the right and you should be closer to the result. You want your shots to be in a tight cluster, then adjust your aim so the cluster is where you want it. The same with news. To that end, you need 3 things: The bias to be known - if you are reading about an event you know nothing about in an unfamiliar source, unless the bias is obvious in the text (see point 2) it will be hard to work out what is really going on. Sadly this is very common and you just need to be dubious. In the aiming metaphor, you need to be able to see where your attempt lands. If you never look at the result, then you won’t know how to adjust. The bias to not be too extreme - This is often seen in more ideological publications, the result can be intentially misleading and thus very had to adjust for. This publications should just be avoided. While very common it is usually easy to spot. This is like if your shot misses by so much it doesn’t even reach the target. All UK tabloids I’ve ever read fail on this test. The bias to be constant - If the bias keeps changing, your previous adjustments may make things worse. The tighter they are clustered the easier to adjust. If one if off to the left and the next if off to the right, what do you do? News companies controlled by one person exerting some editorial control will often exhibit this, the bias changing to whatever is convienent at the time. Something to avoid are all opinion/editorial pieces. These are mostly written specificially to influence by people not experts on the topic at hand (like this blog post :). Also most culture sections are not that great, same with sports, but neither matter much to me. Definitely keep clear of anything owned and led by billionaires. In my experience they tend to espouse their owner’s interests, which change quickly and easily (so fail #3). I remember one paper decades ago that was fiercely pro-China when the owner had business interests there, but switched hard to anti-China views when those investments failed. So what do I read? I find the new sections of the specialist finanical media good (FT, AFR, Economist, Reuters, Bloomberg). Because they are unbiased? Absolutely not, they are very biased. However, when it comes to news events they pass the 3 tests above. The bias is obvious: companies, free market, being rich and capitalism are good, anything working against those things is bad. That bias not secretive either. I remember the Economist (back when I read it regularly 20 years ago) explicitly stating their neoliberal bias as an aside every few issues. Nor is it generally extreme as they have an unspoken interest in being roughly accurate. The implicit assumption is that people will make investment decisions based on the news in these outlets, so expect them to be mostly correct, and if not they would lose reputation (a self-declared Marxist first made this argument to me). I have lived in a few countries and found the government media generally pass the 3 tests too. For instance, I watched the BBC in the UK and SBS in Australia. Both biased, but being inside the country at the time, I was quite aware of the size and direction of that bias. If you are not in country it would be much harder to tell. I can easily imagine that the government media in some countries may fail point #2 if they are more propagandistic and less free. I also used to read the Guardian when in the UK, being well aware of its biases, as they had been the same for decades (a sort of polite, socially acceptable left-leaning).]]></summary></entry><entry><title type="html">Boardgames of 2022</title><link href="http://localhost:4000/blog/2024/01/boardgames.html" rel="alternate" type="text/html" title="Boardgames of 2022" /><published>2024-01-12T00:00:00+08:00</published><updated>2024-01-12T00:00:00+08:00</updated><id>http://localhost:4000/blog/2024/01/boardgames</id><content type="html" xml:base="http://localhost:4000/blog/2024/01/boardgames.html"><![CDATA[<p>I continued tracking the boardgames I played through 2023 (<a href="/blog/2023/02/boardgames.html">see the 2022 list</a>). Last year I played 21 different games a total of 47 times. The increase was largely due to joining a couple of clubs: <a href="https://boardgamegeek.com/guild/view/4251">Strategy Boardgamers WA</a> is a reborn version of the Perth Long Boardgames club that shutdown during the Covid lockdowns; The Salvage League (no website) is devoted to playing quick games of Battletech: Alpha Strike. I had a goal of finishing the year having played all my previous unplayed games (they are marked in bold). I missed one, <a href="https://boardgamegeek.com/boardgame/163154/falling-sky-gallic-revolt-against-caesar">Falling Sky</a>, but it is on the schedule to be played at SBWA in a few months (fingers crossed).</p>
 
-&lt;p&gt;&lt;a href=&quot;/slideshows/adelaide_23.html&quot;&gt;&lt;img src=&quot;/assets/slideshow/adelaide_23/vineyard_main.png&quot; alt=&quot;&quot; title=&quot;Barossa vineyard&quot; /&gt;&lt;/a&gt;&lt;/p&gt;</content><author><name>Charles</name></author><category term="Posts" /><category term="Travel" /><category term="Australia" /><summary type="html">It has been a while since I last travelled out of Perth, so it was nice to get away to Adelaide and its surrounds for a week.</summary></entry><entry><title type="html">Blame</title><link href="http://localhost:4000/blog/2023/03/blame.html" rel="alternate" type="text/html" title="Blame" /><published>2023-03-15T00:00:00+08:00</published><updated>2023-03-15T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/03/blame</id><content type="html" xml:base="http://localhost:4000/blog/2023/03/blame.html">&lt;p&gt;Some time ago the news included a story about the British government hiring an Australian ex-politician to be a trade envoy during the Brexit upheavel. I thought this was an understandable move from the point-of-view of British politicians and civil servants. If it all went badly (as was likely) thay could just blame the Aussie and sack him.&lt;/p&gt;
+<table>
+  <thead>
+    <tr>
+      <th>Game</th>
+      <th>Plays</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/142526/battletech-alpha-strike"><strong>Battletech: Alpha Strike</strong></a></td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/266192/wingspan">Wingspan</a></td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/173346/7-wonders-duel">7 Wonders: Duel</a></td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/241724/villagers">Villagers</a></td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/251658/sprawlopolis">Sprawlopolis</a></td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/180263/7th-continent"><strong>7th Continent</strong></a></td>
+      <td>2 (sessions)</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/62222/commands-colors-napoleonics"><em>Commands &amp; Colors: Napoleonics</em></a></td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/281655/high-frontier-4-all"><strong>High Frontier (Race For Glory version)</strong></a></td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/281655/high-frontier-4-all"><strong>High Frontier (full version)</strong></a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/1540/battletech"><strong>Battletech: Classic</strong></a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/251442/liberation"><strong>Liberation</strong></a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/30549/pandemic">Pandemic</a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/245654/railroad-ink-deep-blue-edition"><em>Railroad Ink</em></a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/205637/arkham-horror-card-game"><strong>Arkham Horror</strong></a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/12891/friedrich"><em>Friedreich</em></a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/214234/tank-duel-enemy-crosshairs"><em>Tank Duel</em></a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/253506/versailles-1919"><em>Versailles 1919</em></a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/234477/battle-rokugan"><em>Battle of Rokugan</em></a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/295103/almoravid-reconquista-and-riposte-spain-1085-1086"><em>Almoravid</em></a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/289937/ancient-civilizations-middle-east"><em>Ancient Civilizations of the Middle East</em></a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/400314/apiary"><em>Apiary</em></a></td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
 
-&lt;p&gt;It reminded me of the blame management I sometimes saw while working at large firms. At a couple of places there was a layer of management usually above the team managers and below senior managers that had “taking the blame” as a big part of their implicit job description. At some places outside consultants seemed to occupy the same role. Officially they were always in charge of this or that project, but had no direct power to get work done. They had responsibility without authority. If things didn’t succeed they got the blame for events outside their control. The cynic would suggest they were just the sacrificial lambs to ensure the senior managers remained unblemished. Rarely did any technical (ie non-management) get serious blame for the larger problems. Smaller things we got the blame for all the time, often deservedly, but here I mean the larger failures noticable to senior management. I wonder if this was the same outside the IT world? I suspect in my world blaming the people close to the work (like Software Engineers) would be counter-productive as we could just leave and get another job very easily. I also assume senior management never considered themselves the problem.&lt;/p&gt;
+<p>Games listed in <em>italics</em> are games I do not own, while those in <strong>bold</strong> are my games that I played for the first time in 2023. Very long games split over multiple days are counted in distinct play sessions (of at least 2 hours).</p>
 
-&lt;p&gt;I developed a rule of thumb for identifying blame managers. If you job was to “coordinate” or other vague terms that seemed to describe a lack of concrete responsibilty, you were safe. You could probably worm yourself out of a bad situation. If your job was “delivery” or running a project and you did not actually have any resources or subordinates, especially if you are in a &lt;a href=&quot;https://en.wikipedia.org/wiki/Matrix_management&quot;&gt;matrix-based organisation&lt;/a&gt; - watch out!&lt;/p&gt;</content><author><name>Charles</name></author><category term="Blog" /><category term="General" /><category term="Memories" /><summary type="html">Some time ago the news included a story about the British government hiring an Australian ex-politician to be a trade envoy during the Brexit upheavel. I thought this was an understandable move from the point-of-view of British politicians and civil servants. If it all went badly (as was likely) thay could just blame the Aussie and sack him.</summary></entry><entry><title type="html">Boardgames of 2022</title><link href="http://localhost:4000/blog/2023/02/boardgames.html" rel="alternate" type="text/html" title="Boardgames of 2022" /><published>2023-02-15T00:00:00+08:00</published><updated>2023-02-15T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/02/boardgames</id><content type="html" xml:base="http://localhost:4000/blog/2023/02/boardgames.html">&lt;p&gt;I have started tracking the boardgames I play during the year. In 2022 I played 11 different titles for a total of 34 games. That doesn’t seem like much to me (but there were also 6 games of my prototypes). Here is the list:&lt;/p&gt;
+<p>Here are my thoughts on any game I played more than once, and haven’t previously reviewed (consider my plays of 7 Wonders Duel &amp; Sprawlopolis as a sign of my continued enjoyment):</p>
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Game&lt;/th&gt;
-      &lt;th&gt;Plays&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/173346/7-wonders-duel&quot;&gt;7 Wonders: Duel&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/328871/terraforming-mars-ares-expedition&quot;&gt;Terraforming Mars: AE&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/251658/sprawlopolis&quot;&gt;Sprawlopolis&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/274364/watergate&quot;&gt;Watergate&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/230253/star-realms-frontiers&quot;&gt;Star Realms: Frontiers&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/227789/heaven-ale&quot;&gt;Heaven &amp;amp; Ale&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/281655/high-frontier-4-all&quot;&gt;High Frontier (Space Diamonds version)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/14996/ticket-ride-europe&quot;&gt;Ticket To Ride: Europe&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/103885/star-wars-x-wing-miniatures-game&quot;&gt;X-Wing&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/30549/pandemic&quot;&gt;Pandemic&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/283864/trails-tucana&quot;&gt;Trails of Tucana&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+<ul>
+  <li><strong>Battletech</strong>: Large <a href="https://en.wikipedia.org/wiki/Mecha">mecha</a> battling other large mecha in a 31st century beset by war. This miniatures wargame came out 40 years ago and has been moderately popular ever since. I like it, and have played a lot of the faster paced, larger scale Alpha Strike version, but the more detailed, slower classic version is good too.</li>
+  <li><strong>Wingspan</strong>: Cute tableau builder about collecting birds for a sanctuary. Beautiful art and strangely popular with people who don’t play many boardgames. Enjoyable but I’m not  good player as a there is enough randomness that plans go astray quickly. Maybe that is why people like playing against me.</li>
+  <li><strong>Villagers</strong>: Fast tableau builder about building up a medieval village by tempting increasingly skilled and thus valuable workpeople to move in.</li>
+  <li><strong>High Frontier</strong>: Complicated simulation of spaceship travel and construction through the solar system. Designed by an ex-NASA engineer with known physics (no faster-than-light stuff here). Requires commitment, concentration, patience and several hours to play. Finishing a game successfully gives a sense of satisfaction, like an exhausting workout. Very hard to get other people interested in trying it, a certain mindset is required :)</li>
+  <li><strong>7th Continent</strong>: A long card-based cooperative narrative adventure game that is like a cross between a choose-your-own-adventure and a boardgame. Very long - my first game was 5 hours and the second 6, both were losses. Interesting, but it seems very puzzle based, so the more you play, the more you recognise situations and the easier it becomes. I feel this may not be a keeper and after a few more games it will be time to move it on.</li>
+  <li><strong>Commands &amp; Colors: Napoleonics</strong>: A cross between a boardgame and a miniatures game, here you move blocks denoting various units around a board to recreate various Napoleonic battles. The hook is that you can’t just move and fight at will. To model the problems of historical command, each player must play cards that dictate which units may act. Frustrating, but in a good way, and fast playing, so it doesn’t feel unfair.</li>
+</ul>]]></content><author><name>Charles</name></author><category term="Blog" /><category term="Games" /><category term="Board Games" /><summary type="html"><![CDATA[I continued tracking the boardgames I played through 2023 (see the 2022 list). Last year I played 21 different games a total of 47 times. The increase was largely due to joining a couple of clubs: Strategy Boardgamers WA is a reborn version of the Perth Long Boardgames club that shutdown during the Covid lockdowns; The Salvage League (no website) is devoted to playing quick games of Battletech: Alpha Strike. I had a goal of finishing the year having played all my previous unplayed games (they are marked in bold). I missed one, Falling Sky, but it is on the schedule to be played at SBWA in a few months (fingers crossed).]]></summary></entry><entry><title type="html">Goals 2024</title><link href="http://localhost:4000/blog/2024/01/goals.html" rel="alternate" type="text/html" title="Goals 2024" /><published>2024-01-11T00:00:00+08:00</published><updated>2024-01-11T00:00:00+08:00</updated><id>http://localhost:4000/blog/2024/01/goals</id><content type="html" xml:base="http://localhost:4000/blog/2024/01/goals.html"><![CDATA[<p>My attempt to achieve <a href="/blog/2023/02/goals.html">last years goals</a> was a failure. Not completely, I did manage to complete the two easiest and one other goal, but that is only a 50% success rate. It has been a year of distractions: from self-inflicted injury, long holidays, and technology indecision. Here is the assessment:</p>
 
-&lt;p&gt;And now some short reviews of the games I own and have played at least 3 times:&lt;/p&gt;
+<ul>
+  <li><strong>Increase strength and aerobic fitness</strong>: Fail. This was going well until I tore my supraspinatus shoulder tendon in May. The physio recommended no exercise (other than light recovery exercise) for several months, but I’ve gone longer due to other things, and haven’t started again yet.</li>
+  <li><strong>Demo quality Ci2D</strong>: Nope, nowhere near this. I started working on it four times in different languages/engines this year (Unity, Scala, Typescript and Godot). I don’t want to use Unity anymore after their <a href="https://www.jarrahtechnology.com/2023/10/01/Smug-Mode.html">fiasco</a>, but I’m struggling to find a suitable replacement.</li>
+  <li><strong>Continue on IPO &amp; maybe one other</strong>: Done, but barely. I created another version of IPO, and nothing else.</li>
+  <li><strong>18 blog articles (including Jarrah Technology)</strong>: Done. Eight here and 12 on Jarrah Technology, this is the easiest goal.</li>
+  <li><strong>Fix the bedroom window issues, fix the terrace drainage problem &amp; build a chicken coop</strong>: Done, and not too badly. See the photo below of the chicken coop I built.</li>
+  <li><strong>Paint at least 10 miniatures, and have played all my boardgames</strong>: So close, but no. After <a href="/blog/2023/06/miniatures.html">a late start</a>, I now have two dozen painted minis and I’m getting better. However, I have one unplayed boardgame: <a href="https://boardgamegeek.com/boardgame/163154/falling-sky-gallic-revolt-against-caesar">Falling Sky</a>, a heavy and long wargame about Caesar’s Gallic Wars (perhaps a hard sell for other players:). Still I have found a group willing to play but scheduling issues mean it is down for April.</li>
+</ul>
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;7 Wonders Duel&lt;/strong&gt;: this is a 2-player only version of the also excellent deckbuilder &lt;a href=&quot;https://boardgamegeek.com/boardgame/68448/7-wonders&quot;&gt;7 Wonders&lt;/a&gt;. The goal is to build an ancient civilisation by selecting cards from layouts of escalating power. Some of the cards are hidden until they can be chosen other are visible from the start. There are lots of ways to acculumate points and many strategies. You have to adapt to the situation and your opponent. This is an excellent game and so much fun. I’ll be playing much more.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Terraforming Mars: Ares Expedition&lt;/strong&gt;: the 2-player version of &lt;a href=&quot;https://boardgamegeek.com/boardgame/167791/terraforming-mars&quot;&gt;Terraforming Mars&lt;/a&gt;, an engine building game where the players vie to contribute the most towards making Mars human habitable. The back of the box says it plays in under an hour but I have never taken less than 90 minutes. So far there is little interaction with the opponent, but the depth of tactics and huge number of possibilities keeps me interested. A good game I’ll keep playing for now, but will it keep me interested when it is more familiar?&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Sprawlopolis&lt;/strong&gt;: 18 card city builder. Quick and challenging, you lay the cards down like tiles to plan out a city, while trying to satisfy 3 randomly generated scoring rules. Can be played solo. Everyone I have played this with loves it, and deservedly so. Great to carry around as time-filler between other things (as were all the plays this year).&lt;/li&gt;
-&lt;/ul&gt;
+<p><img src="/assets/posts/chicken_coop.png" alt="Chicken Coop" title="Chicken Coop" /></p>
 
-&lt;p&gt;FYI: 3 plays is the review minimum because that excludes Watergate. I like the asymmetric gameplay of that Watergate, but am worried one side may have an winning advantage - I need more plays before giving a fair review.&lt;/p&gt;</content><author><name>Charles</name></author><category term="Blog" /><category term="Games" /><category term="Board Games" /><summary type="html">I have started tracking the boardgames I play during the year. In 2022 I played 11 different titles for a total of 34 games. That doesn’t seem like much to me (but there were also 6 games of my prototypes). Here is the list:</summary></entry><entry><title type="html">15 years</title><link href="http://localhost:4000/blog/2023/02/15-years.html" rel="alternate" type="text/html" title="15 years" /><published>2023-02-14T00:00:00+08:00</published><updated>2023-02-14T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/02/15-years</id><content type="html" xml:base="http://localhost:4000/blog/2023/02/15-years.html">&lt;p&gt;The first post published here was fifteen years ago this month. Now there are 436 posts in total (including this one) corresponding to a rate of 29 posts/year. The result is 2.6MB of ascii text and around 240000 words which means an average post is 550 words.&lt;/p&gt;
+<p>Will next year be better?</p>
 
-&lt;p&gt;Since the last similar &lt;a href=&quot;/blog/2015/02/blog-stats.html&quot;&gt;meta post&lt;/a&gt; 7 years ago, I have removed all visitor tracking, so no cookies or comments (or at least there shouldn’t be unless someone is injecting them - let me know if you see any). The site is also hosted for free on Github without logs. Thus it is no longer possible to be sure how many people visit, or from where, or for how long. Although I suspect that the trend is downwards as there are less of the technical posts that picked up organic Google Search traffic in the past and more posts about games I’m playing.&lt;/p&gt;
+<ul>
+  <li><strong>Return to a decent level of fitness and strength</strong>: Just in the last month my shoulder is feeling good again. Time to (gently) get back to exercise.</li>
+  <li><strong>Improve Spanish</strong>: With my extra time, I restarted learning Spanish last year. It came back fairly quickly. I should keep it up.</li>
+  <li><strong>Learn to 3D print (and then paint the result)</strong>: I bought myself a 3D printer for christmas. I should learn to use it properly, print some minis, and paint them.</li>
+  <li><strong>18 blog articles (including Jarrah Technology)</strong>:  An easy one to ensure I hit at least one of these.</li>
+  <li><strong>Demo quality Ci2D</strong>: This is ambitious, but I need to choose a technology and start moving.</li>
+</ul>]]></content><author><name>Charles</name></author><category term="Blog" /><category term="Goals" /><summary type="html"><![CDATA[My attempt to achieve last years goals was a failure. Not completely, I did manage to complete the two easiest and one other goal, but that is only a 50% success rate. It has been a year of distractions: from self-inflicted injury, long holidays, and technology indecision. Here is the assessment:]]></summary></entry><entry><title type="html">China</title><link href="http://localhost:4000/blog/2023/10/china.html" rel="alternate" type="text/html" title="China" /><published>2023-10-06T00:00:00+08:00</published><updated>2023-10-06T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/10/china</id><content type="html" xml:base="http://localhost:4000/blog/2023/10/china.html"><![CDATA[<p>I recently spent nearly a month in China. A fortnight in <a href="https://en.wikipedia.org/wiki/Guangxi">Guangxi</a> (mostly <a href="https://en.wikipedia.org/wiki/Hechi">Hechi</a> &amp; <a href="https://en.wikipedia.org/wiki/Guilin">Guilin</a>) staying with a friend’s family, and then a few days each in <a href="https://en.wikipedia.org/wiki/Wuhan">Wuhan</a> (halfway between Guilin and Beijing on the train), <a href="https://en.wikipedia.org/wiki/Beijing">Beijing</a> and <a href="https://en.wikipedia.org/wiki/Shanghai">Shanghai</a>. I took hundreds of photos and could write a great deal, but will try to keep it succinct with some notes.</p>
 
-&lt;p&gt;On the plus side, this blog no longers costs me anything (other than writing time). At the start it cost US$10/month for hosting plus my sysadmin time. Then it went to US$5/month + sysadmin as improving technology compared to my relatively static requirements meant I could use smaller systems. Now hosting a few GB of static site is effectively no cost, and certainly no cost to me.&lt;/p&gt;
+<ul>
+  <li>The first day was spent in <a href="https://en.wikipedia.org/wiki/Nanning">Nanning</a> and I quickly noticed that the streets were quieter than expected. Almost all of the scooters on the road and about a fifth of the cars were electric so made little noise. It was easy to tell which cars were electric as they had green number plates while ICE cars had other colours. There were a wide range of electric car brands, most were local and I had never heard about them before. Tesla’s were common too. In Shanghai around half the cars seemed to be electric, but in Beijing and Wuhan it was around 10-20%.</li>
+  <li>There are lots of building sites, usually of huge towers but most showed no evidence of currently being worked on (that I could see). Of course I may have missed some signs or they just weren’t being worked on at the time I passed. Still it was noticable.</li>
+  <li>Travelling across the country we saw many wide navigatable rivers. Also everywhere was green and verdant. Farms seemed small (compared to Australian standards). A big one would be a few acres or more. Every bit of spare space was turned to cultivation: empty city blocks and roadside verges often had neat rows of fruit/vegetable plants.</li>
+  <li>All the cities were clean (like Perth) and felt safe no matter what alley we walked down. Some of the villages were a little rougher (not much!) but that is to be expected in working agricultural centers. The vast majority of people we met (including security) were polite and friendly.</li>
+  <li>High-speed trains are awesome. Quick to get on at the station, and a few hours later you are at the center of another city. They have a speed display between cabins and the highest I saw was 359km/h. Most train stations are monumental - so big they look half empty even with thousands of people in them (<a href="/slideshows/china_23.html">see photo slideshow</a>).</li>
+  <li>Once we left Hechi there was air pollution everywhere. Not too bad, I’ve seen far worse, but it was still noticable. The horizon looked grey and distant buildings would fade into it. I would sneeze or cough for a few minutes each morning when leaving the hotel.</li>
+  <li>Everything is done electronically. WeChat or Alipay is an absolute necesity. Train tickets, tourist site tickets, communicating with people, nearly everything we did was organised through WeChat. This worked fine until we reached Shanghai and found Alipay (which we didn’t have) was more popular, so we had problems getting things done (the ferry told us to go away).</li>
+  <li>All payment is electronic through WeChat or Alipay. In my entire time in China I didn’t see a single credit card (nor use one), nor a paper ticket and I saw cash twice: once a tourist at a tourist site and once a local paying at a market. Everything else either has you send money directly through an app or has a QR code for transfers. Street stalls, hotels, trains, taxis, even the binoculars at tourist sites have QR codes. Usually this is the only way to pay. The country runs on QR codes.</li>
+  <li>It must be impossible to survive as an independent tourist in China without access to these apps. We had one person with WeChat (through a local relative) and used that. As non-residents it requires some planning to get them. I applied for restricted WeChat (payment, messaging and a few other things) and it took 15 days to get access. So for the first half of the trip I was completely reliant on other people.</li>
+  <li>Also you don’t have to go far off the tourist trail before having great difficulty with English. Unless you have access to WeChat/Alipay and someone who speaks Mandarin I would recommend using tour groups.</li>
+  <li>Everyone has a fancy phone and spends most of their time staring at it (just like home :) Tiktok is incredibly popular, people would talk about it all the time. Public phone chargers are common and often unattended (you pay via QR code).</li>
+  <li>Highspeed wifi or 5G is nearly ubiquitous, much better than in Australia. However, the Great Firewall is real and works all too well. If you want to access a website or service from outside China then bring a good VPN with you - no recommendations because the list of working ones changes every few months as the firewall is constantly updated.</li>
+  <li>In the south at least the local languages seem to be disappearing, with the younger generations using Mandarin, while the middle aged and older would still use their regional language as default.</li>
+  <li>China is a nation of shopkeepers. So many shops or stalls everywhere. I also saw lots of delivery drivers with stacks of packages, so Internet shopping is clearly big business too. Who is buying all the stuff? I hope the rent on shops is cheap to keep overheads low.</li>
+  <li>Water fountains sometimes had 3 settings: cold, tepid, and boiling hot. That is not an exaggeration! It was boiling water that people used for pot noodles.</li>
+  <li>We visited a couple of villages and the houses looked recent and decent, but they seemed empty. I am told people would move to the cities and then build a nice house back in the village but not live there (or only for short periods). The village’s permanent residents were mainly older or poorer people.</li>
+  <li>A goat costs AU$400. I know because that is what we paid to provide one for a village feast. There were also ducks, chickens and geese just wandering around the village, but apparently people know who owns them. Ducks get carried around in little pastic bags with their heads poking out. Its cute, but they are often being carried to become dinner. The meat was definitely full of flavour, but also chewy. The tofu was noticable tastier than in Australia (but then our hosts were tofu makers by profession). All of the village alcohol is home made, carried around in very large bowls and quite strong. It was some kind of grain spirit (but I was told it was not rice). Alcoholism was an issue.</li>
+  <li>The ground floor of village houses were an extension of the outside. Some used it for equipment storage, or animals. A couple of places used it to store silkworms on a bed of mulberry leaves (<a href="/slideshows/china_23.html">see photo slideshow</a>). A good way to earn extra money I’m told.</li>
+  <li>Every house/apartment we visited had a large flatscreen TV and water filtration system. Some in the villages (but not the city) had scary exposed wiring that I told was usually done by the owner - the week before we arrived a friend of our hosts was electrocuted to death.</li>
+  <li>I often saw men smoke (like Australia over 30 years ago), but never saw a woman smoking. Men seemed to be drinking far more often too. Alcohol and cigarettes are cheap, presumably the tax on them is lower?</li>
+  <li>Cities got more expensive as we travelled: Hechi &lt; Guilin &lt; Wuhan &lt; Beijing &lt; Shanghai. Shanghai didn’t feel much cheaper than smaller Australian cities (apart from the alcohol and street food). Also people became clearly taller once we left Guangxi.</li>
+  <li>After Hechi, we booked hotels through WeChat, but many had a no foreigners policy. All the hotels we stayed in were good, quiet and clean.</li>
+  <li>Once we got to Beijing there was definite increase in police/military security. Before and after that city it was around but didn’t feel too much (we had our ID checked twice at all the train stations for example - but it was far quicker than at an airport). In Beijing we would be stoppped and have our ID and bags checked several times per day just walking around, plus extra at any tourist sites. It was always polite, fast and friendly (apart from Tianamen Square, where they gruffly checked every item in my bag individually and I had to wait for them to read each page of paper I was carrying). There were also many uniformed police or military standing, walking or marching around. Also lots more video cameras (about to London levels).</li>
+  <li>Sometimes it seemed these checks were security theatre. Once I took a step too far and could see the screen of the guy checking my passport. I saw him enter an incorrect last digit of my passport number and then saw a big red warning message appear. He simply returned my passport and waved me through with a smile.</li>
+  <li>We went to visit a street market and <a href="https://en.wikipedia.org/wiki/Hutong">Hutong</a> (local alleyways) one of us used to frequent when they lived in Beijing for a few months 20 years ago. They no longer existed. They had been replaced by modern shops and apartments. Apparently a common occurrence. We did find a Hutong, but it felt very touristy.</li>
+  <li>The <a href="https://en.wikipedia.org/wiki/Forbidden_City">Forbidden City</a> is huge and a great place to visit. We spent half a day there and could easily have spent longer. Recommended.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Great_Wall_of_China">The Great Wall</a> is overrated as a tourist site. The wall is impressive because of its extent, something you will not be able to appreciate on the few kilometers accessible at a time. It is also very busy and could be renamed the Great Line of China. We waited nearly 3 hours in line for a leisurely hour on the wall, shoulder to shoulder with other tourists. I have to say the lines were well organised. Full of turns and broken into stages, it never seemed like there was that many people in front of you - until you turned the corner. Each new stage of the queue was like a new stage in the <a href="https://en.wikipedia.org/wiki/">5 stages of grief</a>.</li>
+  <li>In Guangxi apartments tended to have security grates over the windows. At the time I was told this was normal all over the country, but I rarely saw it anywhere else we went. Strange. I was also told that Guangxi had great water and it could be found bottled throughout the country, this was definitely true in my experience.</li>
+  <li>Guilin is a tourist trap, everywhere we went the exit was through a gift shop or three. It is a pretty place, but I didn’t find it much prettier than areas around Hechi. I probably would have been more impressed if went there first.</li>
+  <li>Many tourist sites sell icecreams in the shape of the tourist site. Reader, I succumbed to the herd instinct and bought one. They are better then I expected - not great, but decent.</li>
+  <li>In Guangxi there many shops selling scooter batteries with a poster of a benevolent <a href="https://en.wikipedia.org/wiki/Donnie_Yen">Donnie Yen</a> gazing down upon the street. He was the only person on street advertising that I recognized. It was strangely comforting.</li>
+</ul>
 
-&lt;p&gt;In the &lt;a href=&quot;/blog/2008/02/the-beginning-again.html&quot;&gt;very first post&lt;/a&gt; I detailed my reasons for creating this blog:&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;“The aim of this blog is to detail my attempts to create a business that exists on more just selling my time as a consultant; other programming projects I undertake; and any other nonsense I think about.”&lt;/p&gt;
-&lt;/blockquote&gt;
+<p>Some photos from the trip are in a short slideshow <a href="/slideshows/china_23.html">available here</a>.</p>
 
-&lt;p&gt;I think that last clause has been met :) It has been some time since the last programming post (other than advertising for my games). Most of my days are spent coding, but I rarely feel what I doing is notable enough for public comment. I should probably change that, and just force out some technical posts.&lt;/p&gt;</content><author><name>Charles</name></author><category term="Blog" /><category term="Meta" /><category term="General" /><summary type="html">The first post published here was fifteen years ago this month. Now there are 436 posts in total (including this one) corresponding to a rate of 29 posts/year. The result is 2.6MB of ascii text and around 240000 words which means an average post is 550 words.</summary></entry><entry><title type="html">Goals</title><link href="http://localhost:4000/blog/2023/02/goals.html" rel="alternate" type="text/html" title="Goals" /><published>2023-02-10T00:00:00+08:00</published><updated>2023-02-10T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/02/goals</id><content type="html" xml:base="http://localhost:4000/blog/2023/02/goals.html">&lt;p&gt;Why do I do this? Am I a masochist? Time again to assess &lt;a href=&quot;/blog/2022/01/goals.html&quot;&gt;last years goals&lt;/a&gt;:&lt;/p&gt;
+<p><a href="/slideshows/china_23.html"><img src="/assets/slideshow/china_23/forbidden_main.png" alt="" title="The Forbidden City" /></a></p>]]></content><author><name>Charles</name></author><category term="Posts" /><category term="Travel" /><category term="China" /><summary type="html"><![CDATA[I recently spent nearly a month in China. A fortnight in Guangxi (mostly Hechi &amp; Guilin) staying with a friend’s family, and then a few days each in Wuhan (halfway between Guilin and Beijing on the train), Beijing and Shanghai. I took hundreds of photos and could write a great deal, but will try to keep it succinct with some notes. The first day was spent in Nanning and I quickly noticed that the streets were quieter than expected. Almost all of the scooters on the road and about a fifth of the cars were electric so made little noise. It was easy to tell which cars were electric as they had green number plates while ICE cars had other colours. There were a wide range of electric car brands, most were local and I had never heard about them before. Tesla’s were common too. In Shanghai around half the cars seemed to be electric, but in Beijing and Wuhan it was around 10-20%. There are lots of building sites, usually of huge towers but most showed no evidence of currently being worked on (that I could see). Of course I may have missed some signs or they just weren’t being worked on at the time I passed. Still it was noticable. Travelling across the country we saw many wide navigatable rivers. Also everywhere was green and verdant. Farms seemed small (compared to Australian standards). A big one would be a few acres or more. Every bit of spare space was turned to cultivation: empty city blocks and roadside verges often had neat rows of fruit/vegetable plants. All the cities were clean (like Perth) and felt safe no matter what alley we walked down. Some of the villages were a little rougher (not much!) but that is to be expected in working agricultural centers. The vast majority of people we met (including security) were polite and friendly. High-speed trains are awesome. Quick to get on at the station, and a few hours later you are at the center of another city. They have a speed display between cabins and the highest I saw was 359km/h. Most train stations are monumental - so big they look half empty even with thousands of people in them (see photo slideshow). Once we left Hechi there was air pollution everywhere. Not too bad, I’ve seen far worse, but it was still noticable. The horizon looked grey and distant buildings would fade into it. I would sneeze or cough for a few minutes each morning when leaving the hotel. Everything is done electronically. WeChat or Alipay is an absolute necesity. Train tickets, tourist site tickets, communicating with people, nearly everything we did was organised through WeChat. This worked fine until we reached Shanghai and found Alipay (which we didn’t have) was more popular, so we had problems getting things done (the ferry told us to go away). All payment is electronic through WeChat or Alipay. In my entire time in China I didn’t see a single credit card (nor use one), nor a paper ticket and I saw cash twice: once a tourist at a tourist site and once a local paying at a market. Everything else either has you send money directly through an app or has a QR code for transfers. Street stalls, hotels, trains, taxis, even the binoculars at tourist sites have QR codes. Usually this is the only way to pay. The country runs on QR codes. It must be impossible to survive as an independent tourist in China without access to these apps. We had one person with WeChat (through a local relative) and used that. As non-residents it requires some planning to get them. I applied for restricted WeChat (payment, messaging and a few other things) and it took 15 days to get access. So for the first half of the trip I was completely reliant on other people. Also you don’t have to go far off the tourist trail before having great difficulty with English. Unless you have access to WeChat/Alipay and someone who speaks Mandarin I would recommend using tour groups. Everyone has a fancy phone and spends most of their time staring at it (just like home :) Tiktok is incredibly popular, people would talk about it all the time. Public phone chargers are common and often unattended (you pay via QR code). Highspeed wifi or 5G is nearly ubiquitous, much better than in Australia. However, the Great Firewall is real and works all too well. If you want to access a website or service from outside China then bring a good VPN with you - no recommendations because the list of working ones changes every few months as the firewall is constantly updated. In the south at least the local languages seem to be disappearing, with the younger generations using Mandarin, while the middle aged and older would still use their regional language as default. China is a nation of shopkeepers. So many shops or stalls everywhere. I also saw lots of delivery drivers with stacks of packages, so Internet shopping is clearly big business too. Who is buying all the stuff? I hope the rent on shops is cheap to keep overheads low. Water fountains sometimes had 3 settings: cold, tepid, and boiling hot. That is not an exaggeration! It was boiling water that people used for pot noodles. We visited a couple of villages and the houses looked recent and decent, but they seemed empty. I am told people would move to the cities and then build a nice house back in the village but not live there (or only for short periods). The village’s permanent residents were mainly older or poorer people. A goat costs AU$400. I know because that is what we paid to provide one for a village feast. There were also ducks, chickens and geese just wandering around the village, but apparently people know who owns them. Ducks get carried around in little pastic bags with their heads poking out. Its cute, but they are often being carried to become dinner. The meat was definitely full of flavour, but also chewy. The tofu was noticable tastier than in Australia (but then our hosts were tofu makers by profession). All of the village alcohol is home made, carried around in very large bowls and quite strong. It was some kind of grain spirit (but I was told it was not rice). Alcoholism was an issue. The ground floor of village houses were an extension of the outside. Some used it for equipment storage, or animals. A couple of places used it to store silkworms on a bed of mulberry leaves (see photo slideshow). A good way to earn extra money I’m told. Every house/apartment we visited had a large flatscreen TV and water filtration system. Some in the villages (but not the city) had scary exposed wiring that I told was usually done by the owner - the week before we arrived a friend of our hosts was electrocuted to death. I often saw men smoke (like Australia over 30 years ago), but never saw a woman smoking. Men seemed to be drinking far more often too. Alcohol and cigarettes are cheap, presumably the tax on them is lower? Cities got more expensive as we travelled: Hechi &lt; Guilin &lt; Wuhan &lt; Beijing &lt; Shanghai. Shanghai didn’t feel much cheaper than smaller Australian cities (apart from the alcohol and street food). Also people became clearly taller once we left Guangxi. After Hechi, we booked hotels through WeChat, but many had a no foreigners policy. All the hotels we stayed in were good, quiet and clean. Once we got to Beijing there was definite increase in police/military security. Before and after that city it was around but didn’t feel too much (we had our ID checked twice at all the train stations for example - but it was far quicker than at an airport). In Beijing we would be stoppped and have our ID and bags checked several times per day just walking around, plus extra at any tourist sites. It was always polite, fast and friendly (apart from Tianamen Square, where they gruffly checked every item in my bag individually and I had to wait for them to read each page of paper I was carrying). There were also many uniformed police or military standing, walking or marching around. Also lots more video cameras (about to London levels). Sometimes it seemed these checks were security theatre. Once I took a step too far and could see the screen of the guy checking my passport. I saw him enter an incorrect last digit of my passport number and then saw a big red warning message appear. He simply returned my passport and waved me through with a smile. We went to visit a street market and Hutong (local alleyways) one of us used to frequent when they lived in Beijing for a few months 20 years ago. They no longer existed. They had been replaced by modern shops and apartments. Apparently a common occurrence. We did find a Hutong, but it felt very touristy. The Forbidden City is huge and a great place to visit. We spent half a day there and could easily have spent longer. Recommended. The Great Wall is overrated as a tourist site. The wall is impressive because of its extent, something you will not be able to appreciate on the few kilometers accessible at a time. It is also very busy and could be renamed the Great Line of China. We waited nearly 3 hours in line for a leisurely hour on the wall, shoulder to shoulder with other tourists. I have to say the lines were well organised. Full of turns and broken into stages, it never seemed like there was that many people in front of you - until you turned the corner. Each new stage of the queue was like a new stage in the 5 stages of grief. In Guangxi apartments tended to have security grates over the windows. At the time I was told this was normal all over the country, but I rarely saw it anywhere else we went. Strange. I was also told that Guangxi had great water and it could be found bottled throughout the country, this was definitely true in my experience. Guilin is a tourist trap, everywhere we went the exit was through a gift shop or three. It is a pretty place, but I didn’t find it much prettier than areas around Hechi. I probably would have been more impressed if went there first. Many tourist sites sell icecreams in the shape of the tourist site. Reader, I succumbed to the herd instinct and bought one. They are better then I expected - not great, but decent. In Guangxi there many shops selling scooter batteries with a poster of a benevolent Donnie Yen gazing down upon the street. He was the only person on street advertising that I recognized. It was strangely comforting. Some photos from the trip are in a short slideshow available here.]]></summary></entry><entry><title type="html">Miniatures</title><link href="http://localhost:4000/blog/2023/06/miniatures.html" rel="alternate" type="text/html" title="Miniatures" /><published>2023-06-06T00:00:00+08:00</published><updated>2023-06-06T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/06/miniatures</id><content type="html" xml:base="http://localhost:4000/blog/2023/06/miniatures.html"><![CDATA[<p>Through the purchase of various bordgames I have acquired a large number of small miniatures. Most of them are just the monochrome plastic. I thought it might be nice to try painting them. However, I didn’t want to start by wrecking the minis of any of my current games, so I bought a learn to paint kit (from Reaper Miniatures) which came with a few test minis.</p>
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Increase strength and aerobic fitness&lt;/strong&gt;: As I write this, I am injured - a reoccurrence of an old foot problem. So my exercise plan is on pause. This happened a couple of times last year. The plan was to lose some weight and then push for new highs. However, due to injury, covid and other things I didn’t manage to start losing weight until November. Thus I am definitely not stronger this year. I have been cycling regularly (until my foot injury a couple of days ago) so I might be fitter aerobically. Call this one a partial success.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Finish and release SHD&lt;/strong&gt;: &lt;a href=&quot;/blog/2022/12/release.html&quot;&gt;Done&lt;/a&gt;! There should be a patch release soon too.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Update Common Library&lt;/strong&gt;: Done! Or at least done enough to qualify as a success.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Computer prototype Ci2D&lt;/strong&gt;: Nope, not even started (but the plan is to start in March).&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Paper prototype IPO, Ci2D, &amp;amp; maybe one other&lt;/strong&gt;: Done! I have decent, not obviously broken, prototypes of IPO &amp;amp; Ci2d. Both could use a few more iterations, but not too bad.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;18 blog articles (including Jarrah Technology)&lt;/strong&gt;: Done! There were 12 posts here and 14 on jarrahtechnology.com.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Fix steps, reticulation, ceiling crack &amp;amp; shading&lt;/strong&gt;: Done!&lt;/li&gt;
-&lt;/ul&gt;
+<p>Behold the result of my labours:</p>
 
-&lt;p&gt;5.5 out of 7. Not too bad actually.&lt;/p&gt;
+<p><img src="/assets/posts/minis/minis1.png" width="640" alt="First Attempt" /></p>
 
-&lt;p&gt;I’m not going to be as ambitious this coming year:&lt;/p&gt;
+<p>Not great, but not awful. They are each about 5 centimeters in height and at a tabletop viewing distance look “ok”. Of course if you get close or look at closeup photos, all you can see are the errors. So what did I learn apart from my eyesight is getting worse and my hands are unsteady?</p>
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Increase strength and aerobic fitness&lt;/strong&gt;: Once my foot heals it is time to get back on track. So I need to be aerobically fitter according to my HRM (currently 39 VO2max) and have personal bests for 5 reps (powerlifting rules) in bench press (90kg), overhead press (45kg), and pullups (102kg).&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Demo quality Ci2D&lt;/strong&gt;: Have something good enough to show other people (by my assessment).&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Continue on IPO &amp;amp; maybe one other&lt;/strong&gt;: IPO might have some potential. I should keep going with it.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;18 blog articles (including Jarrah Technology)&lt;/strong&gt;: Same as last year. Easy but just need to do it.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Fix the bedroom window issues, fix the terrace drainage problem &amp;amp; build a chicken coop&lt;/strong&gt;: Some things I’ve promised around the house.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Paint at least 10 miniatures, and have played all my boardgames&lt;/strong&gt;: I have taken up miniature painting although my skill is severely lacking. I should give it a decent try. There are also 5 games currently in my boardgame collection I haven’t played - I need to change that.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Charles</name></author><category term="Blog" /><category term="Goals" /><summary type="html">Why do I do this? Am I a masochist? Time again to assess last years goals:</summary></entry><entry><title type="html">Release</title><link href="http://localhost:4000/blog/2022/12/release.html" rel="alternate" type="text/html" title="Release" /><published>2022-12-14T00:00:00+08:00</published><updated>2022-12-14T00:00:00+08:00</updated><id>http://localhost:4000/blog/2022/12/release</id><content type="html" xml:base="http://localhost:4000/blog/2022/12/release.html">&lt;p&gt;Just after the pandemic started, I used the time in lockdown to start writing a new computer game. Later I stopped because it was a mess, but soon after I started again. Now it is released! Since it was never supposed to be a full game (just an experiment to get things going again) I have greatly skimped on promotion and marketing. Ohh, and the name. It is called Space Hex Duel. It is a turn-based game of strategy and careful positioning.&lt;/p&gt;
+<ul>
+  <li>The less paint per layer the better. It is easier to fix up a watered down bad stroke with another stroke/layer, rather than being stuck with too much paint hiding details or just in the wrong place.</li>
+  <li>Take regular breaks.</li>
+  <li>Have a “mistake” brush handy. If paint goes where it shouldn’t, promptly brushing it with water will usually fix it up.</li>
+  <li>They took about 3 hours each (one at a time), so try doing a few at once. Hopefully I’ll speed up.</li>
+</ul>
 
-&lt;center&gt;&lt;a href=&quot;https://www.jarrahtechnology.com/games/spacehexduel&quot;&gt;&lt;img src=&quot;https://www.jarrahtechnology.com/assets/posts/ahb/capsule_lg.png&quot; alt=&quot;Space Hex Duel&quot; /&gt;&lt;/a&gt;&lt;/center&gt;
+<p>I think it is worth continuing. Next up I’m going to try some duplicate BattleTech miniatures.</p>]]></content><author><name>Charles</name></author><category term="Posts" /><category term="Games" /><category term="Miniatures" /><summary type="html"><![CDATA[Through the purchase of various bordgames I have acquired a large number of small miniatures. Most of them are just the monochrome plastic. I thought it might be nice to try painting them. However, I didn’t want to start by wrecking the minis of any of my current games, so I bought a learn to paint kit (from Reaper Miniatures) which came with a few test minis. Behold the result of my labours: Not great, but not awful. They are each about 5 centimeters in height and at a tabletop viewing distance look “ok”. Of course if you get close or look at closeup photos, all you can see are the errors. So what did I learn apart from my eyesight is getting worse and my hands are unsteady? The less paint per layer the better. It is easier to fix up a watered down bad stroke with another stroke/layer, rather than being stuck with too much paint hiding details or just in the wrong place. Take regular breaks. Have a “mistake” brush handy. If paint goes where it shouldn’t, promptly brushing it with water will usually fix it up. They took about 3 hours each (one at a time), so try doing a few at once. Hopefully I’ll speed up. I think it is worth continuing. Next up I’m going to try some duplicate BattleTech miniatures.]]></summary></entry><entry><title type="html">Adelaide</title><link href="http://localhost:4000/blog/2023/05/adelaide.html" rel="alternate" type="text/html" title="Adelaide" /><published>2023-05-03T00:00:00+08:00</published><updated>2023-05-03T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/05/adelaide</id><content type="html" xml:base="http://localhost:4000/blog/2023/05/adelaide.html"><![CDATA[<p>It has been a while since I last travelled out of Perth, so it was nice to get away to Adelaide and its surrounds for a week.</p>
 
-&lt;p&gt;Here is a short trailer showing off the gameplay:&lt;/p&gt;
+<p>Some thoughts:</p>
 
-&lt;center&gt;&lt;iframe src=&quot;http://www.youtube.com/embed/62viGwySbjk&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/center&gt;
+<ul>
+  <li>Adelaide seems like a very quiet city, it reminds of Perth in that regard. However, where Perth is all about the beach or river, for Adelaide it is all about wineries. Must be a nice place to live.</li>
+  <li>The Adelaide city markets are definitely worth a visit - should be more places like this in Australia.</li>
+  <li>The little laneways around the edges of either end of Rundle St (not the mall) have some great alfresco dining.</li>
+  <li>The center of Adelaide is very well laid out and pleasant to be around. It is encircled by a park which is excellent planning (reminded me of the half-encircling Turia Gardens in Valencia).</li>
+  <li>The last winery in a winery tour should pay the tour organisers. Anecdotally, the last place on the tour makes the most sales since everyone is a little drunk.</li>
+  <li>Going to wineries gets a bit repetitive - how many ways are there to say “this is a nice wine”?</li>
+  <li>There is not much to see at the mouth of the <a href="https://en.wikipedia.org/wiki/Murray_River">Murray River</a> (Australia’s longest river), but the drive down there has some interesting sights (and of course, wineries).</li>
+  <li>Still using my iPhone for photos, maybe time to dump the old camera?</li>
+  <li>A week is more than enough to “see” Adelaide.</li>
+</ul>
 
-&lt;p&gt;I have put it up on &lt;a href=&quot;https://jarrahtech.itch.io/spacehexduel&quot;&gt;Itch.io&lt;/a&gt; as a Pay-What-You-Want (PWYW) download (suggested donation US$2). I recommend interested people download it for free, and if they enjoy it and would like to say thankyou, then go back and donate. Maybe later I will put it out on Steam too.&lt;/p&gt;
+<p>Some photos from the trip are in a short slideshow <a href="/slideshows/adelaide_23.html">available here</a>.</p>
 
-&lt;center&gt; &lt;iframe frameborder=&quot;0&quot; src=&quot;https://itch.io/embed/1823532?linkback=true&quot; width=&quot;552&quot; height=&quot;167&quot;&gt;&lt;a href=&quot;https://jarrahtech.itch.io/spacehexduel&quot;&gt;Space Hex Duel by JarrahTech&lt;/a&gt;&lt;/iframe&gt;&lt;/center&gt;
+<p><a href="/slideshows/adelaide_23.html"><img src="/assets/slideshow/adelaide_23/vineyard_main.png" alt="" title="Barossa vineyard" /></a></p>]]></content><author><name>Charles</name></author><category term="Posts" /><category term="Travel" /><category term="Australia" /><summary type="html"><![CDATA[It has been a while since I last travelled out of Perth, so it was nice to get away to Adelaide and its surrounds for a week. Some thoughts: Adelaide seems like a very quiet city, it reminds of Perth in that regard. However, where Perth is all about the beach or river, for Adelaide it is all about wineries. Must be a nice place to live. The Adelaide city markets are definitely worth a visit - should be more places like this in Australia. The little laneways around the edges of either end of Rundle St (not the mall) have some great alfresco dining. The center of Adelaide is very well laid out and pleasant to be around. It is encircled by a park which is excellent planning (reminded me of the half-encircling Turia Gardens in Valencia). The last winery in a winery tour should pay the tour organisers. Anecdotally, the last place on the tour makes the most sales since everyone is a little drunk. Going to wineries gets a bit repetitive - how many ways are there to say “this is a nice wine”? There is not much to see at the mouth of the Murray River (Australia’s longest river), but the drive down there has some interesting sights (and of course, wineries). Still using my iPhone for photos, maybe time to dump the old camera? A week is more than enough to “see” Adelaide. Some photos from the trip are in a short slideshow available here.]]></summary></entry><entry><title type="html">Blame</title><link href="http://localhost:4000/blog/2023/03/blame.html" rel="alternate" type="text/html" title="Blame" /><published>2023-03-15T00:00:00+08:00</published><updated>2023-03-15T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/03/blame</id><content type="html" xml:base="http://localhost:4000/blog/2023/03/blame.html"><![CDATA[<p>Some time ago the news included a story about the British government hiring an Australian ex-politician to be a trade envoy during the Brexit upheavel. I thought this was an understandable move from the point-of-view of British politicians and civil servants. If it all went badly (as was likely) thay could just blame the Aussie and sack him.</p>
 
-&lt;p&gt;All the info on the game is ( or will be) on its &lt;a href=&quot;https://www.jarrahtechnology.com/games/spacehexduel&quot;&gt;Jarrah Technology webpage&lt;/a&gt;.&lt;/p&gt;
+<p>It reminded me of the blame management I sometimes saw while working at large firms. At a couple of places there was a layer of management usually above the team managers and below senior managers that had “taking the blame” as a big part of their implicit job description. At some places outside consultants seemed to occupy the same role. Officially they were always in charge of this or that project, but had no direct power to get work done. They had responsibility without authority. If things didn’t succeed they got the blame for events outside their control. The cynic would suggest they were just the sacrificial lambs to ensure the senior managers remained unblemished. Rarely did any technical (ie non-management) get serious blame for the larger problems. Smaller things we got the blame for all the time, often deservedly, but here I mean the larger failures noticable to senior management. I wonder if this was the same outside the IT world? I suspect in my world blaming the people close to the work (like Software Engineers) would be counter-productive as we could just leave and get another job very easily. I also assume senior management never considered themselves the problem.</p>
 
-&lt;p&gt;Now I need to decide what to do next…&lt;/p&gt;</content><author><name>Charles</name></author><category term="Posts" /><category term="Games" /><category term="Space Hex Duel" /><summary type="html">Just after the pandemic started, I used the time in lockdown to start writing a new computer game. Later I stopped because it was a mess, but soon after I started again. Now it is released! Since it was never supposed to be a full game (just an experiment to get things going again) I have greatly skimped on promotion and marketing. Ohh, and the name. It is called Space Hex Duel. It is a turn-based game of strategy and careful positioning.</summary></entry></feed>
+<p>I developed a rule of thumb for identifying blame managers. If you job was to “coordinate” or other vague terms that seemed to describe a lack of concrete responsibilty, you were safe. You could probably worm yourself out of a bad situation. If your job was “delivery” or running a project and you did not actually have any resources or subordinates, especially if you are in a <a href="https://en.wikipedia.org/wiki/Matrix_management">matrix-based organisation</a> - watch out!</p>]]></content><author><name>Charles</name></author><category term="Blog" /><category term="General" /><category term="Memories" /><summary type="html"><![CDATA[Some time ago the news included a story about the British government hiring an Australian ex-politician to be a trade envoy during the Brexit upheavel. I thought this was an understandable move from the point-of-view of British politicians and civil servants. If it all went badly (as was likely) thay could just blame the Aussie and sack him.]]></summary></entry><entry><title type="html">Boardgames of 2022</title><link href="http://localhost:4000/blog/2023/02/boardgames.html" rel="alternate" type="text/html" title="Boardgames of 2022" /><published>2023-02-15T00:00:00+08:00</published><updated>2023-02-15T00:00:00+08:00</updated><id>http://localhost:4000/blog/2023/02/boardgames</id><content type="html" xml:base="http://localhost:4000/blog/2023/02/boardgames.html"><![CDATA[<p>I have started tracking the boardgames I play during the year. In 2022 I played 11 different titles for a total of 34 games. That doesn’t seem like much to me (but there were also 6 games of my prototypes). Here is the list:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Game</th>
+      <th>Plays</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/173346/7-wonders-duel">7 Wonders: Duel</a></td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/328871/terraforming-mars-ares-expedition">Terraforming Mars: AE</a></td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/251658/sprawlopolis">Sprawlopolis</a></td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/274364/watergate">Watergate</a></td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/230253/star-realms-frontiers">Star Realms: Frontiers</a></td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/227789/heaven-ale">Heaven &amp; Ale</a></td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/281655/high-frontier-4-all">High Frontier (Space Diamonds version)</a></td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/14996/ticket-ride-europe">Ticket To Ride: Europe</a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/103885/star-wars-x-wing-miniatures-game">X-Wing</a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/30549/pandemic">Pandemic</a></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><a href="https://boardgamegeek.com/boardgame/283864/trails-tucana">Trails of Tucana</a></td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>And now some short reviews of the games I own and have played at least 3 times:</p>
+
+<ul>
+  <li><strong>7 Wonders Duel</strong>: this is a 2-player only version of the also excellent deckbuilder <a href="https://boardgamegeek.com/boardgame/68448/7-wonders">7 Wonders</a>. The goal is to build an ancient civilisation by selecting cards from layouts of escalating power. Some of the cards are hidden until they can be chosen other are visible from the start. There are lots of ways to acculumate points and many strategies. You have to adapt to the situation and your opponent. This is an excellent game and so much fun. I’ll be playing much more.</li>
+  <li><strong>Terraforming Mars: Ares Expedition</strong>: the 2-player version of <a href="https://boardgamegeek.com/boardgame/167791/terraforming-mars">Terraforming Mars</a>, an engine building game where the players vie to contribute the most towards making Mars human habitable. The back of the box says it plays in under an hour but I have never taken less than 90 minutes. So far there is little interaction with the opponent, but the depth of tactics and huge number of possibilities keeps me interested. A good game I’ll keep playing for now, but will it keep me interested when it is more familiar?</li>
+  <li><strong>Sprawlopolis</strong>: 18 card city builder. Quick and challenging, you lay the cards down like tiles to plan out a city, while trying to satisfy 3 randomly generated scoring rules. Can be played solo. Everyone I have played this with loves it, and deservedly so. Great to carry around as time-filler between other things (as were all the plays this year).</li>
+</ul>
+
+<p>FYI: 3 plays is the review minimum because that excludes Watergate. I like the asymmetric gameplay of that Watergate, but am worried one side may have an winning advantage - I need more plays before giving a fair review.</p>]]></content><author><name>Charles</name></author><category term="Blog" /><category term="Games" /><category term="Board Games" /><summary type="html"><![CDATA[I have started tracking the boardgames I play during the year. In 2022 I played 11 different titles for a total of 34 games. That doesn’t seem like much to me (but there were also 6 games of my prototypes). Here is the list:]]></summary></entry></feed>

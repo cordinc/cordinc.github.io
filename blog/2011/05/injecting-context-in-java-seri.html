@@ -99,10 +99,10 @@ storage, but there are other ways.</p>
 code</a>,
 I thought there may be some way of extending the deserialization
 process. The main extension points seem to be the
-<code class="highlighter-rouge">readObject(ObjectInputStream in)</code>, <code class="highlighter-rouge">writeObject(ObjectOutputStream in)</code>
-and <code class="highlighter-rouge">readResolve()</code> methods added to the serializable object. These are
+<code class="language-plaintext highlighter-rouge">readObject(ObjectInputStream in)</code>, <code class="language-plaintext highlighter-rouge">writeObject(ObjectOutputStream in)</code>
+and <code class="language-plaintext highlighter-rouge">readResolve()</code> methods added to the serializable object. These are
 found by reflection on their signature in a private method and can not
-be changed. There is a method <code class="highlighter-rouge">readObjectOverride()</code> on
+be changed. There is a method <code class="language-plaintext highlighter-rouge">readObjectOverride()</code> on
 <a href="http://download.oracle.com/javase/6/docs/api/java/io/ObjectInputStream.html#readObjectOverride()">ObjectInputStream</a>,
 which allows a bespoke deserialization process to be defined. However,
 so many of the methods on ObjectInputStream are private that this would
@@ -110,11 +110,11 @@ be like writing a new process from scratch.</p>
 
 <p>There are two other options. The ObjectInputStream can be subclassed and
 contain a reference to the context object. This new class can detected
-within <code class="highlighter-rouge">readObject(ObjectInputStream in)</code> with <code class="highlighter-rouge">instanceof</code> and the
+within <code class="language-plaintext highlighter-rouge">readObject(ObjectInputStream in)</code> with <code class="language-plaintext highlighter-rouge">instanceof</code> and the
 context dereferenced. An alternative is to keep the subclass of
-ObjectInputStream and set <code class="highlighter-rouge">enableResolveObject(true)</code> in the constructor
+ObjectInputStream and set <code class="language-plaintext highlighter-rouge">enableResolveObject(true)</code> in the constructor
 (this requires the program to have security permission). This means that
-after deserialization the <code class="highlighter-rouge">resolveObject(Object obj)</code> method on the
+after deserialization the <code class="language-plaintext highlighter-rouge">resolveObject(Object obj)</code> method on the
 stream subclass will be called and the return value passed as the final
 result of the deserialization. Thus this method can perform extra
 initialisation or even replace the given object with a different one.
@@ -180,6 +180,18 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
   </li>  
   
@@ -206,24 +218,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

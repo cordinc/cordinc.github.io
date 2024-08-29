@@ -91,8 +91,8 @@ that class to handle multiple attachments. You can download this project
 
 <p><strong>Step 1 : Create the project</strong></p>
 
-<p>Here I just create a very simple Rails project called <code class="highlighter-rouge">attachments</code> with
-a single model class <code class="highlighter-rouge">Task</code> which contains only title and body
+<p>Here I just create a very simple Rails project called <code class="language-plaintext highlighter-rouge">attachments</code> with
+a single model class <code class="language-plaintext highlighter-rouge">Task</code> which contains only title and body
 attributes. Then I install Paperclip using Git. As I don’t need any of
 the image based functionality in Paperclip I haven’t installed any of
 its associated images packages, see the documentation if you think you
@@ -107,7 +107,7 @@ ruby script/plugin <span class="nb">install </span>git://github.com/thoughtbot/p
 <p>Below is the migration I used to create a table for storing the
 associations between model objects and their attachments. I have made it
 polymorphic so it can be used with other model classes. It is called
-<code class="highlighter-rouge">Assets</code> as if it is called <code class="highlighter-rouge">Attachments</code> there is an error in some
+<code class="language-plaintext highlighter-rouge">Assets</code> as if it is called <code class="language-plaintext highlighter-rouge">Attachments</code> there is an error in some
 versions of Rails. Use <t>rake db:migrate&lt;/tt&gt; to create the tables.</t></p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Assets</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
@@ -129,9 +129,9 @@ versions of Rails. Use <t>rake db:migrate&lt;/tt&gt; to create the tables.</t></
   <span class="k">end</span>
 <span class="k">end</span></code></pre></figure>
 
-<p>Then create the attachments model class in <code class="highlighter-rouge">asset.rb</code>. This class has a
+<p>Then create the attachments model class in <code class="language-plaintext highlighter-rouge">asset.rb</code>. This class has a
 few handy shortcut methods to get access to attachment information and a
-polymorphic association to the actual attachment <code class="highlighter-rouge">data</code>.</p>
+polymorphic association to the actual attachment <code class="language-plaintext highlighter-rouge">data</code>.</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Asset</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">has_attached_file</span> <span class="ss">:data</span><span class="p">,</span>
@@ -158,14 +158,14 @@ polymorphic association to the actual attachment <code class="highlighter-rouge"
 <p>To have a standard multiple attachments model like is seen in <a href="http://www.practicalecommerce.com/blogs/post/432-Multiple-Attachments-in-Rails">Brian
 Getting</a>
 article and PaperclipPolymorph we just need to add an association to the
-<code class="highlighter-rouge">Task</code> model. In <code class="highlighter-rouge">task.rb</code> add the line:
-<code class="highlighter-rouge">has_many  :assets, :as =&gt; :attachable, :dependent =&gt; :destroy</code>.</p>
+<code class="language-plaintext highlighter-rouge">Task</code> model. In <code class="language-plaintext highlighter-rouge">task.rb</code> add the line:
+<code class="language-plaintext highlighter-rouge">has_many  :assets, :as =&gt; :attachable, :dependent =&gt; :destroy</code>.</p>
 
 <p><strong>Step 3: Add Validations</strong></p>
 
-<p>To ensure that there are never more than 5 attachments on a <code class="highlighter-rouge">Task</code> and
+<p>To ensure that there are never more than 5 attachments on a <code class="language-plaintext highlighter-rouge">Task</code> and
 that each attachment is less than a megabyte, add the following lines to
-<code class="highlighter-rouge">task.rb</code>. Putting validations on the <code class="highlighter-rouge">Task</code> model allows the <code class="highlighter-rouge">Asset</code>
+<code class="language-plaintext highlighter-rouge">task.rb</code>. Putting validations on the <code class="language-plaintext highlighter-rouge">Task</code> model allows the <code class="language-plaintext highlighter-rouge">Asset</code>
 model to be reused by other classes if they need multiple attachments.
 These limits can obviously be easily modified by changing the constants.
 You will see these constants used throughout the rest of the project, so
@@ -183,27 +183,27 @@ that the control and display of validations is in a single place.</p>
 
 <p><strong>Step 4: Add Security</strong></p>
 
-<p>By default Paperclip stores attachments under the <code class="highlighter-rouge">public</code> directory,
+<p>By default Paperclip stores attachments under the <code class="language-plaintext highlighter-rouge">public</code> directory,
 thus they are generally available to everyone. To secure the attachments
 Paperclip needs to be told to store the attachments in a different
 place, and provided with a controller method to retrieve them. To store
-the attachments in an <code class="highlighter-rouge">assets</code> directory directly under the project
-root, and have the <code class="highlighter-rouge">show</code> method on the <code class="highlighter-rouge">AssetsController</code> retrieve
-them, then modify the association in <code class="highlighter-rouge">asset.rb</code> to be the following:</p>
+the attachments in an <code class="language-plaintext highlighter-rouge">assets</code> directory directly under the project
+root, and have the <code class="language-plaintext highlighter-rouge">show</code> method on the <code class="language-plaintext highlighter-rouge">AssetsController</code> retrieve
+them, then modify the association in <code class="language-plaintext highlighter-rouge">asset.rb</code> to be the following:</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">has_attached_file</span> <span class="ss">:data</span><span class="p">,</span>
                     <span class="ss">:url</span>  <span class="o">=&gt;</span> <span class="s2">"/assets/:id"</span><span class="p">,</span>
                     <span class="ss">:path</span> <span class="o">=&gt;</span> <span class="s2">":rails_root/assets/docs/:id/:style/:basename.:extension"</span></code></pre></figure>
 
-<p>This will require the creation of <code class="highlighter-rouge">assets_controller.rb</code> as below. I
-have just put the comment <code class="highlighter-rouge"># do security check here</code> in the method where
+<p>This will require the creation of <code class="language-plaintext highlighter-rouge">assets_controller.rb</code> as below. I
+have just put the comment <code class="language-plaintext highlighter-rouge"># do security check here</code> in the method where
 you need to add any security checking as it tends to be application
 specific. Likely security includes checking the user is logged in or has
 a particular role or has permission to view the object which has the
 attachment.</p>
 
 <p><strong>Update:</strong> if you are using a web server that handles it, you can add
-<code class="highlighter-rouge">:x_sendfile =&gt; true</code> on the end of the <code class="highlighter-rouge">send_file</code> to lower memory
+<code class="language-plaintext highlighter-rouge">:x_sendfile =&gt; true</code> on the end of the <code class="language-plaintext highlighter-rouge">send_file</code> to lower memory
 consumption. See the <a href="http://api.rubyonrails.org/classes/ActionController/Streaming.html">Rails documentation for more
 information</a>.</p>
 
@@ -219,13 +219,13 @@ information</a>.</p>
 
 <p><strong>Step 5: Setup Display</strong></p>
 
-<p>To handle the display for this simple app there is a <code class="highlighter-rouge">new</code> page that
-allows users to add attachments to a task, a <code class="highlighter-rouge">show</code> page that displays
-the attachments for task and an <code class="highlighter-rouge">edit</code> page that allows both. To do this
+<p>To handle the display for this simple app there is a <code class="language-plaintext highlighter-rouge">new</code> page that
+allows users to add attachments to a task, a <code class="language-plaintext highlighter-rouge">show</code> page that displays
+the attachments for task and an <code class="language-plaintext highlighter-rouge">edit</code> page that allows both. To do this
 some javascript needs to be set up. Also the rest of this tutorial
-assumes that the image <code class="highlighter-rouge">public/images/attachment.png</code> is present and
+assumes that the image <code class="language-plaintext highlighter-rouge">public/images/attachment.png</code> is present and
 that the css includes the following (I just added it to
-<code class="highlighter-rouge">public/stylesheets/scaffold.css</code>):</p>
+<code class="language-plaintext highlighter-rouge">public/stylesheets/scaffold.css</code>):</p>
 
 <figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#attachment_list</span> <span class="nf">#pending_files</span><span class="p">{</span> <span class="nl">list-style</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span><span class="nl">padding</span><span class="p">:</span><span class="m">0</span><span class="p">;</span> <span class="p">}</span>
 <span class="nf">#attachment_list</span> <span class="nt">li</span> <span class="p">{</span> <span class="nl">padding</span><span class="p">:</span><span class="m">0</span> <span class="m">0</span> <span class="m">0.5em</span> <span class="m">21px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="sx">url('/images/attachment.png')</span> <span class="nb">no-repeat</span> <span class="m">0</span> <span class="m">2px</span><span class="p">;</span> <span class="p">}</span>
@@ -239,30 +239,30 @@ and originally by the
 This assumes you are using <a href="http://www.prototypejs.org/">Prototype</a> and
 <a href="http://script.aculo.us/">Scriptaculous</a>. It allows users to add a
 number of files at once which are then stored in page and sent on an
-update. Create the file <code class="highlighter-rouge">public/javascripts/multifile.js</code> as below:</p>
+update. Create the file <code class="language-plaintext highlighter-rouge">public/javascripts/multifile.js</code> as below:</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// -------------------------</span>
 <span class="c1">// Multiple File Upload</span>
 <span class="c1">// -------------------------</span>
-<span class="kd">function</span> <span class="nx">MultiSelector</span><span class="p">(</span><span class="nx">list_target</span><span class="p">,</span> <span class="nx">max</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">list_target</span> <span class="o">=</span> <span class="nx">list_target</span><span class="p">;</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">if</span><span class="p">(</span> <span class="nx">max</span> <span class="p">){</span><span class="k">this</span><span class="p">.</span><span class="nx">max</span> <span class="o">=</span> <span class="nx">max</span><span class="p">;}</span> <span class="k">else</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;};</span><span class="k">this</span><span class="p">.</span><span class="nx">addElement</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">element</span> <span class="p">){</span><span class="k">if</span><span class="p">(</span> <span class="nx">element</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">INPUT</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">element</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">file</span><span class="dl">'</span> <span class="p">){</span><span class="nx">element</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">attachment[file_</span><span class="dl">'</span> <span class="o">+</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="o">++</span><span class="p">)</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">]</span><span class="dl">'</span><span class="p">;</span><span class="nx">element</span><span class="p">.</span><span class="nx">multi_selector</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span><span class="nx">element</span><span class="p">.</span><span class="nx">onchange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span><span class="kd">var</span> <span class="nx">new_element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span> <span class="dl">'</span><span class="s1">input</span><span class="dl">'</span> <span class="p">);</span><span class="nx">new_element</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">file</span><span class="dl">'</span><span class="p">;</span><span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span> <span class="nx">new_element</span><span class="p">,</span> <span class="k">this</span> <span class="p">);</span><span class="k">this</span><span class="p">.</span><span class="nx">multi_selector</span><span class="p">.</span><span class="nx">addElement</span><span class="p">(</span> <span class="nx">new_element</span> <span class="p">);</span><span class="k">this</span><span class="p">.</span><span class="nx">multi_selector</span><span class="p">.</span><span class="nx">addListRow</span><span class="p">(</span> <span class="k">this</span> <span class="p">);</span><span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">absolute</span><span class="dl">'</span><span class="p">;</span><span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">-1000px</span><span class="dl">'</span><span class="p">;};</span><span class="k">if</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">max</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="p">.</span><span class="nx">max</span> <span class="p">){</span><span class="nx">element</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;};</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="o">++</span><span class="p">;</span><span class="k">this</span><span class="p">.</span><span class="nx">current_element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;}</span> <span class="k">else</span> <span class="p">{</span><span class="nx">alert</span><span class="p">(</span> <span class="dl">'</span><span class="s1">Error: not a file input element</span><span class="dl">'</span> <span class="p">);};};</span><span class="k">this</span><span class="p">.</span><span class="nx">addListRow</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">element</span> <span class="p">){</span><span class="kd">var</span> <span class="nx">new_row</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">li</span><span class="dl">'</span><span class="p">);</span><span class="kd">var</span> <span class="nx">new_row_button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span> <span class="p">);</span><span class="nx">new_row_button</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">remove</span><span class="dl">'</span><span class="p">);</span><span class="nx">new_row_button</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Remove This Attachment</span><span class="dl">'</span><span class="p">;</span><span class="nx">new_row_button</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">#</span><span class="dl">'</span><span class="p">;</span><span class="nx">new_row_button</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Remove</span><span class="dl">'</span><span class="p">;</span><span class="nx">new_row</span><span class="p">.</span><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span><span class="nx">new_row_button</span><span class="p">.</span><span class="nx">onclick</span><span class="o">=</span> <span class="kd">function</span><span class="p">(){</span><span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">element</span> <span class="p">);</span><span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span> <span class="p">);</span><span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">multi_selector</span><span class="p">.</span><span class="nx">count</span><span class="o">--</span><span class="p">;</span><span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">multi_selector</span><span class="p">.</span><span class="nx">current_element</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span><span class="k">return</span> <span class="kc">false</span><span class="p">;};</span><span class="nx">new_row</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">)[</span><span class="nx">element</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">).</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span><span class="nx">new_row</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span> <span class="nx">new_row_button</span> <span class="p">);</span><span class="k">this</span><span class="p">.</span><span class="nx">list_target</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span> <span class="nx">new_row</span> <span class="p">);};</span>
+<span class="kd">function</span> <span class="nf">MultiSelector</span><span class="p">(</span><span class="nx">list_target</span><span class="p">,</span> <span class="nx">max</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">list_target</span> <span class="o">=</span> <span class="nx">list_target</span><span class="p">;</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">if</span><span class="p">(</span> <span class="nx">max</span> <span class="p">){</span><span class="k">this</span><span class="p">.</span><span class="nx">max</span> <span class="o">=</span> <span class="nx">max</span><span class="p">;}</span> <span class="k">else</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;};</span><span class="k">this</span><span class="p">.</span><span class="nx">addElement</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">element</span> <span class="p">){</span><span class="k">if</span><span class="p">(</span> <span class="nx">element</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">INPUT</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">element</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">file</span><span class="dl">'</span> <span class="p">){</span><span class="nx">element</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">attachment[file_</span><span class="dl">'</span> <span class="o">+</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="o">++</span><span class="p">)</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">]</span><span class="dl">'</span><span class="p">;</span><span class="nx">element</span><span class="p">.</span><span class="nx">multi_selector</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span><span class="nx">element</span><span class="p">.</span><span class="nx">onchange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span><span class="kd">var</span> <span class="nx">new_element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span> <span class="dl">'</span><span class="s1">input</span><span class="dl">'</span> <span class="p">);</span><span class="nx">new_element</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">file</span><span class="dl">'</span><span class="p">;</span><span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nf">insertBefore</span><span class="p">(</span> <span class="nx">new_element</span><span class="p">,</span> <span class="k">this</span> <span class="p">);</span><span class="k">this</span><span class="p">.</span><span class="nx">multi_selector</span><span class="p">.</span><span class="nf">addElement</span><span class="p">(</span> <span class="nx">new_element</span> <span class="p">);</span><span class="k">this</span><span class="p">.</span><span class="nx">multi_selector</span><span class="p">.</span><span class="nf">addListRow</span><span class="p">(</span> <span class="k">this</span> <span class="p">);</span><span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">absolute</span><span class="dl">'</span><span class="p">;</span><span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">-1000px</span><span class="dl">'</span><span class="p">;};</span><span class="k">if</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">max</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="p">.</span><span class="nx">max</span> <span class="p">){</span><span class="nx">element</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;};</span><span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="o">++</span><span class="p">;</span><span class="k">this</span><span class="p">.</span><span class="nx">current_element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;}</span> <span class="k">else</span> <span class="p">{</span><span class="nf">alert</span><span class="p">(</span> <span class="dl">'</span><span class="s1">Error: not a file input element</span><span class="dl">'</span> <span class="p">);};};</span><span class="k">this</span><span class="p">.</span><span class="nx">addListRow</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">element</span> <span class="p">){</span><span class="kd">var</span> <span class="nx">new_row</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">li</span><span class="dl">'</span><span class="p">);</span><span class="kd">var</span> <span class="nx">new_row_button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span> <span class="p">);</span><span class="nx">new_row_button</span><span class="p">.</span><span class="nf">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">remove</span><span class="dl">'</span><span class="p">);</span><span class="nx">new_row_button</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Remove This Attachment</span><span class="dl">'</span><span class="p">;</span><span class="nx">new_row_button</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">#</span><span class="dl">'</span><span class="p">;</span><span class="nx">new_row_button</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Remove</span><span class="dl">'</span><span class="p">;</span><span class="nx">new_row</span><span class="p">.</span><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span><span class="nx">new_row_button</span><span class="p">.</span><span class="nx">onclick</span><span class="o">=</span> <span class="kd">function</span><span class="p">(){</span><span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nf">removeChild</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">element</span> <span class="p">);</span><span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nf">removeChild</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span> <span class="p">);</span><span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">multi_selector</span><span class="p">.</span><span class="nx">count</span><span class="o">--</span><span class="p">;</span><span class="k">this</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">multi_selector</span><span class="p">.</span><span class="nx">current_element</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span><span class="k">return</span> <span class="kc">false</span><span class="p">;};</span><span class="nx">new_row</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">)[</span><span class="nx">element</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">).</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span><span class="nx">new_row</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span> <span class="nx">new_row_button</span> <span class="p">);</span><span class="k">this</span><span class="p">.</span><span class="nx">list_target</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span> <span class="nx">new_row</span> <span class="p">);};</span>
 <span class="p">}</span></code></pre></figure>
 
 <p>Then just add the javascript into the page layout for any page that will
 require the ability to upload files (lazily, I put it in
-<code class="highlighter-rouge">layouts/tasks.html.erb</code> despite not all task views needing it).</p>
+<code class="language-plaintext highlighter-rouge">layouts/tasks.html.erb</code> despite not all task views needing it).</p>
 
 <figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="cp">&lt;%=</span> <span class="n">javascript_include_tag</span>  <span class="s2">"prototype"</span><span class="p">,</span> <span class="s2">"application"</span><span class="p">,</span>  <span class="s2">"effects"</span><span class="p">,</span> <span class="s2">"controls"</span><span class="p">,</span> <span class="s2">"multifile"</span> <span class="cp">%&gt;</span></code></pre></figure>
 
 <p><strong>Step 6: New Action</strong></p>
 
-<p>Firstly, to add new attachments to the scaffold <code class="highlighter-rouge">new.html.erb</code> the form
-needs to be updated to include <code class="highlighter-rouge">:multipart =&gt; true</code>, this allows the
+<p>Firstly, to add new attachments to the scaffold <code class="language-plaintext highlighter-rouge">new.html.erb</code> the form
+needs to be updated to include <code class="language-plaintext highlighter-rouge">:multipart =&gt; true</code>, this allows the
 attachments to be sent along with the HTTP request. Then the
-<code class="highlighter-rouge">Pending Attachment</code> paragraph creates the input field and
-<code class="highlighter-rouge">MultiSelector</code> from <code class="highlighter-rouge">multifile.js</code> handles attachment upload on submit.
-The empty <code class="highlighter-rouge">pending_files</code> will contain references to the attachments.
-Note the use of the <code class="highlighter-rouge">Task</code> constants for the allowable number and size
+<code class="language-plaintext highlighter-rouge">Pending Attachment</code> paragraph creates the input field and
+<code class="language-plaintext highlighter-rouge">MultiSelector</code> from <code class="language-plaintext highlighter-rouge">multifile.js</code> handles attachment upload on submit.
+The empty <code class="language-plaintext highlighter-rouge">pending_files</code> will contain references to the attachments.
+Note the use of the <code class="language-plaintext highlighter-rouge">Task</code> constants for the allowable number and size
 of the attachments.</p>
 
 <figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="nt">&lt;h1&gt;</span>New task<span class="nt">&lt;/h1&gt;</span>
@@ -284,8 +284,8 @@ of the attachments.</p>
       <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"attachment_list"</span><span class="nt">&gt;&lt;ul</span> <span class="na">id=</span><span class="s">"pending_files"</span><span class="nt">&gt;&lt;/ul&gt;&lt;/div&gt;</span>
       <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
-          <span class="kd">var</span> <span class="nx">multi_selector</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MultiSelector</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">pending_files</span><span class="dl">'</span><span class="p">),</span> <span class="cp">&lt;%=</span><span class="no">Task</span><span class="o">::</span><span class="no">Max_Attachment_Size</span><span class="cp">%&gt;</span><span class="p">);</span>
-          <span class="nx">multi_selector</span><span class="p">.</span><span class="nx">addElement</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">newfile_data</span><span class="dl">'</span><span class="p">));</span>
+          <span class="kd">var</span> <span class="nx">multi_selector</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MultiSelector</span><span class="p">(</span><span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">pending_files</span><span class="dl">'</span><span class="p">),</span> <span class="cp">&lt;%=</span><span class="no">Task</span><span class="o">::</span><span class="no">Max_Attachment_Size</span><span class="cp">%&gt;</span><span class="p">);</span>
+          <span class="nx">multi_selector</span><span class="p">.</span><span class="nf">addElement</span><span class="p">(</span><span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">newfile_data</span><span class="dl">'</span><span class="p">));</span>
       <span class="nt">&lt;/script&gt;</span>
   <span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;p&gt;</span>
@@ -296,10 +296,10 @@ of the attachments.</p>
 
 <p>In the controller the attachments need to be read in and added to the
 new task. The below code script needs to be added into
-<code class="highlighter-rouge">app/controllers/tasks_controller.rb</code>. Here most of the work is
-offloaded to the protected <code class="highlighter-rouge">process_file_uploads</code> method, so it can be
+<code class="language-plaintext highlighter-rouge">app/controllers/tasks_controller.rb</code>. Here most of the work is
+offloaded to the protected <code class="language-plaintext highlighter-rouge">process_file_uploads</code> method, so it can be
 reused in other methods. Before the save or update of a task which may
-have attachments added to it, call <code class="highlighter-rouge">process_file_uploads</code> which just
+have attachments added to it, call <code class="language-plaintext highlighter-rouge">process_file_uploads</code> which just
 loops through the HTTP parameters and builds any given attachments. They
 will then be validated and persisted to the database with a save or
 update.</p>
@@ -332,7 +332,7 @@ update.</p>
 
 <p>The show action is a little different - it doesn’t allow any attachments
 to be added, instead just displaying a list of the current task
-attachments. Below in <code class="highlighter-rouge">app/views/tasks/show.html.erb</code> this is done with
+attachments. Below in <code class="language-plaintext highlighter-rouge">app/views/tasks/show.html.erb</code> this is done with
 a partial.</p>
 
 <figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="nt">&lt;p&gt;</span>
@@ -348,10 +348,10 @@ a partial.</p>
 
 <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">'Edit'</span><span class="p">,</span> <span class="n">edit_task_path</span><span class="p">(</span><span class="vi">@task</span><span class="p">)</span> <span class="cp">%&gt;</span> | <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">'Back'</span><span class="p">,</span> <span class="n">tasks_path</span> <span class="cp">%&gt;</span></code></pre></figure>
 
-<p>The partial <code class="highlighter-rouge">app/views/tasks/_attachment.html.erb</code> just displays some
+<p>The partial <code class="language-plaintext highlighter-rouge">app/views/tasks/_attachment.html.erb</code> just displays some
 basic information about the attachment, including a link for it to be
-downloaded using <code class="highlighter-rouge">attachment.url</code>. Remember from Step 4 that this will
-return the url of the <code class="highlighter-rouge">AssetsController</code>’s <code class="highlighter-rouge">show</code> method to add a layer
+downloaded using <code class="language-plaintext highlighter-rouge">attachment.url</code>. Remember from Step 4 that this will
+return the url of the <code class="language-plaintext highlighter-rouge">AssetsController</code>’s <code class="language-plaintext highlighter-rouge">show</code> method to add a layer
 of security. I have left the remove link in the partial, this will be
 explained in the next step.</p>
 
@@ -361,9 +361,9 @@ explained in the next step.</p>
 
 <p><strong>Step 8: Removing Attachments</strong></p>
 
-<p>The <code class="highlighter-rouge">_attachment.html.erb</code> partial included a link to remove the
-attachment. This requires the following <code class="highlighter-rouge">destroy</code> method added to the
-<code class="highlighter-rouge">assets_controller.rb</code>. It simply finds the attachment and deletes it.
+<p>The <code class="language-plaintext highlighter-rouge">_attachment.html.erb</code> partial included a link to remove the
+attachment. This requires the following <code class="language-plaintext highlighter-rouge">destroy</code> method added to the
+<code class="language-plaintext highlighter-rouge">assets_controller.rb</code>. It simply finds the attachment and deletes it.
 The page is updated through javascript returned to the user’s browser.</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">def</span> <span class="nf">destroy</span>
@@ -373,13 +373,13 @@ The page is updated through javascript returned to the user’s browser.</p>
     <span class="n">asset</span><span class="p">.</span><span class="nf">destroy</span>
   <span class="k">end</span></code></pre></figure>
 
-<p>The <code class="highlighter-rouge">destroy</code> method’s view is <code class="highlighter-rouge">app/views/assets/destroy.rjs</code> which
+<p>The <code class="language-plaintext highlighter-rouge">destroy</code> method’s view is <code class="language-plaintext highlighter-rouge">app/views/assets/destroy.rjs</code> which
 using javascript finds the attachment deleted and removes it from the
 page. It then checks for an attachment add section (by looking for a
-<code class="highlighter-rouge">newfile_data</code> id) and if it finds one updates the number of attachments
+<code class="language-plaintext highlighter-rouge">newfile_data</code> id) and if it finds one updates the number of attachments
 that may still be added. With this check the RJS can still be used
-without error on pages that do not have a <code class="highlighter-rouge">newfile_data</code> input nor a
-<code class="highlighter-rouge">MultiSelector</code>.</p>
+without error on pages that do not have a <code class="language-plaintext highlighter-rouge">newfile_data</code> input nor a
+<code class="language-plaintext highlighter-rouge">MultiSelector</code>.</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">page</span><span class="p">.</span><span class="nf">hide</span> <span class="s2">"attachment_</span><span class="si">#{</span><span class="vi">@asset_id</span><span class="si">}</span><span class="s2">"</span>
 <span class="n">page</span><span class="p">.</span><span class="nf">remove</span> <span class="s2">"attachment_</span><span class="si">#{</span><span class="vi">@asset_id</span><span class="si">}</span><span class="s2">"</span>
@@ -394,9 +394,9 @@ without error on pages that do not have a <code class="highlighter-rouge">newfil
 
 <p><strong>Step 9: Edit Action</strong></p>
 
-<p>To complete the views, here is the <code class="highlighter-rouge">edit.html.erb</code> which combines the
-attachment adding functionality of <code class="highlighter-rouge">new</code> with the attachment list of
-<code class="highlighter-rouge">show</code>.</p>
+<p>To complete the views, here is the <code class="language-plaintext highlighter-rouge">edit.html.erb</code> which combines the
+attachment adding functionality of <code class="language-plaintext highlighter-rouge">new</code> with the attachment list of
+<code class="language-plaintext highlighter-rouge">show</code>.</p>
 
 <figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="nt">&lt;h1&gt;</span>Editing task<span class="nt">&lt;/h1&gt;</span>
 
@@ -418,8 +418,8 @@ attachment adding functionality of <code class="highlighter-rouge">new</code> wi
       <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"attachment_list"</span><span class="nt">&gt;&lt;ul</span> <span class="na">id=</span><span class="s">"pending_files"</span><span class="nt">&gt;&lt;/ul&gt;&lt;/div&gt;</span>
       <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
-          <span class="kd">var</span> <span class="nx">multi_selector</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MultiSelector</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">pending_files</span><span class="dl">'</span><span class="p">),</span> <span class="cp">&lt;%=</span> <span class="vi">@allowed</span> <span class="cp">%&gt;</span><span class="p">);</span>
-          <span class="nx">multi_selector</span><span class="p">.</span><span class="nx">addElement</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">newfile_data</span><span class="dl">'</span><span class="p">));</span>
+          <span class="kd">var</span> <span class="nx">multi_selector</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MultiSelector</span><span class="p">(</span><span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">pending_files</span><span class="dl">'</span><span class="p">),</span> <span class="cp">&lt;%=</span> <span class="vi">@allowed</span> <span class="cp">%&gt;</span><span class="p">);</span>
+          <span class="nx">multi_selector</span><span class="p">.</span><span class="nf">addElement</span><span class="p">(</span><span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">newfile_data</span><span class="dl">'</span><span class="p">));</span>
       <span class="nt">&lt;/script&gt;</span>
   <span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;p&gt;</span>
@@ -494,6 +494,18 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
   </li>  
   
@@ -520,24 +532,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

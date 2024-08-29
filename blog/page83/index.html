@@ -38,6 +38,174 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">November 21, 2008</span>
+  <h4><a href="/blog/2008/11/rails-text-field-with-auto-com.html">Rails text_field_with_auto_complete and not displaying the selected item</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Rails.html">Rails</a>, 
+    
+      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I am doing some work with the Rails text_field_with_auto_complete
+method to provide a dropdown list of completed options as a user types,
+like <a href="http://www.google.com/webhp?complete=1&amp;hl=en">Google Suggest</a>.
+However, I needed the item displayed in the dropdown to be different to
+the item displayed when it is selected. I couldn’t find any help online.
+So at first I thought I would need to override the AJAX code, but when I
+looked I saw text_field_with_auto_complete already had this feature
+built in.</p>
+
+<!-- more -->
+
+<p>To find out how to use text_field_with_auto_complete, I recommend
+this <a href="http://railscasts.com/episodes/102">Railscast</a> (I have watched
+about a dozen Railscasts and they have all been great). My starting
+setup is as described in the Railscast.</p>
+
+<p>The trick to displaying something different to what was selected is to
+have the field to be displayed hidden in the selection list. To do this
+add a <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> with a class into the selection item with
+<code class="language-plaintext highlighter-rouge">style='display:none'</code>. Thus the text in the div will not be displayed
+in the dropdown, but the text is there. Put the text to show when an
+item is selected into the hidden div. In the file to create the list of
+selection items I had the following:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="sx">% return </span><span class="k">unless</span> <span class="vi">@queues</span> <span class="o">%&gt;</span>
+<span class="o">&lt;</span><span class="sx">% items </span><span class="o">=</span> <span class="vi">@queues</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">entry</span><span class="o">|</span> <span class="n">content_tag</span><span class="p">(</span><span class="s2">"li"</span><span class="p">,</span><span class="s2">"&lt;div class='wq_display' style='display:none'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">name</span><span class="si">}</span><span class="s2"> &lt;/div&gt;&lt;div class='wq_full'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">name_and_owner</span><span class="si">}</span><span class="s2">&lt;/div&gt;"</span><span class="p">)</span> <span class="p">}</span> <span class="o">%&gt;</span>
+<span class="o">&lt;</span><span class="sx">%= content_tag("ul", items) %&gt;</span></code></pre></figure>
+
+<p>Then in call to the text_field_with_auto_complete method specify
+<code class="language-plaintext highlighter-rouge">:select</code> in the fourth argument. The value of the <code class="language-plaintext highlighter-rouge">:select</code> is the
+class name of the div to use for displaying. So I used the below and
+voila, the <code class="language-plaintext highlighter-rouge">wq_full</code> div is displayed in the dropdown and the
+<code class="language-plaintext highlighter-rouge">wq_display</code> div is displayed in the text box when selected!</p>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb">Queue <span class="cp">&lt;%=</span> <span class="n">text_field_with_auto_complete</span> <span class="ss">:add</span><span class="p">,</span> <span class="ss">:queue</span><span class="p">,</span> 
+       <span class="p">{</span><span class="ss">:size</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span> <span class="ss">:maxlength</span> <span class="o">=&gt;</span> <span class="mi">40</span> <span class="p">},</span> 
+       <span class="p">{</span><span class="ss">:url</span> <span class="o">=&gt;</span> <span class="n">formatted_workqueues_path</span><span class="p">(</span><span class="ss">:js</span><span class="p">),</span> <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:get</span><span class="p">,</span> <span class="ss">:param_name</span> <span class="o">=&gt;</span> <span class="s1">'search'</span><span class="p">,</span> <span class="ss">:select</span> <span class="o">=&gt;</span>  <span class="s1">'wq_display'</span><span class="p">}</span> <span class="cp">%&gt;</span></code></pre></figure>
+
+<p>This concept can be easily extended. I also needed a third field, one
+containing the selection item’s id and have this passed back to the
+server on submit. Thus I just add a new hidden div to the selection
+items containing the id:</p>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="cp">&lt;%</span> <span class="n">items</span> <span class="o">=</span> <span class="vi">@queues</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">entry</span><span class="o">|</span> <span class="n">content_tag</span><span class="p">(</span><span class="s2">"li"</span><span class="p">,</span> 
+	<span class="s2">"&lt;div class='wq_display' style='display:none'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">name</span><span class="si">}</span><span class="s2">&lt;/div&gt;&lt;div class='wq_full'&gt;# {entry.name_and_owner}&lt;/div&gt;&lt;div class='wq_id' style='display:none'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">id</span><span class="si">}</span><span class="s2">&lt;/div&gt;"</span><span class="p">)</span> <span class="p">}</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%=</span> <span class="n">content_tag</span><span class="p">(</span><span class="s2">"ul"</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span> <span class="cp">%&gt;</span></code></pre></figure>
+
+<p>Then I use <code class="language-plaintext highlighter-rouge">:after_update_element</code> to provide a javascript function that
+runs after an item is selected. Here it sets the value of a hidden input
+field to the text inside the new div.</p>
+
+<figure class="highlight"><pre><code class="language-erb" data-lang="erb">Queue <span class="cp">&lt;%=</span> <span class="n">text_field_with_auto_complete</span> <span class="ss">:add</span><span class="p">,</span> <span class="ss">:queue</span><span class="p">,</span> 
+       <span class="p">{</span><span class="ss">:size</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span> <span class="ss">:maxlength</span> <span class="o">=&gt;</span> <span class="mi">40</span> <span class="p">},</span> 
+       <span class="p">{</span><span class="ss">:url</span> <span class="o">=&gt;</span> <span class="n">formatted_workqueues_path</span><span class="p">(</span><span class="ss">:js</span><span class="p">),</span> <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:get</span><span class="p">,</span> <span class="ss">:param_name</span> <span class="o">=&gt;</span> <span class="s1">'search'</span><span class="p">,</span> <span class="ss">:select</span> <span class="o">=&gt;</span>  <span class="s1">'wq_display'</span><span class="p">,</span>
+          <span class="ss">:after_update_element</span> <span class="o">=&gt;</span> <span class="s2">"function(element,val) {
+            var nodes = val.select('.wq_id') || [];
+            if(nodes.length&gt;0) 
+              $('wq_id').value =  Element.collectTextNodes(nodes[0], 'wq_id');
+           } "</span><span class="p">}</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"wq_id"</span> <span class="na">name=</span><span class="s">"add[wq_id]"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">/&gt;</span></code></pre></figure>
+
+<p>You could also go further and update other parts of the page or have
+other fields, but you should get the idea for now.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">November 15, 2008</span>
+  <h4><a href="/blog/2008/11/how-to-make-1hour-playing-onli.html">How to make &pound;1/hour playing online poker</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>, 
+    
+      <a class="post" href="/blog/tag/Poker.html">Poker</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I have just completed my 50th online poker game. I lost. My top pair
+turned into a straight on the river and so I went all-in against a
+player who check-called. Turned out he made a full house on the flop!
+Now seems like a suitable milestone to think again about my play.</p>
+
+<p>After the home games I thought I’d try online poker for real money
+(opposed to the online “play” money with which I learnt the game). So I
+put US$50 on <a href="http://www.pokerstars.com">Pokerstars</a>. Pokerstars also
+invited me to a beginner’s tournament, which seemed to be a ploy to get
+some more money into newbies’ hands - I won US$32. Thus I started with
+US$82 and that is my baseline. I decided to focus on one type of game
+and chose micro stakes heads-up Hold’em sit’n’go tournaments. That is,
+there are two players, each puts in US$2.20 for a set number of chips
+and play until one person has all the chips. The winner gets US$4 and
+the site US$0.40 in fees - the loser gets nothing. There are always a
+couple of these games going so you can play whenever you want. It would
+take a long time to go broke and with a single opponent I could learn
+the basics in the simplest environment possible.</p>
+
+<p>At first I started winning. I think I won my first 3 games straight. I
+started dreaming of becoming a poker pro. Then I starting losing,
+dropping to around the US$60 mark after nearly 20 games. I started
+paying more attention to the game and writing down results - 5/10, then
+7/10, then 8/10, lastly a loss to reach the 50 game mark. In total I
+have won 25, lost 25. Thus, due to fees I have US$72 - US$10 down on
+where I started. I think in the right circumstances I can beat this
+level of the game. In the final eleven games I played noticeably worse
+than my opponent three times (I lost one and won two - lucky). Winning 7
+out of 10 seems a reasonable goal. Which at about 2.5 hours per 10 games
+equates to roughly £1/hour (hence the title).</p>
+
+<p>There is however one small problem. I have a tendency to tilt. Tilt is a
+great concept in poker, it is when for whatever reason you are not
+playing rationally and letting your emotions influence your decisions.
+This can be getting bored; overbetting back at someone who is annoying;
+or a vast range of other suboptimal play. I certainly think that my
+poker maths skills have a great deal of room for improvement, but that
+doesn’t seem to matter too much at my level. My opponents have a lot to
+learn too. What seems to separate us, in my limited experience, is
+temperament. Over the last 30 games or so I focussed mainly on ensuring
+I was in an appropriate frame of mind before starting (patient, relaxed,
+time to play and a desire to win) and stopping if I felt this slipping.
+That lead to the improvement.</p>
+
+<p>So what now? I have started reading a book on poker theory, so hopefully
+my game will slowly improve. Other than that I aim to control my
+tendency to tilt. I’ll play another 50 games (which will take a couple
+of months) and aim to win 70%, which would mean I break US$100. If I can
+manage this and I think I’m playing well, I’ll consider going up a level
+or trying a different game.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">November  9, 2008</span>
+  <h4><a href="/blog/2008/11/using-bbc-backstage-weather.html">Using BBC Backstage Weather</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Weather.html">Weather</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Recently for a little project I wanted to get weather reports, and being
+in London my first thought was to use <a href="http://www.bbc.co.uk/weather/">BBC
+weather</a>. Doing a little searching, the
+BBC provides a number of RSS feeds for its data (news, weather, etc), as
+part of the <a href="http://backstage.bbc.co.uk">Backstage</a> project. Details of
+the weather feeds are
+<a href="http://backstage.bbc.co.uk/data/WeatherFeeds">here</a>. This post gives
+some of the tips and tricks I discovered using these feeds.</p>
+
+<p class='more'><br/><a href='/blog/2008/11/using-bbc-backstage-weather.html'>Read the rest of this entry</a></p>
+  </div>
+  <hr/>
+
   <span class="date">October 18, 2008</span>
   <h4><a href="/blog/2008/10/fowa-london-2008.html">FOWA London 2008</a></h4> 
   Tags: 
@@ -109,153 +277,10 @@ was a scam or a bad deal.</p>
   </div>
   <hr/>
 
-  <span class="date">October  6, 2008</span>
-  <h4><a href="/blog/2008/10/todo-lists-are-hard.html">Todo lists are hard</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Entrepreneurship.html">Entrepreneurship</a>, 
-    
-      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
-    
-      <a class="post" href="/blog/tag/Queuesaurus.html">Queuesaurus</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>This <a href="http://blog.ativiti.com/wheres-the-task-management-category-killer/">blog
-article</a>
-argues that current online todo list and project management tools don’t
-meet people’s needs and are too complex. Judging by the comments of some
-people at the <a href="http://www.cordinc.com/blog/2008/10/london-hacker-meetup-6.html">London Hackers
-Meetup</a>,
-this is not an uncommon view. I agree too. This is why I’m trying to
-steer a user-friendly middle-path between Queuesarus’ competitors - a
-group it seems Ativiti intends to join (yeah, bring it on!).</p>
-
-<p>So how is it going? Well the Beta testing suggests that the
-functionality is nearly good enough, but that it is still not
-user-friendly. I’m not sure what to do. While I knew some parts of the
-system were difficult to understand, I had a plan for them. However,
-there are problems with areas I thought were fine. As the blog says, it
-is a hard problem and I haven’t seen it done well. More thought is
-required, and advice is welcome.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">October  5, 2008</span>
-  <h4><a href="/blog/2008/10/london-hacker-meetup-6.html">London Hacker Meetup</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Entrepreneurship.html">Entrepreneurship</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Last Thursday I went to the “London Hacker Meetup #6”. These events are
-organised as a London analogue to the dinners held for <a href="http://ycombinator.com/&quot;">Y
-Combinator</a> startups in the US, although
-anyone could go along. Never having been to an Y Combinator dinner, I
-can’t compare to the original, but I definitely found it an interesting
-evening and more welcoming than the <a href="http://www.cordinc.com/blog/2008/07/techcrunch-pitch.html">Techcrunch
-Pitch</a> event.
-It was held in the <a href="http://www.songkick.com">Songkick</a> offices in
-Spitalfields (actually over the market) and drew a crowd of around 30,
-mainly youngish guys in very casual clothing (there were I think 3
-women). I felt quite old and conspicuous in my work shirt and trousers.
-Luckily everyone was polite and friendly even after I told them I worked
-at a bank.</p>
-
-<p>There were four quick talks.
-<a href="http://www.connectivelogic.co.uk/">ConnectiveLogic</a> demonstrated their
-product to easily create concurrent programs without writing any
-concurent code - interesting, but I’d have to have a play before saying
-more. <a href="http://fuzzwich.com/">Fuzzwich</a> showed their online product to
-easily create simple flash animations. It looked fun and having tried it
-out since I can say it definitely works as advertised - give it a try.
-Mary (can’t remember the rest of her name) spoke about her music
-recommendation project, <a href="http://theperceptron.com/">The Perceptron</a>.
-Finally, a guy presented his idea for a startup, then asked if anyone
-was interested in joining him and applying to Y Combinator. I was
-tempted, but thought it would be hard to commit to a company with
-someone I didn’t know at all. Also, I’m more invested in
-<a href="http://www.queuesaurus.com">Queuesaurus</a> and would need a good offer to
-move right now.</p>
-
-<p>After the talks we decamped to the local pub. I spoke to a couple of the
-Fuzzwich people for a while. They moved from San Francisico to London to
-be near their customers. We discussed how to pay employers (not so
-little they aren’t committed but not too much, they also said an options
-“cliff” was standard - that is if you are sacked within the “cliff”
-period, usually a year, then your options are cancelled). We also spoke
-about motivation and starting a company, their advice was “do it!” They
-seem like nice people. Later I spoke to a person who had an idea for a
-startup; but not the technical knowhow to implement it. This seems like
-a common problem, there seemed to be a few such people around. My last
-conversation was with a guy I met at the Pitch event. He said that the
-company that pitched had since shutdown - we talked a bit about founder
-commitment and how important it is. He didn’t seem discouraged at all;
-he is now interviewing other startups founders to see if they suit him
-(definitely the right way round!).</p>
-
-<p>I certainly left with the impression that there is still a great deal of
-activity in the London startup scene, even as the financial IT world
-significantly slows.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">September 13, 2008</span>
-  <h4><a href="/blog/2008/09/what-now.html">What now?</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Entrepreneurship.html">Entrepreneurship</a>, 
-    
-      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
-    
-      <a class="post" href="/blog/tag/Queuesaurus.html">Queuesaurus</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>It is done, or at least, the beginning is done. I have put the current
-version of my program on the web, proceed directly to <a href="http://www.queuesaurus.com">Queuesaurus
-(www.queuesaurus.com)</a> and tame the work
-beast! Please note, it should still be considered beta software.</p>
-
-<p>So, what next? Well, I have a massive feature todo list for Queuesaurus
-(soon to be transcribed to the web version of Queuesaurus in a valiant
-attempt at
-<a href="http://en.wikipedia.org/wiki/Eat_one%27s_own_dog_food">dogfooding</a>) and
-no doubt bugs will be discovered (if you find a bug or have a feature
-request, add it to the “Queuesaurus Issues” queue). However, that is not
-a proper answer to the question, I could keep improving Queuesaurus
-nearly forever. Instead I need to know how far to pursue this or whether
-to move onto other things.</p>
-
-<p>During the last few months I have had numerous other project ideas, some
-that could be a business and others that are little more than side
-distractions. So far, only one has been pursued beyond thought (I’ll
-blog about that later). A few times it has passed my mind to start
-something new.</p>
-
-<p>The original aims of Queuesaurus were to, at a minimum, keep working
-until I had something usable and learn about setting up a web business.
-I think I can just claim to have achieved the first goal, but not the
-second. There is still a great deal to learn beyond the technical side.
-I’m not going to leave my consulting contract just yet, nor am I ready
-to advertise or properly release it, but I think it’s worth giving
-Queuesaurus a bit of time to see how it goes. After that, who knows. I
-also think I should head out to the occasional local tech event and get
-the word out. The more people who try out Queuesaurus, the better it
-will become and I’ll get a better idea of its potential.</p>
-
-<p><a href="http://www.queuesaurus.com">Anyway give it a try!</a></p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 83 of 89 
+  Page 83 of 90 
   
       
         <a href="/blog/page82">Previous</a>
@@ -278,6 +303,18 @@ will become and I’ll get a better idea of its potential.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
@@ -306,24 +343,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

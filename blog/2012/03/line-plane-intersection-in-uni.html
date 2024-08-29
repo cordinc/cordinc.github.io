@@ -51,7 +51,7 @@ determine the point of intersection between a line and plane. A player
 would click on the screen where they wanted their spaceship to go, and I
 needed to work out where that actually was in the world coordinates. The
 line is defined by the camera point and the point on the screen clicked
-(as given by <code class="highlighter-rouge">camera.ScreenToWorldPoint</code>). The plane was the spaceship
+(as given by <code class="language-plaintext highlighter-rouge">camera.ScreenToWorldPoint</code>). The plane was the spaceship
 (assuming no up or down movement).</p>
 
 <p><img src="/assets/posts/technical/line_plane.png" alt="" /></p>
@@ -66,14 +66,14 @@ other than a small spaceship.</p>
 
 <p>First, let’s work out the equation of the line from the camera (point
 ‘c’) and the mouse click (point ‘m’). We can get the position of the
-camera with <code class="highlighter-rouge">var c = camera.transform.position</code> and the position of the
+camera with <code class="language-plaintext highlighter-rouge">var c = camera.transform.position</code> and the position of the
 mouse click with:</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">ScreenToWorldPoint</span><span class="p">(</span><span class="nx">Vector3</span><span class="p">(</span><span class="nx">Input</span><span class="p">.</span><span class="nx">mousePosition</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">Input</span><span class="p">.</span><span class="nx">mousePosition</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">));</span> </code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">camera</span><span class="p">.</span><span class="nc">ScreenToWorldPoint</span><span class="p">(</span><span class="nc">Vector3</span><span class="p">(</span><span class="nx">Input</span><span class="p">.</span><span class="nx">mousePosition</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">Input</span><span class="p">.</span><span class="nx">mousePosition</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">));</span> </code></pre></figure>
 
 <p>Note that in the above, the third vector parameter (the Z value) in the
-<code class="highlighter-rouge">ScreenToWorldPoint</code> call is the distance from the camera of the
-resulting point. Thus if 0 or <code class="highlighter-rouge">mousePosition.z</code> (which is also 0) is
+<code class="language-plaintext highlighter-rouge">ScreenToWorldPoint</code> call is the distance from the camera of the
+resulting point. Thus if 0 or <code class="language-plaintext highlighter-rouge">mousePosition.z</code> (which is also 0) is
 used then the resulting point is just the camera location itself. Here I
 have used a distance of 100 to make sure there is a good separation
 between the points describing the line. The <a href="http://mathworld.wolfram.com/Point-LineDistance3-Dimensional.html">general equation of a line
@@ -98,13 +98,13 @@ intersects at some point:</p>
 
 <p>which means:</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">==</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if </span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">==</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
    <span class="nx">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// no intersection</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
    <span class="nx">t</span> <span class="o">=</span> <span class="p">(</span><span class="nx">spaceship</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span> 
 <span class="p">}</span></code></pre></figure>
 
-<p>The case <code class="highlighter-rouge">m.y == c.y</code> denotes the case where the line does not intersect
+<p>The case <code class="language-plaintext highlighter-rouge">m.y == c.y</code> denotes the case where the line does not intersect
 the plane. What happens here is up to you. With the value of ‘t’ known
 the equation for the line can be solved to give the point of
 intersection. Done.</p>
@@ -121,6 +121,18 @@ intersection. Done.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
@@ -149,24 +161,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

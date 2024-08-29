@@ -67,15 +67,15 @@ pass clicks through to the cells.</p>
 <p>To display the buttons correctly a custom cell renderer needs to be
 applied to any columns displaying JButtons. This can be done with the
 code
-<code class="highlighter-rouge">table.getColumn("Button1").setCellRenderer(new JTableButtonRenderer())</code>
+<code class="language-plaintext highlighter-rouge">table.getColumn("Button1").setCellRenderer(new JTableButtonRenderer())</code>
 (this assumes that there is a column in the table labelled “Button1”.
 The button renderer is below. The default renderer always returns a
 JLabel, but this one returns a JButton after colouring it in an
 appropriate manner. Note, this renderer assumes the contents of column
 will always be a JButton and will throw an exception if this is not the
 case. If the table column may not contain JButtons, just extend
-<code class="highlighter-rouge">DefaultTableCellRenderer</code>, detect if the value is a JButton (or even a
-Swing component) with <code class="highlighter-rouge">instanceof</code>, otherwise call <code class="highlighter-rouge">super</code>. This <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/table.html#renderer">Sun
+<code class="language-plaintext highlighter-rouge">DefaultTableCellRenderer</code>, detect if the value is a JButton (or even a
+Swing component) with <code class="language-plaintext highlighter-rouge">instanceof</code>, otherwise call <code class="language-plaintext highlighter-rouge">super</code>. This <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/table.html#renderer">Sun
 article</a>
 may help with this.</p>
 
@@ -95,7 +95,7 @@ may help with this.</p>
 
 <p>To get the table to pass clicks through to the button, add a mouse
 listener to the table with
-<code class="highlighter-rouge">table.addMouseListener(new JTableButtonMouseListener(table))</code>. This
+<code class="language-plaintext highlighter-rouge">table.addMouseListener(new JTableButtonMouseListener(table))</code>. This
 mouse listener (example below) will have to take the click, work out in
 which cell it occurred and if that cell contains a JButton, click it.</p>
 
@@ -121,7 +121,7 @@ which cell it occurred and if that cell contains a JButton, click it.</p>
 
 <p>And with that, the buttons in your table should start to work. All you
 need to do is return the buttons (which perform the required actions)
-when requested from your model, using <code class="highlighter-rouge">getValueAt()</code>. A complete working
+when requested from your model, using <code class="language-plaintext highlighter-rouge">getValueAt()</code>. A complete working
 example is below.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.awt.BorderLayout</span><span class="o">;</span>
@@ -267,6 +267,18 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
   </li>  
   
@@ -293,24 +305,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

@@ -66,7 +66,7 @@ shows how they are used:</p>
 <span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Suit</span> <span class="o">{</span> <span class="no">CLUBS</span><span class="o">,</span> <span class="no">DIAMONDS</span><span class="o">,</span> <span class="no">HEARTS</span><span class="o">,</span> <span class="no">SPADES</span> <span class="o">}</span></code></pre></figure>
 
 <p>Actually, the above is just the basic usage pattern. Java enums can have
-data and behavior, as shown in the <code class="highlighter-rouge">Planet</code> example below (from the same
+data and behavior, as shown in the <code class="language-plaintext highlighter-rouge">Planet</code> example below (from the same
 <a href="http://java.sun.com/j2se/1.5.0/docs/guide/language/enums.html">guide</a>).
 They can also implement abstract methods directly at the definition (see
 the guide) but they cannot be subclassed.</p>
@@ -102,15 +102,15 @@ the guide) but they cannot be subclassed.</p>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
-<p>I think the first (<code class="highlighter-rouge">Rank</code> &amp; <code class="highlighter-rouge">suit</code>) example is correct usage of enums -
+<p>I think the first (<code class="language-plaintext highlighter-rouge">Rank</code> &amp; <code class="language-plaintext highlighter-rouge">suit</code>) example is correct usage of enums -
 essentially treating them as related constant values. In my opinion, the
-second example is problematic. Here the <code class="highlighter-rouge">Planet</code> enum is acting
+second example is problematic. Here the <code class="language-plaintext highlighter-rouge">Planet</code> enum is acting
 similarly to a class with each instance being like an object, with data
 and associated behaviour. At the level of the example this may seem
 acceptable - not much is happening here. However, code rarely stays
 static. Requirements change and thus the code changes to handle
 different functionality. It is not hard to imagine more data being
-required for each <code class="highlighter-rouge">Planet</code>. Object-oriented classes are designed to help
+required for each <code class="language-plaintext highlighter-rouge">Planet</code>. Object-oriented classes are designed to help
 handle this change. Enumerations are not and there is no inheritance,
 nor is it possible to pass non static constructor arguments. As a
 result, as the functionality of an enum becomes more “object-like”, the
@@ -136,7 +136,7 @@ classes constructed by
 <a href="http://en.wikipedia.org/wiki/Factory_method_pattern">Factory</a> classes
 switching on market. Indeed there was quite a bit of logic in the system
 that switched code path depending on market. The code would definitely
-have worked better had there been a <code class="highlighter-rouge">Market</code> class rather than
+have worked better had there been a <code class="language-plaintext highlighter-rouge">Market</code> class rather than
 enumeration. Refactoring all the code to use a class rather than a
 enumeration was a big job in an important working system.</p>
 
@@ -152,6 +152,18 @@ enumeration was a big job in an important working system.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
@@ -180,24 +192,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

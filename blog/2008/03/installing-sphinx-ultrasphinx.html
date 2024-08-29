@@ -69,25 +69,25 @@ the source code.</li>
   <li>Extract the contents of the bin/release folder in the zip file you
 just downloaded into a location of your choice (eg. C:\Sphinx).</li>
   <li>Add the location of the folder in step 2 into your system path.</li>
-  <li>Install chronic - <code class="highlighter-rouge">gem install chronic</code></li>
+  <li>Install chronic - <code class="language-plaintext highlighter-rouge">gem install chronic</code></li>
   <li>Install Ultrasphinx -
-<code class="highlighter-rouge">svn export svn://rubyforge.org/var/svn/fauna/ultrasphinx/trunk vendor/plugins/ultrasphinx</code></li>
+<code class="language-plaintext highlighter-rouge">svn export svn://rubyforge.org/var/svn/fauna/ultrasphinx/trunk vendor/plugins/ultrasphinx</code></li>
   <li>Copy the example default.base to the app config folder and edit it.
 The path variable is the path to the location of the index (created
 in step 10), not the Sphinx binaries. Also, find the “set_rotate”
 option and set it to 0. This is not supported on Windows at the time
 of writing. You probably want to have this set differently in
 production.</li>
-  <li>Run <code class="highlighter-rouge">rake ultrasphinx:configure</code> You should now have a Sphinx conf
+  <li>Run <code class="language-plaintext highlighter-rouge">rake ultrasphinx:configure</code> You should now have a Sphinx conf
 file.</li>
   <li>Add indexing to your model.</li>
   <li>Edit the Ultrasphinx.rake (in plugins/ultrasphinx/tasks) and where
 you see ‘#{Ultrasphinx::CONF_PATH}’ remove the apostrophes,
 otherwise the rake task below won’t be able to find the
 configuration file.</li>
-  <li>Run rake <code class="highlighter-rouge">ultrasphinx:index</code> You should now have an index in the
+  <li>Run rake <code class="language-plaintext highlighter-rouge">ultrasphinx:index</code> You should now have an index in the
 location specified in the conf path.</li>
-  <li>Run rake <code class="highlighter-rouge">ultrasphinx:daemon:start</code> The sphinx daemon should start
+  <li>Run rake <code class="language-plaintext highlighter-rouge">ultrasphinx:daemon:start</code> The sphinx daemon should start
 up.</li>
   <li>You are done and should be able to search. Good luck.</li>
 </ol>
@@ -124,6 +124,18 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
   </li>  
   
@@ -150,24 +162,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

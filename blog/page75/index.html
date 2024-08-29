@@ -38,6 +38,203 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">November 14, 2009</span>
+  <h4><a href="/blog/2009/11/the-weather-archive-is-not-mor.html">The weather archive is no more</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
+    
+      <a class="post" href="/blog/tag/Weather.html">Weather</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Today I shut down my historical weather website. It continually broke
+because BBC Backstage Weather kept changing the format of their RSS
+feed. It became too much effort to maintain the site in a working state,
+so it had to go. Since there was only ever 943 hits on it and the vast
+majority of those were me, I don’t feel too bad. It served its purpose
+and I learnt quite a bit from writing it. In any case, I should focus my
+limited spare time on more useful projects.</p>
+
+<p>I have kept weather_report up in case anyone wants to take it up and
+use it, but they would have to fix it for the new RSS format first.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">November  8, 2009</span>
+  <h4><a href="/blog/2009/11/models-and-events.html">Models and Events</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I have been thinking that software development is all about models and
+events. By models I mean <a href="http://en.wikipedia.org/wiki/Domain_model">domain
+models</a>, and by events I’m
+referring to an <a href="http://en.wikipedia.org/wiki/Event-driven_architecture">event-driven
+architecture</a>.
+Not quite the <a href="http://stuffinvestmentbankerslike.blogspot.com/2008/06/40-models-and-bottles.html">models and
+bottles</a>
+of Investment Banking.</p>
+
+<p>The domain model is where the application’s data lives. It is the model
+part of the
+<a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a>
+pattern. For example, in a system that manipulates songs, a song would
+be part of the domain model, together with the song’s name, artist,
+album etc (in
+<a href="http://en.wikipedia.org/wiki/Object-oriented_programming">Object-oriented</a>
+systems there would be a song class containing these attributes). The
+more time I spend coding, the more I find that the future course of a
+project is directly related to how its domain model was conceived. Using
+MVC, changing the model later can involve a great deal of work if the
+model touches everything else. Thus usually some time is spent on
+working out the model and refactoring it if necessary. Indeed, I
+remember once describing a less than satisfying job as drawing pictures
+all day, meaning
+<a href="http://en.wikipedia.org/wiki/Unified_Modeling_Language">UML</a> mainly for
+the domain (I would have preferred to be coding).</p>
+
+<p>I have a few tips for domain models. Follow the ideal of MVC, that is
+keep view and controller logic out of the model. Also, try to have <a href="http://blog.kineticweb.com/articles/2007/06/01/skinny-controller-fat-model">fat
+models and skinny
+controllers</a>
+(this is a <a href="http://rubyonrails.org/">Ruby On Rails</a> idea, but I find it
+works well in general). Keep model classes immutable if possible.
+Lastly, write your own containers (containing and hiding actual
+SDK-based containers) for easy aggregation functions (and
+parallelising). None of this is particularly controversial, few people I
+have worked with would disagree.</p>
+
+<p>What I have recently found surprising is that people do disagree with
+using an event based architecture where I feel it would work well.
+Event-driven systems are ones where changes to domain state are packaged
+as events and passed to listeners of those events through some form of
+callback. This helps promote a
+<a href="http://en.wikipedia.org/wiki/Loose_coupling">loosely-coupled</a> design,
+something else I would strongly encourage. Also recommended is keeping
+the events at the lowest level appropriate in the model (a rule I’ve
+broken a few times). For instance, if you have an album which contains
+songs, a “songAdded” event would go on the album listeners, but a
+“songUpdated” event should fire on the song’s listeners. Other people
+seem to prefer a system of loops polling for changes (or something
+similar). I find their code far more complicated. Event-driven systems
+are simple to write, simple to understand and you only need to handle
+the events you are interested in. I would be interested to hear what
+other experienced programmers have found works.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">October  5, 2009</span>
+  <h4><a href="/blog/2009/10/java-enumerations-sometimes-co.html">Java Enumerations (Sometimes) Considered Harmful</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>In a recent coding project I fell foul of Java enumerations. They seem
+like a very good idea, and indeed they are when used properly. However,
+there is sometimes a tendency to overuse them - something unfortunately
+learnt from personal experience.</p>
+
+<p>Intially Java had no inbuilt concept of <a href="http://en.wikipedia.org/wiki/Enumerated_type">enumerated
+types</a>. Developers often
+found themselves inadequately simulating them by creating a bunch on
+integer constants. Proper enumerations were added to Java in JDK1.5 with
+the enum keyword and developers rejoiced (or at least I did). The
+following example from the <a href="http://java.sun.com/j2se/1.5.0/docs/guide/language/enums.html">Java Language
+Guide</a>
+shows how they are used:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Rank</span> <span class="o">{</span> <span class="no">DEUCE</span><span class="o">,</span> <span class="no">THREE</span><span class="o">,</span> <span class="no">FOUR</span><span class="o">,</span> <span class="no">FIVE</span><span class="o">,</span> <span class="no">SIX</span><span class="o">,</span>
+        <span class="no">SEVEN</span><span class="o">,</span> <span class="no">EIGHT</span><span class="o">,</span> <span class="no">NINE</span><span class="o">,</span> <span class="no">TEN</span><span class="o">,</span> <span class="no">JACK</span><span class="o">,</span> <span class="no">QUEEN</span><span class="o">,</span> <span class="no">KING</span><span class="o">,</span> <span class="no">ACE</span> <span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Suit</span> <span class="o">{</span> <span class="no">CLUBS</span><span class="o">,</span> <span class="no">DIAMONDS</span><span class="o">,</span> <span class="no">HEARTS</span><span class="o">,</span> <span class="no">SPADES</span> <span class="o">}</span></code></pre></figure>
+
+<p>Actually, the above is just the basic usage pattern. Java enums can have
+data and behavior, as shown in the <code class="language-plaintext highlighter-rouge">Planet</code> example below (from the same
+<a href="http://java.sun.com/j2se/1.5.0/docs/guide/language/enums.html">guide</a>).
+They can also implement abstract methods directly at the definition (see
+the guide) but they cannot be subclassed.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Planet</span> <span class="o">{</span>
+    <span class="no">MERCURY</span> <span class="o">(</span><span class="mf">3.303</span><span class="n">e</span><span class="o">+</span><span class="mi">23</span><span class="o">,</span> <span class="mf">2.4397e6</span><span class="o">),</span>
+    <span class="no">VENUS</span>   <span class="o">(</span><span class="mf">4.869</span><span class="n">e</span><span class="o">+</span><span class="mi">24</span><span class="o">,</span> <span class="mf">6.0518e6</span><span class="o">),</span>
+    <span class="no">EARTH</span>   <span class="o">(</span><span class="mf">5.976</span><span class="n">e</span><span class="o">+</span><span class="mi">24</span><span class="o">,</span> <span class="mf">6.37814e6</span><span class="o">),</span>
+    <span class="no">MARS</span>    <span class="o">(</span><span class="mf">6.421</span><span class="n">e</span><span class="o">+</span><span class="mi">23</span><span class="o">,</span> <span class="mf">3.3972e6</span><span class="o">),</span>
+    <span class="no">JUPITER</span> <span class="o">(</span><span class="mf">1.9</span><span class="n">e</span><span class="o">+</span><span class="mi">27</span><span class="o">,</span>   <span class="mf">7.1492e7</span><span class="o">),</span>
+    <span class="no">SATURN</span>  <span class="o">(</span><span class="mf">5.688</span><span class="n">e</span><span class="o">+</span><span class="mi">26</span><span class="o">,</span> <span class="mf">6.0268e7</span><span class="o">),</span>
+    <span class="no">URANUS</span>  <span class="o">(</span><span class="mf">8.686</span><span class="n">e</span><span class="o">+</span><span class="mi">25</span><span class="o">,</span> <span class="mf">2.5559e7</span><span class="o">),</span>
+    <span class="no">NEPTUNE</span> <span class="o">(</span><span class="mf">1.024</span><span class="n">e</span><span class="o">+</span><span class="mi">26</span><span class="o">,</span> <span class="mf">2.4746e7</span><span class="o">),</span>
+    <span class="no">PLUTO</span>   <span class="o">(</span><span class="mf">1.27</span><span class="n">e</span><span class="o">+</span><span class="mi">22</span><span class="o">,</span>  <span class="mf">1.137e6</span><span class="o">);</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">mass</span><span class="o">;</span>   <span class="c1">// in kilograms</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">radius</span><span class="o">;</span> <span class="c1">// in meters</span>
+    <span class="nc">Planet</span><span class="o">(</span><span class="kt">double</span> <span class="n">mass</span><span class="o">,</span> <span class="kt">double</span> <span class="n">radius</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">mass</span> <span class="o">=</span> <span class="n">mass</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">radius</span> <span class="o">=</span> <span class="n">radius</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">mass</span><span class="o">()</span>   <span class="o">{</span> <span class="k">return</span> <span class="n">mass</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">radius</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">radius</span><span class="o">;</span> <span class="o">}</span>
+
+    <span class="c1">// universal gravitational constant  (m3 kg-1 s-2)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">G</span> <span class="o">=</span> <span class="mf">6.67300</span><span class="no">E</span><span class="o">-</span><span class="mi">11</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">surfaceGravity</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="no">G</span> <span class="o">*</span> <span class="n">mass</span> <span class="o">/</span> <span class="o">(</span><span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">surfaceWeight</span><span class="o">(</span><span class="kt">double</span> <span class="n">otherMass</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">otherMass</span> <span class="o">*</span> <span class="n">surfaceGravity</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>I think the first (<code class="language-plaintext highlighter-rouge">Rank</code> &amp; <code class="language-plaintext highlighter-rouge">suit</code>) example is correct usage of enums -
+essentially treating them as related constant values. In my opinion, the
+second example is problematic. Here the <code class="language-plaintext highlighter-rouge">Planet</code> enum is acting
+similarly to a class with each instance being like an object, with data
+and associated behaviour. At the level of the example this may seem
+acceptable - not much is happening here. However, code rarely stays
+static. Requirements change and thus the code changes to handle
+different functionality. It is not hard to imagine more data being
+required for each <code class="language-plaintext highlighter-rouge">Planet</code>. Object-oriented classes are designed to help
+handle this change. Enumerations are not and there is no inheritance,
+nor is it possible to pass non static constructor arguments. As a
+result, as the functionality of an enum becomes more “object-like”, the
+code supporting it becomes increasingly messy.</p>
+
+<p>The general rule is that linked constants should be enumerations, but
+anything more than that should probably be a class.</p>
+
+<p>I have broken this rule myself and lived to regret it. A project I
+recently worked on aggregated a number of different financial markets
+and presented a single interface for downstream clients. This project
+used quite a few enumerations. For example, there were enums to define
+the market defined type of a financial instrument and another for its
+pricing method. These worked fine, they were mutually exclusive values
+read from the markets essentially as constants. There was also an enum
+for the markets themselves. At first this was fine, each market was
+treated the same. However, as the system expanded to new markets and
+extra functionality, differences between markets began to appear. More
+and more logic began to hang off the market enum. Some was data stored
+on the market enum. Most was determined by the environment and was set
+by configuration settings. This logic ended up in various special
+classes constructed by
+<a href="http://en.wikipedia.org/wiki/Factory_method_pattern">Factory</a> classes
+switching on market. Indeed there was quite a bit of logic in the system
+that switched code path depending on market. The code would definitely
+have worked better had there been a <code class="language-plaintext highlighter-rouge">Market</code> class rather than
+enumeration. Refactoring all the code to use a class rather than a
+enumeration was a big job in an important working system.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">September 25, 2009</span>
   <h4><a href="/blog/2009/09/blender-tutorial-roman-stand.html">Blender Tutorial: Roman Stand</a></h4> 
   Tags: 
@@ -125,137 +322,10 @@ through Google and self-promote.</p>
   </div>
   <hr/>
 
-  <span class="date">August 31, 2009</span>
-  <h4><a href="/blog/2009/08/options-in-software-architectu.html">Options in Software Architecture</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Software Project Management.html">Software Project Management</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I recently listened to a <a href="http://www.se-radio.net/">Software Engineering
-Radio</a> podcast on <a href="http://www.se-radio.net/podcast/2009-08/episode-142-sustainable-architecture-kevlin-henney-and-klaus-marquardt">Sustainable
-Architecture</a>.
-It was an interesting listen despite much of it being given over to
-discussion of well known and generally good software architecture
-practices, such as <a href="http://en.wikipedia.org/wiki/Loose_coupling">loosely
-coupled</a> design. It also
-spent a little too much time on defining software architecture -
-everyone defines terms to suit their own needs.</p>
-
-<p>However, the podcast did raise a couple of good points that anecdotally
-feel right and I hadn’t heard before. It talked about an option space
-when designing software systems. That is, that there are a number of
-ways to design and implement a system. Many developers come up with one
-way to build a system based on the requirements; then stop designing and
-start building. This podcast advises looking at multiple ways to solve
-the problem, thus allowing a determination of which parts of the system
-will be hard to change or replace at a later date. How costly a decision
-is to change should be a major determinant of which direction to take.
-The podcast suggests the result will be easier to change in response to
-unknown future demands while at the same time not requiring possibly
-unnecessary effort in the present (to handle these unknown future
-changes). Interesting.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">August 29, 2009</span>
-  <h4><a href="/blog/2009/08/java-threading-is-scary.html">Java Threading is Scary</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Recently I have been thinking hard about threading in a Java project of
-mine, and it definitely requires a great deal of hard thinking. When I
-started working with Java there weren’t any native threads, so it was
-just easier to make everything single threaded as the performance gain
-was minimal. However, as time has passed more and more of my code both
-at work and home has needed to work multi-threaded. As I learn more
-about Java threading, I realise how wrong I was doing it before - a
-cycle repeated a few times in the last 12 years. It was only after
-reading the great book <a href="http://jcip.net/">Java Concurrency In Practice</a>
-a few years ago that I realised that in Java “locking is not just about
-mutual exclusion; it is also about memory visibility.” I can only hope
-that this is the last such cycle, but realise it’s probably not.</p>
-
-<p>Talking to other developers there seems to be a standard progression in
-Java multi-threaded programming skill:</p>
-
-<ol>
-  <li>Just write single threaded programs</li>
-  <li>Write multi-threaded programs by marking everything synchronized</li>
-  <li>Use wait() and notifyAll() to build up “threadsafe” collection
-classes</li>
-  <li>Realise your “thread-safe” collection classes aren’t particularly
-thread-safe and try using <a href="http://en.wikipedia.org/wiki/Immutable_object">immutable domain
-objects</a> with
-stateless controllers to work around the problem</li>
-  <li>Trust in the <a href="http://java.sun.com/j2se/1.5.0/docs/api/index.html?">Java API concurrent
-utilities</a>
-java/util/concurrent/package-summary.html, with its collections,
-locks and executors</li>
-  <li>Realise that these classes don’t solve all the problems and start
-thinking hard about all the issues in your code</li>
-  <li>Become very scared about Java threading</li>
-</ol>
-
-<p>I think the next step may be using another language that doesn’t allow
-shared state. <a href="http://www.scala-lang.org/node/242">Scala uses an Actor
-model</a> to asynchronously pass
-messages between threads. There is no shared memory so no threading
-problems. This sounds like a good way to go, but I still work in Java
-for most of my programming (not many Scala or Erlang jobs around!).</p>
-
-<p>This whole situation reminds me of <a href="http://en.wikipedia.org/wiki/Memory_management">memory
-management</a> in C<span class="underline"></span>. There were simple rules to follow to reduce
-memory leakage, but the problem was hard to completely solve (especially
-to a newbie programmer) and normally your program still leaked. I
-remember leaning heavily on
-<a href="http://en.wikipedia.org/wiki/IBM_Rational_Purify">Purify</a>. Then Java
-came along with its automatic memory management and the problem largely
-disappeared. Developers could focus on the business logic of their code
-rather than housekeeping. Hopefully a similar thing will happen with
-Java threading.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">August 17, 2009</span>
-  <h4><a href="/blog/2009/08/blender-tutorial-amphora.html">Blender Tutorial: Amphora</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Blender.html">Blender</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Having read a few more chapters of my <a href="http://www.blender3d.org/e-shop/product_info.php?products_id=96">blender
-book</a>,
-it is time to try another historical model (my first was <a href="/blender/tutorials/tozeur_sculpture/index.html">a sculpture in
-Tozeur</a>). Most Roman
-archaeological sites include a few
-<a href="http://en.wikipedia.org/wiki/Amphora">amphora</a> displayed behind glass.
-At Pompeii they just stack them up all over the place. This tutorial
-details the steps I used in modelling an amphora based on photos from
-<a href="http://en.wikipedia.org/wiki/Pompeii">Pompeii</a>. Below is one of these
-photos next to the results of my modelling.</p>
-
-<p><a href="/blender/tutorials/amphora/">The continuation of this post is a set by step tutorial detailing my
-methodology</a>.</p>
-
-<p><a href="/blender/tutorials/amphora/"><img src="/blender/tutorials/amphora/result.png" alt="Pompeii amphorae and my model" title="Pompeii amphorae and my model" /></a></p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 75 of 89 
+  Page 75 of 90 
   
       
         <a href="/blog/page74">Previous</a>
@@ -278,6 +348,18 @@ methodology</a>.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
@@ -306,24 +388,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>

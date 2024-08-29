@@ -67,13 +67,13 @@ probably be using it for my unit testing.</p>
 here</a>).
 Thus if you have C# code that references a UnityScript class there can
 be a problem - although the reverse is not such an issue. When testing
-UnityScript with SharpUnit this means that the C# <code class="highlighter-rouge">Unity3D_TestRunner</code>
-class can be an issue. It references the <code class="highlighter-rouge">TestCase</code> classes, which I
+UnityScript with SharpUnit this means that the C# <code class="language-plaintext highlighter-rouge">Unity3D_TestRunner</code>
+class can be an issue. It references the <code class="language-plaintext highlighter-rouge">TestCase</code> classes, which I
 want to write in UnityScript. To do this I put the SharpUnit code in a
-folder under the <code class="highlighter-rouge">Plugins</code> top-level folder (the <code class="highlighter-rouge">Standard Assets</code>
+folder under the <code class="language-plaintext highlighter-rouge">Plugins</code> top-level folder (the <code class="language-plaintext highlighter-rouge">Standard Assets</code>
 folder would have also worked). This means the SharpUnit code is
 compiled first. Then my tests went in a new folder together with a
-UnityScript rewrite of <code class="highlighter-rouge">Unity3D_TestRunner</code>, as shown below. This
+UnityScript rewrite of <code class="language-plaintext highlighter-rouge">Unity3D_TestRunner</code>, as shown below. This
 UnityScript TestRunner script is then attached to the TestRunner
 GameObject (in a special testing scene) rather than the C# version as
 described in the SharpUnit instructions.</p>
@@ -82,23 +82,23 @@ described in the SharpUnit instructions.</p>
 
 <span class="k">import</span> <span class="nx">SharpUnit</span><span class="p">;</span>
 
-<span class="kd">function</span> <span class="nx">Start</span> <span class="p">()</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">suite</span><span class="p">:</span> <span class="nx">TestSuite</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TestSuite</span><span class="p">();</span>
-	<span class="nx">suite</span><span class="p">.</span><span class="nx">AddAll</span><span class="p">(</span><span class="nx">DummyTest</span><span class="p">());</span>
-	<span class="kd">var</span> <span class="nx">res</span><span class="p">:</span> <span class="nx">TestResult</span> <span class="o">=</span> <span class="nx">suite</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
-	<span class="kd">var</span> <span class="nx">reporter</span><span class="p">:</span> <span class="nx">Unity3D_TestReporter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Unity3D_TestReporter</span><span class="p">();</span>
-    <span class="nx">reporter</span><span class="p">.</span><span class="nx">LogResults</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nf">Start</span> <span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">suite</span><span class="p">:</span> <span class="nx">TestSuite</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TestSuite</span><span class="p">();</span>
+	<span class="nx">suite</span><span class="p">.</span><span class="nc">AddAll</span><span class="p">(</span><span class="nc">DummyTest</span><span class="p">());</span>
+	<span class="kd">var</span> <span class="nx">res</span><span class="p">:</span> <span class="nx">TestResult</span> <span class="o">=</span> <span class="nx">suite</span><span class="p">.</span><span class="nc">Run</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+	<span class="kd">var</span> <span class="nx">reporter</span><span class="p">:</span> <span class="nx">Unity3D_TestReporter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Unity3D_TestReporter</span><span class="p">();</span>
+    <span class="nx">reporter</span><span class="p">.</span><span class="nc">LogResults</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
 <span class="p">}</span></code></pre></figure>
 
 <p>Other possible solutions to this problem would be to just write my code
-in C# or to change SharpUnit to load <code class="highlighter-rouge">TestCase</code> classes dynamically at
+in C# or to change SharpUnit to load <code class="language-plaintext highlighter-rouge">TestCase</code> classes dynamically at
 runtime. Rewriting the TestRunner seemed easiest.</p>
 
 <p>The other problem encountered is that SharpUnit uses the C# custom
-attribute <code class="highlighter-rouge">[UnitTest]</code> to identify its test methods. The equivalent in
+attribute <code class="language-plaintext highlighter-rouge">[UnitTest]</code> to identify its test methods. The equivalent in
 UnityScript is a script directive (see <a href="http://answers.unity3d.com/questions/12911/what-are-the-syntax-differences-in-c-and-javascrip.html">the relevant section
 here</a>).
-Thus <code class="highlighter-rouge">@UnitTest</code> needs to be placed at the top of each test function.</p>
+Thus <code class="language-plaintext highlighter-rouge">@UnitTest</code> needs to be placed at the top of each test function.</p>
 
 <p>After that change I could run UnityScript tests with SharpUnit. An
 example test is below:</p>
@@ -107,30 +107,30 @@ example test is below:</p>
 
 <span class="k">import</span> <span class="nx">SharpUnit</span><span class="p">;</span>
 
-<span class="kd">class</span> <span class="nx">DummyTest</span> <span class="kd">extends</span> <span class="nx">TestCase</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="nc">DummyTest</span> <span class="kd">extends</span> <span class="nc">TestCase</span> <span class="p">{</span>
 
     <span class="kd">var</span> <span class="nx">dummy</span><span class="p">:</span> <span class="nb">String</span><span class="p">;</span>  
 
     <span class="cm">/** Setup test resources, called before each test. */</span>
-    <span class="kd">function</span> <span class="nx">SetUp</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nf">SetUp</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">dummy</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">lkjkjh</span><span class="dl">"</span><span class="p">;</span> 
     <span class="p">}</span>
 
     <span class="cm">/** Dispose of test resources, called after each test */</span>
-    <span class="kd">function</span> <span class="nx">TearDown</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nf">TearDown</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">dummy</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> 
     <span class="p">}</span>
 
     <span class="cm">/** Sample test that passes */</span>
     <span class="p">@</span><span class="nd">UnitTest</span>
-    <span class="kd">function</span> <span class="nx">TestDummy_Pass</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">Assert</span><span class="p">.</span><span class="nx">NotNull</span><span class="p">(</span><span class="nx">dummy</span><span class="p">);</span>
+    <span class="kd">function</span> <span class="nf">TestDummy_Pass</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">Assert</span><span class="p">.</span><span class="nc">NotNull</span><span class="p">(</span><span class="nx">dummy</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="cm">/** Sample test that fails. */</span>
     <span class="p">@</span><span class="nd">UnitTest</span>
-    <span class="kd">function</span> <span class="nx">TestDummy_Fail</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">Assert</span><span class="p">.</span><span class="nx">Null</span><span class="p">(</span><span class="nx">dummy</span><span class="p">);</span>
+    <span class="kd">function</span> <span class="nf">TestDummy_Fail</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">Assert</span><span class="p">.</span><span class="nc">Null</span><span class="p">(</span><span class="nx">dummy</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -147,6 +147,18 @@ example test is below:</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/03/media.html">Media Bias</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
@@ -175,24 +187,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/15-years.html">15 years</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/goals.html">Goals</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2022/12/release.html">Release</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
 
 </small>
 </div>
