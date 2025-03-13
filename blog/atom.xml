@@ -3,13 +3,316 @@
     <title type="text" xml:lang="en">Cordinc Blog</title>
     <link type="application/atom+xml" href="http://www.cordinc.com/blog/atom.xml" rel="self"/>
     <link type="text" href="http://www.cordinc.com" rel="alternate"/>
-    <updated>2024-09-26T13:25:23+08:00</updated>
+    <updated>2025-03-13T16:48:33+08:00</updated>
     <id>http://www.cordinc.com</id>
     <author>
         <name>Cordinc Blog</name>
     </author>
     <rights>Copyright (c) 2013-2020 Cordinc Blog</rights>
 
+    
+    <entry>
+        <title>Link Blog</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2025/02/link-blog.html/"/>
+        <published>2025-02-03T00:00:00+08:00</published>
+        <updated>2025-02-03T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2025/02/link-blog.html/</id>
+        <content type="html">&lt;p&gt;I regularly find interesting webpages that I want to record for later viewing. Over time I fill in browser bookmarks or text documents full of them.  They tend to become lost with changes in computer or other problems. Most recently with a harddrive crash a few months ago (no important data was lost, but transient files like these bookmarks were unrecoverable). So I have decided to follow the &lt;a href=&quot;https://simonwillison.net/2024/Dec/22/link-blog/&quot;&gt;advice from here&lt;/a&gt; to create a link blog, or at least the occasional post of links. Hopefully they will sick around a bit longer that way.  I’ll try to group links based on themes (gamedev, technical, finance, …) to allow for easier search later. Also, I will not post any paywalled links, replacing them with archive links if possible.&lt;/p&gt;
+
+&lt;p&gt;So to start, here are some sci-fi and history links…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Rex_Nemorensis&quot;&gt;Rex Nemorensis&lt;/a&gt; (Wikipedia) - In the early Roman Empire there was a priest at a small glade near Rome. To gain this position a slave had to escape, make their way to the glade, break a branch from a sacred tree, and then engage the current priest in a fight to the death. Wild.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.thebyzantinelegacy.com/&quot;&gt;The Byzantine Legacy&lt;/a&gt; - maps/pictures/diagrams of Byzantine sites.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://tenochtitlan.thomaskole.nl/&quot;&gt;A Portrait of Tenochtitlan&lt;/a&gt; - artistic reconstructions of the Aztec capital Tenochtitlan, at the time of European contact, based on current research. I enjoy looking at maps of old cities trying to imagine what they were like, and this is a step up from that. See also the paintings of &lt;a href=&quot;https://en.wikipedia.org/wiki/Canaletto&quot;&gt;Canaletto&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.theguardian.com/environment/2025/feb/03/flooded-quarry-mysterious-millionaire-and-dream-new-atlantis-welsh-border-deep&quot;&gt;A flooded quarry, a mysterious millionaire and the dream of a new Atlantis&lt;/a&gt; (The Guardian) - I always find it surprsing there isn’t more of this sort of thing compared to people trying to live on Mars. The bottom of the ocean is far more habitable than anywhere outside Earth (better water supply, better radiation protection, closer proximity to support, better gravity, etc).&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.indiewire.com/feature/best-sci-fi-movies-science-fiction-film-1201817994/&quot;&gt;The 65 Best Sci-Fi Movies of the 21st Century&lt;/a&gt; - Yes, it’s linkbait, but it’s a good list. I’ve seen the vast majority of the films, and most of the rest I know about and don’t want to see, but still a couple went on my watch list. It has some good uncommon films (like Endless). While they definitely deserve to be somewhere on the list, I wouldn’t put Nope, Under The Skin, and The Host in the top 10 (perhaps replacing them with Blade Runner 2049 and Arrival - although that would make it Villeneuve heavy).&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://archive.is/iifrP&quot;&gt;Angry workers use AI to bombard businesses with employment lawsuits&lt;/a&gt; (archive link to bypass the Telegraph paywall) - Following on from the sci-fi above, a while ago I read Accelerando, an interesting Charlie Stross book where AGI evolves from legal and accounting computer systems. This colours the way they act, so the singularity plays out with highspeed legal warfare. This article reminded me of that.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Goals 2024</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2025/01/goals.html/"/>
+        <published>2025-01-11T00:00:00+08:00</published>
+        <updated>2025-01-11T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2025/01/goals.html/</id>
+        <content type="html">&lt;p&gt;&lt;a href=&quot;/blog/2024/01/goals.html&quot;&gt;Last year’s goals&lt;/a&gt; were a little unambitious (apart from the Ci2D one), so I mostly did ok…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Return to a decent level of fitness and strength&lt;/strong&gt;: Technically I think I achieved this goal. I am fitter and stronger than this time last year, but barely. It turned out my shoulder was not as healed as I believed at the start of 2024, and it quickly came to limit my ability to exercise at anything other than a maintenance level. And that is where I stayed all year.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Improve Spanish&lt;/strong&gt;: I have kept this up all year, just doing a little bit nearly every day, and I have improved. I’m definitely not fluent, but getting slowly better.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Learn to 3D print (and then paint the result)&lt;/strong&gt;: I have printed so much stuff and now have a large grey pile of shame. I know what I’m doing with the printer, and can do supports and simple maintenance without issue. Next up: learn to design my own models.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;18 blog articles (including Jarrah Technology)&lt;/strong&gt;: 15 posts. Failed the easiest goal! Mostly because gamedev work stalled out, so I didn’t have many JarrahTech posts. I have discovered I don’t feel particularly disappointed about not making this goal, which is a good sign it shouldn’t be one in future.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Demo quality Ci2D&lt;/strong&gt;: I got distracted at the start of year by a webapp idea and taught myself Javascript to write it. The other 9 months I was just lazy.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This year’s goals:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Return to a decent level of fitness and strength&lt;/strong&gt;: Same as last year. Once again I think my shoulder is improving, so time to try testing it a little (when the temperature drops in my outdoor gym). &lt;em&gt;Fingers crossed&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Improve Spanish&lt;/strong&gt;: If I contine with a few minutes each day, I won’t get worse. I’ve managed that for over a year now. With a occasionally little bit more and continuing the grammar drills I’ve started doing in the last few weeks, I should continue to improve.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Start Ci2D&lt;/strong&gt;: Just starting would be good, it has been too long!&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Modelling for 3D printing&lt;/strong&gt;: Being able to print is nice, but the real benefits will come if I can model my own designs and then print them. Just need to relearn Blender and give it a go.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Read books&lt;/strong&gt;: In December I started reading books again (borrowed from the local library). I started with the entertaining &lt;a href=&quot;https://en.wikipedia.org/wiki/The_Murderbot_Diaries&quot;&gt;Murderbot&lt;/a&gt; series (one left). There are so many more interesting books from the list I compiled over the last few years available at the library. I should read some. I’ll set a target of 12, one per month.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Boardgames of 2024</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2025/01/boardgames.html/"/>
+        <published>2025-01-02T00:00:00+08:00</published>
+        <updated>2025-01-02T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2025/01/boardgames.html/</id>
+        <content type="html">&lt;p&gt;Once again I tracked the boardgames I played through the year (similar posts for &lt;a href=&quot;/blog/2024/01/boardgames.html&quot;&gt;2023&lt;/a&gt; &amp;amp; &lt;a href=&quot;/blog/2023/02/boardgames.html&quot;&gt;2022&lt;/a&gt;). Over 2024, I played 31 different games a total of 69 times. A high-water mark I doubt I’ll challenge this year (unless my online boardgame playing really expands). I had an attempt on the 5x5 challenge (playing 5 games 5 times each), but fell a single game short. The full list is below, with the ones I own in &lt;em&gt;italics&lt;/em&gt;.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Game&lt;/th&gt;
+      &lt;th&gt;Plays&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/142526/battletech-alpha-strike&quot;&gt;&lt;em&gt;Battletech: Alpha Strike&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/180263/7th-continent&quot;&gt;&lt;em&gt;7th Continent&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;6 (sessions)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/173346/7-wonders-duel&quot;&gt;&lt;em&gt;7 Wonders: Duel&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/249590/nevsky-teutons-and-rus-in-collision-1240-1242&quot;&gt;Nevsky&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/14105/commands-and-colors-ancients&quot;&gt;&lt;em&gt;Commands &amp;amp; Colors: Ancients&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/15954/conquest-of-paradise&quot;&gt;Conquest of Paradise&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/128621/viticulture&quot;&gt;Viticulture&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/163154/falling-sky-the-gallic-revolt-against-caesar&quot;&gt;&lt;em&gt;Falling Sky&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/23540/shikoku-1889&quot;&gt;Shikoku 1889&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/205637/arkham-horror-card-game&quot;&gt;&lt;em&gt;Arkham Horror&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/107148/wings-of-glory-ww2-starter-set&quot;&gt;Wings of Glory&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/119890/agricola-all-creatures-big-and-small&quot;&gt;&lt;em&gt;Agricola: ACGAS&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/256960/pax-pamir-second-edition&quot;&gt;Pax Pamir&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/93/el-grande&quot;&gt;El Grande&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/281655/high-frontier-4-all&quot;&gt;&lt;em&gt;High Frontier (full version)&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/1540/battletech&quot;&gt;&lt;em&gt;Battletech: Classic&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/30549/pandemic&quot;&gt;&lt;em&gt;Pandemic&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/103885/star-wars-x-wing-miniatures-game&quot;&gt;&lt;em&gt;X-Wing&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/209003/commands-and-colors-medieval&quot;&gt;Commands &amp;amp; Colors: Medieval&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/332686/john-company-second-edition&quot;&gt;John Company&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/169786/scythe&quot;&gt;Scythe&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/316554/dune-imperium&quot;&gt;Dune Imperium&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/332853/dom-pierre&quot;&gt;Dom Pierre&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/259/atlantic-storm&quot;&gt;Atlantic Storm&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/42052/vinhos&quot;&gt;Vinhos&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/123570/strike&quot;&gt;Strike&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/216132/clans-of-caledonia&quot;&gt;Clans of Caledonia&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/127518/a-distant-plain&quot;&gt;A Distant Plain&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/2583/18ga&quot;&gt;18GA&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/111799/cuba-libre&quot;&gt;Cuba Libre&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/132018/churchill&quot;&gt;Churchill&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Most of the Battletech games were played at various local clubs. Many of the rest were played at the monthly Strategy Boardgame WA club. Although there are a few from meetups with the WA Boardgame Association and one from the local 18XX afficionados (my unofficial name) meetup. This year I also started playing online - all the games of Nevsky, 18GA and two of the Shikoku 1889 games were played online at &lt;a href=&quot;https://www.rally-the-troops.com/&quot;&gt;Rally the Troops&lt;/a&gt; or &lt;a href=&quot;https://18xx.games/&quot;&gt;18XX.games&lt;/a&gt;. I had previously tried playing online with Vassal and was unimpressed, but these new websites are much better. Also, after having played a few solo games I don’t think they are for me. I find myself taking advantage of the simplicity or lack of creativity of my cardboard opponent in a way that does not translate well to playing against humans. Playing online seems a better option, or playing computer games specifically designed for solo play.&lt;/p&gt;
+
+&lt;p&gt;This year I sold two games: 7th Continent (too repetitive and long) and Arkham Horror (not able to get it to the table other than solo). I acquired a bunch of games - a few I purchased, but more as gifts. Only one of these I managed to play during the year: Commands &amp;amp; Colors: Ancients. So there is a replenished list of owned but unplayed games I need to reduce. I am considering selling a few more games as they seem hard to get people to play, so I always forget the rules in the year or two between plays: Falling Sky; High Frontier; and Twilight Struggle. However, I’m leaning towards keeping them at the moment.&lt;/p&gt;
+
+&lt;p&gt;Here are my thoughts on some games I played multiple times this year, and haven’t previously reviewed:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Nevsky&lt;/strong&gt;: Brutal and unforgiving wargame set in during the &lt;a href=&quot;https://en.wikipedia.org/wiki/1240_Izborsk_and_Pskov_campaign&quot;&gt;Teutonic invasion of Novgorod in the 13th century&lt;/a&gt;. This game requires and rewards careful planning of supply lines, equipment and an army’s length of service. Then winter comes and makes it all even harder. Also has an interesting command system so that if your plans go awry, you may have to pass a few turns until reseting. This is a clever game, that feels true to its setting, but I’m not sure it is a fun game for me. I’ll try to give it another go in a few months.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Commands &amp;amp; Colors: Ancients&lt;/strong&gt;: Fast block-based wargame set during the &lt;a href=&quot;https://en.wikipedia.org/wiki/Punic_Wars&quot;&gt;Punic wars&lt;/a&gt;, that has a card-based command system limiting your power to do things. A charge on the left flank may win the game, but if you don’t have a card that allows you to perform that charge then tough luck. Fun.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Conquest of Paradise&lt;/strong&gt;: This is a very interesting and enjoyable game. A fast-playing &lt;a href=&quot;https://en.wikipedia.org/wiki/4X&quot;&gt;4X&lt;/a&gt; set during the polynesian expansion with random island placement. There is a strong emphasis on the first two X’s: explore and expand. The 4th X, extermination, is rare - in the 3 games I played there were only 2 battles, both as the final game winning action. I saw more battles avoided through a dance-off!&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Viticulture&lt;/strong&gt;: Eurostyle worker placement game about the winemaking process. I played a few of these this year. This was probably the most enjoyable, but they were all quite similar and fun.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Falling Sky&lt;/strong&gt;: Asymmetric wargame set in the &lt;a href=&quot;https://en.wikipedia.org/wiki/Gallic_Wars&quot;&gt;Gallic Wars&lt;/a&gt;. Long and complicated. It requires a great deal of concentration, which I like, but is corresponding hard to get people to play.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Shikoku 1889&lt;/strong&gt;: A relatively gentle introduction to the generally unforgiving &lt;a href=&quot;https://en.wikipedia.org/wiki/18XX&quot;&gt;18XX&lt;/a&gt; genre. Build railways at the start of the industrial revolution, with the aim of maximising your personal wealth (as opposed to the railway companies’ wealth). These games have some clever tabletop implementation of financial concepts (like companies, IPOs and debt). I will have to try more of these.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Agricola: ACGAS&lt;/strong&gt;: 2-player worker placement game. A smaller version of &lt;a href=&quot;https://boardgamegeek.com/boardgame/31260/agricola&quot;&gt;Agricola&lt;/a&gt; (which I haven’t played). Very little player interaction, as you build up a small medieval farm. Now we have played a few times it largely always plays out the same way. Fun, but perhaps a little too limited.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Pax Pamir&lt;/strong&gt;: I read the rules before playing this each time, yet still after 2 games I don’t know what is happening during the game. This tableau builder set in the historical &lt;a href=&quot;https://en.wikipedia.org/wiki/Great_Game&quot;&gt;Afghani Great Game&lt;/a&gt; seems simple, but that belies quite a bit of depth and strategy. An experienced player easily defeats a newbie. Do I want to put the effort in to be a good player? Not sure.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;El Grande&lt;/strong&gt;: I played this at WABA. A very interesting area control/hand management game with some special and hidden actions. After two games I hadn’t worked out a good strategy, at least not against my opponents. I like the initiative deck system where each player choses a unique starting priority (unique both across all players in a round, and across all rounds by a player) - high priority and you start first, but get few resources, or vice versa. I was less keen on the hidden units in the castille, but then I’m not a fan of memory tests. A good game, I’d definitely play again.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Arkham Horror&lt;/strong&gt;: Coop cardgame which attempts to tell a Lovecraftian horror adventure story. I just played the introductory campaign that comes in the box, but many more can be bought as expansions. It is definitely grim and difficult. The game doesn’t care about your success and negative effects (and some positive) persist through the game so failure or compromise seems inevitable. Thus the theme is well captured. I like: that cards are dual use (for points or ability); the chitpull modifier system; and, that the story advances along two sequences (your story and the opponents plan). I like less that the story is fixed, so after playing it once it gets easier as you know what is happening and what to do. This is not as prominent as in 7th Continent, as each mission in Arkham is probably only played a few times and changes completely for a new mission (unlike 7th where most of the cards are the same across curses, so you do them over and over again). Replayability is enhanced by the expansions, but the cost adds up quickly. Still if my usual game group were interested then I would buy and play them, but (being keen on winning and not keen on coop) they are not interested.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>End of Year Games</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2024/12/eoy-games.html/"/>
+        <published>2024-12-22T00:00:00+08:00</published>
+        <updated>2024-12-22T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2024/12/eoy-games.html/</id>
+        <content type="html">&lt;p&gt;Some more games I played over the last 6 months of 2024.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/758370/Through_the_Ages/&quot;&gt;Through The Ages&lt;/a&gt;&lt;/strong&gt; (9 hrs) - A computer version of the well regarded card-based, civilisation building boardgame &lt;a href=&quot;https://boardgamegeek.com/boardgame/182028/through-the-ages-a-new-story-of-civilization&quot;&gt;of the same name&lt;/a&gt;. Graphics are simple, presumably to match the tabletop’s physical cards. The game is reasonably complex, and it’s good to have the computer do the calculations for you. Not much else to say. It seems like a competent conversion, but I doubt people will want it unless they already have an interest in the original version.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/510420/The_Hex/&quot;&gt;The Hex&lt;/a&gt;&lt;/strong&gt; (1 hr) - A mashup of many genres in service of a story game with many secrets. Hard to define, it is by the same person as Pony Island (which I didn’t like) and &lt;a href=&quot;/blog/2022/04/enough-gaming.html&quot;&gt;Inscryption&lt;/a&gt; (which I loved) - so if you know either of them, this is similar. It falls between those games both chronologically and in my appreciation. However, the genres and tropes it was playing with don’t interest me much, so I bounced off it hard. My advice, start with Inscryption and if you like that, move backwards through the others.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/1162700/Midnight_Protocol/&quot;&gt;Midnight Protocol&lt;/a&gt;&lt;/strong&gt; (3 hrs) - Hacking game. Move around computer networks, run programs to break defences and steal. I’ve played a few of these and find them quite similar. This is a well made, but standard version. The marketing materials tout the keyboard only controls, but I fail to see why that is a notable feature. Good game, but felt too familiar to grab my interest.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/1794680/Vampire_Survivors/&quot;&gt;Vampire Survivors&lt;/a&gt;&lt;/strong&gt; (30 hrs) - A novel bullet-hell game, where the player is the bullet hell. The player doesn’t need to shoot, your weapons automatically shoot for you on a set schedule/pattern - just like the enemies in a normal bullet hell. Start underpowered, running away from the enemies, and soon find yourself over-powered, blasting projectiles in a satisfying cacophony of shapes, colour and sound. In later stages the biggest difficulty is understanding what is happening on a very busy screen! But not to worry, because games all finish after at most 30 minutes, then its time to start over. A simple game with plain graphics and sound, but the gameplay is so well designed it becomes extremely addictive. I do not normally like this sort of game, but this is a big exception. A great game!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/632470/Disco_Elysium__The_Final_Cut/&quot;&gt;Disco Elysium&lt;/a&gt;&lt;/strong&gt; (2 hrs) - I really wanted to like this chatty isometric RPG with tabletop (ie dice rolling) mechanics. It is set in a strange, but vaguely 70’s world, where you are investigating a murder, while various parts of your mind converse with you. Strange, but slow. I made a bad choice and the game ended abruptly after 30 minutes, so I needed to start again. Then it crashed on me after an hour (and wiped my saves). I didn’t have the motivation to restart and go over the same thing a third time. Showed potential, but not enough to hook me.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/1434540/Zoeti/&quot;&gt;Zoeti&lt;/a&gt;&lt;/strong&gt; (6 hours) - Fantasy cutesy anime semi-deckbuilder battler where the player collects cards for actions and then draws from a normal deck of cards and uses that to power the actions. It also has a narrative story (although not one I found particularly interesting). An interesting idea for variation on the Slay The Spire system, but is otherwise extremely similar, and not as good (of course Slay The Spire is exceptional!). This feels like a mobile conversion, and some of the UI is clunky as a result. It is an ok game.&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Netflix Games</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2024/11/netflix-games.html/"/>
+        <published>2024-11-19T00:00:00+08:00</published>
+        <updated>2024-11-19T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2024/11/netflix-games.html/</id>
+        <content type="html">&lt;p&gt;Did you know Neflix has games? I have been a subscriber for years and never played one of their games. Since I am likely to leave their site soon (for a little while at least), I thought I should try a few games before I go. All the below were played on an iPad and the time played is a guess as Netflix won’t tell me.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Immortality&lt;/strong&gt; (about 6-8 hours?) - I was keen to play this after greatly enjoying &lt;a href=&quot;/blog/2015/07/her-story.html&quot;&gt;Her Story&lt;/a&gt;, a previous game by the same team. The player goes through the scenes of 3 films out of order to discover their mysteries. Scrub back and forth through scenes and access newly available scenes by selecting objects common to both. The problem is I didn’t know what the mystery was. I just aimlessly went through scenes. Even though a larger story did start to emerge, I never really lost that confused directionlessness. Perhaps as a result, I felt a lot more passive in this game than Her Story. I just lost interest, thinking I was a long way from the end, but reading the plot in online spoilers I had actually discovered most of the story. Interesting and well made, but too clever for its own good.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Game Dev Tycoon&lt;/strong&gt; (about 6-8 hours?) - Instead of actual game dev perhaps I could just play a game about game dev? This is a fairly simple and unchallenging simulation game, almost casual. You choose the genre/topic/platform of your next game and it gets reviewed and sells based on how much effort is put into various areas. Then repeat until you go broke or finish the game. If you play games semi-regularly then the appropriate actions are unsurprising, On my one and only game I got nowhere near bankruptcy. It has an indie charm, but I staring losing interest quickly, only continuing to the end to see if something changed or happened (it didn’t).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Spiritfarer&lt;/strong&gt; (90 minutes?) - Cosy basebuilder game where the player replaces Charon in ferrying the dead to the underworld. Only instead of a small rowboat, you have a large ship with various upgrades available (including a garden). In my time playing I didn’t ferry a single soul, instead spent my time collecting resources and talking with the local residents between life and death. Very slow and chatty, plus the controls on my iPad were awkward, so it quickly lost my attention. Not my sort of game.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Monument Valley&lt;/strong&gt; (1 hour?) - Good looking puzzle game. Not my thing.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Moonlighter&lt;/strong&gt; (4-5 hours?) - Pixel graphics, realtime roguelike where after each short run in the dungeon you take the loot back to your store and sell it for money. Or, use it to craft better equipment, but I sold most of it. You can also upgrade your home town and your store - a nice touch. Not too taxing, being defeated just delays you and it’s always possible to escape at a small cost. I found the iPad controls a bit annoying for a realtime game, the targets on the screen were too small when trying to touch them with my fat fingers. A good, almost cosy roguelike (I didn’t know that was even possible!), but started to feel repetitive.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Exploding Kittens&lt;/strong&gt; (1 hour?) - Card game translated directly from the popular &lt;a href=&quot;https://boardgamegeek.com/boardgame/172225/exploding-kittens&quot;&gt;tabletop version&lt;/a&gt; (which I had not played previously). Has an evil (?) cat theme, trying to be funny. High variance, but very short and quick to replay so that is not a problem - I think the idea is you play multiple times in a session. When playing alone against the AI this was mildly entertaining, but I imagine it shines when played as a group party game.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Terra Nil&lt;/strong&gt; (3-4 hours) - A anti-city builder. It plays like a city builder (place and connect buildings on a map grid), but the task is to clean up a polluted site and leave it pristine after tearing down all the buildings previously built. Excellent idea, and its full of nice touches like the animals moving back in (and their happiness level according to the current environment). Again, I would describe this as cosy, is this a theme with Netflix games? Nice game.&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Intelligence?</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2024/11/intelligence.html/"/>
+        <published>2024-11-12T00:00:00+08:00</published>
+        <updated>2024-11-12T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2024/11/intelligence.html/</id>
+        <content type="html">&lt;p&gt;There appears to a common view on various corners of the Internet that current AI is crap, borderline unusable. A subset of those people suggest it will never be “good enough”. This is largely due to the mistakes made by the public-facing generative large language models (LLMs) that Google, Microsoft and other are determined to push on their users. They make lots of maths errors, they can’t count the number of r’s in strawberry, they just make stuff up.&lt;/p&gt;
+
+&lt;p&gt;I agree with some of this. Current AI tools are often not being used appropriately, considering a knowledge of their deficiences and this can create a negative impression of the whole technology. Certainly LLM tools have been put into search engines to soon in my opinion. They need to make less mistakes before they provide an experience equivalent to what we had before. Similarly, why would a &lt;a href=&quot;https://www.bbc.com/news/world-us-canada-65735769&quot;&gt;lawyer use an LLM&lt;/a&gt; without checking for hallucinations?&lt;/p&gt;
+
+&lt;p&gt;I also disagree with parts too. To me it seems partly a misunderstanding of what counts as intelligence and thus regularly moving the goalposts of a true AI definition.&lt;/p&gt;
+
+&lt;p&gt;I haven’t heard anyone suggest, as of today, we have a true artificial intelligence (some people refer to this as &lt;a href=&quot;https://en.wikipedia.org/wiki/Artificial_general_intelligence&quot;&gt;AGI&lt;/a&gt;). Instead there are various tools that we call AI for marketing purposes. However, in reaching this point I have seen many definitions of computer intelligence come and go.&lt;/p&gt;
+
+&lt;p&gt;When just starting out in computing, some (non-technical) people would tell me computers couldn’t be intelligent until they could beat humans at Chess or Go. Well those lines were passed in &lt;a href=&quot;https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov&quot;&gt;1997&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol&quot;&gt;2016&lt;/a&gt; respectively, but no one considers those systems intelligent in the human sense. There have been goals around the &lt;a href=&quot;https://en.wikipedia.org/wiki/Turing_test&quot;&gt;Turing Test&lt;/a&gt;, but current systems regularly pass these tests (note that the versions you see online are usually trained to not appear too human!). Other suggestions are that the creation of various froms of art are the mark of intelligence, but modern systems can do that.&lt;/p&gt;
+
+&lt;p&gt;Is it good art? I don’t know. I do know AI tools create better pictures and music than I could. I don’t even know how to play Go. My maths skills are better than average, but I still make mistakes all the time. I have been known to speak nonsense and make stuff up. Does that mean I’m not intelligent? If we held humans to the same standards as AI tools, I’m not sure many people would qualify as intelligent. Imagine the dumbest human you know capable of getting by in society. I would definitely consider that person intelligent in the computational sense. In some specific areas computers can surpass that person’s capacities, but in the general case they can’t.&lt;/p&gt;
+
+&lt;p&gt;Over the last 32 years that I have been paying attention to the state of the art in AI, the progress overall has been astounding, especially over the last ten. Modern AIs may not meet all your specific expectations, but they are improving fast enough I wouldn’t be confident that situation will remain for long. Will that mean we have a true AGI? I doubt it (but without certainty) as I’m not certain what intelligence is other “I’ll know it when I see it.” It is far more likely to me people will redefine what AGI is (again) and then claim they have reached their goal or haven’t depending on their existing bias.&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Back to Games</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2024/09/back-to-games.html/"/>
+        <published>2024-09-12T00:00:00+08:00</published>
+        <updated>2024-09-12T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2024/09/back-to-games.html/</id>
+        <content type="html">&lt;p&gt;It has been too long. I’ve been playing the occasional game since the last set of reviews. Now there is enough for a blog post…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/1075740/Banners_of_Ruin/&quot;&gt;Banners Of Ruin&lt;/a&gt;&lt;/strong&gt; (13 hrs) - A deckbuilder set in a medieval world where all the characters are animals. It has all the usual mechanics you would expect: lots of unlocks; combo cards; a choice of events; non-combat events; etc. The novelty is from the ability to have upto six characters fighting on your side. Thus positioning becomes important, as does drawing enough cards to feed all those characters. The downside is it can become hard to remember which cards can be played by which characters (I made so many sequencing errors). Everything about this game is well-made and competently implemented. However, it just didn’t grab me. Competent, non-flashy - a good but not great game.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/993790/Ancient_Enemy/&quot;&gt;Ancient Enemy&lt;/a&gt;&lt;/strong&gt; (3hrs) - solitaire-like card set in a magical dark ages Wales. By the same people as &lt;a href=&quot;/blog/2022/04/enough-gaming.html&quot;&gt;Regency Solitaire&lt;/a&gt;, it is so similar it could be a sequel except for the change in setting. The other new addition is occasional battles where your powers increase as you clear more cards and you can see what the enemy will do next. These battles make it too hectic for the relaxed experience of Regency Solitaire, but the battles are not exciting enough to make me play this, instead of Slay The Spire. An interesting attempt to merge two different genres, but not interesting enough to keep me playing.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/1948280/Stacklands/&quot;&gt;Stacklands&lt;/a&gt;&lt;/strong&gt; (20hrs) - Its a deckbuilder, no a city builder, no a survival game. Clever little cross-genre game. Collect card packs to get cards and place them together to create new cards to build a village and keep the villagers alive in the face of starvation and constant attacks. Lots of achievements and goals kept me going past the usual 10 hour limit for builder games. However, eventually it succumbed to the standard busywork problem and so I stopped not far from 100%.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://playruneterra.com/&quot;&gt;Legends of Runeterra&lt;/a&gt;&lt;/strong&gt; (too many hours) - &lt;a href=&quot;/blog/2022/10/back-again-gaming.html&quot;&gt;See initial thoughts here&lt;/a&gt;. Played some more of this and even ranked online for a bit. My conclusion is it is a bad game. It is out of my system now. This game has that collect-them-all addictive (or compulsive) drive to collect all the cards. Luckily it is F2P and is very generous with in game rewards (I got to 70% of all cards without spending anything). However the multiplayer version of the game is high variance. There are many high value cards that can easily swing a game. It just depends who draws their good cards first. Thus even the best decks have around a 55% win rate. So many times the RNG is going to mean you are wasting your time from the start - you or your opponent is just too unlucky to make for a good game. It turns into a bit of a grind - like poker, but without the excitement/stress of playing for money. I suspect this is a conscious decision by the developers, I suspect it helps with monetisation. Not a good use of time. Just toss a (slightly weighted) coin instead, it is just as much fun and much quicker.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/1385100/Insurmountable/&quot;&gt;Insurmountable&lt;/a&gt;&lt;/strong&gt; (14 hours) - Climb mountains fighting the elements and a spooky time-loop story events in this kinda 3D roguelike. The climbing itself is ok, but the events on the mountain are fairly limited and repeat often. I understand this might be intentional given the timeloop, but still makes the game tedious. Once I got the same event 3 times on a single climb (no looping in sight). A good idea that just doesn’t translate well into a game (in this case at least). Skippable.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/461840/Zenge/&quot;&gt;Zenge&lt;/a&gt;&lt;/strong&gt; (30 minutes) - Casual puzzle game of moving shapes along tracks until a picture is revealed telling a story. I got through a third of the game in 30 minutes, stopped, and haven’t felt the need to go back.&lt;/p&gt;
+</content>
+    </entry>
     
     <entry>
         <title>Malaysia (again)</title>
@@ -93,345 +396,6 @@
 &lt;p&gt;So what do I read? I find the new sections of the specialist finanical media good (FT, AFR, Economist, Reuters, Bloomberg). Because they are unbiased? Absolutely not, they are very biased. However, when it comes to news events they pass the 3 tests above. The bias is obvious: companies, free market, being rich and capitalism are good, anything working against those things is bad. That bias not secretive either. I remember the Economist (back when I read it regularly 20 years ago) explicitly stating their neoliberal bias as an aside every few issues. Nor is it generally extreme as they have an unspoken interest in being roughly accurate. The implicit assumption is that people will make investment decisions based on the news in these outlets, so expect them to be mostly correct, and if not they would lose reputation (a self-declared Marxist first made this argument to me).&lt;/p&gt;
 
 &lt;p&gt;I have lived in a few countries and found the government media generally pass the 3 tests too. For instance, I watched the BBC in the UK and SBS in Australia. Both biased, but being inside the country at the time, I was quite aware of the size and direction of that bias. If you are not in country it would be much harder to tell. I can easily imagine that the government media in some countries may fail point #2 if they are more propagandistic and less free. I also used to read the Guardian when in the UK, being well aware of its biases, as they had been the same for decades (a sort of polite, socially acceptable left-leaning).&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Boardgames of 2022</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2024/01/boardgames.html/"/>
-        <published>2024-01-12T00:00:00+08:00</published>
-        <updated>2024-01-12T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2024/01/boardgames.html/</id>
-        <content type="html">&lt;p&gt;I continued tracking the boardgames I played through 2023 (&lt;a href=&quot;/blog/2023/02/boardgames.html&quot;&gt;see the 2022 list&lt;/a&gt;). Last year I played 21 different games a total of 47 times. The increase was largely due to joining a couple of clubs: &lt;a href=&quot;https://boardgamegeek.com/guild/view/4251&quot;&gt;Strategy Boardgamers WA&lt;/a&gt; is a reborn version of the Perth Long Boardgames club that shutdown during the Covid lockdowns; The Salvage League (no website) is devoted to playing quick games of Battletech: Alpha Strike. I had a goal of finishing the year having played all my previous unplayed games (they are marked in bold). I missed one, &lt;a href=&quot;https://boardgamegeek.com/boardgame/163154/falling-sky-gallic-revolt-against-caesar&quot;&gt;Falling Sky&lt;/a&gt;, but it is on the schedule to be played at SBWA in a few months (fingers crossed).&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Game&lt;/th&gt;
-      &lt;th&gt;Plays&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/142526/battletech-alpha-strike&quot;&gt;&lt;strong&gt;Battletech: Alpha Strike&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;12&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/266192/wingspan&quot;&gt;Wingspan&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/173346/7-wonders-duel&quot;&gt;7 Wonders: Duel&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/241724/villagers&quot;&gt;Villagers&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/251658/sprawlopolis&quot;&gt;Sprawlopolis&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/180263/7th-continent&quot;&gt;&lt;strong&gt;7th Continent&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2 (sessions)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/62222/commands-colors-napoleonics&quot;&gt;&lt;em&gt;Commands &amp;amp; Colors: Napoleonics&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/281655/high-frontier-4-all&quot;&gt;&lt;strong&gt;High Frontier (Race For Glory version)&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/281655/high-frontier-4-all&quot;&gt;&lt;strong&gt;High Frontier (full version)&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/1540/battletech&quot;&gt;&lt;strong&gt;Battletech: Classic&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/251442/liberation&quot;&gt;&lt;strong&gt;Liberation&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/30549/pandemic&quot;&gt;Pandemic&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/245654/railroad-ink-deep-blue-edition&quot;&gt;&lt;em&gt;Railroad Ink&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/205637/arkham-horror-card-game&quot;&gt;&lt;strong&gt;Arkham Horror&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/12891/friedrich&quot;&gt;&lt;em&gt;Friedreich&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/214234/tank-duel-enemy-crosshairs&quot;&gt;&lt;em&gt;Tank Duel&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/253506/versailles-1919&quot;&gt;&lt;em&gt;Versailles 1919&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/234477/battle-rokugan&quot;&gt;&lt;em&gt;Battle of Rokugan&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/295103/almoravid-reconquista-and-riposte-spain-1085-1086&quot;&gt;&lt;em&gt;Almoravid&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/289937/ancient-civilizations-middle-east&quot;&gt;&lt;em&gt;Ancient Civilizations of the Middle East&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/400314/apiary&quot;&gt;&lt;em&gt;Apiary&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Games listed in &lt;em&gt;italics&lt;/em&gt; are games I do not own, while those in &lt;strong&gt;bold&lt;/strong&gt; are my games that I played for the first time in 2023. Very long games split over multiple days are counted in distinct play sessions (of at least 2 hours).&lt;/p&gt;
-
-&lt;p&gt;Here are my thoughts on any game I played more than once, and haven’t previously reviewed (consider my plays of 7 Wonders Duel &amp;amp; Sprawlopolis as a sign of my continued enjoyment):&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Battletech&lt;/strong&gt;: Large &lt;a href=&quot;https://en.wikipedia.org/wiki/Mecha&quot;&gt;mecha&lt;/a&gt; battling other large mecha in a 31st century beset by war. This miniatures wargame came out 40 years ago and has been moderately popular ever since. I like it, and have played a lot of the faster paced, larger scale Alpha Strike version, but the more detailed, slower classic version is good too.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Wingspan&lt;/strong&gt;: Cute tableau builder about collecting birds for a sanctuary. Beautiful art and strangely popular with people who don’t play many boardgames. Enjoyable but I’m not  good player as a there is enough randomness that plans go astray quickly. Maybe that is why people like playing against me.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Villagers&lt;/strong&gt;: Fast tableau builder about building up a medieval village by tempting increasingly skilled and thus valuable workpeople to move in.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;High Frontier&lt;/strong&gt;: Complicated simulation of spaceship travel and construction through the solar system. Designed by an ex-NASA engineer with known physics (no faster-than-light stuff here). Requires commitment, concentration, patience and several hours to play. Finishing a game successfully gives a sense of satisfaction, like an exhausting workout. Very hard to get other people interested in trying it, a certain mindset is required :)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;7th Continent&lt;/strong&gt;: A long card-based cooperative narrative adventure game that is like a cross between a choose-your-own-adventure and a boardgame. Very long - my first game was 5 hours and the second 6, both were losses. Interesting, but it seems very puzzle based, so the more you play, the more you recognise situations and the easier it becomes. I feel this may not be a keeper and after a few more games it will be time to move it on.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Commands &amp;amp; Colors: Napoleonics&lt;/strong&gt;: A cross between a boardgame and a miniatures game, here you move blocks denoting various units around a board to recreate various Napoleonic battles. The hook is that you can’t just move and fight at will. To model the problems of historical command, each player must play cards that dictate which units may act. Frustrating, but in a good way, and fast playing, so it doesn’t feel unfair.&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Goals 2024</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2024/01/goals.html/"/>
-        <published>2024-01-11T00:00:00+08:00</published>
-        <updated>2024-01-11T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2024/01/goals.html/</id>
-        <content type="html">&lt;p&gt;My attempt to achieve &lt;a href=&quot;/blog/2023/02/goals.html&quot;&gt;last years goals&lt;/a&gt; was a failure. Not completely, I did manage to complete the two easiest and one other goal, but that is only a 50% success rate. It has been a year of distractions: from self-inflicted injury, long holidays, and technology indecision. Here is the assessment:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Increase strength and aerobic fitness&lt;/strong&gt;: Fail. This was going well until I tore my supraspinatus shoulder tendon in May. The physio recommended no exercise (other than light recovery exercise) for several months, but I’ve gone longer due to other things, and haven’t started again yet.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Demo quality Ci2D&lt;/strong&gt;: Nope, nowhere near this. I started working on it four times in different languages/engines this year (Unity, Scala, Typescript and Godot). I don’t want to use Unity anymore after their &lt;a href=&quot;https://www.jarrahtechnology.com/2023/10/01/Smug-Mode.html&quot;&gt;fiasco&lt;/a&gt;, but I’m struggling to find a suitable replacement.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Continue on IPO &amp;amp; maybe one other&lt;/strong&gt;: Done, but barely. I created another version of IPO, and nothing else.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;18 blog articles (including Jarrah Technology)&lt;/strong&gt;: Done. Eight here and 12 on Jarrah Technology, this is the easiest goal.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Fix the bedroom window issues, fix the terrace drainage problem &amp;amp; build a chicken coop&lt;/strong&gt;: Done, and not too badly. See the photo below of the chicken coop I built.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Paint at least 10 miniatures, and have played all my boardgames&lt;/strong&gt;: So close, but no. After &lt;a href=&quot;/blog/2023/06/miniatures.html&quot;&gt;a late start&lt;/a&gt;, I now have two dozen painted minis and I’m getting better. However, I have one unplayed boardgame: &lt;a href=&quot;https://boardgamegeek.com/boardgame/163154/falling-sky-gallic-revolt-against-caesar&quot;&gt;Falling Sky&lt;/a&gt;, a heavy and long wargame about Caesar’s Gallic Wars (perhaps a hard sell for other players:). Still I have found a group willing to play but scheduling issues mean it is down for April.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/posts/chicken_coop.png&quot; alt=&quot;Chicken Coop&quot; title=&quot;Chicken Coop&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Will next year be better?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Return to a decent level of fitness and strength&lt;/strong&gt;: Just in the last month my shoulder is feeling good again. Time to (gently) get back to exercise.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Improve Spanish&lt;/strong&gt;: With my extra time, I restarted learning Spanish last year. It came back fairly quickly. I should keep it up.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Learn to 3D print (and then paint the result)&lt;/strong&gt;: I bought myself a 3D printer for christmas. I should learn to use it properly, print some minis, and paint them.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;18 blog articles (including Jarrah Technology)&lt;/strong&gt;:  An easy one to ensure I hit at least one of these.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Demo quality Ci2D&lt;/strong&gt;: This is ambitious, but I need to choose a technology and start moving.&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>China</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2023/10/china.html/"/>
-        <published>2023-10-06T00:00:00+08:00</published>
-        <updated>2023-10-06T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2023/10/china.html/</id>
-        <content type="html">&lt;p&gt;I recently spent nearly a month in China. A fortnight in &lt;a href=&quot;https://en.wikipedia.org/wiki/Guangxi&quot;&gt;Guangxi&lt;/a&gt; (mostly &lt;a href=&quot;https://en.wikipedia.org/wiki/Hechi&quot;&gt;Hechi&lt;/a&gt; &amp;amp; &lt;a href=&quot;https://en.wikipedia.org/wiki/Guilin&quot;&gt;Guilin&lt;/a&gt;) staying with a friend’s family, and then a few days each in &lt;a href=&quot;https://en.wikipedia.org/wiki/Wuhan&quot;&gt;Wuhan&lt;/a&gt; (halfway between Guilin and Beijing on the train), &lt;a href=&quot;https://en.wikipedia.org/wiki/Beijing&quot;&gt;Beijing&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Shanghai&quot;&gt;Shanghai&lt;/a&gt;. I took hundreds of photos and could write a great deal, but will try to keep it succinct with some notes.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The first day was spent in &lt;a href=&quot;https://en.wikipedia.org/wiki/Nanning&quot;&gt;Nanning&lt;/a&gt; and I quickly noticed that the streets were quieter than expected. Almost all of the scooters on the road and about a fifth of the cars were electric so made little noise. It was easy to tell which cars were electric as they had green number plates while ICE cars had other colours. There were a wide range of electric car brands, most were local and I had never heard about them before. Tesla’s were common too. In Shanghai around half the cars seemed to be electric, but in Beijing and Wuhan it was around 10-20%.&lt;/li&gt;
-  &lt;li&gt;There are lots of building sites, usually of huge towers but most showed no evidence of currently being worked on (that I could see). Of course I may have missed some signs or they just weren’t being worked on at the time I passed. Still it was noticable.&lt;/li&gt;
-  &lt;li&gt;Travelling across the country we saw many wide navigatable rivers. Also everywhere was green and verdant. Farms seemed small (compared to Australian standards). A big one would be a few acres or more. Every bit of spare space was turned to cultivation: empty city blocks and roadside verges often had neat rows of fruit/vegetable plants.&lt;/li&gt;
-  &lt;li&gt;All the cities were clean (like Perth) and felt safe no matter what alley we walked down. Some of the villages were a little rougher (not much!) but that is to be expected in working agricultural centers. The vast majority of people we met (including security) were polite and friendly.&lt;/li&gt;
-  &lt;li&gt;High-speed trains are awesome. Quick to get on at the station, and a few hours later you are at the center of another city. They have a speed display between cabins and the highest I saw was 359km/h. Most train stations are monumental - so big they look half empty even with thousands of people in them (&lt;a href=&quot;/slideshows/china_23.html&quot;&gt;see photo slideshow&lt;/a&gt;).&lt;/li&gt;
-  &lt;li&gt;Once we left Hechi there was air pollution everywhere. Not too bad, I’ve seen far worse, but it was still noticable. The horizon looked grey and distant buildings would fade into it. I would sneeze or cough for a few minutes each morning when leaving the hotel.&lt;/li&gt;
-  &lt;li&gt;Everything is done electronically. WeChat or Alipay is an absolute necesity. Train tickets, tourist site tickets, communicating with people, nearly everything we did was organised through WeChat. This worked fine until we reached Shanghai and found Alipay (which we didn’t have) was more popular, so we had problems getting things done (the ferry told us to go away).&lt;/li&gt;
-  &lt;li&gt;All payment is electronic through WeChat or Alipay. In my entire time in China I didn’t see a single credit card (nor use one), nor a paper ticket and I saw cash twice: once a tourist at a tourist site and once a local paying at a market. Everything else either has you send money directly through an app or has a QR code for transfers. Street stalls, hotels, trains, taxis, even the binoculars at tourist sites have QR codes. Usually this is the only way to pay. The country runs on QR codes.&lt;/li&gt;
-  &lt;li&gt;It must be impossible to survive as an independent tourist in China without access to these apps. We had one person with WeChat (through a local relative) and used that. As non-residents it requires some planning to get them. I applied for restricted WeChat (payment, messaging and a few other things) and it took 15 days to get access. So for the first half of the trip I was completely reliant on other people.&lt;/li&gt;
-  &lt;li&gt;Also you don’t have to go far off the tourist trail before having great difficulty with English. Unless you have access to WeChat/Alipay and someone who speaks Mandarin I would recommend using tour groups.&lt;/li&gt;
-  &lt;li&gt;Everyone has a fancy phone and spends most of their time staring at it (just like home :) Tiktok is incredibly popular, people would talk about it all the time. Public phone chargers are common and often unattended (you pay via QR code).&lt;/li&gt;
-  &lt;li&gt;Highspeed wifi or 5G is nearly ubiquitous, much better than in Australia. However, the Great Firewall is real and works all too well. If you want to access a website or service from outside China then bring a good VPN with you - no recommendations because the list of working ones changes every few months as the firewall is constantly updated.&lt;/li&gt;
-  &lt;li&gt;In the south at least the local languages seem to be disappearing, with the younger generations using Mandarin, while the middle aged and older would still use their regional language as default.&lt;/li&gt;
-  &lt;li&gt;China is a nation of shopkeepers. So many shops or stalls everywhere. I also saw lots of delivery drivers with stacks of packages, so Internet shopping is clearly big business too. Who is buying all the stuff? I hope the rent on shops is cheap to keep overheads low.&lt;/li&gt;
-  &lt;li&gt;Water fountains sometimes had 3 settings: cold, tepid, and boiling hot. That is not an exaggeration! It was boiling water that people used for pot noodles.&lt;/li&gt;
-  &lt;li&gt;We visited a couple of villages and the houses looked recent and decent, but they seemed empty. I am told people would move to the cities and then build a nice house back in the village but not live there (or only for short periods). The village’s permanent residents were mainly older or poorer people.&lt;/li&gt;
-  &lt;li&gt;A goat costs AU$400. I know because that is what we paid to provide one for a village feast. There were also ducks, chickens and geese just wandering around the village, but apparently people know who owns them. Ducks get carried around in little pastic bags with their heads poking out. Its cute, but they are often being carried to become dinner. The meat was definitely full of flavour, but also chewy. The tofu was noticable tastier than in Australia (but then our hosts were tofu makers by profession). All of the village alcohol is home made, carried around in very large bowls and quite strong. It was some kind of grain spirit (but I was told it was not rice). Alcoholism was an issue.&lt;/li&gt;
-  &lt;li&gt;The ground floor of village houses were an extension of the outside. Some used it for equipment storage, or animals. A couple of places used it to store silkworms on a bed of mulberry leaves (&lt;a href=&quot;/slideshows/china_23.html&quot;&gt;see photo slideshow&lt;/a&gt;). A good way to earn extra money I’m told.&lt;/li&gt;
-  &lt;li&gt;Every house/apartment we visited had a large flatscreen TV and water filtration system. Some in the villages (but not the city) had scary exposed wiring that I told was usually done by the owner - the week before we arrived a friend of our hosts was electrocuted to death.&lt;/li&gt;
-  &lt;li&gt;I often saw men smoke (like Australia over 30 years ago), but never saw a woman smoking. Men seemed to be drinking far more often too. Alcohol and cigarettes are cheap, presumably the tax on them is lower?&lt;/li&gt;
-  &lt;li&gt;Cities got more expensive as we travelled: Hechi &amp;lt; Guilin &amp;lt; Wuhan &amp;lt; Beijing &amp;lt; Shanghai. Shanghai didn’t feel much cheaper than smaller Australian cities (apart from the alcohol and street food). Also people became clearly taller once we left Guangxi.&lt;/li&gt;
-  &lt;li&gt;After Hechi, we booked hotels through WeChat, but many had a no foreigners policy. All the hotels we stayed in were good, quiet and clean.&lt;/li&gt;
-  &lt;li&gt;Once we got to Beijing there was definite increase in police/military security. Before and after that city it was around but didn’t feel too much (we had our ID checked twice at all the train stations for example - but it was far quicker than at an airport). In Beijing we would be stoppped and have our ID and bags checked several times per day just walking around, plus extra at any tourist sites. It was always polite, fast and friendly (apart from Tianamen Square, where they gruffly checked every item in my bag individually and I had to wait for them to read each page of paper I was carrying). There were also many uniformed police or military standing, walking or marching around. Also lots more video cameras (about to London levels).&lt;/li&gt;
-  &lt;li&gt;Sometimes it seemed these checks were security theatre. Once I took a step too far and could see the screen of the guy checking my passport. I saw him enter an incorrect last digit of my passport number and then saw a big red warning message appear. He simply returned my passport and waved me through with a smile.&lt;/li&gt;
-  &lt;li&gt;We went to visit a street market and &lt;a href=&quot;https://en.wikipedia.org/wiki/Hutong&quot;&gt;Hutong&lt;/a&gt; (local alleyways) one of us used to frequent when they lived in Beijing for a few months 20 years ago. They no longer existed. They had been replaced by modern shops and apartments. Apparently a common occurrence. We did find a Hutong, but it felt very touristy.&lt;/li&gt;
-  &lt;li&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Forbidden_City&quot;&gt;Forbidden City&lt;/a&gt; is huge and a great place to visit. We spent half a day there and could easily have spent longer. Recommended.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Great_Wall_of_China&quot;&gt;The Great Wall&lt;/a&gt; is overrated as a tourist site. The wall is impressive because of its extent, something you will not be able to appreciate on the few kilometers accessible at a time. It is also very busy and could be renamed the Great Line of China. We waited nearly 3 hours in line for a leisurely hour on the wall, shoulder to shoulder with other tourists. I have to say the lines were well organised. Full of turns and broken into stages, it never seemed like there was that many people in front of you - until you turned the corner. Each new stage of the queue was like a new stage in the &lt;a href=&quot;https://en.wikipedia.org/wiki/&quot;&gt;5 stages of grief&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;In Guangxi apartments tended to have security grates over the windows. At the time I was told this was normal all over the country, but I rarely saw it anywhere else we went. Strange. I was also told that Guangxi had great water and it could be found bottled throughout the country, this was definitely true in my experience.&lt;/li&gt;
-  &lt;li&gt;Guilin is a tourist trap, everywhere we went the exit was through a gift shop or three. It is a pretty place, but I didn’t find it much prettier than areas around Hechi. I probably would have been more impressed if went there first.&lt;/li&gt;
-  &lt;li&gt;Many tourist sites sell icecreams in the shape of the tourist site. Reader, I succumbed to the herd instinct and bought one. They are better then I expected - not great, but decent.&lt;/li&gt;
-  &lt;li&gt;In Guangxi there many shops selling scooter batteries with a poster of a benevolent &lt;a href=&quot;https://en.wikipedia.org/wiki/Donnie_Yen&quot;&gt;Donnie Yen&lt;/a&gt; gazing down upon the street. He was the only person on street advertising that I recognized. It was strangely comforting.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Some photos from the trip are in a short slideshow &lt;a href=&quot;/slideshows/china_23.html&quot;&gt;available here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/slideshows/china_23.html&quot;&gt;&lt;img src=&quot;/assets/slideshow/china_23/forbidden_main.png&quot; alt=&quot;&quot; title=&quot;The Forbidden City&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Miniatures</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2023/06/miniatures.html/"/>
-        <published>2023-06-06T00:00:00+08:00</published>
-        <updated>2023-06-06T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2023/06/miniatures.html/</id>
-        <content type="html">&lt;p&gt;Through the purchase of various bordgames I have acquired a large number of small miniatures. Most of them are just the monochrome plastic. I thought it might be nice to try painting them. However, I didn’t want to start by wrecking the minis of any of my current games, so I bought a learn to paint kit (from Reaper Miniatures) which came with a few test minis.&lt;/p&gt;
-
-&lt;p&gt;Behold the result of my labours:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/posts/minis/minis1.png&quot; width=&quot;640&quot; alt=&quot;First Attempt&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Not great, but not awful. They are each about 5 centimeters in height and at a tabletop viewing distance look “ok”. Of course if you get close or look at closeup photos, all you can see are the errors. So what did I learn apart from my eyesight is getting worse and my hands are unsteady?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The less paint per layer the better. It is easier to fix up a watered down bad stroke with another stroke/layer, rather than being stuck with too much paint hiding details or just in the wrong place.&lt;/li&gt;
-  &lt;li&gt;Take regular breaks.&lt;/li&gt;
-  &lt;li&gt;Have a “mistake” brush handy. If paint goes where it shouldn’t, promptly brushing it with water will usually fix it up.&lt;/li&gt;
-  &lt;li&gt;They took about 3 hours each (one at a time), so try doing a few at once. Hopefully I’ll speed up.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I think it is worth continuing. Next up I’m going to try some duplicate BattleTech miniatures.&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Adelaide</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2023/05/adelaide.html/"/>
-        <published>2023-05-03T00:00:00+08:00</published>
-        <updated>2023-05-03T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2023/05/adelaide.html/</id>
-        <content type="html">&lt;p&gt;It has been a while since I last travelled out of Perth, so it was nice to get away to Adelaide and its surrounds for a week.&lt;/p&gt;
-
-&lt;p&gt;Some thoughts:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Adelaide seems like a very quiet city, it reminds of Perth in that regard. However, where Perth is all about the beach or river, for Adelaide it is all about wineries. Must be a nice place to live.&lt;/li&gt;
-  &lt;li&gt;The Adelaide city markets are definitely worth a visit - should be more places like this in Australia.&lt;/li&gt;
-  &lt;li&gt;The little laneways around the edges of either end of Rundle St (not the mall) have some great alfresco dining.&lt;/li&gt;
-  &lt;li&gt;The center of Adelaide is very well laid out and pleasant to be around. It is encircled by a park which is excellent planning (reminded me of the half-encircling Turia Gardens in Valencia).&lt;/li&gt;
-  &lt;li&gt;The last winery in a winery tour should pay the tour organisers. Anecdotally, the last place on the tour makes the most sales since everyone is a little drunk.&lt;/li&gt;
-  &lt;li&gt;Going to wineries gets a bit repetitive - how many ways are there to say “this is a nice wine”?&lt;/li&gt;
-  &lt;li&gt;There is not much to see at the mouth of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Murray_River&quot;&gt;Murray River&lt;/a&gt; (Australia’s longest river), but the drive down there has some interesting sights (and of course, wineries).&lt;/li&gt;
-  &lt;li&gt;Still using my iPhone for photos, maybe time to dump the old camera?&lt;/li&gt;
-  &lt;li&gt;A week is more than enough to “see” Adelaide.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Some photos from the trip are in a short slideshow &lt;a href=&quot;/slideshows/adelaide_23.html&quot;&gt;available here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/slideshows/adelaide_23.html&quot;&gt;&lt;img src=&quot;/assets/slideshow/adelaide_23/vineyard_main.png&quot; alt=&quot;&quot; title=&quot;Barossa vineyard&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Blame</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2023/03/blame.html/"/>
-        <published>2023-03-15T00:00:00+08:00</published>
-        <updated>2023-03-15T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2023/03/blame.html/</id>
-        <content type="html">&lt;p&gt;Some time ago the news included a story about the British government hiring an Australian ex-politician to be a trade envoy during the Brexit upheavel. I thought this was an understandable move from the point-of-view of British politicians and civil servants. If it all went badly (as was likely) thay could just blame the Aussie and sack him.&lt;/p&gt;
-
-&lt;p&gt;It reminded me of the blame management I sometimes saw while working at large firms. At a couple of places there was a layer of management usually above the team managers and below senior managers that had “taking the blame” as a big part of their implicit job description. At some places outside consultants seemed to occupy the same role. Officially they were always in charge of this or that project, but had no direct power to get work done. They had responsibility without authority. If things didn’t succeed they got the blame for events outside their control. The cynic would suggest they were just the sacrificial lambs to ensure the senior managers remained unblemished. Rarely did any technical (ie non-management) get serious blame for the larger problems. Smaller things we got the blame for all the time, often deservedly, but here I mean the larger failures noticable to senior management. I wonder if this was the same outside the IT world? I suspect in my world blaming the people close to the work (like Software Engineers) would be counter-productive as we could just leave and get another job very easily. I also assume senior management never considered themselves the problem.&lt;/p&gt;
-
-&lt;p&gt;I developed a rule of thumb for identifying blame managers. If you job was to “coordinate” or other vague terms that seemed to describe a lack of concrete responsibilty, you were safe. You could probably worm yourself out of a bad situation. If your job was “delivery” or running a project and you did not actually have any resources or subordinates, especially if you are in a &lt;a href=&quot;https://en.wikipedia.org/wiki/Matrix_management&quot;&gt;matrix-based organisation&lt;/a&gt; - watch out!&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Boardgames of 2022</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2023/02/boardgames.html/"/>
-        <published>2023-02-15T00:00:00+08:00</published>
-        <updated>2023-02-15T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2023/02/boardgames.html/</id>
-        <content type="html">&lt;p&gt;I have started tracking the boardgames I play during the year. In 2022 I played 11 different titles for a total of 34 games. That doesn’t seem like much to me (but there were also 6 games of my prototypes). Here is the list:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Game&lt;/th&gt;
-      &lt;th&gt;Plays&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/173346/7-wonders-duel&quot;&gt;7 Wonders: Duel&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/328871/terraforming-mars-ares-expedition&quot;&gt;Terraforming Mars: AE&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/251658/sprawlopolis&quot;&gt;Sprawlopolis&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/274364/watergate&quot;&gt;Watergate&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/230253/star-realms-frontiers&quot;&gt;Star Realms: Frontiers&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/227789/heaven-ale&quot;&gt;Heaven &amp;amp; Ale&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/281655/high-frontier-4-all&quot;&gt;High Frontier (Space Diamonds version)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/14996/ticket-ride-europe&quot;&gt;Ticket To Ride: Europe&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/103885/star-wars-x-wing-miniatures-game&quot;&gt;X-Wing&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/30549/pandemic&quot;&gt;Pandemic&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/283864/trails-tucana&quot;&gt;Trails of Tucana&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;And now some short reviews of the games I own and have played at least 3 times:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;7 Wonders Duel&lt;/strong&gt;: this is a 2-player only version of the also excellent deckbuilder &lt;a href=&quot;https://boardgamegeek.com/boardgame/68448/7-wonders&quot;&gt;7 Wonders&lt;/a&gt;. The goal is to build an ancient civilisation by selecting cards from layouts of escalating power. Some of the cards are hidden until they can be chosen other are visible from the start. There are lots of ways to acculumate points and many strategies. You have to adapt to the situation and your opponent. This is an excellent game and so much fun. I’ll be playing much more.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Terraforming Mars: Ares Expedition&lt;/strong&gt;: the 2-player version of &lt;a href=&quot;https://boardgamegeek.com/boardgame/167791/terraforming-mars&quot;&gt;Terraforming Mars&lt;/a&gt;, an engine building game where the players vie to contribute the most towards making Mars human habitable. The back of the box says it plays in under an hour but I have never taken less than 90 minutes. So far there is little interaction with the opponent, but the depth of tactics and huge number of possibilities keeps me interested. A good game I’ll keep playing for now, but will it keep me interested when it is more familiar?&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Sprawlopolis&lt;/strong&gt;: 18 card city builder. Quick and challenging, you lay the cards down like tiles to plan out a city, while trying to satisfy 3 randomly generated scoring rules. Can be played solo. Everyone I have played this with loves it, and deservedly so. Great to carry around as time-filler between other things (as were all the plays this year).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;FYI: 3 plays is the review minimum because that excludes Watergate. I like the asymmetric gameplay of that Watergate, but am worried one side may have an winning advantage - I need more plays before giving a fair review.&lt;/p&gt;
 </content>
     </entry>
     

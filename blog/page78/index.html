@@ -38,243 +38,251 @@
             <div class="row">
 <div class="col-lg-8">
 
-  <span class="date">June 21, 2009</span>
-  <h4><a href="/blog/2009/06/pompeii-photos.html">Pompeii Photos</a></h4> 
+  <span class="date">August  9, 2009</span>
+  <h4><a href="/blog/2009/08/soap-and-rest.html">SOAP and REST</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Travel.html">Travel</a>, 
-    
-      <a class="post" href="/blog/tag/Italy.html">Italy</a>
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
     
   <br/><br/>
   <div class="content">
-    <p>Last September I visited
-<a href="http://en.wikipedia.org/wiki/Pompeii">Pompeii</a>. Despite spending nearly
-6 hours walking around in the sun, I still only saw a fraction of the
-site. It is truly very impressive. My camera was dying so there are not
-too many photos, but I have put some of the best <a href="http://www.flickr.com/photos/33547649@N07/sets/72157620005024571/show/">here on
-Flickr</a>.</p>
+    <p>For a recent project I had to connect to two different read-only web
+services. Both were from commercial vendors providing very similar
+information (which I aggregated). One API was
+<a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>
+based the other used <a href="http://en.wikipedia.org/wiki/SOAP">SOAP</a>. The REST
+interface took me a few hours to write, the SOAP one took days!</p>
 
-<p><a href="http://www.flickr.com/photos/33547649@N07/sets/72157620005024571/show/"><img src="http://farm4.static.flickr.com/3569/3646487733_9ef33a7b5e.jpg?v=0" alt="Grand Theatre at Pompeii" title="Grand Theatre at Pompeii" /></a></p>
+<p>For the REST interface I had to send requests to a URL that somewhat
+indicated what I was attempting to do - eg
+http://example.site/contracts/123 to get the details of contract with id 123. An <a href="http://en.wikipedia.org/wiki/XML">XML</a> was returned and using a
+<a href="http://en.wikipedia.org/wiki/Simple_API_for_XML">SAX</a> parser
+constructed my internal objects. In total it took 340 lines of my code
+to handle the entire web service. Easy!</p>
+
+<p>Using the SOAP interface required me to download their
+<a href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">WSDL</a>
+and then construct a model of their domain objects - I used <a href="http://ws.apache.org/axis2/">Apache
+Axis2</a> (not Apache Axis though, that is an
+old and unmaintained project that does the same thing - a confusion that
+cost me some time). Unfortunately the WSDL was wrong and the model
+didn’t generate properly. I had to dive into the 2000 line WSDL file to
+find and fix the error - and it was near unreadable! Try looking at a
+commercial WSDL file some time. After some trial and error the model was
+right and when surrounded by copious error handling code it could be
+sent and data received from the service. It took 810 lines of my code,
+plus hundreds more in the generated model. Urgh. At this point one might
+suggest it was just a problem caused by a dodgy service provider.
+However, I have since added a third read-only web service to the
+project. It is also SOAP based and just as difficult to get running
+properly - apart from having to modify the WSDL since theirs was correct
+from the start.</p>
+
+<p>I also have experience from the other side, providing a web service.
+Using <a href="http://rubyonrails.org/">Ruby on Rails</a> I added a REST interface
+to my existing website by just providing XML views of the data. While
+working at a bank a SOAP interface to an existing legacy system was
+required, it took a great deal of fiddling and trust in our IBM
+development tools to get it working after a couple of days.</p>
+
+<p>The experience reminds me of an <a href="http://www.theregister.co.uk/2006/04/29/oreilly_amazon/">interview on The
+Register</a> where
+Tim O’Reilly suggests that SOAP is a standards first specification
+created without reference to how it would be used in the real world
+(because at the time the spec was created there weren’t any people using
+it). SOAP definitely feels like an overengineered solution. The kind of
+thing I would have loved earlier in my career when suffering from
+<a href="http://en.wikipedia.org/wiki/Second-system_effect">Second System
+Syndrome</a>. Over time
+I am becoming increasingly appreciative of simplicity in code.</p>
+
+<p>For me, there is now no comparison. SOAP just doesn’t seem to work well
+in any place I’ve seen it tried. My first choice for web service API
+will have to be REST.</p>
 
   </div>
   <hr/>
 
-  <span class="date">June 13, 2009</span>
-  <h4><a href="/blog/2009/06/blender-tutorial-tozeur-market.html">Blender Tutorial: Tozeur Market Sculpture - My First Model</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Blender.html">Blender</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I’ve <a href="http://www.cordinc.com/blog/2009/02/new-goals.html">previously
-stated</a> that I
-intend to learn 3D modelling well enough to recreate simple ancient
-historical architectural scenes after being inspired by my trips to
-Pompeii and
-<a href="http://www.cordinc.com/blog/2008/12/dougga-photos.html">Dougga</a>. To
-this aim I downloaded <a href="http://www.blender.org/">Blender</a>, an opensource
-3D modelling program, and bought <a href="http://www.blender3d.org/e-shop/product_info.php?products_id=96">The Essential
-Blender</a>.
-After having read the first 3 chapters of that book and a few online
-tutorials (mainly around materials and textures), I was ready to try
-creating my first model. I decided upon a sculpture found in the market
-square of <a href="http://en.wikipedia.org/wiki/Tozeur">Tozeur, Tunisia</a> - it
-seemed simple enough, but it wasn’t immediately clear to me how it
-should be done. Below you can see images of the original and my model.</p>
-
-<p><a href="/blender/tutorials/tozeur_sculpture/">The continuation of this post is a set by step tutorial detailing my
-methodology</a>.</p>
-
-<p><a href="/blender/tutorials/tozeur_sculpture/"><img src="/blender/tutorials/tozeur_sculpture/result_small.png" alt="Tozeur Market Sculpture" title="Tozeur Market Sculpture" /></a></p>
-
-  </div>
-  <hr/>
-
-  <span class="date">June  1, 2009</span>
-  <h4><a href="/blog/2009/06/leeds-castle-golf-course.html">Leeds Castle Golf Course</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Golf.html">Golf</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>On the weekend I played another local(ish) 9-hole golf course, the
-<a href="http://www.leeds-castle.com">Leeds Castle Golf Course</a>. As its name
-suggests it is on the grounds of Leeds castle in Kent. I had hoped that
-after the round we would be able to walk around the castle grounds, but
-unfortunately the course is in a physically separate section of the
-grounds so that wasn’t possible. There are two separate entrances, one
-for the castle and one for golf. In any case with the scenery of a
-renovated moated medieval castle visible from most holes, I can say this
-is easily the prettiest golf course I’ve played. It is a good thing it
-has good views, because I played the worst golf of my life on this
-course. I lost about 8 balls. I’m not sure if it was just a bad day or
-the course layout. However, there are a good collection of water hazards
-and bunkers. Also, the rough is really rough - shin high grass that
-easily hides a wayward ball.</p>
-
-<p>It is a par 33, 2681 yard, 9 hole course. Three par 3s and the rest par 4. It cost £19.50 for a weekend round plus hiring a decent set of clubs.
-Less on weekdays. The website states that booking is essential on
-weekends, but phoning a few days in advance I got the tee time of my
-choice and the course didn’t seem too packed. There are few facilities
-other than a pro shop, but there is a nice pub right outside the
-entrance. I’d play again, but maybe after a few lessons.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">May 28, 2009</span>
-  <h4><a href="/blog/2009/05/what-makes-projects-work.html">What Makes Projects Work</a></h4> 
+  <span class="date">August  2, 2009</span>
+  <h4><a href="/blog/2009/08/gone-but-not-forgotten.html">Gone, but not forgotten</a></h4> 
   Tags: 
     
       <a class="post" href="/blog/tag/Software Project Management.html">Software Project Management</a>
     
   <br/><br/>
   <div class="content">
-    <p>Recently I got in a drunken conversation with another long time
-developer and consultant about what makes software projects succeed. We
-both had many years of experience with many different projects, so it
-was particularly gratifying that we largely agreed with each other (or
-was that the alcohol?). Having seen many people write their
-prescriptions to project success, I thought I’d add my 2 cents in the
-form of my observations. I would consider project success to be that the
-software is delivered, the clients are satisfied with the result and
-there were no surprises on time or budget (time/budget could be higher
-than initially planned, but any slippage was identified and explained
-well in advance). As a technical person, I also include the subjective
-measure that the codebase would not cause embarrassment (no
-<a href="http://thedailywtf.com/">WTFs</a> here).</p>
+    <p>This week I met up with some old colleagues. While talking about what we
+were all doing now, one person who still worked at the place we worked
+together mentioned that there had been a change in software
+architecture. Thus all my old code would be rewritten. This news got me
+thinking. I’ve been writing software commercially for nearly 12 years
+and most of my code is no longer used. Three years of work is gone due
+to my employers going bust. Another 3 and a half years worth was (or
+will be) rewritten after changes in platform architecture. Two more
+years of work was retired after completing the purpose for which it was
+written. One employer from years ago still uses 2 years of coding work -
+just last month I crossed paths with one of the users who did acceptance
+testing (he remembered me after 5 years, although neither of us could
+remember the other’s name) and he said they were still very happy with
+it. So about 70% of my work, measured by time, is gone and no longer of
+any use. Is that normal?</p>
 
-<p>Below are the some characteristics of successful projects I have seen,
-in no particular order. None of them is sufficient by themselves and
-I’ve seen projects succeed when some of these characteristics were
-glaringly absent. However, I can’t remember seeing any project succeed
-without more than a few of these present.</p>
+<p>I’m not sure what is the appropriate comparison. Engineers and
+architects build structures that last for many years. I have known
+people who assisted building houses, power stations, and gas pumping
+stations. All of which still stand and should for decades to come.
+However, these are physical things, so are obviously physically harder
+to construct. Creating software is a thought driven logical process.
+Perhaps a better comparison is with other professionals dealing with
+abstract concepts like accountants, lawyers, analysts, etc. Much of
+their output is transactional in nature: calculating this year’s
+corporate accounts; writing or checking a contract; or, producing a
+report. While such work may exist for some time, its utility drops
+greatly once the reason for its creation has passed. I suppose this is
+analogous to code still existing in sourcecode repositories long after
+it no longer runs. In which case still having 30% of my work useful is
+probably a good record.</p>
 
-<ul>
-  <li>Good People. If not the most factor important for success, certainly
-the most important for enjoyment. I actually think that smart,
-motivated people who want to get things done can ameliorate many
-project difficulties. Thus forming a team of good developers should
-be the first goal of any project. Note here I haven’t said “Smart
-People”. While being smart certainly helps it’s is not everything (I
-have a little disagreement with Google’s “only the best” hiring
-practices here). On more than one occasion I have seen some very
-smart people get tied up in irrelevancies and doing things “right”
-resulting in nothing being done at all!</li>
-  <li>Political Support or Cover. The senior management have to want the
-project to succeed (not always a given in some political firms!).
-Otherwise, the project will have problems getting the resources it
-needs. Similarly in larger organisations a project needs to have
-managerial support, both in terms of the problem being solved and
-the manner it will be solved. I was once at a place where the senior
-IT management were all old waterfall process COBOL coders and
-distrusted iterative development. There was so much friction and so
-many people just waiting to say “I told you so” (on both sides) that
-forward movement was difficult. At another place with similarly
-minded senior management, our immediate manager provided us with
-cover. To higher management he presented reports conforming to their
-waterfall style, but allowed us to run the project as we saw fit.</li>
-  <li>Well Understood Problem. The more similar the problem being solved
-is to previous problems the team has solved the more effectively
-pitfalls will be avoided. This is one of the premises behind
-prototyping - solve the exact same problem twice and the second time
-should be much easier.</li>
-  <li>Tight Iterations with End-user Interaction. I started commercial
-work just as iterative development was becoming popular (we were
-taught waterfall at university) and I’m a big believer. I have found
-iterations lasting just a week or so (or as short as possible while
-still getting some decent work in each iteration) and then deployed
-to an environment where an end-user can see it (and hopefully try it
-out) work best. The idea is to get regular and high quality feedback
-on whether the project is heading in the right direction as well as
-priorities for future work and changes required. Every project I
-have been on has significantly changed requirements from start to
-end. The chances for project success are greatly enhanced if change
-is accepted and handled. Indeed the best option is to proactively
-seek out the changes required and this is where short iterations
-with user feedback help immensely.</li>
-  <li>Small Teams. I was once on a project with over 100 other technical
-people. The back and forth of meetings and coordination was
-inordinately complex. I think Brooks had this right in <a href="http://en.wikipedia.org/wiki/The_Mythical_Man-Month">The Mythical
-Man Month</a>, and
-teams should be kept no larger than around 9 people. That number
-seems to work well and if they are good people, a great deal can be
-achieved. On that 100 person project, I strongly believe that the 9
-best people in a single team would have done much, much better than
-the other 91 as a team.</li>
-  <li>Flexible Process. <a href="http://www.cordinc.com/blog/2009/05/contect-in-software-developmen.html">I wrote about this
-before</a>,
-basically I think software projects work best where they are done by
-people who look to understand their environment and can adapt - not
-just retrying the same old thing that worked last time (for you or
-someone else).</li>
-</ul>
+<p>However, I don’t find the comparison to other abstract workers wholly
+compelling. Software developers seem to fall in between them and
+engineers. We think abstractly for a living, but produce something, even
+if it is just logic, that has utility beyond the point of its creation.
+Some computer programs have been running for decades - otherwise there
+couldn’t have been such an issue around
+<a href="http://en.wikipedia.org/wiki/Year_2000_problem">Y2K</a>. Even in the
+faster moving consumer software world code can hang around. Just today I
+used a <a href="http://en.wikipedia.org/wiki/DOS">DOS</a> command window - probably
+some very old code hanging around there.</p>
+
+<p>Perhaps the best way to think about my profession is that it is a
+discipline of engineering which works with logic and thus allows the
+perception that its artefacts are easily replaced (even if in reality
+that often is not the case). Also it is a fairly new profession and as
+such it is developing and changing rapidly, which also encourages code
+to be replaced with updated, more modern, versions. As for my record,
+when I mentioned the figures to my old colleagues they didn’t think it
+was strange or exceptional in any way. That is probably just modern
+commercial software development.</p>
 
   </div>
   <hr/>
 
-  <span class="date">May 19, 2009</span>
-  <h4><a href="/blog/2009/05/printing-money.html">Printing money</a></h4> 
+  <span class="date">July 26, 2009</span>
+  <h4><a href="/blog/2009/07/stories.html">Stories</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Memories.html">Memories</a>
+      <a class="post" href="/blog/tag/General.html">General</a>
     
   <br/><br/>
   <div class="content">
-    <p>I’ve been coding hard the last week or two on a secret squirrel project,
-thus this blog has been a little neglected. Fear not, I have a few posts
-planned once I have some spare time. For the meantime, here is an <a href="http://en.wikipedia.org/wiki/After_school_special">After
-School Special</a> in
-honour of the UK inflation figures announced today.</p>
+    <p>I was recently listening to a <a href="http://www.guardian.co.uk/technology/gamesblog/audio/2009/jul/21/tech-weekly-podcast-develop-video-games-eidos-braben">podcast from a game developers
+conference</a>,
+and there was a great deal of conversation around open world games like
+<a href="http://en.wikipedia.org/wiki/Grand_Theft_Auto_(series)">GTA</a>. That
+discussion made me think about the difference between a storyline (be it
+from a book, movie or game) and the world in which it’s set. When a
+story is set somewhere other than the familiar every day world, the
+perceived richness of that world can make a big difference to
+satisfaction in the story. Think of <a href="http://en.wikipedia.org/wiki/The_Lord_of_the_Rings">The Lord of the
+Rings</a>, where there
+is a strong impression that there is history to Middle-earth (read <a href="http://en.wikipedia.org/wiki/The_Silmarillion">The
+Silmarillion</a> to see that
+is exactly the case) and many interesting things are occurring just out
+of reach of the plot.</p>
 
-<p>When I was in primary school there was a strange little fad for a couple
-of weeks that illustrated some concepts in supply and demand. For some
-reason, I don’t remember why, one student agreed to become another’s
-servant. I think the “servant” was Jason, but the “master” was
-definitely Ben. In return for following Ben around and doing the
-occasional little task, Jason would receive a dollar a day. It wasn’t a
-real dollar. Instead every morning Ben would present Jason with a piece
-of paper (about the size of an old Australian dollar note, or at least
-the best approximation thereof that could be managed by ripping up our
-workbooks) with “1 Dollar” written on it and Ben’s signature. Jason
-didn’t think this too bad a deal since Ben was the cool kid in class and
-getting to hang out with him was a blessing.</p>
+<p>The first two <a href="http://en.wikipedia.org/wiki/The_Matrix_(series)">Matrix</a>
+movies are another example. The first Matrix movie was quite linear (as
+many prophecy movies tend to be). Neo was led from scene to scene to
+fulfil his destiny. The world around Neo was the same as our own except
+for two organised opposing groups who knew the secret of the matrix.
+There wasn’t much room for manoeuvre. Despite what people thought of the
+second Matrix’s plot, its world was far richer. Neo has some choice in
+his actions, there are portals or otherwise strange locations and rogue
+or independent programs roaming the matrix. It is no longer black versus
+white, there are many other actors on the stage.</p>
 
-<p>After a couple of days this agreement showed no sign of being forgotten.
-Instead, Ben even hired a second servant. At this point a number of
-other kids in the class decided they wanted servants too, and thus the
-problems began. About a third of the class wanted servants, but less
-than a third wanted to be a servant. A day’s wage rocketed. Over
-consecutive days we started to see handmade $2, $5, $10 and $20 bills
-passed around. Some kids tried to make their notes more ornate and
-artistic to entice potential servants to prefer their money, which
-seemed to work for a bit.</p>
+<p>When I used to run D&amp;D games some advice I was given was to make the
+world seem as open as possible, even if you were trying to subtly guide
+the players in one direction. The story can be thought of as a train,
+starting at the caboose and ending at the engine. A linear story/game
+would have the protagonists/players just travel through each carriage in
+turn. In a more open environment they may travel by climbing over the
+carriage roof or skipping carriages by walking past them at a station or
+travel backwards for a bit. In a completely open environment they could
+decide not to go to the engine at all, leave the train and do something
+else. A world in which that last option appears possible and realistic
+is much more interesting, even if the actual story is linear.</p>
 
-<p>By this stage some of the servants were building decent piles of
-worthless paper. There was a constant problem of what to use the money
-for beyond servants. Some was passed around as servants subcontracted or
-paid for small tasks. Occasionally someone might swap sides to get or
-spend cash. However, people were beginning to lose interest in the
-concept. There wasn’t much of an economy until Jason (definitely him
-this time) starting making rings. By a ring I mean wire soldered into a
-small loop with a shard of glass at the join. With this innovation a
-whole range of backyard jewellery was produced, most of the class got
-involved as master, servant, jeweller or consumer. Some people from
-other classes joined in too. Prices continued their rise for another
-week or so but at a less frenzied pace as people were hitting the limits
-of being able make money by hand (strangely no one thought of producing
-a note with greater than $100 face value, the largest real Australian
-note available at the time). Then people began to print money.</p>
+  </div>
+  <hr/>
 
-<p>Literally print money. I went round Ben’s place one Sunday (he lived
-just round the corner) and he had obtained a toy printing press and
-paper guillotine. With each crank he produced six $100 notes and he was
-cranking hard! On Monday he instantly became the richest kid in class.
-By Wednesday the economy collapsed and we (the boys at least) went back
-to playing soccer and A-Team.</p>
+  <span class="date">July 12, 2009</span>
+  <h4><a href="/blog/2009/07/the-creel.html">The Creel</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Restaurant.html">Restaurant</a>, 
+    
+      <a class="post" href="/blog/tag/Scotland.html">Scotland</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>While holidaying in the Orkneys we ate dinner one night at <a href="http://www.thecreel.co.uk/">The
+Creel</a>, regarded as one of the best
+restaurants in Scotland (according to our guidebook). It also has a long
+list of awards (AA rosettes, Good Food Guide and a Scottish Restaurant
+Chef of The Year), most of which it displays on its walls. The menu is
+quite simple and short - a choice of around four starters, with a
+similar number of mains - all skewed heavily towards local seafood.</p>
+
+<p>We had the scallops and a langoustine salad for starters. The scallops
+were good (for what they were - I’m not a huge fan of that shellfish),
+but the langoustines with orange and a pesto dressing on the salad were
+excellent. For mains one of us had hake with squid and aubergine and the
+other halibut with mashed cauliflower and peas. The halibut was just
+about 30 seconds cooked beyond its best, but the hake was perfect. For
+both the accompaniment were particular highlights. However, the one
+issue was salt - there was way too much. This is something The Creel has
+in common with nearly every restaurant we visited in Scotland, so
+perhaps that is just the Scottish style. Still, to my palate it stopped
+a very good dish becoming a great dish.</p>
+
+<p>We had no dessert, and the whole meal came to £67 with a couple of
+drinks. Very reasonable by London standards and not that much more than
+some of the other places we visited while away. The service and decor
+were fine. One thing to note though is that it is a small restaurant and
+all the tables were taken when we were there on a Tuesday night -
+booking is essential. Well worth a visit and I would try it again if in
+the area.</p>
+
+<p>As an aside, I would also like to say the lunch I had at the Skara Brae
+Tourist Centre was excellent. It may just look like a standard canteen,
+but the quality of the food is very high with friendly and helpful
+staff. I almost drove back there a second time just for lunch. A hidden
+gem, and if you are in Orkney it behoves you to see <a href="http://en.wikipedia.org/wiki/Skara_Brae">Skara
+Brae</a> and then eat lunch on
+site (or take away).</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">July 12, 2009</span>
+  <h4><a href="/blog/2009/07/scottish-highlands-and-the-ork.html">Scottish Highlands and Orkney Photos</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Travel.html">Travel</a>, 
+    
+      <a class="post" href="/blog/tag/Scotland.html">Scotland</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I just got back from a fortnight travelling the Scottish north. Despite
+comments from workmates, the weather held out for all but the last two
+days of the trip. Once again I have put the <a href="http://www.flickr.com/photos/33547649@N07/sets/72157621165945715/show/">best of my photos on
+Flickr</a>,
+skewing heavily towards archaeological sites as I find those very
+interesting.</p>
+
+<p><a href="http://www.flickr.com/photos/33547649@N07/sets/72157621165945715/show/"><img src="http://farm3.static.flickr.com/2451/3710867464_9d6fd64016.jpg?v=0" alt="Balnakeil beach" title="Balnakeil beach" /></a></p>
 
   </div>
   <hr/>
@@ -282,7 +290,7 @@ to playing soccer and A-Team.</p>
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 78 of 90 
+  Page 78 of 91 
   
       
         <a href="/blog/page77">Previous</a>
@@ -307,6 +315,34 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2025/02/link-blog.html">Link Blog</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/goals.html">Goals 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/boardgames.html">Boardgames of 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/12/eoy-games.html">End of Year Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/netflix-games.html">Netflix Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/intelligence.html">Intelligence?</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/09/back-to-games.html">Back to Games</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
   </li>  
   
@@ -317,40 +353,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2024/03/media.html">Media Bias</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/goals.html">Goals 2024</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/10/china.html">China</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/06/miniatures.html">Miniatures</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/03/blame.html">Blame</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
 
 </small>
 </div>

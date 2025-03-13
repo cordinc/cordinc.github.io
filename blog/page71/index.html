@@ -38,73 +38,173 @@
             <div class="row">
 <div class="col-lg-8">
 
-  <span class="date">March 14, 2010</span>
-  <h4><a href="/blog/2010/03/discrete-java-timer.html">Discrete Java Timer</a></h4> 
+  <span class="date">May  8, 2010</span>
+  <h4><a href="/blog/2010/05/lies-damn-lies-and-indexes.html">Lies, Damn Lies and Indices</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+      <a class="post" href="/blog/tag/Politics.html">Politics</a>, 
     
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+      <a class="post" href="/blog/tag/Finance.html">Finance</a>
     
   <br/><br/>
   <div class="content">
-    <p>Java provides a number of methods to run code at scheduled future time,
-the implementations of
-<a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/concurrent/ScheduledExecutorService.html">ScheduledExecutorService</a>
-generally being the best way at the moment. ScheduledExecutorService
-also defines methods to run the code a periodic intervals
-(scheduleAtFixedRate &amp; scheduleWithFixedDelay). However, what if you
-have classes that need to be notified at regular discrete intervals and
-need to know which interval they are in. A timer is required that with a
-set periodicity fires an event on any listeners and passes the number of
-times the period has elapsed. What this is doing is breaking up
-continuous “realtime” into discrete blocks or quantums of time. For
-example, if the period is 10 seconds, at the start the time quantum is 0
-until 10 seconds have elapsed and an event is fired denoting the start
-of the first time quantum. Ten seconds later another event fires as the
-2nd time quantum starts, and so on.</p>
+    <p>The last few days before the UK election saw the image below circulating
+around the city. I saw it first on <a href="http://ftalphaville.ft.com">FT
+Alphaville</a>. I find this image incredibly
+annoying. Not because the message is necessarily wrong. There is a
+strong case to be made that the Labour’s party’s rhetoric on their
+ability to manage the UK economy is in no way matched by their actual
+management of the economy (although it’s debatable whether the Tories
+would have been any better). Instead, it is because the image is using a
+misunderstood part of the financial world to produce a misleading graph.</p>
 
-<p>This is a fairly simple bit of Java code. Any experienced Java developer
-has probably already worked out a good solution, but for me it has come
-up a couple of times in the last few months so I thought I’d write it
-down.</p>
+<p><a href="/assets/posts/boom-to-bust.jpg"><img src="/assets/posts/boom-to-bust.jpg" width="550" alt="" /></a></p>
 
-<p class='more'><br/><a href='/blog/2010/03/discrete-java-timer.html'>Read the rest of this entry</a></p>
+<p>The image is a graph of the <a href="http://en.wikipedia.org/wiki/FTSE_100_Index">FTSE
+100</a> stock <a href="http://en.wikipedia.org/wiki/Share_index">market
+index</a> of the largest
+companies listed on the <a href="www.londonstockexchange.com/">London Stock Exchange
+(LSE)</a>. It is a UK version of the <a href="http://en.wikipedia.org/wiki/S%26P_500">S&amp;P
+500</a>. Like other share indexes
+it is often quoted on the news in absolute terms as well as the absolute
+rise or drop over some time period. For example yesterday the FTSE 100
+closed at 5123, a drop of 138 points. However, to compare movements the
+absolute point value should not be used. This is because the index is
+calculated as the change relative to some reference date. Calculated
+from this base, the larger the index, the larger point move required to
+be equivalent to a move at a smaller index move. A 2% move when the
+index is at 5000 is 100 points, when the index is at 2000 an equivalent
+move is 40 points. As the index gets larger, point movements will
+naturally become larger for no difference in activity. Thus the graph
+above is misleading because it exaggerates the more recent point moves
+at a larger index level compared to the earlier moves.</p>
+
+<p>It is the percentage move that is important. If the graph showed
+percentage moves the 1987 crash would appear much larger and the recent
+crashes smaller. To better show the relative moves, I found a graph of
+the <a href="http://uk.finance.yahoo.com/echarts?s=^FTSE#chart3:symbol=^ftse;range=my;indicator=volume;charttype=line;crosshair=on;ohlcvalues=0;logscale=on;source=undefined">FTSE using a logarithmic scale on
+Yahoo</a>.
+As can be seen below the recent boom and bust don’t seem as large, but
+they are still there. So the same message could have been sent with a
+less misleading graph.</p>
+
+<p><a href="/assets/posts/ftse.GIF"><img src="/assets/posts/ftse.GIF" width="550" alt="" /></a></p>
+
   </div>
   <hr/>
 
-  <span class="date">March  6, 2010</span>
-  <h4><a href="/blog/2010/03/is-there-free-money-crossing-b.html">Is there free money crossing Betfair and Betdaq?</a></h4> 
+  <span class="date">May  3, 2010</span>
+  <h4><a href="/blog/2010/05/impressions-of-greece.html">Impressions of Greece</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
+    
+      <a class="post" href="/blog/tag/Travel.html">Travel</a>, 
+    
+      <a class="post" href="/blog/tag/Greece.html">Greece</a>
     
   <br/><br/>
   <div class="content">
-    <p>It was recently suggested to me that there could be risk-free money to
-be made crossing <a href="http://www.betfair.com">Betfair</a> and
-<a href="http://www.betdaq.com">Betdaq</a>. Betfair and Betdaq are betting
-exchanges - they allow their users to bet on various events, from the
-traditional horse races to more unusual fare like netball or the UK
-general election. Unlike a normal bookmaker, the exchanges don’t provide
-the odds and take the opposing side of the bet. Instead the odds are
-determined by other users and the other side is another user. So while
-there may be someone offering 1.15 odds that Labour will win (a <a href="http://help.betfair.com/contents/itemId/i65767719/index.en.html">back
-bet</a>)
-the next UK election, someone else may offer 1.2 that they will lose (a
-<a href="http://help.betfair.com/contents/itemId/i65767719/index.en.html">lay
-bet</a>).
-When the back and lay odds match then a bet is made. Note, all the odds
-quoted in this article are <a href="http://en.wikipedia.org/wiki/Fixed-odds_betting#Decimal_odds">decimal
-odds</a> as
-this is the type of odds used on the exchanges.</p>
+    <p>Greece is collapsing. So says the media. The news regularly shows riots
+in Athens; the papers discuss the dire economic straits. A person here
+in London could easily form the view the precipice is near.</p>
 
-<p class='more'><br/><a href='/blog/2010/03/is-there-free-money-crossing-b.html'>Read the rest of this entry</a></p>
+<p>Having spent a week in Athens last month, I didn’t leave with the
+impression disaster was imminent. People generally seemed to be going
+about their daily business. There were no clear signs of distress (apart
+from one incongruity). Indeed, other cities I have visited appeared to
+be in worse situations. While a large amount of my time was spent in
+busy tourist throngs around the archealogical sites, I also travelled
+out into the surrounding areas. What I saw appeared to be a working
+city. There were numerous storefronts with decent traffic and many
+business offices. The streets became busier after work hours. Bars and
+resturants were quiet during the day, but became busy late in the night.
+At one point we saw a crowd blocking a street near Syntagma, it could
+have been a well behaved protest, or just as easily people waiting for
+some celebrity. There was a lot of graffiti, but also a lot of graffiti
+art. Not so different to London really and there was probably about the
+same number of unused/abandoned buildings. Although unlike London, many
+of the occupied buildings appeared quite run-down and not well
+maintained.</p>
+
+<p>There was one indication of possible problems. On a quiet side street
+North-East of Omonoia we walked past trees, parked cars, buildings that
+looked like apartment blocks, and little shops. Then there were two
+burnt out cars next to each other. They were completely wrecked - the
+fire destroyed everything. However, there was no damage apart from the
+cars. Either the fire was somewhere else and then the wrecks dumped
+there or the immediately surrounding area was cleaned up (but the cars
+left). Both seem strange. Apart from these wrecks, Athens did not feel
+different to most cities I have visited.</p>
+
+<p>Cities are ususally places of vibrant activity - normally business
+related. Visit London, Paris, Sydney, Barcelona or Milan and you feel
+you are in a working city. There is the sense that the locals are busy
+getting things done. Travelling around London, I am constantly amazed by
+the number and variety of business nameplates outside buildings. You can
+walk for hours from Shoreditch across to Hammersmith and it is busy
+offices the entire way. Washington and Rome feel more dominated by
+tourism and government, but there is still lots happening around you.
+Two places I feel didn’t match this description, at the time I visited,
+are Lisbon and Tunis. There was a general lack of activity in Lisbon, it
+seemed almost empty. Never have I seen so many empty, decrepit
+buildings. Tunis was similar, full of people, but they didn’t seem to be
+doing much. There was always a large number of men sitting in cafes,
+presumably un- or underemployed. These two cities felt like they were in
+dire economic straits. Indeed, Portugal is currently mentioned in
+similar financial terms to Greece, but that situation was clearer on the
+streets of Lisbon than Athens.</p>
+
+<p><strong>Comments:</strong>
+<em>I have removed the commenting system (for privacy concerns), below are the comments that were left on this post before doing so…</em></p>
+
+<p><em>teachinginchina @ 2010-05-14</em> - If the Greeks left the Euro, at least we could have a cheap vacation.</p>
+
   </div>
   <hr/>
 
-  <span class="date">February 28, 2010</span>
-  <h4><a href="/blog/2010/02/societies-in-transition.html">Societies in Transition</a></h4> 
+  <span class="date">April 18, 2010</span>
+  <h4><a href="/blog/2010/04/the-harwood-arms.html">The Harwood Arms</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Restaurant.html">Restaurant</a>, 
+    
+      <a class="post" href="/blog/tag/UK.html">UK</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>This week saw a visit to <a href="http://www.harwoodarms.com/index.htm">The Harwood
+Arms</a> - a gastro pub in Fulham,
+recently awarded a Michelin star. It is round a few corners from Fulham
+Road, on a quiet suburban street. From the outside the place looks like
+a pub, but inside it is set up like a restaurant. Apart from the bar and
+a small sofa area, the entire floorspace is occupied with tables. So I
+can’t imagine your meal would ever be interrupted by casual drinkers,
+although there is a quiz night every Tuesday.</p>
+
+<p>The menu focusses on British produce with a special emphasis on game,
+most of which is apparently hunted or caught by the owners. For a
+starter I had a wild mushroom soup with mussel fritters. There was a
+surprisingly large amount, although it was so nice it certainly was not
+a problem to get through it all. The main dish was shoulder of deer for
+two with celeriac mash, vegetables and a little salad. It all came on a
+large platter so that you could carve the shoulder yourself. However,
+this wasn’t at all arduous as the meat was so beautifully tender it just
+fell off the bone. Again, a large amount of delightful food. After that
+I was too full for dessert, but I’m assured the sticky toffee and date
+ice cream with lemon curd was delicious.</p>
+
+<p>The Harwood Arms had a pleasant atmosphere, not quite a pub but still
+welcoming. Service was prompt and courteous. The cost was reasonable for
+a top restaurant (by London standards!), dinner for two (starters, main
+and one dessert) with wine was under £100. Excellent food and well worth
+a visit.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">April 11, 2010</span>
+  <h4><a href="/blog/2010/04/greek-theatre.html">Greek Theatre</a></h4> 
   Tags: 
     
       <a class="post" href="/blog/tag/History.html">History</a>, 
@@ -114,100 +214,66 @@ this is the type of odds used on the exchanges.</p>
   <br/><br/>
   <div class="content">
     <p>Available on
-<a href="http://deimos3.apple.com/WebObjects/Core.woa/Browse/ox-ac-uk-public.2006979775.02006979777">iTunesU</a>.
-I could not find a course website.</p>
+<a href="http://deimos3.apple.com/WebObjects/Core.woa/Browse/itunes.open.ac.uk.2515430856.02515953864">iTunes</a>
+and <a href="http://podcast.open.ac.uk/oulearn/arts-and-humanities/podcast-a219-greek-theatre">OU
+Podcasts</a></p>
 
-<p>This is a series of 8 anthropology lectures on the topic Socities in
-Transition recorded at <a href="http://www.linacre.ox.ac.uk/Linacre">Linacre College, Oxford
-University</a> during early 2009. Each
-podcast is just under an hour and audio only (occasional mention is made
-of slides). Each lecture is given by a different presenter. All are
-fairly academic in nature (a couple are quite dry and I found it hard to
-maintain concentration), but are still accessible to the non-expert.
-These lectures are not straight history, there is little discussion of
-historical events. Instead each podcast presents current research on the
-process of social transition during a notable period of history. They
-often provide an interesting snapshot (or at least intriguing tidbits)
-of life around the time of the transition.</p>
+<p>This <a href="http://www.open.ac.uk/">Open University</a> series examines theatre
+during the time of <a href="http://en.wikipedia.org/wiki/Classical_Greece">Classical
+Greece</a>. In particular it
+details the production of the world’s oldest surviving play <a href="http://en.wikipedia.org/wiki/The_Persians">The
+Persians by Aeschylus</a>, first
+performed in Athens at the <a href="http://en.wikipedia.org/wiki/Theatre_of_Dionysus">Theatre of
+Dionysus</a> in 472BC.
+Like the other OU podcasts, this series is a set of short documentaries
+to accompany lectures. There are 4 video podcasts totalling around 40
+minutes in length, with the individual videos ranging from 7 to 14
+minutes. They are available in iPod or a larger (640x360) format. There
+are also transcripts. The visuals are mainly talking heads interspersed
+with shots of theatre ruins, vases or in later episodes modern
+productions of The Persians.</p>
 
-<p>The lectures are in chronological order, spanning the entirity of human
-history - and beyond. The first lecture is on the
-<a href="http://en.wikipedia.org/wiki/Neanderthal">Neanderthals</a> - their slow
-extinction and modern discovery. The next lecture deals with the spread
-of farming in South East Asia. Then follows an interesting lecture on
-the spread of <a href="http://en.wikipedia.org/wiki/Metallurgy">metallurgy</a> in
-the <a href="http://en.wikipedia.org/wiki/Bronze_Age">Bronze Age</a> and what the
-metals meant to society at different times and places. Another
-interesting lecture details attempts to date and size the <a href="http://en.wikipedia.org/wiki/Minoan_eruption">volcanic
-explosion at Thera</a> (now
-<a href="http://en.wikipedia.org/wiki/Santorini">Santorini</a>). From this research
-the presenter trys to match up the likely effects with events and
-history in the region (mainly the
-<a href="http://en.wikipedia.org/wiki/Minoan_civilization">Minoan</a> society on
-Crete). The next two lectures are respectively on the beginning and end
-of <a href="http://en.wikipedia.org/wiki/Roman_Britain">Roman rule in Britain</a>.
-Apparently the collapse of the British economy after the Romans left was
-particularly swift - previously common pottery and coins disappeared
-almost overnight and buildings quickly fell into disrepair. The last two
-lectures are on more modern topics - the industrial and the current
-information revolutions.</p>
+<p>The first video details what the Theatre of Dionysus would have looked
+like in the 5th century BC and what it would have meant culturally to
+attend the theatre at that time. Performances would have been important
+events, it is estimated that the theatre could probably hold around a
+third of the male citizens of Athens (it is not certain women were
+allowed to attend). The second video covers the actors and chorus in
+Ancient Greek theatre. Ancient Greek plays only had 2 or 3 actors, who
+would each play multiple parts while wearing masks. The next video
+examines how some Greek plays have managed to survive 2500 years - only
+7 of Aeschylus’ estimated 90 plays still exist. The last episode
+discusses some modern interpretations of The Persians.</p>
 
-<p>Worth a listen for background information on the timeperiods discussed.</p>
+<p>A good short podcast series, but probably only for people particularly
+interested in Ancient Greek theatre.</p>
 
   </div>
   <hr/>
 
-  <span class="date">February 21, 2010</span>
-  <h4><a href="/blog/2010/02/tunisia-photos.html">Tunisia Photos</a></h4> 
+  <span class="date">April  5, 2010</span>
+  <h4><a href="/blog/2010/04/greece-photos.html">Greece Photos</a></h4> 
   Tags: 
     
       <a class="post" href="/blog/tag/Travel.html">Travel</a>, 
     
-      <a class="post" href="/blog/tag/Tunisia.html">Tunisia</a>
+      <a class="post" href="/blog/tag/Greece.html">Greece</a>
     
   <br/><br/>
   <div class="content">
-    <p>A while ago I put up some <a href="http://www.cordinc.com/blog/2008/12/dougga-photos.html">photos from
-Dougga</a>. Here
-are the best photos from the rest of that holiday in Tunisia. The <a href="http://www.flickr.com/photos/33547649@N07/sets/72157623353630109/show/">set
-on Flickr is
+    <p>I just got back from a holiday to Greece (Athens and Hydra mainly). Here
+are the best photos from that trip. The <a href="http://www.flickr.com/photos/33547649@N07/sets/72157623775387640/show">set on Flickr is
 here</a>.</p>
 
-<p><a href="http://www.flickr.com/photos/33547649@N07/sets/72157623353630109/show/"><img src="http://farm5.static.flickr.com/4004/4375575858_ab49609d68.jpg" alt="A Fountain" /></a></p>
+<p><a href="http://www.flickr.com/photos/33547649@N07/sets/72157623775387640/show"><img src="http://farm5.static.flickr.com/4027/4493311177_97e9085c1d.jpg" alt="Parthenon" /></a></p>
 
-  </div>
-  <hr/>
-
-  <span class="date">February 14, 2010</span>
-  <h4><a href="/blog/2010/02/jmx-jconsolelike-connection-di.html">JMX JConsole-like Connection Dialog</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>This is a quick post about a coding problem that took longer than
-expected to solve. I have put an example solution here as a reference
-for myself or others, hopefully speeding up the task. I needed to create
-a dialog to connect to a local or remote
-<a href="http://java.sun.com/javase/technologies/core/mntr-mgmt/javamanagement/">JMX</a>
-process. Essentially this would be very similar to the
-<a href="http://java.sun.com/developer/technicalArticles/J2SE/jconsole.html">JConsole</a>
-“New Connection” dialog. Initially I thought this would just be a
-standard component, but instead it took some trial and error (as well as
-digging through Sun documentation) to get the required functionality
-working.</p>
-
-<p class='more'><br/><a href='/blog/2010/02/jmx-jconsolelike-connection-di.html'>Read the rest of this entry</a></p>
   </div>
   <hr/>
 
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 71 of 90 
+  Page 71 of 91 
   
       
         <a href="/blog/page70">Previous</a>
@@ -232,6 +298,34 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2025/02/link-blog.html">Link Blog</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/goals.html">Goals 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/boardgames.html">Boardgames of 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/12/eoy-games.html">End of Year Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/netflix-games.html">Netflix Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/intelligence.html">Intelligence?</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/09/back-to-games.html">Back to Games</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
   </li>  
   
@@ -242,40 +336,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2024/03/media.html">Media Bias</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/goals.html">Goals 2024</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/10/china.html">China</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/06/miniatures.html">Miniatures</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/03/blame.html">Blame</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
 
 </small>
 </div>

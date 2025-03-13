@@ -38,180 +38,177 @@
             <div class="row">
 <div class="col-lg-8">
 
-  <span class="date">December 18, 2010</span>
-  <h4><a href="/blog/2010/12/iminra.html">Iminra</a></h4> 
+  <span class="date">February  7, 2011</span>
+  <h4><a href="/blog/2011/02/too-many-states.html">Too Many States</a></h4> 
   Tags: 
-    
-      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>, 
-    
-      <a class="post" href="/blog/tag/Projects.html">Projects</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Over a year ago I wrote here about a library I had written to work out
-the <a href="/blog/2009/05/intrade-implied-interest-rates.html">implied interest rates available on
-Intrade</a>. This
-library was originally envisioned as a cloud application built on top of
-the <a href="http://code.google.com/appengine/">Google App Engine</a>, but I
-couldn’t get it working on that platform. I recently tried again and now
-it works! The application is called <a href="http://iminra.appspot.com">Iminra - Implied Interest Rates on
-Intrade</a>.</p>
-
-<p><strong>Update:</strong> Intrade has now shutdown with financial irregularities. So I
-have <a href="/blog/2013/05/iminra-shutdown.html">shutdown Iminra</a> too.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">December 11, 2010</span>
-  <h4><a href="/blog/2010/12/cut-and-paste-from-java-swing.html">Cut and Paste from Java Swing JTable to Clipboard (and Excel)</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
     
       <a class="post" href="/blog/tag/Technical.html">Technical</a>
     
   <br/><br/>
   <div class="content">
-    <p>For a project, I needed to cut, copy and paste from a Java JTable to
-Excel. The KeyAdapter I ended up writing is below. As it turns out,
-there is <a href="http://www.javaworld.com/javatips/jw-javatip77.html">another similar version online from 1999 at
-Javaworld</a> (I
-borrowed the contiguous block check from this code, as I hadn’t
-previously considered that possibility) - but I like mine better.</p>
+    <p>No, I’m not agitating for Tasmania to have its statehood revoked.
+Instead I want simpler state machines in programming. I’m a fan of the
+model of programming where the core of the system is a <a href="http://en.wikipedia.org/wiki/State_machine">state
+machine</a> firing
+<a href="http://en.wikipedia.org/wiki/Event-driven_programming">events</a> on state
+transitions. Listeners on those events then perform actions, possibly
+changing the state themselves. It doesn’t fit every scenario, but it
+works well in those places it can be applied.</p>
 
-<p>To copy to Excel, a Java program must put the data onto the clipboard in
-a format Excel understands. The easiest way to do this is to use a
-String, structured as a series of cells separated by tabs and rows
-separated by line breaks. To read in data Excel puts on the clipboard,
-is just a matter of parsing a similarly structured String. There are
-other data formats available on the clipboard, but just using plain text
-is all that was needed for my requirements. However if you need to
-escape tabs and line breaks in your data then it might be worth
-investigating them. The code below just converts tabs and line breaks to
-spaces when copying to the clipboard, and ignore them when reading in
-(as tabs can’t be in an Excel cell and I couldn’t see how to detect line
-breaks in a cell rather than separating lines). To use this class just
-add it as a KeyListener on the table (<code class="language-plaintext highlighter-rouge">JTable.addKeyLisenter</code>).</p>
+<p>I’ve worked on a few such systems and a major determinant of eventual
+success is the complexity of the state machine. Sometimes this
+complexity is caused by the state machine encoding multiple state flows.
+The system would be simpler with a set of separate discrete state
+machines, each with a distinct main flow. I think software engineers can
+get obsessed with trying to find a single comprehensive solution to a
+problem. This can blind them to seeing a more understandable solution by
+breaking the system into smaller parts.</p>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.cordinc.util.gui</span><span class="o">;</span>
+<p>Below is a state diagram similar to one I saw recently at the start of a
+project (I have actually simplified it a little, removing domain
+specific states and transitions for anonymity).</p>
 
-<span class="kn">import</span> <span class="nn">java.awt.Toolkit</span><span class="o">;</span> 
-<span class="kn">import</span> <span class="nn">java.awt.datatransfer.Clipboard</span><span class="o">;</span> 
-<span class="kn">import</span> <span class="nn">java.awt.datatransfer.DataFlavor</span><span class="o">;</span> 
-<span class="kn">import</span> <span class="nn">java.awt.datatransfer.StringSelection</span><span class="o">;</span> 
-<span class="kn">import</span> <span class="nn">java.awt.event.KeyAdapter</span><span class="o">;</span> 
-<span class="kn">import</span> <span class="nn">java.awt.event.KeyEvent</span><span class="o">;</span>
+<p><img src="/assets/posts/technical/complex.png" width="550" alt="" /></p>
 
-<span class="kn">import</span> <span class="nn">javax.swing.JOptionPane</span><span class="o">;</span> 
-<span class="kn">import</span> <span class="nn">javax.swing.JTable</span><span class="o">;</span>
+<p>This doesn’t look right to me. Multiple start and end states, a loop,
+and if a few more error states are added the diagram starts looking like
+a spiderweb. Diagrams which have allowed designers/developers to express
+their artistic side (I once saw one in the shape of a phone) are a good
+sign that there may be too many states. In this domain there are really
+three interlocking flows which have just been placed together. Each of
+the three flows represents the state of communication with a different
+external system. There is no need for them to be combined. It makes more
+sense to separate them. Looking at this, and with a bit of domain
+knowledge (just trust me), it can be equivalently expressed by the
+diagram below.</p>
 
-<span class="cm">/** 
- * KeyAdapter to detect Windows standard cut, copy and paste keystrokes on a JTable and put them to the clipboard 
- * in Excel friendly plain text format. Assumes that null represents an empty column for cut operations. 
- * Replaces line breaks and tabs in copied cells to spaces in the clipboard. 
- * 
- * @see java.awt.event.KeyAdapter 
- * @see javax.swing.JTable 
- */</span> 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClipboardKeyAdapter</span> <span class="kd">extends</span> <span class="nc">KeyAdapter</span> <span class="o">{</span>
+<p><img src="/assets/posts/technical/simple.png" width="550" alt="" /></p>
 
-        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">LINE_BREAK</span> <span class="o">=</span> <span class="s">"\n"</span><span class="o">;</span> 
-        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">CELL_BREAK</span> <span class="o">=</span> <span class="s">"\t"</span><span class="o">;</span> 
-        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Clipboard</span> <span class="no">CLIPBOARD</span> <span class="o">=</span> <span class="nc">Toolkit</span><span class="o">.</span><span class="na">getDefaultToolkit</span><span class="o">().</span><span class="na">getSystemClipboard</span><span class="o">();</span> 
-        
-        <span class="kd">private</span> <span class="kd">final</span> <span class="nc">JTable</span> <span class="n">table</span><span class="o">;</span> 
-        
-        <span class="kd">public</span> <span class="nf">ClipboardKeyAdapter</span><span class="o">(</span><span class="nc">JTable</span> <span class="n">table</span><span class="o">)</span> <span class="o">{</span> 
-                <span class="k">this</span><span class="o">.</span><span class="na">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">;</span> 
-        <span class="o">}</span> 
-        
-        <span class="nd">@Override</span> 
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">keyReleased</span><span class="o">(</span><span class="nc">KeyEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span> 
-                <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">isControlDown</span><span class="o">())</span> <span class="o">{</span> 
-                        <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKeyCode</span><span class="o">()==</span><span class="nc">KeyEvent</span><span class="o">.</span><span class="na">VK_C</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// Copy                        </span>
-                                <span class="n">cancelEditing</span><span class="o">();</span> 
-                                <span class="n">copyToClipboard</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span> 
-                        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKeyCode</span><span class="o">()==</span><span class="nc">KeyEvent</span><span class="o">.</span><span class="na">VK_X</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// Cut </span>
-                                <span class="n">cancelEditing</span><span class="o">();</span> 
-                                <span class="n">copyToClipboard</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> 
-                        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getKeyCode</span><span class="o">()==</span><span class="nc">KeyEvent</span><span class="o">.</span><span class="na">VK_V</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// Paste </span>
-                                <span class="n">cancelEditing</span><span class="o">();</span> 
-                                <span class="n">pasteFromClipboard</span><span class="o">();</span>           
-                        <span class="o">}</span> 
-                <span class="o">}</span> 
-        <span class="o">}</span> 
-        
-        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">copyToClipboard</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">isCut</span><span class="o">)</span> <span class="o">{</span> 
-                <span class="kt">int</span> <span class="n">numCols</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectedColumnCount</span><span class="o">();</span> 
-                <span class="kt">int</span> <span class="n">numRows</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectedRowCount</span><span class="o">();</span> 
-                <span class="kt">int</span><span class="o">[]</span> <span class="n">rowsSelected</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectedRows</span><span class="o">();</span> 
-                <span class="kt">int</span><span class="o">[]</span> <span class="n">colsSelected</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectedColumns</span><span class="o">();</span> 
-                <span class="k">if</span> <span class="o">(</span><span class="n">numRows</span><span class="o">!=</span><span class="n">rowsSelected</span><span class="o">[</span><span class="n">rowsSelected</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">]-</span><span class="n">rowsSelected</span><span class="o">[</span><span class="mi">0</span><span class="o">]+</span><span class="mi">1</span> <span class="o">||</span> <span class="n">numRows</span><span class="o">!=</span><span class="n">rowsSelected</span><span class="o">.</span><span class="na">length</span> <span class="o">||</span> 
-                                <span class="n">numCols</span><span class="o">!=</span><span class="n">colsSelected</span><span class="o">[</span><span class="n">colsSelected</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">]-</span><span class="n">colsSelected</span><span class="o">[</span><span class="mi">0</span><span class="o">]+</span><span class="mi">1</span> <span class="o">||</span> <span class="n">numCols</span><span class="o">!=</span><span class="n">colsSelected</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+<p>I think this is much better. It involves a few more states in total, but
+each individual flow is easier to understand. The domain object holding
+the current state now has three state variables rather than one. The
+state of the whole system is now the combination of these three state
+variables. This more accurately describes the current state and adds
+more flexibility for adding new states or transitions later. It is also
+possible to split the transition listeners into one for each flow, thus
+making them more focused events.</p>
 
-                        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">"Invalid Copy Selection"</span><span class="o">,</span> <span class="s">"Invalid Copy Selection"</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">ERROR_MESSAGE</span><span class="o">);</span>
-                        <span class="k">return</span><span class="o">;</span> 
-                <span class="o">}</span> 
-                
-                <span class="nc">StringBuffer</span> <span class="n">excelStr</span><span class="o">=</span><span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span> 
-                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">numRows</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> 
-                        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">numCols</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span> 
-                                <span class="n">excelStr</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">escape</span><span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">getValueAt</span><span class="o">(</span><span class="n">rowsSelected</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">colsSelected</span><span class="o">[</span><span class="n">j</span><span class="o">])));</span> 
-                                <span class="k">if</span> <span class="o">(</span><span class="n">isCut</span><span class="o">)</span> <span class="o">{</span> 
-                                        <span class="n">table</span><span class="o">.</span><span class="na">setValueAt</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">rowsSelected</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">colsSelected</span><span class="o">[</span><span class="n">j</span><span class="o">]);</span> 
-                                <span class="o">}</span> 
-                                <span class="k">if</span> <span class="o">(</span><span class="n">j</span><span class="o">&lt;</span><span class="n">numCols</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span> 
-                                        <span class="n">excelStr</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="no">CELL_BREAK</span><span class="o">);</span> 
-                                <span class="o">}</span> 
-                        <span class="o">}</span> 
-                        <span class="n">excelStr</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="no">LINE_BREAK</span><span class="o">);</span> 
-                <span class="o">}</span> 
-                
-                <span class="nc">StringSelection</span> <span class="n">sel</span>  <span class="o">=</span> <span class="k">new</span> <span class="nc">StringSelection</span><span class="o">(</span><span class="n">excelStr</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span> 
-                <span class="no">CLIPBOARD</span><span class="o">.</span><span class="na">setContents</span><span class="o">(</span><span class="n">sel</span><span class="o">,</span> <span class="n">sel</span><span class="o">);</span> 
-        <span class="o">}</span> 
-        
-        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">pasteFromClipboard</span><span class="o">()</span> <span class="o">{</span> 
-                <span class="kt">int</span> <span class="n">startRow</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectedRows</span><span class="o">()[</span><span class="mi">0</span><span class="o">];</span> 
-                <span class="kt">int</span> <span class="n">startCol</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="na">getSelectedColumns</span><span class="o">()[</span><span class="mi">0</span><span class="o">];</span>
+<p>There are a few differences between the two state diagrams above. The
+three flows will have some interaction and the extra states are there to
+aid this. For example, the middle flow shouldn’t go to the <strong>Process</strong>
+state until either <strong>Enrich</strong> or <strong>Response Received</strong> has been reached.
+In the simplified diagram there are added <strong>Init</strong> and <strong>Pending</strong>
+states to act as placeholders while waiting for other events to occur.
+All three state variables start in the <strong>Init</strong> state, and as events
+occur they move on independently. The event that moves the middle flow
+on to <strong>Process</strong> is the event fired after one of the other flow’s
+transitions.</p>
 
-                <span class="nc">String</span> <span class="n">pasteString</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span> 
-                <span class="k">try</span> <span class="o">{</span> 
-                        <span class="n">pasteString</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)(</span><span class="no">CLIPBOARD</span><span class="o">.</span><span class="na">getContents</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">getTransferData</span><span class="o">(</span><span class="nc">DataFlavor</span><span class="o">.</span><span class="na">stringFlavor</span><span class="o">));</span> 
-                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> 
-                        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">"Invalid Paste Type"</span><span class="o">,</span> <span class="s">"Invalid Paste Type"</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">ERROR_MESSAGE</span><span class="o">);</span>
-                        <span class="k">return</span><span class="o">;</span> 
-                <span class="o">}</span> 
-                
-                <span class="nc">String</span><span class="o">[]</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">pasteString</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="no">LINE_BREAK</span><span class="o">);</span> 
-                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">lines</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> 
-                        <span class="nc">String</span><span class="o">[]</span> <span class="n">cells</span> <span class="o">=</span> <span class="n">lines</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">split</span><span class="o">(</span><span class="no">CELL_BREAK</span><span class="o">);</span> 
-                        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span> <span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">cells</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span> 
-                                <span class="k">if</span> <span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">getRowCount</span><span class="o">()&gt;</span><span class="n">startRow</span><span class="o">+</span><span class="n">i</span> <span class="o">&amp;&amp;</span> <span class="n">table</span><span class="o">.</span><span class="na">getColumnCount</span><span class="o">()&gt;</span><span class="n">startCol</span><span class="o">+</span><span class="n">j</span><span class="o">)</span> <span class="o">{</span> 
-                                        <span class="n">table</span><span class="o">.</span><span class="na">setValueAt</span><span class="o">(</span><span class="n">cells</span><span class="o">[</span><span class="n">j</span><span class="o">],</span> <span class="n">startRow</span><span class="o">+</span><span class="n">i</span><span class="o">,</span> <span class="n">startCol</span><span class="o">+</span><span class="n">j</span><span class="o">);</span> 
-                                <span class="o">}</span> 
-                        <span class="o">}</span> 
-                <span class="o">}</span> 
-        <span class="o">}</span> 
-        
-        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">cancelEditing</span><span class="o">()</span> <span class="o">{</span> 
-                <span class="k">if</span> <span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">getCellEditor</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> 
-                        <span class="n">table</span><span class="o">.</span><span class="na">getCellEditor</span><span class="o">().</span><span class="na">cancelCellEditing</span><span class="o">();</span> 
-            <span class="o">}</span> 
-        <span class="o">}</span> 
-        
-        <span class="kd">private</span> <span class="nc">String</span> <span class="nf">escape</span><span class="o">(</span><span class="nc">Object</span> <span class="n">cell</span><span class="o">)</span> <span class="o">{</span> 
-                <span class="k">return</span> <span class="n">cell</span><span class="o">.</span><span class="na">toString</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="no">LINE_BREAK</span><span class="o">,</span> <span class="s">" "</span><span class="o">).</span><span class="na">replace</span><span class="o">(</span><span class="no">CELL_BREAK</span><span class="o">,</span> <span class="s">" "</span><span class="o">);</span> 
-        <span class="o">}</span> 
-<span class="o">}</span> </code></pre></figure>
-
+<p>In 14 years how many times has decomposing a complex state diagram been
+beneficial on my projects? Three. Is it guaranteed to work? No. Will it
+work for you? Maybe. Think about it next time you find yourself staring
+at a complex state diagram.</p>
 
   </div>
   <hr/>
 
-  <span class="date">December  5, 2010</span>
-  <h4><a href="/blog/2010/12/the-arts-past-and-present-mosa.html">The Arts Past and Present: Mosaics</a></h4> 
+  <span class="date">January 30, 2011</span>
+  <h4><a href="/blog/2011/01/life-on-a-building-site.html">Life on a building site</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I grew up on a building site. Not literally, but effectively. For a
+decade of my youth a building site was always just a short walk or bike
+ride away. We were one of the first families to move into the suburb of
+<a href="http://en.wikipedia.org/wiki/Leeming,_Western_Australia">Leeming</a> in
+<a href="http://en.wikipedia.org/wiki/Perth,_Western_Australia">Perth</a>, which
+developed from just a few houses to several thousand over the years we
+were there.</p>
+
+<p>In the late 1970’s Perth expanded into several new suburbs that had
+previously been farmland or bush. One of these was Leeming. Ours must
+have been within the first dozen houses built in the suburb. When we
+moved in, the house next door was under construction - every other side
+was bush. There were a few houses around the corner and several on
+Gracechurch Crescent, although most of those were display houses. Over
+time the land was cleared, blocks marked out and buildings would rise.
+The bush over the road was turned into a park. The foreign cliche is
+that Australians have kangaroos jumping down their streets. It is
+virtually never true, Australia is a very urbanised country and
+kangaroos generally don’t like cities. I never saw kangaroos on the
+street, but there were some in the bush over the road as well as <a href="http://en.wikipedia.org/wiki/Goanna">small
+goannas</a>, snakes and spiders. I
+remember a goanna eating the strawberries in our front garden. Apart
+from the spiders (which were everywhere), these animals slowly
+disappeared.</p>
+
+<p>The building sites that replaced the bush were much more fun for play.
+All the local kids knew the rhythm of a new build. We could run around
+the original sparse bush, but when the land was cleared and flattened
+the games were paused. Then a concrete pad was laid to act as a
+foundation for the house which offered a few minutes of interest. We
+returned to the site while the walls (2 layers of brick with a small air
+gap between them) were erected. This was the best time on site. We could
+run round the rooms, hide behind half built walls in games of chase or
+something more violent (cops &amp; robbers, throwing tennis balls at each
+other). Also there would be bits of metal or broken bricks to
+investigate or throw around. Normally there was a large pile of yellow
+sand for the cement mixer that was useful for making sand castles and
+the like. A few kids liked making tunnels in the piles of sand using
+detritus from the build as supports. I help make some of these, but
+never went inside, I was a little too claustrophobic. I heard a few kids
+around Perth died when such tunnels collapsed, but there was never a
+collapse in our area (that I knew about). When the walls were complete
+the roof went on. The sand would disappear to be replaced by piles of
+tiles. I can only assume the builders knew a few would be broken after
+school hours. Once the roof was finished, the windows and doors quickly
+went in. That was the end of the site for play. No one I knew broke the
+windows or into a house - it always seemed easier just to move onto the
+site next door. Lastly someone would move in and we would see if any new
+kids were around. A couple of times we went and knocked on the door and
+asked if there were any children who wanted to play.</p>
+
+<p>As time passed the distance to new sites grew ever larger, corresponding
+with lessening interest in playing on them. A few years into school I
+had to travel to the other end of Leeming to find a site (there were
+some big ones over there - retail buildings, schools, a large road). I
+didn’t do this often. Although I remember one friend, Stephen, who had
+just moved to the area and like to explore the sites, so I kept my hand
+in. By the mid 80’s we moved out of the area and I haven’t played on a
+building site since.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">January 23, 2011</span>
+  <h4><a href="/blog/2011/01/building-a-new-pc.html">Building a new PC</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>After 4 and a half years of service, my laptop (underpowered when I
+bought it) is finally beginning to give up. It gets very hot, too hot to
+touch just running <a href="http://www.eclipse.org/">Eclipse</a> and
+<a href="http://www.apple.com/itunes/">iTunes</a>. Trying to watch a video longer
+than 30 minutes usually results in a stall or sometimes even a crash. It
+has had a good run, but it’s time for a new one, especially considering
+how much I use my computer for work and leisure. So I decided to build a
+new desktop - below are the before and after pictures.</p>
+
+<p><img src="http://farm6.static.flickr.com/5010/5381207808_7f787a5f14_m.jpg" alt="" />
+<img src="http://farm6.static.flickr.com/5165/5381222296_60c35cc7f0_m.jpg" alt="" /></p>
+
+<p class='more'><br/><a href='/blog/2011/01/building-a-new-pc.html'>Read the rest of this entry</a></p>
+  </div>
+  <hr/>
+
+  <span class="date">January 18, 2011</span>
+  <h4><a href="/blog/2011/01/power-and-people-in-ancient-ro.html">Power and People in Ancient Rome</a></h4> 
   Tags: 
     
       <a class="post" href="/blog/tag/History.html">History</a>, 
@@ -221,121 +218,117 @@ add it as a KeyListener on the table (<code class="language-plaintext highlighte
   <br/><br/>
   <div class="content">
     <p>Available on
-<a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=380222777">iTunes</a>
-or <a href="http://podcast.open.ac.uk/oulearn/arts-and-humanities/podcast-aa100-the-arts">OU
+<a href="http://deimos3.apple.com/WebObjects/Core.woa/Feed/itunes.open.ac.uk-dz.4185081384.04185081386">iTunes</a>
+or <a href="http://podcast.open.ac.uk/pod/a219-power-people-ancient-rome">OU
 Podcasts</a></p>
 
-<p>Part of an introductory unit on art, this <a href="http://www.open.ac.uk/">Open
-University</a> series consists of 8 podcasts on
-Roman mosaics, focusing exclusively on those found at <a href="http://www.bradingromanvilla.org.uk">Brading
-Villa</a> on the Isle of Wight in
-Britain. All episodes come with PDF transcripts. The series starts with
-two introductory podcasts (one audio and one video), followed by 5 video
-podcasts each of which examines a particular mosaic at the villa. The
-final episode is an audio only meta discussion on what the series was
-aiming to achieve. The 5 mosaic podcasts are all around 3 minutes long
-and 30MB in size (recorded at 320x240 resolution).</p>
+<p>It can sometimes seem as if <a href="http://www.open.ac.uk/">The Open
+University</a> provides an inexhaustible supply of
+quality history podcasts, and here I review another. “Power and People
+in Ancient Rome” is a 7 episode series (plus a short introduction
+audio-only podcast) looking at structures for large-scale entertainment
+in <a href="http://en.wikipedia.org/wiki/Ancient_Rome">Ancient Rome</a>. Apart from
+the introduction, all the episodes are video podcasts presented in
+documentary fashion - images of the modern sites with narration. The
+episodes range in length from 1 minute (12MB) to 5 minutes (54MB) are
+available in 640x260 format (or smaller) with transcripts. Disturbingly,
+the filenames include numbers suggesting there should be at least 15
+episodes in total.</p>
 
-<p>The series is presented by a classicist, archaeologist and a mosaic
-artist (sounds like the start of a joke). The episodes see them sitting
-or standing next to the mosaic they are about to discuss, with each
-bringing their own view on the context, story or construction of the
-artwork. The time the were made mosaics is never actually mentioned, but
-they do mention that the unique cockheaded man mosaic may be a
-caricature of the <a href="http://en.wikipedia.org/wiki/Trebonianus_Gallus">Emperor
-Gallus</a> (his name
-meaning cockerel in Latin) - which dates it to the 3rd century AD. While
-the cockheaded man is not seen anywhere else, most of the mosaics depict
-common scenes found throughout the Roman world. The suggestion is that
-the artists had a pattern book or brochure from which clients selected
-their mosaics.</p>
+<p>Prominent Roman citizens often commissioned public buildings glorify and
+memorialise themselves and promote civic pride in Rome. Very rich Romans
+(like the Emperors) sometimes built structures for large-scale
+entertainment. These podcasts look at some of these buildings, why they
+were constructed and what happened within them. The <a href="http://en.wikipedia.org/wiki/Circus_Maximus">Circus
+Maximus</a> was constructed
+around the 1st century BC (and updated by
+<a href="http://en.wikipedia.org/wiki/Augustus">Augustus</a>) could hold an
+audience 150000 for chariot races. The <a href="http://en.wikipedia.org/wiki/Theatre_of_Marcellus">Theatre of
+Marcellus</a>, also
+constructed by Augustus, could hold 14000 people. The famous
+<a href="http://en.wikipedia.org/wiki/Colosseum">Colosseum</a> built around 80AD
+handled around 50000 people for gladiatorial events and other
+spectacles. Its seating was organised by law so that only the richest
+and most powerful could sit at the front, with bands of increasingly
+poorer people behind them. The furthest seats were for women, even
+slaves sat before them. The <a href="http://en.wikipedia.org/wiki/Baths_of_Caracalla">Baths of
+Caracalla</a> were an
+extensive bath complex covering 30 acres, including pools, libraries and
+gardens. These massive sites must have been impressive and almost
+overpowering to the people of Rome.</p>
 
-<p>Only for people especially interested in mosaics.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">November 26, 2010</span>
-  <h4><a href="/blog/2010/11/fiesta-el-punto-azul.html">Fiesta & El Punto Azul</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Restaurant.html">Restaurant</a>, 
-    
-      <a class="post" href="/blog/tag/Travel.html">Travel</a>, 
-    
-      <a class="post" href="/blog/tag/Peru.html">Peru</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>The local cusine is a highlight of any trip to Peru - assuming you like
-potatoes, which I do! While in Lima we ate at a couple of good
-restaurants. Located in a converted townhouse in
-<a href="http://maps.google.com/">Miraflores</a>,
-<a href="http://www.restaurantfiestagourmet.com/">Fiesta</a> specialises in north
-Peruvian cuisine (they refer to themselves as
-<a href="http://en.wikipedia.org/wiki/Chiclayo">Chiclayo</a> gourmets). Before
-starting our selected dishes, we were brought a complimentary little
-pastry spiced meat starter - very nice. We shared an excellent seafood
-causa (potato salad) for entree. Then a slightly too salty roast goat
-and a fish dish for mains. All the food was very good.</p>
-
-<p>The decor is subdued and the lighting dim, but bright enough to see our
-food fine (the lights were turned up during courses and down inbetween).
-Service was attentive without being overwhelming. This was despite the
-large number of staff. We visited on a Monday night and only a handful
-of the many tables were taken. Yet, there were two doormen, at least 4
-waiters, a sommelier and then the kitchen staff. The whole meal,
-including drinks, worked out to around S250 (which is around £50).
-Excellent value by London standards, but still the most expensive meal
-we had in Peru by some distance. Worth a visit if you are in Lima.</p>
-
-<p><a href="http://puntoazulrestaurante.com/">El Punto Azul</a> (Spanish language
-website) is another restaurant in Miraflores. It is only open for
-lunches from 12pm-4pm, Tuesday-Sunday. It is very popular and queues
-start forming soon after it opens. On our third attempt and arriving
-just 10 minutes after it opened, we got one of the last tables
-available. The menu is largely seafood based. We had a seafood soup and
-the classic ceviche (lime cooked fish). It was very nice, but way too
-much. It turns out that most of the menu is for sharing among larger
-groups, not a single person! We were overwhelmed with a mountain of
-fish. Worth a visit as the food is delicious, but take a Spanish speaker
-to decode the menu or be careful how much you inadvertently order. The
-bill amounted to under S50/£10.</p>
+<p>Interesting and worth watching.</p>
 
   </div>
   <hr/>
 
-  <span class="date">November 21, 2010</span>
-  <h4><a href="/blog/2010/11/evolution.html">Evolution</a></h4> 
+  <span class="date">January  7, 2011</span>
+  <h4><a href="/blog/2011/01/goals.html">Goals</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/General.html">General</a>
+      <a class="post" href="/blog/tag/Goals.html">Goals</a>
     
   <br/><br/>
   <div class="content">
-    <p>While watching <a href="http://en.wikipedia.org/wiki/Star_Wars_Episode_VI:_Return_of_the_Jedi">Return of the
-Jedi</a>
-someone watching it with me said
-“<a href="http://en.wikipedia.org/wiki/Jabba_the_Hutt">Jabba the
-Hutt</a> is silly, there is no way such a creature could evolve”. Now
-there are a great number of silly things in that movie, so it is strange
-that that was the thing that broke this person’s <a href="http://en.wikipedia.org/wiki/Suspension_of_disbelief">suspension of
-disbelief</a>.</p>
+    <p>Time again to reassess and reset goals. Last year <a href="http://www.cordinc.com/blog/2010/01/new-goals-again.html">my goals
+were</a>:</p>
 
-<p>I don’t see the evolution of the Hutt as impossible. We only have a
-single example and know very little of the context. Is Jabba a typical
-example, particularly old or obese? It is not hard to imagine an old,
-overweight billionaire (how about
-<a href="http://en.wikipedia.org/wiki/File:Carlos_Slim_moustache.jpg">Carlos
-Slim</a>, currently the world’s richest person), supposedly very
-successful people in our modern world. Can you imagine them being as
-successful in the wild? How about them feasting on a wild animal they
-just killed, blood running down the wrinkle grooves. Doesn’t seem quite
-right. Survival of the fittest may drive evolution, but that doesn’t
-mean the definition of fittest stays constant. The forces of evolution
-that shaped us are no longer in effect (or at least not to the same
-extent). I don’t see why this wouldn’t be the case in any sufficiently
-advanced civilisation.</p>
+<ul>
+  <li><strong>Blog at an average rate of at least 4 times a month. Result:
+achieved.</strong> - This was close, publishing the 48th post just a few
+days before the end of the year. At points during the year I found
+myself forcing out a post over a weekend (normally a history podcast
+review), when the time could have been spent more fruitfully.</li>
+  <li><strong>Only have 2 programming projects going at the same time. Result:
+achieved.</strong> - This is a good system. I never did more than two
+projects at once and worked to pre-decided completion points. As
+well as the <a href="http://www.cordinc.com/blog/2010/09/blender-ogre-beginner-for-begi.html">3D engine
+animation</a>
+and secret project (that didn’t work out), I also did
+<a href="http://www.cordinc.com/blog/2010/12/iminra.html">IMINRA</a> and a
+<a href="http://www.cordinc.com/blog/2010/08/java-nio-server-example.html">Java NIO
+server</a>
+and am currently working on another quiet project. However,
+focussing on 1 or 2 things at a time and finishing them means that I
+now have a long list of things I’d like to do.</li>
+  <li><strong>Complete 3 Blender models. Result: not achieved.</strong> - I managed
+one, the
+<a href="http://www.cordinc.com/blog/2010/07/blender-tutorial-mech-model-pa-3.html">robot</a>.</li>
+  <li><strong>Maintain Queuesaurus and general ruby skills. Result: not
+achieved.</strong> Barely did any programming outside of Java this year.</li>
+  <li><strong>Run 5km in 25 minutes. Result: not achieved.</strong> - I was getting
+somewhere on this goal until I injured my foot in August and haven’t
+run since (it’s still injured).</li>
+  <li><strong>Decrease net ownership of physical goods. Result: achieved.</strong></li>
+</ul>
+
+<p>Now for the coming year:</p>
+
+<ul>
+  <li>Blog at an average rate of at least 3 times a month. Based on
+experience of the last 2 years, this should be easy to manage and I
+shouldn’t need to force myself to write anything.</li>
+  <li>Only have 2 programming projects going at the same time. Despite the
+backlog, I think this worked well. I will start on more of the quiet
+project and more 3D programming (I want to try out
+<a href="http://unity3d.com/">Unity</a>).</li>
+  <li>Complete 2 Blender models - a
+<a href="http://en.wikipedia.org/wiki/Thermopolium">Thermopolium</a> and a
+<a href="http://en.wikipedia.org/wiki/Broch">Broch</a>.</li>
+  <li>Decrease net ownership of physical goods. Might be a little hard
+this year as I plan on buying a new computer this month and I’ve
+already divested the low hanging fruit.</li>
+  <li>Run 5km in 27 minutes. After being inactive for many months I can’t
+wait to have my foot in good condition again and start running
+(although more carefully from now on).</li>
+  <li>Work less, travel more.</li>
+</ul>
+
+<p>Plus as a nice to do, if I have time:</p>
+
+<ul>
+  <li>Maintain general Ruby and Scala skills.</li>
+</ul>
 
   </div>
   <hr/>
@@ -343,7 +336,7 @@ advanced civilisation.</p>
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 64 of 90 
+  Page 64 of 91 
   
       
         <a href="/blog/page63">Previous</a>
@@ -368,6 +361,34 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2025/02/link-blog.html">Link Blog</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/goals.html">Goals 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/boardgames.html">Boardgames of 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/12/eoy-games.html">End of Year Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/netflix-games.html">Netflix Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/intelligence.html">Intelligence?</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/09/back-to-games.html">Back to Games</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
   </li>  
   
@@ -378,40 +399,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2024/03/media.html">Media Bias</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/goals.html">Goals 2024</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/10/china.html">China</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/06/miniatures.html">Miniatures</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/03/blame.html">Blame</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
 
 </small>
 </div>

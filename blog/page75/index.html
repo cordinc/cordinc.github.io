@@ -38,98 +38,71 @@
             <div class="row">
 <div class="col-lg-8">
 
-  <span class="date">November 14, 2009</span>
-  <h4><a href="/blog/2009/11/the-weather-archive-is-not-mor.html">The weather archive is no more</a></h4> 
+  <span class="date">December 14, 2009</span>
+  <h4><a href="/blog/2009/12/history-4a-the-ancient-mediter.html">History 4A: The Ancient Mediterranean World</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
+      <a class="post" href="/blog/tag/History.html">History</a>, 
     
-      <a class="post" href="/blog/tag/Weather.html">Weather</a>
+      <a class="post" href="/blog/tag/Podcasts.html">Podcasts</a>
     
   <br/><br/>
   <div class="content">
-    <p>Today I shut down my historical weather website. It continually broke
-because BBC Backstage Weather kept changing the format of their RSS
-feed. It became too much effort to maintain the site in a working state,
-so it had to go. Since there was only ever 943 hits on it and the vast
-majority of those were me, I don’t feel too bad. It served its purpose
-and I learnt quite a bit from writing it. In any case, I should focus my
-limited spare time on more useful projects.</p>
+    <p>Available on
+<a href="http://deimos3.apple.com/WebObjects/Core.woa/Browse/berkeley.edu.1625336377">iTunesU</a>
+or at its
+<a href="http://webcast.berkeley.edu/course_details.php?seriesid=1906978476">website</a>.</p>
 
-<p>I have kept weather_report up in case anyone wants to take it up and
-use it, but they would have to fix it for the new RSS format first.</p>
+<p>This is a recording of a <a href="http://berkeley.edu/">University of California at
+Berkeley</a> history course on the ancient
+Mediterranean given by Professor Isabelle Pafford during Fall 2007.
+There are 25 podcasts (each around one hour, and 15 MB) starting with a
+couple on <a href="http://en.wikipedia.org/wiki/Ancient_Egypt">Ancient Egypt</a>
+and then passing through <a href="http://en.wikipedia.org/wiki/Ancient_Greece">Ancient
+Greece</a>, the <a href="http://en.wikipedia.org/wiki/Hellenistic_period">Hellenistic
+Period</a>, the <a href="http://en.wikipedia.org/wiki/Roman_Republic">Roman
+Republic</a> before ending
+with the <a href="http://en.wikipedia.org/wiki/Roman_Empire">Roman Empire’s</a>
+collapse in the west around the 5th century AD. Most attention is paid
+to Greek and Roman history. A following course on
+<a href="http://en.wikipedia.org/wiki/Byzantine">Byzantine</a> history is
+mentioned, but I couldn’t find it online.</p>
+
+<p>As should be expected for a series covering so much, the lectures often
+quickly pass over topics. Some parts of lectures were lists of important
+events. Despite this, there were more than enough digressions onto
+engaging side-topics to maintain interest (for instance, there was a
+passage on the nude in Greek sculpture and another on the formal
+<a href="http://en.wikipedia.org/wiki/Cursus_honorum">political structure/progression in the Roman
+Republic</a>). Thus the
+podcasts serve as a good introduction to the breadth of ancient
+Mediterranean civilisations and highlights areas you may want to explore
+further (after this I was looking forward to learning more on the mid
+and late Roman republic). I can’t find much fault with the content of
+the course considering its scope.</p>
+
+<p>I can find fault with the production standards, which overall are
+frustratingly poor. The sound quality is often annoyingly bad. For one
+lecture I had the volume turned up to max and pushed the earplugs deeper
+into my ears and I still could barely hear the lecturer, who sounded
+like she was mumbling next to a static noise generator. Course
+administration comments are sometimes made during a lecture - including
+asking unintentionally rhetorical questions to what seem to be largely
+apathetic students. Considering these are lecture recordings I can
+understand this, but usually the first few minutes of each lecture are
+taken up with course administration too (these could have easily been
+cut). Also, Professor Pafford regularly refers to visual aides that are
+no longer available online (the bspace website mentioned in the podcasts
+has been shutdown). Also the first two lectures are missing.</p>
+
+<p>A good introduction to classical history, made slightly less pleasurable
+by poor production.</p>
 
   </div>
   <hr/>
 
-  <span class="date">November  8, 2009</span>
-  <h4><a href="/blog/2009/11/models-and-events.html">Models and Events</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I have been thinking that software development is all about models and
-events. By models I mean <a href="http://en.wikipedia.org/wiki/Domain_model">domain
-models</a>, and by events I’m
-referring to an <a href="http://en.wikipedia.org/wiki/Event-driven_architecture">event-driven
-architecture</a>.
-Not quite the <a href="http://stuffinvestmentbankerslike.blogspot.com/2008/06/40-models-and-bottles.html">models and
-bottles</a>
-of Investment Banking.</p>
-
-<p>The domain model is where the application’s data lives. It is the model
-part of the
-<a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a>
-pattern. For example, in a system that manipulates songs, a song would
-be part of the domain model, together with the song’s name, artist,
-album etc (in
-<a href="http://en.wikipedia.org/wiki/Object-oriented_programming">Object-oriented</a>
-systems there would be a song class containing these attributes). The
-more time I spend coding, the more I find that the future course of a
-project is directly related to how its domain model was conceived. Using
-MVC, changing the model later can involve a great deal of work if the
-model touches everything else. Thus usually some time is spent on
-working out the model and refactoring it if necessary. Indeed, I
-remember once describing a less than satisfying job as drawing pictures
-all day, meaning
-<a href="http://en.wikipedia.org/wiki/Unified_Modeling_Language">UML</a> mainly for
-the domain (I would have preferred to be coding).</p>
-
-<p>I have a few tips for domain models. Follow the ideal of MVC, that is
-keep view and controller logic out of the model. Also, try to have <a href="http://blog.kineticweb.com/articles/2007/06/01/skinny-controller-fat-model">fat
-models and skinny
-controllers</a>
-(this is a <a href="http://rubyonrails.org/">Ruby On Rails</a> idea, but I find it
-works well in general). Keep model classes immutable if possible.
-Lastly, write your own containers (containing and hiding actual
-SDK-based containers) for easy aggregation functions (and
-parallelising). None of this is particularly controversial, few people I
-have worked with would disagree.</p>
-
-<p>What I have recently found surprising is that people do disagree with
-using an event based architecture where I feel it would work well.
-Event-driven systems are ones where changes to domain state are packaged
-as events and passed to listeners of those events through some form of
-callback. This helps promote a
-<a href="http://en.wikipedia.org/wiki/Loose_coupling">loosely-coupled</a> design,
-something else I would strongly encourage. Also recommended is keeping
-the events at the lowest level appropriate in the model (a rule I’ve
-broken a few times). For instance, if you have an album which contains
-songs, a “songAdded” event would go on the album listeners, but a
-“songUpdated” event should fire on the song’s listeners. Other people
-seem to prefer a system of loops polling for changes (or something
-similar). I find their code far more complicated. Event-driven systems
-are simple to write, simple to understand and you only need to handle
-the events you are interested in. I would be interested to hear what
-other experienced programmers have found works.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">October  5, 2009</span>
-  <h4><a href="/blog/2009/10/java-enumerations-sometimes-co.html">Java Enumerations (Sometimes) Considered Harmful</a></h4> 
+  <span class="date">December  7, 2009</span>
+  <h4><a href="/blog/2009/12/testing-generated-code.html">Testing generated code</a></h4> 
   Tags: 
     
       <a class="post" href="/blog/tag/Java.html">Java</a>, 
@@ -138,186 +111,190 @@ other experienced programmers have found works.</p>
     
   <br/><br/>
   <div class="content">
-    <p>In a recent coding project I fell foul of Java enumerations. They seem
-like a very good idea, and indeed they are when used properly. However,
-there is sometimes a tendency to overuse them - something unfortunately
-learnt from personal experience.</p>
+    <p>What is the accepted way to test generated source code? A recent work
+project required me to generate some Java source code from small
+definition files as part of a larger framework. The plan was for other
+project teams to take the framework and use the generator to create
+source which would become part of their project. I wanted to write unit
+tests for the source code. The problem was how to write a test for code
+that didn’t exist at the time the test was written because it hadn’t
+been generated yet! I came up with a few options:</p>
 
-<p>Intially Java had no inbuilt concept of <a href="http://en.wikipedia.org/wiki/Enumerated_type">enumerated
-types</a>. Developers often
-found themselves inadequately simulating them by creating a bunch on
-integer constants. Proper enumerations were added to Java in JDK1.5 with
-the enum keyword and developers rejoiced (or at least I did). The
-following example from the <a href="http://java.sun.com/j2se/1.5.0/docs/guide/language/enums.html">Java Language
-Guide</a>
-shows how they are used:</p>
-
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Rank</span> <span class="o">{</span> <span class="no">DEUCE</span><span class="o">,</span> <span class="no">THREE</span><span class="o">,</span> <span class="no">FOUR</span><span class="o">,</span> <span class="no">FIVE</span><span class="o">,</span> <span class="no">SIX</span><span class="o">,</span>
-        <span class="no">SEVEN</span><span class="o">,</span> <span class="no">EIGHT</span><span class="o">,</span> <span class="no">NINE</span><span class="o">,</span> <span class="no">TEN</span><span class="o">,</span> <span class="no">JACK</span><span class="o">,</span> <span class="no">QUEEN</span><span class="o">,</span> <span class="no">KING</span><span class="o">,</span> <span class="no">ACE</span> <span class="o">}</span>
-
-<span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Suit</span> <span class="o">{</span> <span class="no">CLUBS</span><span class="o">,</span> <span class="no">DIAMONDS</span><span class="o">,</span> <span class="no">HEARTS</span><span class="o">,</span> <span class="no">SPADES</span> <span class="o">}</span></code></pre></figure>
-
-<p>Actually, the above is just the basic usage pattern. Java enums can have
-data and behavior, as shown in the <code class="language-plaintext highlighter-rouge">Planet</code> example below (from the same
-<a href="http://java.sun.com/j2se/1.5.0/docs/guide/language/enums.html">guide</a>).
-They can also implement abstract methods directly at the definition (see
-the guide) but they cannot be subclassed.</p>
-
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Planet</span> <span class="o">{</span>
-    <span class="no">MERCURY</span> <span class="o">(</span><span class="mf">3.303</span><span class="n">e</span><span class="o">+</span><span class="mi">23</span><span class="o">,</span> <span class="mf">2.4397e6</span><span class="o">),</span>
-    <span class="no">VENUS</span>   <span class="o">(</span><span class="mf">4.869</span><span class="n">e</span><span class="o">+</span><span class="mi">24</span><span class="o">,</span> <span class="mf">6.0518e6</span><span class="o">),</span>
-    <span class="no">EARTH</span>   <span class="o">(</span><span class="mf">5.976</span><span class="n">e</span><span class="o">+</span><span class="mi">24</span><span class="o">,</span> <span class="mf">6.37814e6</span><span class="o">),</span>
-    <span class="no">MARS</span>    <span class="o">(</span><span class="mf">6.421</span><span class="n">e</span><span class="o">+</span><span class="mi">23</span><span class="o">,</span> <span class="mf">3.3972e6</span><span class="o">),</span>
-    <span class="no">JUPITER</span> <span class="o">(</span><span class="mf">1.9</span><span class="n">e</span><span class="o">+</span><span class="mi">27</span><span class="o">,</span>   <span class="mf">7.1492e7</span><span class="o">),</span>
-    <span class="no">SATURN</span>  <span class="o">(</span><span class="mf">5.688</span><span class="n">e</span><span class="o">+</span><span class="mi">26</span><span class="o">,</span> <span class="mf">6.0268e7</span><span class="o">),</span>
-    <span class="no">URANUS</span>  <span class="o">(</span><span class="mf">8.686</span><span class="n">e</span><span class="o">+</span><span class="mi">25</span><span class="o">,</span> <span class="mf">2.5559e7</span><span class="o">),</span>
-    <span class="no">NEPTUNE</span> <span class="o">(</span><span class="mf">1.024</span><span class="n">e</span><span class="o">+</span><span class="mi">26</span><span class="o">,</span> <span class="mf">2.4746e7</span><span class="o">),</span>
-    <span class="no">PLUTO</span>   <span class="o">(</span><span class="mf">1.27</span><span class="n">e</span><span class="o">+</span><span class="mi">22</span><span class="o">,</span>  <span class="mf">1.137e6</span><span class="o">);</span>
-
-    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">mass</span><span class="o">;</span>   <span class="c1">// in kilograms</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">radius</span><span class="o">;</span> <span class="c1">// in meters</span>
-    <span class="nc">Planet</span><span class="o">(</span><span class="kt">double</span> <span class="n">mass</span><span class="o">,</span> <span class="kt">double</span> <span class="n">radius</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">mass</span> <span class="o">=</span> <span class="n">mass</span><span class="o">;</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">radius</span> <span class="o">=</span> <span class="n">radius</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">mass</span><span class="o">()</span>   <span class="o">{</span> <span class="k">return</span> <span class="n">mass</span><span class="o">;</span> <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">radius</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">radius</span><span class="o">;</span> <span class="o">}</span>
-
-    <span class="c1">// universal gravitational constant  (m3 kg-1 s-2)</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">G</span> <span class="o">=</span> <span class="mf">6.67300</span><span class="no">E</span><span class="o">-</span><span class="mi">11</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">surfaceGravity</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="no">G</span> <span class="o">*</span> <span class="n">mass</span> <span class="o">/</span> <span class="o">(</span><span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">surfaceWeight</span><span class="o">(</span><span class="kt">double</span> <span class="n">otherMass</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">otherMass</span> <span class="o">*</span> <span class="n">surfaceGravity</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
-
-<p>I think the first (<code class="language-plaintext highlighter-rouge">Rank</code> &amp; <code class="language-plaintext highlighter-rouge">suit</code>) example is correct usage of enums -
-essentially treating them as related constant values. In my opinion, the
-second example is problematic. Here the <code class="language-plaintext highlighter-rouge">Planet</code> enum is acting
-similarly to a class with each instance being like an object, with data
-and associated behaviour. At the level of the example this may seem
-acceptable - not much is happening here. However, code rarely stays
-static. Requirements change and thus the code changes to handle
-different functionality. It is not hard to imagine more data being
-required for each <code class="language-plaintext highlighter-rouge">Planet</code>. Object-oriented classes are designed to help
-handle this change. Enumerations are not and there is no inheritance,
-nor is it possible to pass non static constructor arguments. As a
-result, as the functionality of an enum becomes more “object-like”, the
-code supporting it becomes increasingly messy.</p>
-
-<p>The general rule is that linked constants should be enumerations, but
-anything more than that should probably be a class.</p>
-
-<p>I have broken this rule myself and lived to regret it. A project I
-recently worked on aggregated a number of different financial markets
-and presented a single interface for downstream clients. This project
-used quite a few enumerations. For example, there were enums to define
-the market defined type of a financial instrument and another for its
-pricing method. These worked fine, they were mutually exclusive values
-read from the markets essentially as constants. There was also an enum
-for the markets themselves. At first this was fine, each market was
-treated the same. However, as the system expanded to new markets and
-extra functionality, differences between markets began to appear. More
-and more logic began to hang off the market enum. Some was data stored
-on the market enum. Most was determined by the environment and was set
-by configuration settings. This logic ended up in various special
-classes constructed by
-<a href="http://en.wikipedia.org/wiki/Factory_method_pattern">Factory</a> classes
-switching on market. Indeed there was quite a bit of logic in the system
-that switched code path depending on market. The code would definitely
-have worked better had there been a <code class="language-plaintext highlighter-rouge">Market</code> class rather than
-enumeration. Refactoring all the code to use a class rather than a
-enumeration was a big job in an important working system.</p>
+<ul>
+  <li>Do a text comparison between generated code and the previously
+created known text output of the generation process. If they are
+exactly the same, the test passes. This tests the generation process
+if correct but doesn’t test the logic of the generated code. If the
+generated code has syntactic errors, compilers or IDEs will pick
+this up quite fast and the developers in the other project will
+complain quickly, but subtle logic could go unchecked for ages.</li>
+  <li>Write a test that generates a class file from known inputs then
+compiles it programmactically with the <a href="http://java.sun.com/javase/6/docs/api/javax/tools/JavaCompiler.html">Java Compiler
+API</a>
+then loads the class into the JVM and runs tests against it. This
+would be better than the previous idea, as it tests the
+functionality of the result. This was my first choice solution.
+However, getting the Java Compiler API to work can be a bit hard.
+There was a paucity of documentation on this and in the end I
+couldn’t get it to work within time constraints.</li>
+  <li>Generate the test at the same time as the generated code and pass
+them both to the other project. The other project would then test
+the generated code as if it was their code. This felt wrong to me.
+No other generations systems do this - it is like passing the buck.
+If there is an error in the generated code then the generator needs
+to be fixed not the generated class!</li>
+  <li>A 2-step process - test the functionality and generation process
+separately. First, create a class that should be the same as a
+generated class given known inputs (probably by generating it!) and
+write tests that work against that class. Thus the problem of
+testing not yet existing code is solved by using some code generated
+earlier. This tests the generated code’s functionality as long as
+the generating process doesn’t change. So the second part is to test
+the generation process hasn’t changed using the first test in this
+list. Add another test to generate the code and check that it is
+exactly the same text as the class the rest of the test is written
+against. If the generation output changes then you have to modify
+the pre-generated class, and thus change the functionality test if
+required. Easy.</li>
+</ul>
 
   </div>
   <hr/>
 
-  <span class="date">September 25, 2009</span>
-  <h4><a href="/blog/2009/09/blender-tutorial-roman-stand.html">Blender Tutorial: Roman Stand</a></h4> 
+  <span class="date">December  2, 2009</span>
+  <h4><a href="/blog/2009/12/clcv-205-introduction-to-ancie.html">CLCV 205: Introduction to Ancient Greek History</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Blender.html">Blender</a>
+      <a class="post" href="/blog/tag/History.html">History</a>, 
+    
+      <a class="post" href="/blog/tag/Podcasts.html">Podcasts</a>
     
   <br/><br/>
   <div class="content">
-    <p>Time for my third simple historical model (my first was <a href="/blender/tutorials/tozeur_sculpture/index.html">a sculpture in
-Tozeur</a>, the second an
-<a href="/blender/tutorials/amphora/index.html">amphora</a>). I decided to make a
-Roman Stand. The model is based on a stand I saw at the Bardo Museum in
-Tunis, shown alongside my resulting model below.</p>
+    <p>Available on
+<a href="http://deimos3.apple.com/WebObjects/Core.woa/Browse/yale.edu.1899726321.01899726329">iTunesU</a>
+with a <a href="http://oyc.yale.edu/classics/introduction-to-ancient-greek-history/">course
+website</a>.</p>
 
-<p><a href="/blender/tutorials/roman_stand/">The continuation of this post is a set by step tutorial detailing my
-methodology</a>.</p>
+<p>This complete university course (from Fall 2007) on Ancient Greek
+History from <a href="http://www.yale.edu/">Yale</a> is the best history podcast I
+have found so far. It consists of 24 lectures of about an hour’s length
+each, all given by Professor <a href="http://en.wikipedia.org/wiki/Donald_Kagan">Donald
+Kagan</a>. It starts with an
+introduction to <a href="http://en.wikipedia.org/wiki/Mycenaean_Greece">Mycenaean
+Greece</a> before moving
+onto the <a href="http://en.wikipedia.org/wiki/Greek_Dark_Ages">Greek Dark Ages</a>
+and Homeric stories. The series ends with Philip of Macedon’s victory at
+the <a href="http://en.wikipedia.org/wiki/Battle_of_Chaeronea_%28338_BC%29">Battle of
+Chaeronea</a>
+and the Greek Polis’ permanent loss of independence. Along the way it
+details all the major events including: the rise and strangeness of
+Sparta; the rise of Athens and democracy; Persian wars; and the slow
+decrease of power in the struggle for hegemony after the Peloponnesian
+War. Only the 27 years of the <a href="http://en.wikipedia.org/wiki/Peloponnesian_War">Peloponnesian
+War</a> seem to be under
+represented in coverage (from my previous knowledge of history). Despite
+4 lectures being dedicated to it in the syllabus, most of these are
+taken by finishing prior topics and the buildup to the war. For the war
+itself, Professor Kagan suggests looking to other sources as it it too
+much to cover properly, and instead talks in detail about two related
+topics - <a href="http://en.wikipedia.org/wiki/Pericles">Pericles’</a> strategy and
+<a href="http://en.wikipedia.org/wiki/Thucydides">Thucydides’</a> history.</p>
 
-<p><a href="/blender/tutorials/roman_stand/"><img src="/blender/tutorials/roman_stand/result.png" alt="Bardo Museum stand and my model" title="Bardo Museum stand and my model" /></a></p>
+<p>One thing I can’t fault is the production. The podcasts are professional
+from start to finish. The only blemish is Professor Kagan’s occasional
+coughing, but this is a minor issue. The podcasts are available in a
+number of formats on the course website: audio-only (the same mp3s that
+are on iTunes); video, in both high (around 700 MB) &amp; medium (around 250
+MB) bandwith forms; and, complete text transcripts. The website also
+includes the notes handed out with each lecture, although these
+unfortunately are without the original images due to copyright problems.
+The website itself is downloadable too (albeit with only links to the
+audio and video files). While videos of the lectures are available, it
+is not really necessary to download them as they mainly just show Kagan
+talking at his podium. Rarely does he use any visual aid during the
+lectures. Thus these are excellent podcasts to listen to audio-only -
+very little will be missed.</p>
+
+<p>The lectures are often a recitation of events together with discussion
+of how and why things may have occurred that way (for instance a section
+on various military strategies and whether they were correct). The aim
+appears to be getting the listener into the mindset of the ancient Greek
+statesmen (and thus the citystates in general). A goal largely achieved
+to my mind. There is less discourse on daily life (but still some).
+Professor Kagan also talks a little about historical controversies and
+often compares ancient events to modern history (in particular around
+the use of military force). In both situations he tends to declare his
+own prejudices so the listener is not led too much.</p>
+
+<p>This is a highly recommended lecture series - interesting content that
+goes into the subject with some depth and so well produced it is
+surprisingly easy listening.</p>
 
   </div>
   <hr/>
 
-  <span class="date">September 11, 2009</span>
-  <h4><a href="/blog/2009/09/site-stats.html">Site Stats</a></h4> 
+  <span class="date">November 29, 2009</span>
+  <h4><a href="/blog/2009/11/cafe-spice-namaste.html">Cafe Spice Namaste</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Restaurant.html">Restaurant</a>, 
+    
+      <a class="post" href="/blog/tag/UK.html">UK</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>My mobile phone company recently gave me a two-for-one dinner voucher.
+Most of the qualifying venues were high-end fast food chains, but
+looking through the list I spotted a little gem - <a href="http://www.cafespice.co.uk/">Cafe Spice
+Namaste</a>. I had heard a few things about
+this Indian restaurant near Tower Bridge, so was keen to give it a try.
+We went along on a Wednesday night and there were quite a few people
+there, suggesting a booking would definitely be necessary on more
+popular nights. The polite head waiter spent some time checking the
+voucher as we were apparently the first people to use such a voucher
+there. Once that was sorted out we ordered.</p>
+
+<p>The menu was a little different to the standard Indian. For a start it
+was much shorter, just a few dishes, rather than the numerous curry
+combinations found elsewhere. We had poppadoms for starters followed by
+lamb shank and spiced partridge with naan and a potato/cauliflower/pea
+side dish. The food was very good. The poppadoms and chutneys were
+noticeably nicer than other places. My lamb shank was beautifully cooked
+and the slightly spiced sauce very more’ish - when I finished my plate
+was clean. The off-the-bone partridge was equally good. The portions
+were a good size and after that lot (plus some beer) we were too full
+for dessert. Although seeing the Belgian chocolate icecream at the next
+table tempted us, we did not waver and got the bill.</p>
+
+<p>The service was very fast and efficient. It was more expensive than
+other Indian places, but also far better. Although, it was by no means
+expensive by general London standards, a little over £60 before the
+voucher discount (and including service). For comparison, the next best
+Indian restaurant I’ve been is
+<a href="http://www.cordinc.com/blog/2009/04/fancy-restaurants-part-deux.html">Babur</a>.
+Without a discount Cafe Spice Namaste is a little more expensive than
+Babur, but with better food (thanks to the poppadoms) and easily better
+service. This is definitely a place I’ll be visiting again.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">November 23, 2009</span>
+  <h4><a href="/blog/2009/11/new-website-and-blender-pages.html">New website and Blender pages</a></h4> 
   Tags: 
     
       <a class="post" href="/blog/tag/Meta.html">Meta</a>
     
   <br/><br/>
   <div class="content">
-    <p>I want to talk about this blog. Yes, it has been said <a href="http://www.codinghorror.com/blog/archives/001282.html">Meta Is
-Murder</a>, and I
-generally agree with that post. However, I originally started this blog
-to motivate myself in my personal software development and learn about
-internet publishing. This post will be about the latter (in the form of
-this blog) and a later post will deal with the former.</p>
-
-<p>Since the first post 20 months ago on February 5th 2008, there have been
-71 posts on this blog. An average of 3.5 per month. There has been a
-single comment and a single trackback (although there have been many
-spam versions of both, but I deleted them). I also set up Google
-<a href="https://www.google.com/analytics/">Analytics</a> and
-<a href="http://www.google.com/adsense/">Adsense</a> to track visits. At first very
-few people visited the blog - 20 visitors in the first months, 3 of whom
-were me! Since then the number of visitors has slowly increased. As of
-midnight yesterday there have been a total of 14,000 unique vistors
-resulting in 19,000 page views. The below statistics are for the last
-month.</p>
-
-<p><img src="/assets/posts/meta/blogstats.jpg" width="550" alt="" /></p>
-
-<p>The most popular blog posts are the technical ones. Around 55% of the
-traffic comes to 3 pages: <a href="/blog/2008/03/installing-sphinx-ultrasphinx.html">Installing Sphinx &amp; Ultrasphinx on
-Windows</a>; <a href="/blog/2009/04/multiple-attachments-">Multiple
-Attachments with Validations In Rails with
-Paperclip</a> with-vali.html; and, the
-<a href="/projects/tooltips.html">Prototype Tooltip Library</a>. The rest of the
-top ten are also all technically based. People mainly find these pages
-through Google - a full 76% of visitors originate from a Google search.
-Note my specification of Google, all other search engines combined
-account for 1% of visits.</p>
-
-<p>One month stands out as particularly exceptional. After publishing
-<a href="/blog/2009/04/multiple-attachments-with-vali.html">Multiple Attachments with Validations In Rails with
-Paperclip</a> I sent an
-email to the <a href="http://railsenvy.com/">Ruby Envy</a> guys and they made a
-positive mention of the article (that was a real buzz). The result was
-immediate, noticeable and unfortunately short lived. The blog went from
-around 40 visits a day to over 300 in a single day. This is the only
-promotion of the blog I have done.</p>
-
-<p><img src="/assets/posts/meta/rubyenvy_boost.jpg" width="550" alt="" /></p>
-
-<p>So how much money does advertising on the blog generate? Not much. I
-have made a total of £3.09 through 20 clicks on ads. This is a Click
-Through Rate of 0.11, which is about right as I’m told one should expect
-a rate around 0.1. Last month was the best month ever - making £0.81.
-Long may that continue. At that rate I will be able to cash out the
-money earned in just under 6 years (minimum balance of £60 before
-actually being paid any money).</p>
-
-<p>The short lesson is write technical articles that are easily found
-through Google and self-promote.</p>
+    <p>If you go to my <a href="http://www.cordinc.com">main website</a>, you will now
+find it changed. Previously it was a basic advert for my professional
+services. However, the company I ran those services through will be
+shutting down soon. So the site is now a hook upon which to place my
+little side projects. Thus I have added a <a href="http://www.cordinc.com/blender">Blender
+page</a> to aggregate all the Blender and
+general 3D modelling content I have created - check it out.</p>
 
   </div>
   <hr/>
@@ -325,7 +302,7 @@ through Google and self-promote.</p>
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 75 of 90 
+  Page 75 of 91 
   
       
         <a href="/blog/page74">Previous</a>
@@ -350,6 +327,34 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2025/02/link-blog.html">Link Blog</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/goals.html">Goals 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/boardgames.html">Boardgames of 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/12/eoy-games.html">End of Year Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/netflix-games.html">Netflix Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/intelligence.html">Intelligence?</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/09/back-to-games.html">Back to Games</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
   </li>  
   
@@ -360,40 +365,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2024/03/media.html">Media Bias</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/goals.html">Goals 2024</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/10/china.html">China</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/06/miniatures.html">Miniatures</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/03/blame.html">Blame</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
 
 </small>
 </div>

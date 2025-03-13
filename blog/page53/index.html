@@ -38,414 +38,321 @@
             <div class="row">
 <div class="col-lg-8">
 
-  <span class="date">February 19, 2012</span>
-  <h4><a href="/blog/2012/02/rio-tinto-rtd-continued.html">Rio Tinto R&TD (continued)</a></h4> 
+  <span class="date">April  7, 2012</span>
+  <h4><a href="/blog/2012/04/failure-unity-javascript-in-ja.html">Failure: Unity Javascript in Java VM</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>School science teachers like to emphasize that the failure of an
+experiment is as useful a learning experience as its success. Of course
+the high-achieving student knows that is bollocks and ensures their
+experiements always succeed - if you need a straight line, only gather
+two data points! Despite that I think the underlying idea is correct and
+experimental failure should not be hidden.</p>
+
+<p>A recent experiment of mine failed. I am writing a game with an online
+component and wanted the same code running on both the client and server - as this would reduce the chance of bugs. For ease of development
+<a href="http://unity3d.com/">Unity3D</a> is being used for the client end, so the
+code there is either Javascript or C#. I have been writing Java servers
+professionally for years so it seemed silly not to use that knowledge.
+Clearly there is no common ground there. However, there is a project
+called <a href="http://www.mozilla.org/rhino/">Rhino</a> to allow Javascript to run
+inside the Java JVM.</p>
+
+<p>So can Javascript from Unity run in a Java environment? The short answer
+is “no”, but the longer answer is “sometimes, with many caveats”.</p>
+
+<p>Firstly it is possible to run Javascript functions in Java. Load up the
+Rhino library into the classpath and if you have Javascript code like:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nf">square</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">i</span><span class="o">*</span><span class="nx">i</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>then you can run it in Java with the folowing:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Context</span> <span class="n">cx</span> <span class="o">=</span> <span class="nc">Context</span><span class="o">.</span><span class="na">enter</span><span class="o">();</span>
+<span class="nc">Scriptable</span> <span class="n">scope</span> <span class="o">=</span> <span class="n">cx</span><span class="o">.</span><span class="na">initStandardObjects</span><span class="o">();</span>
+<span class="nc">Function</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">cx</span><span class="o">.</span><span class="na">compileFunction</span><span class="o">(</span><span class="n">scope</span><span class="o">,</span> <span class="n">readFile</span><span class="o">(</span><span class="s">"src/test_fn.js"</span><span class="o">),</span> <span class="s">"&lt;cmd&gt;"</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">f1</span><span class="o">.</span><span class="na">call</span><span class="o">(</span><span class="n">cx</span><span class="o">,</span> <span class="n">scope</span><span class="o">,</span> <span class="n">f1</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Object</span><span class="o">[]</span> <span class="o">{</span><span class="mi">5</span><span class="o">}));</span></code></pre></figure>
+
+<p>So far so good. If your Unity Javascript is just a collection of simple
+functions then this is all that is required. However, there is a good
+chance this is not the case. Obviously any Unity specific functions and
+classes are not available (eg Ray, Input, etc). However, more important
+are the big differences between Unity Javascript and standard (ECMA)
+Javascript.</p>
+
+<p>Many people say that Javascript in Unity should more accurately be
+referred to as UnityScript. I think that is definitely true. Although it
+looks like Javascript there are some fundamental changes. Most
+importantly, Javascript uses a <a href="http://stackoverflow.com/questions/387707/whats-the-best-way-to-define-a-class-in-javascript">prototype-based scheme to define
+classes</a>.
+UnityScript has an inheritance model, and <a href="http://unifycommunity.com/wiki/index.php?title=UnityScript_versus_JavaScript">the two schemes are not
+compatible</a>.
+To me these differences are enough to prevent want I wanted to achieve.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">April  1, 2012</span>
+  <h4><a href="/blog/2012/04/lost-code.html">Lost Code</a></h4> 
   Tags: 
     
       <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
     
-      <a class="post" href="/blog/tag/Rio Tinto.html">Rio Tinto</a>, 
-    
-      <a class="post" href="/blog/tag/Work.html">Work</a>
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
     
   <br/><br/>
   <div class="content">
-    <p>After joining Knowledge-based Systems at Rio Tinto R&amp;TD, my first task
-was working on the MineSim project. This was a very successful
-application to simulate minesites. To do this a user would define the
-topology/geology of a mine, the equipment/personnel available and the
-goals to pursue. The program would then simulate the mine minute by
-minute. New blocks would be blown when ready, little loaders would muck
-out the ore from the block and large trucks moved round the mine,
-picking up ore and driving back to the dumps.</p>
+    <p>Recently at work I was asked to find out if anyone was still using a
+small tactical program I wrote. If it was unused, they apologetically
+asked me to shut it down. No apology was required, but I understand why
+it was offered. Some developers can become quite precious about their
+code and want to see it keep running forever. However, after working in
+this fast-paced industry for nearly 15 years I have long accepted that
+most of my code is no longer running. I’d be lucky if most of it is even
+still backed up somewhere rather than being sent to
+<a href="http://en.wikipedia.org/wiki//dev/null">/dev/null</a>.</p>
 
-<p class='more'><br/><a href='/blog/2012/02/rio-tinto-rtd-continued.html'>Read the rest of this entry</a></p>
-  </div>
-  <hr/>
-
-  <span class="date">February 12, 2012</span>
-  <h4><a href="/blog/2012/02/rio-tinto-rtd.html">Rio Tinto R&TD</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
-    
-      <a class="post" href="/blog/tag/Rio Tinto.html">Rio Tinto</a>, 
-    
-      <a class="post" href="/blog/tag/Work.html">Work</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>After
-<a href="http://www.cordinc.com/blog/2011/03/electrolley.html">Electrolley</a> I
-worked at <a href="http://www.riotinto.com/">Rio Tinto</a> in their Research and
-Technical Development division. I had wanted a job there for sometime.
-Many of my honours classmates and one of my ex-lecturers (the one I
-originally wanted as my honours supervisor) worked there. I had
-interviewed with them during my PhD, but was rejected as the position
-was for a more practical programmer and they saw me as too theoretical.
-After a few months at Electolley I was contacted saying a position more
-suited for my skills had arisen and asking if was I still interested.
-Soon I was being interviewed again.</p>
-
-<p>The interview process was the most arduous I’ve ever encountered. First
-there was an interview by a couple of managers. Then another interview
-by the entire team I would be joining. A panel of nine people arrayed in
-front on me. During this part they asked me to give an impromptu 15
-minute presentation of my ex-PhD topic. A quizzing on its practical
-applicability followed. By this stage I have been onsite two hours and
-they said it was time for the next stage. I was taxied into the city and
-given a battery of psychometric tests. There was a logical reasoning
-test (well-above average), vocabulary test (average), Myers-Briggs test
-(INTP, as always) and another test I’d never heard of before to check my
-work aptitude. Nearly 5 hours in total and I was completely drained.</p>
-
-<p><img src="/assets/posts/work/Rio-Tinto-logo-main.jpg" alt="Rio Logo" title="Rio Logo" /></p>
-
-<p>I got the job and after a few months I heard that it didn’t really
-matter what the tests said. Half the team (including the manager) knew
-me from uni or honours, so unless I had a breakdown the job was always
-mine. To prove the point I was told the results of the psychometric
-tests. Apparently the unknown test had indicated I was completely
-unemployable and unable to work in a team. They ignored it and hired me
-anyway.</p>
-
-<p>The Rio Tinto R&amp;TD team in Perth was in beautiful purpose built building
-near Curtin University. It was designed to be like a village - a central
-street walkway acting as a street with trees and benches (all inside).
-Off the walkway came the open plan office space. There was also a large
-reception, board room, library, large eating area and kitchen. No
-canteen, but I never heard of anyone in Perth having a canteen. It was
-set on landscaped grounds with more than enough parking and there was
-tons of natural light. A very pleasant workspace. The only problem was
-the abandoned building and the emptiness.</p>
-
-<p>The complex was built to house over 300 staff, but never housed more
-than 55 people while I was there. There was another entire building with
-workshops unused and locked up. Most of my colleagues spread themselves
-out over 2 desks. A couple of months before I started there was over 200
-people on site. Most desks were taken and the workshops full of
-engineers. However, many were made redundant or transferred around the
-time of my interview. Four small teams were left (plus admin staff).</p>
-
-<p>I was in Knowledge-Based Systems. We were supposed to focus on applying
-machine learning techniques (like expert systems) to mining problems.
-Although most of our time was spent writing mine simulations, linear
-optimisation systems (basically the <a href="http://en.wikipedia.org/wiki/Simplex_algorithm">simplex
-method</a> with a large
-number of variables and a nice GUI) or training tools. There was another
-team of more “practical” software developers working with early web
-technologies. On the non-computer side was a team of mathematicians and
-engineers doing various consulting tasks and a small team focused on
-<a href="http://en.wikipedia.org/wiki/Computational_fluid_dynamics">Computational Fluid Dynamics
-(CFD)</a> in
-smelters.</p>
-
-<p>With just 1st class Honours I was clearly one of the least educated
-people in the building. Their was a distinct academic bias. Most of the
-senior managers had PhDs, as did probably a third of the staff. People
-generally had time to think - although that may not have been a good
-indicator for future prospects. There were often discussions of very
-scientific topics and opinions were always well informed. Here I learnt
-the more theoretical side of software engineering with regular arguments
-on what process or pattern was best in a certain situation. Later I
-learnt the more practical side.</p>
-
-<p>While I was there the place had an eerie atmosphere. All non-managers
-openly believed that we would all be made redundant sooner rather than
-later. Everyone knew the intimate details of the redundancy policy. It
-was very generous so staff turnover was low as people waited for their
-inevitable payout. I remember hearing a couple of anonymous shouts of
-“make me redundant now!”. There was a bit of black humour around the
-situation. When the head of the global technology division changed we
-joked about him being an evil leprechaun (he had an unfortunate staff
-photo) who would sack us all. We were right!</p>
-
-<p>The site was also extremely safe. All sites in Rio Tinto apparently
-followed the same safety precautions. Thus our research office building
-took safety as seriously as a mine site. There was a sign at the
-entrance proudly displaying there there had been no lost time due to
-injury for over 600 days (not sure the actual number, but it was years).
-Towards the end of my time there the counter reset after a morning was
-lost when a minor traffic accident resulted in a checkup at the doctors
-(they were fine). We had a safety manager who trained us all on the
-safety precautions. Every month he would tour the site for safety
-violations and hand out cautions - normally for overly large stacks of
-paper or dirty mugs. I felt a little sorry for the guy, there wasn’t
-much for him to do. He previously had a similar job at a mine, which
-must have been much more interesting. Although it was impressive how
-after I casually mentioned my fingers ached a little one day to see how
-serious it was taken. I was visited by an outside ergonomics expert who
-recommended my desk be lowered a few centimeters. That afternoon it was
-dismantled and rebuilt! The expert was right, the new desk was much
-better.</p>
-
-<p><img src="/assets/posts/work/rio_mug.png" alt="My Rio Mug" title="My Rio Mug" /></p>
-
-<p>I sat with two colleagues is a small area of desks partitioned off
-between a reception desk and the General Manager’s office. The area was
-partitioned into thirds, each section with 2 desks, 2 PCs, etc. We took
-one section each. It was a good little spot. The partitions went up to
-eye level, and there was only one place to enter the area. The
-partitions were also setup such that to reach the back thirds a visitor
-would need to make a couple of 90 degree turns. Furthermore large pot
-plants had been placed at strategic points to block sightlines into the
-area. The basic affect was that we could tell when someone was coming
-towards us, but they couldn’t see what we were doing. Knowing the person
-who sat furthest from the entrance (an aspiring DJ), I don’t think this
-setup was unintentional. For the same reason none of the three of us
-could see eachothers’ screens. I had two PCs, but only ever used one, a
-decent second hand computer (from someone recently made redundant -
-Pentium2 with a 17” CRT, good for the late 90’s). One of the other guys
-had 2 PCs and bright blue <a href="http://en.wikipedia.org/wiki/SGI_Indigo">Silicon Graphics
-Indigo</a> machine for a 3D
-modelling project he did - very cool.</p>
-
-<p>As a small office in a global company we traveled often to various
-mining sites around the world. I only went once, to an Australian gold
-mine, which I will write about later. Others went around the world. The
-one place I would have like to have visited was the <a href="http://en.wikipedia.org/wiki/Grasberg_mine">Grasberg mine in
-Indonesia</a> - a very large
-gold and copper mine up a tropical mountain. There was some talk of
-sending me there to run a training course, but I didn’t act keen and the
-timing wasn’t good with my other projects. In retrospect I should have
-volunteered.
-<a href="http://en.wikipedia.org/wiki/West_Papua_(province)">Irian
-Jaya</a> is a place that most foreigners (or even Indonesians) do not
-get a chance to visit. There were always good stories about visits.
-During the <a href="http://en.wikipedia.org/wiki/1997_Asian_financial_crisis">Asian financial crisis in
-1997</a> one
-colleague visiting there managed to run up an enormous 5 digit expenses
-bill - he occasionally told snippets of the story of his few days living
-the high life. Management were aghast, but I had the sense they were
-slightly impressed with the ability to spend so much when the local
-currency was so cheap.</p>
-
-<p>Soon after I declined the trip to Grasberg one of our staff visiting the
-mine was threatened with a spear when some locals bust into the onsite
-offices. I think it turned out to be a dispute over a pig, but
-management was greatly concerned as there is a low-level insurgency in
-the area (over independence from Indonesia). No one from our office ever
-went there again.</p>
-
-<p>Working at R&amp;TD was fairly pleasant on a day-to-day basis. It was small
-enough for us all know eachother, and there was a slight siege mentality - us versus the off-site management wanting to shut us down. Everyone
-got a mug with their name (or nickname) printed on it when they started
-work. This stopped the problem everywhere else about disappearing
-mugs/cups. I still have mine 12 years later. When an eclipse occurred we
-all headed outside for the afternoon to see it. There was a social
-committee which arranged various regular small events. I was actually a
-member or the committee for a while. I arranged the Christmas Party
-river cruise right before I left. In fact I didn’t go to the party I
-organised, it didn’t seem right as I quit and left a few weeks before
-the event.</p>
-
-<p>I also tried to get involved in the company superannuation/pension plan.
-They had elections for staff representatives on the plan’s board. I
-thought it would look good on my resume. Most of the people I worked
-with acted bemused when told I was running. My campaign was fairly weak,
-consisting mainly of writing a blurb for the company magazine (As did
-all the other candidates). In the end I think I got about 20 votes, not
-even half the people I worked with. The winners got thousands of votes.</p>
-
-<p>After I had been at Rio just over a year, the work starting slowing,
-senior management swapped jobs and a review was announced. It seemed
-like the end was nigh. I knew the redundancy policy very well (as did
-everyone) and until I had been there over two years I would receive very
-little. It seemed unlikely I would make it that far or be promoted. It
-is best to jump than be pushed so I looked around. Finding a job in the
-dotcom boom was not too hard, and I left after 18 months at Rio. A few
-months later all but a handful of my ex-colleagues were sacked and the
-facility shuttered. My timing was just right.</p>
-
-<p>My last memories of working at Rio were having competitions with the
-aspiring DJ next to me over who could leave earliest. He won by leaving
-at 3pm, walking past the General Managers office and saying goodbye
-before walking out. I didn’t have the balls to top that even though I
-had quit. On my last day we all went to the pub for lunch. I left about
-4pm, my manager and most of his team were still there (and stayed late
-into the night). He teased me for leaving “early”.</p>
-
-<p><a href="http://www.cordinc.com/blog/2012/02/rio-tinto-rtd-continued.html">Continued with details of the tasks I performed while at Rio
-Tinto</a>.</p>
+<p>Four of my old teams were shutdown with near total loss of code. Another
+two years were spent at a consulting firm where most of the clients I
+serviced no longer exist. Those 5 jobs combined mean that half of my
+working life’s production is largely gone. At a guess I would say 10% of
+the code from my first five working years is still used; around 30% from
+the second five years; and, over two-thirds of the last 5 years of my
+code is currently running. My professional code appears to have a
+half-life of around 4 years. This sounds about right considering the
+rate of technology change.</p>
 
   </div>
   <hr/>
 
-  <span class="date">January 21, 2012</span>
-  <h4><a href="/blog/2012/01/bonds-addendum.html">Bonds: Addendum</a></h4> 
+  <span class="date">March 26, 2012</span>
+  <h4><a href="/blog/2012/03/line-plane-intersection-in-uni.html">Line / Plane Intersection in Unity3D</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Finance.html">Finance</a>, 
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
     
-      <a class="post" href="/blog/tag/Bonds.html">Bonds</a>
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
     
   <br/><br/>
   <div class="content">
-    <ul>
-  <li>Part 1 - <a href="http://www.cordinc.com/blog/2011/10/bonds-part-1-the-theory.html">The
-Theory</a></li>
-  <li>Part 2a - <a href="http://www.cordinc.com/blog/2011/10/bonds-part-2a-the-reality.html">The
-Reality</a></li>
-  <li>Part 2b - <a href="http://www.cordinc.com/blog/2011/12/bonds-part-2b-the-reality-cont.html">The Reality
-continued</a></li>
-  <li>Part 3a - <a href="http://www.cordinc.com/blog/2011/12/bonds-part-3a-the-technology.html">The
-Technology</a></li>
-  <li>Part 3b - <a href="http://www.cordinc.com/blog/2012/01/bonds-part-3b-the-technology-c.html">The Technology
-continued</a></li>
-  <li>Part 4 - <a href="http://www.cordinc.com/blog/2012/01/bonds-part-4-the-future.html">The
-Future</a></li>
-</ul>
+    <p>In a recent <a href="http://unity3d.com/">Unity3D</a> game prototype I needed to
+determine the point of intersection between a line and plane. A player
+would click on the screen where they wanted their spaceship to go, and I
+needed to work out where that actually was in the world coordinates. The
+line is defined by the camera point and the point on the screen clicked
+(as given by <code class="language-plaintext highlighter-rouge">camera.ScreenToWorldPoint</code>). The plane was the spaceship
+(assuming no up or down movement).</p>
 
-<p>After writing 6 long posts on my experiences in EGB IT, I realised I
-still missed out many points. Here they are in no particular order.</p>
+<p><img src="/assets/posts/technical/line_plane.png" alt="" /></p>
 
-<p class='more'><br/><a href='/blog/2012/01/bonds-addendum.html'>Read the rest of this entry</a></p>
-  </div>
-  <hr/>
+<p>If the line was intersecting an object in the scene then this could be
+easily achieved with Unity3D’s built in functions. In this case by
+casting a ray from the camera and finding the objects it hits (see the
+<a href="http://unity3d.com/support/documentation/ScriptReference/Physics.Raycast.html">Raycast help
+page</a>).
+However, my prototype is set in space, there is no object there to hit
+other than a small spaceship.</p>
 
-  <span class="date">January 14, 2012</span>
-  <h4><a href="/blog/2012/01/bonds-part-4-the-future.html">Bonds: Part 4 - The Future</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Finance.html">Finance</a>, 
-    
-      <a class="post" href="/blog/tag/Bonds.html">Bonds</a>
-    
-  <br/><br/>
-  <div class="content">
-    <ul>
-  <li>Part 1 - <a href="http://www.cordinc.com/blog/2011/10/bonds-part-1-the-theory.html">The
-Theory</a></li>
-  <li>Part 2a - <a href="http://www.cordinc.com/blog/2011/10/bonds-part-2a-the-reality.html">The
-Reality</a></li>
-  <li>Part 2b - <a href="http://www.cordinc.com/blog/2011/12/bonds-part-2b-the-reality-cont.html">The Reality
-continued</a></li>
-  <li>Part 3a - <a href="http://www.cordinc.com/blog/2011/12/bonds-part-3a-the-technology.html">The
-Technology</a></li>
-  <li>Part 3b - <a href="http://www.cordinc.com/blog/2012/01/bonds-part-3b-the-technology-c.html">The Technology
-continued</a></li>
-  <li><a href="http://www.cordinc.com/blog/2012/01/bonds-addendum.html">Addendum</a></li>
-</ul>
+<p>First, let’s work out the equation of the line from the camera (point
+‘c’) and the mouse click (point ‘m’). We can get the position of the
+camera with <code class="language-plaintext highlighter-rouge">var c = camera.transform.position</code> and the position of the
+mouse click with:</p>
 
-<p>So after nearly 7 years on EGB technology teams I have moved on. Not out
-of banking (at least not yet), but when the opportunity came to try a
-different business area I jumped. This is despite being able to earn
-more money if I stayed in my EGB niche. There are two related reasons
-for leaving: the industry and technology are both changing to the
-detriment of developers.</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">camera</span><span class="p">.</span><span class="nc">ScreenToWorldPoint</span><span class="p">(</span><span class="nc">Vector3</span><span class="p">(</span><span class="nx">Input</span><span class="p">.</span><span class="nx">mousePosition</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">Input</span><span class="p">.</span><span class="nx">mousePosition</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">));</span> </code></pre></figure>
 
-<p>When I started in 2005, EGB trading was already on an upswing that
-lasted through 2009. I’m not sure when this upwards trajectory began,
-but the people around me considered it normal. Business was good
-throughout the mortgage and banking crisis of 2008. When times are good
-and the desks are making good money some of it is reinvested into
-technology. There was a lot of optimism and this translated into banks
-wanting the fastest and smartest trading platform. We got to rewrite
-systems. Increasingly business was relying on technology - it was
-becoming trade-by-wire. It seemed that there was much further to go.
-Algorithmic trading is big in equities, why couldn’t it be big in fixed
-income too. There was huge potential for writing interesting code.</p>
+<p>Note that in the above, the third vector parameter (the Z value) in the
+<code class="language-plaintext highlighter-rouge">ScreenToWorldPoint</code> call is the distance from the camera of the
+resulting point. Thus if 0 or <code class="language-plaintext highlighter-rouge">mousePosition.z</code> (which is also 0) is
+used then the resulting point is just the camera location itself. Here I
+have used a distance of 100 to make sure there is a good separation
+between the points describing the line. The <a href="http://mathworld.wolfram.com/Point-LineDistance3-Dimensional.html">general equation of a line
+in 3
+dimensions</a>
+is (for the points c &amp; m):</p>
 
-<p>This environment no longer exists. It was only when the European debt
-crisis began to bite in 2011 that things trended downwards, but then
-they went down fast. There is a great deal less ambition among the fixed
-income desks. Most traders seem happy just to not be losing money -
-something many are not achieving. Some banks are shutting down their
-bonds desks. As a natural consequence there is less to spend on
-technology and little desire to do more than maintenance. Flow volume is
-king, and as far as technology development is concerned, that is not
-hard. Thus less developers are required and the work is less
-interesting.</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">[</span><span class="nx">c</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">x</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">z</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">z</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">z</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">]</span></code></pre></figure>
 
-<p>Combined with this is the creeping commoditisation of bonds technology.
-When I started ION provided mainly gateways, little tools and their
-message bus. Over time they have climbed up the product stack. Now they
-also sell pricing engines, autoquoters, autohedgers, risk engines,
-position servers - nearly everything a bank needs to trade cash bonds.
-The quality is fine too. Their applications won’t do everything a desk
-requires, but it will do most of it and the desk’s technology team can
-add the remainder quickly. Not all banks will use vendor systems (many
-don’t like Ion or see advantage in bespoke systems), but enough will to
-affect the market for EGB technologists.</p>
+<p>So to find the point of intersection requires solving that
+simultaneously with the equation of the plane. Here is where my scenario
+gets easy. The plane this line intersects with in my game is the
+horizontal plane the spaceship is current on. That is the plane is
+described by:</p>
 
-<p>Thus, once again, less developers are required and the work is less
-interesting. I don’t see the situation changing until the market
-improves - and I don’t see that happening soon. So I thought it time to
-try a different business area.</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">y</span> <span class="o">=</span> <span class="nx">spaceship</span><span class="p">.</span><span class="nx">y</span></code></pre></figure>
+
+<p>At some point on the line the following holds as long as the line
+intersects at some point:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">spaceship</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span></code></pre></figure>
+
+<p>which means:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if </span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">==</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// no intersection</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+   <span class="nx">t</span> <span class="o">=</span> <span class="p">(</span><span class="nx">spaceship</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span> 
+<span class="p">}</span></code></pre></figure>
+
+<p>The case <code class="language-plaintext highlighter-rouge">m.y == c.y</code> denotes the case where the line does not intersect
+the plane. What happens here is up to you. With the value of ‘t’ known
+the equation for the line can be solved to give the point of
+intersection. Done.</p>
 
   </div>
   <hr/>
 
-  <span class="date">January  7, 2012</span>
-  <h4><a href="/blog/2012/01/goals-1.html">Goals</a></h4> 
+  <span class="date">March 17, 2012</span>
+  <h4><a href="/blog/2012/03/la-trobe-university-archaeolog.html">La Trobe University Archaeology</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Goals.html">Goals</a>
+      <a class="post" href="/blog/tag/History.html">History</a>, 
+    
+      <a class="post" href="/blog/tag/Podcasts.html">Podcasts</a>
     
   <br/><br/>
   <div class="content">
-    <p>Just 12 months ago I said I hoped to achieve the below by the start of
-this year:</p>
+    <p>Available from
+<a href="http://itunes.apple.com/gb/itunes-u/archaeology/id394588178">iTunes</a> or
+from the <a href="http://www.latrobe.edu.au/news/podcasts">La Trobe University Podcasts
+page</a> (but they will have to be
+found individually as there does not appear to be a series webpage).</p>
 
-<ul>
-  <li><strong>Blog at an average rate of at least 3 times a month. Result:
-achieved.</strong> - 48 posts in 12 months, so this target was easily
-surpassed.</li>
-  <li><strong>Only have 2 programming projects going at the same time. Result:
-achieved.</strong> - I did this to the letter of the goal, but there were a
-couple of abandoned projects along the way. On the plus side, I did
-a couple of successful little projects to teach myself game coding
-(see <a href="http://cordinc.com/blender/">my blender page</a>) and now I’m
-working on a larger game demo to test out some ideas.</li>
-  <li><strong>Complete 2 Blender models. Result: partial.</strong> - I did two, a
-<a href="http://cordinc.com/blender/tutorials/lamp">Roman lamp</a> and a
-<a href="http://cordinc.com/blender/tutorials/spaceship/index.html">spaceship</a>.
-However, I originally planned to do two completely different (more
-complex) models. This difference occurred as I needed to learn the
-new Blender 2.5 interface, and then wanted to focus on game models
-rather than historical models.</li>
-  <li><strong>Decrease net ownership of physical goods. Result: maybe.</strong> - I
-bought a new computer and it is quite large. Apart from that I have
-less, but when included it is about even.</li>
-  <li><strong>Run 5km in 27 minutes. Result: not even close.</strong> - My foot problem
-has not abated all year. A few abortive runs midyear quickly led to
-a reoccurrence of the injury and further rest. Only now do I seem to
-be back to normal - but I’m yet to properly test it.</li>
-  <li><strong>Work less, travel more. Result: achieved.</strong> -
-<a href="http://www.cordinc.com/blog/2011/11/north-cornwall.html">Cornwall</a>,
-<a href="http://www.cordinc.com/blog/2011/10/turkey.html">Turkey</a>,
-<a href="http://www.cordinc.com/blog/2011/04/andalusia.html">Andalusia</a>,
-<a href="http://www.cordinc.com/blog/2011/02/tenerife.html">Tenerife</a>, plus
-some other little holidays.</li>
-  <li><strong>Maintain general Ruby and Scala skills. Result: partial.</strong> - I’ve
-done some Ruby, but no Scala.</li>
-</ul>
+<p>This is a series of talks and interviews from the La Trobe University
+Archaeology department. The topics vary wildly, from the traditional
+Ancient Egypt and Cyprus, to relatively modern digs in <a href="http://en.wikipedia.org/wiki/Melbourne">Melbourne
+city</a> (founded in 1835). As the
+series is archaeologically focussed there is more emphasis on the
+extraction and identification of objects than history. At present there
+are 12 episodes - 2 are short videos (around 3 minutes) and the
+remainder are audio only. Two of the audio podcasts are hour long
+scholarly presentations, while the other 8 are interviews of between 15
+to 20 minutes duration. There may be more episodes in the series as the
+entries so far have trickled in over the last 2 years. Production
+quality is high for the whole series.</p>
 
-<p>For the coming year I have decreased the number of goals, mainly because
-there are a few big ones:</p>
+<p>There are two podcasts on archaeology in
+<a href="http://en.wikipedia.org/wiki/Oceania">Oceania</a>, particularly
+<a href="http://en.wikipedia.org/wiki/Hawaii">Hawaii</a>. One is an academic
+presentation, while the other is an interview with the same presenter on
+the same topic. There is some talk on
+<a href="http://en.wikipedia.org/wiki/Collapse:_How_Societies_Choose_to_Fail_or_Succeed">Jared
+Diamond’s Collapse book</a>. Diamond suggests that society on the
+Polynesian island <a href="http://en.wikipedia.org/wiki/Mangareva">Mangareva</a>
+due to overforestation. However, the presenter’s research suggests
+instead that the deforestation was caused by a lack of phosphorus in the
+soil due to the killing of sea birds. The discussion of Hawaii is
+similarly focussed on the affect of intensive cultivation on soil
+quality. Unsurprisingly the indigenous people started agriculture on the
+best land and as population grew, expanded out to less productive land.
+Once all arable areas were cultivated, the land became more subdivided
+and population growth slowed. Also there is evidence of political
+consolidation beginning around the same time.</p>
 
-<ul>
-  <li>Blog at an average rate of at least 3 times a month. Never more than
-4 a month. Historically this shouldn’t be a problem, but I also
-don’t want it to become a time sink.</li>
-  <li>Complete the game demo and send it out for comments. If the feedback
-is not disastrous start working on a full game. This is my main goal
-now. I’d also like to do one other project over the year (probably a
-simple website).</li>
-  <li>Be able to run. I just want my foot to be completely better so and I
-can run without concern, speed is not important.</li>
-  <li>Decrease net ownership of physical goods, as always but especially
-relevant considering the next goal.</li>
-  <li>Leave the UK. Recent events mean this will probably be my last year
-in the UK. It took months to organise my move here. I expect a
-similar effort this time.</li>
-</ul>
+<p>Another paired presentation and interview discuss excavations at the
+ancient Egyptian capital
+<a href="http://en.wikipedia.org/wiki/Akhetaton">Amarna</a>. They are focussed on
+the industry of the time - in particular small metal work and glazed
+pottery. Details of the materials used are probed with
+<a href="http://en.wikipedia.org/wiki/Synchrotron">synchrotrons</a> and a bit of
+experimental archaeology is conducted to determine the techniques used
+to manufacture them.</p>
 
-<p>Plus as a nice to do, if I have time:</p>
+<p>Another episode details the search for ships lost in Vietnam by the
+Chinese emperor <a href="http://en.wikipedia.org/wiki/Kublai_Khan">Kublai Khan</a>
+at the
+<a href="http://en.wikipedia.org/wiki/Battle_of_B%E1%BA%A1ch_%C4%90%E1%BA%B1ng_(1288)">Battle
+of Bach Dang</a>. Three episodes (including both video podcasts) discuss
+the tools and evolution of early humans, especially the position in the
+evolutionary tree of some complete skeletons recently found in
+<a href="http://en.wikipedia.org/wiki/Sediba">Sediba</a>. There is also an
+interview about bronze age burials in Cyprus and other podcasts focus on
+the archaeological difficulties and discoveries underwater or in cities.</p>
 
-<ul>
-  <li>Maintain general Blender, Ruby and Scala skills - same as last year.</li>
-</ul>
+  </div>
+  <hr/>
+
+  <span class="date">March 10, 2012</span>
+  <h4><a href="/blog/2012/03/navigablemap-timebased-caches.html">NavigableMap & time-based caches</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I often find myself writing time-based caches. Something like storing
+the last X hours of ticks from a data feed. Most teams I join usually
+have a utility class to help with such tasks. In a recent move I joined
+a team that didn’t have such a utility, but did have a need for such a
+cache. Before coding, I thought I do a quick check to see if anything
+new had come along to help. At this point I discovered the Java 6
+<a href="http://docs.oracle.com/javase/6/docs/api/java/util/NavigableMap.html">NavigableMap</a>
+interface.</p>
+
+<p>NavigableMap defines a type of sorted map with handy methods for
+obtaining submaps. So to get a map of the entries greater than a
+particular value use the <code class="language-plaintext highlighter-rouge">tailMap</code> method. The corresponding method for
+the submap less than a value is <code class="language-plaintext highlighter-rouge">headMap</code>. These methods return a view
+on the original map. So changes to the submap are reflected in the
+original map. The JDK provides
+<a href="http://docs.oracle.com/javase/6/docs/api/java/util/concurrent/ConcurrentSkipListMap.html">concurrent</a>
+and
+<a href="http://docs.oracle.com/javase/6/docs/api/java/util/TreeMap.html">non-concurrent</a>
+implementations of the interface.</p>
+
+<p>This is very useful for a time-based cache. Create a NavigableMap sorted
+on the time (I used the epoch milliseconds returned by
+<code class="language-plaintext highlighter-rouge">System.currentTimeMillis()</code>) then <code class="language-plaintext highlighter-rouge">tailMap</code> returns the entries younger
+than a given time, and <code class="language-plaintext highlighter-rouge">headMap</code> those older. So to trim the cache of
+entries older than a certain time use
+<code class="language-plaintext highlighter-rouge">headMap(System.currentTimeMillis() - maxAge).clear()</code>. So easy!</p>
+
+<p>Here is a complete time-based cache class for use as an example.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TimeSeriesCache</span><span class="o">&lt;</span><span class="no">V</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MILLIS_IN_MINUTE</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">CLEAR_OLD_PERIOD_MINUTES</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">NavigableMap</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;</span> <span class="n">series</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ConcurrentSkipListMap</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;();</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">TickListener</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span> <span class="nc">Long</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;&gt;</span> <span class="n">subscribers</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">TimeSeriesCache</span><span class="o">(</span><span class="kt">int</span> <span class="n">maxAgeMinutes</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">maxAgeMinutes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">final</span> <span class="kt">int</span> <span class="n">maxAge</span> <span class="o">=</span> <span class="n">maxAgeMinutes</span> <span class="o">*</span> <span class="no">MILLIS_IN_MINUTE</span><span class="o">;</span>
+            <span class="nc">Executors</span><span class="o">.</span><span class="na">newSingleThreadScheduledExecutor</span><span class="o">().</span><span class="na">scheduleWithFixedDelay</span><span class="o">(</span>
+                    <span class="k">new</span> <span class="nf">Runnable</span><span class="o">()</span> <span class="o">{</span>
+                        <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"boxing"</span><span class="o">)</span>
+                        <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                            <span class="n">series</span><span class="o">.</span><span class="na">headMap</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">maxAge</span><span class="o">).</span><span class="na">clear</span><span class="o">();</span>
+
+                        <span class="o">}</span>
+                    <span class="o">},</span> <span class="no">CLEAR_OLD_PERIOD_MINUTES</span><span class="o">,</span> <span class="no">CLEAR_OLD_PERIOD_MINUTES</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MINUTES</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Collection</span><span class="o">&lt;</span><span class="no">V</span><span class="o">&gt;</span> <span class="nf">getSeriesAfter</span><span class="o">(</span><span class="nc">Long</span> <span class="n">fromTimestamp</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="na">tailMap</span><span class="o">(</span><span class="n">fromTimestamp</span><span class="o">).</span><span class="na">values</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="no">V</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">series</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">(),</span> <span class="n">value</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="nc">Long</span> <span class="n">timestamp</span><span class="o">,</span> <span class="no">V</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">series</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
 
   </div>
   <hr/>
@@ -453,7 +360,7 @@ similar effort this time.</li>
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 53 of 90 
+  Page 53 of 91 
   
       
         <a href="/blog/page52">Previous</a>
@@ -478,6 +385,34 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2025/02/link-blog.html">Link Blog</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/goals.html">Goals 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/boardgames.html">Boardgames of 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/12/eoy-games.html">End of Year Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/netflix-games.html">Netflix Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/intelligence.html">Intelligence?</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/09/back-to-games.html">Back to Games</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
   </li>  
   
@@ -488,40 +423,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2024/03/media.html">Media Bias</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/goals.html">Goals 2024</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/10/china.html">China</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/06/miniatures.html">Miniatures</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/03/blame.html">Blame</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
 
 </small>
 </div>

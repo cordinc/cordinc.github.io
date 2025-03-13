@@ -38,84 +38,8 @@
             <div class="row">
 <div class="col-lg-8">
 
-  <span class="date">March 26, 2012</span>
-  <h4><a href="/blog/2012/03/line-plane-intersection-in-uni.html">Line / Plane Intersection in Unity3D</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
-    
-      <a class="post" href="/blog/tag/Unity.html">Unity</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>In a recent <a href="http://unity3d.com/">Unity3D</a> game prototype I needed to
-determine the point of intersection between a line and plane. A player
-would click on the screen where they wanted their spaceship to go, and I
-needed to work out where that actually was in the world coordinates. The
-line is defined by the camera point and the point on the screen clicked
-(as given by <code class="language-plaintext highlighter-rouge">camera.ScreenToWorldPoint</code>). The plane was the spaceship
-(assuming no up or down movement).</p>
-
-<p><img src="/assets/posts/technical/line_plane.png" alt="" /></p>
-
-<p>If the line was intersecting an object in the scene then this could be
-easily achieved with Unity3D’s built in functions. In this case by
-casting a ray from the camera and finding the objects it hits (see the
-<a href="http://unity3d.com/support/documentation/ScriptReference/Physics.Raycast.html">Raycast help
-page</a>).
-However, my prototype is set in space, there is no object there to hit
-other than a small spaceship.</p>
-
-<p>First, let’s work out the equation of the line from the camera (point
-‘c’) and the mouse click (point ‘m’). We can get the position of the
-camera with <code class="language-plaintext highlighter-rouge">var c = camera.transform.position</code> and the position of the
-mouse click with:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">camera</span><span class="p">.</span><span class="nc">ScreenToWorldPoint</span><span class="p">(</span><span class="nc">Vector3</span><span class="p">(</span><span class="nx">Input</span><span class="p">.</span><span class="nx">mousePosition</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">Input</span><span class="p">.</span><span class="nx">mousePosition</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">));</span> </code></pre></figure>
-
-<p>Note that in the above, the third vector parameter (the Z value) in the
-<code class="language-plaintext highlighter-rouge">ScreenToWorldPoint</code> call is the distance from the camera of the
-resulting point. Thus if 0 or <code class="language-plaintext highlighter-rouge">mousePosition.z</code> (which is also 0) is
-used then the resulting point is just the camera location itself. Here I
-have used a distance of 100 to make sure there is a good separation
-between the points describing the line. The <a href="http://mathworld.wolfram.com/Point-LineDistance3-Dimensional.html">general equation of a line
-in 3
-dimensions</a>
-is (for the points c &amp; m):</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">[</span><span class="nx">c</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">x</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">z</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">z</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">z</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">]</span></code></pre></figure>
-
-<p>So to find the point of intersection requires solving that
-simultaneously with the equation of the plane. Here is where my scenario
-gets easy. The plane this line intersects with in my game is the
-horizontal plane the spaceship is current on. That is the plane is
-described by:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">y</span> <span class="o">=</span> <span class="nx">spaceship</span><span class="p">.</span><span class="nx">y</span></code></pre></figure>
-
-<p>At some point on the line the following holds as long as the line
-intersects at some point:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">spaceship</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span></code></pre></figure>
-
-<p>which means:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if </span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">==</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-   <span class="nx">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// no intersection</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-   <span class="nx">t</span> <span class="o">=</span> <span class="p">(</span><span class="nx">spaceship</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span> 
-<span class="p">}</span></code></pre></figure>
-
-<p>The case <code class="language-plaintext highlighter-rouge">m.y == c.y</code> denotes the case where the line does not intersect
-the plane. What happens here is up to you. With the value of ‘t’ known
-the equation for the line can be solved to give the point of
-intersection. Done.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">March 17, 2012</span>
-  <h4><a href="/blog/2012/03/la-trobe-university-archaeolog.html">La Trobe University Archaeology</a></h4> 
+  <span class="date">May 19, 2012</span>
+  <h4><a href="/blog/2012/05/maya-weekend.html">Maya Weekend</a></h4> 
   Tags: 
     
       <a class="post" href="/blog/tag/History.html">History</a>, 
@@ -125,229 +49,254 @@ intersection. Done.</p>
   <br/><br/>
   <div class="content">
     <p>Available from
-<a href="http://itunes.apple.com/gb/itunes-u/archaeology/id394588178">iTunes</a> or
-from the <a href="http://www.latrobe.edu.au/news/podcasts">La Trobe University Podcasts
-page</a> (but they will have to be
-found individually as there does not appear to be a series webpage).</p>
+<a href="http://itunes.apple.com/us/itunes-u/maya-weekend/id443941013">iTunes</a>
+with the video podcasts also on
+<a href="http://www.youtube.com/user/pennmuseum/videos?query=maya">YouTube</a></p>
 
-<p>This is a series of talks and interviews from the La Trobe University
-Archaeology department. The topics vary wildly, from the traditional
-Ancient Egypt and Cyprus, to relatively modern digs in <a href="http://en.wikipedia.org/wiki/Melbourne">Melbourne
-city</a> (founded in 1835). As the
-series is archaeologically focussed there is more emphasis on the
-extraction and identification of objects than history. At present there
-are 12 episodes - 2 are short videos (around 3 minutes) and the
-remainder are audio only. Two of the audio podcasts are hour long
-scholarly presentations, while the other 8 are interviews of between 15
-to 20 minutes duration. There may be more episodes in the series as the
-entries so far have trickled in over the last 2 years. Production
-quality is high for the whole series.</p>
+<p>In 2011 <a href="http://www.penn.museum/">Penn Museum</a> hosted a weekend academic
+conference on the <a href="http://en.wikipedia.org/wiki/Maya_civilization">Maya
+civilization</a>. This
+series consists of recordings from that conference; each podcast is a
+single presentation. The topics covered focus on Mayan women and
+archaeological techniques (lots of discussion of research from doctoral
+dissertations). There are eleven episodes all around 30-40 minutes in
+length. Five are videos of presentations (so that the presenter and
+their slides are visible), but the remainder are audio-only recordings.
+Production quality is generally good, although the videos do
+occasionally go out of focus. The talks are quite academic and dry. I
+found it hard to follow sometimes, perhaps because I don’t have enough
+background in Mayan history to hang the new facts upon. This series is
+probably best for people who already have a knowledge of Mayan history.</p>
 
-<p>There are two podcasts on archaeology in
-<a href="http://en.wikipedia.org/wiki/Oceania">Oceania</a>, particularly
-<a href="http://en.wikipedia.org/wiki/Hawaii">Hawaii</a>. One is an academic
-presentation, while the other is an interview with the same presenter on
-the same topic. There is some talk on
-<a href="http://en.wikipedia.org/wiki/Collapse:_How_Societies_Choose_to_Fail_or_Succeed">Jared
-Diamond’s Collapse book</a>. Diamond suggests that society on the
-Polynesian island <a href="http://en.wikipedia.org/wiki/Mangareva">Mangareva</a>
-due to overforestation. However, the presenter’s research suggests
-instead that the deforestation was caused by a lack of phosphorus in the
-soil due to the killing of sea birds. The discussion of Hawaii is
-similarly focussed on the affect of intensive cultivation on soil
-quality. Unsurprisingly the indigenous people started agriculture on the
-best land and as population grew, expanded out to less productive land.
-Once all arable areas were cultivated, the land became more subdivided
-and population growth slowed. Also there is evidence of political
-consolidation beginning around the same time.</p>
+<p>The five video presentations all look at aspects of modern archaeology
+technique. One looks at remote sensing - the process of using photos or
+data from planes and satellites to identity large ancient sites (usually
+because the vegetation growing over ruins is somehow different to
+normal). Another presentation takes the complete opposite approach and
+details pedestrian surveys. This is as it sounds - walking around and
+recording what is seen, not as easy as it sounds in a jungle. This talk
+provided some interesting details on
+<a href="http://en.wikipedia.org/wiki/Chunchucmil">Chunchucmil</a>, a town much
+larger than local agriculture could support so trading must have
+occurred. One presentation looks at what can be discovered from skeletal
+remains. This is not just looking at the wear and tear on the body, but
+also analysing isotopes in the bones. In this manner the researcher
+discovered about a quarter of people at one site emigrated from their
+childhood areas. Another researcher analysed pollen samples found in
+lake sediment to determine historical ecology. They found that the
+highest levels of deforestation occurred soon after agriculture began.
+It seems these first farmers didn’t know the limits of the land. At the
+time of the <a href="http://en.wikipedia.org/wiki/Classic_Maya_collapse">Mayan
+collapse</a> forest
+levels were fairly balanced, opposing some theories suggesting that
+deforestation was the cause. Instead, evidence was found for drought
+around this time, boosting an opposing theory. The last video
+presentation promotes a new <a href="http://mayaarch3d.unm.edu/">repository of 3D measurements and models of
+Mayan sites</a>.</p>
 
-<p>Another paired presentation and interview discuss excavations at the
-ancient Egyptian capital
-<a href="http://en.wikipedia.org/wiki/Akhetaton">Amarna</a>. They are focussed on
-the industry of the time - in particular small metal work and glazed
-pottery. Details of the materials used are probed with
-<a href="http://en.wikipedia.org/wiki/Synchrotron">synchrotrons</a> and a bit of
-experimental archaeology is conducted to determine the techniques used
-to manufacture them.</p>
-
-<p>Another episode details the search for ships lost in Vietnam by the
-Chinese emperor <a href="http://en.wikipedia.org/wiki/Kublai_Khan">Kublai Khan</a>
-at the
-<a href="http://en.wikipedia.org/wiki/Battle_of_B%E1%BA%A1ch_%C4%90%E1%BA%B1ng_(1288)">Battle
-of Bach Dang</a>. Three episodes (including both video podcasts) discuss
-the tools and evolution of early humans, especially the position in the
-evolutionary tree of some complete skeletons recently found in
-<a href="http://en.wikipedia.org/wiki/Sediba">Sediba</a>. There is also an
-interview about bronze age burials in Cyprus and other podcasts focus on
-the archaeological difficulties and discoveries underwater or in cities.</p>
+<p>Without the aid of visuals many of the audio-only podcasts are very dry
+and hard to follow. Some becoming just recitations of events in Mayan
+history. All but one of the audio presentation look at the position of
+women in Mayan culture (the other concerned with inter-city interaction
+and trade). Some notable facts include that at least three women rose to
+become <a href="http://en.wikipedia.org/wiki/Ajaw">Ajaws</a> (rulers of their city)
+and that childbirth was considered equivalent of going to war.</p>
 
   </div>
   <hr/>
 
-  <span class="date">March 10, 2012</span>
-  <h4><a href="/blog/2012/03/navigablemap-timebased-caches.html">NavigableMap & time-based caches</a></h4> 
+  <span class="date">May 12, 2012</span>
+  <h4><a href="/blog/2012/05/debugging-context-in-unity3d.html">Debugging context in Unity3D</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
     
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
     
   <br/><br/>
   <div class="content">
-    <p>I often find myself writing time-based caches. Something like storing
-the last X hours of ticks from a data feed. Most teams I join usually
-have a utility class to help with such tasks. In a recent move I joined
-a team that didn’t have such a utility, but did have a need for such a
-cache. Before coding, I thought I do a quick check to see if anything
-new had come along to help. At this point I discovered the Java 6
-<a href="http://docs.oracle.com/javase/6/docs/api/java/util/NavigableMap.html">NavigableMap</a>
-interface.</p>
+    <p>A cool little feature of Unity3D scripting I recently found is using
+conditional compilation for debug statements. The C based languages (but
+not Java unfortuately) have inbuilt preprocessors that allow developers
+to only compile certain parts of the code if certain parameters are set
+(it can also do much more, including macros). Thus you could write the
+below and the code would only be included in the executable if <code class="language-plaintext highlighter-rouge">DEBUG</code>
+is defined.</p>
 
-<p>NavigableMap defines a type of sorted map with handy methods for
-obtaining submaps. So to get a map of the entries greater than a
-particular value use the <code class="language-plaintext highlighter-rouge">tailMap</code> method. The corresponding method for
-the submap less than a value is <code class="language-plaintext highlighter-rouge">headMap</code>. These methods return a view
-on the original map. So changes to the submap are reflected in the
-original map. The JDK provides
-<a href="http://docs.oracle.com/javase/6/docs/api/java/util/concurrent/ConcurrentSkipListMap.html">concurrent</a>
-and
-<a href="http://docs.oracle.com/javase/6/docs/api/java/util/TreeMap.html">non-concurrent</a>
-implementations of the interface.</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="k">if</span> <span class="nx">DEBUG</span>
+    <span class="c1">// do some special code</span>
+<span class="err">#</span><span class="nx">endif</span></code></pre></figure>
 
-<p>This is very useful for a time-based cache. Create a NavigableMap sorted
-on the time (I used the epoch milliseconds returned by
-<code class="language-plaintext highlighter-rouge">System.currentTimeMillis()</code>) then <code class="language-plaintext highlighter-rouge">tailMap</code> returns the entries younger
-than a given time, and <code class="language-plaintext highlighter-rouge">headMap</code> those older. So to trim the cache of
-entries older than a certain time use
-<code class="language-plaintext highlighter-rouge">headMap(System.currentTimeMillis() - maxAge).clear()</code>. So easy!</p>
+<p>Unity3D has a similar system. Mostly the docs (<a href="http://unity3d.com/support/documentation/Manual/Platform%20Dependent%20Compilation.html">available
+here</a>)
+seem to suggest this is for specialist code for different platforms:
+iPhone, Web, PC, etc. Thus the defined parameters are set in advance
+(e.g. <code class="language-plaintext highlighter-rouge">UNITY_IPHONE</code>). However, there is one that is useful for
+debugging, <code class="language-plaintext highlighter-rouge">UNITY_EDITOR</code>. This will only be set if the application is
+running inside the Unity3D GUI. Once you build the app those lines of
+code will be skipped. It can be used like the below example - very
+handy.</p>
 
-<p>Here is a complete time-based cache class for use as an example.</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="k">if</span> <span class="nx">UNITY_EDITOR</span>
+    <span class="nx">Debug</span><span class="p">.</span><span class="nc">Log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Debugging</span><span class="dl">"</span><span class="p">);</span>
+<span class="err">#</span><span class="nx">endif</span> </code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TimeSeriesCache</span><span class="o">&lt;</span><span class="no">V</span><span class="o">&gt;</span> <span class="o">{</span>
+<p>According to <a href="http://forum.unity3d.com/threads/71445-How-To-Set-Project-Wide-pragma-Directives-with-JavaScript">this Unity3D forum
+post</a>
+it is also possible to define your own project specific preprocessor
+parameters.</p>
 
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MILLIS_IN_MINUTE</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">CLEAR_OLD_PERIOD_MINUTES</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+  </div>
+  <hr/>
 
-    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">NavigableMap</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;</span> <span class="n">series</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ConcurrentSkipListMap</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;();</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">TickListener</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span> <span class="nc">Long</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;&gt;</span> <span class="n">subscribers</span><span class="o">;</span>
+  <span class="date">May  4, 2012</span>
+  <h4><a href="/blog/2012/05/unit-testing-unityscript-in-un.html">Unit Testing UnityScript in Unity3D with SharpUnit</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I have been programming mainly in <a href="http://unity3d.com/">Unity3D</a> over
+the last fortnight, and thought it time to write some unit tests for my
+work. I found reference to a <a href="http://unifycommunity.com/wiki/index.php?title=Category:Unit_Test_Framework">few testing frameworks
+online</a>.
+The most promising appeared to be
+<a href="http://www.unifycommunity.com/wiki/index.php?title=SharpUnit">SharpUnit</a>,
+and it is also released under a fairly relaxed license. However, I had
+to make a few changed to get it running, so this post details that work.</p>
 
-    <span class="kd">public</span> <span class="nf">TimeSeriesCache</span><span class="o">(</span><span class="kt">int</span> <span class="n">maxAgeMinutes</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">maxAgeMinutes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">final</span> <span class="kt">int</span> <span class="n">maxAge</span> <span class="o">=</span> <span class="n">maxAgeMinutes</span> <span class="o">*</span> <span class="no">MILLIS_IN_MINUTE</span><span class="o">;</span>
-            <span class="nc">Executors</span><span class="o">.</span><span class="na">newSingleThreadScheduledExecutor</span><span class="o">().</span><span class="na">scheduleWithFixedDelay</span><span class="o">(</span>
-                    <span class="k">new</span> <span class="nf">Runnable</span><span class="o">()</span> <span class="o">{</span>
-                        <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"boxing"</span><span class="o">)</span>
-                        <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-                            <span class="n">series</span><span class="o">.</span><span class="na">headMap</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">maxAge</span><span class="o">).</span><span class="na">clear</span><span class="o">();</span>
+<p>SharpUnit works like a standard unit testing framework for C# code in
+Unity3D (although all output goes to the console, but that is fine for
+me). Although my work has largely been in UnityScript (Unity3D’s
+JavaScript like language) and this didn’t work so well due to issues
+with compilation order and SharpUnit’s use of .Net custom attributes.
+After making the changes below, I found SharpUnit works well, and I’ll
+probably be using it for my unit testing.</p>
 
-                        <span class="o">}</span>
-                    <span class="o">},</span> <span class="no">CLEAR_OLD_PERIOD_MINUTES</span><span class="o">,</span> <span class="no">CLEAR_OLD_PERIOD_MINUTES</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">MINUTES</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
+<p>Unity3D compiles scripts in a set order (<a href="http://unity3d.com/support/documentation/ScriptReference/index.Script_compilation_28Advanced29.html">as described
+here</a>).
+Thus if you have C# code that references a UnityScript class there can
+be a problem - although the reverse is not such an issue. When testing
+UnityScript with SharpUnit this means that the C# <code class="language-plaintext highlighter-rouge">Unity3D_TestRunner</code>
+class can be an issue. It references the <code class="language-plaintext highlighter-rouge">TestCase</code> classes, which I
+want to write in UnityScript. To do this I put the SharpUnit code in a
+folder under the <code class="language-plaintext highlighter-rouge">Plugins</code> top-level folder (the <code class="language-plaintext highlighter-rouge">Standard Assets</code>
+folder would have also worked). This means the SharpUnit code is
+compiled first. Then my tests went in a new folder together with a
+UnityScript rewrite of <code class="language-plaintext highlighter-rouge">Unity3D_TestRunner</code>, as shown below. This
+UnityScript TestRunner script is then attached to the TestRunner
+GameObject (in a special testing scene) rather than the C# version as
+described in the SharpUnit instructions.</p>
 
-    <span class="kd">public</span> <span class="nc">Collection</span><span class="o">&lt;</span><span class="no">V</span><span class="o">&gt;</span> <span class="nf">getSeriesAfter</span><span class="o">(</span><span class="nc">Long</span> <span class="n">fromTimestamp</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="na">tailMap</span><span class="o">(</span><span class="n">fromTimestamp</span><span class="o">).</span><span class="na">values</span><span class="o">();</span>
-    <span class="o">}</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="nx">pragma</span> <span class="nx">strict</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="no">V</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">series</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">(),</span> <span class="n">value</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="k">import</span> <span class="nx">SharpUnit</span><span class="p">;</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="nc">Long</span> <span class="n">timestamp</span><span class="o">,</span> <span class="no">V</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">series</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
+<span class="kd">function</span> <span class="nf">Start</span> <span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">suite</span><span class="p">:</span> <span class="nx">TestSuite</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TestSuite</span><span class="p">();</span>
+	<span class="nx">suite</span><span class="p">.</span><span class="nc">AddAll</span><span class="p">(</span><span class="nc">DummyTest</span><span class="p">());</span>
+	<span class="kd">var</span> <span class="nx">res</span><span class="p">:</span> <span class="nx">TestResult</span> <span class="o">=</span> <span class="nx">suite</span><span class="p">.</span><span class="nc">Run</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+	<span class="kd">var</span> <span class="nx">reporter</span><span class="p">:</span> <span class="nx">Unity3D_TestReporter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Unity3D_TestReporter</span><span class="p">();</span>
+    <span class="nx">reporter</span><span class="p">.</span><span class="nc">LogResults</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Other possible solutions to this problem would be to just write my code
+in C# or to change SharpUnit to load <code class="language-plaintext highlighter-rouge">TestCase</code> classes dynamically at
+runtime. Rewriting the TestRunner seemed easiest.</p>
+
+<p>The other problem encountered is that SharpUnit uses the C# custom
+attribute <code class="language-plaintext highlighter-rouge">[UnitTest]</code> to identify its test methods. The equivalent in
+UnityScript is a script directive (see <a href="http://answers.unity3d.com/questions/12911/what-are-the-syntax-differences-in-c-and-javascrip.html">the relevant section
+here</a>).
+Thus <code class="language-plaintext highlighter-rouge">@UnitTest</code> needs to be placed at the top of each test function.</p>
+
+<p>After that change I could run UnityScript tests with SharpUnit. An
+example test is below:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="nx">pragma</span> <span class="nx">strict</span>
+
+<span class="k">import</span> <span class="nx">SharpUnit</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">DummyTest</span> <span class="kd">extends</span> <span class="nc">TestCase</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">dummy</span><span class="p">:</span> <span class="nb">String</span><span class="p">;</span>  
+
+    <span class="cm">/** Setup test resources, called before each test. */</span>
+    <span class="kd">function</span> <span class="nf">SetUp</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">dummy</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">lkjkjh</span><span class="dl">"</span><span class="p">;</span> 
+    <span class="p">}</span>
+
+    <span class="cm">/** Dispose of test resources, called after each test */</span>
+    <span class="kd">function</span> <span class="nf">TearDown</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">dummy</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> 
+    <span class="p">}</span>
+
+    <span class="cm">/** Sample test that passes */</span>
+    <span class="p">@</span><span class="nd">UnitTest</span>
+    <span class="kd">function</span> <span class="nf">TestDummy_Pass</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">Assert</span><span class="p">.</span><span class="nc">NotNull</span><span class="p">(</span><span class="nx">dummy</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/** Sample test that fails. */</span>
+    <span class="p">@</span><span class="nd">UnitTest</span>
+    <span class="kd">function</span> <span class="nf">TestDummy_Fail</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">Assert</span><span class="p">.</span><span class="nc">Null</span><span class="p">(</span><span class="nx">dummy</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
 
 
   </div>
   <hr/>
 
-  <span class="date">March  3, 2012</span>
-  <h4><a href="/blog/2012/03/kuala-lumpur.html">Kuala Lumpur</a></h4> 
+  <span class="date">April 27, 2012</span>
+  <h4><a href="/blog/2012/04/sicily.html">Sicily</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/General.html">General</a>
+      <a class="post" href="/blog/tag/Italy.html">Italy</a>, 
+    
+      <a class="post" href="/blog/tag/Travel.html">Travel</a>
     
   <br/><br/>
   <div class="content">
-    <p>I’m not sure how many people who read this blog actually know me in
-person - probably very few. However, for those that do, I am moving.
-Towards the end of the year (the exact date is still uncertain), I’m
-physically moving to <a href="http://en.wikipedia.org/wiki/Kuala_Lumpur">Kuala
-Lumpur</a>. Virtual location
-(email, website, etc) will remained unchanged. It is not yet known what
-I’ll be doing there - there are some work visa issues to be sorted out.</p>
+    <p>I’ve just returned from an underwhelming two week break in Sicily. A
+<a href="http://www.flickr.com/photos/33547649@N07/sets/72157629910747427/show/">Flickr slideshow is viewable
+here.</a></p>
+
+<p><a href="http://www.flickr.com/photos/33547649@N07/sets/72157629910747427/show/"><img src="http://farm8.staticflickr.com/7262/6972257770_e73a3020b0.jpg" alt="" /></a></p>
 
   </div>
   <hr/>
 
-  <span class="date">February 26, 2012</span>
-  <h4><a href="/blog/2012/02/game-reviews-again.html">Game Reviews Again</a></h4> 
+  <span class="date">April 14, 2012</span>
+  <h4><a href="/blog/2012/04/rio-rambo-course.html">Rio Rambo Course</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Games.html">Games</a>, 
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
     
-      <a class="post" href="/blog/tag/Video Games.html">Video Games</a>
+      <a class="post" href="/blog/tag/Rio Tinto.html">Rio Tinto</a>, 
+    
+      <a class="post" href="/blog/tag/Work.html">Work</a>
     
   <br/><br/>
   <div class="content">
-    <p>Almost exactly six months ago I wrote a <a href="http://www.cordinc.com/blog/2011/08/modern-gaming.html">review of some modern computer
-games</a>. All were
-well known, and I said they were all excellent. I even suggested that
-computer games were in a golden age - better than ever before. Now I
-have completed 3 more well known, highly regarded, recent games. How did
-they do in comparison? Not as well unfortunately.</p>
+    <p>The most oft repeated tale of my time at Rio Tinto R&amp;TD is the Rambo
+course. Every year a dozen or so staff would be sent on a management
+training course. Many people were eager to avoid it. Although everyone
+had to do it at least once and it was advisable to go if you wanted to
+be promoted (so I was keen). Most people had been multiple times. Since
+our team was so small, about a third of the facility went each year.</p>
 
-<p>First up I played
-<a href="http://en.wikipedia.org/wiki/Call_of_Duty_4:_Modern_Warfare">Call
-Of Duty 4: Modern Warfare</a>, the original 2007 Modern Warfare game
-which spawned the incredibly popular series of <a href="http://en.wikipedia.org/wiki/First-person_shooter">first-person
-shooters</a> of the same
-name. At first I was impressed with the intensity of this game. However,
-the fast pace quickly slows with realisation there is essentially no
-penalty to getting shot. Death is a mere slight pause. I felt like I was
-on rails, being led through the action. The game was just a reaction
-speed test. Multiplayer is probably better, but I didn’t play that - I
-doubt my reactions are fast enough. The story is ok, nothing special.
-Although I did detect a possible subtle satire on war - but that could
-just be me. The story is most notable for a couple of impressive famous
-scenes (the nuke level and the gunship level) that do work very well.
-This game is probably too linear and twitchy for me.</p>
-
-<p>Next up I played
-<a href="http://en.wikipedia.org/wiki/Assassin's_Creed:_Brotherhood">Assasins
-Creed: Brotherhood</a>. I was particularly looking forward to this game
-because of its open world setting in medieval Rome. Certainly the
-graphics are beautiful and I enjoyed wandering around the ruins of Rome.
-But the controls! This game was incredibly frustrating - it was hard to
-get my avatar to perform as intended. I tried for many hours (28 total),
-but still found myself often shouting at the computer and cursing the
-clumsy controls. Eventually I just raced to finish the main story.
-Incidently, the story is very silly and not worth discussing. This game
-could have been so much better, but is just annoying.</p>
-
-<p>Just a few days ago I completed
-<a href="http://en.wikipedia.org/wiki/BioShock">Bioshock</a>. This is an excellent
-game, restoring my belief in modern gaming after the previous two
-disappointments. The Ayn Rand-gone-wild underwater setting is
-incredible. The art-deco and slightly cartoony (but I think that was the
-point) graphics are decent. I often found myself just walking around
-looking at the banners and architecture. Most importantly the controls
-were super smooth. The game was also quite intense, particularly at the
-start and end. Sometimes I jumped at a surprising action or went looking
-for someone I could hear nearby. It is interesting that both this game
-and Mass Effect 2, give the player some small choices that make minor
-differences to gameplay, as opposed to the lack of agency in Modern
-Warfare. A little choice (even if it is fairly inconsequential in plot
-terms) goes a long way in making the player feel involved.</p>
-
+<p class='more'><br/><a href='/blog/2012/04/rio-rambo-course.html'>Read the rest of this entry</a></p>
   </div>
   <hr/>
 
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 52 of 90 
+  Page 52 of 91 
   
       
         <a href="/blog/page51">Previous</a>
@@ -372,6 +321,34 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2025/02/link-blog.html">Link Blog</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/goals.html">Goals 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/boardgames.html">Boardgames of 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/12/eoy-games.html">End of Year Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/netflix-games.html">Netflix Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/intelligence.html">Intelligence?</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/09/back-to-games.html">Back to Games</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
   </li>  
   
@@ -382,40 +359,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2024/03/media.html">Media Bias</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/goals.html">Goals 2024</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/10/china.html">China</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/06/miniatures.html">Miniatures</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/03/blame.html">Blame</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
 
 </small>
 </div>

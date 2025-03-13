@@ -38,249 +38,173 @@
             <div class="row">
 <div class="col-lg-8">
 
-  <span class="date">May  4, 2012</span>
-  <h4><a href="/blog/2012/05/unit-testing-unityscript-in-un.html">Unit Testing UnityScript in Unity3D with SharpUnit</a></h4> 
+  <span class="date">July  8, 2012</span>
+  <h4><a href="/blog/2012/07/i-can-have-design.html">I Can Have Design?</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
-    
-      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+      <a class="post" href="/blog/tag/Concealed Intent.html">Concealed Intent</a>
     
   <br/><br/>
   <div class="content">
-    <p>I have been programming mainly in <a href="http://unity3d.com/">Unity3D</a> over
-the last fortnight, and thought it time to write some unit tests for my
-work. I found reference to a <a href="http://unifycommunity.com/wiki/index.php?title=Category:Unit_Test_Framework">few testing frameworks
-online</a>.
-The most promising appeared to be
-<a href="http://www.unifycommunity.com/wiki/index.php?title=SharpUnit">SharpUnit</a>,
-and it is also released under a fairly relaxed license. However, I had
-to make a few changed to get it running, so this post details that work.</p>
+    <p>The <a href="http://www.cordinc.com/blog/2012/07/the-future-in-three-images.html">previous
+posting</a>
+included the new logo for Jarrah Technology (website coming soon).
+People who know I have poor design skills have where I stole it from.
+Well, despite my membership of the “smash and grab” school of web design
+(also known as “right click -&gt; view source”), I paid for this design.</p>
 
-<p>SharpUnit works like a standard unit testing framework for C# code in
-Unity3D (although all output goes to the console, but that is fine for
-me). Although my work has largely been in UnityScript (Unity3D’s
-JavaScript like language) and this didn’t work so well due to issues
-with compilation order and SharpUnit’s use of .Net custom attributes.
-After making the changes below, I found SharpUnit works well, and I’ll
-probably be using it for my unit testing.</p>
+<p><img src="/assets/posts/work/logo_shadow_vertical_unrounded.png" alt="" /></p>
 
-<p>Unity3D compiles scripts in a set order (<a href="http://unity3d.com/support/documentation/ScriptReference/index.Script_compilation_28Advanced29.html">as described
-here</a>).
-Thus if you have C# code that references a UnityScript class there can
-be a problem - although the reverse is not such an issue. When testing
-UnityScript with SharpUnit this means that the C# <code class="language-plaintext highlighter-rouge">Unity3D_TestRunner</code>
-class can be an issue. It references the <code class="language-plaintext highlighter-rouge">TestCase</code> classes, which I
-want to write in UnityScript. To do this I put the SharpUnit code in a
-folder under the <code class="language-plaintext highlighter-rouge">Plugins</code> top-level folder (the <code class="language-plaintext highlighter-rouge">Standard Assets</code>
-folder would have also worked). This means the SharpUnit code is
-compiled first. Then my tests went in a new folder together with a
-UnityScript rewrite of <code class="language-plaintext highlighter-rouge">Unity3D_TestRunner</code>, as shown below. This
-UnityScript TestRunner script is then attached to the TestRunner
-GameObject (in a special testing scene) rather than the C# version as
-described in the SharpUnit instructions.</p>
+<p>As part of creating a computer game, I accepted that while the coding
+was under my control, any artwork would need to be outsourced. SpaceSub
+will not be graphically beautiful, but hopefully it will not be ugly
+either. Getting a company logo was the first part of this plan. The
+other artwork has to wait until it is know what is needed.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="nx">pragma</span> <span class="nx">strict</span>
-
-<span class="k">import</span> <span class="nx">SharpUnit</span><span class="p">;</span>
-
-<span class="kd">function</span> <span class="nf">Start</span> <span class="p">()</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">suite</span><span class="p">:</span> <span class="nx">TestSuite</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TestSuite</span><span class="p">();</span>
-	<span class="nx">suite</span><span class="p">.</span><span class="nc">AddAll</span><span class="p">(</span><span class="nc">DummyTest</span><span class="p">());</span>
-	<span class="kd">var</span> <span class="nx">res</span><span class="p">:</span> <span class="nx">TestResult</span> <span class="o">=</span> <span class="nx">suite</span><span class="p">.</span><span class="nc">Run</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
-	<span class="kd">var</span> <span class="nx">reporter</span><span class="p">:</span> <span class="nx">Unity3D_TestReporter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Unity3D_TestReporter</span><span class="p">();</span>
-    <span class="nx">reporter</span><span class="p">.</span><span class="nc">LogResults</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Other possible solutions to this problem would be to just write my code
-in C# or to change SharpUnit to load <code class="language-plaintext highlighter-rouge">TestCase</code> classes dynamically at
-runtime. Rewriting the TestRunner seemed easiest.</p>
-
-<p>The other problem encountered is that SharpUnit uses the C# custom
-attribute <code class="language-plaintext highlighter-rouge">[UnitTest]</code> to identify its test methods. The equivalent in
-UnityScript is a script directive (see <a href="http://answers.unity3d.com/questions/12911/what-are-the-syntax-differences-in-c-and-javascrip.html">the relevant section
-here</a>).
-Thus <code class="language-plaintext highlighter-rouge">@UnitTest</code> needs to be placed at the top of each test function.</p>
-
-<p>After that change I could run UnityScript tests with SharpUnit. An
-example test is below:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span><span class="nx">pragma</span> <span class="nx">strict</span>
-
-<span class="k">import</span> <span class="nx">SharpUnit</span><span class="p">;</span>
-
-<span class="kd">class</span> <span class="nc">DummyTest</span> <span class="kd">extends</span> <span class="nc">TestCase</span> <span class="p">{</span>
-
-    <span class="kd">var</span> <span class="nx">dummy</span><span class="p">:</span> <span class="nb">String</span><span class="p">;</span>  
-
-    <span class="cm">/** Setup test resources, called before each test. */</span>
-    <span class="kd">function</span> <span class="nf">SetUp</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">dummy</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">lkjkjh</span><span class="dl">"</span><span class="p">;</span> 
-    <span class="p">}</span>
-
-    <span class="cm">/** Dispose of test resources, called after each test */</span>
-    <span class="kd">function</span> <span class="nf">TearDown</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">dummy</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> 
-    <span class="p">}</span>
-
-    <span class="cm">/** Sample test that passes */</span>
-    <span class="p">@</span><span class="nd">UnitTest</span>
-    <span class="kd">function</span> <span class="nf">TestDummy_Pass</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">Assert</span><span class="p">.</span><span class="nc">NotNull</span><span class="p">(</span><span class="nx">dummy</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="cm">/** Sample test that fails. */</span>
-    <span class="p">@</span><span class="nd">UnitTest</span>
-    <span class="kd">function</span> <span class="nf">TestDummy_Fail</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">Assert</span><span class="p">.</span><span class="nc">Null</span><span class="p">(</span><span class="nx">dummy</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
+<p>The design comes from <a href="http://99designs.co.uk/">99designs</a>. I first
+heard of them back when they did the logo for
+<a href="http://stackoverflow.com/">StackOverflow</a>. They are a site for
+outsourcing design work. People post design contests and designers
+compete to win those contests. Here is <a href="http://99designs.co.uk/logo-design/contests/help-jarrah-technology-logo-147581">my
+contest</a>.
+In the end this worked well for me, I like the winning design (which I
+chose). There were a few other good entries submitted to my contest.
+Although most of the designs were not very good and a surprising number
+didn’t even follow the submitted brief. Communication could also be a
+problem, getting revisions was quite hard and I get the impression most
+of the designers had English as a second language. However, the winner’s
+name and timezone suggests he is Indonesian, Malaysian or Singaporean
+and he (mostly) managed to adapt his entry according to requests. In the
+end it worked out ok for the logo, but attempting anything more
+complicated would give me some trepidation.</p>
 
   </div>
   <hr/>
 
-  <span class="date">April 27, 2012</span>
-  <h4><a href="/blog/2012/04/sicily.html">Sicily</a></h4> 
+  <span class="date">July  2, 2012</span>
+  <h4><a href="/blog/2012/07/the-future-in-three-images.html">The Future in Three Images</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Italy.html">Italy</a>, 
+      <a class="post" href="/blog/tag/Concealed Intent.html">Concealed Intent</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>After last week’s look back, now it is time to look forward. I expect
+the next year of my life will be dominated by these images.</p>
+
+<p><img src="/assets/posts/travel/640px-Kuala_Lumpur_City_View.jpg" width="550" alt="" /></p>
+
+<p>At the end of this year I am moving to <a href="http://en.wikipedia.org/wiki/Kuala_Lumpur">Kuala
+Lumpur</a> for my partner’s
+work. I’ll be there for possibly 4 years. I’m not sure what I’ll be
+doing there, but I hope to continue with this:</p>
+
+<p><img src="/assets/posts/work/spacesub.png" alt="" /></p>
+
+<p>Above are 2 player drones and a player corvette rounding a small planet
+and closing on a stack of 3 enemy ships. It is from a computer game I’m
+working on codenamed SpaceSub (because it’s all about stealth). It is
+still in a fairly early stage of development. More news on it will be
+available at:</p>
+
+<p><img src="/assets/posts/work/logo_shadow_vertical_unrounded.png" alt="" /></p>
+
+<p>I’m repurposing <a href="http://www.jarrahtechnology.com">Jarrah Technology</a>, my
+old consulting company, as an indie game developer for SpaceSub. The
+website will soon be updated to reflect that new identity.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">June 17, 2012</span>
+  <h4><a href="/blog/2012/06/blog-stats.html">Blog Stats</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Meta.html">Meta</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>On February 5th 2008, the first post on this blog was published. This is
+the 201st posting, so it is time for a recap. The blog was originally to
+document the creation of a business website. That business idea,
+Queuesaurus, has been and gone, but the blog continues. I think it is
+useful to practice writing - it’s certainly not for the money!</p>
+
+<p>In nearly four and a half years this blog has generated 133,340 page
+views from 70,904 unique visitors. This has resulted in 77 AdSense
+clicks for income of $31 (versus a hosting cost over the same period of
+$104). However, it is gratifying to see that the number of visitors is
+on a steadily upward trend. As the graph below shows, the number of
+monthly visits has grown to around 4500/month at present.</p>
+
+<p><img src="/assets/posts/meta/visitors.png" width="550" alt="" /></p>
+
+<p>Most people visiting this blog will never read this post. 75% of people
+come to it through a search engine (mainly Google) and view a single
+technical article. The top ten posts account for 60% of the page views
+and all of those ten are technical in nature (<a href="http://cordinc.com/blog/2009/04/multiple-attachments-with-vali.html">this is the most popular
+page</a>,
+and <a href="http://cordinc.com/blog/2008/03/installing-sphinx-ultrasphinx.html">this the second most
+popular</a>).</p>
+
+<p>Unfortunately there are only 14 comments on the site. I had to turn
+comments off a couple of years ago because I was receiving about 50 spam
+comments a day after the spam filters cleared out the most obvious ones!</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">June 10, 2012</span>
+  <h4><a href="/blog/2012/06/budapest.html">Budapest</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Hungary.html">Hungary</a>, 
     
       <a class="post" href="/blog/tag/Travel.html">Travel</a>
     
   <br/><br/>
   <div class="content">
-    <p>I’ve just returned from an underwhelming two week break in Sicily. A
-<a href="http://www.flickr.com/photos/33547649@N07/sets/72157629910747427/show/">Flickr slideshow is viewable
+    <p>I’ve just returned from a short city break to
+<a href="http://en.wikipedia.org/wiki/Budapest">Budapest</a>. It was a pleasant
+trip - most of the time was spent walking around or in cafes. A
+<a href="http://www.flickr.com/photos/33547649@N07/sets/72157630031407017/show/">slideshow is viewable
 here.</a></p>
 
-<p><a href="http://www.flickr.com/photos/33547649@N07/sets/72157629910747427/show/"><img src="http://farm8.staticflickr.com/7262/6972257770_e73a3020b0.jpg" alt="" /></a></p>
+<p><a href="http://www.flickr.com/photos/33547649@N07/sets/72157630031407017/show/"><img src="http://farm9.staticflickr.com/8152/7357177594_a547d66a31.jpg" alt="" /></a></p>
 
   </div>
   <hr/>
 
-  <span class="date">April 14, 2012</span>
-  <h4><a href="/blog/2012/04/rio-rambo-course.html">Rio Rambo Course</a></h4> 
+  <span class="date">June  3, 2012</span>
+  <h4><a href="/blog/2012/06/funding-circle.html">Funding Circle</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
+      <a class="post" href="/blog/tag/Finance.html">Finance</a>, 
     
-      <a class="post" href="/blog/tag/Rio Tinto.html">Rio Tinto</a>, 
-    
-      <a class="post" href="/blog/tag/Work.html">Work</a>
+      <a class="post" href="/blog/tag/Funding Circle.html">Funding Circle</a>
     
   <br/><br/>
   <div class="content">
-    <p>The most oft repeated tale of my time at Rio Tinto R&amp;TD is the Rambo
-course. Every year a dozen or so staff would be sent on a management
-training course. Many people were eager to avoid it. Although everyone
-had to do it at least once and it was advisable to go if you wanted to
-be promoted (so I was keen). Most people had been multiple times. Since
-our team was so small, about a third of the facility went each year.</p>
+    <p>In July last year I opened a <a href="https://www.fundingcircle.com/">Funding
+Circle</a> account. It is a <a href="http://en.wikipedia.org/wiki/Person-to-person_lending">P2P
+lending</a> site
+where people can lend money to British businesses. The idea is that a
+business asks for a loan along with company details and usually a
+director guarantee (so the director is personally responsible if the
+company defaults). The site’s members then participate in a <a href="http://en.wikipedia.org/wiki/Reverse_auction">reverse
+auction</a> to fund part of
+the loan in amounts down to £20. Funding Circle advertise that their
+members receive a 8.5% gross return on average. Below are notes on my
+experience of the site.</p>
 
-<p class='more'><br/><a href='/blog/2012/04/rio-rambo-course.html'>Read the rest of this entry</a></p>
-  </div>
-  <hr/>
-
-  <span class="date">April  7, 2012</span>
-  <h4><a href="/blog/2012/04/failure-unity-javascript-in-ja.html">Failure: Unity Javascript in Java VM</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
-    
-      <a class="post" href="/blog/tag/Unity.html">Unity</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>School science teachers like to emphasize that the failure of an
-experiment is as useful a learning experience as its success. Of course
-the high-achieving student knows that is bollocks and ensures their
-experiements always succeed - if you need a straight line, only gather
-two data points! Despite that I think the underlying idea is correct and
-experimental failure should not be hidden.</p>
-
-<p>A recent experiment of mine failed. I am writing a game with an online
-component and wanted the same code running on both the client and server - as this would reduce the chance of bugs. For ease of development
-<a href="http://unity3d.com/">Unity3D</a> is being used for the client end, so the
-code there is either Javascript or C#. I have been writing Java servers
-professionally for years so it seemed silly not to use that knowledge.
-Clearly there is no common ground there. However, there is a project
-called <a href="http://www.mozilla.org/rhino/">Rhino</a> to allow Javascript to run
-inside the Java JVM.</p>
-
-<p>So can Javascript from Unity run in a Java environment? The short answer
-is “no”, but the longer answer is “sometimes, with many caveats”.</p>
-
-<p>Firstly it is possible to run Javascript functions in Java. Load up the
-Rhino library into the classpath and if you have Javascript code like:</p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nf">square</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="nx">i</span><span class="o">*</span><span class="nx">i</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>then you can run it in Java with the folowing:</p>
-
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Context</span> <span class="n">cx</span> <span class="o">=</span> <span class="nc">Context</span><span class="o">.</span><span class="na">enter</span><span class="o">();</span>
-<span class="nc">Scriptable</span> <span class="n">scope</span> <span class="o">=</span> <span class="n">cx</span><span class="o">.</span><span class="na">initStandardObjects</span><span class="o">();</span>
-<span class="nc">Function</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">cx</span><span class="o">.</span><span class="na">compileFunction</span><span class="o">(</span><span class="n">scope</span><span class="o">,</span> <span class="n">readFile</span><span class="o">(</span><span class="s">"src/test_fn.js"</span><span class="o">),</span> <span class="s">"&lt;cmd&gt;"</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">f1</span><span class="o">.</span><span class="na">call</span><span class="o">(</span><span class="n">cx</span><span class="o">,</span> <span class="n">scope</span><span class="o">,</span> <span class="n">f1</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Object</span><span class="o">[]</span> <span class="o">{</span><span class="mi">5</span><span class="o">}));</span></code></pre></figure>
-
-<p>So far so good. If your Unity Javascript is just a collection of simple
-functions then this is all that is required. However, there is a good
-chance this is not the case. Obviously any Unity specific functions and
-classes are not available (eg Ray, Input, etc). However, more important
-are the big differences between Unity Javascript and standard (ECMA)
-Javascript.</p>
-
-<p>Many people say that Javascript in Unity should more accurately be
-referred to as UnityScript. I think that is definitely true. Although it
-looks like Javascript there are some fundamental changes. Most
-importantly, Javascript uses a <a href="http://stackoverflow.com/questions/387707/whats-the-best-way-to-define-a-class-in-javascript">prototype-based scheme to define
-classes</a>.
-UnityScript has an inheritance model, and <a href="http://unifycommunity.com/wiki/index.php?title=UnityScript_versus_JavaScript">the two schemes are not
-compatible</a>.
-To me these differences are enough to prevent want I wanted to achieve.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">April  1, 2012</span>
-  <h4><a href="/blog/2012/04/lost-code.html">Lost Code</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Recently at work I was asked to find out if anyone was still using a
-small tactical program I wrote. If it was unused, they apologetically
-asked me to shut it down. No apology was required, but I understand why
-it was offered. Some developers can become quite precious about their
-code and want to see it keep running forever. However, after working in
-this fast-paced industry for nearly 15 years I have long accepted that
-most of my code is no longer running. I’d be lucky if most of it is even
-still backed up somewhere rather than being sent to
-<a href="http://en.wikipedia.org/wiki//dev/null">/dev/null</a>.</p>
-
-<p>Four of my old teams were shutdown with near total loss of code. Another
-two years were spent at a consulting firm where most of the clients I
-serviced no longer exist. Those 5 jobs combined mean that half of my
-working life’s production is largely gone. At a guess I would say 10% of
-the code from my first five working years is still used; around 30% from
-the second five years; and, over two-thirds of the last 5 years of my
-code is currently running. My professional code appears to have a
-half-life of around 4 years. This sounds about right considering the
-rate of technology change.</p>
-
+<p class='more'><br/><a href='/blog/2012/06/funding-circle.html'>Read the rest of this entry</a></p>
   </div>
   <hr/>
 
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 51 of 90 
+  Page 51 of 91 
   
       
         <a href="/blog/page50">Previous</a>
@@ -305,6 +229,34 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2025/02/link-blog.html">Link Blog</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/goals.html">Goals 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/boardgames.html">Boardgames of 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/12/eoy-games.html">End of Year Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/netflix-games.html">Netflix Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/intelligence.html">Intelligence?</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/09/back-to-games.html">Back to Games</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
   </li>  
   
@@ -315,40 +267,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2024/03/media.html">Media Bias</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/goals.html">Goals 2024</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/10/china.html">China</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/06/miniatures.html">Miniatures</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/03/blame.html">Blame</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
 
 </small>
 </div>

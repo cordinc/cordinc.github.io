@@ -38,87 +38,34 @@
             <div class="row">
 <div class="col-lg-8">
 
-  <span class="date">November 21, 2008</span>
-  <h4><a href="/blog/2008/11/rails-text-field-with-auto-com.html">Rails text_field_with_auto_complete and not displaying the selected item</a></h4> 
+  <span class="date">February  8, 2009</span>
+  <h4><a href="/blog/2009/02/rails-performance-options-on-p.html">Rails performance options on Phusion Passenger</a></h4> 
   Tags: 
     
       <a class="post" href="/blog/tag/Rails.html">Rails</a>, 
-    
-      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
     
       <a class="post" href="/blog/tag/Technical.html">Technical</a>
     
   <br/><br/>
   <div class="content">
-    <p>I am doing some work with the Rails text_field_with_auto_complete
-method to provide a dropdown list of completed options as a user types,
-like <a href="http://www.google.com/webhp?complete=1&amp;hl=en">Google Suggest</a>.
-However, I needed the item displayed in the dropdown to be different to
-the item displayed when it is selected. I couldn’t find any help online.
-So at first I thought I would need to override the AJAX code, but when I
-looked I saw text_field_with_auto_complete already had this feature
-built in.</p>
+    <p>I run a couple of Rails websites
+(<a href="http://www.queuesaurus.com">queuesaurus</a> &amp; <a href="http://www.cordinc.info/weather">past weather
+forecasts</a>), both on a small 256MB
+virtual host at <a href="http://www.slicehost.com">Slicehost</a>. As such I don’t
+have a great deal of computing resources available to support two
+resouce hogging apps. If you have visited either of those sites, you
+will know that the first page view can take seemingly ages, but that
+after that it speeds up. As I use <a href="http://www.modrails.com/">Phusion Passenger
+(modrails)</a> to serve the apps through Apache,
+I investigated some of the config options and how they affected
+performance.</p>
 
-<!-- more -->
-
-<p>To find out how to use text_field_with_auto_complete, I recommend
-this <a href="http://railscasts.com/episodes/102">Railscast</a> (I have watched
-about a dozen Railscasts and they have all been great). My starting
-setup is as described in the Railscast.</p>
-
-<p>The trick to displaying something different to what was selected is to
-have the field to be displayed hidden in the selection list. To do this
-add a <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> with a class into the selection item with
-<code class="language-plaintext highlighter-rouge">style='display:none'</code>. Thus the text in the div will not be displayed
-in the dropdown, but the text is there. Put the text to show when an
-item is selected into the hidden div. In the file to create the list of
-selection items I had the following:</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="sx">% return </span><span class="k">unless</span> <span class="vi">@queues</span> <span class="o">%&gt;</span>
-<span class="o">&lt;</span><span class="sx">% items </span><span class="o">=</span> <span class="vi">@queues</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">entry</span><span class="o">|</span> <span class="n">content_tag</span><span class="p">(</span><span class="s2">"li"</span><span class="p">,</span><span class="s2">"&lt;div class='wq_display' style='display:none'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">name</span><span class="si">}</span><span class="s2"> &lt;/div&gt;&lt;div class='wq_full'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">name_and_owner</span><span class="si">}</span><span class="s2">&lt;/div&gt;"</span><span class="p">)</span> <span class="p">}</span> <span class="o">%&gt;</span>
-<span class="o">&lt;</span><span class="sx">%= content_tag("ul", items) %&gt;</span></code></pre></figure>
-
-<p>Then in call to the text_field_with_auto_complete method specify
-<code class="language-plaintext highlighter-rouge">:select</code> in the fourth argument. The value of the <code class="language-plaintext highlighter-rouge">:select</code> is the
-class name of the div to use for displaying. So I used the below and
-voila, the <code class="language-plaintext highlighter-rouge">wq_full</code> div is displayed in the dropdown and the
-<code class="language-plaintext highlighter-rouge">wq_display</code> div is displayed in the text box when selected!</p>
-
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb">Queue <span class="cp">&lt;%=</span> <span class="n">text_field_with_auto_complete</span> <span class="ss">:add</span><span class="p">,</span> <span class="ss">:queue</span><span class="p">,</span> 
-       <span class="p">{</span><span class="ss">:size</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span> <span class="ss">:maxlength</span> <span class="o">=&gt;</span> <span class="mi">40</span> <span class="p">},</span> 
-       <span class="p">{</span><span class="ss">:url</span> <span class="o">=&gt;</span> <span class="n">formatted_workqueues_path</span><span class="p">(</span><span class="ss">:js</span><span class="p">),</span> <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:get</span><span class="p">,</span> <span class="ss">:param_name</span> <span class="o">=&gt;</span> <span class="s1">'search'</span><span class="p">,</span> <span class="ss">:select</span> <span class="o">=&gt;</span>  <span class="s1">'wq_display'</span><span class="p">}</span> <span class="cp">%&gt;</span></code></pre></figure>
-
-<p>This concept can be easily extended. I also needed a third field, one
-containing the selection item’s id and have this passed back to the
-server on submit. Thus I just add a new hidden div to the selection
-items containing the id:</p>
-
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb"><span class="cp">&lt;%</span> <span class="n">items</span> <span class="o">=</span> <span class="vi">@queues</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">entry</span><span class="o">|</span> <span class="n">content_tag</span><span class="p">(</span><span class="s2">"li"</span><span class="p">,</span> 
-	<span class="s2">"&lt;div class='wq_display' style='display:none'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">name</span><span class="si">}</span><span class="s2">&lt;/div&gt;&lt;div class='wq_full'&gt;# {entry.name_and_owner}&lt;/div&gt;&lt;div class='wq_id' style='display:none'&gt;</span><span class="si">#{</span><span class="n">entry</span><span class="p">.</span><span class="nf">id</span><span class="si">}</span><span class="s2">&lt;/div&gt;"</span><span class="p">)</span> <span class="p">}</span> <span class="cp">%&gt;</span>
-<span class="cp">&lt;%=</span> <span class="n">content_tag</span><span class="p">(</span><span class="s2">"ul"</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span> <span class="cp">%&gt;</span></code></pre></figure>
-
-<p>Then I use <code class="language-plaintext highlighter-rouge">:after_update_element</code> to provide a javascript function that
-runs after an item is selected. Here it sets the value of a hidden input
-field to the text inside the new div.</p>
-
-<figure class="highlight"><pre><code class="language-erb" data-lang="erb">Queue <span class="cp">&lt;%=</span> <span class="n">text_field_with_auto_complete</span> <span class="ss">:add</span><span class="p">,</span> <span class="ss">:queue</span><span class="p">,</span> 
-       <span class="p">{</span><span class="ss">:size</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span> <span class="ss">:maxlength</span> <span class="o">=&gt;</span> <span class="mi">40</span> <span class="p">},</span> 
-       <span class="p">{</span><span class="ss">:url</span> <span class="o">=&gt;</span> <span class="n">formatted_workqueues_path</span><span class="p">(</span><span class="ss">:js</span><span class="p">),</span> <span class="ss">:method</span> <span class="o">=&gt;</span> <span class="ss">:get</span><span class="p">,</span> <span class="ss">:param_name</span> <span class="o">=&gt;</span> <span class="s1">'search'</span><span class="p">,</span> <span class="ss">:select</span> <span class="o">=&gt;</span>  <span class="s1">'wq_display'</span><span class="p">,</span>
-          <span class="ss">:after_update_element</span> <span class="o">=&gt;</span> <span class="s2">"function(element,val) {
-            var nodes = val.select('.wq_id') || [];
-            if(nodes.length&gt;0) 
-              $('wq_id').value =  Element.collectTextNodes(nodes[0], 'wq_id');
-           } "</span><span class="p">}</span> <span class="cp">%&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"wq_id"</span> <span class="na">name=</span><span class="s">"add[wq_id]"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">/&gt;</span></code></pre></figure>
-
-<p>You could also go further and update other parts of the page or have
-other fields, but you should get the idea for now.</p>
-
+<p class='more'><br/><a href='/blog/2009/02/rails-performance-options-on-p.html'>Read the rest of this entry</a></p>
   </div>
   <hr/>
 
-  <span class="date">November 15, 2008</span>
-  <h4><a href="/blog/2008/11/how-to-make-1hour-playing-onli.html">How to make &pound;1/hour playing online poker</a></h4> 
+  <span class="date">January 18, 2009</span>
+  <h4><a href="/blog/2009/01/online-poker-update.html">Online Poker Update</a></h4> 
   Tags: 
     
       <a class="post" href="/blog/tag/Gambling.html">Gambling</a>, 
@@ -127,160 +74,238 @@ other fields, but you should get the idea for now.</p>
     
   <br/><br/>
   <div class="content">
-    <p>I have just completed my 50th online poker game. I lost. My top pair
-turned into a straight on the river and so I went all-in against a
-player who check-called. Turned out he made a full house on the flop!
-Now seems like a suitable milestone to think again about my play.</p>
+    <p>Urgh, overconfidence is a killer. I have now completed the 50 online $2+0.20 heads-up tournaments I <a href="http://www.cordinc.com/blog/2008/11/how-to-make-1hour-playing-onli.html">previously
+mentioned</a>.
+You may remember my goal was to win 70. Well, I didn’t make it. The good
+news is I won more than I lost - 52. The bad news is that with entrance
+fees, a win rate of 55% is required to break even. I lost $6 and so
+ended up with $66; a little disappointing.</p>
 
-<p>After the home games I thought I’d try online poker for real money
-(opposed to the online “play” money with which I learnt the game). So I
-put US$50 on <a href="http://www.pokerstars.com">Pokerstars</a>. Pokerstars also
-invited me to a beginner’s tournament, which seemed to be a ploy to get
-some more money into newbies’ hands - I won US$32. Thus I started with
-US$82 and that is my baseline. I decided to focus on one type of game
-and chose micro stakes heads-up Hold’em sit’n’go tournaments. That is,
-there are two players, each puts in US$2.20 for a set number of chips
-and play until one person has all the chips. The winner gets US$4 and
-the site US$0.40 in fees - the loser gets nothing. There are always a
-couple of these games going so you can play whenever you want. It would
-take a long time to go broke and with a single opponent I could learn
-the basics in the simplest environment possible.</p>
+<p>It all started so badly. I’d like to think it was just variance - that
+the luck of the cards means that sometimes you are just going to lose.
+However, reading that goal-setting blog post and remembering those first
+few games, I think I might have been overconfident. I improved a little
+over time. If I played the first 25 like the second 25, then I would
+have made a small profit, but still a long way from the 70% goal.</p>
 
-<p>At first I started winning. I think I won my first 3 games straight. I
-started dreaming of becoming a poker pro. Then I starting losing,
-dropping to around the US$60 mark after nearly 20 games. I started
-paying more attention to the game and writing down results - 5/10, then
-7/10, then 8/10, lastly a loss to reach the 50 game mark. In total I
-have won 25, lost 25. Thus, due to fees I have US$72 - US$10 down on
-where I started. I think in the right circumstances I can beat this
-level of the game. In the final eleven games I played noticeably worse
-than my opponent three times (I lost one and won two - lucky). Winning 7
-out of 10 seems a reasonable goal. Which at about 2.5 hours per 10 games
-equates to roughly £1/hour (hence the title).</p>
+<p>Like my first posting, I think the main problem is my attitude. While
+playing this 50 I kept a record of whether I considered I played “well”
+or “badly”, together with the final result. My definition of playing
+badly included: not starting in an appropriate frame of mind; getting
+disheartened during the match; chasing pots; or bluffing too much even
+when the other player was betting back. Those are my main vices. Just
+today I played a match where after I ground the other player down for 10
+minutes, I went all in on the turn with a full house and then lost on a
+2-outer as they made a slightly better full house on the river! Despite
+still having a playable stack (around 30BB), I was tilted and busted
+stupidly a few hands later. That was badly played. Playing well meant I
+played mostly calmly the entire match, allowing a few small bad hands as
+long as they were non-terminal. Notably, the maths of poker did not
+count for much in categorisation. If both players went all in pre-flop
+after just a few hands (a surprisingly common experience), then it was
+considered well played if I was ahead at the start (the normal
+situation). One game defied categorisation as the other player
+disappeared after 2 hands and had to be blinded out. Thus there were 49
+entries.</p>
 
-<p>There is however one small problem. I have a tendency to tilt. Tilt is a
-great concept in poker, it is when for whatever reason you are not
-playing rationally and letting your emotions influence your decisions.
-This can be getting bored; overbetting back at someone who is annoying;
-or a vast range of other suboptimal play. I certainly think that my
-poker maths skills have a great deal of room for improvement, but that
-doesn’t seem to matter too much at my level. My opponents have a lot to
-learn too. What seems to separate us, in my limited experience, is
-temperament. Over the last 30 games or so I focussed mainly on ensuring
-I was in an appropriate frame of mind before starting (patient, relaxed,
-time to play and a desire to win) and stopping if I felt this slipping.
-That lead to the improvement.</p>
+<p>I played well 59% of the time. When playing well I won 72% of the time.
+When playing badly I won only 20% of the time. Even allowing a bias
+towards saying I played well if I won and badly if I lost, that is still
+a big difference. Playing badly 40% of the time is way too high. If I
+played well every match, as I should, then I would be close to my
+original goal. So the goal for the next 50 is to win 30 (60), by playing
+well 80 of the time. To that end, here is my beginner’s advice (from a
+beginner to a beginner), which I will try to follow over the next 50:</p>
 
-<p>So what now? I have started reading a book on poker theory, so hopefully
-my game will slowly improve. Other than that I aim to control my
-tendency to tilt. I’ll play another 50 games (which will take a couple
-of months) and aim to win 70%, which would mean I break US$100. If I can
-manage this and I think I’m playing well, I’ll consider going up a level
-or trying a different game.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">November  9, 2008</span>
-  <h4><a href="/blog/2008/11/using-bbc-backstage-weather.html">Using BBC Backstage Weather</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
-    
-      <a class="post" href="/blog/tag/Weather.html">Weather</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Recently for a little project I wanted to get weather reports, and being
-in London my first thought was to use <a href="http://www.bbc.co.uk/weather/">BBC
-weather</a>. Doing a little searching, the
-BBC provides a number of RSS feeds for its data (news, weather, etc), as
-part of the <a href="http://backstage.bbc.co.uk">Backstage</a> project. Details of
-the weather feeds are
-<a href="http://backstage.bbc.co.uk/data/WeatherFeeds">here</a>. This post gives
-some of the tips and tricks I discovered using these feeds.</p>
-
-<p class='more'><br/><a href='/blog/2008/11/using-bbc-backstage-weather.html'>Read the rest of this entry</a></p>
-  </div>
-  <hr/>
-
-  <span class="date">October 18, 2008</span>
-  <h4><a href="/blog/2008/10/fowa-london-2008.html">FOWA London 2008</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Entrepreneurship.html">Entrepreneurship</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Last Friday I went to the <a href="http://london2008.futureofwebapps.com/">Future of Web Apps (FOWA) London 2008
-conference</a>. As I only had the
-single day off work I decided to get the expo only entrance (£5) rather
-than a two-day full pass for nearly £400. Thus I didn’t get to see any
-of the proper talks, instead I just walked around the floor to see the
-booths and one “FOWA university” talk.</p>
-
-<p>The talk was by <a href="http://www.yuuguu.com">Yuuguu</a> on how to run a company
-when all employees telecommute. Apparently, the FOWA conference is the
-first time all the Yuuguu employees have met at the same time. Most of
-the talk was fairly bland and many in the audience were head down on
-their laptops or iPhones. However, there were a few interesting points.
-Yuuguu people don’t work if they meet in person, they consider the time
-too important to waste on work and they bond instead. Also, every Friday
-they get together online for virtual “beers”.</p>
-
-<p>There were a couple dozen companies with booths. A few big names like
-Microsoft, Sun and Myspace were there, but most were firms I had never
-heard mentioned before. This caused some awkward experiences, as their
-names normally give no hint as to their business areas. I would squint
-at their posters trying to work out what they did (which often didn’t
-help much either). Meanwhile some marketing person would creep up on me,
-start talking and give me their <a href="http://www.moo.com/">Moo mini business
-card</a> (these were literally everywhere). I left the
-conference knowing what every exhibiting business did, but only about
-half of them were marginally relevant to me.</p>
-
-<p>The Microsoft booth was by far the best. Among the computers they had a
-couple of Xboxs and a <a href="http://www.microsoft.com/surface">Surface box</a> -
-the Xboxs were empty while it was hard to see the Surface through the
-crowd. Rightly so, it was an impressive machine. All that made me want
-to code rather than talk and I left after an hour, skipping the
-Diggnation filming - I saw it last year. Anyway if want you can see the
-FOWA talks
-<a href="http://events.carsonified.com/fowa/2008/london/content">here</a>.</p>
+<ul>
+  <li>Decide before starting how many matches you want to play - many
+times the “just one more” game was a bad loss.</li>
+  <li>Only play if you want to win and can play for the 30 minutes or more
+it can take.</li>
+  <li>Don’t chase pots, especially if your opponent is betting back.</li>
+  <li>Think about what your opponent has - remember 50% of the time they
+have a better pre-flop hand.</li>
+  <li>Start tight with small bets until you get an idea of your opponent.
+If they are tight don’t bluff too much when they bet back (beware
+even if they are loose and aggressive). However, be aware people’s
+style changes with stack size.</li>
+  <li>If you play a hand badly, don’t dwell on it, but do think about
+these guidelines.</li>
+  <li>If you lose badly, stop.</li>
+</ul>
 
   </div>
   <hr/>
 
-  <span class="date">October 12, 2008</span>
-  <h4><a href="/blog/2008/10/is-there-dumb-money-on-intrade.html">Is there dumb money on Intrade?</a></h4> 
+  <span class="date">January 11, 2009</span>
+  <h4><a href="/blog/2009/01/3rd-poker-evening.html">3rd Poker Evening</a></h4> 
   Tags: 
     
-      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>
+      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>, 
+    
+      <a class="post" href="/blog/tag/Poker.html">Poker</a>
     
   <br/><br/>
   <div class="content">
-    <p>A friend recently mentioned that there is dumb money on
-<a href="http://www.intrade.com">Intrade</a>, a site that creates markets in
-various real-life events such as the US Presidential elections. They
-said that there are still people betting that Hillary Clinton will
-become President in November. I’m a big fan of free money so I thought
-I’d check it out. Sure enough, according to Intrade, there is a 1.6%
-chance Hillary will be elected President, with thousands of dollars
-worth of contracts available. I’ll grant the chance of Hillary being
-elected as non-zero, but it must be orders of magnitude less than 1.6%,
-so what’s going on? It was a quiet day so I thought I’d work out if it
-was a scam or a bad deal.</p>
+    <p>Yesterday was the 3rd Poker evening. It was held at Ian’s place and
+seven people turned up: Me, Ann, Ian, Christian, Cristina, Pete and Ury.
+We played three games and as has become usual, started by reducing
+expectations on our ability. I didn’t take notes so my memories are a
+little limited.</p>
 
-<p class='more'><br/><a href='/blog/2008/10/is-there-dumb-money-on-intrade.html'>Read the rest of this entry</a></p>
+<p>The first game was a standard £5 NLHE tournament, and I started in my
+standard heads-up manner - aggressively. As people started betting small
+amounts, I bluffed the first hand and then bet big on the turn in the
+second with a flush draw, straight draw with two overcards. Then I
+realised I was betting pot percentages, while others were making bets of
+big blind. The game settled down a bit, but with the occasional big move
+reminiscent of the first few hands. Pete went out first and rebought.
+The numbers were steadily whittled down. Just after an hour Pete had a
+run of great cards (at least the ones we saw) and knocked out the last
+few people in quick succession. I was second.</p>
+
+<p>For the second game we played with substantially smaller stacks to
+accommodate Pete and Ury who had go in an hour. This seemed to make
+everyone aggressive and as the blinds doubled when someone was knocked
+out we were all quickly down to around 10 big blinds each. It seemed
+like nearly every other hand someone was all-in. There was rarely an
+obvious bluff - people just had good cards, often in fact the same good
+cards (on at least 2 occasions the pot was split equally). I went all-in
+against Ann on the first hand when there was a spade flush on the board - whoever had the higher spade would win. Knowing that Ann is quite a
+cautious player, I thought I could scare her off the pot despite not
+having a single spade. Ann knows I bluff so after an age of thinking,
+called with her 9 of spades and I had to rebuy. The carnage continued
+and Ian was out the next hand. Pete’s run of good cards continued at the
+start, knocking out Cristina with KK vs QQ preflop. At the end Pete’s
+luck ended and mine started with three great hands in a row to beat Pete
+into second. The whole game lasted under 45 minutes - very quick.</p>
+
+<p>Only Ian and I were available for the third game, everyone else had to
+leave. Considering it was a heads up match, I don’t remember much other
+than I finished my beers right at the start. I do recall that after
+playing for a while I won a big all-in pot and thought I had crippled
+Ian. Instead after matching chips we were equal with perhaps Ian
+slightly ahead! Ian was grinding me down. I tried to tighten up, but it
+didn’t work and I got annoyed at a couple of hands I definitely played
+too weakly postflop. In the end I misread Ian’s body language thinking
+he had nothing when infact he was trying to disguise having the nuts.
+Ian won.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">December 24, 2008</span>
+  <h4><a href="/blog/2008/12/dougga-photos.html">Dougga Photos</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Travel.html">Travel</a>, 
+    
+      <a class="post" href="/blog/tag/Tunisia.html">Tunisia</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I recently travelled to Tunisia for a holiday. Visiting the ancient
+ruined Roman city of <a href="http://en.wikipedia.org/wiki/Dougga">Dougga</a> was a
+highlight. It is quite hard to reach as an independent traveller. First
+you have to find the Tunis Northern Bus Station (out of the tourist
+areas), go on a 2-hour bus journey to Teboursouk (the closest town),
+from there you arrange a return taxi trip to the ruins. Once there
+though, it is quite impressive. We had the place almost to ourselves for
+a couple of hours - perhaps we should have arranged for a longer stay
+with the taxi driver, but we had to catch the last bus back to Tunis!
+Some of the best photos I took are <a href="http://www.flickr.com/photos/33547649@N07/sets/72157611388103847/">here on
+Flickr</a>.
+In future I will put more photos up under that Flickr account.</p>
+
+<p><a href="http://www.flickr.com/photos/33547649@N07/sets/72157611388103847/"><img src="http://farm4.static.flickr.com/3202/3124829448_5aeaf9464a.jpg?v=0" alt="Dougga Theatre" title="Dougga Theatre" /></a></p>
+
+  </div>
+  <hr/>
+
+  <span class="date">December 21, 2008</span>
+  <h4><a href="/blog/2008/12/ruby-on-rails-hosting.html">Ruby on Rails Hosting</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Rails.html">Rails</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Now that I have a couple of sites up and running on the web, I thought
+I’d talk about how I chose my hosting providers and how it’s going. For
+those who just want the short version: I use
+<a href="http://www.slicehost.com/">Slicehost</a> and am very happy with them. Read
+on for more details.</p>
+
+<p>When looking at potential hosts for my Rails web apps I took into
+consideration price, speed/memory, reliability and flexibility. I
+basically wanted something cheap, reliable and fast. I’ve been an
+amateur sysadmin before (and at my first dotcom job was technically a
+pro sysadmin), so I wasn’t scared of getting into the unix command line.
+Thus support wasn’t important. Similarly for a small project, bandwidth,
+email accounts and credit-card billing systems would not be used. I
+wanted more than a hobbyist’s hosting site (even if that is exactly what
+I am), but not costly, professional hosting.</p>
+
+<p>My first thoughts were my domain name register,
+<a href="http://www.godaddy.com/">GoDaddy</a>, or the host of this blog,
+<a href="http://www.pair.com/">pair</a>. I know a number of people have issues with
+GoDaddy, but I’ve always found them fine for buying domain names and I
+can just ignore their constant upselling. However, I wasn’t sure about
+their Rails hosting and a search only found bad stories (eg.
+<a href="http://www.37signals.com/svn/archives2/godaddy_hosting_now_supports_rails.php">here</a>,
+<a href="http://www.ericdaugherty.com/blog/2007/07/rails-on-godaddy.html">here</a>
+and
+<a href="http://blog.mcmoyer.com/2007/9/14/running-rails-on-godaddy-a-k-a-how-do-you-keep-a-geek-entertained">here</a>).
+I’ve also been happy with the service Pair have provided with this blog
+and associated static website. I didn’t find much online about their
+Rails hosting and decided it would in any case be best to use different
+providers for this blog and my Rails apps.</p>
+
+<p>Next I took a look at some webpages specifically listing Rails web
+hosts, such as on the <a href="http://wiki.rubyonrails.org/rails/pages/RailsWebHosts">Rails
+wiki</a>. Among the
+massive listing there, special mention is made of
+<a href="http://joyent.com/">Joyent</a> and
+<a href="http://www.engineyard.com/">EngineYard</a> on a couple of occasions.
+Certainly, these two companies seem to be held in very high esteem in
+the Rails community and host many well known Rails sites. However, they
+are both quite expensive - aiming for the high-end market. Too expensive
+for my goals or really anyone without funding. They are more
+aspirational - it would be nice to one day need the services of such a
+hosting firm.</p>
+
+<p>I also found a couple of lists at
+<a href="http://www.rubyonrailswebhost.com/">rubyonrailswebhost</a> and <a href="http://antoniocangiano.com/2006/01/01/rails-hosting/">Zen and
+the Art of
+Programming</a>. They
+rate <a href="http://www.dreamhost.com/">Dreamhost</a> and
+<a href="http://www.site5.com/">Site5</a> highly and both hosts matched my needs:
+dirt cheap (under $10/month) and with decent reliability according to
+reviews. Before signing up I sent Antonio Cangiano at <a href="http://antoniocangiano.com">Zen and the Art
+of Programming</a> (a decent Rails blog I now
+subscribe to) an email asking if he had any updated advice since his
+blog on hosting was nearly 2 years old. Antonio suggested a new name,
+<a href="http://www.slicehost.com/">Slicehost</a>. Slicehost use a virtualisation
+system so that it appears to the hosted application that it has a whole
+server to itself (albeit a fairly small server). This means that someone
+else’s app can’t hog resources slowing down your app. With memory
+intensive Rails apps this is very useful. They also have full command
+line access - you basically start with a clean build and can
+install/configure it how you like. While any “point and click” users
+would find it daunting, this really appealed to me. They provide a
+number of <a href="http://articles.slicehost.com/">useful getting started
+articles</a>, including some Rails ones, so
+I was sold. They are more expensive than other hosts at $20/month for a
+256MB, but I have been very happy with their service over the last 6
+months.</p>
+
   </div>
   <hr/>
 
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 83 of 90 
+  Page 83 of 91 
   
       
         <a href="/blog/page82">Previous</a>
@@ -305,6 +330,34 @@ Recent Posts:
 <ul class="list-unstyled">
   
   <li>  
+    <a href="/blog/2025/02/link-blog.html">Link Blog</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/goals.html">Goals 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/01/boardgames.html">Boardgames of 2024</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/12/eoy-games.html">End of Year Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/netflix-games.html">Netflix Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/11/intelligence.html">Intelligence?</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2024/09/back-to-games.html">Back to Games</a> 
+  </li>  
+  
+  <li>  
     <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
   </li>  
   
@@ -315,40 +368,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2024/03/media.html">Media Bias</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/boardgames.html">Boardgames of 2022</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/01/goals.html">Goals 2024</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/10/china.html">China</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/06/miniatures.html">Miniatures</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/05/adelaide.html">Adelaide</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/03/blame.html">Blame</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2023/02/boardgames.html">Boardgames of 2022</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Java.html">Java</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
 
 </small>
 </div>
