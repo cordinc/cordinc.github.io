@@ -38,6 +38,198 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">October 27, 2013</span>
+  <h4><a href="/blog/2013/10/empathy.html">Empathy</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Finance.html">Finance</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Last year <a href="http://en.wikipedia.org/wiki/Knight_Capital_Group">Knight
+Capital</a> released a
+bug into one of their automated equity trading systems resulting in the
+company losing $460 million in under an hour. As someone who has written
+automatic trading systems and had them used in anger, this definitely
+caught my attention at the time. Although without further information it
+is easy to dismiss its relevancy. Now, as the result of a
+<a href="http://en.wikipedia.org/wiki/U.S._Securities_and_Exchange_Commission">SEC</a>
+investigation, details of the incident have been <a href="http://www.sec.gov/litigation/admin/2013/34-70694.pdf">published
+online</a><br />
+(<a href="http://pythonsweetness.tumblr.com/post/64740079543/how-to-lose-172-222-a-second-for-45-minutes">with the the most salient details extracted
+here</a>).</p>
+
+<p>I was always incredibly nervous when any of my “dangerous” code went
+into production. This fear meant the code was reasonably well-tested (by
+me). I was always part of the team releasing it and supporting it the
+early next morning. Over 7 years, no one realised a loss due to a bug in
+my code. There may have been some lost opportunities, but no actual
+loss. Still, so many of the failings at Knight Capital sound familiar.
+It wouldn’t have been impossible for this situation to occur at one of
+the places I worked.</p>
+
+<p>Below are my experiences related to the failings identified:</p>
+
+<ul>
+  <li><strong>There is the impression of time pressure.</strong> The new system had to
+be released by a fixed date to match a change in an external market.
+No doubt management were pushing staff to just get it done. In
+front-office teams there was usually more tasks than people
+available to complete them. Thus most common project size was one
+person (so there was no one to check your work). Rarely was there
+time to go back and fix things. It was assumed that the work would
+be done fast and right the first time. Mistakes did occur.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+  <li><strong>A flag on the messaging system was repurposed.</strong> Why not just
+create a new one to ensure no interaction with systems using the old
+flag? I have seen this done many times and I once did it myself. No
+one wanted to do it, but it saved time. Messaging infrastructure was
+always handled by a separate back-office team and at one bank they
+only updated message fields every few months. If a coder needed a
+new field before this update they would have to reuse an old one.
+There was little other option.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+  <li><strong>An old system lay unused for many years.</strong> All the banks had
+numerous little programs listening to the message bus and working
+away. All the places I worked were very keen to shutdown any unused
+systems to free up computing resources. However, it is easy to
+imagine one (or a bit of unused functionality in an otherwise used
+system) slipping through the cull. With the average team member only
+hanging around for a few years, knowledge of these old systems is
+soon lost. Worse, sometimes other teams, without our knowledge,
+created systems relying on our messages or databases (we couldn’t
+restrict read-only access). We only discovered them when they phoned
+to complain if we changed something (and we told them where to go).</li>
+</ul>
+
+<!-- -->
+
+<ul>
+  <li><strong>The new system was not deployed to one of the production
+servers.</strong> Clearly the release process should be run from a script
+that checks the result is correct and consistent. One bank had a
+manual release process. Developers would wait until all the traders
+had gone home and them manually copy and update files. At least a
+shared drive was used by all the servers so only one copy was
+required. Still it was error prone (releases regularly failed) and
+hopefully they have changed it since. Little improvements were made
+while I was there, but no one had the time to completely fix it.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+  <li><strong>When errors started occurring 97 emails were sent detailing the
+problem - all ignored.</strong> I’d be interested to know how many other
+emails were sent. There were always floods of spurious error
+messages caused by people logging problems at the wrong level or
+just covering their behind (“but it sent an error email - someone
+should have done something”). At two banks I got over a hundred
+“error” messages per day from various systems. At first it really
+caused concern, but others said that they could be safely ignored -
+so they were ignored. It sent support people crazy, so there were
+constant attempts to fix it with various degrees of success.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+  <li><strong>The issue was multiplied by removing the new system from
+production servers.</strong> This is so understandable in the banking IT
+culture. If there is a problem just after a release the assumption
+is always that the release caused it. Thus the release should be
+“rolled-back”, returning the environment to the pre-release state.
+Trading can then continue with the old version while IT can examine
+the cause of the problem with less immediate concern. The pressure
+to rollback can be intense, even if people are certain the problem
+is not in the release - you need to be very sure of yourself. It is
+like the old saying “no one ever lost their job buying IBM”, only
+not quite in this case.</li>
+</ul>
+
+<p>I found front-office development strongly path dependent as we rarely
+had time to fix or improve old non-bug issues in code. We were always
+moving forward, relying on good staff (rather than process or
+automation) to avoid or ameliorate problems. Over time things improved -
+every bank had a better environment than the previous one. I never had a
+major issue. It would be nice to think this is the result of ability and
+competence. Although reports on incidents like Knight Capital’s show
+that when the environment and process is poor, luck also plays a strong
+role. I have some empathy for the developers at Knight Capital.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">October 19, 2013</span>
+  <h4><a href="/blog/2013/10/in-our-time.html">In Our Time</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/History.html">History</a>, 
+    
+      <a class="post" href="/blog/tag/Podcasts.html">Podcasts</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Available on
+<a href="https://itunes.apple.com/gb/podcast/in-our-time-with-melvyn-bragg/id73330895">iTunes</a>
+with a <a href="http://www.bbc.co.uk/programmes/b006qykl">BBC website</a>.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/In_Our_Time_(BBC_Radio_4)">In Our Time</a> is
+a BBC radio show featuring discussions on the <a href="http://en.wikipedia.org/wiki/List_of_In_Our_Time_programmes">history of a single
+topic</a> - a
+person, event or idea. It has been running for 15 years with over 500
+episodes. A rolling archive of the last 2 year’s episodes is available
+on iTunes with the BBC website having selected older episodes. It is
+presented by <a href="http://en.wikipedia.org/wiki/Melvyn_Bragg">Melvin Bragg</a>,
+an experienced radio voice, and includes a number of subject specific
+experts (usually UK university professors). The production quality is
+excellent. Each podcast runs to 45 minutes, audio-only, and is a 20MB
+download.</p>
+
+<p>The breadth of subjects and regularity of production means there is
+normally a topic of interest in this series. The themes are not
+constrained to any region or culture (although anecdotally Europe is
+most common). Focusing on world history upto around 1000 AD, I have
+listened to 15, downloaded another 10, and only time constraints prevent
+me listening to more.</p>
+
+<p>The discussion in each episode is clearly directed by Melvyn (often
+following his interests) and can resemble an interview on occasion. The
+episodes on <a href="http://en.wikipedia.org/wiki/Vitruvius">Vitruvius</a> and
+<a href="http://en.wikipedia.org/wiki/Hippocrates">Hippocrates</a> spent as much
+time on the impact of the subject’s signature work through the ages, as
+they did on the subject themselves. For instance, reference to
+<a href="http://en.wikipedia.org/wiki/Hippocratic_Oath">Hippocratic Oath</a> on
+opposite sides of the medical experimentation argument by both Nazi
+doctors and those who prosecuted them. Due to time limits rarely does
+the talk get beyond the basic outlines of the issue. The 45 minutes on
+<a href="http://en.wikipedia.org/wiki/Hannibal">Hannibal</a> was unsurprisingly
+scanty compared to the multi-hour <a href="/blog/2010/02/hannibal-stanford-continuing-s.html">Stanford
+course</a>. Still,
+interesting topics are regularly examined and good points raised. I knew
+little on the intriguing Christian offshoot/heresy
+<a href="http://en.wikipedia.org/wiki/Gnosticism">Gnosticism</a> until listening to
+the discussion on it - I spent some time on the Wikipedia page
+afterwards.</p>
+
+<p>Entertaining series providing a little information (or an exemplary
+introductory taster) on many topics.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">October  2, 2013</span>
   <h4><a href="/blog/2013/10/day-trips.html">Day Trips</a></h4> 
   Tags: 
@@ -249,116 +441,6 @@ Even the major assignment looked interesting - design a Roman town!</p>
   </div>
   <hr/>
 
-  <span class="date">September  3, 2013</span>
-  <h4><a href="/blog/2013/09/siem-reap.html">Siem Reap</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Cambodia.html">Cambodia</a>, 
-    
-      <a class="post" href="/blog/tag/Travel.html">Travel</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Last week I went a little snap happy at <a href="http://en.wikipedia.org/wiki/Siem_Reap">Siem
-Reap</a> in
-<a href="http://en.wikipedia.org/wiki/Cambodia">Cambodia</a> - the town nearest the
-<a href="http://en.wikipedia.org/wiki/Angkor">Angkor ruins</a> (and a short flight
-from Kuala Lumpur). The Khmer Empire based at Angkor existed for around
-600 years starting in the 9th century. Unfortunately most of their
-cities were built in wood and so no longer exist in recognisable form.
-Stone was reserved for the gods, so their immense Hindu and Buddhist
-temples are still viewable (including <a href="http://en.wikipedia.org/wiki/Angkor_Wat">Angkor
-Wat</a> and <a href="http://en.wikipedia.org/wiki/Angkor_Thom">Angkor
-Thom</a>) - once they have been
-reclaimed from the ever-encroaching jungle. Interestingly, this is the
-first place I have been where most of the tourists were not westerners -
-large tour groups from various Asian nations were clearly in the
-majority.</p>
-
-<p>The best of the hundreds of photos I took are available as a <a href="http://www.flickr.com/photos/33547649@N07/sets/72157635353905769/show/">slideshow
-here.</a></p>
-
-<p><a href="http://www.flickr.com/photos/33547649@N07/sets/72157635353905769/show/"><img src="http://farm3.staticflickr.com/2871/9662714680_a578d99871.jpg" alt="Angkor Wat" /></a></p>
-
-  </div>
-  <hr/>
-
-  <span class="date">August 24, 2013</span>
-  <h4><a href="/blog/2013/08/ramadan-in-kl.html">Ramadan in KL</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Malaysia.html">Malaysia</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p><a href="http://en.wikipedia.org/wiki/Ramadan">Ramadan</a> is the Islamic month of
-fasting, where followers refrain from eating during daylight hours. As a
-very important part of their faith and culture, I have seen many
-otherwise non-observant Muslims perform the fast. When living in
-Australia I only knew of Ramadan from TV or books. In Britain I had
-workmates and friends fasting, but most of the country remained
-unaffected. Now I’m in Malaysia, a multicultural majority Muslim country
-with large non-Muslim minorities. How does Ramadan work here?</p>
-
-<p>Kuala Lumpur (and Malaysia in general) is food obsessed - and rightly
-so. There is an abundance of cheap, tasty food with Chinese, Indian,
-Thai and Malay influences. There are resturants and food stalls
-everywhere. Anywhere there is a walk of more than a few minutes to get
-food is glaring gap in the market soon addressed by a new roadside food
-stall. Quality is uniformly high, I have yet to hear of anyone getting
-sick at even the dodgiest popup stall. Eating out is very common. There
-seems to always be a few people in each resturant from opening to late
-closing.</p>
-
-<p>Ramadan started this year in mid-July and ran to early August. Thus 61%
-of the Malaysian population that is Muslim could not eat between 6am and
-7:30pm. Walking through a outer suburban shopping area at lunchtime the
-affect was clear. Of the 11 food places I walked past on the way to my
-gym, 8 were closed. The remainder were fairly empty. One of them hadn’t
-put out half its seating. In the city more places are open, probably
-only a quarter are closed at lunchtime. Although everywhere is quieter
-with less business. A couple of fast food places (while open) used the
-time for renovations.</p>
-
-<p>The law in Malaysia says it is actually illegal for a Muslim to eat
-during daylight hours in Ramadan. It is also illegal to serve a Muslim.
-This means anyone who looks Muslim to local eyes (which means Malay or
-Arab) will find it nearly impossible to be served regardless of their
-religious status. Similar laws exist outside Ramadan for halal food and
-alcohol.</p>
-
-<p>As dusk approaches pop-up take-away food stalls and special markets
-open. There are hugely more stalls than normal (double at least) and
-they appear even in areas none were previously (for example a curry puff
-stall started outside the <a href="http://en.wikipedia.org/wiki/Petronas_Towers">KLCC twin
-towers</a> - I doubt that
-would normally be allowed). They all sell food to be taken home by
-people leaving work and do brisk business.</p>
-
-<p>One night we went out for dinner aiming arriving at 7pm to beat the
-perceived fast breaking rush (reservations are almost never required).
-We were too late. The first half dozen places we went had no free
-tables. They were full of people patiently waiting for the alloted time
-(this was in KLCC). We eventually found a Taiwanese resturant that
-appeared to have an order-or-leave policy.</p>
-
-<p>Ramadan ends with <a href="http://en.wikipedia.org/wiki/Eid_al-Fitr">Hari Raya</a>
-(known as Eid in most of the world). This is a multi-day public holiday
-that has been described to me as having equivalent cultural and
-religious significance as Christmas has to Christian cultures. Here in
-Malaysia it is celebrated with feasts (of course) and open houses. This
-is where various people put on free lunches to anyone who wishes to eat.
-There are a lot of them. Politicians and local services (the nearby
-police station held one) are almost required to provide one, but many
-normal people hold them too. It is all open, public and friendly. It is
-quite different to the private family only Christmas meals to which I’m
-familiar. Many locals have stories of visiting other countries and
-turning up to shocked friends’ Christmas lunches unannounced as they
-thought it was similarly open.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -385,6 +467,14 @@ thought it was similarly open.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2025/05/bunbury.html">Bunbury</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/04/sri-lanka.html">Sri Lanka</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2025/02/link-blog.html">Link Blog</a> 
@@ -416,14 +506,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/03/media.html">Media Bias</a> 
   </li>  
 
 </ul>

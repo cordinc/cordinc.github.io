@@ -38,6 +38,121 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">October 18, 2014</span>
+  <h4><a href="/blog/2014/10/bank-transfers.html">Bank Transfer Errors</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Finance.html">Finance</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>At least in the UK, it is often best to pay money to people via bank
+transfer. This is the process where the payer enters the bank account
+number of the payee into some system and then the money is moved
+directly from bank account to bank account. It is easy and costs nothing
+(in the UK). I used to use it all the time for paying rent and similar
+bills.</p>
+
+<p>It is surprising to hear that errors regularly occur in this process.
+People type in an incorrect bank account number and so the wrong person
+receives the money. Obviously in some distress, the payer contacts the
+bank to fix the problem, but the bank doesn’t see it as their problem.
+Pushing or getting the media involved often gets the required results
+(see
+<a href="http://www.theguardian.com/money/2014/jun/30/online-cash-transfer-error">here</a>,
+<a href="http://www.theguardian.com/money/2013/mar/18/banks-slow-transferred-cash-wrong-account">here</a>,
+<a href="http://www.theguardian.com/money/2013/feb/09/26000-banking-error">here</a>
+and many more online stories).</p>
+
+<p>I’m not surprised people type the account number incorrectly; that is
+always going to happen. I’m surprised that such an error results in a
+valid bank account. If the bank account number included a
+<a href="http://en.wikipedia.org/wiki/Checksum">checksum</a>, then an incorrectly
+transcribed number is unlikely to still be valid. Credit cards use a
+<a href="http://en.wikipedia.org/wiki/Luhn_algorithm">checksum algorithm</a> and
+this is why when you type one incorrectly the response is “invalid card
+number” rather than the wrong account being charged. However, bank
+account numbers seem to rarely use this simple error-checking technology
+(codes by country are <a href="http://docs.oracle.com/cd/E18727_01/doc.121/e13483/T359831T498954.htm">listed
+here</a>).
+Why not? Perhaps when the bank account system was established many
+decades ago, checksums were not seem as important. Either because there
+was a person (the local bank manager) in the loop to double check the
+numbers, or because checksums were too computationally costly
+(especially if humans had to do the calculation themselves as computers
+weren’t available). Of course now people use the Internet to make
+transfers and the whole process is performed by computers without human
+interference, and the cost of using checksums is miniscule on even
+relatively old processors.</p>
+
+<p>Banks could add checksums now, placing an optional extra character to
+the end of bank account numbers (several countries have done this). In
+the UK this would be a huge act of customer service. However, from
+experience I would doubt the banks interest in serving their customers.
+At the moment any errors cost the banks little and changing the system
+would be expensive. The core computer programs handling bank accounts
+and transfers between them are ancient COBOL programs (at least at the
+bank where I worked). Rules like the number of digits in a bank account
+are hardcoded and changing them would cascade through various systems.
+Testing the change would be a massive task in itself. I can’t imagine
+any bank voluntarily undertaking such a project - especially as most
+banks are determined to reduced IT costs. Too bad for bank customers.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">October  4, 2014</span>
+  <h4><a href="/blog/2014/10/prs.html">PRS</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
+    
+      <a class="post" href="/blog/tag/Work.html">Work</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>After leaving <a href="/blog/2013/06/beacon-technology-part-1.html">Beacon</a> and
+finishing the MBA, I jumped on a flight to London in mid 2002. Perth was
+too constraining, I didn’t want to do consulting or mining software for
+the rest of my career. London seemed like the land of work opportunity.
+It would also be easier to travel around the world from a base in
+Europe. Both these reasons turned out to be correct, but I forgot the
+downsides of London - the expense, the crowds and strangely even the
+weather. For a good five years or so the positives outweighed the
+negatives, but then the balance shifted. However, upon arrival I was
+extremely optimistic.</p>
+
+<p>Crashing in the spare rooms and sofas of old uni friends (the Perth to
+London road was well travelled by my age cohort), I started to learn
+about the local IT job market. 2002 was the middle of the dot crash
+slump. Stories of easy jobs with large pay rates and regular job hopping
+abounded, but they always ended with “of course that was before the
+crash.” Most of my acquaintances said that contract work was the way to
+go - better pay and less bureaucracy, at the expense of career
+progression (none of my friends planned to stay long, so that was not an
+issue). I aimed for the same, but in the downturn a person with no
+record in London couldn’t get through the door for contracting roles - I
+was too much of an unknown considering the large number of people
+looking for work. After a few months I switched to permanent roles and
+started getting interviews again. Lastminute was a notable interview
+because the interviewer was so offensive I pledged to never use their
+service - a promise I hold to this day, despite being right in their
+target market. After 4 months my funds were evaporating quickly and if I
+didn’t get one of the two jobs for which I was interviewing then a
+return to Perth would be required. <a href="http://www.rbs.co.uk/">RBS</a> was my
+preferred option (and I even delayed the other possibility while waiting
+for them to decide). However, RBS decided I was “too cold” for a
+management position (at least they gave a reason), so I went to work at
+the <a href="http://en.wikipedia.org/wiki/PRS_for_Music">MCPS-PRS Alliance</a>.</p>
+
+<p><img src="/assets/posts/work/mcps_prs_alliance.gif" alt="PRS Logo" title="PRS Logo" /></p>
+
+<p class='more'><br/><a href='/blog/2014/10/prs.html'>Read the rest of this entry</a></p>
+  </div>
+  <hr/>
+
   <span class="date">September 27, 2014</span>
   <h4><a href="/blog/2014/09/anu-astro2x.html">ANU-ASTRO2x Exoplanets</a></h4> 
   Tags: 
@@ -206,97 +321,6 @@ here</a>.</p>
   </div>
   <hr/>
 
-  <span class="date">August 24, 2014</span>
-  <h4><a href="/blog/2014/08/twich.html">This Week in Cycling History</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Podcasts.html">Podcasts</a>, 
-    
-      <a class="post" href="/blog/tag/Cycling.html">Cycling</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Current episodes available via paid subscription at
-<a href="http://velocast.cc/subscribe">Velocast</a>, much older episodes available
-at <a href="http://velocastcc.squarespace.com/twich">this website</a>.</p>
-
-<p>For a change from ancient history, I have started listening to a podcast
-on cycling history. Produced by the people at
-<a href="http://velocast.cc">Velocast.cc</a>, it is also notable as the first
-podcast or MOOC I have reviewed that actually costs money. For £8/month
-a subscriber gains access to weekly news and history podcasts and daily
-new podcasts during major races (<a href="http://en.wikipedia.org/wiki/Tour_de_France">Tour de
-France</a>, <a href="http://en.wikipedia.org/wiki/Giro_d%27Italia">Giro
-d’Italia</a>, <a href="http://en.wikipedia.org/wiki/Vuelta_a_Espana">Vuelta a
-Espana</a> and the
-<a href="http://en.wikipedia.org/wiki/Classic_cycle_races">Classics</a>). I
-received a years subscription as a gift and consider it good value (so
-will probably resubscribe at the end of the year). All the podcasts are
-very entertaining, including TWiCH (as they refer to it). Production
-quality is high.</p>
-
-<p>Each episode is roughly 45 minutes to an hour long and endeavours to
-reference events that happened during the same week in previous years.
-So in May most episodes refer to events that occurred during the Giro,
-during March it is the classics, and so on. This plan breaks down a bit
-with races that move around the calendar (like the Vuelta) and during
-the winter off-season. The episodes contain 3 segments. Each segment
-starts with a few minutes of pre-recorded introductory context on a
-particular event or aspect of bicycle racing. Then there is 10-20
-minutes of lively discussion between the two presenters. Often they
-deviate wildly from the topic at hand, but it is always entertaining
-(and usually informative). Recent stories include: the hotly-contested
-Tour de France <a href="http://en.wikipedia.org/wiki/Lanterne_rouge">Lanterne
-Rouge</a> (last place)
-“competition” in
-<a href="http://en.wikipedia.org/wiki/Gerhard_Schonbacher">1979</a>; <a href="http://en.wikipedia.org/wiki/Stephen_Roche">Stephen
-Roche</a> winning the Giro in
-1987 against his own teammate; and <a href="http://en.wikipedia.org/wiki/Jacques_Anquetil">Jacques
-Anquetil</a> winning his
-only monument,
-<a href="http://en.wikipedia.org/wiki/Liege-Bastogne-Liege">Liege-Bastogne-Liege</a>
-in 1966. In general the stories are interesting and not the traditional
-famous ones heard repeatedly. The subsequent discussions are lively and
-entertaining. The two presenters have an immense knowledge of cycling
-history between them. Although they do often seem to mention cycling
-clothing fashion, pedalling style and Irish cyclists (one of the
-presenters is always <a href="https://twitter.com/irishpeloton">Cillian Kelly</a>
-who is Irish, so familiarity is probably the reason).</p>
-
-<p>For fans of cycling who want to know more about the colourful history of
-the sport.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">August 10, 2014</span>
-  <h4><a href="/blog/2014/08/eve-online.html">Eve Online</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Games.html">Games</a>, 
-    
-      <a class="post" href="/blog/tag/Video Games.html">Video Games</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p><a href="http://www.eveonline.com/">Eve Online</a> is a game I have consciously
-avoided over the years. Not because I thought I wouldn’t enjoy it, but
-because I might enjoy it too much, and thus see too much otherwise
-productive time slip away (<a href="https://minecraft.net/">Minecraft</a> is
-another game I avoid for similar reasons). However, recently the game
-had a <a href="https://www.humblebundle.com/">Humble Bundle</a> sale so I thought
-I’d give it a try. After all, I’m writing a vaguely similar game (albeit
-single-player) and have pretensions towards writing more games along a
-similar theme. It would be remiss not to experience, and try to learn
-from, one of the giants of the genre - a very successful game over a
-sustained period of time. Or at least that was my justification.</p>
-
-<p><a href="/assets/posts/games/eve_screenshot.png"><img src="/assets/posts/games/eve_screenshot.png" width="550" alt="" /></a></p>
-
-<p class='more'><br/><a href='/blog/2014/08/eve-online.html'>Read the rest of this entry</a></p>
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -323,6 +347,14 @@ sustained period of time. Or at least that was my justification.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2025/05/bunbury.html">Bunbury</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/04/sri-lanka.html">Sri Lanka</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2025/02/link-blog.html">Link Blog</a> 
@@ -354,14 +386,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/03/media.html">Media Bias</a> 
   </li>  
 
 </ul>

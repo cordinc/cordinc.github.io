@@ -38,6 +38,189 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">July  9, 2011</span>
+  <h4><a href="/blog/2011/07/architecture-astronaut-rant.html">Architecture Astronaut Rant</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Software Project Management.html">Software Project Management</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Joel Spolsky has often <a href="http://www.joelonsoftware.com/items/2005/10/21.html">blogged his opinions on Software
+Architects</a>. Those
+people who design whole software environments and their tendency to
+become astronauts (that is divorced from the realities on the ground). I
+have a great deal of empathy with his view. Grounded architects may have
+some use in large companies to set a general technical direction and aid
+communication among independently working teams. In smaller groups there
+is no need for them, yet they often appear. Recently I have worked on
+small teams of 5-10 developers with 10-20 tasks that need to be done
+immediately. At these workplaces there has been a focus on getting
+things done and we have all handled our own design, relying on
+professionalism to keep us all moving in the same direction. So luckily
+I have avoided Software Architects for many years, but my luck is
+running out - I have just encountered people ready for take-off.</p>
+
+<p>I have some empathy for the architect - just a little. I used to have
+designs on being an architect. I wanted to do things the “right way” (in
+quotes because it is always a matter of opinion, with many caveats). For
+a technical person it seems like the place where you can have the most
+influence. It is also part of the informal software development career
+path, on which I was once travelling. However, as I enjoy programming I
+would help code my solutions. Thus I encountered the problems that occur
+when abstract perfection meets messy reality. Solving the problem has to
+come first - to paraphrase Jeff Atwood the <a href="http://www.codinghorror.com/blog/2004/12/it-came-from-planet-architecture.html">architecture should be
+framed in the context of the
+problem</a>.</p>
+
+<p>Now I think the first priority should be solving the clients’ problem.
+For the last 6 years or so I have chosen workplaces that emphasise
+“getting things done”, especially since timescales are always tight. One
+can make the argument that it takes time to do things right and we
+should take that time. That is true, and if that is hugely important you
+should probably work someplace else. Where I currently work, our
+original project was to create a complete European government bond
+trading platform in around 3 months. The market opportunity was fading
+fast and costs were increasing. If an extra year was taken to produce a
+technically beautiful solution the result would be useless as the
+investment wouldn’t be recouped in a reasonable timeperiod. Corners had
+to be cut and they were, but we delivered on time. Now when time allows
+we can refactor the system into a better state.</p>
+
+<p>The current architect wannabees I have encountered are ranting that the
+reason they can’t get their job done is that our environment is crap
+(despite being part of the team that created that environment). It needs
+to be ripped up and started again the “right way”. They produce eloquent
+arguments for beautiful service-oriented architectures. While I agree
+that their vision is better than our reality, it in no way reflects our
+reality. Worse, they are not very good coders, and they use our “wrong”
+but working environment as their excuse for their messy, buggy code.
+When given the chance to rework something from scratch without
+dependencies on other components they still produce buggy, messy,
+unreliable code that no one wants to use and took 4 times as long as the
+original working version. This has happened not once, but twice! As a
+result, we are further from the right way as we have to cover the other
+person’s unfinished work and fight their new code, leaving us less time
+for refactoring. Yet still they continue, it will all be better if we
+just do everything their way. Personally, I’d rather just solve the
+problem at hand - which at the moment includes them!</p>
+
+<p>Just had to get that off my chest.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">July  3, 2011</span>
+  <h4><a href="/blog/2011/07/can-tweety-fly.html">Can Tweety fly?</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
+    
+      <a class="post" href="/blog/tag/University.html">University</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>The worst question you can ask a PhD student is “tell me about your
+thesis”. Or at least, that was the joke among the postgrad students at
+the <a href="http://web.csse.uwa.edu.au/">UWA CS department</a> in the mid 1990’s.
+I took this seriously and prepared an explanation of my thesis that I
+thought most people could understand (assuming some small knowledge of
+logic). I only ever used this explanation once many years ago (at a job
+interview for Rio Tinto R&amp;TD). So it is about time I explained it again
+before I forget it all. For reference I did not complete my PhD,
+dropping out after 18 months.</p>
+
+<p>The provisional title of my thesis was “Using Nonmonotonic Logic to
+extend Inductive Logic Programming”, and the research proposal is
+<a href="/assets/posts/uni/phd_proposal.pdf">here</a>. The idea was to have
+computers learn logical rules in a more natural manner than the existing
+systems. First some background on each of the two terms in the title.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/First-order_logic">First-order Logic</a> is
+what most people mean when talking about logic. It involves formulas
+like <code class="language-plaintext highlighter-rouge">flies(X) &lt;- bird(X)</code> (all birds fly), which if you also have
+<code class="language-plaintext highlighter-rouge">bird(Tweety)</code> (Tweety is a bird) implies <code class="language-plaintext highlighter-rouge">flies(Tweety)</code> (Tweety can
+fly). One issue with First-order Logic is that it assumes perfect
+knowledge. That is, it assumes that everything is known and correct.
+Thus it is monotonic - it is not possible for any future information to
+invalidate any previous implications. It can’t handle the situation
+where in addition to the knowledge above, we later learn that Tweety is
+a penguin and that penguins don’t fly. This new information invalidates
+our old implication that Tweety flys and is not allowed. Instead you
+have to know from that start that birds fly unless they are penguins.
+However, Ostriches don’t fly, nor do dead birds or birds with broken
+wings. With a little bit of thought many more exceptions to the rule
+“birds fly” can be imagined, and the rule becomes unwieldly.</p>
+
+<p>In real-world problems there can be many exceptions or inconsistent data
+(noise), so First-order Logic can be problematic for machine learning.
+There are ways around this though. Often it is used in self-contained
+well-understood domain with few exceptions. However, many systems
+instead use <a href="http://en.wikipedia.org/wiki/Non-monotonic_logic">Non-monotonic
+Logic</a>, which allows
+new knowledge to contradict old beliefs. Many Non-monotonic Logic
+constructs seem so intuitive it is hard to imagine thinking without
+them. The <a href="http://en.wikipedia.org/wiki/Closed_world_assumption">Closed-world Assumption
+(CWA)</a> says that
+if something is not known it must be false. When reading a train
+timetable with a train at 8am and the next specified train at 9am, you
+are using the CWA when you assume there is no train at 8:20am. Similar
+is <a href="http://en.wikipedia.org/wiki/Negation_as_failure">Negation As Failure
+(NAF)</a> (indeed it has
+been proven they are logically the same) where if something can’t be
+proven true then it must be false - sounds like a few university
+researchers I knew. If you have used
+<a href="http://en.wikipedia.org/wiki/Prolog">Prolog</a>, then you should be
+familiar with NAF. The logic I was mainly working on was <a href="http://en.wikipedia.org/wiki/Default_logic">Default
+Logic</a>, which allows rules
+to be true by default assuming there is some justification. This allows
+exceptions in a compact and natural rule system.</p>
+
+<p>Given the rules resulting from the learning system would be in a
+Non-monotonic Logic, the next step is to describe how those rules are
+learnt. The example above where it was implied that Tweety could fly is
+an example of <a href="http://en.wikipedia.org/wiki/Deductive_reasoning">Deductive
+Reasoning</a>. Deduction
+is the process of using some rules and some background facts to imply
+new facts. <a href="http://en.wikipedia.org/wiki/Inductive_reasoning">Inductive
+Reasoning</a> is the
+reverse, deriving rules from facts. So if you know Tweety is a bird and
+that Tweety flies, then you might derive the rule that all birds fly.
+<a href="http://en.wikipedia.org/wiki/Inductive_logic_programming">Inductive Logic Programming
+(ILP)</a> is just
+the term for computer programs that perform this process with the
+resulting rules as logic system. They take a set of background knowledge
+and sets of positive and negative examples and try to create rules that
+cover as many of the positive examples as possible while covering as few
+of the negative examples as possible. This is a computationally
+expensive process, computers only got powerful enough to do this for
+non-trivial datasets in the late 80’s, so when I studied in the mid 90’s
+the field was just getting started and becoming known.</p>
+
+<p>My thesis attempted to marry the two concepts. There had been a few
+attempts at this before, but the best known ILP systems at the time
+didn’t handle exceptions or noise very well. Thus part 1 of my work was
+to construct an ILP learning system that output a Non-monotonic logic.
+This was about as far as I got, implementing some theoretical results
+from another researcher (with minor improvements). Part 2 was handling
+exceptions and noise better by flipping rules. That is, if the evidence
+against a rule became too strong the system should flip it to the
+reverse rule. I also looked at weakening the “strength” of a rule over
+time. All rules have the same applicability in non-probalistic logics.
+By “strength” I mean how long I keep a rule in my output theory before
+modifying or flipping it in the presence of negative examples, or even
+ignoring exceptions/noise if the rule is particularly “strong”. I didn’t
+come up with anything meaningful here, I just thought it might be
+useful. Although I have been told this became a hot research topic in
+the years after I quit (under the term “forgetting”, I think).</p>
+
+<p>This may sound like it was mainly a coding project, maybe because that
+was where my interests lie. Most of my time should have been spent doing
+maths to prove my work was correct as it was a very theoretical field.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">June 26, 2011</span>
   <h4><a href="/blog/2011/06/jury-duty.html">Jury Duty</a></h4> 
   Tags: 
@@ -258,272 +441,6 @@ methodology</a>.</p>
   </div>
   <hr/>
 
-  <span class="date">June  4, 2011</span>
-  <h4><a href="/blog/2011/06/java-nio-selector-performance.html">Java NIO selector performance</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>After some previous work <a href="http://www.cordinc.com/blog/2010/08/java-nio-server-example.html">building Java NIO
-servers</a>,
-there was still some question over the performance of the system
-created. Here are the results from a number of tests I ran, to see how
-such a server would handle connection and message storms.</p>
-
-<p>The code from the previous blog article was modified so that there was a
-single-threaded selector to handle initial connections, but it handed
-off the message processing to a number of other selectors running in a
-thread pool. All of the tests were run on my 4-core Win7 64-bit desktop
-(full <a href="http://www.cordinc.com/blog/2011/01/building-a-new-pc.html">specs
-here</a>). All
-programs (both client and server components) were run through
-<a href="http://www.eclipse.org/">Eclipse</a> Helios using JDK1.6.0.24, always with
-256MB of heap space and no other VM options set. The code is not (yet)
-available online, but it shouldn’t be too hard to work out a rough
-understanding from the previous article and some Java NIO knowledge.</p>
-
-<p>Firstly, I wanted to check the system could handle a storm of
-connections. The test code would fire off 10,000 connections either: 1
-per millisecond; as fast as it could in 1 thread; or as far as it could
-with 5 threads sharing the load. The average time to reach various code
-points were recorded and results are in the table below. The Accept
-column is the time from when the connection is first received by the
-server to just after the server accepts the connection. The Server
-column is the time from when the connection is first received by the
-server until it completes all actions on the connection - this is the
-Accept column plus time spent initialising message processing. The
-Client column is the time from when the client opens a connection until
-it receives notification it is ready. Also during these tests I tracked
-heap usage and it barely budged - an extra few MB on a system that was
-already using 30MB after initialisation. All the heap gain was reversed
-after the next GC. No problems there.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Connection Speed</th>
-      <th>Accept (ms)</th>
-      <th>Server (ms)</th>
-      <th>Client (ms)</th>
-      <th>Client Max (ms)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Sequential throttled</td>
-      <td>0.15</td>
-      <td>0.68</td>
-      <td>0.19</td>
-      <td>1.93</td>
-    </tr>
-    <tr>
-      <td>Sequential unthrottled</td>
-      <td>0.07</td>
-      <td>0.48</td>
-      <td>3.90</td>
-      <td>507.93</td>
-    </tr>
-    <tr>
-      <td>5 Threads unthrottled</td>
-      <td>0.07</td>
-      <td>0.51</td>
-      <td>31.83</td>
-      <td>510.22</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><br />As can be seen the Accept and Server times are fairly steady (I
-would guess 0.07 milliseconds is the fastest a selector can accept a
-connection on average). However, the faster the connections are created,
-the greater the lag at the client. No connections were dropped. I
-imagine the client delays are caused by some queuing. Possibly in the
-PC’s networking, but more likely in the wait before the selector starts
-processing the connection. In all the above tests the selector wait time
-is 1 millisecond, so the server will not wait long for a connections. I
-tried setting the wait time to 0, but some connections were then
-dropped. I also increased the wait time, and unsurprisingly this only
-increased the response time.</p>
-
-<p>Speeding up the server code after the accept (ie, trying to decrease the
-Server column) could speed up acceptance by decreasing the time before
-the server is ready to process the next connection. This code could be
-moved into another thread, but then I’m not sure what would happen if a
-message arrived on a connection that hadn’t finished. I also looked at
-the cost of selector creation by having each connection create a
-selector just for itself. In this scenario the time taken increased, but
-more importantly the server crashed having run out of heap after 641
-connections (the old generation filled up). I would estimate that each
-selector requires around 0.25 MB of heap.</p>
-
-<p>Next to test the message processing. The client created 10,000
-connections and once they were accepted each connection sent 10 message
-(for a total of 100,000 unique messages). The server just reflected the
-message back to the client. The client checked each message returned
-from the server was as expected (all messages were present and correct)
-and recorded total time taken. The variables in the tests were the
-number of selectors processing messages and the number of threads
-handling those selectors. The results are below. During all tests the
-heap didn’t grow to more than 55MB (from a 30MB base).</p>
-
-<p><img src="/assets/posts/technical/nio_messages.png" alt="" /></p>
-
-<p>The rule seems to be that the more selectors the better and there should
-be roughly the same number of threads as selectors (it may be easier to
-see in the raw numbers). More threads than selectors does no good at
-all. I checked a few points further out, 7 selectors/7 threads and
-10/10. They were quicker on average, but showed decreasing returns as
-they were both 1.26 milliseconds on average. However, the standard
-deviation also grew to around 2ms, when for all the other tests it was
-around 1ms (perhaps due to the extra thread scheduling in the VM)</p>
-
-<p>This such a system should handle connection and message storms short of
-a concerted
-<a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">DDOS</a> attack.
-For performance the rule seems to be pre-build as many message handling
-selectors as you wish and then provide about one thread per selector to
-support them.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">May 28, 2011</span>
-  <h4><a href="/blog/2011/05/injecting-context-in-java-seri.html">Injecting context in Java serialization</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p><a href="http://en.wikipedia.org/wiki/Serialization">Serialization</a> is a useful
-feature built into Java. It converts objects into a bytestream that can
-be saved to a file or transmitted over a network and then reconstructed
-later into the same object (perhaps in a different <a href="http://en.wikipedia.org/wiki/Java_Virtual_Machine">Java
-VM</a>). The basics are
-<a href="http://java.sun.com/developer/technicalArticles/Programming/serialization">detailed
-here</a>,
-with some more <a href="http://java.sun.com/developer/technicalArticles/ALT/serialization/">advanced features
-here</a>
-and the <a href="http://download.oracle.com/javase/6/docs/platform/serialization/spec/serialTOC.html">complete API is
-here</a>.
-Despite all this documentation, I recently came a across a problem not
-described. What if an object being deserialized requires a reference to
-some non-serializable object in the<br />
-application. That is how can an object be reconstructed when it contains
-part of the application’s context that can’t be serialized. For
-instance, what if the object has a network connection as a member
-variable. The network connection can not be meaningfully serialized, so
-when the object is deserialized it has somehow reconnect itself to the
-network, which requires some reference to the network context. This may
-sound like a contrived example, but it occurs in the <a href="http://www.reddwarfserver.org/">Red Dwarf
-Server</a> (previously known as Sun’s
-Darkstar project) where network connections are transparently moved
-around a server cluster.</p>
-
-<p>The best way to solve this problem is to ensure that the serializable
-objects are self-contained and do not need any outside context when
-deserialized. Let’s assume that is not possible and move on. Next best
-is to hook the object to its required context immediately after the
-deserialization. However, this may not be practicable because the
-deserialized object is not easily accessible (for example, if it is deep
-in an object graph - which is the case in Red Dwarf and my code).</p>
-
-<p>Red Dwarf solves the problem by defining a static accessor on the
-context class and then on the serializable object adding a serialization
-override method like the below:</p>
-
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">readObject</span><span class="o">(</span><span class="nc">ObjectInputStream</span> <span class="n">in</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-  <span class="n">in</span><span class="o">.</span><span class="na">defaultReadObject</span><span class="o">();</span>
-  <span class="k">this</span><span class="o">.</span><span class="na">contextObject</span> <span class="o">=</span> <span class="nc">Context</span><span class="o">.</span><span class="na">getContextObject</span><span class="o">();</span>
-<span class="o">}</span></code></pre></figure>
-
-<p>This solution works, but I don’t like it. Creating a static context
-makes it hard to write tests and add a second context if required (I
-have been caught out by this before). It could improved by making the
-static context use
-<a href="http://download.oracle.com/javase/6/docs/api/java/lang/ThreadLocal.html">ThreadLocal</a>
-storage, but there are other ways.</p>
-
-<p>Checking out the <a href="http://www.java2s.com/Open-Source/Java-Document/6.0-JDK-Core/io-nio/java/io/ObjectInputStream.java.htm">Java serialization source
-code</a>,
-I thought there may be some way of extending the deserialization
-process. The main extension points seem to be the
-<code class="language-plaintext highlighter-rouge">readObject(ObjectInputStream in)</code>, <code class="language-plaintext highlighter-rouge">writeObject(ObjectOutputStream in)</code>
-and <code class="language-plaintext highlighter-rouge">readResolve()</code> methods added to the serializable object. These are
-found by reflection on their signature in a private method and can not
-be changed. There is a method <code class="language-plaintext highlighter-rouge">readObjectOverride()</code> on
-<a href="http://download.oracle.com/javase/6/docs/api/java/io/ObjectInputStream.html#readObjectOverride()">ObjectInputStream</a>,
-which allows a bespoke deserialization process to be defined. However,
-so many of the methods on ObjectInputStream are private that this would
-be like writing a new process from scratch.</p>
-
-<p>There are two other options. The ObjectInputStream can be subclassed and
-contain a reference to the context object. This new class can detected
-within <code class="language-plaintext highlighter-rouge">readObject(ObjectInputStream in)</code> with <code class="language-plaintext highlighter-rouge">instanceof</code> and the
-context dereferenced. An alternative is to keep the subclass of
-ObjectInputStream and set <code class="language-plaintext highlighter-rouge">enableResolveObject(true)</code> in the constructor
-(this requires the program to have security permission). This means that
-after deserialization the <code class="language-plaintext highlighter-rouge">resolveObject(Object obj)</code> method on the
-stream subclass will be called and the return value passed as the final
-result of the deserialization. Thus this method can perform extra
-initialisation or even replace the given object with a different one.
-The code below shows both these techniques - you probably only want to
-use one at a time.</p>
-
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// imports skipped for brevity</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SerializationTest</span> <span class="o">{</span>
-
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">A</span> <span class="kd">implements</span> <span class="nc">Serializable</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="n">a</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="nf">A</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="o">;}</span>
-
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">readObject</span><span class="o">(</span><span class="nc">ObjectInputStream</span> <span class="n">in</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-      <span class="n">in</span><span class="o">.</span><span class="na">defaultReadObject</span><span class="o">();</span>
-      <span class="k">if</span> <span class="o">(</span><span class="n">in</span> <span class="k">instanceof</span> <span class="nc">MyObjectInputStream</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Found context="</span> <span class="o">+</span> <span class="o">((</span><span class="nc">MyObjectInputStream</span><span class="o">)</span> <span class="n">in</span><span class="o">).</span><span class="na">context</span><span class="o">);</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-	
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">MyObjectInputStream</span> <span class="kd">extends</span> <span class="nc">ObjectInputStream</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">context</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="nf">MyObjectInputStream</span><span class="o">(</span><span class="nc">InputStream</span> <span class="n">in</span><span class="o">,</span> <span class="kt">int</span> <span class="n">context</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-      <span class="kd">super</span><span class="o">(</span><span class="n">in</span><span class="o">);</span>
-      <span class="n">enableResolveObject</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// requires permissions</span>
-      <span class="k">this</span><span class="o">.</span><span class="na">context</span> <span class="o">=</span> <span class="n">context</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">protected</span> <span class="nc">Object</span> <span class="nf">resolveObject</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="k">new</span> <span class="nf">A</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-    <span class="no">A</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
-    <span class="nc">ByteArrayOutputStream</span> <span class="n">bos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ByteArrayOutputStream</span><span class="o">();</span>
-    <span class="nc">ObjectOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ObjectOutputStream</span><span class="o">(</span><span class="n">bos</span><span class="o">);</span>
-    <span class="n">out</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">test</span><span class="o">);</span>
-    <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-
-    <span class="kt">byte</span><span class="o">[]</span> <span class="n">buf</span> <span class="o">=</span> <span class="n">bos</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">();</span>
-    <span class="nc">MyObjectInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyObjectInputStream</span><span class="o">(</span><span class="k">new</span> <span class="nc">ByteArrayInputStream</span><span class="o">(</span><span class="n">buf</span><span class="o">),</span> <span class="mi">9</span><span class="o">);</span>
-    <span class="no">A</span> <span class="n">test2</span> <span class="o">=</span> <span class="o">(</span><span class="no">A</span><span class="o">)</span> <span class="n">in</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Serialized object="</span> <span class="o">+</span> <span class="n">test2</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
-  <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
-
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -550,6 +467,14 @@ use one at a time.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2025/05/bunbury.html">Bunbury</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/04/sri-lanka.html">Sri Lanka</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2025/02/link-blog.html">Link Blog</a> 
@@ -581,14 +506,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/03/media.html">Media Bias</a> 
   </li>  
 
 </ul>

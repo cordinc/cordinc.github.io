@@ -38,6 +38,60 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">April 12, 2009</span>
+  <h4><a href="/blog/2009/04/multiple-attachments-with-vali.html">Multiple Attachments with Validations In Rails with Paperclip</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Rails.html">Rails</a>, 
+    
+      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I wanted a project to allow attachments to be added to tasks. My
+requirements were that: users should be able to add multiple attachments
+to a task up to some maximum limit; there should be validation on the
+size of the attachments (combined with the number limit this should
+ensure I don’t run out of disk space too fast); and, that there should
+be some security on downloading a task’s attachments.
+<a href="http://www.thoughtbot.com/projects/paperclip/">Paperclip</a> seems to be
+the popular Rails attachment at the moment and is still under active
+development, so I hoped to use that. However, it does not handle
+multiple attachments for a model. There is a plugin
+<a href="http://github.com/heavysixer/paperclippolymorph/tree/master">PaperclipPolymorph</a>
+which adds multiple attachments to Paperclip, but I just couldn’t get it
+to meet my validation and security requirements. In the end I wrote my
+own solution and this article details it.</p>
+
+<p class='more'><br/><a href='/blog/2009/04/multiple-attachments-with-vali.html'>Read the rest of this entry</a></p>
+  </div>
+  <hr/>
+
+  <span class="date">April  8, 2009</span>
+  <h4><a href="/blog/2009/04/companies-i-love.html">Companies I love</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/General.html">General</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Earlier I wrote a post on <a href="http://www.cordinc.com/blog/2009/04/companies-of-which-i-am-not-a.html">Companies of which I am not a
+customer</a>.
+I thought it would be a good idea to give the much shorter list of
+companies of which I’m very appreciative. These are companies that have
+done the right thing by me even when there was no need for them to do
+so.</p>
+
+<ul>
+  <li><a href="http://www.amazon.co.uk/">Amazon</a></li>
+  <li><a href="http://www.firstdirect.co.uk/">First Direct</a></li>
+</ul>
+
+  </div>
+  <hr/>
+
   <span class="date">April  7, 2009</span>
   <h4><a href="/blog/2009/04/companies-of-which-i-am-not-a.html">Companies of which I am not a customer</a></h4> 
   Tags: 
@@ -193,87 +247,6 @@ analyser)</li>
   </div>
   <hr/>
 
-  <span class="date">February 19, 2009</span>
-  <h4><a href="/blog/2009/02/last-online-poker-update.html">Last Online Poker Update?</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>, 
-    
-      <a class="post" href="/blog/tag/Poker.html">Poker</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I have completed another 50 online HU poker SnGs. At least I am
-consistent - I won 26, the same as the last 50. Again, despite winning
-more games than I lose, I have less money than when I started due to
-fees (27.5 games is the breakeven point). Also like the previous 50s, I
-experienced great runs. I won 14 of the first 18 games. Which of course
-means that I won only 12 of the last 32. Urrrgh. I have read that the
-variance in HU SnGs is higher than other kinds of poker, but results
-like that still really knock your confidence. Worst of all I kept some
-stats and discovered the average game runs around 15 minutes. That
-quickly adds up and is preventing me doing other things.</p>
-
-<p>I’ve decided to take this poker thing a little less seriously. I’m not
-going to quit, but neither am I going to keep track of results and
-actively try to play more. I still have some money in my online account,
-and will play with that if I feel like it. However, I don’t think I have
-the time to continue playing at a rate high enough to get much better
-right now. Just standing still for a while will be good enough. I’m not
-yet sure what I will do if I run my account down to 0. So for the
-foreseeable future there will be no more online poker updates.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">February 13, 2009</span>
-  <h4><a href="/blog/2009/02/a-rant-and-rave.html">A Rant and Rave</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>A few years ago I had the idea of creating a fairly standard online
-spaceship combat game (like <a href="http://www.eveonline.com">EVE</a>). The
-difference to other such games being that the players would not control
-their ships directly, but instead through code they submitted to the
-game - a more complicated and extended
-<a href="http://robocode.sourceforge.net/">Robocode</a> or
-<a href="http://www.corewars.org/">CoreWar</a>. At the time I stopped because I
-couldn’t work out a way of preventing <a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">Denial of service
-attacks</a> in the
-submitted code. I had hoped to use Java as it had an extensive security
-model, but I found there was no way of stopping untrusted code from
-starting too many threads or allocating too much memory.</p>
-
-<p>Fast forward many years, and I thought I’d check out if the situation
-has improved. A search on Google returned all the same webpages I read 9
-years ago - there hasn’t been much movement in the area. The Javadocs
-suggested that the thread issue had been fixed, but no word about
-memory. I checked Robocode and it seems to just ignore the memory
-allocation problem. This is because it is not fixed!</p>
-
-<p>WTF! Sun has gone on about the <a href="http://java.sun.com/developer/technicalArticles/Security/whitepaper/JS_White_Paper.pdf">Java Security
-Model</a>
-for some time now. Touting the safety of its sandbox. However, if
-untrusted code can crash the system it is broken - nothing more to say.
-I don’t care about the rest. This has been a known issue for years.</p>
-
-<p>Anyway, rant over. On a more positive side, I used
-<a href="http://stackoverflow.com/">StackOverflow</a> for the first time in
-researching this issue and it is quite cool. My question is
-<a href="http://stackoverflow.com/questions/540738/excessive-memory-allocation-in-java-sandbox-security">here</a>.
-The answer states that there is a <a href="http://jcp.org/en/jsr/detail?id=284">movement to fix the memory DoS
-attack</a>, but that it is still in
-the requirements stage and <a href="http://tech.puredanger.com/java7/">probably will not be part of
-Java7</a>.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -300,6 +273,14 @@ Java7</a>.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2025/05/bunbury.html">Bunbury</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/04/sri-lanka.html">Sri Lanka</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2025/02/link-blog.html">Link Blog</a> 
@@ -331,14 +312,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/05/bad_companies.html">Bad Companies</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/03/media.html">Media Bias</a> 
   </li>  
 
 </ul>
