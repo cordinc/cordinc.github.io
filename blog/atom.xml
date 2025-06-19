@@ -3,13 +3,31 @@
     <title type="text" xml:lang="en">Cordinc Blog</title>
     <link type="application/atom+xml" href="http://www.cordinc.com/blog/atom.xml" rel="self"/>
     <link type="text" href="http://www.cordinc.com" rel="alternate"/>
-    <updated>2025-06-02T16:50:10+08:00</updated>
+    <updated>2025-06-19T17:09:36+08:00</updated>
     <id>http://www.cordinc.com</id>
     <author>
         <name>Cordinc Blog</name>
     </author>
     <rights>Copyright (c) 2013-2020 Cordinc Blog</rights>
 
+    
+    <entry>
+        <title>Link Blog 2</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2025/06/link-blog.html/"/>
+        <published>2025-06-18T00:00:00+08:00</published>
+        <updated>2025-06-18T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2025/06/link-blog.html/</id>
+        <content type="html">&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://archive.is/aM9BA&quot;&gt;DeepMind CEO Says AGI Definition Has Been ‘Watered Down’&lt;/a&gt; (archive link to bypass the Bloomberg paywall) - Hah, experience has shown me one can never be cynical enough. I was thinking &lt;a href=&quot;/blog/2024/11/intelligence.html&quot;&gt;something like this a few months ago&lt;/a&gt;. And more of the same here &lt;a href=&quot;https://techcrunch.com/2025/03/14/no-one-knows-what-the-hell-an-ai-agent-is/&quot;&gt;No one knows what the hell an AI agent is&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Interesting, &lt;a href=&quot;https://cacm.acm.org/opinion/life-lessons-from-the-first-half-century-of-my-career/&quot;&gt;Life Lessons from the First Half-Century of My Career&lt;/a&gt;. Some I agree with, some I don’t think are so important.&lt;/li&gt;
+  &lt;li&gt;I have noticed Windows, Google and my TV (among other things) getting worse over the last few years. Apparently there is a term for this now: &lt;a href=&quot;https://arstechnica.com/gadgets/2025/02/as-internet-enshittification-marches-on-here-are-some-of-the-worst-offenders/&quot;&gt;enshittification&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Don’t forget what firms do in the current chaos… &lt;a href=&quot;https://www.theguardian.com/australia-news/2025/mar/21/us-consumer-tech-joins-winemakers-film-studios-and-drug-companies-in-urging-trump-to-target-australia&quot;&gt;US Consumer Tech Joins Winemakers, Film Studios And Drug Companies In Urging Trump To Target Australia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://howtomarketagame.com/2025/02/10/how-likely-are-you-to-overcome-a-failed-launch-so-youre-telling-me-theres-a-chance/&quot;&gt;Can you recover from a slow launch on Steam?&lt;/a&gt;. One for the gamedevs. A nice analysis that matches my experience. Basically, hit big at the start or you are done. Those comeback stories are incredibly rare.&lt;/li&gt;
+  &lt;li&gt;I’m paranoid about online security, so do this regularly: &lt;a href=&quot;https://techcrunch.com/2025/03/25/how-to-tell-if-your-online-accounts-have-been-hacked/&quot;&gt;How to tell if your online accounts have been hacked&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;A bit of better news. The &lt;a href=&quot;https://archive.md/hK7Di&quot;&gt;Hercalaneum scrolls are becoming easier to read&lt;/a&gt; (archive link to bypass the Economist paywall).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </entry>
     
     <entry>
         <title>Bunbury</title>
@@ -359,22 +377,6 @@
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/1385100/Insurmountable/&quot;&gt;Insurmountable&lt;/a&gt;&lt;/strong&gt; (14 hours) - Climb mountains fighting the elements and a spooky time-loop story events in this kinda 3D roguelike. The climbing itself is ok, but the events on the mountain are fairly limited and repeat often. I understand this might be intentional given the timeloop, but still makes the game tedious. Once I got the same event 3 times on a single climb (no looping in sight). A good idea that just doesn’t translate well into a game (in this case at least). Skippable.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/461840/Zenge/&quot;&gt;Zenge&lt;/a&gt;&lt;/strong&gt; (30 minutes) - Casual puzzle game of moving shapes along tracks until a picture is revealed telling a story. I got through a third of the game in 30 minutes, stopped, and haven’t felt the need to go back.&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Malaysia (again)</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2024/08/malaysia.html/"/>
-        <published>2024-08-08T00:00:00+08:00</published>
-        <updated>2024-08-08T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2024/08/malaysia.html/</id>
-        <content type="html">&lt;p&gt;At the end of last month I was in Kuala Lumpur for a wedding. As I lived in &lt;a href=&quot;/blog/tag/Malaysia.html&quot;&gt;Malaysia&lt;/a&gt; for nearly 5 years back before the pandemic, I greatly enjoyed just walking around and eating for a few days. Restoran Kin Kin still has great noodles; Pelitas is a good as ever; and, I remain unconvinced by &lt;a href=&quot;https://en.wikipedia.org/wiki/Durian&quot;&gt;durian&lt;/a&gt;. There are a lot more towers in the city now, including a couple of very tall ones, higher than the Petronas towers. Although it’s good to see the KL penchant for skybridges is unchanged. Kampung Baru is being slowly surrounded by high apartment complexes. The old UK High Commission (&lt;a href=&quot;/blog/2014/03/compound-living.html&quot;&gt;where I lived for a year&lt;/a&gt;) is now another set of 3 massive towers, over 60 floors by my count and getting bigger! However, Ampang Mall (where I used to eat an excellent Nasi Lemak) is now a skate park, so not everything is getting taller.&lt;/p&gt;
-
-&lt;p&gt;After the wedding I went to Sabah and hiked up &lt;a href=&quot;https://en.wikipedia.org/wiki/Mount_Kinabalu&quot;&gt;Mount Kinabalu&lt;/a&gt;. It is an elevation gain of roughly 2200m over 2 days to a final altitude of 4095m, the highest I’ve ever been. Luckily no altitude sickness for me this time (unlike &lt;a href=&quot;/blog/2010/11/peru-photos.html&quot;&gt;the Inca Trail&lt;/a&gt;), but we were climbing at the slow “unfit” rate. The hike was well organised and not too uncomfortable compared to others I’ve done. Unfortunately for three quarters of the hike we could only see the trees around us due to the mist and rain (very common according to the guide). Only once we passed the treeline (and above the clouds) did the amazing views emerge.&lt;/p&gt;
-
-&lt;p&gt;Some photos from the trip are in a short slideshow &lt;a href=&quot;/slideshows/malaysia_24.html&quot;&gt;available here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/slideshows/malaysia_24.html&quot;&gt;&lt;img src=&quot;/assets/slideshow/malaysia_24/kk_shadow_main.png&quot; alt=&quot;&quot; title=&quot;Mount Kinabalu&apos;s shadow&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 </content>
     </entry>
     

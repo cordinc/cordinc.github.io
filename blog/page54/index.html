@@ -38,6 +38,82 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">March 26, 2012</span>
+  <h4><a href="/blog/2012/03/line-plane-intersection-in-uni.html">Line / Plane Intersection in Unity3D</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Unity.html">Unity</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>In a recent <a href="http://unity3d.com/">Unity3D</a> game prototype I needed to
+determine the point of intersection between a line and plane. A player
+would click on the screen where they wanted their spaceship to go, and I
+needed to work out where that actually was in the world coordinates. The
+line is defined by the camera point and the point on the screen clicked
+(as given by <code class="language-plaintext highlighter-rouge">camera.ScreenToWorldPoint</code>). The plane was the spaceship
+(assuming no up or down movement).</p>
+
+<p><img src="/assets/posts/technical/line_plane.png" alt="" /></p>
+
+<p>If the line was intersecting an object in the scene then this could be
+easily achieved with Unity3D’s built in functions. In this case by
+casting a ray from the camera and finding the objects it hits (see the
+<a href="http://unity3d.com/support/documentation/ScriptReference/Physics.Raycast.html">Raycast help
+page</a>).
+However, my prototype is set in space, there is no object there to hit
+other than a small spaceship.</p>
+
+<p>First, let’s work out the equation of the line from the camera (point
+‘c’) and the mouse click (point ‘m’). We can get the position of the
+camera with <code class="language-plaintext highlighter-rouge">var c = camera.transform.position</code> and the position of the
+mouse click with:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">camera</span><span class="p">.</span><span class="nc">ScreenToWorldPoint</span><span class="p">(</span><span class="nc">Vector3</span><span class="p">(</span><span class="nx">Input</span><span class="p">.</span><span class="nx">mousePosition</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">Input</span><span class="p">.</span><span class="nx">mousePosition</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">));</span> </code></pre></figure>
+
+<p>Note that in the above, the third vector parameter (the Z value) in the
+<code class="language-plaintext highlighter-rouge">ScreenToWorldPoint</code> call is the distance from the camera of the
+resulting point. Thus if 0 or <code class="language-plaintext highlighter-rouge">mousePosition.z</code> (which is also 0) is
+used then the resulting point is just the camera location itself. Here I
+have used a distance of 100 to make sure there is a good separation
+between the points describing the line. The <a href="http://mathworld.wolfram.com/Point-LineDistance3-Dimensional.html">general equation of a line
+in 3
+dimensions</a>
+is (for the points c &amp; m):</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">[</span><span class="nx">c</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">x</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">z</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">z</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">z</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span><span class="p">]</span></code></pre></figure>
+
+<p>So to find the point of intersection requires solving that
+simultaneously with the equation of the plane. Here is where my scenario
+gets easy. The plane this line intersects with in my game is the
+horizontal plane the spaceship is current on. That is the plane is
+described by:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">y</span> <span class="o">=</span> <span class="nx">spaceship</span><span class="p">.</span><span class="nx">y</span></code></pre></figure>
+
+<p>At some point on the line the following holds as long as the line
+intersects at some point:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">spaceship</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span></code></pre></figure>
+
+<p>which means:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if </span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">==</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// no intersection</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+   <span class="nx">t</span> <span class="o">=</span> <span class="p">(</span><span class="nx">spaceship</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span> 
+<span class="p">}</span></code></pre></figure>
+
+<p>The case <code class="language-plaintext highlighter-rouge">m.y == c.y</code> denotes the case where the line does not intersect
+the plane. What happens here is up to you. With the value of ‘t’ known
+the equation for the line can be solved to give the point of
+intersection. Done.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">March 17, 2012</span>
   <h4><a href="/blog/2012/03/la-trobe-university-archaeolog.html">La Trobe University Archaeology</a></h4> 
   Tags: 
@@ -268,35 +344,10 @@ terms) goes a long way in making the player feel involved.</p>
   </div>
   <hr/>
 
-  <span class="date">February 19, 2012</span>
-  <h4><a href="/blog/2012/02/rio-tinto-rtd-continued.html">Rio Tinto R&TD (continued)</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Memories.html">Memories</a>, 
-    
-      <a class="post" href="/blog/tag/Rio Tinto.html">Rio Tinto</a>, 
-    
-      <a class="post" href="/blog/tag/Work.html">Work</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>After joining Knowledge-based Systems at Rio Tinto R&amp;TD, my first task
-was working on the MineSim project. This was a very successful
-application to simulate minesites. To do this a user would define the
-topology/geology of a mine, the equipment/personnel available and the
-goals to pursue. The program would then simulate the mine minute by
-minute. New blocks would be blown when ready, little loaders would muck
-out the ore from the block and large trucks moved round the mine,
-picking up ore and driving back to the dumps.</p>
-
-<p class='more'><br/><a href='/blog/2012/02/rio-tinto-rtd-continued.html'>Read the rest of this entry</a></p>
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 54 of 91 
+  Page 54 of 92 
   
       
         <a href="/blog/page53">Previous</a>
@@ -319,6 +370,10 @@ picking up ore and driving back to the dumps.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2025/06/link-blog.html">Link Blog 2</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2025/05/bunbury.html">Bunbury</a> 
@@ -354,10 +409,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2024/09/back-to-games.html">Back to Games</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2024/08/malaysia.html">Malaysia (again)</a> 
   </li>  
 
 </ul>
