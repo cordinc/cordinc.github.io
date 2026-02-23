@@ -38,6 +38,94 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">February 22, 2026</span>
+  <h4><a href="/blog/2026/02/itch-games.html">Itch Games</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Games.html">Games</a>, 
+    
+      <a class="post" href="/blog/tag/Video Games.html">Video Games</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Given my <a href="/blog/2025/12/bye.html">annoyance at Itch.io</a> (they still have not paid me!) I thought it time to work through my backlog of games there, so I can abandon my account. No links to Itch (is <a href="https://en.wikipedia.org/wiki/PageRank">PageRank</a> still active?).</p>
+
+<p><strong><a href="https://store.steampowered.com/app/742520/Astrologaster/">Astrologaster</a></strong> (4 hrs) - A well-made story game of an astrologer trying to become a doctor in 16th century London. Based partially on real people/events! The story seems linear, and a little too long. By the end I was just choosing diagnoses at random. It didn’t seem to make much difference, the story continued the way it wanted. I liked the humour and historicity (I looked a few people/events up on Wikipedia). Mildly interesting game elevated by surprisingly good production values.</p>
+
+<p><strong><a href="https://store.steampowered.com/app/578720/A_Morticians_Tale/">A Mortician’s Tale</a></strong> (1 hr) - Very short (I finished in an hour) story game about what happens to our bodies after death. Partly epistolary, part point and click, the story is very linear, but that doesn’t matter as it’s finished quickly (the secret to good story games in my opinion). A good game that meets its ambitions.</p>
+
+<p><strong><a href="https://store.steampowered.com/app/654220/Flash_Point_Fire_Rescue/">Flash Point</a></strong> (1 hr) - Computer adaptation of the cooperative boardgame of putting out fires and rescuing people. It felt clumsy, repetitive and random. I just couldn’t get into it.</p>
+
+<p><strong><a href="https://store.steampowered.com/app/668290/From_Orbit/">From Orbit</a></strong> (2hrs) - A roguelike RTS, that sees your spaceship trying to escape from “something” (not clear what) by travelling through a series of planets. On each planet you have to battle waves of enemies while collecting resources. Over time you can power up your crew and gain new crew members. At least I think that is the game - there is no tutorial or instructions so I just had to work it out as I went. A bit clunky and repetitive, this feels more like a decent beginning of the game development process rather than a finished product.</p>
+
+<p><strong><a href="https://store.steampowered.com/app/656400/Attrition_Tactical_Fronts/">Attrition: Tactical Fronts</a></strong> (2hrs) - I feel for the developers of this fast turn-based tactics game set in WW1. It reminds me of my game in that there is something here, but the game just doesn’t quite get there. It seems to be online multiplayer focussed, but since it is 7 years old, no one is around to play. I went through just over 2/3rds of the solo campaign and faced no significant challenge, winning all easily - largely due to the AI making regular game ending mistakes. Entertaining for a short time.</p>
+
+<p><strong><a href="https://store.steampowered.com/app/1166290/Death_and_Taxes/">Death and Taxes</a></strong> (4hrs) - I loved the idea of this point-and-click story game where you play as a Grim Reaper (apparently there are many of them) choosing who should die in a bureaucratic office run by Fate. It also works well in practice too. At first I wasn’t sure what I was supposed to be doing, but soon discovered that is part of the game. I played through once, enjoyed it, and don’t plan to do so again despite some replayability built in. Very good.</p>
+
+<p><strong><a href="https://store.steampowered.com/app/828900/The_Stillness_of_the_Wind/">The Stillness of the Wind</a></strong> (1hr) - A farming simulator where an old woman tends a farm alone, while receiving increasingly worrisome letters from her departed family. Not really my sort of game, and I found the controls clunky.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">February 20, 2026</span>
+  <h4><a href="/blog/2026/02/ai-coding-wk2.html">AI Coding Week 2</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Claude.html">Claude</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Week Two of testing out Claude code is complete (see <a href="/blog/2026/02/ai-coding-wk1.html">week 1 here</a>). Actually, the week ended on Wednesday when my weekly quota ended. That is despite not using it on Saturday at all, and only a little on Sunday. The 7 quota seems to be more like a 3 day quota. I wonder if that is a sales technique?</p>
+
+<p>This (half) week I tried out creating a greenfield project. A simple non-graphical web game that has little commercial prospects, so I don’t care how it goes. Claude just finished a prototype in its allotted time, shaking out a few issues - a worthwhile result.</p>
+
+<p>First I asked it to help out with designing the system. I gave it a couple of paragraphs describing the game and some technical constraints. It then asked long series of very good questions before outputting some design docs and an implementation plan. It mostly understood the brief, and the plan was decent. I was very impressed with this stage, I would happily use Claude again help the design and planning phase of development. The main benefit is that I had Claude log all its decisions and work. Now I have a complete list of ideas, alternatives and the reasons decisions were made - something I’m usually too lazy to bother with (and then regret later).</p>
+
+<p>Then I had Claude work step-by-step (24 steps in the plan) in development. It ran out of quota on the last step (online deployment), but I can run it locally so its not too bad. I looked a little at the code produced, but apart from code duplication and superfluous config, it looked ok. So I mostly let it do its own thing. Often it would find its own mistakes, eventually.</p>
+
+<p>The end result is… decent. Very simple gameplay and a frontend that is “backend developer” quality (so the same as me). It is largely what I asked it to do. I haven’t found any bugs, but do have a long list of improvements and ideas. Thus, I would declare it a successful prototype. Claude produced more than I could have done in 3 days for sure, and probably more than I could do in a solid week’s work. Although there are a few things I would have improved along the way, so I like to think my quality would be higher.</p>
+
+<p>There are two big issues I see:</p>
+
+<ul>
+  <li>Quota limits: At first I thought this week it was getting more done considering the quota used. However, it just seems to be small projects (such as the initial greenfield work) result in a smaller context, and thus lower quota usage. I’m not sure what the solution is. Maybe break projects into smaller components. Maybe avoid long running sessions (don’t do more than a couple of compactions). Some experimentation is required.</li>
+  <li>It also makes me want to let it free reign - or as Claude calls it, YOLO mode! Although I’m way to scared and careful with my data to allow it. I’ll try looking at isolated environments like Claude Code Web or Sprites.io to see if they work well enough.</li>
+</ul>
+
+<p>Next week I’ll try getting Claude to create something in Godot (maybe a client for this week’s game). If it can do that then I can see this being useful, despite the limitations.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">February 13, 2026</span>
+  <h4><a href="/blog/2026/02/ai-coding-wk1.html">AI Coding Week 1</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Claude.html">Claude</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>In the last couple of months I have been hearing increasingly positive reviews on LLM coding assistants. I gave the LLM’s a quick try almost a year ago (for free) and was not particularly impressed. However, the buzz now is they have massively improved and that the business of coding has changed. Being curious, I signed up for a month of Claude Code Pro to see if this view has any merit. I’ll aim to write up my thoughts at the end of each week - this is week 1.</p>
+
+<p>I should begin by saying this post is not written by LLM in any way. Nor are any of the posts in this blog (so far at least).</p>
+
+<p>Before starting I read many posts with advice about how to get the most of AI assistants (for examples, see <a href="https://blog.silennai.com/claude-code">here</a>, <a href="https://gist.github.com/david-crespo/5c5eaf36a2d20be8a3013ba3c7c265d9">here</a> and <a href="https://simonwillison.net/2025/Mar/11/using-llms-for-code/">here</a>). They often talk about the benefits of planning and constraining LLMs with testing harnesses and linting tools to guide its work. Thus I decided to start by reviewing an existing Scala project containing a library of code useful in many of my game projects. It had &gt;75% test coverage and linters already setup, plus a compiler option set to break the build on warnings (not just errors). So I set Claude to work reviewing the code, fixing bugs and suggesting improvements.</p>
+
+<p>My impression was “damn, this really works.” It has fixed around 30 issues or improvements it found in the code. Most were minor, but a couple were embarrassing bugs. There were also 2 false positives - things it said were bugs initially, but on further investigation (by Claude) turned out not to be bugs. I also set it to improve test coverage, and it did so sensibly to over 85%. I reviewed closely every line added, removed or updated. Most of the fixes were small and were committed unchanged, a couple of the larger ones needed some changes to better match my (functional) style.</p>
+
+<p>Overall, based on my experience in the industry, Claude acted like a good and attentive junior developer. It went through and diligently found bugs, long after my eyes would have glazed over. I had a comment “// TODO: nasty hack” and it found a 1 line fix (replacing my 3 lines) in a part of the Standard Scala library I didn’t know about - that impressed me. At first it would miss some things, or have trouble working out parts of the project (like the coverage system). However, after updating its config it worked much better. The main reason I describe it as junior is because it largely offered no pushback or initiative. It always agreed with me and told me I was right (unlikely :). It did exactly what I asked and only that. Probably this is by design, and maybe because it was working in an existing project. It also had a tendency to produce procedural code, which doesn’t fit a functional language like Scala. Still it definitely provided value and at a cost orders of magnitude below an actual junior dev.</p>
+
+<p>Still for a small independent dev like me, cost is the main issue with Claude. Or at least, the amount of usage for the cost. Claude gives a 5-hour and 7 day quota. I regularly hit my 5-hour quota after a hour, and always before the 2 hour mark. My 7-day quota was reached over a day before the deadline. This is despite trying a few tricks to keep the usage low, like downgrading the effort in config. I also add a status line giving continuous notice of usage and what the cost would be if I allowed Claude to exceed its quota. I’m very happy going over quota is off by default - the non-plan costs rise fast and quickly exceed any reasonable budget I would allow. I will have to watch this closely, otherwise it will severely restrict what is possible.</p>
+
+<p>Overall I am impressed. It’s not perfect, but definitely useful. It has made me think about my design philosophy, rather than being completely focussed on implementation details. Next week, when my quota resets, I’ll give it a greenfield project and see how it handles that.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">January 10, 2026</span>
   <h4><a href="/blog/2026/01/link-blog.html">Link Blog 3</a></h4> 
   Tags: 
@@ -179,96 +267,10 @@
   </div>
   <hr/>
 
-  <span class="date">January  5, 2026</span>
-  <h4><a href="/blog/2026/01/goals.html">Goals 2026</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Goals.html">Goals</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>So how did I go with <a href="/blog/2025/01/goals.html">last year’s goals</a>?</p>
-
-<ul>
-  <li><strong>Return to a decent level of fitness and strength</strong>: Partial success. I have started indoor cycling and my aerobic fitness is improving. However, I have barely gone to the gym at all this year.</li>
-  <li><strong>Improve Spanish</strong>: Achieved, at least as far as practicing almost every day. I think I am better, but can’t be certain.</li>
-  <li><strong>Start Ci2D</strong>: Started, but barely. So far it’s just a proof that Godot can meet my needs.</li>
-  <li><strong>Modelling for 3D printing</strong>: Nope, nothing. Also seems less important now. I have too many unprinted models and a large grey pile of shame. There is no need to create more.</li>
-  <li><strong>Read books</strong>: Achieved. The goal was met with a fortnight to go, and I made it explicitly because there was a target to reach. I have read some good books this year, and a couple that were not for me, but enjoyed the process of reading all of them. I will definitely try this again.</li>
-</ul>
-
-<p>For the coming year I’ve decided to be more specific and less ambitious in my goals (following the success of last year’s <strong>Read books</strong> goal). I don’t want achieving a goal to be a struggle, and I want measurable results. They should be a starting point for a better life. The more aspirational or vague things I would like to do are now in a separate list. I won’t feel bad if I don’t even start them.</p>
-
-<p>Goals:</p>
-
-<ul>
-  <li><strong>Read 12 books</strong>: Worked well last year, let’s try it again.</li>
-  <li><strong>Read social media less than 10 minutes/day on 300+ days</strong>: I have found myself spending increasing amounts of time on various sorts of social media. I would set this to 0, but unfortunately some groups and people are only contactable through these platforms. So 10 minutes should be more than enough to discover/organise with them. This limit also includes YouTube shorts/clips. It does not include news, but not sure what to do with the overlap (as much of modern news output is dross). I’ll have to work that out. I already had 2 days this year (out of 5!) where I exceeded this limit, so will have to improve.</li>
-  <li><strong>105 exercise sessions</strong>: At this time the main thing is just to keep exercising regularly. This is 2 sessions/week, enough to keep momentum. A bit more and there should be improvement.</li>
-  <li><strong>Practice Spanish for 10+ minutes/day</strong>: About what I already do. As part of this I should try moving away from Duolingo, I am find the gains there slowing. I need to practice listening and grammar drills more than that site allows (on their free program).</li>
-</ul>
-
-<p>Aspirations:</p>
-
-<ul>
-  <li><strong>Sit Less</strong>: At the start of last year my desk chair broke and I replaced it with an ergonomic office chair. It works, too well! Now I sit a lot more and for longer. There is a correlation between sitting for extended periods and my back aching or legs being stiff. I should make better use of my sit/stand desk, and limit sitting to 30 minutes or so at a time.</li>
-  <li><strong>Learn Python; try AI coding; general programming</strong>: Just code for fun.</li>
-  <li><strong>Paint gray pile of shame</strong>: Painting minis takes much longer than I expected. It is very easy to print faster than I can paint, and so now I have 10+ Armada, 10+ X-wing, and nearly 100 Battletech minis waiting for paint, plus lots of tokens and terrain. I should work through it as much as possible (not all of it, realistically there is more than a year’s worth there).</li>
-  <li><strong>CI2D demo</strong>: Rather than create full games, I will now aim to create demos, and see later which ones are worth pursuing.</li>
-  <li><strong>Catch up on old blog threads</strong>: There are a bunch of notes for blog posts yet to be written. I haven’t written about my time in KL or Valencia. My work history series stops in 2005. These should be continued before the memory fades (if that hasn’t happened already).</li>
-  <li><strong>Start learning Mandarin</strong>: I started learning Mandarin this year for a few weeks on Duolingo, but then they changed the way the site worked so that it became unreasonably hard to do more than one course. So Mandarin was given up in favour of continuing Spanish.</li>
-  <li><strong>Play 5 boardgames at least 5 times</strong>: Almost made this in 2024 without trying. With a bit of attention it should be easy and fun. Online plays count.</li>
-</ul>
-
-  </div>
-  <hr/>
-
-  <span class="date">January  1, 2026</span>
-  <h4><a href="/blog/2026/01/somewhere-else.html">Somewhere Else</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/General.html">General</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>“I hope someone else tries it”, is something I think regularly with some of the less orthodox ideas suggested for government policy. Despite being interesting, they mostly they never happen anywhere but if they do I would prefer the first attempt to not be where I’m living. These are the kind of things that are unlikely to work due to unforeseen consequences, at least on first attempt. However, if they did work, could be hugely beneficial. For example, I hope someone tries a <a href="https://en.wikipedia.org/wiki/Universal_basic_income">Universal Basic Income</a> at the national level. However due to a large amount of cynicism, I would prefer Australia is not first.</p>
-
-<p>Anyway, <a href="https://en.wikipedia.org/wiki/Online_Safety_Amendment">a social media ban for kids</a>, I hope someone else tries it. Oh well.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">December 12, 2025</span>
-  <h4><a href="/blog/2025/12/bye.html">Bye</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Concealed Intent.html">Concealed Intent</a>, 
-    
-      <a class="post" href="/blog/tag/Space Hex Duel.html">Space Hex Duel</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>No, I’m not leaving, nor is this site. However some issues mean that my games will appear a bit less online.</p>
-
-<p>The big issue is Itch.io. As of writing this, it has been 198 days since I initiated a payout for sales of my games (the first time I have done so on Itch), and it is still listed as “In Review”. The website says payouts should take 10-14 days. I created a support issue after 20 days and updated it after 34. After 50 days they said I need to update my tax information, which I did the same day (and let them know). Some weeks later the new tax info was listed as validated, but 100 days after that, still nothing has appeared.</p>
-
-<p>I now have no trust in Itch.io. I have removed my games from sale there and they, nor any other game I control, will be available for sale there in the future (previously purchased copies will still accessible). Another addition to the <a href="/blog/2024/05/bad_companies.html">“never again”</a> company list.</p>
-
-<p>At the same time I requested payouts from the other online stores I use. Humble paid out in their stated timeframe without issue - good for them! Steam had some problems with my company name (despite the exact same name being fine for the previous payout). I had to change it to my actual name and then the payout went through. Annoying, but forgivable given their support was prompt and helpful. Although a month later the listed name throughout their system was changed back to the original company name - strange.</p>
-
-<p>There was a similar bureaucratic tax issue with the hosting provider for online Concealed Intent games. However, I found their support especially unhelpful. I don’t want to get into the specifics, but I was left wondering why I am paying these people (Linode, now a part of Akamai). Moving to another provider would be difficult, so I checked the state of the online server. There have been 2 connections to the server in the last 12 months. Two game requests in the last 3 years. The last actual online game was played in 2021! I’m thinking of shutting it down and so have removed mention of online play on the sales pages.</p>
-
-<p>As part of this Concealed Intent is not going on sale for the foreseeable future. I expect this means sales will go to 0. So far so good, the last copy sold was during the last sale in March. It has been 10 years since the game was released, time to let it rest.</p>
-
-<p><em>Update 1/1/2026:</em> A copy of Concealed Intent was sold on Steam at full price (!) in November. Something that hasn’t happened for some time. Now I feel obliged to keep the servers running a little longer. Itch payout is still marked as “In Review”, so nothing changes there.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 1 of 93 
+  Page 1 of 94 
   
 
   
@@ -287,6 +289,18 @@
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2026/02/itch-games.html">Itch Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/ai-coding-wk2.html">AI Coding Week 2</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/ai-coding-wk1.html">AI Coding Week 1</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2026/01/link-blog.html">Link Blog 3</a> 
@@ -314,18 +328,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2025/12/dwellingup.html">Dwellingup</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2025/06/link-blog.html">Link Blog 2</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2025/05/bunbury.html">Bunbury</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2025/04/sri-lanka.html">Sri Lanka</a> 
   </li>  
 
 </ul>

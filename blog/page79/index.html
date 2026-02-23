@@ -38,6 +38,131 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">November 15, 2009</span>
+  <h4><a href="/blog/2009/11/scientists-have-discovered.html">Scientists have discovered...</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/General.html">General</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Time for a pet peeve. Why do people say “scientists” as if they are some
+homogeneous group? Nearly every morning I hear reporters say “scientists
+have discovered that blah, blah, blah” during their token science story.
+It seems to be a lazy way to avoid saying biologist, astronomer,
+chemist, physicist, etc. Now I can’t claim to be a scientist of any
+description (I dropped out of a PhD in Computer Science). Professionally
+I’m more of an engineer nowadays (although that is another category
+occasionally lumped into the media’s science bucket). However, I know a
+few PhDs or lecturers in science subjects and there is a fairly large
+difference between the things they do, so it’s not that hard to broadly
+differentiate them into categories more specific than scientist. Asking
+them is often a good start! Also, there is rarely a mention of where or
+how the work was done. I personally would be more impressed by a
+statistically significant result in a double blind study from MIT than a
+report from the Pond’s Institute (although TV commercials would suggest
+the Pond’s Institute has nicer labs).</p>
+
+<p>Not convinced? Try this comparison. Next time you listen to the sport
+section of the news replace any mention of a specific game with “sport”
+and the players with “sports players”, then just remove any mention of
+specific teams. “Last night in sport, a group of sports players from
+Manchester beat 3-2 a bunch of sport players from London.” Not very
+informative.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">November 14, 2009</span>
+  <h4><a href="/blog/2009/11/the-weather-archive-is-not-mor.html">The weather archive is no more</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
+    
+      <a class="post" href="/blog/tag/Weather.html">Weather</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Today I shut down my historical weather website. It continually broke
+because BBC Backstage Weather kept changing the format of their RSS
+feed. It became too much effort to maintain the site in a working state,
+so it had to go. Since there was only ever 943 hits on it and the vast
+majority of those were me, I don’t feel too bad. It served its purpose
+and I learnt quite a bit from writing it. In any case, I should focus my
+limited spare time on more useful projects.</p>
+
+<p>I have kept weather_report up in case anyone wants to take it up and
+use it, but they would have to fix it for the new RSS format first.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">November  8, 2009</span>
+  <h4><a href="/blog/2009/11/models-and-events.html">Models and Events</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I have been thinking that software development is all about models and
+events. By models I mean <a href="http://en.wikipedia.org/wiki/Domain_model">domain
+models</a>, and by events I’m
+referring to an <a href="http://en.wikipedia.org/wiki/Event-driven_architecture">event-driven
+architecture</a>.
+Not quite the <a href="http://stuffinvestmentbankerslike.blogspot.com/2008/06/40-models-and-bottles.html">models and
+bottles</a>
+of Investment Banking.</p>
+
+<p>The domain model is where the application’s data lives. It is the model
+part of the
+<a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a>
+pattern. For example, in a system that manipulates songs, a song would
+be part of the domain model, together with the song’s name, artist,
+album etc (in
+<a href="http://en.wikipedia.org/wiki/Object-oriented_programming">Object-oriented</a>
+systems there would be a song class containing these attributes). The
+more time I spend coding, the more I find that the future course of a
+project is directly related to how its domain model was conceived. Using
+MVC, changing the model later can involve a great deal of work if the
+model touches everything else. Thus usually some time is spent on
+working out the model and refactoring it if necessary. Indeed, I
+remember once describing a less than satisfying job as drawing pictures
+all day, meaning
+<a href="http://en.wikipedia.org/wiki/Unified_Modeling_Language">UML</a> mainly for
+the domain (I would have preferred to be coding).</p>
+
+<p>I have a few tips for domain models. Follow the ideal of MVC, that is
+keep view and controller logic out of the model. Also, try to have <a href="http://blog.kineticweb.com/articles/2007/06/01/skinny-controller-fat-model">fat
+models and skinny
+controllers</a>
+(this is a <a href="http://rubyonrails.org/">Ruby On Rails</a> idea, but I find it
+works well in general). Keep model classes immutable if possible.
+Lastly, write your own containers (containing and hiding actual
+SDK-based containers) for easy aggregation functions (and
+parallelising). None of this is particularly controversial, few people I
+have worked with would disagree.</p>
+
+<p>What I have recently found surprising is that people do disagree with
+using an event based architecture where I feel it would work well.
+Event-driven systems are ones where changes to domain state are packaged
+as events and passed to listeners of those events through some form of
+callback. This helps promote a
+<a href="http://en.wikipedia.org/wiki/Loose_coupling">loosely-coupled</a> design,
+something else I would strongly encourage. Also recommended is keeping
+the events at the lowest level appropriate in the model (a rule I’ve
+broken a few times). For instance, if you have an album which contains
+songs, a “songAdded” event would go on the album listeners, but a
+“songUpdated” event should fire on the song’s listeners. Other people
+seem to prefer a system of loops polling for changes (or something
+similar). I find their code far more complicated. Event-driven systems
+are simple to write, simple to understand and you only need to handle
+the events you are interested in. I would be interested to hear what
+other experienced programmers have found works.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">October  5, 2009</span>
   <h4><a href="/blog/2009/10/java-enumerations-sometimes-co.html">Java Enumerations (Sometimes) Considered Harmful</a></h4> 
   Tags: 
@@ -167,175 +292,10 @@ methodology</a>.</p>
   </div>
   <hr/>
 
-  <span class="date">September 11, 2009</span>
-  <h4><a href="/blog/2009/09/site-stats.html">Site Stats</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Meta.html">Meta</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I want to talk about this blog. Yes, it has been said <a href="http://www.codinghorror.com/blog/archives/001282.html">Meta Is
-Murder</a>, and I
-generally agree with that post. However, I originally started this blog
-to motivate myself in my personal software development and learn about
-internet publishing. This post will be about the latter (in the form of
-this blog) and a later post will deal with the former.</p>
-
-<p>Since the first post 20 months ago on February 5th 2008, there have been
-71 posts on this blog. An average of 3.5 per month. There has been a
-single comment and a single trackback (although there have been many
-spam versions of both, but I deleted them). I also set up Google
-<a href="https://www.google.com/analytics/">Analytics</a> and
-<a href="http://www.google.com/adsense/">Adsense</a> to track visits. At first very
-few people visited the blog - 20 visitors in the first months, 3 of whom
-were me! Since then the number of visitors has slowly increased. As of
-midnight yesterday there have been a total of 14,000 unique vistors
-resulting in 19,000 page views. The below statistics are for the last
-month.</p>
-
-<p><img src="/assets/posts/meta/blogstats.jpg" width="550" alt="" /></p>
-
-<p>The most popular blog posts are the technical ones. Around 55% of the
-traffic comes to 3 pages: <a href="/blog/2008/03/installing-sphinx-ultrasphinx.html">Installing Sphinx &amp; Ultrasphinx on
-Windows</a>; <a href="/blog/2009/04/multiple-attachments-">Multiple
-Attachments with Validations In Rails with
-Paperclip</a> with-vali.html; and, the
-<a href="/projects/tooltips.html">Prototype Tooltip Library</a>. The rest of the
-top ten are also all technically based. People mainly find these pages
-through Google - a full 76% of visitors originate from a Google search.
-Note my specification of Google, all other search engines combined
-account for 1% of visits.</p>
-
-<p>One month stands out as particularly exceptional. After publishing
-<a href="/blog/2009/04/multiple-attachments-with-vali.html">Multiple Attachments with Validations In Rails with
-Paperclip</a> I sent an
-email to the <a href="http://railsenvy.com/">Ruby Envy</a> guys and they made a
-positive mention of the article (that was a real buzz). The result was
-immediate, noticeable and unfortunately short lived. The blog went from
-around 40 visits a day to over 300 in a single day. This is the only
-promotion of the blog I have done.</p>
-
-<p><img src="/assets/posts/meta/rubyenvy_boost.jpg" width="550" alt="" /></p>
-
-<p>So how much money does advertising on the blog generate? Not much. I
-have made a total of £3.09 through 20 clicks on ads. This is a Click
-Through Rate of 0.11, which is about right as I’m told one should expect
-a rate around 0.1. Last month was the best month ever - making £0.81.
-Long may that continue. At that rate I will be able to cash out the
-money earned in just under 6 years (minimum balance of £60 before
-actually being paid any money).</p>
-
-<p>The short lesson is write technical articles that are easily found
-through Google and self-promote.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">August 31, 2009</span>
-  <h4><a href="/blog/2009/08/options-in-software-architectu.html">Options in Software Architecture</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Software Project Management.html">Software Project Management</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I recently listened to a <a href="http://www.se-radio.net/">Software Engineering
-Radio</a> podcast on <a href="http://www.se-radio.net/podcast/2009-08/episode-142-sustainable-architecture-kevlin-henney-and-klaus-marquardt">Sustainable
-Architecture</a>.
-It was an interesting listen despite much of it being given over to
-discussion of well known and generally good software architecture
-practices, such as <a href="http://en.wikipedia.org/wiki/Loose_coupling">loosely
-coupled</a> design. It also
-spent a little too much time on defining software architecture -
-everyone defines terms to suit their own needs.</p>
-
-<p>However, the podcast did raise a couple of good points that anecdotally
-feel right and I hadn’t heard before. It talked about an option space
-when designing software systems. That is, that there are a number of
-ways to design and implement a system. Many developers come up with one
-way to build a system based on the requirements; then stop designing and
-start building. This podcast advises looking at multiple ways to solve
-the problem, thus allowing a determination of which parts of the system
-will be hard to change or replace at a later date. How costly a decision
-is to change should be a major determinant of which direction to take.
-The podcast suggests the result will be easier to change in response to
-unknown future demands while at the same time not requiring possibly
-unnecessary effort in the present (to handle these unknown future
-changes). Interesting.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">August 29, 2009</span>
-  <h4><a href="/blog/2009/08/java-threading-is-scary.html">Java Threading is Scary</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Recently I have been thinking hard about threading in a Java project of
-mine, and it definitely requires a great deal of hard thinking. When I
-started working with Java there weren’t any native threads, so it was
-just easier to make everything single threaded as the performance gain
-was minimal. However, as time has passed more and more of my code both
-at work and home has needed to work multi-threaded. As I learn more
-about Java threading, I realise how wrong I was doing it before - a
-cycle repeated a few times in the last 12 years. It was only after
-reading the great book <a href="http://jcip.net/">Java Concurrency In Practice</a>
-a few years ago that I realised that in Java “locking is not just about
-mutual exclusion; it is also about memory visibility.” I can only hope
-that this is the last such cycle, but realise it’s probably not.</p>
-
-<p>Talking to other developers there seems to be a standard progression in
-Java multi-threaded programming skill:</p>
-
-<ol>
-  <li>Just write single threaded programs</li>
-  <li>Write multi-threaded programs by marking everything synchronized</li>
-  <li>Use wait() and notifyAll() to build up “threadsafe” collection
-classes</li>
-  <li>Realise your “thread-safe” collection classes aren’t particularly
-thread-safe and try using <a href="http://en.wikipedia.org/wiki/Immutable_object">immutable domain
-objects</a> with
-stateless controllers to work around the problem</li>
-  <li>Trust in the <a href="http://java.sun.com/j2se/1.5.0/docs/api/index.html?">Java API concurrent
-utilities</a>
-java/util/concurrent/package-summary.html, with its collections,
-locks and executors</li>
-  <li>Realise that these classes don’t solve all the problems and start
-thinking hard about all the issues in your code</li>
-  <li>Become very scared about Java threading</li>
-</ol>
-
-<p>I think the next step may be using another language that doesn’t allow
-shared state. <a href="http://www.scala-lang.org/node/242">Scala uses an Actor
-model</a> to asynchronously pass
-messages between threads. There is no shared memory so no threading
-problems. This sounds like a good way to go, but I still work in Java
-for most of my programming (not many Scala or Erlang jobs around!).</p>
-
-<p>This whole situation reminds me of <a href="http://en.wikipedia.org/wiki/Memory_management">memory
-management</a> in C<span class="underline"></span>. There were simple rules to follow to reduce
-memory leakage, but the problem was hard to completely solve (especially
-to a newbie programmer) and normally your program still leaked. I
-remember leaning heavily on
-<a href="http://en.wikipedia.org/wiki/IBM_Rational_Purify">Purify</a>. Then Java
-came along with its automatic memory management and the problem largely
-disappeared. Developers could focus on the business logic of their code
-rather than housekeeping. Hopefully a similar thing will happen with
-Java threading.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 79 of 93 
+  Page 79 of 94 
   
       
         <a href="/blog/page78">Previous</a>
@@ -358,6 +318,18 @@ Java threading.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2026/02/itch-games.html">Itch Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/ai-coding-wk2.html">AI Coding Week 2</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/ai-coding-wk1.html">AI Coding Week 1</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2026/01/link-blog.html">Link Blog 3</a> 
@@ -385,18 +357,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2025/12/dwellingup.html">Dwellingup</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2025/06/link-blog.html">Link Blog 2</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2025/05/bunbury.html">Bunbury</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2025/04/sri-lanka.html">Sri Lanka</a> 
   </li>  
 
 </ul>

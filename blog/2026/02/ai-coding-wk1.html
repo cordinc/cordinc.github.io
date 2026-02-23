@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>AI Coding Week 1</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>February 13, 2026</b>
+<h4>AI Coding Week 1</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Claude.html">Claude</a>
+    
+<br/><br/>
+<p>In the last couple of months I have been hearing increasingly positive reviews on LLM coding assistants. I gave the LLM’s a quick try almost a year ago (for free) and was not particularly impressed. However, the buzz now is they have massively improved and that the business of coding has changed. Being curious, I signed up for a month of Claude Code Pro to see if this view has any merit. I’ll aim to write up my thoughts at the end of each week - this is week 1.</p>
+
+<p>I should begin by saying this post is not written by LLM in any way. Nor are any of the posts in this blog (so far at least).</p>
+
+<p>Before starting I read many posts with advice about how to get the most of AI assistants (for examples, see <a href="https://blog.silennai.com/claude-code">here</a>, <a href="https://gist.github.com/david-crespo/5c5eaf36a2d20be8a3013ba3c7c265d9">here</a> and <a href="https://simonwillison.net/2025/Mar/11/using-llms-for-code/">here</a>). They often talk about the benefits of planning and constraining LLMs with testing harnesses and linting tools to guide its work. Thus I decided to start by reviewing an existing Scala project containing a library of code useful in many of my game projects. It had &gt;75% test coverage and linters already setup, plus a compiler option set to break the build on warnings (not just errors). So I set Claude to work reviewing the code, fixing bugs and suggesting improvements.</p>
+
+<p>My impression was “damn, this really works.” It has fixed around 30 issues or improvements it found in the code. Most were minor, but a couple were embarrassing bugs. There were also 2 false positives - things it said were bugs initially, but on further investigation (by Claude) turned out not to be bugs. I also set it to improve test coverage, and it did so sensibly to over 85%. I reviewed closely every line added, removed or updated. Most of the fixes were small and were committed unchanged, a couple of the larger ones needed some changes to better match my (functional) style.</p>
+
+<p>Overall, based on my experience in the industry, Claude acted like a good and attentive junior developer. It went through and diligently found bugs, long after my eyes would have glazed over. I had a comment “// TODO: nasty hack” and it found a 1 line fix (replacing my 3 lines) in a part of the Standard Scala library I didn’t know about - that impressed me. At first it would miss some things, or have trouble working out parts of the project (like the coverage system). However, after updating its config it worked much better. The main reason I describe it as junior is because it largely offered no pushback or initiative. It always agreed with me and told me I was right (unlikely :). It did exactly what I asked and only that. Probably this is by design, and maybe because it was working in an existing project. It also had a tendency to produce procedural code, which doesn’t fit a functional language like Scala. Still it definitely provided value and at a cost orders of magnitude below an actual junior dev.</p>
+
+<p>Still for a small independent dev like me, cost is the main issue with Claude. Or at least, the amount of usage for the cost. Claude gives a 5-hour and 7 day quota. I regularly hit my 5-hour quota after a hour, and always before the 2 hour mark. My 7-day quota was reached over a day before the deadline. This is despite trying a few tricks to keep the usage low, like downgrading the effort in config. I also add a status line giving continuous notice of usage and what the cost would be if I allowed Claude to exceed its quota. I’m very happy going over quota is off by default - the non-plan costs rise fast and quickly exceed any reasonable budget I would allow. I will have to watch this closely, otherwise it will severely restrict what is possible.</p>
+
+<p>Overall I am impressed. It’s not perfect, but definitely useful. It has made me think about my design philosophy, rather than being completely focussed on implementation details. Next week, when my quota resets, I’ll give it a greenfield project and see how it handles that.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2026/02/itch-games.html">Itch Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/ai-coding-wk2.html">AI Coding Week 2</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/ai-coding-wk1.html">AI Coding Week 1</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/01/link-blog.html">Link Blog 3</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/01/boardgames.html">Boardgames of 2025</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/01/goals.html">Goals 2026</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/01/somewhere-else.html">Somewhere Else</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/12/bye.html">Bye</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/12/new-year-new-games.html">New Year, New Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/12/dwellingup.html">Dwellingup</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

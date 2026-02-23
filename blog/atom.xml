@@ -3,13 +3,86 @@
     <title type="text" xml:lang="en">Cordinc Blog</title>
     <link type="application/atom+xml" href="http://www.cordinc.com/blog/atom.xml" rel="self"/>
     <link type="text" href="http://www.cordinc.com" rel="alternate"/>
-    <updated>2026-01-15T14:58:43+08:00</updated>
+    <updated>2026-02-23T09:49:52+08:00</updated>
     <id>http://www.cordinc.com</id>
     <author>
         <name>Cordinc Blog</name>
     </author>
     <rights>Copyright (c) 2013-2020 Cordinc Blog</rights>
 
+    
+    <entry>
+        <title>Itch Games</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2026/02/itch-games.html/"/>
+        <published>2026-02-22T00:00:00+08:00</published>
+        <updated>2026-02-22T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2026/02/itch-games.html/</id>
+        <content type="html">&lt;p&gt;Given my &lt;a href=&quot;/blog/2025/12/bye.html&quot;&gt;annoyance at Itch.io&lt;/a&gt; (they still have not paid me!) I thought it time to work through my backlog of games there, so I can abandon my account. No links to Itch (is &lt;a href=&quot;https://en.wikipedia.org/wiki/PageRank&quot;&gt;PageRank&lt;/a&gt; still active?).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/742520/Astrologaster/&quot;&gt;Astrologaster&lt;/a&gt;&lt;/strong&gt; (4 hrs) - A well-made story game of an astrologer trying to become a doctor in 16th century London. Based partially on real people/events! The story seems linear, and a little too long. By the end I was just choosing diagnoses at random. It didn’t seem to make much difference, the story continued the way it wanted. I liked the humour and historicity (I looked a few people/events up on Wikipedia). Mildly interesting game elevated by surprisingly good production values.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/578720/A_Morticians_Tale/&quot;&gt;A Mortician’s Tale&lt;/a&gt;&lt;/strong&gt; (1 hr) - Very short (I finished in an hour) story game about what happens to our bodies after death. Partly epistolary, part point and click, the story is very linear, but that doesn’t matter as it’s finished quickly (the secret to good story games in my opinion). A good game that meets its ambitions.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/654220/Flash_Point_Fire_Rescue/&quot;&gt;Flash Point&lt;/a&gt;&lt;/strong&gt; (1 hr) - Computer adaptation of the cooperative boardgame of putting out fires and rescuing people. It felt clumsy, repetitive and random. I just couldn’t get into it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/668290/From_Orbit/&quot;&gt;From Orbit&lt;/a&gt;&lt;/strong&gt; (2hrs) - A roguelike RTS, that sees your spaceship trying to escape from “something” (not clear what) by travelling through a series of planets. On each planet you have to battle waves of enemies while collecting resources. Over time you can power up your crew and gain new crew members. At least I think that is the game - there is no tutorial or instructions so I just had to work it out as I went. A bit clunky and repetitive, this feels more like a decent beginning of the game development process rather than a finished product.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/656400/Attrition_Tactical_Fronts/&quot;&gt;Attrition: Tactical Fronts&lt;/a&gt;&lt;/strong&gt; (2hrs) - I feel for the developers of this fast turn-based tactics game set in WW1. It reminds me of my game in that there is something here, but the game just doesn’t quite get there. It seems to be online multiplayer focussed, but since it is 7 years old, no one is around to play. I went through just over 2/3rds of the solo campaign and faced no significant challenge, winning all easily - largely due to the AI making regular game ending mistakes. Entertaining for a short time.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/1166290/Death_and_Taxes/&quot;&gt;Death and Taxes&lt;/a&gt;&lt;/strong&gt; (4hrs) - I loved the idea of this point-and-click story game where you play as a Grim Reaper (apparently there are many of them) choosing who should die in a bureaucratic office run by Fate. It also works well in practice too. At first I wasn’t sure what I was supposed to be doing, but soon discovered that is part of the game. I played through once, enjoyed it, and don’t plan to do so again despite some replayability built in. Very good.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/828900/The_Stillness_of_the_Wind/&quot;&gt;The Stillness of the Wind&lt;/a&gt;&lt;/strong&gt; (1hr) - A farming simulator where an old woman tends a farm alone, while receiving increasingly worrisome letters from her departed family. Not really my sort of game, and I found the controls clunky.&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>AI Coding Week 2</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2026/02/ai-coding-wk2.html/"/>
+        <published>2026-02-20T00:00:00+08:00</published>
+        <updated>2026-02-20T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2026/02/ai-coding-wk2.html/</id>
+        <content type="html">&lt;p&gt;Week Two of testing out Claude code is complete (see &lt;a href=&quot;/blog/2026/02/ai-coding-wk1.html&quot;&gt;week 1 here&lt;/a&gt;). Actually, the week ended on Wednesday when my weekly quota ended. That is despite not using it on Saturday at all, and only a little on Sunday. The 7 quota seems to be more like a 3 day quota. I wonder if that is a sales technique?&lt;/p&gt;
+
+&lt;p&gt;This (half) week I tried out creating a greenfield project. A simple non-graphical web game that has little commercial prospects, so I don’t care how it goes. Claude just finished a prototype in its allotted time, shaking out a few issues - a worthwhile result.&lt;/p&gt;
+
+&lt;p&gt;First I asked it to help out with designing the system. I gave it a couple of paragraphs describing the game and some technical constraints. It then asked long series of very good questions before outputting some design docs and an implementation plan. It mostly understood the brief, and the plan was decent. I was very impressed with this stage, I would happily use Claude again help the design and planning phase of development. The main benefit is that I had Claude log all its decisions and work. Now I have a complete list of ideas, alternatives and the reasons decisions were made - something I’m usually too lazy to bother with (and then regret later).&lt;/p&gt;
+
+&lt;p&gt;Then I had Claude work step-by-step (24 steps in the plan) in development. It ran out of quota on the last step (online deployment), but I can run it locally so its not too bad. I looked a little at the code produced, but apart from code duplication and superfluous config, it looked ok. So I mostly let it do its own thing. Often it would find its own mistakes, eventually.&lt;/p&gt;
+
+&lt;p&gt;The end result is… decent. Very simple gameplay and a frontend that is “backend developer” quality (so the same as me). It is largely what I asked it to do. I haven’t found any bugs, but do have a long list of improvements and ideas. Thus, I would declare it a successful prototype. Claude produced more than I could have done in 3 days for sure, and probably more than I could do in a solid week’s work. Although there are a few things I would have improved along the way, so I like to think my quality would be higher.&lt;/p&gt;
+
+&lt;p&gt;There are two big issues I see:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Quota limits: At first I thought this week it was getting more done considering the quota used. However, it just seems to be small projects (such as the initial greenfield work) result in a smaller context, and thus lower quota usage. I’m not sure what the solution is. Maybe break projects into smaller components. Maybe avoid long running sessions (don’t do more than a couple of compactions). Some experimentation is required.&lt;/li&gt;
+  &lt;li&gt;It also makes me want to let it free reign - or as Claude calls it, YOLO mode! Although I’m way to scared and careful with my data to allow it. I’ll try looking at isolated environments like Claude Code Web or Sprites.io to see if they work well enough.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Next week I’ll try getting Claude to create something in Godot (maybe a client for this week’s game). If it can do that then I can see this being useful, despite the limitations.&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>AI Coding Week 1</title>
+        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2026/02/ai-coding-wk1.html/"/>
+        <published>2026-02-13T00:00:00+08:00</published>
+        <updated>2026-02-13T00:00:00+08:00</updated>
+        <id>http://www.cordinc.com/blog/2026/02/ai-coding-wk1.html/</id>
+        <content type="html">&lt;p&gt;In the last couple of months I have been hearing increasingly positive reviews on LLM coding assistants. I gave the LLM’s a quick try almost a year ago (for free) and was not particularly impressed. However, the buzz now is they have massively improved and that the business of coding has changed. Being curious, I signed up for a month of Claude Code Pro to see if this view has any merit. I’ll aim to write up my thoughts at the end of each week - this is week 1.&lt;/p&gt;
+
+&lt;p&gt;I should begin by saying this post is not written by LLM in any way. Nor are any of the posts in this blog (so far at least).&lt;/p&gt;
+
+&lt;p&gt;Before starting I read many posts with advice about how to get the most of AI assistants (for examples, see &lt;a href=&quot;https://blog.silennai.com/claude-code&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;https://gist.github.com/david-crespo/5c5eaf36a2d20be8a3013ba3c7c265d9&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;https://simonwillison.net/2025/Mar/11/using-llms-for-code/&quot;&gt;here&lt;/a&gt;). They often talk about the benefits of planning and constraining LLMs with testing harnesses and linting tools to guide its work. Thus I decided to start by reviewing an existing Scala project containing a library of code useful in many of my game projects. It had &amp;gt;75% test coverage and linters already setup, plus a compiler option set to break the build on warnings (not just errors). So I set Claude to work reviewing the code, fixing bugs and suggesting improvements.&lt;/p&gt;
+
+&lt;p&gt;My impression was “damn, this really works.” It has fixed around 30 issues or improvements it found in the code. Most were minor, but a couple were embarrassing bugs. There were also 2 false positives - things it said were bugs initially, but on further investigation (by Claude) turned out not to be bugs. I also set it to improve test coverage, and it did so sensibly to over 85%. I reviewed closely every line added, removed or updated. Most of the fixes were small and were committed unchanged, a couple of the larger ones needed some changes to better match my (functional) style.&lt;/p&gt;
+
+&lt;p&gt;Overall, based on my experience in the industry, Claude acted like a good and attentive junior developer. It went through and diligently found bugs, long after my eyes would have glazed over. I had a comment “// TODO: nasty hack” and it found a 1 line fix (replacing my 3 lines) in a part of the Standard Scala library I didn’t know about - that impressed me. At first it would miss some things, or have trouble working out parts of the project (like the coverage system). However, after updating its config it worked much better. The main reason I describe it as junior is because it largely offered no pushback or initiative. It always agreed with me and told me I was right (unlikely :). It did exactly what I asked and only that. Probably this is by design, and maybe because it was working in an existing project. It also had a tendency to produce procedural code, which doesn’t fit a functional language like Scala. Still it definitely provided value and at a cost orders of magnitude below an actual junior dev.&lt;/p&gt;
+
+&lt;p&gt;Still for a small independent dev like me, cost is the main issue with Claude. Or at least, the amount of usage for the cost. Claude gives a 5-hour and 7 day quota. I regularly hit my 5-hour quota after a hour, and always before the 2 hour mark. My 7-day quota was reached over a day before the deadline. This is despite trying a few tricks to keep the usage low, like downgrading the effort in config. I also add a status line giving continuous notice of usage and what the cost would be if I allowed Claude to exceed its quota. I’m very happy going over quota is off by default - the non-plan costs rise fast and quickly exceed any reasonable budget I would allow. I will have to watch this closely, otherwise it will severely restrict what is possible.&lt;/p&gt;
+
+&lt;p&gt;Overall I am impressed. It’s not perfect, but definitely useful. It has made me think about my design philosophy, rather than being completely focussed on implementation details. Next week, when my quota resets, I’ll give it a greenfield project and see how it handles that.&lt;/p&gt;
+</content>
+    </entry>
     
     <entry>
         <title>Link Blog 3</title>
@@ -263,72 +336,6 @@
 &lt;p&gt;&lt;img src=&quot;/assets/posts/dwellingup/path.jpg&quot; alt=&quot;Hiking path in the forest&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/posts/dwellingup/river.jpg&quot; alt=&quot;Murray river in WA&quot; width=&quot;75%&quot; /&gt;&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Link Blog 2</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2025/06/link-blog.html/"/>
-        <published>2025-06-18T00:00:00+08:00</published>
-        <updated>2025-06-18T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2025/06/link-blog.html/</id>
-        <content type="html">&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://archive.is/aM9BA&quot;&gt;DeepMind CEO Says AGI Definition Has Been ‘Watered Down’&lt;/a&gt; (archive link to bypass the Bloomberg paywall). Hah, experience has shown me one can never be cynical enough. I was thinking &lt;a href=&quot;/blog/2024/11/intelligence.html&quot;&gt;something like this a few months ago&lt;/a&gt;. And more of the same here &lt;a href=&quot;https://techcrunch.com/2025/03/14/no-one-knows-what-the-hell-an-ai-agent-is/&quot;&gt;No one knows what the hell an AI agent is&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Interesting, &lt;a href=&quot;https://cacm.acm.org/opinion/life-lessons-from-the-first-half-century-of-my-career/&quot;&gt;Life Lessons from the First Half-Century of My Career&lt;/a&gt;. Some I agree with, some I don’t think are so important.&lt;/li&gt;
-  &lt;li&gt;I have noticed Windows, Google and my TV (among other things) getting worse over the last few years. Apparently there is a term for this now: &lt;a href=&quot;https://arstechnica.com/gadgets/2025/02/as-internet-enshittification-marches-on-here-are-some-of-the-worst-offenders/&quot;&gt;enshittification&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Don’t forget what firms do in the current chaos… &lt;a href=&quot;https://www.theguardian.com/australia-news/2025/mar/21/us-consumer-tech-joins-winemakers-film-studios-and-drug-companies-in-urging-trump-to-target-australia&quot;&gt;US Consumer Tech Joins Winemakers, Film Studios And Drug Companies In Urging Trump To Target Australia&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://howtomarketagame.com/2025/02/10/how-likely-are-you-to-overcome-a-failed-launch-so-youre-telling-me-theres-a-chance/&quot;&gt;Can you recover from a slow launch on Steam?&lt;/a&gt;. One for the gamedevs. A nice analysis that matches my experience. Basically, hit big at the start or you are done. Those comeback stories are incredibly rare.&lt;/li&gt;
-  &lt;li&gt;I’m paranoid about online security, so do this regularly: &lt;a href=&quot;https://techcrunch.com/2025/03/25/how-to-tell-if-your-online-accounts-have-been-hacked/&quot;&gt;How to tell if your online accounts have been hacked&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;A bit of better news. The &lt;a href=&quot;https://archive.md/hK7Di&quot;&gt;Hercalaneum scrolls are becoming easier to read&lt;/a&gt; (archive link to bypass the Economist paywall).&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Bunbury</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2025/05/bunbury.html/"/>
-        <published>2025-05-10T00:00:00+08:00</published>
-        <updated>2025-05-10T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2025/05/bunbury.html/</id>
-        <content type="html">&lt;p&gt;A couple of weeks after travelling to &lt;a href=&quot;/blog/2025/04/sri-lanka.html&quot;&gt;Sri Lanka&lt;/a&gt;, I went a few hours south to spend a long weekend in &lt;a href=&quot;https://en.wikipedia.org/wiki/Bunbury,_Western_Australia&quot;&gt;Bunbury&lt;/a&gt; and its surrounds. It is amazing how it becomes noticeably cooler and greener with such a short journey. Walking around Bunbury is easy and pretty, although you are finished quickly since the town is surprisingly small. There is one main street, a couple of malls and a few streets full of big box stores. Restaurant selection is limited. The farmers market is still a great food-only supermarket. Prices seemed largely the same as Perth. Overall it felt like a large successful country town, which I suppose it is.&lt;/p&gt;
-
-&lt;p&gt;Other places visited:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Donnybrook,_Western_Australia&quot;&gt;Donnybrook&lt;/a&gt; Apple Festival is very popular, it felt like there were thousands of visitors taking over this small town! And it does not seem to have much to do with apples - there was just a single stall selling apples (very tasty!) and few others selling “related” products. The event seems like a cross between a small agricultural show and and a large standard market.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Australind,_Western_Australia&quot;&gt;Australind&lt;/a&gt; felt like a commuter suburb. There was a nice Italian restaurant though (forgotten its name).&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Busselton&quot;&gt;Busselton&lt;/a&gt; has become a tourist town. Despite being much smaller, the main shopping street was nearly as large as Bunbury’s. However, the shops there felt like they were mostly for visitors.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Some photos from the trip are in a short slideshow &lt;a href=&quot;/slideshows/bunbury_25.html&quot;&gt;available here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/slideshows/bunbury_25.html&quot;&gt;&lt;img src=&quot;/assets/slideshow/bunbury_25/bunbury_main.png&quot; alt=&quot;&quot; title=&quot;Bunbury&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <title>Sri Lanka</title>
-        <link type="text/html" rel="alternate" href="http://www.cordinc.com/blog/2025/04/sri-lanka.html/"/>
-        <published>2025-04-15T00:00:00+08:00</published>
-        <updated>2025-04-15T00:00:00+08:00</updated>
-        <id>http://www.cordinc.com/blog/2025/04/sri-lanka.html/</id>
-        <content type="html">&lt;p&gt;At the star of April I spent a fortnight in &lt;a href=&quot;https://en.wikipedia.org/wiki/Sri_Lanka&quot;&gt;Sri Lanka&lt;/a&gt; for a wedding. Perhaps half the time was spent on travelling (see below) and the wedding activities, but we managed some sightseeing along the way. Overall it seems like a nice place to visit, although I’m in no rush to go back (despite missing some good stuff like &lt;a href=&quot;https://en.wikipedia.org/wiki/Sigiriya&quot;&gt;Sigiriya&lt;/a&gt;). People have said it is similar to the Bali of 30 years ago. I can see that, it seems to be a good place to relax by the beach. Some thoughts:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;There are surprisingly few restaurants everywhere we went (except the Negombo tourist strip). We probably only had 3 meals at local eateries, and that took some effort. I thought perhaps they were there, but I wasn’t looking for the right signs. However, I checked with various online maps, then confirmed by talking to locals and other tourists. Apparently Sri Lankans don’t tend to eat out often and tourists spend most of their time at touristy places (so outside those places good luck!).&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Colombo&quot;&gt;Colombo&lt;/a&gt; is jarring mix of run down building and new towers, often very close to eachother.&lt;/li&gt;
-  &lt;li&gt;You are dangerously gem deficient! Walking around the capital we were regularly approached by initially friendly men who quickly told us that we were lucky to be in town that day as there was a special one-day only sale at the best gem store in town. We must go! This was over many different days and stores. One was a little aggressive, but all eventually accepted we weren’t going anywhere with them.&lt;/li&gt;
-  &lt;li&gt;Expect to pay more as a non-local, sometimes by a lot. For example, when a taxi wanted more from us than a equivalent Australian taxi (which are not cheap) we tried Uber and got a car at tenth of the asking price.&lt;/li&gt;
-  &lt;li&gt;Security sometimes can be very tight, other times non-existent. Going into hotels and shopping malls we went through metal detectors and bag checks. However, other places like train stations had no security, often not even a ticket check. There was no visible security on the streets either (although it still felt safe). Presumably this is a holdover from the long finished &lt;a href=&quot;https://en.wikipedia.org/wiki/Sri_Lankan_civil_war&quot;&gt;civil war&lt;/a&gt; and more &lt;a href=&quot;https://en.wikipedia.org/wiki/2022_Sri_Lankan_protests&quot;&gt;recent protests&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;The train network is extensive and amazingly cheap, but incredibly slow and often delayed. Don’t be overly concerned about going in the lower classes as long as you have a set seat. We went in reserved 3rd class for one trip - it was fine and was not that much worse than 1st (no A/C, but we had the windows open). Overall we spent two nearly entire days travelling a few hundred kilometers and back again.&lt;/li&gt;
-  &lt;li&gt;The surrounds of &lt;a href=&quot;https://en.wikipedia.org/wiki/Hatton,_Sri_Lanka&quot;&gt;Hatton&lt;/a&gt; are pretty (not so much the town itself), but there is not much else. The main site seems to be &lt;a href=&quot;https://en.wikipedia.org/wiki/Adam%27s_Peak&quot;&gt;Adam’s Peak&lt;/a&gt; a sacred site at the top of a mountain and the destination for a lot of internal tourism. It is extremely busy!&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Negombo&quot;&gt;Negombo&lt;/a&gt; has a strip along the beach full of bars, restaurants, hotels, and shops of local arts. It seemed pleasant but definitely tourist focused. We had a very good fish meal there in a restaurant just off the strip on our last night.&lt;/li&gt;
-  &lt;li&gt;It was hard to find good flights to Sri Lanka. Avoiding budget airlines and overly long flights meant we had two options. Both arrived and departed near midnight. Relatively cheap though.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Some photos from the trip are in a short slideshow &lt;a href=&quot;/slideshows/srilanka_25.html&quot;&gt;available here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/slideshows/srilanka_25.html&quot;&gt;&lt;img src=&quot;/assets/slideshow/srilanka_25/hatton_main.png&quot; alt=&quot;&quot; title=&quot;Hatton&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 </content>
     </entry>
     
