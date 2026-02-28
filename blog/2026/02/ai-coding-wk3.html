@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>AI Coding Week 3</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>February 27, 2026</b>
+<h4>AI Coding Week 3</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Claude.html">Claude</a>
+    
+<br/><br/>
+<p>Week 3 of Claude Code test is complete (<a href="/blog/2026/02/ai-coding-wk1.html">week 1 here</a> and <a href="/blog/2026/02/ai-coding-wk2.html">week 2 here</a>). It is unlikely I’ll write a week 4 report. Not because I am unhappy, but the opposite. I think this experiment has shown that there is some value in the current coding assistants for me. Thus the next task is to think about how I can use them productively (given their advantages and flaws), which is probably more than a one week job.</p>
+
+<p>Speaking of flaws the week started with a stark reminder. I tried out Claude Code on the Web, it did not go well. The idea is to provide an isolated environment accessible anywhere so that you can set Claude loose without concern. However, I quickly found a concern! While setting up my current Scala project I discovered the environment did not have the sbt build tool installed. This is completely normal, and I have installed it many times, it is a simple process. I asked Claude to install it (as I couldn’t find a way to get terminal access for myself) and walked away to do something else. After 10 or so minutes it had burned through 9% of my weekly quota failing to install sbt!</p>
+
+<p>When Claude has a problem it keeps trying things. It doesn’t stop and reassess the instruction. In this case it is likely it was just not possible; that the environment was too locked down. Claude didn’t care. I was unimpressed because this is Claude’s own environment, but apparently it doesn’t know its own limitations in its own environment. Also, it doesn’t seem to be aware of its own quota/usage (I asked if it could be, and it replied no). So just just burns through it.</p>
+
+<p>After calming down for a day, I got back to testing. Claude was tasked to create a Godot based prototype client for the little game previously created. Behold…</p>
+
+<p><img src="/assets/posts/work/spacetrader_prototype.png" alt="Godot Prototype" width="75%" /></p>
+
+<p>About as good as I could do, but much faster. If I wanted to sell copies of the game, it would need to be massively improved with a prettier interface. That would realistically require a great deal of time, testing and iteration if I did it, or (like with my last game) paying someone with better UI design sense to do it. Although. for just getting started with development and testing work, this is fine. So a success.</p>
+
+<p>As that task barely cost a third of my weekly quota, I then assigned it to create a website to import the datafiles of various fitness apps that I use and combine the results into a single view. It did it so well I suspect this is similar to Claude’s standard training jobs. Then with the little remaining quota I questioned Claude about the best way to structure projects to keep its usage low. Its responses matched my anecdotal experiences over the last few weeks.</p>
+
+<p>So the experiment is over. Not sure what I will do with Claude next week, perhaps some little long abandoned toy side-projects. If I decide to pay for it in future, I will need to have a plan with long term goals. It can be very easy to just treat this as a fun game, but if that’s all I use it for, real games would be better (and cheaper). If nothing else it has forced me to think about how I develop software (in order to effectively instruct Claude) and what I should be doing with my time.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2026/02/ai-coding-wk3.html">AI Coding Week 3</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/itch-games.html">Itch Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/ai-coding-wk2.html">AI Coding Week 2</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/ai-coding-wk1.html">AI Coding Week 1</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/01/link-blog.html">Link Blog 3</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/01/boardgames.html">Boardgames of 2025</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/01/goals.html">Goals 2026</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/01/somewhere-else.html">Somewhere Else</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/12/bye.html">Bye</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2025/12/new-year-new-games.html">New Year, New Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>
