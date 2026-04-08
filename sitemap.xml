@@ -1873,6 +1873,14 @@
         <lastmod>2026-02-28T17:51:38+08:00</lastmod>
     </url>
     <url>
+        <loc>/blog/2026/03/old-films.html</loc>
+        <lastmod>2026-04-08T11:08:49+08:00</lastmod>
+    </url>
+    <url>
+        <loc>/blog/2026/03/new-zealand.html</loc>
+        <lastmod>2026-04-08T10:44:34+08:00</lastmod>
+    </url>
+    <url>
         <loc>/404.html</loc>
         <lastmod>2024-12-04T20:20:38+08:00</lastmod>
     </url>
@@ -1934,7 +1942,7 @@
     </url>
     <url>
         <loc>/</loc>
-        <lastmod>2026-02-28T17:51:38+08:00</lastmod>
+        <lastmod>2026-04-08T11:08:49+08:00</lastmod>
     </url>
     <url>
         <loc>/blender/tutorials/roman_stand/</loc>
@@ -1998,7 +2006,7 @@
     </url>
     <url>
         <loc>/slideshows/</loc>
-        <lastmod>2025-05-10T10:46:16+08:00</lastmod>
+        <lastmod>2026-03-31T16:12:33+08:00</lastmod>
     </url>
     <url>
         <loc>/projects/</loc>
@@ -2103,6 +2111,10 @@
     <url>
         <loc>/slideshows/malaysia_24</loc>
         <lastmod>2024-12-04T20:20:40+08:00</lastmod>
+    </url>
+    <url>
+        <loc>/slideshows/nz_26</loc>
+        <lastmod>2026-03-31T16:11:03+08:00</lastmod>
     </url>
     <url>
         <loc>/slideshows/reykjavik_18</loc>

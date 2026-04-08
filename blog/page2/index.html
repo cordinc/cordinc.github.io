@@ -38,6 +38,54 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">February 13, 2026</span>
+  <h4><a href="/blog/2026/02/ai-coding-wk1.html">AI Coding Week 1</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Claude.html">Claude</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>In the last couple of months I have been hearing increasingly positive reviews on LLM coding assistants. I gave the LLM’s a quick try almost a year ago (for free) and was not particularly impressed. However, the buzz now is they have massively improved and that the business of coding has changed. Being curious, I signed up for a month of Claude Code Pro to see if this view has any merit. I’ll aim to write up my thoughts at the end of each week - this is week 1.</p>
+
+<p>I should begin by saying this post is not written by LLM in any way. Nor are any of the posts in this blog (so far at least).</p>
+
+<p>Before starting I read many posts with advice about how to get the most of AI assistants (for examples, see <a href="https://blog.silennai.com/claude-code">here</a>, <a href="https://gist.github.com/david-crespo/5c5eaf36a2d20be8a3013ba3c7c265d9">here</a> and <a href="https://simonwillison.net/2025/Mar/11/using-llms-for-code/">here</a>). They often talk about the benefits of planning and constraining LLMs with testing harnesses and linting tools to guide its work. Thus I decided to start by reviewing an existing Scala project containing a library of code useful in many of my game projects. It had &gt;75% test coverage and linters already setup, plus a compiler option set to break the build on warnings (not just errors). So I set Claude to work reviewing the code, fixing bugs and suggesting improvements.</p>
+
+<p>My impression was “damn, this really works.” It has fixed around 30 issues or improvements it found in the code. Most were minor, but a couple were embarrassing bugs. There were also 2 false positives - things it said were bugs initially, but on further investigation (by Claude) turned out not to be bugs. I also set it to improve test coverage, and it did so sensibly to over 85%. I reviewed closely every line added, removed or updated. Most of the fixes were small and were committed unchanged, a couple of the larger ones needed some changes to better match my (functional) style.</p>
+
+<p>Overall, based on my experience in the industry, Claude acted like a good and attentive junior developer. It went through and diligently found bugs, long after my eyes would have glazed over. I had a comment “// TODO: nasty hack” and it found a 1 line fix (replacing my 3 lines) in a part of the Standard Scala library I didn’t know about - that impressed me. At first it would miss some things, or have trouble working out parts of the project (like the coverage system). However, after updating its config it worked much better. The main reason I describe it as junior is because it largely offered no pushback or initiative. It always agreed with me and told me I was right (unlikely :). It did exactly what I asked and only that. Probably this is by design, and maybe because it was working in an existing project. It also had a tendency to produce procedural code, which doesn’t fit a functional language like Scala. Still it definitely provided value and at a cost orders of magnitude below an actual junior dev.</p>
+
+<p>Still for a small independent dev like me, cost is the main issue with Claude. Or at least, the amount of usage for the cost. Claude gives a 5-hour and 7 day quota. I regularly hit my 5-hour quota after a hour, and always before the 2 hour mark. My 7-day quota was reached over a day before the deadline. This is despite trying a few tricks to keep the usage low, like downgrading the effort in config. I also add a status line giving continuous notice of usage and what the cost would be if I allowed Claude to exceed its quota. I’m very happy going over quota is off by default - the non-plan costs rise fast and quickly exceed any reasonable budget I would allow. I will have to watch this closely, otherwise it will severely restrict what is possible.</p>
+
+<p>Overall I am impressed. It’s not perfect, but definitely useful. It has made me think about my design philosophy, rather than being completely focussed on implementation details. Next week, when my quota resets, I’ll give it a greenfield project and see how it handles that.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">January 10, 2026</span>
+  <h4><a href="/blog/2026/01/link-blog.html">Link Blog 3</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Links.html">Links</a>
+    
+  <br/><br/>
+  <div class="content">
+    <ul>
+  <li>I can waste hours looking at things like this <a href="https://geacron.com/home-en/">Interactive World History Atlas since 3000 BC</a>.</li>
+  <li>The BBC’s In Our Time is one of the best podcasts available. Although with around 30 years of old episodes it can be hard to find the one you are interested in (especially through RSS). Fear not, the <a href="https://www.braggoscope.com">Explore the In Our Time archive</a> has you covered.</li>
+  <li><a href="https://www.quantamagazine.org/why-is-venus-hell-and-earth-an-eden-20250915/">Why Is Venus Hell and Earth an Eden?</a>. As the title suggests.</li>
+  <li><a href="https://learnxinyminutes.com/">Learn X in Y minutes</a> is a handy reminder tool for the syntax and basic control of most languages. I’ve already found it useful when needing to code in a long forgotten (by me) language.</li>
+  <li><a href="https://rameerez.com/send-this-article-to-your-friend-who-still-thinks-the-cloud-is-a-good-idea/">Send this article to your friend who still thinks the cloud is a good idea</a>. Interesting calculation of cloud vs hosted costs of an online service. I’ve always done the later.</li>
+  <li><a href="https://howtomarketagame.com/2025/12/01/ball-x-pit-my-game-of-the-year-2025/">BALL x PIT: My game of the year 2025</a> is a mildly interesting article about what the writer thinks BALL x PIT does right. I haven’t played the game, so can’t comment on that. What I found super interesting was a small point made near the end - the “Easy, Hard, Easy” loops in popular games on Steam. Damn, when I read that, it was a revelation. I have felt it as a player but not conceptualised it as a developer. Definitely something I will look to include in my games.</li>
+  <li>Internet security and avoiding ads (know that the two are intrinsically linked!) is important. <a href="https://troubled.engineer/posts/no-ads/">How I block all online ads</a> &amp; <a href="https://zebracrossing.narwhalacademy.org/">An easy-to-use digital safety checklist</a> are good lists of things that can be done to help. I haven’t done all the things listed, but certainly have gone through more than the basics.</li>
+</ul>
+
+  </div>
+  <hr/>
+
   <span class="date">January  6, 2026</span>
   <h4><a href="/blog/2026/01/boardgames.html">Boardgames of 2025</a></h4> 
   Tags: 
@@ -217,62 +265,6 @@
   </div>
   <hr/>
 
-  <span class="date">December 12, 2025</span>
-  <h4><a href="/blog/2025/12/bye.html">Bye</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Concealed Intent.html">Concealed Intent</a>, 
-    
-      <a class="post" href="/blog/tag/Space Hex Duel.html">Space Hex Duel</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>No, I’m not leaving, nor is this site. However some issues mean that my games will appear a bit less online.</p>
-
-<p>The big issue is Itch.io. As of writing this, it has been 198 days since I initiated a payout for sales of my games (the first time I have done so on Itch), and it is still listed as “In Review”. The website says payouts should take 10-14 days. I created a support issue after 20 days and updated it after 34. After 50 days they said I need to update my tax information, which I did the same day (and let them know). Some weeks later the new tax info was listed as validated, but 100 days after that, still nothing has appeared.</p>
-
-<p>I now have no trust in Itch.io. I have removed my games from sale there and they, nor any other game I control, will be available for sale there in the future (previously purchased copies will still accessible). Another addition to the <a href="/blog/2024/05/bad_companies.html">“never again”</a> company list.</p>
-
-<p>At the same time I requested payouts from the other online stores I use. Humble paid out in their stated timeframe without issue - good for them! Steam had some problems with my company name (despite the exact same name being fine for the previous payout). I had to change it to my actual name and then the payout went through. Annoying, but forgivable given their support was prompt and helpful. Although a month later the listed name throughout their system was changed back to the original company name - strange.</p>
-
-<p>There was a similar bureaucratic tax issue with the hosting provider for online Concealed Intent games. However, I found their support especially unhelpful. I don’t want to get into the specifics, but I was left wondering why I am paying these people (Linode, now a part of Akamai). Moving to another provider would be difficult, so I checked the state of the online server. There have been 2 connections to the server in the last 12 months. Two game requests in the last 3 years. The last actual online game was played in 2021! I’m thinking of shutting it down and so have removed mention of online play on the sales pages.</p>
-
-<p>As part of this Concealed Intent is not going on sale for the foreseeable future. I expect this means sales will go to 0. So far so good, the last copy sold was during the last sale in March. It has been 10 years since the game was released, time to let it rest.</p>
-
-<p><em>Update 1/1/2026:</em> A copy of Concealed Intent was sold on Steam at full price (!) in November. Something that hasn’t happened for some time. Now I feel obliged to keep the servers running a little longer. Itch payout is still marked as “In Review”, so nothing changes there.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">December  8, 2025</span>
-  <h4><a href="/blog/2025/12/new-year-new-games.html">New Year, New Games</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Games.html">Games</a>, 
-    
-      <a class="post" href="/blog/tag/Video Games.html">Video Games</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Games played since the start of 2025…</p>
-
-<p><strong><a href="https://store.steampowered.com/app/957960/Inkulinati/">Inkulatini</a></strong> (5 hrs) - High concept 2D turn-based tactical strategy. The high concept? The player is drawing animals and monsters in the margins of a medieval manuscript, where they fight similar creatures. Sometimes a cute rabbit with a sword, or a donkey farting on the enemy, or many others. A very good idea and it carries the game through the otherwise standard gameplay. A fun little game, and you already know enough to know if you will like it too.</p>
-
-<p><strong><a href="https://store.steampowered.com/app/1202130/Starship_Troopers_Terran_Command/">Starship Troopers: Terran Command</a></strong> (5 hrs) - Small unit RTS based on the movie based on the book. I seemed to spend far more time fighting the GUI &amp; controls than the enemy. The mouse pointer was so small I often found myself searching for it in the heat of battle. Also my troopers seemed incredibly stupid, but maybe that is thematic. I wanted to like this game, but couldn’t.</p>
-
-<p><strong><a href="https://store.steampowered.com/app/2181610/Heretics_Fork/">Heretic’s Fork</a></strong> (10 hrs) - A deckbuilder crossed with tower defense (perhaps a liitle idle game influence too) where your job is punishing sinners trying to escape Hell. Nice idea, but the game is too slow. Even on max speed you spend most of the game watching your tower defense play out with nothing to do but wait. Also the UI needs some work - it is hard to see the status of the various variables the cards are manipulating (it is possible but awkward). Still this added enough interesting wrinkles to the deckbuilding formula to keep me entertained a few hours.</p>
-
-<p><strong><a href="https://store.steampowered.com/app/601840/Griftlands/">Griftlands</a></strong> (10 hrs) - This is a slickly produced game. Honestly, that is the first thing I noticed, just how well made it is. Griftlands is a deckbuilder battler set in a sci-fi world. To the standard Slay the Spire gameplay, it adds a story and a second type of card battle: negotiation. Both the additions work very well - I enjoyed playing it. However, I don’t feel a need to play more. Why? I’m not entirely sure, but my best guess is that the story and extra combat dilutes the fun of the core loop. A run takes several hours (over 4hrs to get to the end boss) and maybe that is just too long. It will stay on my drive for now and I’ll see if there is interest later.</p>
-
-<p><strong><a href="https://store.steampowered.com/app/718560/Scythe_Digital_Edition/">Scythe</a></strong> (3 hrs) - A digital adaptation of the <a href="https://boardgamegeek.com/boardgame/169786/scythe">strategy boardgame</a> with the same name. In an alternative history (mechs!), alternative geography 1920’s, various nations struggle over territory and resources. Seems like a fairly faithful repoduction of the game and tabletop experience. Probably only worthwhile if you are already know and are interested in the boardgame.</p>
-
-<p><strong><a href="https://store.steampowered.com/app/2917350/Spin_Hero/">Spin Hero</a></strong> (3 hrs) - Slot machine fantasy roguelike - like a deckbuilder, but instead of building a deck of cards you collect symbols that are on the slot machine. Each spin is a turn of combat where the symbols apply verious combo  effects. The problem is there is not much to do once the symbols are selected - either the symbols come up or they don’t. Battles only take a few minutes, but that is really dead time without interesting decisions. Also nice-to-have UI things also seemed to have been overlooked - like a tutorial or some tooltips. A nice idea that doesn’t work for me.</p>
-
-<p><strong><a href="https://store.steampowered.com/app/352520/The_Silent_Age/">Silent Age</a></strong> (1 hr) - Point and click puzzle adventure telling a linear time-travel story. Like most of this games, my interest waned quickly and I just started clicking and combing everything. Not my thing.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
@@ -299,6 +291,14 @@
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2026/03/new-zealand.html">New Zealand</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/03/old-films.html">Old Films</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2026/02/ai-coding-wk3.html">AI Coding Week 3</a> 
@@ -331,20 +331,12 @@ Recent Posts:
   <li>  
     <a href="/blog/2026/01/somewhere-else.html">Somewhere Else</a> 
   </li>  
-  
-  <li>  
-    <a href="/blog/2025/12/bye.html">Bye</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2025/12/new-year-new-games.html">New Year, New Games</a> 
-  </li>  
 
 </ul>
 
 <br/><br/>
 
-Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
 
 </small>
 </div>
