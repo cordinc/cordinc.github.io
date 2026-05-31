@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>AI Coding Week X</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>May 25, 2026</b>
+<h4>AI Coding Week X</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Claude.html">Claude</a>
+    
+<br/><br/>
+<p>Not sure how long I’ve been trying out AI-assisted coding. There was the first 4 weeks (weeks <a href="/blog/2026/02/ai-coding-wk1.html">1</a>, <a href="/blog/2026/02/ai-coding-wk2.html">2</a>, <a href="/blog/2026/02/ai-coding-wk3.html">3</a>), followed by a long gap, and then I started again. Probably its has been a total of 10 weeks by now, but I’m not sure. Let’s just call it week X. It seems like a good time to reflect again, as another project has just finished and its worth noting what I have learned. Short version is that I’m still impressed, but a little less so than before as some of its fiddly realities become clearer.</p>
+
+<p>When I renewed my subscription to Claude Pro, I decided to get things going by finishing an old unfinished project. A few years ago I started a Scala version of the <a href="https://github.com/inkle/ink">Ink</a> interpreter (a language to write stories in games). After implementing about half of the tutorial, it started getting much harder and I abandoned the side-project. Based on my first go at AI coding, I thought it could get it finished in maybe two weeks, then I would move on. It took over 6 weeks.</p>
+
+<p>At first I thought it was me. Had the month I had been doing other things made me forget and overestimate Claude’s ability? My weekly usage was evaporating so quickly. Once I asked it to debug an issue and it went around in circles burning through my entire 5-hour usage allowance in 20 minutes without a fix. I was so angry I almost ragequit and considered asking for a refund. But I didn’t. Instead I went online and found many people with the same problems. It definitely seems like Anthropic had changed something and made it much less useful and/or more expensive. Indeed a week later the company announced that there were bugs in the system, that they had now fixed. The system has gotten somewhat better since then; returning to usefulness. I would say it feels about as “intelligent” as those first promising weeks, but it definitely seems like my usage allowance is less. Now, it can do the tasks I give it, but my 5-hour allowance is always gone in well under an hour of usage. It also seems highly variable, some days lots get done, others very little.</p>
+
+<p>Reading other people’s similar experiences, two things become clear. Firstly, Anthropic is constantly tinkering with their system. These changes do not seem particularly well directed or communicated. I feel like I’m blind testing the system for them and paying for the privilege (not a great customer experience). Secondly, all of AI-assisted coding acts like a cargo cult. There is lots of advice on how to make the most of these AIs and its often contradictory or not relevant or just doesn’t work or outdated (or soon to be outdated by another tweak!). All advice seems to be anecdotal. Much of it seems to be based on asking the AIs what they think (hmmm).</p>
+
+<p>Despite the above, here are some of my anecdotal observations on AI coding assistants:</p>
+
+<ul>
+  <li>They are fast and on a good day can produce in under a hour something that would take me a multiple of that.</li>
+  <li>On small (10 min or so) constrained tasks they perform very well. If I give them a broken test that exercises a bug and ask them to fix it, then 90% of the time it is done quickly and efficiently.</li>
+  <li>Mechanical refactors are a waste of usage. They will do them, but slower than me and cost a large amount of usage in the process.</li>
+  <li>NEVER ask them to do more than 1 thing at a time (eg. fix these three bugs) they will get lost.</li>
+  <li>The larger the task, the more corners they will cut and the more careful you need to be!</li>
+  <li>They need to be constantly reminded to create tests and to not change existing (correct) tests. Once in order to “fix” a bug, Claude just changed the test to something completely wrong. Now I have multiple layers of instructions to never do that.</li>
+  <li>They write like a junior dev being paid by the number of lines produced. So much code, much of it unnecessary.</li>
+  <li>They are very bad learners! An example, Claude creates a plan for a new feature, but it doesn’t seem right to me. I ask about it and Claude says there is a better way, “make errors uncompilable”, as in its user-specified (by me) instructions. If it knew that was in its instructions, why did it not use it the first time? So I get it to do it again and it’s better. On a similar task the very next day, it forgets and does the same thing again. I question it, and it goes, yes of course “make errors uncompilable”!</li>
+  <li>Telling them to remember does not work. They need to be constantly reminded. Now my prompts often include a bunch of useful tips or coding philosophies so they always have them readily to hand.</li>
+  <li>If I’m not careful, they can easily create more code than I can usefully review or understand. This has already happened a few times in this project.</li>
+  <li>They are excellent at creating/updating notes, task lists, designs and other documentation. In general, they are good organisers.</li>
+</ul>
+
+<p>That last point is one of the main reasons I will continue using AIs. Recently in my work I was awful at remembering why something was done or what tasks remained. I think I was better when younger and working professionally on the same project every day. Now I’m older and some time can pass between coding sessions so things get lost (and/or my memory is worse). Knowing the task list and reasoning is always there actually helps motivate me to work more regularly. Definitely a huge benefit as just turning up and moving slightly forward every week makes it easier to keep going as a habit (something I lost in recent years). I’ve also come to a good accommodation with the usage allowances. I do 3-4 hours work a day with regular breaks (across the 5-hour usage window) for 4-5 days/week (stopping when the weekly usage is exhausted). So normally I have Monday/Tuesday off, useful for completing other tasks (like writing this post).</p>
+
+<p>What’s next? Time to try a larger project, something hopefully more useful. It it works out, then it will be its own topic. Thus this will be the last of these AI Coding posts for the foreseeable future.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2026/05/itch-anniversary.html">Itch Anniversary</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/05/ai-coding-wkX.html">AI Coding Week X</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/05/westworld.html">Westworld</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/03/new-zealand.html">New Zealand</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/03/old-films.html">Old Films</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/ai-coding-wk3.html">AI Coding Week 3</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/itch-games.html">Itch Games</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/ai-coding-wk2.html">AI Coding Week 2</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/ai-coding-wk1.html">AI Coding Week 1</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/01/link-blog.html">Link Blog 3</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

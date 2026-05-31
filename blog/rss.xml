@@ -6,9 +6,68 @@
     <atom:link href="http://www.cordinc.com/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Cordinc Blog</description>
     <language>en-us</language>
-    <pubDate>Wed, 08 Apr 2026 11:25:37 +0800</pubDate>
-    <lastBuildDate>Wed, 08 Apr 2026 11:25:37 +0800</lastBuildDate>
+    <pubDate>Sun, 31 May 2026 19:21:14 +0800</pubDate>
+    <lastBuildDate>Sun, 31 May 2026 19:21:14 +0800</lastBuildDate>
 
+    
+    <item>
+      <title>Itch Anniversary</title>
+      <link>http://www.cordinc.com/blog/2026/05/itch-anniversary.html</link>
+      <pubDate>Sat, 30 May 2026 00:00:00 +0800</pubDate>
+      <guid>http://www.cordinc.com/blog/2026/05/itch-anniversary</guid>
+      <description>&lt;p&gt;Yesterday was exactly one year since I requested a payout of the money accrued at Itch.io. Of course this did not go as planned, and &lt;a href=&quot;/blog/2025/12/bye.html&quot;&gt;no payment was forthcoming&lt;/a&gt;. I had it down on my calendar to review the situation, and when the reminder popped up, my heart sank. I should try again to get paid out, but I didn’t want to, was the effort worth the few dollars it may or may not earn me? I had already sent four support messages, why wouldn’t a fifth go unanswered too. Ultimately I decided to &lt;a href=&quot;https://www.reddit.com/r/itchio/comments/1tqyppk/comment/ook30le/&quot;&gt;post to Itch’s reddit forum&lt;/a&gt;. Within 6 hours the payment was made! You can make you own assessment of what motivated Itch to act.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>AI Coding Week X</title>
+      <link>http://www.cordinc.com/blog/2026/05/ai-coding-wkX.html</link>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0800</pubDate>
+      <guid>http://www.cordinc.com/blog/2026/05/ai-coding-wkX</guid>
+      <description>&lt;p&gt;Not sure how long I’ve been trying out AI-assisted coding. There was the first 4 weeks (weeks &lt;a href=&quot;/blog/2026/02/ai-coding-wk1.html&quot;&gt;1&lt;/a&gt;, &lt;a href=&quot;/blog/2026/02/ai-coding-wk2.html&quot;&gt;2&lt;/a&gt;, &lt;a href=&quot;/blog/2026/02/ai-coding-wk3.html&quot;&gt;3&lt;/a&gt;), followed by a long gap, and then I started again. Probably its has been a total of 10 weeks by now, but I’m not sure. Let’s just call it week X. It seems like a good time to reflect again, as another project has just finished and its worth noting what I have learned. Short version is that I’m still impressed, but a little less so than before as some of its fiddly realities become clearer.&lt;/p&gt;
+
+&lt;p&gt;When I renewed my subscription to Claude Pro, I decided to get things going by finishing an old unfinished project. A few years ago I started a Scala version of the &lt;a href=&quot;https://github.com/inkle/ink&quot;&gt;Ink&lt;/a&gt; interpreter (a language to write stories in games). After implementing about half of the tutorial, it started getting much harder and I abandoned the side-project. Based on my first go at AI coding, I thought it could get it finished in maybe two weeks, then I would move on. It took over 6 weeks.&lt;/p&gt;
+
+&lt;p&gt;At first I thought it was me. Had the month I had been doing other things made me forget and overestimate Claude’s ability? My weekly usage was evaporating so quickly. Once I asked it to debug an issue and it went around in circles burning through my entire 5-hour usage allowance in 20 minutes without a fix. I was so angry I almost ragequit and considered asking for a refund. But I didn’t. Instead I went online and found many people with the same problems. It definitely seems like Anthropic had changed something and made it much less useful and/or more expensive. Indeed a week later the company announced that there were bugs in the system, that they had now fixed. The system has gotten somewhat better since then; returning to usefulness. I would say it feels about as “intelligent” as those first promising weeks, but it definitely seems like my usage allowance is less. Now, it can do the tasks I give it, but my 5-hour allowance is always gone in well under an hour of usage. It also seems highly variable, some days lots get done, others very little.&lt;/p&gt;
+
+&lt;p&gt;Reading other people’s similar experiences, two things become clear. Firstly, Anthropic is constantly tinkering with their system. These changes do not seem particularly well directed or communicated. I feel like I’m blind testing the system for them and paying for the privilege (not a great customer experience). Secondly, all of AI-assisted coding acts like a cargo cult. There is lots of advice on how to make the most of these AIs and its often contradictory or not relevant or just doesn’t work or outdated (or soon to be outdated by another tweak!). All advice seems to be anecdotal. Much of it seems to be based on asking the AIs what they think (hmmm).&lt;/p&gt;
+
+&lt;p&gt;Despite the above, here are some of my anecdotal observations on AI coding assistants:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;They are fast and on a good day can produce in under a hour something that would take me a multiple of that.&lt;/li&gt;
+  &lt;li&gt;On small (10 min or so) constrained tasks they perform very well. If I give them a broken test that exercises a bug and ask them to fix it, then 90% of the time it is done quickly and efficiently.&lt;/li&gt;
+  &lt;li&gt;Mechanical refactors are a waste of usage. They will do them, but slower than me and cost a large amount of usage in the process.&lt;/li&gt;
+  &lt;li&gt;NEVER ask them to do more than 1 thing at a time (eg. fix these three bugs) they will get lost.&lt;/li&gt;
+  &lt;li&gt;The larger the task, the more corners they will cut and the more careful you need to be!&lt;/li&gt;
+  &lt;li&gt;They need to be constantly reminded to create tests and to not change existing (correct) tests. Once in order to “fix” a bug, Claude just changed the test to something completely wrong. Now I have multiple layers of instructions to never do that.&lt;/li&gt;
+  &lt;li&gt;They write like a junior dev being paid by the number of lines produced. So much code, much of it unnecessary.&lt;/li&gt;
+  &lt;li&gt;They are very bad learners! An example, Claude creates a plan for a new feature, but it doesn’t seem right to me. I ask about it and Claude says there is a better way, “make errors uncompilable”, as in its user-specified (by me) instructions. If it knew that was in its instructions, why did it not use it the first time? So I get it to do it again and it’s better. On a similar task the very next day, it forgets and does the same thing again. I question it, and it goes, yes of course “make errors uncompilable”!&lt;/li&gt;
+  &lt;li&gt;Telling them to remember does not work. They need to be constantly reminded. Now my prompts often include a bunch of useful tips or coding philosophies so they always have them readily to hand.&lt;/li&gt;
+  &lt;li&gt;If I’m not careful, they can easily create more code than I can usefully review or understand. This has already happened a few times in this project.&lt;/li&gt;
+  &lt;li&gt;They are excellent at creating/updating notes, task lists, designs and other documentation. In general, they are good organisers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That last point is one of the main reasons I will continue using AIs. Recently in my work I was awful at remembering why something was done or what tasks remained. I think I was better when younger and working professionally on the same project every day. Now I’m older and some time can pass between coding sessions so things get lost (and/or my memory is worse). Knowing the task list and reasoning is always there actually helps motivate me to work more regularly. Definitely a huge benefit as just turning up and moving slightly forward every week makes it easier to keep going as a habit (something I lost in recent years). I’ve also come to a good accommodation with the usage allowances. I do 3-4 hours work a day with regular breaks (across the 5-hour usage window) for 4-5 days/week (stopping when the weekly usage is exhausted). So normally I have Monday/Tuesday off, useful for completing other tasks (like writing this post).&lt;/p&gt;
+
+&lt;p&gt;What’s next? Time to try a larger project, something hopefully more useful. It it works out, then it will be its own topic. Thus this will be the last of these AI Coding posts for the foreseeable future.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Westworld</title>
+      <link>http://www.cordinc.com/blog/2026/05/westworld.html</link>
+      <pubDate>Sun, 24 May 2026 00:00:00 +0800</pubDate>
+      <guid>http://www.cordinc.com/blog/2026/05/westworld</guid>
+      <description>&lt;p&gt;I recently decided to finish watching &lt;a href=&quot;https://en.wikipedia.org/wiki/Westworld_(TV_series)&quot;&gt;Westworld&lt;/a&gt;. I watched the first couple of season when they were the released, and my opinions seemed to match public perception: the first season was excellent; the second was a great disappointment and a slide towards mediocrity. It has been some time since the last two seasons were released, but I understand that the general opinion is that they did not reverse the descent.&lt;/p&gt;
+
+&lt;p&gt;Well I liked season 3 (however, season 4 was not good). I think it opened up the setting in an interesting manner. The story was not as good as season 1, but we got a better understanding of how the wider world outside the park worked. It was an ambitious attempt to show something new within a familiar Westworld story, and it mostly delivered. It felt like a modern cyberpunk (as opposed to the 80’s nostalgia of most recent cyberpunk).&lt;/p&gt;
+
+&lt;p&gt;In an ahistorical story (like all fantasy and most sci-fi), the wider environment usually seems to exist solely for the purpose of moving the story forward. I do not normally get a sense that these are worlds that exist outside of that particular movie or TV show (books tend to be better). It is a notable achievement when there is a show that does feel like it has a complete world (that existed before the start and will continue after the end of the story being told). Game of Thrones and The Expanse are recent examples.&lt;/p&gt;
+
+&lt;p&gt;Westworld season 1 was not a show like this, the setting was very much built for the purposes of the story, literally! So respect to the writers for the difficult and thankless task (most people will not care, and that is fine) of retrofitting a fuller, more interesting world onto the show. I appreciate the inclination to try something difficult, even if it doesn’t completely succeed. For a similar reason I have a better opinion of the second Matrix movie than most people (sooo much exposition, but at least for a good cause).&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>New Zealand</title>
@@ -153,171 +212,6 @@
   &lt;li&gt;&lt;a href=&quot;https://howtomarketagame.com/2025/12/01/ball-x-pit-my-game-of-the-year-2025/&quot;&gt;BALL x PIT: My game of the year 2025&lt;/a&gt; is a mildly interesting article about what the writer thinks BALL x PIT does right. I haven’t played the game, so can’t comment on that. What I found super interesting was a small point made near the end - the “Easy, Hard, Easy” loops in popular games on Steam. Damn, when I read that, it was a revelation. I have felt it as a player but not conceptualised it as a developer. Definitely something I will look to include in my games.&lt;/li&gt;
   &lt;li&gt;Internet security and avoiding ads (know that the two are intrinsically linked!) is important. &lt;a href=&quot;https://troubled.engineer/posts/no-ads/&quot;&gt;How I block all online ads&lt;/a&gt; &amp;amp; &lt;a href=&quot;https://zebracrossing.narwhalacademy.org/&quot;&gt;An easy-to-use digital safety checklist&lt;/a&gt; are good lists of things that can be done to help. I haven’t done all the things listed, but certainly have gone through more than the basics.&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Boardgames of 2025</title>
-      <link>http://www.cordinc.com/blog/2026/01/boardgames.html</link>
-      <pubDate>Tue, 06 Jan 2026 00:00:00 +0800</pubDate>
-      <guid>http://www.cordinc.com/blog/2026/01/boardgames</guid>
-      <description>&lt;p&gt;Last year I played less boardgames than &lt;a href=&quot;/blog/2025/01/boardgames.html&quot;&gt;2024&lt;/a&gt;. Mostly this is due to not playing online and just being busy with other things (travel, etc) so missing game days. I expect to play more this year. I have started playing with a couple of groups more regularly. The 6 train games on the list were played at the 18XX group. For more information on why these games are worth playing &lt;a href=&quot;https://blog.fogus.me/games/18XX/intro.html&quot;&gt;checkout this post&lt;/a&gt;. The miniature wargames played this year (Strength &amp;amp; Honour and Armada) are with a friend from the local strategy boardgame group who turned out to live nearby and enjoy such games (a lucky find!).&lt;/p&gt;
-
-&lt;p&gt;The full list of this year’s games is below, with the ones I own in &lt;em&gt;italics&lt;/em&gt;.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Game&lt;/th&gt;
-      &lt;th&gt;Plays&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/364073/splendor-duel&quot;&gt;&lt;em&gt;Splendor Duel&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/371796/strength-and-honour-wargames-rules-for-epic-battle&quot;&gt;Strength &amp;amp; Honour&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/163745/star-wars-armada&quot;&gt;&lt;em&gt;Star Wars Armada&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/371333/hissy-fit&quot;&gt;&lt;em&gt;Hissy Fit&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/268864/undaunted-normandy&quot;&gt;&lt;em&gt;Undaunted: Normandy&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/17405/1846-the-race-for-the-midwest&quot;&gt;1846&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/349750/molly-house&quot;&gt;Molly House&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/266192/wingspan&quot;&gt;&lt;em&gt;Wingspan&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/193693/agamemnon&quot;&gt;&lt;em&gt;Agamemnon&lt;/em&gt;&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/183308/18441854&quot;&gt;1844/1854&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/421/1830-railways-and-robber-barons&quot;&gt;1830&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/253608/18chesapeake&quot;&gt;18Chesapeake&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/182340/star-trek-frontiers&quot;&gt;Star Trek: Frontiers&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/322499/red-dust-rebellion&quot;&gt;Red Dust Rebellion&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/389820/burning-banners&quot;&gt;Burning Banners&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/144189/fire-in-the-lake&quot;&gt;Fire in the Lake&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/4098/age-of-steam&quot;&gt;Age of Steam&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/31730/wabash-cannonball&quot;&gt;Chicago Express&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/436217/the-lord-of-the-rings-fate-of-the-fellowship&quot;&gt;Fate of the Fellowship&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://boardgamegeek.com/boardgame/439306/limit&quot;&gt;Limit&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Here are my thoughts on some games I played multiple times this year, and haven’t previously reviewed:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Splendor Duel&lt;/strong&gt;: A two-player version of the popular Splendor. Collect gems to create jewellery and thus your fortune. Not sure I’m qualified to discuss this one due to a very low win ratio. I must be missing something which suggests a relatively and surprisingly deep game for the simple mechanics. Still a fun quick game, will play again.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Strength &amp;amp; Honour&lt;/strong&gt;: A 2mm scale ancients miniatures wargame, although we played successfully with just pieces of cardboard. Victories are won by forcing your enemy to break, but sometimes you just can’t get your units to act. Initial placement of units and maintaining a supporting line are vital. Very interesting and will play more as we are going through linked scenarios designed by my opponent.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Star Wars Armada&lt;/strong&gt;: Amazingly pretty miniatures wargame of Star Wars capital ship battles. The fighting seems to be based on naval battles with large slow moving ships pummeling each other while small squadrons nibble around the edges. Satisfying game that seems mostly decided by the meta-game.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Undaunted: Normandy&lt;/strong&gt;: Extremely clever deckbuilder of WWII squad level combat. The cards in hand represent your ability to order squads to acts. You then play cards to move across a map created from various combinations of terrain tiles. The mechanics and theme fit very well. Hopefully will get to play this much more over the coming year.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Molly House&lt;/strong&gt;: I played this at the Strategy Boardgames group and it took two plays to understand what was going on - I’d happily play a third. Feels like a very tactical game (well laid plans go astray quickly) of “coopertition” - you have to both cooperate and compete with the fellow players. Like a mix of Churchill and a slightly less complex Pax Pamir. All this in a game about throwing gay parties and dodging police in 18th century London. Amazing.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Agamemnon&lt;/strong&gt;: Supposedly a short game about the Trojan war, but is really an abstract area control game with the thinnest of themes applied over the top. Entertaining but forgettable.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Hissy Fit&lt;/strong&gt;: A 5-minute party card game about getting a rowdy cat to the vet. Quick, easy and fun, but no need to play again.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Goals 2026</title>
-      <link>http://www.cordinc.com/blog/2026/01/goals.html</link>
-      <pubDate>Mon, 05 Jan 2026 00:00:00 +0800</pubDate>
-      <guid>http://www.cordinc.com/blog/2026/01/goals</guid>
-      <description>&lt;p&gt;So how did I go with &lt;a href=&quot;/blog/2025/01/goals.html&quot;&gt;last year’s goals&lt;/a&gt;?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Return to a decent level of fitness and strength&lt;/strong&gt;: Partial success. I have started indoor cycling and my aerobic fitness is improving. However, I have barely gone to the gym at all this year.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Improve Spanish&lt;/strong&gt;: Achieved, at least as far as practicing almost every day. I think I am better, but can’t be certain.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Start Ci2D&lt;/strong&gt;: Started, but barely. So far it’s just a proof that Godot can meet my needs.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Modelling for 3D printing&lt;/strong&gt;: Nope, nothing. Also seems less important now. I have too many unprinted models and a large grey pile of shame. There is no need to create more.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Read books&lt;/strong&gt;: Achieved. The goal was met with a fortnight to go, and I made it explicitly because there was a target to reach. I have read some good books this year, and a couple that were not for me, but enjoyed the process of reading all of them. I will definitely try this again.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For the coming year I’ve decided to be more specific and less ambitious in my goals (following the success of last year’s &lt;strong&gt;Read books&lt;/strong&gt; goal). I don’t want achieving a goal to be a struggle, and I want measurable results. They should be a starting point for a better life. The more aspirational or vague things I would like to do are now in a separate list. I won’t feel bad if I don’t even start them.&lt;/p&gt;
-
-&lt;p&gt;Goals:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Read 12 books&lt;/strong&gt;: Worked well last year, let’s try it again.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Read social media less than 10 minutes/day on 300+ days&lt;/strong&gt;: I have found myself spending increasing amounts of time on various sorts of social media. I would set this to 0, but unfortunately some groups and people are only contactable through these platforms. So 10 minutes should be more than enough to discover/organise with them. This limit also includes YouTube shorts/clips. It does not include news, but not sure what to do with the overlap (as much of modern news output is dross). I’ll have to work that out. I already had 2 days this year (out of 5!) where I exceeded this limit, so will have to improve.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;105 exercise sessions&lt;/strong&gt;: At this time the main thing is just to keep exercising regularly. This is 2 sessions/week, enough to keep momentum. A bit more and there should be improvement.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Practice Spanish for 10+ minutes/day&lt;/strong&gt;: About what I already do. As part of this I should try moving away from Duolingo, I am find the gains there slowing. I need to practice listening and grammar drills more than that site allows (on their free program).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Aspirations:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Sit Less&lt;/strong&gt;: At the start of last year my desk chair broke and I replaced it with an ergonomic office chair. It works, too well! Now I sit a lot more and for longer. There is a correlation between sitting for extended periods and my back aching or legs being stiff. I should make better use of my sit/stand desk, and limit sitting to 30 minutes or so at a time.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Learn Python; try AI coding; general programming&lt;/strong&gt;: Just code for fun.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Paint gray pile of shame&lt;/strong&gt;: Painting minis takes much longer than I expected. It is very easy to print faster than I can paint, and so now I have 10+ Armada, 10+ X-wing, and nearly 100 Battletech minis waiting for paint, plus lots of tokens and terrain. I should work through it as much as possible (not all of it, realistically there is more than a year’s worth there).&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;CI2D demo&lt;/strong&gt;: Rather than create full games, I will now aim to create demos, and see later which ones are worth pursuing.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Catch up on old blog threads&lt;/strong&gt;: There are a bunch of notes for blog posts yet to be written. I haven’t written about my time in KL or Valencia. My work history series stops in 2005. These should be continued before the memory fades (if that hasn’t happened already).&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Start learning Mandarin&lt;/strong&gt;: I started learning Mandarin this year for a few weeks on Duolingo, but then they changed the way the site worked so that it became unreasonably hard to do more than one course. So Mandarin was given up in favour of continuing Spanish.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Play 5 boardgames at least 5 times&lt;/strong&gt;: Almost made this in 2024 without trying. With a bit of attention it should be easy and fun. Online plays count.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Somewhere Else</title>
-      <link>http://www.cordinc.com/blog/2026/01/somewhere-else.html</link>
-      <pubDate>Thu, 01 Jan 2026 00:00:00 +0800</pubDate>
-      <guid>http://www.cordinc.com/blog/2026/01/somewhere-else</guid>
-      <description>&lt;p&gt;“I hope someone else tries it”, is something I think regularly with some of the less orthodox ideas suggested for government policy. Despite being interesting, they mostly they never happen anywhere but if they do I would prefer the first attempt to not be where I’m living. These are the kind of things that are unlikely to work due to unforeseen consequences, at least on first attempt. However, if they did work, could be hugely beneficial. For example, I hope someone tries a &lt;a href=&quot;https://en.wikipedia.org/wiki/Universal_basic_income&quot;&gt;Universal Basic Income&lt;/a&gt; at the national level. However due to a large amount of cynicism, I would prefer Australia is not first.&lt;/p&gt;
-
-&lt;p&gt;Anyway, &lt;a href=&quot;https://en.wikipedia.org/wiki/Online_Safety_Amendment&quot;&gt;a social media ban for kids&lt;/a&gt;, I hope someone else tries it. Oh well.&lt;/p&gt;
 </description>
     </item>
     
