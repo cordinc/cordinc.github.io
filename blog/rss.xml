@@ -6,9 +6,61 @@
     <atom:link href="http://www.cordinc.com/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Cordinc Blog</description>
     <language>en-us</language>
-    <pubDate>Mon, 22 Jun 2026 16:05:00 +0800</pubDate>
-    <lastBuildDate>Mon, 22 Jun 2026 16:05:00 +0800</lastBuildDate>
+    <pubDate>Wed, 26 Aug 2026 14:53:52 +0800</pubDate>
+    <lastBuildDate>Wed, 26 Aug 2026 14:53:52 +0800</lastBuildDate>
 
+    
+    <item>
+      <title>AI Coding Disillusionment</title>
+      <link>http://www.cordinc.com/blog/2026/08/ai-coding-disillusionment.html</link>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 +0800</pubDate>
+      <guid>http://www.cordinc.com/blog/2026/08/ai-coding-disillusionment</guid>
+      <description>&lt;p&gt;Some 13 weeks ago I wrote &lt;a href=&quot;/blog/2026/05/ai-coding-wkX.html&quot;&gt;an update on my AI coding experience&lt;/a&gt;. That ended with my plan to try a larger project, and that there probably would not be any more AI specific posts. Both were incorrect predictions. It is time for another update on just AI coding since that planned project went poorly, and as the title suggests disillusionment has set in.&lt;/p&gt;
+
+&lt;p&gt;The current standard of AI coding is far less useful than I hoped (at least for Claude Code, the only system I have been using). It is not useless, but care must be taken with its work. The things it is good at and I’ll currently continue using it for are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Debugging - It can find and explain bugs or issues in existing code very well and incredibly quickly. Often I’ll ignore its suggested solution, but for diagnosis it is exceptional (I explicitly tell it not to change any code). If I hit a test failure I’ll ask it to explain the problem then step away from my desk for a drink or stretch. When I get back, the reason is on my screen and I’m straight back to work. A massive time saver.&lt;/li&gt;
+  &lt;li&gt;Small learning or experiments - If there is some feature or technique I don’t understand, I’ll ask the AI to explain or provide example code, it is quicker and more reliable than StackOverflow!&lt;/li&gt;
+  &lt;li&gt;Small focussed tasks in existing well scaffolded codebases - By small I mean a couple of functions or tests, anything larger and the problems creep in. It can’t be greenfield work; it needs to have a code style to copy, buttressed with linters and strict compiler options. Given all those caveats, I can specify in a few lines work that would take me &amp;lt;30min and it can do much faster while I’m doing something more important.&lt;/li&gt;
+  &lt;li&gt;Prototypes - As long as the purpose of the resulting code is only to test assumptions and will be discarded or rewritten. I suppose this could include any project you don’t particularly care about, or where the apparently working output is far more important than code quality.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Can you guess what happened with that larger project? I have abandoned that codebase and have started a human (me) rewrite. The original AI-led work produced a proof-of-concept but further progress was increasingly difficult and complicated. Now it is much slower going, but with a much better output. The problems:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The AI over complicates everything and desires to keep adding more complexity - It created 3 separate error handling systems in the same codebase all doing essentially the same thing. The third was created when I asked for a large piece of new functionality and it decided to include a new system rather than reuse one of the existing ones. This was not an isolated incident, it also created 2 data validation systems, one running after the other. Neither of which were necessary, there was already one in an imported library that works fine (I know because I’m now using it).&lt;/li&gt;
+  &lt;li&gt;Over commenting - The AI wants to give the entire life history a a method in its comments. I have seen a solid 10 line block comment on a 1 line function. Zero lines were required, the purpose and workings were obvious. I have tried telling the system not to do this, but never with complete success.&lt;/li&gt;
+  &lt;li&gt;It hallucinates requirements - This is related to the first point. When I ask why it has over-engineered some feature or ask it to just delete the bloat, it will state that there is an important requirement that extra code satisfies. Almost always this is a completely made-up requirement; nothing I have asked for and nothing it has mentioned until this point. And then comes…&lt;/li&gt;
+  &lt;li&gt;It is argumentative - It will say it can’t do the things I want because of its imagined never-before-mentioned reasons. I have to push it hard. It also spends a great deal of text/tokens blame-dodging. It would tell me it didn’t write the problematic code (it wrote all the code) or that I did specify that requirement. Obvious lies. Soon I learned to have it create a list of all requirements and regularly reminded it to update that doc. Then when it tried to gaslight me I asked it to show me the requirement in the (source controlled) requirement list - it never could. Then came…&lt;/li&gt;
+  &lt;li&gt;It is sycophantic - I find it annoying to be told how smart I am for just doing normal job tasks. Same with the apologising - its not like it learns from its mistakes, so what is the point? I just want it to do its supposed purpose - software development.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I previously said the AIs “write like a junior dev being paid by the number of lines produced”, but that was an understatement! My new review is: AI codes like an over-confident junior dev with a toxic personality, little understanding of software architecture, being paid by the number of lines produced, and trying hard to be promoted without ever having to learn their job. I have known professionally such people before and it is disappointing that they are AI’s role model (when it comes to larger tasks).&lt;/p&gt;
+
+&lt;p&gt;Of course, some may suggest that my issues are because I am not properly driving the system. That my instructions and guiding documents are the problem. This is possible, I am certainly no expert in this regard. However, I did spend some time at the start of this process 6 months ago learning the accepted “state of the art”, but these general rules have changed multiple times over that short timespan. I want to get work done, not spend my time experimenting with tools and techniques. So if the issue really is my lack of AI coding skill, then I think that points to the immaturity of the AI coding tools.&lt;/p&gt;
+
+&lt;p&gt;Thus my disillusionment, or even disappointment. My future plans are forcibly changing with my current thoughts on AI coding. I’m still moving forwards with my current project, because I enjoy spending my time on it. It is just moving at a much slower pace as I’m doing almost all the coding. Thus the big plans for big projects are on hold, pending better tools. I’ll reassess once the (improved) simulation engine has reached the same level as the AI-driven prototype.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Omega Again</title>
+      <link>http://www.cordinc.com/blog/2026/07/omega-again.html</link>
+      <pubDate>Wed, 29 Jul 2026 00:00:00 +0800</pubDate>
+      <guid>http://www.cordinc.com/blog/2026/07/omega-again</guid>
+      <description>&lt;p&gt;A little while ago a member of the &lt;a href=&quot;https://grogpod.zone&quot;&gt;Grogpod&lt;/a&gt; podcast about roguelike games contacted me out of the blue on Reddit, asking if I’d like to share any memorable experiences with Omega to be read-out on an episode. Omega is an 80’s old style roguelike which I first played at uni in the 90’s (and occasionally since). Ten years ago I wrote &lt;a href=&quot;/blog/2016/07/omega.html&quot;&gt;a review and made some videos about it&lt;/a&gt;. The podcast planned an episode on the original wave of roguelikes; choosing the relatively obscure Omega as one of the three they would play. Below is what I sent them, and the episode it features in is &lt;a href=&quot;https://grogpod.zone/2026-07-29-EP102/&quot;&gt;Episode 100 Part 2 - Moria, Hack, Larn, Omega&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;It is 1993, I am playing Omega.
+It is 2004, I am playing Omega.
+It is 2016, I am playing Omega.
+It is 2026, once again I am playing Omega. 
+Why? I played most of the old roguelikes while avoiding study in the 90&apos;s, but Omega is the only one I regularly return to. It&apos;s not the best of its genre: the inventory system is, if I&apos;m being polite, unusual; the early game RNG, brutal; the late game too soft; and I&apos;ve hit more than a few bugs along my journeys. However, it was Omega&apos;s scale that attracted me to the game. There is a sense that a whole world (or at least an island) exists around the dungeons that provide most of the usual action. There is a town to investigate which has more happening than just being a place to restock. Outside the town is countryside to explore with villages, wild animals, and of course the occasional dungeon too. Omega is an early attempt at an open world.
+
+These early rogue-likes are a hive of experimentation. They are the indie games of their time. So many ideas were thrown together by people trying to recreate their tabletop RPG sessions. For me, Omega succeeded more in this than it failed. It feels like there is a world continuing along regardless of the player actions. This isn’t true of course, but it is the impression that counts, and that is enough for me.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Apple Arcade Games (Part 1)</title>
@@ -179,53 +231,6 @@
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/1166290/Death_and_Taxes/&quot;&gt;Death and Taxes&lt;/a&gt;&lt;/strong&gt; (4hrs) - I loved the idea of this point-and-click story game where you play as a Grim Reaper (apparently there are many of them) choosing who should die in a bureaucratic office run by Fate. It also works well in practice too. At first I wasn’t sure what I was supposed to be doing, but soon discovered that is part of the game. I played through once, enjoyed it, and don’t plan to do so again despite some replayability built in. Very good.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://store.steampowered.com/app/828900/The_Stillness_of_the_Wind/&quot;&gt;The Stillness of the Wind&lt;/a&gt;&lt;/strong&gt; (1hr) - A farming simulator where an old woman tends a farm alone, while receiving increasingly worrisome letters from her departed family. Not really my sort of game, and I found the controls clunky.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>AI Coding Week 2</title>
-      <link>http://www.cordinc.com/blog/2026/02/ai-coding-wk2.html</link>
-      <pubDate>Fri, 20 Feb 2026 00:00:00 +0800</pubDate>
-      <guid>http://www.cordinc.com/blog/2026/02/ai-coding-wk2</guid>
-      <description>&lt;p&gt;Week Two of testing out Claude code is complete (see &lt;a href=&quot;/blog/2026/02/ai-coding-wk1.html&quot;&gt;week 1 here&lt;/a&gt;). Actually, the week ended on Wednesday when my weekly quota ended. That is despite not using it on Saturday at all, and only a little on Sunday. The 7 quota seems to be more like a 3 day quota. I wonder if that is a sales technique?&lt;/p&gt;
-
-&lt;p&gt;This (half) week I tried out creating a greenfield project. A simple non-graphical web game that has little commercial prospects, so I don’t care how it goes. Claude just finished a prototype in its allotted time, shaking out a few issues - a worthwhile result.&lt;/p&gt;
-
-&lt;p&gt;First I asked it to help out with designing the system. I gave it a couple of paragraphs describing the game and some technical constraints. It then asked long series of very good questions before outputting some design docs and an implementation plan. It mostly understood the brief, and the plan was decent. I was very impressed with this stage, I would happily use Claude again help the design and planning phase of development. The main benefit is that I had Claude log all its decisions and work. Now I have a complete list of ideas, alternatives and the reasons decisions were made - something I’m usually too lazy to bother with (and then regret later).&lt;/p&gt;
-
-&lt;p&gt;Then I had Claude work step-by-step (24 steps in the plan) in development. It ran out of quota on the last step (online deployment), but I can run it locally so its not too bad. I looked a little at the code produced, but apart from code duplication and superfluous config, it looked ok. So I mostly let it do its own thing. Often it would find its own mistakes, eventually.&lt;/p&gt;
-
-&lt;p&gt;The end result is… decent. Very simple gameplay and a frontend that is “backend developer” quality (so the same as me). It is largely what I asked it to do. I haven’t found any bugs, but do have a long list of improvements and ideas. Thus, I would declare it a successful prototype. Claude produced more than I could have done in 3 days for sure, and probably more than I could do in a solid week’s work. Although there are a few things I would have improved along the way, so I like to think my quality would be higher.&lt;/p&gt;
-
-&lt;p&gt;There are two big issues I see:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Quota limits: At first I thought this week it was getting more done considering the quota used. However, it just seems to be small projects (such as the initial greenfield work) result in a smaller context, and thus lower quota usage. I’m not sure what the solution is. Maybe break projects into smaller components. Maybe avoid long running sessions (don’t do more than a couple of compactions). Some experimentation is required.&lt;/li&gt;
-  &lt;li&gt;It also makes me want to let it free reign - or as Claude calls it, YOLO mode! Although I’m way to scared and careful with my data to allow it. I’ll try looking at isolated environments like Claude Code Web or Sprites.io to see if they work well enough.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Next week I’ll try getting Claude to create something in Godot (maybe a client for this week’s game). If it can do that then I can see this being useful, despite the limitations.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>AI Coding Week 1</title>
-      <link>http://www.cordinc.com/blog/2026/02/ai-coding-wk1.html</link>
-      <pubDate>Fri, 13 Feb 2026 00:00:00 +0800</pubDate>
-      <guid>http://www.cordinc.com/blog/2026/02/ai-coding-wk1</guid>
-      <description>&lt;p&gt;In the last couple of months I have been hearing increasingly positive reviews on LLM coding assistants. I gave the LLM’s a quick try almost a year ago (for free) and was not particularly impressed. However, the buzz now is they have massively improved and that the business of coding has changed. Being curious, I signed up for a month of Claude Code Pro to see if this view has any merit. I’ll aim to write up my thoughts at the end of each week - this is week 1.&lt;/p&gt;
-
-&lt;p&gt;I should begin by saying this post is not written by LLM in any way. Nor are any of the posts in this blog (so far at least).&lt;/p&gt;
-
-&lt;p&gt;Before starting I read many posts with advice about how to get the most of AI assistants (for examples, see &lt;a href=&quot;https://blog.silennai.com/claude-code&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;https://gist.github.com/david-crespo/5c5eaf36a2d20be8a3013ba3c7c265d9&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;https://simonwillison.net/2025/Mar/11/using-llms-for-code/&quot;&gt;here&lt;/a&gt;). They often talk about the benefits of planning and constraining LLMs with testing harnesses and linting tools to guide its work. Thus I decided to start by reviewing an existing Scala project containing a library of code useful in many of my game projects. It had &amp;gt;75% test coverage and linters already setup, plus a compiler option set to break the build on warnings (not just errors). So I set Claude to work reviewing the code, fixing bugs and suggesting improvements.&lt;/p&gt;
-
-&lt;p&gt;My impression was “damn, this really works.” It has fixed around 30 issues or improvements it found in the code. Most were minor, but a couple were embarrassing bugs. There were also 2 false positives - things it said were bugs initially, but on further investigation (by Claude) turned out not to be bugs. I also set it to improve test coverage, and it did so sensibly to over 85%. I reviewed closely every line added, removed or updated. Most of the fixes were small and were committed unchanged, a couple of the larger ones needed some changes to better match my (functional) style.&lt;/p&gt;
-
-&lt;p&gt;Overall, based on my experience in the industry, Claude acted like a good and attentive junior developer. It went through and diligently found bugs, long after my eyes would have glazed over. I had a comment “// TODO: nasty hack” and it found a 1 line fix (replacing my 3 lines) in a part of the Standard Scala library I didn’t know about - that impressed me. At first it would miss some things, or have trouble working out parts of the project (like the coverage system). However, after updating its config it worked much better. The main reason I describe it as junior is because it largely offered no pushback or initiative. It always agreed with me and told me I was right (unlikely :). It did exactly what I asked and only that. Probably this is by design, and maybe because it was working in an existing project. It also had a tendency to produce procedural code, which doesn’t fit a functional language like Scala. Still it definitely provided value and at a cost orders of magnitude below an actual junior dev.&lt;/p&gt;
-
-&lt;p&gt;Still for a small independent dev like me, cost is the main issue with Claude. Or at least, the amount of usage for the cost. Claude gives a 5-hour and 7 day quota. I regularly hit my 5-hour quota after a hour, and always before the 2 hour mark. My 7-day quota was reached over a day before the deadline. This is despite trying a few tricks to keep the usage low, like downgrading the effort in config. I also add a status line giving continuous notice of usage and what the cost would be if I allowed Claude to exceed its quota. I’m very happy going over quota is off by default - the non-plan costs rise fast and quickly exceed any reasonable budget I would allow. I will have to watch this closely, otherwise it will severely restrict what is possible.&lt;/p&gt;
-
-&lt;p&gt;Overall I am impressed. It’s not perfect, but definitely useful. It has made me think about my design philosophy, rather than being completely focussed on implementation details. Next week, when my quota resets, I’ll give it a greenfield project and see how it handles that.&lt;/p&gt;
 </description>
     </item>
     

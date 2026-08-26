@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="cordinc">
+    <title>AI Coding Disillusionment</title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/cordinc.css" rel="stylesheet">
+    <link href="/assets/css/pygments/default.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cordinc</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="/about.html">About</a></li>
+            <li class=""><a href="/projects">Projects</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="cordinc-content">
+            <div class="row">
+<div class="col-lg-8">
+<b>August 24, 2026</b>
+<h4>AI Coding Disillusionment</h4>
+Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Claude.html">Claude</a>
+    
+<br/><br/>
+<p>Some 13 weeks ago I wrote <a href="/blog/2026/05/ai-coding-wkX.html">an update on my AI coding experience</a>. That ended with my plan to try a larger project, and that there probably would not be any more AI specific posts. Both were incorrect predictions. It is time for another update on just AI coding since that planned project went poorly, and as the title suggests disillusionment has set in.</p>
+
+<p>The current standard of AI coding is far less useful than I hoped (at least for Claude Code, the only system I have been using). It is not useless, but care must be taken with its work. The things it is good at and I’ll currently continue using it for are:</p>
+
+<ul>
+  <li>Debugging - It can find and explain bugs or issues in existing code very well and incredibly quickly. Often I’ll ignore its suggested solution, but for diagnosis it is exceptional (I explicitly tell it not to change any code). If I hit a test failure I’ll ask it to explain the problem then step away from my desk for a drink or stretch. When I get back, the reason is on my screen and I’m straight back to work. A massive time saver.</li>
+  <li>Small learning or experiments - If there is some feature or technique I don’t understand, I’ll ask the AI to explain or provide example code, it is quicker and more reliable than StackOverflow!</li>
+  <li>Small focussed tasks in existing well scaffolded codebases - By small I mean a couple of functions or tests, anything larger and the problems creep in. It can’t be greenfield work; it needs to have a code style to copy, buttressed with linters and strict compiler options. Given all those caveats, I can specify in a few lines work that would take me &lt;30min and it can do much faster while I’m doing something more important.</li>
+  <li>Prototypes - As long as the purpose of the resulting code is only to test assumptions and will be discarded or rewritten. I suppose this could include any project you don’t particularly care about, or where the apparently working output is far more important than code quality.</li>
+</ul>
+
+<p>Can you guess what happened with that larger project? I have abandoned that codebase and have started a human (me) rewrite. The original AI-led work produced a proof-of-concept but further progress was increasingly difficult and complicated. Now it is much slower going, but with a much better output. The problems:</p>
+
+<ul>
+  <li>The AI over complicates everything and desires to keep adding more complexity - It created 3 separate error handling systems in the same codebase all doing essentially the same thing. The third was created when I asked for a large piece of new functionality and it decided to include a new system rather than reuse one of the existing ones. This was not an isolated incident, it also created 2 data validation systems, one running after the other. Neither of which were necessary, there was already one in an imported library that works fine (I know because I’m now using it).</li>
+  <li>Over commenting - The AI wants to give the entire life history a a method in its comments. I have seen a solid 10 line block comment on a 1 line function. Zero lines were required, the purpose and workings were obvious. I have tried telling the system not to do this, but never with complete success.</li>
+  <li>It hallucinates requirements - This is related to the first point. When I ask why it has over-engineered some feature or ask it to just delete the bloat, it will state that there is an important requirement that extra code satisfies. Almost always this is a completely made-up requirement; nothing I have asked for and nothing it has mentioned until this point. And then comes…</li>
+  <li>It is argumentative - It will say it can’t do the things I want because of its imagined never-before-mentioned reasons. I have to push it hard. It also spends a great deal of text/tokens blame-dodging. It would tell me it didn’t write the problematic code (it wrote all the code) or that I did specify that requirement. Obvious lies. Soon I learned to have it create a list of all requirements and regularly reminded it to update that doc. Then when it tried to gaslight me I asked it to show me the requirement in the (source controlled) requirement list - it never could. Then came…</li>
+  <li>It is sycophantic - I find it annoying to be told how smart I am for just doing normal job tasks. Same with the apologising - its not like it learns from its mistakes, so what is the point? I just want it to do its supposed purpose - software development.</li>
+</ul>
+
+<p>I previously said the AIs “write like a junior dev being paid by the number of lines produced”, but that was an understatement! My new review is: AI codes like an over-confident junior dev with a toxic personality, little understanding of software architecture, being paid by the number of lines produced, and trying hard to be promoted without ever having to learn their job. I have known professionally such people before and it is disappointing that they are AI’s role model (when it comes to larger tasks).</p>
+
+<p>Of course, some may suggest that my issues are because I am not properly driving the system. That my instructions and guiding documents are the problem. This is possible, I am certainly no expert in this regard. However, I did spend some time at the start of this process 6 months ago learning the accepted “state of the art”, but these general rules have changed multiple times over that short timespan. I want to get work done, not spend my time experimenting with tools and techniques. So if the issue really is my lack of AI coding skill, then I think that points to the immaturity of the AI coding tools.</p>
+
+<p>Thus my disillusionment, or even disappointment. My future plans are forcibly changing with my current thoughts on AI coding. I’m still moving forwards with my current project, because I enjoy spending my time on it. It is just moving at a much slower pace as I’m doing almost all the coding. Thus the big plans for big projects are on hold, pending better tools. I’ll reassess once the (improved) simulation engine has reached the same level as the AI-driven prototype.</p>
+
+</div>
+
+<div class="col-lg-2">
+<br/>
+
+<small>
+<a href="/blog/archives.html">Full Archives</a>
+
+<br/><br/>
+
+Recent Posts:
+<ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2026/08/ai-coding-disillusionment.html">AI Coding Disillusionment</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/07/omega-again.html">Omega Again</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/06/apple-arcade.html">Apple Arcade Games (Part 1)</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/05/itch-anniversary.html">Itch Anniversary</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/05/ai-coding-wkX.html">AI Coding Week X</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/05/westworld.html">Westworld</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/03/new-zealand.html">New Zealand</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/03/old-films.html">Old Films</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/ai-coding-wk3.html">AI Coding Week 3</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/02/itch-games.html">Itch Games</a> 
+  </li>  
+
+</ul>
+
+<br/><br/>
+
+Top Tags: <ul class="list-unstyled"><li><a href="/blog/tag/Games.html">Games</a></li> <li><a href="/blog/tag/Technical.html">Technical</a></li> <li><a href="/blog/tag/Travel.html">Travel</a></li> <li><a href="/blog/tag/A%20Gamedev%20Plays.html">A Gamedev Plays</a></li> <li><a href="/blog/tag/General.html">General</a></li> <li><a href="/blog/tag/History.html">History</a></li> <li><a href="/blog/tag/Podcasts.html">Podcasts</a></li> <li><a href="/blog/tag/Memories.html">Memories</a></li> <li><a href="/blog/tag/Video%20Games.html">Video Games</a></li> <li><a href="/blog/tag/Finance.html">Finance</a></li> <li><a href="/blog/tag/Projects.html">Projects</a></li> <li><a href="/blog/tag/Meta.html">Meta</a></li> <li><a href="/blog/tag/Malaysia.html">Malaysia</a></li> <li><a href="/blog/tag/Goals.html">Goals</a></li> <li><a href="/blog/tag/Java.html">Java</a></li></ul>
+
+</small>
+</div>
+
+<div class="col-lg-2">
+</div>
+</div>
+
+       </div>
+
+    </div><!-- /.container -->
+
+  </body>
+</html>

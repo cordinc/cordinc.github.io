@@ -38,6 +38,163 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">June 12, 2011</span>
+  <h4><a href="/blog/2011/06/blender-tutorial-roman-lamp.html">Blender Tutorial: Roman Lamp</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Blender.html">Blender</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Recently the Blender 2.5x series was properly released (as opposed to
+the beta versions that have been around for some time). There have been
+significant changes since the old 2.4x releases, so to learn the new
+interface I tried modelling something simple. Here I describe the steps
+to modelling a <a href="http://en.wikipedia.org/wiki/Ancient_Roman_pottery#Lamps">Roman
+lamp</a>, with
+the final result below.</p>
+
+<p><a href="/blender/tutorials/lamp/index.html">The continuation of this post is a set by step tutorial detailing my
+methodology</a>.</p>
+
+<p><a href="/blender/tutorials/lamp/index.html"><img src="/blender/tutorials/lamp/result.png" title="Roman Lamp" width="550" alt="Roman Lamp" /></a></p>
+
+  </div>
+  <hr/>
+
+  <span class="date">June  4, 2011</span>
+  <h4><a href="/blog/2011/06/java-nio-selector-performance.html">Java NIO selector performance</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Java.html">Java</a>, 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>After some previous work <a href="http://www.cordinc.com/blog/2010/08/java-nio-server-example.html">building Java NIO
+servers</a>,
+there was still some question over the performance of the system
+created. Here are the results from a number of tests I ran, to see how
+such a server would handle connection and message storms.</p>
+
+<p>The code from the previous blog article was modified so that there was a
+single-threaded selector to handle initial connections, but it handed
+off the message processing to a number of other selectors running in a
+thread pool. All of the tests were run on my 4-core Win7 64-bit desktop
+(full <a href="http://www.cordinc.com/blog/2011/01/building-a-new-pc.html">specs
+here</a>). All
+programs (both client and server components) were run through
+<a href="http://www.eclipse.org/">Eclipse</a> Helios using JDK1.6.0.24, always with
+256MB of heap space and no other VM options set. The code is not (yet)
+available online, but it shouldn’t be too hard to work out a rough
+understanding from the previous article and some Java NIO knowledge.</p>
+
+<p>Firstly, I wanted to check the system could handle a storm of
+connections. The test code would fire off 10,000 connections either: 1
+per millisecond; as fast as it could in 1 thread; or as far as it could
+with 5 threads sharing the load. The average time to reach various code
+points were recorded and results are in the table below. The Accept
+column is the time from when the connection is first received by the
+server to just after the server accepts the connection. The Server
+column is the time from when the connection is first received by the
+server until it completes all actions on the connection - this is the
+Accept column plus time spent initialising message processing. The
+Client column is the time from when the client opens a connection until
+it receives notification it is ready. Also during these tests I tracked
+heap usage and it barely budged - an extra few MB on a system that was
+already using 30MB after initialisation. All the heap gain was reversed
+after the next GC. No problems there.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Connection Speed</th>
+      <th>Accept (ms)</th>
+      <th>Server (ms)</th>
+      <th>Client (ms)</th>
+      <th>Client Max (ms)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sequential throttled</td>
+      <td>0.15</td>
+      <td>0.68</td>
+      <td>0.19</td>
+      <td>1.93</td>
+    </tr>
+    <tr>
+      <td>Sequential unthrottled</td>
+      <td>0.07</td>
+      <td>0.48</td>
+      <td>3.90</td>
+      <td>507.93</td>
+    </tr>
+    <tr>
+      <td>5 Threads unthrottled</td>
+      <td>0.07</td>
+      <td>0.51</td>
+      <td>31.83</td>
+      <td>510.22</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />As can be seen the Accept and Server times are fairly steady (I
+would guess 0.07 milliseconds is the fastest a selector can accept a
+connection on average). However, the faster the connections are created,
+the greater the lag at the client. No connections were dropped. I
+imagine the client delays are caused by some queuing. Possibly in the
+PC’s networking, but more likely in the wait before the selector starts
+processing the connection. In all the above tests the selector wait time
+is 1 millisecond, so the server will not wait long for a connections. I
+tried setting the wait time to 0, but some connections were then
+dropped. I also increased the wait time, and unsurprisingly this only
+increased the response time.</p>
+
+<p>Speeding up the server code after the accept (ie, trying to decrease the
+Server column) could speed up acceptance by decreasing the time before
+the server is ready to process the next connection. This code could be
+moved into another thread, but then I’m not sure what would happen if a
+message arrived on a connection that hadn’t finished. I also looked at
+the cost of selector creation by having each connection create a
+selector just for itself. In this scenario the time taken increased, but
+more importantly the server crashed having run out of heap after 641
+connections (the old generation filled up). I would estimate that each
+selector requires around 0.25 MB of heap.</p>
+
+<p>Next to test the message processing. The client created 10,000
+connections and once they were accepted each connection sent 10 message
+(for a total of 100,000 unique messages). The server just reflected the
+message back to the client. The client checked each message returned
+from the server was as expected (all messages were present and correct)
+and recorded total time taken. The variables in the tests were the
+number of selectors processing messages and the number of threads
+handling those selectors. The results are below. During all tests the
+heap didn’t grow to more than 55MB (from a 30MB base).</p>
+
+<p><img src="/assets/posts/technical/nio_messages.png" alt="" /></p>
+
+<p>The rule seems to be that the more selectors the better and there should
+be roughly the same number of threads as selectors (it may be easier to
+see in the raw numbers). More threads than selectors does no good at
+all. I checked a few points further out, 7 selectors/7 threads and
+10/10. They were quicker on average, but showed decreasing returns as
+they were both 1.26 milliseconds on average. However, the standard
+deviation also grew to around 2ms, when for all the other tests it was
+around 1ms (perhaps due to the extra thread scheduling in the VM)</p>
+
+<p>This such a system should handle connection and message storms short of
+a concerted
+<a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">DDOS</a> attack.
+For performance the rule seems to be pre-build as many message handling
+selectors as you wish and then provide about one thread per selector to
+support them.</p>
+
+  </div>
+  <hr/>
+
   <span class="date">May 28, 2011</span>
   <h4><a href="/blog/2011/05/injecting-context-in-java-seri.html">Injecting context in Java serialization</a></h4> 
   Tags: 
@@ -293,91 +450,10 @@ myth.</p>
   </div>
   <hr/>
 
-  <span class="date">May  7, 2011</span>
-  <h4><a href="/blog/2011/05/election-bullshit.html">Election Bullshit</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Politics.html">Politics</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>On Thursday the UK held a <a href="http://en.wikipedia.org/wiki/United_Kingdom_alternative_vote_referendum">referendum on whether it should use the
-Alternative Vote (AV) electoral
-system</a>.
-I didn’t hold much hope for an AV victory. While I believe AV is a
-preferable over the current
-<a href="http://en.wikipedia.org/wiki/First-past-the-post_voting">First-Past-The-Post</a>
-(FPTP) electoral voting system, FPTP is ok and democracy generally runs
-acceptably in Britain. It can be hard to get people out to vote on what
-can seem like a minor issue and hard to get people to want change when
-there doesn’t feel like a need for change. So with the political parties
-split and voting voluntary, I expected AV to lose, and it did - by a
-large margin. No problem. I’m not going to leave the UK over the
-electoral system, at least not when there are so many other good reasons
-to leave.</p>
-
-<p>So what has made me care enough to write this, after the battle has been
-lost? The day after the election I received a circular promoting the “No
-to AV” campaign (good timing guys). There is an <a href="http://www.flickr.com/photos/_mia/5660630645/">image of the circular
-on Flickr at this
-address</a>. The third
-bullet point states that Australia wants to get rid of it’s AV-like
-electoral system. I left Australia 8 years ago, and I still read the
-Australia papers nearly every day. I have seen no mention at all of this - not from the press (even the Murdoch press) or friends. I can honestly
-say I have seen infinitely more support for <a href="http://en.wikipedia.org/wiki/Secessionism_in_Western_Australia">WA
-succession</a>
-(a fairly fringe position). After some investigation it seems that this
-view is based on a single survey - <a href="http://blogs.abc.net.au/antonygreen/2011/02/do-australians-really-want-to-abandon-the-alternative-vote.html">generally considered
-flawed</a>.
-I can’t imagine there will be a referendum on voting system in Australia
-for many years. The rest of the flyer seems similarly dishonest. Many of
-the points based on the assumption that the person who gets the most
-votes is the “winner” and “best” candidate, which is clearly not true.
-Such a person has a plurality by definition, but “best” and “winner” are
-defined by the voting system used - which is the question at hand.</p>
-
-<p>The reason I prefer AV is because it give a result more representative
-of the whole constituency, rather than just the plurality. Ignoring the
-possibility of <a href="http://en.wikipedia.org/wiki/Proportional_representation">Proportional
-Representation</a>
-(which, to my mind, is a different argument entirely), if we assume
-constituency based democracy, where one person represents an geographic
-area, then it is better to have the person who most closely matches the
-views of the majority of constituents (or at least those that vote). If
-you disagree, well you are in the majority (in an election with only two
-options AV and FPTP are effectively the same). I just wish that the
-campaign to build that majority didn’t print bullshit.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">April 29, 2011</span>
-  <h4><a href="/blog/2011/04/that-old-favourite.html">That old favourite</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>My <a href="http://www.cordinc.com/blog/2011/01/building-a-new-pc.html">new’ish
-PC</a> worked
-fine for its first two months, then disaster struck. For the first time
-in many years I saw that old favourite, the <a href="http://en.wikipedia.org/wiki/Blue_Screen_of_Death">blue screen of
-death</a>. My initial
-investigations (based on the error code STOP 0x00000074) led me the
-wrong way, so this article is to give some Google juice to the
-resolution.</p>
-
-<p><img src="/assets/posts/bsod.jpg" alt="" /></p>
-
-<p class='more'><br/><a href='/blog/2011/04/that-old-favourite.html'>Read the rest of this entry</a></p>
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 65 of 95 
+  Page 65 of 96 
   
       
         <a href="/blog/page64">Previous</a>
@@ -400,6 +476,14 @@ resolution.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2026/08/ai-coding-disillusionment.html">AI Coding Disillusionment</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/07/omega-again.html">Omega Again</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2026/06/apple-arcade.html">Apple Arcade Games (Part 1)</a> 
@@ -431,14 +515,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2026/02/itch-games.html">Itch Games</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2026/02/ai-coding-wk2.html">AI Coding Week 2</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2026/02/ai-coding-wk1.html">AI Coding Week 1</a> 
   </li>  
 
 </ul>

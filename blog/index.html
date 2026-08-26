@@ -38,6 +38,70 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">August 24, 2026</span>
+  <h4><a href="/blog/2026/08/ai-coding-disillusionment.html">AI Coding Disillusionment</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
+    
+      <a class="post" href="/blog/tag/Claude.html">Claude</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Some 13 weeks ago I wrote <a href="/blog/2026/05/ai-coding-wkX.html">an update on my AI coding experience</a>. That ended with my plan to try a larger project, and that there probably would not be any more AI specific posts. Both were incorrect predictions. It is time for another update on just AI coding since that planned project went poorly, and as the title suggests disillusionment has set in.</p>
+
+<p>The current standard of AI coding is far less useful than I hoped (at least for Claude Code, the only system I have been using). It is not useless, but care must be taken with its work. The things it is good at and I’ll currently continue using it for are:</p>
+
+<ul>
+  <li>Debugging - It can find and explain bugs or issues in existing code very well and incredibly quickly. Often I’ll ignore its suggested solution, but for diagnosis it is exceptional (I explicitly tell it not to change any code). If I hit a test failure I’ll ask it to explain the problem then step away from my desk for a drink or stretch. When I get back, the reason is on my screen and I’m straight back to work. A massive time saver.</li>
+  <li>Small learning or experiments - If there is some feature or technique I don’t understand, I’ll ask the AI to explain or provide example code, it is quicker and more reliable than StackOverflow!</li>
+  <li>Small focussed tasks in existing well scaffolded codebases - By small I mean a couple of functions or tests, anything larger and the problems creep in. It can’t be greenfield work; it needs to have a code style to copy, buttressed with linters and strict compiler options. Given all those caveats, I can specify in a few lines work that would take me &lt;30min and it can do much faster while I’m doing something more important.</li>
+  <li>Prototypes - As long as the purpose of the resulting code is only to test assumptions and will be discarded or rewritten. I suppose this could include any project you don’t particularly care about, or where the apparently working output is far more important than code quality.</li>
+</ul>
+
+<p>Can you guess what happened with that larger project? I have abandoned that codebase and have started a human (me) rewrite. The original AI-led work produced a proof-of-concept but further progress was increasingly difficult and complicated. Now it is much slower going, but with a much better output. The problems:</p>
+
+<ul>
+  <li>The AI over complicates everything and desires to keep adding more complexity - It created 3 separate error handling systems in the same codebase all doing essentially the same thing. The third was created when I asked for a large piece of new functionality and it decided to include a new system rather than reuse one of the existing ones. This was not an isolated incident, it also created 2 data validation systems, one running after the other. Neither of which were necessary, there was already one in an imported library that works fine (I know because I’m now using it).</li>
+  <li>Over commenting - The AI wants to give the entire life history a a method in its comments. I have seen a solid 10 line block comment on a 1 line function. Zero lines were required, the purpose and workings were obvious. I have tried telling the system not to do this, but never with complete success.</li>
+  <li>It hallucinates requirements - This is related to the first point. When I ask why it has over-engineered some feature or ask it to just delete the bloat, it will state that there is an important requirement that extra code satisfies. Almost always this is a completely made-up requirement; nothing I have asked for and nothing it has mentioned until this point. And then comes…</li>
+  <li>It is argumentative - It will say it can’t do the things I want because of its imagined never-before-mentioned reasons. I have to push it hard. It also spends a great deal of text/tokens blame-dodging. It would tell me it didn’t write the problematic code (it wrote all the code) or that I did specify that requirement. Obvious lies. Soon I learned to have it create a list of all requirements and regularly reminded it to update that doc. Then when it tried to gaslight me I asked it to show me the requirement in the (source controlled) requirement list - it never could. Then came…</li>
+  <li>It is sycophantic - I find it annoying to be told how smart I am for just doing normal job tasks. Same with the apologising - its not like it learns from its mistakes, so what is the point? I just want it to do its supposed purpose - software development.</li>
+</ul>
+
+<p>I previously said the AIs “write like a junior dev being paid by the number of lines produced”, but that was an understatement! My new review is: AI codes like an over-confident junior dev with a toxic personality, little understanding of software architecture, being paid by the number of lines produced, and trying hard to be promoted without ever having to learn their job. I have known professionally such people before and it is disappointing that they are AI’s role model (when it comes to larger tasks).</p>
+
+<p>Of course, some may suggest that my issues are because I am not properly driving the system. That my instructions and guiding documents are the problem. This is possible, I am certainly no expert in this regard. However, I did spend some time at the start of this process 6 months ago learning the accepted “state of the art”, but these general rules have changed multiple times over that short timespan. I want to get work done, not spend my time experimenting with tools and techniques. So if the issue really is my lack of AI coding skill, then I think that points to the immaturity of the AI coding tools.</p>
+
+<p>Thus my disillusionment, or even disappointment. My future plans are forcibly changing with my current thoughts on AI coding. I’m still moving forwards with my current project, because I enjoy spending my time on it. It is just moving at a much slower pace as I’m doing almost all the coding. Thus the big plans for big projects are on hold, pending better tools. I’ll reassess once the (improved) simulation engine has reached the same level as the AI-driven prototype.</p>
+
+  </div>
+  <hr/>
+
+  <span class="date">July 29, 2026</span>
+  <h4><a href="/blog/2026/07/omega-again.html">Omega Again</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Games.html">Games</a>, 
+    
+      <a class="post" href="/blog/tag/Video Games.html">Video Games</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>A little while ago a member of the <a href="https://grogpod.zone">Grogpod</a> podcast about roguelike games contacted me out of the blue on Reddit, asking if I’d like to share any memorable experiences with Omega to be read-out on an episode. Omega is an 80’s old style roguelike which I first played at uni in the 90’s (and occasionally since). Ten years ago I wrote <a href="/blog/2016/07/omega.html">a review and made some videos about it</a>. The podcast planned an episode on the original wave of roguelikes; choosing the relatively obscure Omega as one of the three they would play. Below is what I sent them, and the episode it features in is <a href="https://grogpod.zone/2026-07-29-EP102/">Episode 100 Part 2 - Moria, Hack, Larn, Omega</a>.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>It is 1993, I am playing Omega.
+It is 2004, I am playing Omega.
+It is 2016, I am playing Omega.
+It is 2026, once again I am playing Omega. 
+Why? I played most of the old roguelikes while avoiding study in the 90's, but Omega is the only one I regularly return to. It's not the best of its genre: the inventory system is, if I'm being polite, unusual; the early game RNG, brutal; the late game too soft; and I've hit more than a few bugs along my journeys. However, it was Omega's scale that attracted me to the game. There is a sense that a whole world (or at least an island) exists around the dungeons that provide most of the usual action. There is a town to investigate which has more happening than just being a place to restock. Outside the town is countryside to explore with villages, wild animals, and of course the occasional dungeon too. Omega is an early attempt at an open world.
+
+These early rogue-likes are a hive of experimentation. They are the indie games of their time. So many ideas were thrown together by people trying to recreate their tabletop RPG sessions. For me, Omega succeeded more in this than it failed. It feels like there is a world continuing along regardless of the player actions. This isn’t true of course, but it is the impression that counts, and that is enough for me.
+</code></pre></div></div>
+
+  </div>
+  <hr/>
+
   <span class="date">June 18, 2026</span>
   <h4><a href="/blog/2026/06/apple-arcade.html">Apple Arcade Games (Part 1)</a></h4> 
   Tags: 
@@ -129,52 +193,10 @@
   </div>
   <hr/>
 
-  <span class="date">May 24, 2026</span>
-  <h4><a href="/blog/2026/05/westworld.html">Westworld</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/General.html">General</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>I recently decided to finish watching <a href="https://en.wikipedia.org/wiki/Westworld_(TV_series)">Westworld</a>. I watched the first couple of season when they were the released, and my opinions seemed to match public perception: the first season was excellent; the second was a great disappointment and a slide towards mediocrity. It has been some time since the last two seasons were released, but I understand that the general opinion is that they did not reverse the descent.</p>
-
-<p>Well I liked season 3 (however, season 4 was not good). I think it opened up the setting in an interesting manner. The story was not as good as season 1, but we got a better understanding of how the wider world outside the park worked. It was an ambitious attempt to show something new within a familiar Westworld story, and it mostly delivered. It felt like a modern cyberpunk (as opposed to the 80’s nostalgia of most recent cyberpunk).</p>
-
-<p>In an ahistorical story (like all fantasy and most sci-fi), the wider environment usually seems to exist solely for the purpose of moving the story forward. I do not normally get a sense that these are worlds that exist outside of that particular movie or TV show (books tend to be better). It is a notable achievement when there is a show that does feel like it has a complete world (that existed before the start and will continue after the end of the story being told). Game of Thrones and The Expanse are recent examples.</p>
-
-<p>Westworld season 1 was not a show like this, the setting was very much built for the purposes of the story, literally! So respect to the writers for the difficult and thankless task (most people will not care, and that is fine) of retrofitting a fuller, more interesting world onto the show. I appreciate the inclination to try something difficult, even if it doesn’t completely succeed. For a similar reason I have a better opinion of the second Matrix movie than most people (sooo much exposition, but at least for a good cause).</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">March 30, 2026</span>
-  <h4><a href="/blog/2026/03/new-zealand.html">New Zealand</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Travel.html">Travel</a>, 
-    
-      <a class="post" href="/blog/tag/New Zealand.html">New Zealand</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>Earlier this month I spent a fortnight in <a href="https://en.wikipedia.org/wiki/New_Zealand">New Zealand</a>, and now I’m over the inevitable post-travel illness. The trip was split into two parts: a week in <a href="https://en.wikipedia.org/wiki/Auckland">Auckland</a> with a side trip to <a href="https://en.wikipedia.org/wiki/Rotorua">Rotorua</a>; followed by a week in <a href="https://en.wikipedia.org/wiki/Queenstown,_New_Zealand">Queenstown</a> and its surrounds. I wouldn’t recommend this itinerary. Not because it was bad trip, quite the opposite. It was not long enough in either location. Best would be to hire a campervan (we just had a hire car for a few days) and make a 3+ week road trip from Auckland to Queenstown. The country is very pretty and easy to to travel (for an Australian at least).</p>
-
-<p>Auckland seems like a pleasant, liveable city. Less spread out than Perth (smaller population too, despite being the largest city in NZ) with more happening (judging by the posters). It even has a nice nearby island, Waiheke, with beaches and wineries. There was activity in the CBD and many decent multicultural food options. We had some very good West Chinese noodles. Some of this may be because there are a great number of tourists. We were told 7% of the NZ economy is tourism!</p>
-
-<p>Tourism is very apparent on reaching Queenstown. The place seems built for sightseeing. And such sights! This is a beautiful part of the world, no surprise it is often used in films. I had heard that the NZ economy was not doing so well. However, Queenstown and surrounding towns seem to be thriving. Lots of building, lots of people, lots to do. Interestingly we met nearly no locals. The people serving tourists in hotels, restaurants and on tours were all recent arrivals. On our tour to <a href="https://en.wikipedia.org/wiki/Milford_Sound">Milford Sound</a>, the guide told us he had been in the country only a year, and walked into that job right after arrival.</p>
-
-<p>Some photos from the trip are in a short slideshow <a href="/slideshows/nz_26.html">available here</a>.</p>
-
-<p><a href="/slideshows/nz_26.html"><img src="/assets/slideshow/nz_26/approach_main.png" alt="" title="Approaching Mt Cook" /></a></p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 1 of 95 
+  Page 1 of 96 
   
 
   
@@ -193,6 +215,14 @@
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2026/08/ai-coding-disillusionment.html">AI Coding Disillusionment</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/07/omega-again.html">Omega Again</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2026/06/apple-arcade.html">Apple Arcade Games (Part 1)</a> 
@@ -224,14 +254,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2026/02/itch-games.html">Itch Games</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2026/02/ai-coding-wk2.html">AI Coding Week 2</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2026/02/ai-coding-wk1.html">AI Coding Week 1</a> 
   </li>  
 
 </ul>

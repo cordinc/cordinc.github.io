@@ -38,6 +38,60 @@
             <div class="row">
 <div class="col-lg-8">
 
+  <span class="date">June 21, 2009</span>
+  <h4><a href="/blog/2009/06/pompeii-photos.html">Pompeii Photos</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Travel.html">Travel</a>, 
+    
+      <a class="post" href="/blog/tag/Italy.html">Italy</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>Last September I visited
+<a href="http://en.wikipedia.org/wiki/Pompeii">Pompeii</a>. Despite spending nearly
+6 hours walking around in the sun, I still only saw a fraction of the
+site. It is truly very impressive. My camera was dying so there are not
+too many photos, but I have put some of the best <a href="http://www.flickr.com/photos/33547649@N07/sets/72157620005024571/show/">here on
+Flickr</a>.</p>
+
+<p><a href="http://www.flickr.com/photos/33547649@N07/sets/72157620005024571/show/"><img src="http://farm4.static.flickr.com/3569/3646487733_9ef33a7b5e.jpg?v=0" alt="Grand Theatre at Pompeii" title="Grand Theatre at Pompeii" /></a></p>
+
+  </div>
+  <hr/>
+
+  <span class="date">June 13, 2009</span>
+  <h4><a href="/blog/2009/06/blender-tutorial-tozeur-market.html">Blender Tutorial: Tozeur Market Sculpture - My First Model</a></h4> 
+  Tags: 
+    
+      <a class="post" href="/blog/tag/Blender.html">Blender</a>
+    
+  <br/><br/>
+  <div class="content">
+    <p>I’ve <a href="http://www.cordinc.com/blog/2009/02/new-goals.html">previously
+stated</a> that I
+intend to learn 3D modelling well enough to recreate simple ancient
+historical architectural scenes after being inspired by my trips to
+Pompeii and
+<a href="http://www.cordinc.com/blog/2008/12/dougga-photos.html">Dougga</a>. To
+this aim I downloaded <a href="http://www.blender.org/">Blender</a>, an opensource
+3D modelling program, and bought <a href="http://www.blender3d.org/e-shop/product_info.php?products_id=96">The Essential
+Blender</a>.
+After having read the first 3 chapters of that book and a few online
+tutorials (mainly around materials and textures), I was ready to try
+creating my first model. I decided upon a sculpture found in the market
+square of <a href="http://en.wikipedia.org/wiki/Tozeur">Tozeur, Tunisia</a> - it
+seemed simple enough, but it wasn’t immediately clear to me how it
+should be done. Below you can see images of the original and my model.</p>
+
+<p><a href="/blender/tutorials/tozeur_sculpture/">The continuation of this post is a set by step tutorial detailing my
+methodology</a>.</p>
+
+<p><a href="/blender/tutorials/tozeur_sculpture/"><img src="/blender/tutorials/tozeur_sculpture/result_small.png" alt="Tozeur Market Sculpture" title="Tozeur Market Sculpture" /></a></p>
+
+  </div>
+  <hr/>
+
   <span class="date">June  1, 2009</span>
   <h4><a href="/blog/2009/06/leeds-castle-golf-course.html">Leeds Castle Golf Course</a></h4> 
   Tags: 
@@ -225,103 +279,10 @@ to playing soccer and A-Team.</p>
   </div>
   <hr/>
 
-  <span class="date">May 10, 2009</span>
-  <h4><a href="/blog/2009/05/weather-report-a-ruby-gem-for.html">weather_report - a Ruby gem for retrieving weather forecasts</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
-    
-      <a class="post" href="/blog/tag/Ruby.html">Ruby</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>, 
-    
-      <a class="post" href="/blog/tag/Weather.html">Weather</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p><strong>Update:</strong> The weather_report project and the weather archive is no
-more. The effort required to maintain it was too great, for more
-information <a href="http://www.cordinc.com/blog/2009/11/the-weather-archive-is-not-mor.html">see
-here</a>.</p>
-
-<p>Today I have released my first Ruby gem:
-<a href="http://www.cordinc.com/projects/weather_report">weather_report</a>,
-version 0.0.1. It connects to the <a href="http://backstage.bbc.co.uk">BBC
-Backstage</a> weather API and gets weather
-observations or forecasts for thousands of cities worldwide. Don’t be
-fooled by the low version number, it is usable. However, it can only
-handle the BBC weather feed, requires pre-knowledge of BBC weather
-location ids and is metric only (all things I plan to fix).</p>
-
-<p>With weather_report, you can do things like:</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'weather_report'</span>
-<span class="c1"># 8 is the BBC Backstage weather code for London, UK</span>
-<span class="n">londonWeather</span> <span class="o">=</span> <span class="no">WeatherReport</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-
-<span class="c1"># to get the current temperature</span>
-<span class="n">londonWeather</span><span class="p">.</span><span class="nf">observation</span><span class="p">.</span><span class="nf">temperature</span> 
-
-<span class="c1"># to get the tomorrow's max temperature</span>
-<span class="n">londonWeather</span><span class="p">.</span><span class="nf">forecast</span><span class="p">.</span><span class="nf">for_tomorrow</span><span class="p">.</span><span class="nf">max_temperature</span>
-
-<span class="c1"># and much more!</span></code></pre></figure>
-
-<p>It can be obtained through rubyforge:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>gem <span class="nb">install </span>weather_report</code></pre></figure>
-
-<p>There is also a <a href="http://www.cordinc.com/projects/weather_report">website with documentation
-here</a>.</p>
-
-<p>I would like to say thanks to the authors of
-<a href="http://newgem.rubyforge.org/index.html">newgem</a> and this <a href="http://blog.bogojoker.com/category/rr/">rubyforge
-tutorial</a>, both of which greatly
-aided in weather_report’s creation.</p>
-
-  </div>
-  <hr/>
-
-  <span class="date">May  6, 2009</span>
-  <h4><a href="/blog/2009/05/intrade-implied-interest-rates.html">Intrade Implied Interest Rates in Java</a></h4> 
-  Tags: 
-    
-      <a class="post" href="/blog/tag/Gambling.html">Gambling</a>, 
-    
-      <a class="post" href="/blog/tag/Java.html">Java</a>, 
-    
-      <a class="post" href="/blog/tag/Projects.html">Projects</a>, 
-    
-      <a class="post" href="/blog/tag/Technical.html">Technical</a>
-    
-  <br/><br/>
-  <div class="content">
-    <p>A while ago I wrote a blog post asking <a href="http://www.cordinc.com/blog/2008/10/is-there-dumb-money-on-intrade.html">is there dumb money on
-Intrade?</a>
-The short answer was probably not once the implied interest rate was
-considered, unless a chain of nearly expired “easy money” trades could
-be constructed. When I heard that the Goggle app engine supported Java I
-was keen to try it out. So I ported my manual Intrade interest rate
-calculation to Java and had it read the Intrade XML feed to check for
-any contracts finishing soon with high implied interest rates.
-Unfortunately, the code fell foul of Google’s time limit on reading data
-from other websites. Rather than see the code go to waste, I decided to
-clean it up and release it. It is a command line Java app with all the
-code available under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT
-license</a>. It’s
-probably best to just load it up in Eclipse and run the launch file to
-see it working. Enjoy!</p>
-
-<p>You can download the whole <a href="http://www.cordinc.com/projects/IntradeChecker.zip">eclipse project
-here</a>.</p>
-
-  </div>
-  <hr/>
-
 
 <!-- Pagination links -->
 <div id="post-pagination" class="pagination">
-  Page 84 of 95 
+  Page 84 of 96 
   
       
         <a href="/blog/page83">Previous</a>
@@ -344,6 +305,14 @@ here</a>.</p>
 
 Recent Posts:
 <ul class="list-unstyled">
+  
+  <li>  
+    <a href="/blog/2026/08/ai-coding-disillusionment.html">AI Coding Disillusionment</a> 
+  </li>  
+  
+  <li>  
+    <a href="/blog/2026/07/omega-again.html">Omega Again</a> 
+  </li>  
   
   <li>  
     <a href="/blog/2026/06/apple-arcade.html">Apple Arcade Games (Part 1)</a> 
@@ -375,14 +344,6 @@ Recent Posts:
   
   <li>  
     <a href="/blog/2026/02/itch-games.html">Itch Games</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2026/02/ai-coding-wk2.html">AI Coding Week 2</a> 
-  </li>  
-  
-  <li>  
-    <a href="/blog/2026/02/ai-coding-wk1.html">AI Coding Week 1</a> 
   </li>  
 
 </ul>
